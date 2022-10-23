@@ -39,8 +39,8 @@ Next, you need to enable Firebase. That is what provides authentication for Clea
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
-- Enable the Google and Facebook Providers in Firebase. Google will be automatic. Facebook will require a free developer account [and about five minutes of work](https://www.youtube.com/watch?v=X_twiDVZ4PY).
-- We provide a Terms of Use and Privacy policy for these providers. They are located at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you host Clean Slate at.
+- Enable the Google provider in Firebase.
+- We provide a Terms of Use and Privacy policy. They are located at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you host Clean Slate at.
 - Create your `.firebaserc` in the root with the following content. Example:
 
 ```json

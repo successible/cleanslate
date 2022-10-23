@@ -1,13 +1,8 @@
 import 'firebase/compat/auth'
 import { css } from '@emotion/react'
-import {
-  FacebookAuthProvider,
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import Link from 'next/link'
-import { FaFacebook, FaGoogle } from 'react-icons/fa'
+import { FaGoogle } from 'react-icons/fa'
 import { firebaseApp } from '../../pages'
 import { Explanation } from '../explanation/Explanation'
 
@@ -51,26 +46,6 @@ export const LoginButtons = () => {
           >
             <FaGoogle className="mr10" size={15} />
             Sign in with Google
-          </button>
-          <button
-            className="black m5 ml5 mr5"
-            css={css`
-              width: 210px;
-              background-color: #4267b2;
-              &:hover,
-              &:focus {
-                background-color: #3b5ca0;
-              }
-            `}
-            onClick={() => {
-              const auth = getAuth(firebaseApp)
-              signInWithPopup(auth, new FacebookAuthProvider()).then(() => {
-                window.location.href = '/'
-              })
-            }}
-          >
-            <FaFacebook className="mr10" size={15} />
-            Sign in with Facebook
           </button>
         </div>
       </div>
