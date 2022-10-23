@@ -1,0 +1,10 @@
+import { useStoreon } from 'storeon/react'
+import { NavbarState } from '../../store/navbar/types'
+
+export const subscribeToUser = () => {
+  const { navbar }: { navbar: NavbarState } =
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    useStoreon('navbar')
+  const { user } = navbar
+  return user
+}

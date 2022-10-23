@@ -1,0 +1,391 @@
+/* eslint-disable react/jsx-key */
+import { css } from '@emotion/react'
+import React from 'react'
+import { useStoreon } from 'storeon/react'
+import { getDispatch } from '../../helpers/data/getDispatch'
+import { Food } from '../../models/Food/model'
+import { Log } from '../../models/Log/model'
+import { Profile } from '../../models/Profile/model'
+import { Recipe } from '../../models/Recipes/model'
+import { EditorState } from '../../store/editor/types'
+import { modals } from '../../store/navbar/modals'
+import { NavbarState } from '../../store/navbar/types'
+import { Alert } from '../alert/Alert'
+import { Error } from '../error/Error'
+import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
+import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
+import { ExerciseForm } from '../forms/ExerciseForm/ExerciseForm'
+import { RecipeForm } from '../forms/RecipeForm/RecipeForm'
+import { TargetForm } from '../forms/TargetForm/TargetForm'
+import { Help } from '../help/Help'
+import { InformationModal } from '../information-modal/InformationModal'
+import { IngredientModal } from '../ingredient-modal/IngredientModal'
+import { ItemModal } from '../item-modal/ItemModal'
+import { FoodList } from '../list/Food/FoodList'
+import { RecipeList } from '../list/Recipe/RecipeList'
+import { Menu } from '../menu/Menu'
+import { Modal } from '../modal/Modal'
+import { PWAPrompt } from '../pwa-prompt/PWAPrompt'
+import { QuickAddEditor } from '../quick-add-editor/QuickAddEditor'
+import { isSearchableDummyFood } from '../searchbar/helpers/isSearchableDummyFood'
+import { Settings } from '../settings/Settings'
+import { StandardEditor } from '../standard-editor/StandardEditor'
+import { UnitModal } from '../unit-modal/UnitModal'
+import { getOrderedModals } from './getOrderedModal'
+import { isAlertPresent } from './helpers/isAlertPresent'
+import {
+  getAlertStyling,
+  getErrorStyling,
+  modalContainerStyling,
+  modalContainerStylingWithAlerts,
+} from './styling'
+
+type props = {
+  profile: Profile
+  foods: Food[]
+  recipes: Recipe[]
+  logs: Log[]
+}
+
+const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
+  const {
+    editor,
+    navbar,
+  }: {
+    editor: EditorState
+    navbar: NavbarState
+  } = useStoreon('editor', 'navbar')
+
+  const dispatch = getDispatch()
+
+  const { dummyFood } = editor
+  const searchable = dummyFood && isSearchableDummyFood(dummyFood)
+
+  const {
+    activeModals,
+    addIngredientModalVisibility,
+    alert,
+    alertVisibility,
+    bodyFatPercentageModalVisibility,
+    errorVisibility,
+    exerciseModalVisibility,
+    foodFormModalVisibility,
+    foodModalVisibility,
+    foodToUpdate,
+    helpModalVisibility,
+    informationModalVisibility,
+    itemModalVisibility,
+    itemToUpdate,
+    menuVisibility,
+    modalVisibility,
+    pwaPromptVisibility,
+    quickAddModalVisibility,
+    recipeFormModalVisibility,
+    recipeModalVisibility,
+    recipeToUpdate,
+    settingsModalVisibility,
+    targetModalVisibility,
+    unitModalVisibility,
+  } = navbar
+
+  const editorStyling = css`
+    justify-content: flex-start !important;
+    > div:first-of-type {
+      border-radius: 0 !important;
+      margin: 0 !important;
+      max-width: 100% !important;
+      min-height: ${searchable ? '100%' : 'auto'} !important;
+      padding: 0 !important;
+      top: 0 !important;
+      width: 100% !important;
+    }
+  `
+
+  const allModals = [
+    <Modal
+      styles={editorStyling}
+      closeIcon={false}
+      closeModal={() => {
+        dispatch('closeModal')
+        dispatch('clearEditor')
+      }}
+      inTransition={'slideInDown'}
+      outTransition={'fadeOutHard'}
+      name="navbar.modalVisibility"
+      visible={modalVisibility}
+    >
+      <StandardEditor foods={foods} type="log" />
+    </Modal>,
+
+    <Modal
+      styles={editorStyling}
+      closeIcon={false}
+      closeModal={() => {
+        dispatch('closeQuickAddModal')
+      }}
+      inTransition={'slideInDown'}
+      outTransition={'fadeOutHard'}
+      name="navbar.quickAddModalVisibility"
+      visible={quickAddModalVisibility}
+    >
+      <QuickAddEditor />
+    </Modal>,
+
+    // Sidebar
+    <Modal
+      closeModal={() => {
+        dispatch('closeMenu')
+      }}
+      visible={menuVisibility}
+      name="navbar.menuVisibility"
+    >
+      <Menu />
+    </Modal>,
+
+    // Exercise-form
+    <Modal
+      closeModal={() => {
+        dispatch('closeExerciseModal')
+      }}
+      name="navbar.exerciseModalVisibility"
+      visible={exerciseModalVisibility}
+    >
+      <ExerciseForm />
+    </Modal>,
+
+    // target-form
+    <Modal
+      closeModal={() => {
+        dispatch('closeTargetModal')
+      }}
+      name="navbar.targetModalVisibility"
+      visible={targetModalVisibility}
+    >
+      <TargetForm profile={profile} />
+    </Modal>,
+
+    // Settings modal
+    <Modal
+      closeModal={() => {
+        dispatch('closeSettingsModal')
+      }}
+      name="navbar.settingsModalVisibility"
+      visible={settingsModalVisibility}
+    >
+      <Settings profile={profile} />
+    </Modal>,
+
+    // body-composition-form
+    <Modal
+      closeModal={() => {
+        dispatch('closeBodyFatPercentageModal')
+      }}
+      name="navbar.bodyFatPercentageModalVisibility"
+      visible={bodyFatPercentageModalVisibility}
+    >
+      <BodyFatPercentageForm />
+    </Modal>,
+
+    // food-form
+    <Modal
+      closeModal={() => {
+        dispatch('closeFoodModal')
+      }}
+      name="navbar.foodModalVisibility"
+      visible={foodModalVisibility}
+    >
+      <div className="w100 h100 fcs expand">
+        <button
+          type="button"
+          onClick={() => {
+            dispatch('openFoodFormModal', null)
+          }}
+          className="purple bold mb25"
+        >
+          Add custom food
+        </button>
+        <div className="w90 h100 fcs expand">
+          <FoodList foods={foods} />
+        </div>
+      </div>
+    </Modal>,
+
+    // recipe-form
+    <Modal
+      closeModal={() => {
+        dispatch('closeRecipeModal')
+      }}
+      name="navbar.recipeModalVisibility"
+      visible={recipeModalVisibility}
+    >
+      <div className="w100 h100 fcs expand">
+        <button
+          type="button"
+          onClick={() => {
+            dispatch('openRecipeFormModal', null)
+          }}
+          className="purple bold mb25"
+        >
+          Add recipe
+        </button>
+        <div className="w90 h100 fcs expand">
+          <RecipeList recipes={recipes} />
+        </div>
+      </div>
+    </Modal>,
+
+    // custom-recipe-form
+    <Modal
+      closeModal={() => {
+        const message =
+          'You have unsaved changes that will be deleted. Are you okay with that?'
+        if (navbar.isDirty.RecipeForm === false || window.confirm(message)) {
+          dispatch('closeRecipeFormModal')
+          dispatch('updateIsDirty', ['RecipeForm', false])
+        }
+      }}
+      name="navbar.recipeFormModalVisibility"
+      visible={recipeFormModalVisibility}
+    >
+      <RecipeForm
+        foods={foods}
+        recipe={
+          recipes.filter((recipe) => {
+            return recipe.id === recipeToUpdate
+          })[0]
+        }
+      />
+    </Modal>,
+
+    <Modal // add ingredient modal
+      closeIcon={true}
+      closeModal={() => {
+        dispatch('closeAddIngredientModal')
+      }}
+      name="navbar.addIngredientModalVisibility"
+      visible={addIngredientModalVisibility}
+    >
+      <IngredientModal foods={foods} />
+    </Modal>,
+
+    // custom-food-form
+    <Modal
+      closeModal={() => {
+        const message =
+          'You have unsaved changes that will be deleted. Are you okay with that?'
+        if (
+          navbar.isDirty.CustomFoodForm === false ||
+          window.confirm(message)
+        ) {
+          dispatch('closeFoodFormModal')
+          dispatch('updateIsDirty', ['CustomFoodForm', false])
+        }
+      }}
+      name="navbar.foodFormModalVisibility"
+      visible={foodFormModalVisibility}
+    >
+      <CustomFoodForm
+        food={
+          foods.filter((food) => {
+            return food.id === foodToUpdate
+          })[0]
+        }
+      />
+    </Modal>,
+    <Modal // item-modal
+      id={'item-modal'}
+      closeIcon={true}
+      closeModal={() => {
+        dispatch('closeItemModal')
+      }}
+      name="navbar.itemModalVisibility"
+      visible={itemModalVisibility}
+    >
+      <ItemModal item={itemToUpdate} />
+    </Modal>,
+    <Modal // unit-modal
+      id={'unit-modal'}
+      closeIcon={true}
+      closeModal={() => {
+        dispatch('closeUnitModal')
+      }}
+      name="navbar.unitModalVisibility"
+      visible={unitModalVisibility}
+    >
+      <UnitModal item={itemToUpdate} logs={logs} />
+    </Modal>,
+    <Modal
+      closeModal={() => {
+        dispatch('closeHelpModal')
+      }}
+      name="navbar.helpModalVisibility"
+      visible={helpModalVisibility}
+    >
+      <Help />
+    </Modal>,
+    <Modal
+      closeModal={() => {
+        dispatch('closeInformationModal')
+      }}
+      visible={informationModalVisibility}
+      name="navbar.informationModalVisibility"
+    >
+      <InformationModal />
+    </Modal>,
+    <Modal
+      closeModal={() => {
+        dispatch('closeError')
+      }}
+      closeIcon={false}
+      key="navbar.errorVisibility"
+      name="navbar.errorVisibility"
+      styles={getErrorStyling()}
+      visible={errorVisibility}
+    >
+      <Error />
+    </Modal>,
+    <Modal
+      inTransition={'slideInDown'}
+      outTransition={'slideOutUp'}
+      closeModal={() => {
+        dispatch('closeAlert')
+      }}
+      closeIcon={false}
+      key="navbar.alertVisibility"
+      name="navbar.alertVisibility"
+      styles={getAlertStyling()}
+      visible={alertVisibility}
+    >
+      <Alert payload={alert} />
+    </Modal>,
+    <Modal
+      key="navbar.pwaPromptVisibility"
+      name="navbar.pwaPromptVisibility"
+      visible={pwaPromptVisibility}
+      closeModal={() => {
+        dispatch('closePWAPrompt')
+      }}
+    >
+      <PWAPrompt />
+    </Modal>,
+  ]
+
+  const modalsToRender = getOrderedModals(allModals, modals, activeModals)
+  return (
+    <div
+      css={[
+        modalContainerStyling,
+        isAlertPresent(activeModals) && modalContainerStylingWithAlerts,
+      ]}
+      className="z2"
+    >
+      {modalsToRender
+        .filter((modal) => modal?.props.name)
+        .map((modal) => (
+          <div key={modal?.props.name}>{modal}</div>
+        ))}
+    </div>
+  )
+}
+
+export default Modals

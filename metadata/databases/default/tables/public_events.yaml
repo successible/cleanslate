@@ -1,0 +1,31 @@
+table:
+  name: events
+  schema: public
+object_relationships:
+  - name: eventToProfile
+    using:
+      foreign_key_constraint_on: profile
+insert_permissions:
+  - permission:
+      backend_only: false
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      columns:
+        - profile
+        - url
+        - value
+      set:
+        profile: x-hasura-User-Id
+    role: user
+select_permissions:
+  - permission:
+      columns:
+        - createdAt
+        - id
+        - profile
+        - value
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+    role: user

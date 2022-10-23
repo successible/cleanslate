@@ -1,0 +1,40 @@
+echo "=> Set environmental variables..."
+
+export NODE_ENV="development"
+export DB_HOST="localhost"
+export DB_NAME="postgres"
+export DB_PASSWORD="password"
+export DB_PORT="1276"
+export DB_USER="postgres"
+export HASURA_GRAPHQL_ADMIN_SECRET='secret'
+export HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "clean-slate-sila-llc", "issuer": "https://securetoken.google.com/clean-slate-sila-llc", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
+export HASURA_GRAPHQL_DATABASE_URL="postgres://postgres:password@database:5432/postgres"
+
+abspath() {                                               
+    cd "$(dirname "$1")"
+    printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
+    cd "$OLDPWD"
+}
+export GOOGLE_APPLICATION_CREDENTIALS=$(abspath "firebase-service-account.json")
+
+echo "=> Kill any running local version of Clean Slate..."
+pkill -9 -f "hasura console"
+pkill -9 -f "next dev"
+
+echo "=> Install the dependencies..."
+pnpm install
+cd functions && npm install && cd ..
+
+echo "=> Spin up PostgreSQL and Hasura..."
+docker-compose down -v --remove-orphans -t 0
+docker-compose pull && docker-compose up -d
+
+echo "=> Wait for one second for Hasura to get ready..."
+sleep 1;
+
+echo "=> Run migrations with Hasura and sync basic foods..."
+node migrate.js
+
+echo "=> Start the Hasura and Next.js server..."
+npx hasura console --no-browser --admin-secret 'secret' & 
+cd src && (npx next dev & npx tsc --watch --preserveWatchOutput)

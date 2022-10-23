@@ -1,0 +1,34 @@
+import React from 'react'
+import { deleteFoodOnCloud } from '../../../models/Food/helpers/deleteFoodOnCloud'
+import { Food } from '../../../models/Food/model'
+import { Item } from '../../item/Item'
+
+export const FoodItem: React.FC<{ food: Food }> = (props) => {
+  const { food } = props
+  const { createdAt, foodToProfile, id, name, type } = food
+
+  const onDelete = () => {
+    deleteFoodOnCloud(id, () => {})
+  }
+
+  return (
+    <Item
+      item={{
+        alias: null,
+        amount: null,
+        childRecipe: null,
+        createdAt,
+        food: null,
+        id,
+        name,
+        onDelete,
+        onUpdate: null,
+        profile: foodToProfile,
+        recipe: null,
+        src: null,
+        type,
+        unit: null,
+      }}
+    />
+  )
+}

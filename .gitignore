@@ -1,0 +1,12 @@
+.DS_STORE
+.env
+.firebaserc
+.next
+build
+firebase-config.json
+functions/lib/**/*.js
+functions/lib/**/*.js.map
+node_modules
+out
+sitemap.xml
+tsconfig.tsbuildinfo

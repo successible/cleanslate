@@ -1,0 +1,12 @@
+import { EditorSlice } from './types'
+
+/** Create the initial state for the editor module */
+export const createInitialSlice = (): EditorSlice => {
+  return {
+    editor: {
+      dummyFood: null,
+      ingredient: null,
+      searchResult: null,
+    },
+  }
+}

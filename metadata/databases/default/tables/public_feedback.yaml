@@ -1,0 +1,38 @@
+table:
+  name: feedback
+  schema: public
+object_relationships:
+  - name: feedbackToProfile
+    using:
+      foreign_key_constraint_on: profile
+insert_permissions:
+  - permission:
+      backend_only: false
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      columns:
+        - profile
+        - text
+      set:
+        profile: x-hasura-User-Id
+    role: user
+select_permissions:
+  - permission:
+      columns:
+        - profile
+        - text
+        - type
+        - createdAt
+        - updatedAt
+        - id
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+    role: user
+delete_permissions:
+  - permission:
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+    role: user

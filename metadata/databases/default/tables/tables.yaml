@@ -1,0 +1,5 @@
+- "!include public_foods.yaml"
+- "!include public_ingredients.yaml"
+- "!include public_logs.yaml"
+- "!include public_profiles.yaml"
+- "!include public_recipes.yaml"
