@@ -20,7 +20,7 @@ It also has a free curriculum, based on science, to help you lose weight.
 
 If you want to learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
 
-If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! Alternatively, submit an issue with any bug or enhancement.
+If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! Clean Slate is written in React and TypeScript, and uses [Hasura](https://hasura.io) as the backend. It uses PostgreSQL as the database.
 
 If you want to host Clean Slate yourself, cool! Read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the authentication provider for Clean Slate. It is also free.
 
