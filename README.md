@@ -62,9 +62,11 @@ Run `pnpm run start`. This will spin up these local servers using Docker and var
 
 ## Hosting Clean Slate
 
-> Note: Make sure you have completed the **Configuration** section above.
+> Important: Make sure you have completed the **Configuration** section above.
 
-- Deploy a PostgreSQL database on Render.
+> Note: If you do not want to use [Render.com](https://render.com), that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you will need to run the build commands when those changes are detected. The build commands are listed below.
+
+- Deploy a PostgreSQL database on [Render.com](https://render.com)
 
 - Create a `.env` file. Replace `XXX` with your own value. Read the comments for guidance.
 
@@ -96,9 +98,9 @@ HASURA_GRAPHQL_ENABLE_CONSOLE="true"
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", "issuer": "https://securetoken.google.com/my-firebase-project", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
 
-- Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of the `.env` one by one as environmental variables. Do not add any of them as a file.
+- Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your `.env` one by one as environmental variables. Do not add any of them as a file. Make sure Auto-Deploy is enabled.
 
-- Deploy the React static site on Render. Use `pnpm run build` as the build command. Add the React section of the `.env` one by one as environmental variables. Also include `HASURA_GRAPHQL_ADMIN_SECRET`. Do not add any of them as a file.
+- Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your `.env` one by one as environmental variables. Also include `HASURA_GRAPHQL_ADMIN_SECRET`. Do not add any of them as a file. Make sure Auto-Deploy is enabled.
 
 Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` with you own domain!
 
