@@ -1,4 +1,5 @@
 import { isBrowser } from '../data/isBrowser'
+import { isIpad } from './isiPad'
 
 export const isMobile = () => {
   const UA = navigator.userAgent
@@ -14,7 +15,7 @@ export const isMobile = () => {
   return (
     // iPad does not show up on the User Agent for Safari (13 or more) on iPads
     // https://developer.apple.com/forums/thread/119186?page=2
-    (UA.includes('Mac') && 'ontouchend' in document) ||
+    isIpad() ||
     toMatch.some((toMatchItem) => {
       return isBrowser() ? UA.match(toMatchItem) : false
     })
