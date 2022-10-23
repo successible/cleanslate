@@ -1,7 +1,6 @@
 // Constants
 const swAvailable = 'serviceWorker' in navigator
 const url = window.location.origin
-const origin = window.location.origin.replace('/', '')
 const swUrl = url + '/sw.js'
 
 const throttle = (func, timeFrame) => {
@@ -53,8 +52,7 @@ const register = () => {
 }
 
 const load = () => {
-  // If the origin doesn't the url, you're not on production
-  if (swAvailable && origin === url) {
+  if (swAvailable && !origin.includes('localhost')) {
     window.addEventListener('load', register)
   }
 }
