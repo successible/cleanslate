@@ -9,9 +9,9 @@ export const handlePWAPrompt = (dispatch: Dispatch<AllEvents>) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
     setTimeout(() => {
+      const message = `Device is eligible for PWA because isMobile: ${isMobile} isPWA: ${!isPWA()} isProduction: ${isProduction()}`
+      console.log(message)
       if (isMobile() && !isPWA() && isProduction()) {
-        const message = `Device is eligible for PWA because isMobile: ${isMobile} isPWA: ${!isPWA()} isProduction: ${isProduction()}`
-        console.log(message)
         dispatch('openPWAPrompt')
       }
     }, 3000)
