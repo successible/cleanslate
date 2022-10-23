@@ -1,18 +1,27 @@
 # Clean Slate
 
-☀️ Track food without judgement.
+☀️ Track food without judgment.
 
-Clean Slate is a free calorie tracking designed for people who struggle with:
+Clean Slate is a free calorie tracker designed for people who struggle with:
 
-- Binge-eating
-- Self compassion
-- Failed diets
+- Binging
+- Self-compassion
+- Dieting itself
 
-To learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
+It can do stuff like:
 
-To contribute to Clean Slate, awesome! Read `Developing Clean Slate`. Then, submit a pull request! Alternatively, submit an issue with any bug or enhancement.
+- Search and log food
+- Create custom foods and recipes
+- Track exercise
+- And so on
 
-To host Clean Slate yourself, read `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the authentication provider for Clean Slate.
+It also has a free curriculum, based on science, to help you lose weight.
+
+If you want to learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
+
+If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! Alternatively, submit an issue with any bug or enhancement.
+
+If you want to host Clean Slate yourself, cool! Read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the authentication provider for Clean Slate. It is also free.
 
 > Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
 
@@ -41,7 +50,7 @@ Next, you need to enable Firebase. That is what provides authentication for Clea
 }
 ```
 
-- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that in your project settings page on Firebase.
+- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that on your project settings page on Firebase.
 
 ```json
 {
@@ -71,11 +80,11 @@ Run `pnpm run start`. This will spin up these local servers using Docker and var
 
 > Important: Make sure you have completed the **Configuration** section above.
 
-> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you will need to run the build commands when those changes are detected. The build commands are listed below.
+> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build commands are listed below.
 
 - Deploy a PostgreSQL database on [Render.com](https://render.com)
 
-- Create a `.env` file. Replace `XXX` with your own value. Read the comments for guidance.
+- Create a `.env` file. Replace `XXX` with your values. Read the comments for guidance.
 
 ```bash
 # React
@@ -109,7 +118,7 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", 
 
 - Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your `.env` one by one as environmental variables. Also include `HASURA_GRAPHQL_ADMIN_SECRET`. Do not add any of them as a file. Make sure Auto-Deploy is enabled.
 
-Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` with you own domain!
+Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` with your domain!
 
 ```
 /*, Strict-Transport-Security, max-age=31536000; includeSubDomains; preload
