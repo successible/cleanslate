@@ -166,7 +166,7 @@ export default class CustomDocument extends Document {
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
           <script src="/browser_check_v1.js"></script>
-          <script src="/register_v20.js"></script>
+          <script src="/register_v21.js"></script>
         </Head>
         <body>
           <Main />
