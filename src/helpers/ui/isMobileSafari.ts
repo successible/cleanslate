@@ -1,4 +1,4 @@
-import { isIpad } from './isiPad'
+import { isIpad } from './isIpad'
 
 export const isMobileSafari = () => {
   const ua = window.navigator.userAgent

@@ -1,5 +1,5 @@
 import { isBrowser } from '../data/isBrowser'
-import { isIpad } from './isiPad'
+import { isIpad } from './isIpad'
 
 export const isMobile = () => {
   const UA = navigator.userAgent
