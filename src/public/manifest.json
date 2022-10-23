@@ -1,7 +1,7 @@
 {
   "name": "Clean Slate",
   "short_name": "Clean Slate",
-  "start_url": "/app",
+  "start_url": "/",
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "display": "standalone",
