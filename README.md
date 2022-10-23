@@ -2,7 +2,7 @@
 
 ☀️ Track food without judgement.
 
-Clean Slate is a calorie tracking designed for people who struggle with:
+Clean Slate is a free calorie tracking designed for people who struggle with:
 
 - Binge-eating
 - Self compassion
@@ -10,19 +10,26 @@ Clean Slate is a calorie tracking designed for people who struggle with:
 
 To learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
 
+To contribute to Clean Slate, awesome! Read `Developing Clean Slate`. Then, submit a pull request! Alternatively, submit an issue with any bug or enhancement.
+
+To host Clean Slate yourself, read `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the authentication provider for Clean Slate.
+
+> Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
+
 ## Configuration
 
 To run Clean Slate locally or in production, you have about five minutes of work.
 
-- Clone down the `git` repository.
-- Install Node.js on your computer.
+- Make sure you have [Git](https://git-scm.com/downloads) on your computer.
+- Clone down the `git` repository [here](https://github.com/successible/cleanslate).
+- Install [Node.js](https://nodejs.org/en/) on your computer.
 - Install `pnpm` and the Firebase CLI by running `npm install -g pnpm firebase-tools`.
 
-Next, you need to enable Firebase. That's what provides authentication for Clean Slate:
+Next, you need to enable Firebase. That is what provides authentication for Clean Slate:
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
-- Enable the Google and Facebook Providers in Firebase.
+- Enable the Google and Facebook Providers in Firebase. Google will be automatic. Facebook will require a free developer account [and about five minutes of work](https://www.youtube.com/watch?v=X_twiDVZ4PY).
 - We provide a Terms of Use and Privacy policy for these providers. They are located at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you host Clean Slate at.
 - Create your `.firebaserc` in the root with the following content. Example:
 
@@ -34,7 +41,7 @@ Next, you need to enable Firebase. That's what provides authentication for Clean
 }
 ```
 
-- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that in your project settings on Firebase.
+- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that in your project settings page on Firebase.
 
 ```json
 {
@@ -64,7 +71,7 @@ Run `pnpm run start`. This will spin up these local servers using Docker and var
 
 > Important: Make sure you have completed the **Configuration** section above.
 
-> Note: If you do not want to use [Render.com](https://render.com), that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you will need to run the build commands when those changes are detected. The build commands are listed below.
+> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you will need to run the build commands when those changes are detected. The build commands are listed below.
 
 - Deploy a PostgreSQL database on [Render.com](https://render.com)
 
