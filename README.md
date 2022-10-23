@@ -2,6 +2,14 @@
 
 ☀️ Track food without judgement.
 
+Clean Slate is a calorie tracking designed for people who struggle with:
+
+- Binge-eating
+- Self compassion
+- Failed diets
+
+To learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
+
 ## Configuration
 
 To run Clean Slate locally or in production, you have about five minutes of work.
