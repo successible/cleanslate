@@ -4,7 +4,7 @@ import { isProduction } from './isProduction'
 export const startHoneybadger = () => {
   if (isProduction() && process.env.HONEYBADGER_API_KEY) {
     Honeybadger.configure({
-      apiKey: process.env.HONEYBADGER_API,
+      apiKey: process.env.HONEYBADGER_API_KEY,
       debug: true,
       enableUncaught: false,
       enableUnhandledRejection: false,
