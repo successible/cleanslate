@@ -10,6 +10,8 @@ export const handlePWAPrompt = (dispatch: Dispatch<AllEvents>) => {
   React.useEffect(() => {
     setTimeout(() => {
       if (isMobile() && !isPWA() && isProduction()) {
+        const message = `Device is eligible for PWA because isMobile: ${isMobile} isPWA: ${!isPWA()} isProduction: ${isProduction()}`
+        console.log(message)
         dispatch('openPWAPrompt')
       }
     }, 3000)
