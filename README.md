@@ -2,10 +2,11 @@
 
 ☀️ Track food without judgment.
 
-Clean Slate is a free calorie tracker designed for people who struggle with:
+Clean Slate is a free calorie tracker and web application. It is designed for people who struggle with:
 
 - Binging
 - Self-compassion
+- Logging food consistently
 - Dieting itself
 
 It can do stuff like:
