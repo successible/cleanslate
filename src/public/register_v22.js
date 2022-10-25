@@ -37,7 +37,9 @@ const register = () => {
             console.log('Service worker is in the ' + state + ' state ...')
             if (state === 'activated') {
               window.alert('Update complete! 🚀 Reloading app.')
-              window.location.reload()
+              setTimeout(function () {
+                window.location.reload()
+              }, 100)
             }
           })
         }
