@@ -13,7 +13,6 @@ export const setNextLevelOrFindFood = (
   // If you can find the food from the name, just return the food
   const food = getFoodByName(name, foods)
   // If you don't have the isDummyFood check, it returns butter when you ask for butter lettuce
-  // But, you only want the subset of relevant dummy foods, otherwise red wine vinegar will select red wine
   if (food && keys.length >= 1 && isDummyFood(name, keys[0])) {
     onSuccess(food)
   } else {
@@ -23,7 +22,9 @@ export const setNextLevelOrFindFood = (
     // If the category only contains one food, like American: ["American Cheese"]
     // Treat clicking on "American" as requesting the food American Cheese
     if (nextLevel && nextLevel.length === 1) {
+      console.log(nextLevel[0])
       const food = getFoodByName(nextLevel[0], foods) as Food
+      console.log(food)
       onSuccess(food)
     } else {
       updateKeys(nextLevelPath)

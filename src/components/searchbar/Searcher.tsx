@@ -57,8 +57,6 @@ export const Searcher: React.FC<props> = ({
         <Searchbar
           onSearch={(results: (Recipe | Food)[]) => {
             setSearchResults(results)
-            // If you want to "autofill" the dummy foods search bar
-            // setSearchText(text);
           }}
           onFind={(result: Food | Recipe) => {
             onFind(result)
