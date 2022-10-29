@@ -1,3 +1,4 @@
+import { css } from '@emotion/react'
 import Pencil from '../../../assets/common/pencil.svg'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
@@ -15,12 +16,16 @@ export const UpdateButton: React.FC<props> = ({ dispatch, item }) => {
   const clickable = ['ingredient', 'log', 'unit'].includes(type)
   return (
     <button
+      css={css`
+        width: 35px;
+        height: 35px;
+      `}
       type="button"
       className="background mr5"
       onClick={() => spawnInstanceEditModal(item, dispatch)}
     >
       {clickable && <HiddenInput />}
-      <Image width={20} height={20} alt="Pencil" src={Pencil} />
+      <Image width={18} height={18} alt="Pencil" src={Pencil} />
     </button>
   )
 }

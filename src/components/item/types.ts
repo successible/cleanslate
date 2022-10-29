@@ -16,7 +16,8 @@ export type OnUpdateItem = (
   id: string,
   unit: Unit | null,
   amount: number | null,
-  dispatch: Dispatch<AllEvents>
+  dispatch: Dispatch<AllEvents>,
+  barcode?: Barcode | null
 ) => void | Promise<string | Log>
 
 export type OnDeleteItem = (id?: string) => void

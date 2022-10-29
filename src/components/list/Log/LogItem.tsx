@@ -1,4 +1,5 @@
 import React from 'react'
+import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
 import { deleteLogOnCloud } from '../../../models/Log/helpers/deleteLogOnCloud'
 import { updateLogOnCloud } from '../../../models/Log/helpers/updateLogOnCloud'
 import { Log } from '../../../models/Log/model'
@@ -67,7 +68,7 @@ export const LogItem: React.FC<{
         onUpdate,
         profile: null,
         recipe,
-        src,
+        src: barcode ? BarcodeWithoutScanner.src : src,
         type,
         unit,
       }}

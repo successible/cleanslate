@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
-import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
 import { capitalize } from '../../../helpers/utility/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
@@ -20,12 +19,13 @@ type props = {
 export const nameStyling = css`
   font-size: 13px;
   margin-bottom: 3px;
+  white-space: nowrap;
 `
 
 export const imageStyling = css`
-  height: 45px;
-  margin-right: 15px;
-  width: 45px;
+  height: 35px;
+  margin-right: 20px;
+  width: 35px;
 `
 
 export const withoutImage = css`
@@ -78,14 +78,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
         className={`fr ${styles}`}
       >
         {/* @ts-ignore */}
-        {src ||
-          (barcode && (
-            <img
-              css={imageStyling}
-              alt="Item"
-              src={barcode ? BarcodeWithoutScanner.src : src}
-            ></img>
-          ))}
+        {src && <img css={imageStyling} alt="Item" src={src}></img>}
         <div className="fc">
           <div className="fr">
             <div
@@ -105,8 +98,8 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
               <div className="fr">
                 <Amount amount={amount} />
                 <UnitInput item={item} unit={unit} />
+                <div className="mt5 ml10">{renderMacros(item)}</div>
               </div>
-              <div className="mt10">{renderMacros(item)}</div>
             </div>
           )}
         </div>

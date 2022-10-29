@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Explanation } from '../../explanation/Explanation'
 import { WORKER_TYPE } from '../helpers'
 import { CODE_TYPE } from '../transformers/base'
 
@@ -261,15 +262,15 @@ class Scan extends React.Component {
       <div
         className="fcs"
         css={css`
-          width: 100%;
+          width: 90%;
           height: 100%;
+          max-width: 400px;
         `}
       >
         <button
           className="purple bold"
           css={css`
-            width: 90% !important;
-            max-width: 400px;
+            width: 100% !important;
             margin: 20px auto !important;
             margin-bottom: ${!this.state.neverScanned
               ? '20px !important'
@@ -281,6 +282,16 @@ class Scan extends React.Component {
         >
           {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
         </button>
+        {this.state.neverScanned && (
+          <Explanation color="blue">
+            <div>
+              This barcode scanner uses the free WorldOpenFoodFacts database,
+              located <a href="https://world.openfoodfacts.org/">here</a>.
+              Because this database is a free service, it may not have every
+              food. Just a heads up!
+            </div>
+          </Explanation>
+        )}
         <canvas
           css={css`
             width: 100%;

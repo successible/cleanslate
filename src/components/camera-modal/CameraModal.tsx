@@ -9,6 +9,7 @@ import { Barcode } from '../../models/Log/model'
 import { Unit } from '../../models/Log/types'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
+import { spawnAlert } from '../alert/helpers/spawnAlert'
 import { FractionInput } from '../fraction-input/FractionInput'
 import { Image } from '../image/Image'
 import Scan from '../scanner/components/scan'
@@ -18,7 +19,9 @@ import { submitEditor } from '../standard-editor/helpers/submitEditor'
 export const CameraModal = () => {
   const [barcode, setBarcode] = useState(null as Barcode | null)
   const [amount, setAmount] = useState('')
-  const [unit, setUnit] = useState('GRAM' as Unit)
+  const [unit, setUnit] = useState('COUNT' as Unit)
+  const [ran, setRan] = useState(false)
+
   const amountInput = useRef<HTMLInputElement>(null)
 
   const {
@@ -27,44 +30,38 @@ export const CameraModal = () => {
     dispatch: Dispatch<AllEvents>
   } = useStoreon()
 
+  const fetchData = debounce(100, (code: string) => {
+    console.log('Fetching data from world.openfoodfacts...')
+    setRan(true)
+    axios
+      .get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
+      .then((r) => {
+        if (r.data.status_verbose !== 'product found') {
+          dispatch('closeCameraModal')
+          spawnAlert('Matching food not found!', 'danger')
+          return
+        }
+        const product = r.data.product
+        console.log(product)
+        const { nutriments, product_name } = product
+        const { proteins_100g, proteins_serving } = nutriments
+        setBarcode({
+          calories_per_gram: nutriments['energy-kcal_100g'] / 100,
+          calories_per_serving: nutriments['energy-kcal_serving'],
+          code: code,
+          name: product_name,
+          protein_per_gram: proteins_100g / 100,
+          protein_per_serving: proteins_serving,
+        })
+      })
+  })
+
   return (
     <>
       {!barcode ? (
         <Scan
           scanRate={250}
-          onScan={debounce(100, (code: string) => {
-            axios
-              .get(
-                `https://world.openfoodfacts.org/api/v0/product/${code}.json`
-              )
-              .then((r) => {
-                const product = r.data.product
-                const { product_name } = product
-                const {
-                  energy_100g,
-                  energy_serving,
-                  proteins_100g,
-                  proteins_serving,
-                } = product.nutriments
-
-                console.log({
-                  calories_per_gram: energy_100g / 100,
-                  calories_per_serving: energy_serving,
-                  code: code,
-                  name: product_name,
-                  protein_per_gram: proteins_100g / 100,
-                  protein_per_serving: proteins_serving,
-                })
-                setBarcode({
-                  calories_per_gram: energy_100g / 100,
-                  calories_per_serving: energy_serving,
-                  code: code,
-                  name: product_name,
-                  protein_per_gram: proteins_100g / 100,
-                  protein_per_serving: proteins_serving,
-                })
-              })
-          })}
+          onScan={(code: string) => !ran && fetchData(code)}
         />
       ) : (
         <div>
@@ -95,9 +92,8 @@ export const CameraModal = () => {
           <Select
             focus={false}
             currentOption={unit}
-            // @ts-ignore - We only want to use two units here: COUNT and GRAM
             optionDictionary={[
-              { COUNT: 'COUNT', GRAM: 'GRAM' } as Record<Unit, string>,
+              { COUNT: 'SERVING', GRAM: 'GRAM' } as Record<Unit, string>,
             ]}
             onChange={(newUnit: Unit) => {
               setUnit(newUnit)

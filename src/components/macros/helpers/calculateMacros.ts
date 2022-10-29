@@ -230,9 +230,17 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
       }
     } else if (barcode) {
       if (unit === 'COUNT') {
-        return amount * barcode.calories_per_serving
+        if (metric === 'PROTEIN') {
+          return amount * barcode.protein_per_serving
+        } else {
+          return amount * barcode.calories_per_serving
+        }
       } else {
-        return amount * barcode.calories_per_gram
+        if (metric === 'PROTEIN') {
+          return amount * barcode.protein_per_gram
+        } else {
+          return amount * barcode.calories_per_gram
+        }
       }
     } else if (unit === metric) {
       // EX: If the log is of type CALORIE | PROTEIN
