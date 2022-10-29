@@ -1,4 +1,5 @@
 import { addLogToCloud } from '../../../models/Log/helpers/addLogToCloud'
+import { Barcode } from '../../../models/Log/model'
 import { Unit } from '../../../models/Log/types'
 import { DataEvents, Type } from '../../../store/data/types'
 import { EditorEvents } from '../../../store/editor/types'
@@ -19,6 +20,7 @@ export type AddLog =
       food?: undefined
       amount: number
       unit: Unit
+      barcode: Barcode | null
     }
 
 export const addLog = (
@@ -28,15 +30,20 @@ export const addLog = (
   alias: string | null,
   amount?: number | null,
   unit?: Unit | null,
+  barcode?: Barcode | null,
   item?: string,
   type?: Type
 ) => {
-  const itemObject = type === 'food' ? { food: item } : { recipe: item }
-  const log = amount && unit && item && { amount, unit, ...itemObject, alias }
+  const itemObject =
+    type === 'food' ? { barcode, food: item } : { recipe: item }
+  const log = amount &&
+    unit &&
+    (item || barcode) && { amount, unit, ...itemObject, alias }
   if (typeof log !== 'string' && log) {
     dispatch('closeModal')
     dispatch('closeQuickAddModal')
     dispatch('clearEditor')
+    dispatch('closeCameraModal')
     addLogToCloud(log as AddLog, () => {})
   }
 }

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { beep, WORKER_TYPE } from '../helpers'
+import { WORKER_TYPE } from '../helpers'
 import { CODE_TYPE } from '../transformers/base'
 
 const BTN_TXT = {
@@ -42,13 +42,13 @@ class Scan extends React.Component {
       sy = (this.video.videoHeight - CANVAS_SIZE.HEIGHT) / 2
     }
     this.state = {
-      beep: this.props.beep,
       btnText: BTN_TXT.START,
       bw: this.props.bw,
       codeType: CODE_TYPE.RAW,
       crosshair: this.props.crosshair,
       fpsOn: this.props.fps,
       neverScanned: true,
+      onScan: this.props.onScan,
       openModal: false,
       rawCode: '',
       scanning: false,
@@ -83,7 +83,6 @@ class Scan extends React.Component {
           rawCode,
           resultOpen: true,
         })
-        if (this.state.beep) beep()
       }
     }
   }
@@ -255,7 +254,8 @@ class Scan extends React.Component {
 
   render() {
     if (this.state.resultOpen) {
-      console.log(this.renderQrCodeResult())
+      const result = this.renderQrCodeResult()
+      this.props.onScan(result)
     }
     return (
       <div
@@ -304,7 +304,6 @@ class Scan extends React.Component {
 }
 
 Scan.propTypes = {
-  beep: PropTypes.bool,
   bw: PropTypes.bool,
   crosshair: PropTypes.bool,
   decode: PropTypes.bool,
@@ -314,7 +313,6 @@ Scan.propTypes = {
 }
 
 Scan.defaultProps = {
-  beep: true,
   bw: false,
   crosshair: true,
   decode: true,

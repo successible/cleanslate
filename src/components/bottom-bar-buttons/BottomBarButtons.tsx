@@ -31,8 +31,8 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       position: relative;
 
       > img {
-        height: 35px;
-        width: 35px;
+        height: 28px;
+        width: 28px;
       }
     }
   `

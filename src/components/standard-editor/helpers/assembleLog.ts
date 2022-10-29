@@ -17,6 +17,7 @@ export const assembleLog = (
     // Data
     alias,
     amount,
+    barcode: null,
     createdAt: new Date(),
 
     food: food || null,
