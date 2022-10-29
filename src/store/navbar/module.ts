@@ -162,10 +162,15 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('closeInformationModal', (state) => {
-    return updateModal(state, 'navbar.informationModalVisibility', false)
+    const newState = updateModal(
+      state,
+      'navbar.informationModalVisibility',
+      false
+    )
+    return dotProp.set(newState, 'navbar.Information', null)
   })
 
-  store.on('openInformationModal', (state, Information) => {
+  store.on('openInformationModal', (state, Information = null) => {
     const newState = updateModal(
       state,
       'navbar.informationModalVisibility',
@@ -213,6 +218,8 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('closeAllModals', (state) => {
     const newNavbar = cloneDeep(state.navbar)
+    newNavbar.Information = null
+    newNavbar.activeModals = []
     modals
       .map((modal) => modal.replace('navbar.', ''))
       .forEach((modal) => {

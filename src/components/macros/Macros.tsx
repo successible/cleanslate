@@ -30,6 +30,20 @@ export const Macros: React.FC<props> = ({ log }) => {
     proteinConsumed
   )
 
+  let caloricDensity: number | null = null
+  let proteinDensity: number | null = null
+
+  if (densities) {
+    caloricDensity = densities[0]
+    proteinDensity = densities[1]
+    if (Number.isNaN(caloricDensity)) {
+      caloricDensity = 0
+    }
+    if (Number.isNaN(proteinDensity)) {
+      proteinDensity = 0
+    }
+  }
+
   const macros = css`
     font-size: 12px;
     margin-left: auto;
@@ -64,10 +78,10 @@ export const Macros: React.FC<props> = ({ log }) => {
                   'openInformationModal',
                   <div>
                     <strong>
-                      {densities[0]}/{densities[1]}
+                      {caloricDensity}/{proteinDensity}
                     </strong>{' '}
-                    stands for caloric density ({densities[0]}) and protein
-                    density ({densities[1]}). To learn more about them, first
+                    stands for caloric density ({caloricDensity}) and protein
+                    density ({proteinDensity}). To learn more about them, first
                     navigate to{' '}
                     <a
                       href="https://cleanslate.sh/weight-loss"
@@ -96,7 +110,7 @@ export const Macros: React.FC<props> = ({ log }) => {
                 cursor: pointer;
               `}
             >
-              {densities[0]}/{densities[1]}
+              {caloricDensity}/{proteinDensity}
             </span>
           )}
         </div>
