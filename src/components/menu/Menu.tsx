@@ -148,7 +148,11 @@ export const Menu: React.FC = () => {
                 <br />
                 <br />
                 To get started,{' '}
-                <a href="https://github.com/successible/cleanslate/issues/new/choose">
+                <a
+                  target="_blank"
+                  href="https://github.com/successible/cleanslate/issues/new/choose"
+                  rel="noreferrer"
+                >
                   navigate to GitHub
                 </a>{' '}
                 and create a free account. It should only take a minute. Then,

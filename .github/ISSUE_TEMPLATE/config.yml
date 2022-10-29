@@ -1,11 +1,11 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Feature
+  - name: Feature request 🚀
     url: https://github.com/successible/cleanslate/issues/new
     about: Request a new feature
-  - name: Bug
+  - name: Bug 🪲
     url: https://github.com/successible/cleanslate/issues/new
     about: Report a bug
-  - name: Chat with us
+  - name: Chat with us 💬
     url: https://github.com/successible/cleanslate/discussions
     about: Ask a question or give feedback
