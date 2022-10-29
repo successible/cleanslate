@@ -12,6 +12,6 @@ export const handlePWAPrompt = (dispatch: Dispatch<AllEvents>) => {
       if (isMobile() && !isPWA() && isProduction()) {
         dispatch('openPWAPrompt')
       }
-    }, 3000)
+    }, 30000)
   }, [dispatch])
 }
