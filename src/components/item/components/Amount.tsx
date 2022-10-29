@@ -5,8 +5,6 @@ type props = { amount: number | null }
 export const Amount: React.FC<props> = ({ amount }) => (
   <div
     css={css`
-      font-size: 12px;
-      margin-top: 5px;
       padding-right: 3px;
     `}
   >

@@ -1,9 +1,10 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
-import { colors } from 'chagall/src/chagall'
 
 import CalMini from '../../assets/common/calmini.svg'
+import Density from '../../assets/common/density.svg'
+
 import ProteinMini from '../../assets/common/proteinmini.svg'
 import { Log } from '../../models/Log/model'
 import { AllEvents } from '../../store/store'
@@ -48,9 +49,15 @@ export const Macros: React.FC<props> = ({ log }) => {
     font-size: 12px;
     margin-left: auto;
     white-space: nowrap;
+    margin-top: 3px;
 
     img {
-      margin: 0px 5px;
+      margin: 0px 6px;
+      margin-left: 0px;
+    }
+
+    span {
+      margin-right: 6px;
     }
   `
 
@@ -72,7 +79,7 @@ export const Macros: React.FC<props> = ({ log }) => {
             <span>{proteinConsumed}</span>
           </div>
           {densities && (
-            <span
+            <div
               onClick={() =>
                 dispatch(
                   'openInformationModal',
@@ -102,16 +109,21 @@ export const Macros: React.FC<props> = ({ log }) => {
                   </div>
                 )
               }
-              css={css`
-                background-color: ${colors.blue};
-                padding: 2.5px 5px;
-                border-radius: 5px;
-                margin-left: 7px;
-                cursor: pointer;
-              `}
             >
-              {caloricDensity}/{proteinDensity}
-            </span>
+              <Image
+                css={css`
+                  position: relative;
+                  top: 1px;
+                `}
+                width={10}
+                height={10}
+                alt="Little balls pressed together"
+                src={Density}
+              />
+              <span>
+                {caloricDensity}/{proteinDensity}
+              </span>
+            </div>
           )}
         </div>
       </div>

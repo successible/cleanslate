@@ -18,7 +18,7 @@ type props = {
 
 export const nameStyling = css`
   font-size: 13px;
-  margin-bottom: 3px;
+  line-height: 0px;
 `
 
 export const imageStyling = css`
@@ -91,14 +91,19 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
             >
               {getNameAndTags(nameToUse, alias || '')}
             </div>
+            <div
+              className="fr ml5"
+              css={css`
+                font-size: 11px !important;
+              `}
+            >
+              (<Amount amount={amount} />
+              <UnitInput item={item} unit={unit} />)
+            </div>
           </div>
           {!isCustomFoodItem && !isRecipeItem && (
-            <div>
-              <div className="fr">
-                <Amount amount={amount} />
-                <UnitInput item={item} unit={unit} />
-                <div className="mt5 ml5">{renderMacros(item)}</div>
-              </div>
+            <div className="fr">
+              <div className="mt5">{renderMacros(item)}</div>
             </div>
           )}
         </div>
