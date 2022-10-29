@@ -59,7 +59,7 @@ export const DELETE_FOOD = gql`
 export const SUBSCRIBE_TO_BASIC_FOOD = gql`
   subscription SUBSCRIBE_TO_BASIC_FOOD {
     foods(
-      where: { profile: { _is_null: true } }
+      where: { basicFoodId: { _is_null: false } }
       limit: 1
       order_by: { updatedAt: desc }
     ) {

@@ -22,6 +22,7 @@ insert_permissions:
       columns:
         - alias
         - amount
+        - barcode
         - food
         - profile
         - recipe
@@ -32,6 +33,7 @@ select_permissions:
       columns:
         - alias
         - amount
+        - barcode
         - createdAt
         - food
         - id
@@ -49,6 +51,7 @@ update_permissions:
       columns:
         - alias
         - amount
+        - barcode
         - food
         - profile
         - recipe

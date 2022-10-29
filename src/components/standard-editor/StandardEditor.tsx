@@ -4,7 +4,6 @@ import { convertToNumber } from '../../helpers/utility/convertToNumber'
 import { Food } from '../../models/Food/model'
 import { Unit } from '../../models/Log/types'
 import { EditorState } from '../../store/editor/types'
-import { NavbarState } from '../../store/navbar/types'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { getPrettyUnits } from '../list/helpers/getPrettyUnits'
@@ -24,12 +23,10 @@ export const StandardEditor: React.FC<props> = ({ foods, type }) => {
   const {
     dispatch,
     editor,
-    navbar,
   }: {
     dispatch: Dispatch<AllEvents>
     editor: EditorState
-    navbar: NavbarState
-  } = useStoreon('editor', 'navbar')
+  } = useStoreon('editor')
 
   // Create the initial form state
   const { dummyFood, searchResult } = editor
@@ -53,7 +50,7 @@ export const StandardEditor: React.FC<props> = ({ foods, type }) => {
       searchResult?.alias || null,
       amountAsNumber,
       unit,
-      navbar.recipeToUpdate,
+      null,
       dispatch,
       searchResult
     )

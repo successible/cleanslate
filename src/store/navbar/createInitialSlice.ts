@@ -10,6 +10,7 @@ export const createInitialSlice = (): NavbarSlice => {
       alertVisibility: false,
       bodyFatPercentageModalVisibility: false,
       caloricMaintenanceModalVisibility: false,
+      cameraModalVisibility: false,
       error: '',
       errorVisibility: false,
       exerciseModalVisibility: false,
@@ -17,6 +18,7 @@ export const createInitialSlice = (): NavbarSlice => {
       foodModalVisibility: false,
       foodToUpdate: null,
       helpModalVisibility: false,
+      Information: null,
       informationModalVisibility: false,
       isDirty: {
         CustomFoodForm: false,

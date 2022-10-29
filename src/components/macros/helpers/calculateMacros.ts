@@ -176,7 +176,7 @@ export const calculatePerMacroPerRecipe = (
   amount: number
 ): number => {
   const result = recipe.ingredients.reduce((acc, ingredient) => {
-    const food = ingredient.ingredientToFood
+    const food = ingredient.ingredientToFood as Food | null
     const childRecipe = ingredient.ingredientToChildRecipe
     if (food) {
       const [
@@ -216,7 +216,7 @@ export const calculatePerMacroPerRecipe = (
 /** This function calculates the total calories, protein in all logs present for a given metric */
 export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
   return logs.reduce((total, log) => {
-    const { amount, unit } = log
+    const { amount, barcode, unit } = log
     const food = log.logToFood
     const recipe = log.logToRecipe
     // EXERCISE is the "odd unit out"
@@ -228,8 +228,22 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
       } else {
         return total
       }
-      // EX: If the log is of type CALORIE | PROTEIN
+    } else if (barcode) {
+      if (unit === 'COUNT') {
+        if (metric === 'PROTEIN') {
+          return amount * barcode.protein_per_serving
+        } else {
+          return amount * barcode.calories_per_serving
+        }
+      } else {
+        if (metric === 'PROTEIN') {
+          return amount * barcode.protein_per_gram
+        } else {
+          return amount * barcode.calories_per_gram
+        }
+      }
     } else if (unit === metric) {
+      // EX: If the log is of type CALORIE | PROTEIN
       return total + amount
     } else if (food) {
       return total + calculatePerMacroPerFood(amount, unit, food, metric)

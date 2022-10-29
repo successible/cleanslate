@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
+import { capitalize } from '../../../helpers/utility/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
 import { blue, green } from '../../../theme'
@@ -21,9 +22,9 @@ export const nameStyling = css`
 `
 
 export const imageStyling = css`
-  height: 45px;
-  margin-right: 15px;
-  width: 45px;
+  height: 35px;
+  margin-right: 17.5px;
+  width: 35px;
 `
 
 export const withoutImage = css`
@@ -38,9 +39,26 @@ export const custom = css`
 `
 
 export const Meta: React.FC<props> = ({ dispatch, item }) => {
-  const { alias, amount, food, name, profile, recipe, src, type, unit } = item
+  const {
+    alias,
+    amount,
+    barcode,
+    food,
+    name,
+    profile,
+    recipe,
+    src,
+    type,
+    unit,
+  } = item
   const nameToUse =
-    type !== 'log' ? name : recipe?.name || food?.name || name || ''
+    type !== 'log'
+      ? name
+      : recipe?.name ||
+        food?.name ||
+        capitalize(barcode?.name || '') ||
+        name ||
+        ''
 
   const isRecipeItem = type === 'recipe'
   const isCustomFoodItem = Boolean(type === 'food' && profile)
@@ -79,8 +97,8 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
               <div className="fr">
                 <Amount amount={amount} />
                 <UnitInput item={item} unit={unit} />
+                <div className="mt5 ml5">{renderMacros(item)}</div>
               </div>
-              <div className="mt10">{renderMacros(item)}</div>
             </div>
           )}
         </div>

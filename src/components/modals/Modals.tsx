@@ -11,6 +11,7 @@ import { EditorState } from '../../store/editor/types'
 import { modals } from '../../store/navbar/modals'
 import { NavbarState } from '../../store/navbar/types'
 import { Alert } from '../alert/Alert'
+import { CameraModal } from '../camera-modal/CameraModal'
 import { Error } from '../error/Error'
 import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
 import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
@@ -67,12 +68,14 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     alert,
     alertVisibility,
     bodyFatPercentageModalVisibility,
+    cameraModalVisibility,
     errorVisibility,
     exerciseModalVisibility,
     foodFormModalVisibility,
     foodModalVisibility,
     foodToUpdate,
     helpModalVisibility,
+    Information,
     informationModalVisibility,
     itemModalVisibility,
     itemToUpdate,
@@ -151,6 +154,22 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       visible={exerciseModalVisibility}
     >
       <ExerciseForm />
+    </Modal>,
+
+    // Camera Modal
+    <Modal
+      styles={css`
+        > div {
+          max-width: 450px !important;
+        }
+      `}
+      closeModal={() => {
+        dispatch('closeCameraModal')
+      }}
+      name="navbar.cameraModalVisibility"
+      visible={cameraModalVisibility}
+    >
+      <CameraModal />
     </Modal>,
 
     // target-form
@@ -330,7 +349,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       visible={informationModalVisibility}
       name="navbar.informationModalVisibility"
     >
-      <InformationModal />
+      <InformationModal Information={Information} />
     </Modal>,
     <Modal
       closeModal={() => {

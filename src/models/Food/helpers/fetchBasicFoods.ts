@@ -10,7 +10,7 @@ import { Food } from '../model'
 
 export const QUERY_BASIC_FOODS = gql`
   query QUERY_DATA {
-    foods(where: { profile: { _is_null: true } }) {
+    foods(where: { basicFoodId: { _is_null: false } }) {
       ...food
     }
   }

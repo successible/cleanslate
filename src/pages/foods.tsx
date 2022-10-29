@@ -100,7 +100,7 @@ const Foods = () => {
     margin: 0 auto;
     max-width: 1000px;
     width: 90%;
-    margin-bottom: 50px;
+    padding-bottom: 50px;
   `
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react'
+import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
 import { deleteLogOnCloud } from '../../../models/Log/helpers/deleteLogOnCloud'
 import { updateLogOnCloud } from '../../../models/Log/helpers/updateLogOnCloud'
 import { Log } from '../../../models/Log/model'
@@ -18,7 +19,7 @@ export const LogItem: React.FC<{
   renderUnit: boolean
 }> = (props) => {
   const { log } = props
-  const { alias, amount, createdAt, id, type, unit } = log
+  const { alias, amount, barcode, createdAt, id, type, unit } = log
   const food = log.logToFood
   const recipe = log.logToRecipe
 
@@ -57,6 +58,7 @@ export const LogItem: React.FC<{
       item={{
         alias,
         amount,
+        barcode,
         childRecipe: null,
         createdAt,
         food,
@@ -66,7 +68,7 @@ export const LogItem: React.FC<{
         onUpdate,
         profile: null,
         recipe,
-        src,
+        src: barcode ? BarcodeWithoutScanner.src : src,
         type,
         unit,
       }}

@@ -6,6 +6,7 @@ export const LOG_FRAGMENT = gql`
     alias
     amount
     unit
+    barcode
     createdAt
     type
   }

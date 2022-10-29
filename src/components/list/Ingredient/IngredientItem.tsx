@@ -41,6 +41,7 @@ export const IngredientItem: React.FC<props> = (props) => {
       item={{
         alias: null,
         amount,
+        barcode: null,
         childRecipe,
         createdAt,
         food,

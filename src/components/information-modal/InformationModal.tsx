@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import { documentation } from '../settings/Settings'
 
 export const informationModalExplanation = () => (
@@ -38,23 +39,31 @@ export const informationModalExplanation = () => (
   </>
 )
 
-export const InformationModal: React.FC = () => {
+export const InformationModal: React.FC<{
+  Information: EmotionJSX.Element | null
+}> = ({ Information }) => {
   return (
     <div css={documentation} className={`fc`}>
-      <h1>I can{`'`}t find this food!</h1>
-      <div className="mt10">
-        <p>
-          Don{`'`}t panic, this is <strong>by design</strong>.
-        </p>
-        <p>
-          As we cover{' '}
-          <Link href="/weight-loss" passHref>
-            <a>here</a>
-          </Link>
-          , to lose weight:
-        </p>
-        {informationModalExplanation()}
-      </div>
+      {Information ? (
+        <div>{Information}</div>
+      ) : (
+        <>
+          <h1>I can{`'`}t find this food!</h1>
+          <div className="mt10">
+            <p>
+              Don{`'`}t panic, this is <strong>by design</strong>.
+            </p>
+            <p>
+              As we cover{' '}
+              <Link href="/weight-loss" passHref>
+                <a>here</a>
+              </Link>
+              , to lose weight:
+            </p>
+            {informationModalExplanation()}
+          </div>
+        </>
+      )}
     </div>
   )
 }

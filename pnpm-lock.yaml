@@ -5,6 +5,7 @@ specifiers:
   '@emotion/react': 11.10.4
   '@honeybadger-io/js': 4.6.1
   '@honeybadger-io/react': 4.6.1
+  '@maslick/koder': 1.3.2
   '@typed/curry': 1.0.1
   '@types/clone-deep': 4.0.1
   '@types/jest': 29.2.0
@@ -64,6 +65,7 @@ dependencies:
   '@emotion/react': 11.10.4_d3zi5agmim5yvele7myolzagti
   '@honeybadger-io/js': 4.6.1
   '@honeybadger-io/react': 4.6.1_ln2x6z6lruufysd7lfwzswp7re
+  '@maslick/koder': 1.3.2
   '@typed/curry': 1.0.1
   '@types/clone-deep': 4.0.1
   '@types/jest': 29.2.0
@@ -2260,6 +2262,10 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.0
       '@jridgewell/sourcemap-codec': 1.4.14
+    dev: false
+
+  /@maslick/koder/1.3.2:
+    resolution: {integrity: sha512-2OkpZ21M+YCqgapt9xaSS05+DL7uQGleYPWpbNqMEuqf8Rt+rIk9gwa/AWdw9mDFUbwhsJ2sbrzTFT9DrUyaig==}
     dev: false
 
   /@next/env/12.3.1:

@@ -165,8 +165,13 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.informationModalVisibility', false)
   })
 
-  store.on('openInformationModal', (state) => {
-    return updateModal(state, 'navbar.informationModalVisibility', true)
+  store.on('openInformationModal', (state, Information) => {
+    const newState = updateModal(
+      state,
+      'navbar.informationModalVisibility',
+      true
+    )
+    return dotProp.set(newState, 'navbar.Information', Information)
   })
 
   store.on('closeExerciseModal', (state) => {
@@ -191,6 +196,14 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('openBodyFatPercentageModal', (state) => {
     return updateModal(state, 'navbar.bodyFatPercentageModalVisibility', true)
+  })
+
+  store.on('closeCameraModal', (state) => {
+    return updateModal(state, 'navbar.cameraModalVisibility', false)
+  })
+
+  store.on('openCameraModal', (state) => {
+    return updateModal(state, 'navbar.cameraModalVisibility', true)
   })
 
   store.on('updateIsDirty', (state, target) => {

@@ -10,6 +10,7 @@ export const documentation = css`
   max-width: 800px;
   padding-bottom: 10px;
   width: 80%;
+  line-height: 1.6;
   h2 {
     margin-bottom: 25px;
     margin-top: 25px;
