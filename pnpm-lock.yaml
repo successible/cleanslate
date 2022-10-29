@@ -56,7 +56,6 @@ specifiers:
   traverse: 0.6.7
   ts-jest: 29.0.3
   typescript: 4.8.4
-  upnqr: 1.2.1
   uuid-random: 1.3.2
   webpack: 5.74.0
   workbox-cli: 6.5.4
@@ -117,7 +116,6 @@ dependencies:
   traverse: 0.6.7
   ts-jest: 29.0.3_hx3pnmlivexg2zscxcsqm4rf7i
   typescript: 4.8.4
-  upnqr: 1.2.1
   uuid-random: 1.3.2
   webpack: 5.74.0
   workbox-cli: 6.5.4
@@ -8140,10 +8138,6 @@ packages:
       pupa: 2.1.1
       semver-diff: 3.1.1
       xdg-basedir: 4.0.0
-    dev: false
-
-  /upnqr/1.2.1:
-    resolution: {integrity: sha512-YqAQyB4r/uRRxgExW07TxjOL3fBjpilm8fNG6Jr8w1YV9dbrh1HZOIbqNXAJo1HxNtO6rw8SvX60dx788+MKxw==}
     dev: false
 
   /uri-js/4.4.1:

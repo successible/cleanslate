@@ -1,6 +1,5 @@
 importScripts('wasm/zbar.js')
 importScripts('wasm/koder.js')
-
 ;(async () => {
   // Initialize Koder
   const koder = await new Koder().initialize({ wasmDirectory: './wasm' })

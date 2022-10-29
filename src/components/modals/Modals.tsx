@@ -3,7 +3,6 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
 import { getDispatch } from '../../helpers/data/getDispatch'
-import { isBrowser } from '../../helpers/data/isBrowser'
 import { Food } from '../../models/Food/model'
 import { Log } from '../../models/Log/model'
 import { Profile } from '../../models/Profile/model'
@@ -158,6 +157,11 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
 
     // Camera Modal
     <Modal
+      styles={css`
+        > div {
+          max-width: 450px !important;
+        }
+      `}
       closeModal={() => {
         dispatch('closeCameraModal')
       }}

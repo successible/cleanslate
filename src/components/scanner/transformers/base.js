@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 class Transformer {
   codeType() {
     return 'TODO'
@@ -18,7 +20,6 @@ class Transformer {
 
 const CODE_TYPE = {
   RAW: 'RAW',
-  UPNQR: 'UPNQR',
 }
 
 export { CODE_TYPE, Transformer }

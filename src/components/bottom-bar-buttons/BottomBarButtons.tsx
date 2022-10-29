@@ -2,7 +2,7 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
-import Camera from '../../assets/common/camera.svg'
+import Barcode from '../../assets/common/barcode.svg'
 import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
 import Hamburger from '../../assets/common/hamburger.svg'
@@ -31,8 +31,8 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       position: relative;
 
       > img {
-        height: 28px;
-        width: 28px;
+        height: 35px;
+        width: 35px;
       }
     }
   `
@@ -78,7 +78,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
           }}
         >
           <HiddenInput />
-          <img alt="Camera" src={Camera.src} />
+          <img alt="Barcode" src={Barcode.src} />
         </button>
       )}
 

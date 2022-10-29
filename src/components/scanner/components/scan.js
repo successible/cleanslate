@@ -1,8 +1,8 @@
+import { css } from '@emotion/react'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { beep, WORKER_TYPE } from '../helpers'
 import { CODE_TYPE } from '../transformers/base'
-import { Upnqr } from '../transformers/upnqr'
 
 const BTN_TXT = {
   AGAIN: 'START AGAIN',
@@ -48,8 +48,9 @@ class Scan extends React.Component {
       codeType: CODE_TYPE.RAW,
       crosshair: this.props.crosshair,
       fpsOn: this.props.fps,
+      neverScanned: true,
+      openModal: false,
       rawCode: '',
-      resultOpen: false,
       scanning: false,
       transformToggle: true,
       worker: this.props.worker,
@@ -57,8 +58,6 @@ class Scan extends React.Component {
 
     this.decodeQR = this.props.decode
     this.scanRate = this.props.scanRate
-    this.upnqr = this.props.upnqr
-    this.covid19 = this.props.covid19
     this.qrworker = null
     this.oldTime = 0
   }
@@ -76,15 +75,6 @@ class Scan extends React.Component {
         const milliseconds = ev.data.ms
         const rawCode = res
         let codeType = CODE_TYPE.RAW
-
-        // Transform raw to UPNQR
-        if (this.upnqr) {
-          const transformer = new Upnqr()
-          if (transformer.identified(res)) {
-            codeType = transformer.codeType()
-            res = await transformer.transform(res)
-          }
-        }
 
         this.setState({
           barcode: res,
@@ -106,6 +96,7 @@ class Scan extends React.Component {
       barcode: '',
       btnText: BTN_TXT.STOP,
       codeType: CODE_TYPE.RAW,
+      neverScanned: false,
       rawCode: '',
       resultOpen: false,
       scanning: true,
@@ -130,7 +121,7 @@ class Scan extends React.Component {
     if (window.AudioContext) {
       window.audioContext = new window.AudioContext()
     }
-    const fixAudioContext = function (e) {
+    const fixAudioContext = function () {
       if (window.audioContext) {
         // Create empty buffer
         const buffer = window.audioContext.createBuffer(1, 1, 22050)
@@ -184,7 +175,7 @@ class Scan extends React.Component {
       if (this.state.crosshair) this.drawCrosshair()
       if (this.state.fpsOn) this.drawFPS(fps)
       if (this.state.scanning) requestAnimationFrame(this.tick)
-      if (this.decodeQR) this.recogniseQRcode(time)
+      if (this.decodeQR) this.recognizeQRcode(time)
     } else if (this.state.scanning) requestAnimationFrame(this.tick)
   }
 
@@ -211,7 +202,7 @@ class Scan extends React.Component {
     this.canvas.fill(shape)
   }
 
-  recogniseQRcode = (time) => {
+  recognizeQRcode = (time) => {
     if (time - this.oldTime > this.scanRate) {
       this.oldTime = time
       let imageData
@@ -262,133 +253,73 @@ class Scan extends React.Component {
     else return { backgroundColor: '', ...style }
   }
 
-  fpsStyle = () => {
-    if (this.state.fpsOn) return { backgroundColor: 'green' }
-    else return { backgroundColor: '' }
-  }
-
-  xHairStyle = () => {
-    if (this.state.crosshair) return { backgroundColor: 'green' }
-    else return { backgroundColor: '' }
-  }
-
-  bwStyle = () => {
-    if (this.state.bw) return { backgroundColor: 'green' }
-    else return { backgroundColor: '' }
-  }
-
-  beepStyle = () => {
-    if (this.state.beep) return { backgroundColor: 'green' }
-    else return { backgroundColor: '' }
-  }
-
-  transformToggleStyle = () => {
-    if (this.state.transformToggle)
-      return { backgroundColor: 'green', padding: 12 }
-    else return { backgroundColor: '', padding: 12 }
-  }
-
   render() {
-    return (
-      <div>
-        {this.renderScan()}
-        {this.renderResult()}
-      </div>
-    )
-  }
-
-  renderScan = () => {
-    return (
-      <div className="scan">
-        {this.renderCanvas()}
-        {this.renderButtons()}
-      </div>
-    )
-  }
-
-  renderResult = () => {
     if (this.state.resultOpen) {
       console.log(this.renderQrCodeResult())
     }
-  }
-
-  onTransformToggleHandler = (e) => {
-    e.preventDefault()
-    const barcode = this.state.barcode
-    this.setState({
-      barcode: this.state.rawCode,
-      rawCode: barcode,
-      transformToggle: !this.state.transformToggle,
-    })
+    return (
+      <div
+        className="fcs"
+        css={css`
+          width: 100%;
+          height: 100%;
+        `}
+      >
+        <button
+          className="purple bold"
+          css={css`
+            width: 90% !important;
+            max-width: 400px;
+            margin: 20px auto !important;
+            margin-bottom: ${!this.state.neverScanned
+              ? '20px !important'
+              : '0px !important'};
+          `}
+          onTouchStart={this.initializeAudio}
+          onClick={this.onBtnClickHandler}
+          style={this.startStyle()}
+        >
+          {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
+        </button>
+        <canvas
+          css={css`
+            width: 100%;
+            max-width: 400px;
+            max-height: ${this.state.neverScanned ? '0px' : '400px'};
+            margin: 0px auto;
+          `}
+          id="canvas"
+        />
+      </div>
+    )
   }
 
   renderQrCodeResult = () => {
     return this.state.barcode
   }
 
-  onClickBackHandler = (e) => {
-    e.preventDefault()
-    this.setState({ resultOpen: false })
-  }
-
-  renderCanvas = () => {
-    return <canvas id="canvas" className="scanCanvas" />
-  }
-
-  renderButtons = () => {
-    return (
-      <div className="scanBtn">
-        <a
-          href="!#"
-          className="myHref"
-          onTouchStart={this.initializeAudio}
-          onClick={this.onBtnClickHandler}
-          style={this.startStyle()}
-        >
-          {this.state.btnText}
-        </a>
-      </div>
-    )
-  }
-
   componentWillUnmount() {
     if (this.state.scanning === true) this.stopScan()
-  }
-
-  onClickCopyToClipboard = async (e) => {
-    e.preventDefault()
-    await navigator.clipboard.writeText(this.state.barcode)
-    const btnId = document.getElementById('copyToClip')
-    btnId.innerText = 'DONE'
-    btnId.style.backgroundColor = 'green'
-    setTimeout(() => {
-      btnId.innerText = 'COPY'
-      btnId.style.backgroundColor = ''
-    }, 1000)
   }
 }
 
 Scan.propTypes = {
   beep: PropTypes.bool,
   bw: PropTypes.bool,
-  covid19: PropTypes.bool,
   crosshair: PropTypes.bool,
   decode: PropTypes.bool,
   fps: PropTypes.bool,
   scanRate: PropTypes.number,
-  upnqr: PropTypes.bool,
   worker: PropTypes.string,
 }
 
 Scan.defaultProps = {
   beep: true,
   bw: false,
-  covid19: false,
   crosshair: true,
   decode: true,
   fps: false,
   scanRate: 250,
-  upnqr: false,
   worker: WORKER_TYPE.WASM,
 }
 
