@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Switch from 'react-switch'
 import { subscribeToUser } from '../../helpers/authentication/subscribeToUser'
-import { getContactEmail } from '../../helpers/data/getContactEmail'
 import { updateProfileOnCloud } from '../../models/Profile/helpers/updateProfileOnCloud'
 import { Profile } from '../../models/Profile/model'
 import { spawnAlert } from '../alert/helpers/spawnAlert'
@@ -34,11 +33,6 @@ export const Information: React.FC<props> = ({ profile }) => {
       >
         Support
       </div>
-      <div>
-        <strong className="mr5">Email:</strong>
-        Email <a href={`mailto:${getContactEmail()}`}>{getContactEmail()}</a>
-      </div>
-
       <div css={subheader} className={`pbutton rounded blue nohover mt20 mb20`}>
         Profile
       </div>

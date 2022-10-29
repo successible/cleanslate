@@ -4,11 +4,15 @@ import { useStoreon } from 'storeon/react'
 import CustomFood from '../../assets/common/food.svg'
 import Logout from '../../assets/common/logout.svg'
 import Mortarboard from '../../assets/common/mortarboard.svg'
+
 import CustomRecipe from '../../assets/common/recipe.svg'
+import Feedback from '../../assets/common/review.svg'
 import Settings from '../../assets/common/settings.svg'
 import { logout } from '../../helpers/authentication/logout'
+import { getContactEmail } from '../../helpers/data/getContactEmail'
 import { NavbarEvents, NavbarState } from '../../store/navbar/types'
 import { Dispatch } from '../../store/types'
+import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
 
 export const Menu: React.FC = () => {
@@ -130,6 +134,47 @@ export const Menu: React.FC = () => {
             src={Settings}
           />
           <div className="ml15">Settings</div>
+        </button>
+
+        <button
+          onClick={() => {
+            dispatch(
+              'openInformationModal',
+              <div>
+                Got something to share? Perhaps some feedback or a bug? Awesome!
+                We collect and track our feedback on GitHub. That way, all
+                feedback is transparent and we{`'`}re notified when new stuff is
+                posted.
+                <br />
+                <br />
+                To get started,{' '}
+                <a href="https://github.com/successible/cleanslate/issues/new/choose">
+                  navigate to GitHub
+                </a>{' '}
+                and create a free account. It should only take a minute. Then,
+                post on the Discussions page!
+                <Explanation color="blue">
+                  <div>
+                    Don{`'`}t feel comfortable sharing your feedback publicly?
+                    No worries! You can also email us at{' '}
+                    <a href={`mailto:${getContactEmail()}`}>
+                      {getContactEmail()}
+                    </a>
+                    .
+                  </div>
+                </Explanation>
+              </div>
+            )
+          }}
+        >
+          <Image
+            width={35}
+            height={35}
+            alt="Letter"
+            className="icon"
+            src={Feedback}
+          />
+          <div className="ml15">Feedback</div>
         </button>
 
         <button
