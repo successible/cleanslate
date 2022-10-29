@@ -2,6 +2,7 @@
 .env
 .firebaserc
 .next
+*.pem
 build
 firebase-config.json
 functions/lib/**/*.js

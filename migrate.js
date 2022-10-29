@@ -9,6 +9,8 @@ const format = require('pg-format')
 
 // Only load from .env in production
 const isProduction = process.env.NODE_ENV === 'production'
+const domain = process.env.ROOT_DOMAIN
+
 if (isProduction) {
   dotenv.config()
 }
@@ -16,7 +18,7 @@ if (isProduction) {
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET || 'secret'
 
 const endpoint = isProduction
-  ? 'https://api.cleanslate.sh'
+  ? `https://api.${domain}`
   : 'http://localhost:8120'
 
 const secret = `--admin-secret ${adminSecret}`

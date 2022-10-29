@@ -12,6 +12,8 @@ module.exports = {
       ? require('../firebase-config.json')
       : config,
     HONEYBADGER_API: process.env.HONEYBADGER_API,
+    // PROXY_ROOT_DOMAIN only used for Cloudflare Tunnels on localhost
+    PROXY_ROOT_DOMAIN: process.env.PROXY_ROOT_DOMAIN,
     ROOT_DOMAIN: process.env.ROOT_DOMAIN,
   },
   productionBrowserSourceMaps: true,

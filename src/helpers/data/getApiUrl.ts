@@ -1,10 +1,25 @@
-import { isDebug } from '../ui/isDebug'
 import { isProduction } from '../ui/isProduction'
+import { getDomain } from './getDomain'
 
-export const getApiUrl = () =>
-  isProduction() || isDebug()
-    ? [
-        'https://api.cleanslate.sh/v1/graphql',
-        'wss://api.cleanslate.sh/v1/graphql',
+export const getApiUrl = () => {
+  const proxyDomain = process.env.PROXY_ROOT_DOMAIN
+  const domain = getDomain()
+  if (isProduction()) {
+    return [
+      `https://api.${domain}/v1/graphql`,
+      `wss://api.${domain}/v1/graphql`,
+    ]
+  } else {
+    if (proxyDomain) {
+      return [
+        `http://lion.${proxyDomain}/v1/graphql`,
+        `ws://lion.${proxyDomain}/v1/graphql`,
       ]
-    : ['http://localhost:8120/v1/graphql', 'ws://localhost:8120/v1/graphql']
+    } else {
+      return [
+        'http://localhost:8120/v1/graphql',
+        'ws://localhost:8120/v1/graphql',
+      ]
+    }
+  }
+}
