@@ -76,8 +76,8 @@ export const CameraModal = () => {
 
   const oldSafari =
     isMobileSafari() &&
-    // 'wasm-unsafe-eval' is only supported on Safari 16.1 and above
-    compareVersions('16.1', String(browser.version)) == 1
+    // 'wasm-unsafe-eval' is only supported on Safari 16 and above
+    compareVersions('16.0.0', String(browser.version)) == 1
 
   // 'wasm-unsafe-eval' is only supported on Chrome 103 and above
   const oldChrome =
