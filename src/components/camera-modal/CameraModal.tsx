@@ -1,21 +1,26 @@
 import { css } from '@emotion/react'
 import axios from 'axios'
+import { compareVersions } from 'compare-versions'
 import { useRef, useState } from 'react'
 import { useStoreon } from 'storeon/react'
 import { debounce } from 'throttle-debounce'
+import UAParser from 'ua-parser-js'
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
+import { isMobileSafari } from '../../helpers/ui/isMobileSafari'
 import { capitalize } from '../../helpers/utility/capitalize'
 import { Barcode } from '../../models/Log/model'
 import { Unit } from '../../models/Log/types'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { spawnAlert } from '../alert/helpers/spawnAlert'
+import { Explanation } from '../explanation/Explanation'
 import { FractionInput } from '../fraction-input/FractionInput'
 import { Image } from '../image/Image'
 import Scan from '../scanner/components/scan'
 import { Select } from '../select/Select'
 import { ButtonPanel } from '../standard-editor/components/ButtonPanel'
 import { submitEditor } from '../standard-editor/helpers/submitEditor'
+
 export const CameraModal = () => {
   const [barcode, setBarcode] = useState(null as Barcode | null)
   const [amount, setAmount] = useState('')
@@ -63,6 +68,44 @@ export const CameraModal = () => {
         })
       })
   })
+
+  const parser = UAParser(window.navigator.userAgent)
+  const browser = parser.browser
+
+  // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy
+
+  const oldSafari =
+    isMobileSafari() &&
+    // 'wasm-unsafe-eval' is only supported on Safari 16.1 and above
+    compareVersions('16.1', String(browser.version)) == 1
+
+  // 'wasm-unsafe-eval' is only supported on Chrome 103 and above
+  const oldChrome =
+    browser.name == 'Chrome' &&
+    compareVersions('103', String(browser.version)) == 1
+
+  // 'wasm-unsafe-eval' is only supported on Firefox 102 and above
+  const oldFirefox =
+    browser.name == 'Firefox' &&
+    compareVersions('102', String(browser.version)) == 1
+
+  if (oldSafari || oldChrome || oldFirefox) {
+    return (
+      <Explanation
+        color="blue"
+        css={css`
+          margin: 0px auto;
+          margin-top: 20px;
+          width: 90%;
+        `}
+      >
+        <div>
+          For security reasons, this feature is not supported on your version of
+          the your browser. Please update to the latest version.
+        </div>
+      </Explanation>
+    )
+  }
 
   return (
     <>
