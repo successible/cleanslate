@@ -1,17 +1,18 @@
 #!/bin/bash
 
-export PROXY_ROOT_DOMAIN=$1
 
-NAME="tiger"
-cloudflared login
-cloudflared tunnel create $NAME
-cloudflared tunnel route dns $NAME $NAME
-cloudflared tunnel run --url https://localhost:3000 $NAME &
+echo 'What is your ngrok subdomain?'
+read DOMAIN
+export PROXY_ROOT_DOMAIN=$DOMAIN
 
-NAME="lion"
-cloudflared login
-cloudflared tunnel create $NAME
-cloudflared tunnel route dns $NAME $NAME
-cloudflared tunnel run --url http://localhost:8210 $NAME &
+abspath() {                                               
+    cd "$(dirname "$1")"
+    printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
+    cd "$OLDPWD"
+}
+
+mkcert localhost
+sudo pkill -9 -f "nginx"
+sudo nginx -c $(abspath "nginx.conf") &
 
 bash start.sh

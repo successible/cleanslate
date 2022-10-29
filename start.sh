@@ -37,4 +37,4 @@ node migrate.js
 
 echo "=> Start the Hasura and Next.js server..."
 npx hasura console --no-browser --admin-secret 'secret' & 
-cd src && (npx next dev & npx tsc --watch --preserveWatchOutput)
+(cd src && (npx next dev & npx tsc --watch --preserveWatchOutput)) &

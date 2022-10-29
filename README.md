@@ -77,6 +77,16 @@ Run `pnpm run start`. This will spin up these local servers using Docker and var
 - Next.js: `http://localhost:3000`.
 - Hasura (Console): `http://localhost:9695`.
 
+If you want to see what Clean Slate looks on a mobile device or share it with a friend, do this:
+
+- Install `nginx`, `ngrok`, and `mkcert`. The first is to provide HTTPS for Next.js and Hasura. The second is to provide the actual proxy. The third is to create self-signed cert that is recognized by the browser. If you're running Linux or Mac, you can install all three via [Homebrew](https://brew.sh/). Just install `homebrew` first, and then run `brew install nginx ngrok mckert`.
+
+- Open one terminal and run `ngrok http 443`. It will output a subdomain like this. `40e7-73-75-45-179.ngrok.io`.
+
+- Navigate to the Authentication settings in your Firebase project. Add that subdomain as an authorized domain. Remove this domain when you are done with the proxy for the day.
+
+- Finally, open a second terminal and run `pnpm run proxy`. You will be prompted for the subdomain. Provide it. Once the command has finished, you should be able to access Clean Slate on all your devices on the subdomain.
+
 ## Hosting Clean Slate
 
 > Important: Make sure you have completed the **Configuration** section above.

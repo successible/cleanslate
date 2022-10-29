@@ -12,8 +12,8 @@ export const getApiUrl = () => {
   } else {
     if (proxyDomain) {
       return [
-        `http://lion.${proxyDomain}/v1/graphql`,
-        `ws://lion.${proxyDomain}/v1/graphql`,
+        `https://${proxyDomain}/v1/graphql`,
+        `wss://${proxyDomain}/v1/graphql`,
       ]
     } else {
       return [
