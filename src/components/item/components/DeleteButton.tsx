@@ -12,8 +12,8 @@ export const DeleteButton: React.FC<props> = ({ id, onDelete }) => (
     type="button"
     className="background frc deleteButton"
     css={css`
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
     `}
     onClick={() => {
       onDelete && onDelete(id)

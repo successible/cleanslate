@@ -1,5 +1,6 @@
 import { round } from '../../../helpers/utility/round'
 import { Food } from '../../../models/Food/model'
+import { Barcode } from '../../../models/Log/model'
 import { Recipe } from '../../../models/Recipes/model'
 import { convertToGramsIfPossible } from './convertToGramsIfPossible'
 
@@ -98,11 +99,20 @@ export const calculateRecipeDensities = (
 /** Calculate the food score OR recipe score when you are unsure which you have been given */
 export const calculateFoodOrRecipeDensities = (
   amount: number | null,
-  item: Food | Recipe | undefined | null,
+  item: Barcode | Food | Recipe | undefined | null,
   caloriesConsumed: number,
   proteinConsumed: number
 ): [number, number] | null => {
-  if (item) {
+  if (!item) return null
+  if ('code' in item) {
+    const barcode = item
+    const { calories_per_gram, calories_per_serving, protein_per_serving } =
+      barcode
+    const weightPerServing = calories_per_serving / calories_per_gram
+    const caloricDensity = (calories_per_serving / weightPerServing) * 100
+    const proteinDensity = (protein_per_serving / weightPerServing) * 100
+    return [round(caloricDensity, 0), round(proteinDensity, 0)]
+  } else {
     const output =
       item.type === 'food'
         ? calculateFoodDensities(item)

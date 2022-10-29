@@ -23,7 +23,7 @@ export const nameStyling = css`
 
 export const imageStyling = css`
   height: 35px;
-  margin-right: 20px;
+  margin-right: 17.5px;
   width: 35px;
 `
 
@@ -97,7 +97,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
               <div className="fr">
                 <Amount amount={amount} />
                 <UnitInput item={item} unit={unit} />
-                <div className="mt5 ml10">{renderMacros(item)}</div>
+                <div className="mt5 ml5">{renderMacros(item)}</div>
               </div>
             </div>
           )}

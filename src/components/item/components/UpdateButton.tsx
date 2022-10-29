@@ -17,8 +17,8 @@ export const UpdateButton: React.FC<props> = ({ dispatch, item }) => {
   return (
     <button
       css={css`
-        width: 45px;
-        height: 45px;
+        width: 42px;
+        height: 42px;
       `}
       type="button"
       className="background mr5"
