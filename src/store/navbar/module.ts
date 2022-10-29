@@ -165,8 +165,13 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.informationModalVisibility', false)
   })
 
-  store.on('openInformationModal', (state) => {
-    return updateModal(state, 'navbar.informationModalVisibility', true)
+  store.on('openInformationModal', (state, Information) => {
+    const newState = updateModal(
+      state,
+      'navbar.informationModalVisibility',
+      true
+    )
+    return dotProp.set(newState, 'navbar.Information', Information)
   })
 
   store.on('closeExerciseModal', (state) => {

@@ -75,6 +75,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     foodModalVisibility,
     foodToUpdate,
     helpModalVisibility,
+    Information,
     informationModalVisibility,
     itemModalVisibility,
     itemToUpdate,
@@ -348,7 +349,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       visible={informationModalVisibility}
       name="navbar.informationModalVisibility"
     >
-      <InformationModal />
+      <InformationModal Information={Information} />
     </Modal>,
     <Modal
       closeModal={() => {

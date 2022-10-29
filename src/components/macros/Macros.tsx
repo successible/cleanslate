@@ -1,10 +1,14 @@
 import { css } from '@emotion/react'
+import Link from 'next/link'
 import React from 'react'
+import { useStoreon } from 'storeon/react'
 import { colors } from 'chagall/src/chagall'
+
 import CalMini from '../../assets/common/calmini.svg'
 import ProteinMini from '../../assets/common/proteinmini.svg'
-
 import { Log } from '../../models/Log/model'
+import { AllEvents } from '../../store/store'
+import { Dispatch } from '../../store/types'
 import { Image } from '../image/Image'
 import { calculateFoodOrRecipeDensities } from './helpers/calculateDensities'
 import { calculateMacros } from './helpers/calculateMacros'
@@ -14,6 +18,8 @@ type props = {
 }
 
 export const Macros: React.FC<props> = ({ log }) => {
+  const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
+
   const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
     Math.round(v)
   )
@@ -54,11 +60,41 @@ export const Macros: React.FC<props> = ({ log }) => {
           </div>
           {densities && (
             <span
+              onClick={() =>
+                dispatch(
+                  'openInformationModal',
+                  <div>
+                    <strong>
+                      {densities[0]}/{densities[1]}
+                    </strong>{' '}
+                    stands for caloric density ({densities[0]}) and protein
+                    density ({densities[1]}). To learn more about them, first
+                    navigate to{' '}
+                    <a
+                      href="https://cleanslate.sh/weight-loss"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      here
+                    </a>
+                    . Then, read the third and fourth sections.
+                    <br />
+                    <br />
+                    If you would like to see a reference table of all basic
+                    foods by caloric and protein density, navigate to{' '}
+                    <a href="/foods" target="_blank" rel="noreferrer">
+                      here
+                    </a>
+                    .
+                  </div>
+                )
+              }
               css={css`
                 background-color: ${colors.blue};
                 padding: 2.5px 5px;
                 border-radius: 5px;
                 margin-left: 7px;
+                cursor: pointer;
               `}
             >
               {densities[0]}/{densities[1]}

@@ -1,4 +1,5 @@
 import { StoreonModule } from 'storeon'
+import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import { AlertPayload } from '../../components/alert/helpers/spawnAlert'
 import { CommonItem } from '../../components/item/types'
 import { User } from '../../helpers/authentication/getUser'
@@ -25,6 +26,7 @@ export type NavbarState = {
   foodModalVisibility: boolean
   foodToUpdate: string | null
   helpModalVisibility: boolean
+  Information: EmotionJSX.Element | null
   informationModalVisibility: boolean
   isDirty: Record<Form, boolean>
   itemModalVisibility: boolean
@@ -79,7 +81,7 @@ export type NavbarEvents = {
   openFoodFormModal: string | null
   openFoodModal: undefined
   openHelpModal: undefined
-  openInformationModal: undefined
+  openInformationModal: string | null
   openItemModal: CommonItem
   openMenu: undefined
   openModal: undefined

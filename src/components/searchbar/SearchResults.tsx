@@ -88,7 +88,7 @@ export const SearchResults: React.FC<props> = ({
       ))}
       <div className="fr w100 mt10">
         <button
-          onClick={() => store.dispatch('openInformationModal')}
+          onClick={() => store.dispatch('openInformationModal', null)}
           type="button"
           className="blue ml25 mt10 small"
         >
