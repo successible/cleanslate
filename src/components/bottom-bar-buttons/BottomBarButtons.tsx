@@ -2,10 +2,12 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
+import Camera from '../../assets/common/camera.svg'
 import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
 import Hamburger from '../../assets/common/hamburger.svg'
 import Search from '../../assets/common/magnify.svg'
+
 import { Profile } from '../../models/Profile/model'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
@@ -65,6 +67,18 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
         >
           <HiddenInput type="text" inputMode="decimal" />
           <img alt="Rocket" src={Rocket.src} />
+        </button>
+      )}
+
+      {profile.showCalories && (
+        <button
+          type="button"
+          onClick={() => {
+            dispatch('openCameraModal')
+          }}
+        >
+          <HiddenInput />
+          <img alt="Camera" src={Camera.src} />
         </button>
       )}
 

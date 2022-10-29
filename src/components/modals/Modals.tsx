@@ -11,6 +11,7 @@ import { EditorState } from '../../store/editor/types'
 import { modals } from '../../store/navbar/modals'
 import { NavbarState } from '../../store/navbar/types'
 import { Alert } from '../alert/Alert'
+import { CameraModal } from '../camera-modal/CameraModal'
 import { Error } from '../error/Error'
 import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
 import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
@@ -67,6 +68,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     alert,
     alertVisibility,
     bodyFatPercentageModalVisibility,
+    cameraModalVisibility,
     errorVisibility,
     exerciseModalVisibility,
     foodFormModalVisibility,
@@ -151,6 +153,17 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       visible={exerciseModalVisibility}
     >
       <ExerciseForm />
+    </Modal>,
+
+    // Camera Modal
+    <Modal
+      closeModal={() => {
+        dispatch('closeCameraModal')
+      }}
+      name="navbar.cameraModalVisibility"
+      visible={cameraModalVisibility}
+    >
+      <CameraModal />
     </Modal>,
 
     // target-form

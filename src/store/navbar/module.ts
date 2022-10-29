@@ -193,6 +193,14 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.bodyFatPercentageModalVisibility', true)
   })
 
+  store.on('closeCameraModal', (state) => {
+    return updateModal(state, 'navbar.cameraModalVisibility', false)
+  })
+
+  store.on('openCameraModal', (state) => {
+    return updateModal(state, 'navbar.cameraModalVisibility', true)
+  })
+
   store.on('updateIsDirty', (state, target) => {
     const [name, value] = target
     return dotProp.set(state, `navbar.isDirty.${name}`, value)

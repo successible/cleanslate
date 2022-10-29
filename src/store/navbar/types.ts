@@ -17,6 +17,7 @@ export type NavbarState = {
   alertVisibility: boolean
   bodyFatPercentageModalVisibility: boolean
   caloricMaintenanceModalVisibility: boolean
+  cameraModalVisibility: boolean
   error: string
   errorVisibility: boolean
   exerciseModalVisibility: boolean
@@ -48,6 +49,7 @@ export type NavbarEvents = {
   closeAlert: undefined
   closeAllModals: undefined
   closeBodyFatPercentageModal: undefined
+  closeCameraModal: undefined
   closeError: undefined
   closeExerciseModal: undefined
   closeFoodFormModal: undefined
@@ -71,6 +73,7 @@ export type NavbarEvents = {
   openAddIngredientModal: string | null
   openAlert: null | AlertPayload
   openBodyFatPercentageModal: undefined
+  openCameraModal: undefined
   openError: string
   openExerciseModal: undefined
   openFoodFormModal: string | null
