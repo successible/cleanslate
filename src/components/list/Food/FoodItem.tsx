@@ -16,6 +16,7 @@ export const FoodItem: React.FC<{ food: Food }> = (props) => {
       item={{
         alias: null,
         amount: null,
+        barcode: null,
         childRecipe: null,
         createdAt,
         food: null,

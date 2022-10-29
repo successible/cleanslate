@@ -13,6 +13,7 @@ export const createDefaultItem = (unit?: Unit): CommonItem => {
   return {
     alias: null,
     amount: null,
+    barcode: null,
     childRecipe: null,
     createdAt: null,
     food: null,

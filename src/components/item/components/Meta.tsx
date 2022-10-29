@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
+import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
+import { capitalize } from '../../../helpers/utility/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
 import { blue, green } from '../../../theme'
@@ -38,9 +40,26 @@ export const custom = css`
 `
 
 export const Meta: React.FC<props> = ({ dispatch, item }) => {
-  const { alias, amount, food, name, profile, recipe, src, type, unit } = item
+  const {
+    alias,
+    amount,
+    barcode,
+    food,
+    name,
+    profile,
+    recipe,
+    src,
+    type,
+    unit,
+  } = item
   const nameToUse =
-    type !== 'log' ? name : recipe?.name || food?.name || name || ''
+    type !== 'log'
+      ? name
+      : recipe?.name ||
+        food?.name ||
+        capitalize(barcode?.name || '') ||
+        name ||
+        ''
 
   const isRecipeItem = type === 'recipe'
   const isCustomFoodItem = Boolean(type === 'food' && profile)
@@ -59,7 +78,14 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
         className={`fr ${styles}`}
       >
         {/* @ts-ignore */}
-        {src && <img css={imageStyling} alt="Item" src={src}></img>}
+        {src ||
+          (barcode && (
+            <img
+              css={imageStyling}
+              alt="Item"
+              src={barcode ? BarcodeWithoutScanner.src : src}
+            ></img>
+          ))}
         <div className="fc">
           <div className="fr">
             <div

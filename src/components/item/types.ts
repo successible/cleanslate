@@ -1,5 +1,5 @@
 import { Food } from '../../models/Food/model'
-import { Log } from '../../models/Log/model'
+import { Barcode, Log } from '../../models/Log/model'
 import { Unit } from '../../models/Log/types'
 import { Profile } from '../../models/Profile/model'
 import { Recipe } from '../../models/Recipes/model'
@@ -26,6 +26,7 @@ export type ItemType = Type | 'all'
 export type CommonItem = {
   alias: string | null
   amount: number | null
+  barcode: Barcode | null
   childRecipe: Recipe | null
   createdAt: Date | null
   food: Food | null

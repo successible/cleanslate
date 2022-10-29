@@ -13,6 +13,7 @@ export const renderMacros = (item: CommonItem): JSX.Element => {
     // Hence, 0 and COUNT are dummy values
     log.amount = item.amount || 0
     log.unit = item.unit || 'COUNT'
+    log.barcode = item.barcode
 
     return <Macros log={log} showDensities={false} />
   } else {
