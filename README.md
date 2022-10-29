@@ -13,6 +13,7 @@ It can do stuff like:
 
 - Search and log food
 - Create custom foods and recipes
+- Scan barcodes
 - Track exercise
 - And so on
 

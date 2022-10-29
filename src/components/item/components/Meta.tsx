@@ -19,7 +19,6 @@ type props = {
 export const nameStyling = css`
   font-size: 13px;
   margin-bottom: 3px;
-  white-space: nowrap;
 `
 
 export const imageStyling = css`

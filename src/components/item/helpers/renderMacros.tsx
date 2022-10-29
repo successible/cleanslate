@@ -15,7 +15,7 @@ export const renderMacros = (item: CommonItem): JSX.Element => {
     log.unit = item.unit || 'COUNT'
     log.barcode = item.barcode
 
-    return <Macros log={log} showDensities={false} />
+    return <Macros log={log} />
   } else {
     return <div>{''}</div>
   }

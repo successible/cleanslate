@@ -44,7 +44,13 @@ export const CameraModal = () => {
         const product = r.data.product
         console.log(product)
         const { nutriments, product_name } = product
-        const { proteins_100g, proteins_serving } = nutriments
+        const {
+          proteins_100g,
+          proteins_serving,
+          serving_quantity,
+          serving_size,
+        } = nutriments
+
         setBarcode({
           calories_per_gram: nutriments['energy-kcal_100g'] / 100,
           calories_per_serving: nutriments['energy-kcal_serving'],
@@ -52,6 +58,8 @@ export const CameraModal = () => {
           name: product_name,
           protein_per_gram: proteins_100g / 100,
           protein_per_serving: proteins_serving,
+          serving_quantity,
+          serving_size,
         })
       })
   })

@@ -17,15 +17,15 @@ export const UpdateButton: React.FC<props> = ({ dispatch, item }) => {
   return (
     <button
       css={css`
-        width: 35px;
-        height: 35px;
+        width: 45px;
+        height: 45px;
       `}
       type="button"
       className="background mr5"
       onClick={() => spawnInstanceEditModal(item, dispatch)}
     >
       {clickable && <HiddenInput />}
-      <Image width={18} height={18} alt="Pencil" src={Pencil} />
+      <Image width={22} height={22} alt="Pencil" src={Pencil} />
     </button>
   )
 }

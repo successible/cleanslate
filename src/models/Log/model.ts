@@ -11,6 +11,8 @@ export type Barcode = {
   protein_per_gram: number
   calories_per_serving: number
   protein_per_serving: number
+  serving_size: number // "2 Tbsp (30 g)"
+  serving_quantity: string // 30
 }
 
 export class Log {

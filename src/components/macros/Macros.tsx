@@ -4,15 +4,13 @@ import CalMini from '../../assets/common/calmini.svg'
 import ProteinMini from '../../assets/common/proteinmini.svg'
 import { Log } from '../../models/Log/model'
 import { Image } from '../image/Image'
-import { renderDensities } from '../item/helpers/renderDensities'
 import { calculateMacros } from './helpers/calculateMacros'
 
 type props = {
   log: Log
-  showDensities: boolean
 }
 
-export const Macros: React.FC<props> = ({ log, showDensities }) => {
+export const Macros: React.FC<props> = ({ log }) => {
   const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
     Math.round(v)
   )
@@ -39,8 +37,8 @@ export const Macros: React.FC<props> = ({ log, showDensities }) => {
             />
             <span className="ml5">{proteinConsumed}</span>
           </div>
+          <div></div>
         </div>
-        {showDensities && <div>{renderDensities(log)}</div>}
       </div>
     )
   } else {

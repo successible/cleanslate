@@ -77,7 +77,6 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
             dispatch('openCameraModal')
           }}
         >
-          <HiddenInput />
           <img alt="Barcode" src={Barcode.src} />
         </button>
       )}

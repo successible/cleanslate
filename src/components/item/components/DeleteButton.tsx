@@ -12,13 +12,13 @@ export const DeleteButton: React.FC<props> = ({ id, onDelete }) => (
     type="button"
     className="background frc deleteButton"
     css={css`
-      width: 35px;
-      height: 35px;
+      width: 45px;
+      height: 45px;
     `}
     onClick={() => {
       onDelete && onDelete(id)
     }}
   >
-    <Image width={18} height={18} alt="Trash" src={Trash} />
+    <Image width={22} height={22} alt="Trash" src={Trash} />
   </button>
 )

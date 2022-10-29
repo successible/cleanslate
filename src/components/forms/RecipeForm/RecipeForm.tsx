@@ -152,7 +152,7 @@ export const RecipeForm: React.FC<props> = ({ recipe }) => {
 
         {ingredients.length > 0 && (
           <div className="background end pbutton-large rounded nohover">
-            <Macros log={createRecipeLog(ingredients)} showDensities={false} />
+            <Macros log={createRecipeLog(ingredients)} />
           </div>
         )}
       </div>
