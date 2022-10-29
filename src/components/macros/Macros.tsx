@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import Link from 'next/link'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
 import { colors } from 'chagall/src/chagall'
