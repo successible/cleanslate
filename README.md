@@ -92,7 +92,7 @@ If you want to see what Clean Slate looks on a mobile device or share it with a 
 
 > Important: Make sure you have completed the **Configuration** section above.
 
-> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build commands are listed below.
+> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build command for React is `pnpm run build`. This build command for Hasura is building the image from the `Dockerfile` and starting it.
 
 - Deploy a PostgreSQL database on [Render.com](https://render.com)
 
