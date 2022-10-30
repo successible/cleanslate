@@ -385,7 +385,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
         dispatch('closePWAPrompt')
       }}
     >
-      <PWAPrompt />
+      <PWAPrompt profile={profile} />
     </Modal>,
   ]
 

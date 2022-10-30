@@ -165,7 +165,7 @@ export default class CustomDocument extends Document {
             href="/manifest/apple-splash-1136-640.jpg"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
-          <script src="/register_v24.js"></script>
+          <script src="/register_v25.js"></script>
           <script src="/browser_check_v1.js"></script>
         </Head>
         <body>

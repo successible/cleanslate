@@ -31,7 +31,7 @@ export const App = () => {
     profile
   )
   handleBasicFoods(user)
-  handlePWAPrompt(dispatch)
+  handlePWAPrompt(profile, dispatch)
 
   const navbarHeight = 65
   const footerHeight = 65

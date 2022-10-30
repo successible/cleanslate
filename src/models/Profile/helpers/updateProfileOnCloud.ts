@@ -10,6 +10,8 @@ type UpdateTargets = {
     apiToken?: string
     showCalories?: boolean
     startTime?: string
+    hidePWAPrompt?: boolean
+    showDensities?: string
   }
 }
 

@@ -15,10 +15,13 @@ const throttle = (func, timeFrame) => {
 }
 
 const register = () => {
+  console.log("Start to register the service worker...")
+  
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
       console.log(registration)
+      
       // This function runs on every page load, even if the service worker is already registered
       const update = throttle(() => {
         console.log('Checking for an update to the service worker...')
@@ -54,12 +57,4 @@ const register = () => {
     })
 }
 
-const load = () => {
-  console.log("Service worker is available: " + swAvailable)
-  if (swAvailable && !origin.includes('localhost')) {
-    console.log("Server worker DOMContentLoaded event is being registered...")
-    window.addEventListener('DOMContentLoaded', register)
-  }
-}
-
-load()
+register()
