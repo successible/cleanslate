@@ -7,6 +7,10 @@ export const updateModal = (
   modal: string,
   shouldOpen: boolean
 ) => {
+  // If the model is already open, do not try to open it again!
+  // @ts-ignore
+  if (state.navbar[modal.replace('navbar.', '')] && shouldOpen) return
+
   const activeModals = state.navbar.activeModals as string[]
   // If the command is to open the modal, add it to the active list
   // Otherwise, remove it from the array via filtering

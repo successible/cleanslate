@@ -19,6 +19,6 @@ export const handlePWAPrompt = (
       if (showPrompt) {
         dispatch('openPWAPrompt')
       }
-    }, 10000)
+    }, 5000)
   }, [dispatch, profile.hidePWAPrompt])
 }

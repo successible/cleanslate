@@ -6,7 +6,7 @@ import { button, subheader } from './Settings'
 
 export const DeleteAccount: React.FC<{ profile: Profile }> = ({ profile }) => (
   <div className="w100">
-    <div css={subheader} className={`pbutton rounded mt20 mb20 pink nohover`}>
+    <div css={subheader} className={`pbutton rounded mt30 mb20 pink nohover`}>
       Danger zone
     </div>
     <button

@@ -34,7 +34,7 @@ export const LogList: React.FC<props> = (props) => {
     >
       {logs.length > 0 ? (
         logsToUse.map((log: Log) => (
-          <LogItem key={log.id} log={log} renderUnit={true} />
+          <LogItem key={log.id} log={log} profile={profile} renderUnit={true} />
         ))
       ) : // Only show the shell if the user is logged in but hasn't added any logs for the day
       profileIsLoaded(profile) ? (

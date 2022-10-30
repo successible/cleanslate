@@ -4,6 +4,7 @@ import { deleteLogOnCloud } from '../../../models/Log/helpers/deleteLogOnCloud'
 import { updateLogOnCloud } from '../../../models/Log/helpers/updateLogOnCloud'
 import { Log } from '../../../models/Log/model'
 import { Unit } from '../../../models/Log/types'
+import { Profile } from '../../../models/Profile/model'
 import { spawnAlert } from '../../alert/helpers/spawnAlert'
 import { Item } from '../../item/Item'
 import { getImagePath, selectFoodImage } from '../helpers/selectFoodImage'
@@ -16,9 +17,10 @@ export type LogOrIngredientUpdateError = typeof logOrIngredientUpdateError
 
 export const LogItem: React.FC<{
   log: Log
+  profile: Profile
   renderUnit: boolean
 }> = (props) => {
-  const { log } = props
+  const { log, profile } = props
   const { alias, amount, barcode, createdAt, id, type, unit } = log
   const food = log.logToFood
   const recipe = log.logToRecipe
@@ -66,7 +68,7 @@ export const LogItem: React.FC<{
         name,
         onDelete,
         onUpdate,
-        profile: null,
+        profile,
         recipe,
         src: barcode ? BarcodeWithoutScanner.src : src,
         type,

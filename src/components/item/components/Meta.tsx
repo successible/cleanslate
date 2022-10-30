@@ -95,6 +95,8 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
               className="fr ml5"
               css={css`
                 font-size: 11px !important;
+                position: relative;
+                top: 0.24px;
               `}
             >
               (<Amount amount={amount} />

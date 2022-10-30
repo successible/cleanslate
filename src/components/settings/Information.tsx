@@ -11,6 +11,9 @@ type props = { profile: Profile }
 export const Information: React.FC<props> = ({ profile }) => {
   const user = subscribeToUser()
   const [showCalories, setShowCalories] = useState(profile.showCalories)
+  const [showDensities, setShowDensities] = useState(profile.showDensities)
+  const [hidePWAPrompt, setHidePWAPrompt] = useState(profile.hidePWAPrompt)
+
   const [startTime, setStartTime] = useState(profile.startTime)
 
   const info =
@@ -27,12 +30,6 @@ export const Information: React.FC<props> = ({ profile }) => {
 
   return (
     <div className="w100 mt10">
-      <div
-        css={subheader}
-        className={`pbutton rounded green nohover mt20 mb20`}
-      >
-        Support
-      </div>
       <div css={subheader} className={`pbutton rounded blue nohover mt20 mb20`}>
         Profile
       </div>
@@ -68,24 +65,64 @@ export const Information: React.FC<props> = ({ profile }) => {
         </div>
       </div>
 
-      <div className="fr mt20 ml5">
-        <label className="fr">
-          <span className="mr10">
-            <strong>Just want to track food, not calories?</strong>
-          </span>
-          <Switch
-            onChange={(data) => {
-              updateProfileOnCloud(
-                { id: profile.id, set: { showCalories: !data } },
-                () => {
-                  setShowCalories(!data)
-                  spawnAlert('Your settings have been updated!', 'success')
-                }
-              )
-            }}
-            checked={!showCalories}
-          />
-        </label>
+      <div
+        css={subheader}
+        className={`pbutton rounded green nohover mt30 mb20`}
+      >
+        Preferences
+      </div>
+      <div className="mt20">
+        <div className="fr mt20 ml5">
+          <label className="fr">
+            <span className="mr10">Track only food, not calories?</span>
+            <Switch
+              onChange={(data) => {
+                updateProfileOnCloud(
+                  { id: profile.id, set: { showCalories: !data } },
+                  () => {
+                    setShowCalories(!data)
+                    spawnAlert('Your settings have been updated!', 'success')
+                  }
+                )
+              }}
+              checked={!showCalories}
+            />
+          </label>
+        </div>
+        <div className="fr mt20 ml5">
+          <label className="fr">
+            <span className="mr10">Show the density of each food?</span>
+            <Switch
+              onChange={(data) => {
+                updateProfileOnCloud(
+                  { id: profile.id, set: { showDensities: data } },
+                  () => {
+                    setShowDensities(data)
+                    spawnAlert('Your settings have been updated!', 'success')
+                  }
+                )
+              }}
+              checked={showDensities}
+            />
+          </label>
+        </div>
+        <div className="fr mt20 ml5">
+          <label className="fr">
+            <span className="mr10">Hide prompt to download app?</span>
+            <Switch
+              onChange={(data) => {
+                updateProfileOnCloud(
+                  { id: profile.id, set: { hidePWAPrompt: data } },
+                  () => {
+                    setHidePWAPrompt(data)
+                    spawnAlert('Your settings have been updated!', 'success')
+                  }
+                )
+              }}
+              checked={hidePWAPrompt}
+            />
+          </label>
+        </div>
       </div>
     </div>
   )

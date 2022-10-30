@@ -11,7 +11,7 @@ type UpdateTargets = {
     showCalories?: boolean
     startTime?: string
     hidePWAPrompt?: boolean
-    showDensities?: string
+    showDensities?: boolean
   }
 }
 
