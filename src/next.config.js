@@ -8,6 +8,7 @@ const notProduction = process.env.NODE_ENV !== 'production'
 module.exports = {
   distDir: 'build',
   env: {
+    CONTACT_EMAIL: process.env.CONTACT_EMAIL,
     FIREBASE_CONFIG: notProduction
       ? require('../firebase-config.json')
       : config,
