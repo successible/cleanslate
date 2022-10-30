@@ -24,7 +24,9 @@ export const FOOD_FRAGMENT = gql`
     updatedAt
     type
     foodToProfile {
+      id
       authId
+      showDensities
     }
   }
 `

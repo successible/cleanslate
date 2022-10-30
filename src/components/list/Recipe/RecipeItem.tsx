@@ -24,7 +24,7 @@ export const RecipeItem: React.FC<{ recipe: Recipe }> = (props) => {
         name,
         onDelete,
         onUpdate: null,
-        profile: null,
+        profile: recipe.recipeToProfile,
         recipe: null,
         src: null,
         type,

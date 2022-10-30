@@ -10,6 +10,11 @@ export const RECIPE_BASE_FRAGMENT = gql`
     profile
     createdAt
     type
+    recipeToProfile {
+      id
+      authId
+      showDensities
+    }
   }
 `
 
@@ -23,6 +28,11 @@ export const INGREDIENT_BASE_FRAGMENT = gql`
     type
     ingredientToFood {
       ...food
+    }
+    ingredientToProfile {
+      id
+      authId
+      showDensities
     }
   }
 `

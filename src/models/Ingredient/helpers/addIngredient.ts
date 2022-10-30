@@ -1,5 +1,6 @@
 import { Food } from '../../Food/model'
 import { Unit } from '../../Log/types'
+import { Profile } from '../../Profile/model'
 import { Recipe } from '../../Recipes/model'
 import { Ingredient } from '../model'
 
@@ -13,5 +14,6 @@ export const addIngredient = (
   ingredient.ingredientToChildRecipe = item.type === 'recipe' ? item : null
   ingredient.amount = amount
   ingredient.unit = unit
+  ingredient.ingredientToProfile = new Profile()
   return ingredient
 }

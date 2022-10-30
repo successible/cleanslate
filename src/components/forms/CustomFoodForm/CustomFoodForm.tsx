@@ -3,6 +3,7 @@ import React, { ReactText } from 'react'
 import { useStoreon } from 'storeon/react'
 import caratDown from '../../../assets/common/caratdown.svg'
 import caratUp from '../../../assets/common/caratup.svg'
+import { isNumeric } from '../../../helpers/utility/isNumeric'
 import { prep } from '../../../helpers/utility/prepareFractionalInputForSubmission'
 import { Category } from '../../../models/Food/categories'
 import { Group } from '../../../models/Food/groups'
@@ -135,7 +136,6 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
 
         const close = () => {
           dispatch('closeFoodFormModal')
-          dispatch('closeFoodModal')
           dispatch('closeMenu')
         }
         if (food?.id) {
@@ -144,12 +144,19 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
             set: { ...data },
           }
 
+          console.log(data)
+
           if (!caloriesPerCount) {
-            window.alert('Calories per serving cannot be zero or empty!')
-            return
+            return window.alert('Calories per serving cannot be zero or empty!')
           }
           if (proteinPerCount === null || proteinPerCount === undefined) {
-            window.alert('Protein per serving cannot be empty!')
+            return window.alert('Protein per serving cannot be empty!')
+          }
+          if (!isNumeric(caloriesPerCount)) {
+            return window.alert('Calorie per serving must be a number!')
+          }
+          if (!isNumeric(proteinPerCount)) {
+            return window.alert('Protein per serving must be a number!')
           }
 
           updateFoodOnCloud(variables, () => close())

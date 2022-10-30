@@ -7,6 +7,7 @@ export const renderMacros = (
   item: CommonItem,
   profile: Profile
 ): JSX.Element => {
+  console.log(item.type)
   if (item.type === 'log' || item.type === 'ingredient') {
     const log = new Log()
     log.logToFood = item.food

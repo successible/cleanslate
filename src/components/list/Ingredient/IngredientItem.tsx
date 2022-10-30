@@ -49,7 +49,7 @@ export const IngredientItem: React.FC<props> = (props) => {
         name,
         onDelete,
         onUpdate,
-        profile: null,
+        profile: ingredient.ingredientToProfile,
         recipe: null,
         src,
         type,

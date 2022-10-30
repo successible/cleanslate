@@ -62,8 +62,10 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
 
   const isRecipeItem = type === 'recipe'
   const isCustomFoodItem = Boolean(type === 'food' && profile)
+
   const isCustomLog =
     type === 'log' && Boolean(food?.foodToProfile?.authId || recipe)
+
   const cl = isCustomLog
 
   const styles = css`
@@ -81,27 +83,36 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
         <div className="fc">
           <div className="fr">
             <div
+              className={['food', 'recipe'].includes(type) ? 'fcs' : ''}
               css={[
                 nameStyling,
                 src === null && withoutImage,
                 isCustomLog && custom,
                 isCustomFoodItem && green,
                 isRecipeItem && blue,
+                css`
+                  height: ${['food', 'recipe'].includes(type)
+                    ? '40px !important;'
+                    : 'auto'};
+                  justify-content: center;
+                `,
               ]}
             >
               {getNameAndTags(nameToUse, alias || '')}
             </div>
-            <div
-              className="fr ml5"
-              css={css`
-                font-size: 11px !important;
-                position: relative;
-                top: 0.24px;
-              `}
-            >
-              (<Amount amount={amount} />
-              <UnitInput item={item} unit={unit} />)
-            </div>
+            {!['food', 'recipe'].includes(type) && (
+              <div
+                className="fr ml5"
+                css={css`
+                  font-size: 11px !important;
+                  position: relative;
+                  top: 0.24px;
+                `}
+              >
+                (<Amount amount={amount} />
+                <UnitInput item={item} unit={unit} />)
+              </div>
+            )}
           </div>
           {!isCustomFoodItem && !isRecipeItem && profile && (
             <div className="fr">
