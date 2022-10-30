@@ -15,7 +15,7 @@ const throttle = (func, timeFrame) => {
 }
 
 const register = () => {
-  if (!swAvailable || origin.includes('localhost')) return 
+  if (!swAvailable || origin.includes('http://localhost')) return 
   
   console.log("Starting to register the service worker at " + swUrl)
 
@@ -57,3 +57,5 @@ const register = () => {
       alert(errorMessage)
     })
 }
+
+register()
