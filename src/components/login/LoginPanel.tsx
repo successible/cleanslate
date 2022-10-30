@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import React from 'react'
 import { isBrowser } from '../../helpers/data/isBrowser'
 import { colors } from '../../theme'
 import { LoginButtons } from './LoginButtons'

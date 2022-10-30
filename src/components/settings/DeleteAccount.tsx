@@ -1,6 +1,9 @@
+import { getAuth } from 'firebase/auth'
 import Trashcan from '../../assets/common/trashcan.svg'
 import { deleteProfile } from '../../helpers/authentication/deleteProfile'
+import { logout } from '../../helpers/authentication/logout'
 import { Profile } from '../../models/Profile/model'
+import { firebaseApp } from '../../pages'
 import { Image } from '../image/Image'
 import { button, subheader } from './Settings'
 
@@ -10,8 +13,12 @@ export const DeleteAccount: React.FC<{ profile: Profile }> = ({ profile }) => (
       Danger zone
     </div>
     <button
-      onClick={() => {
-        deleteProfile(profile)
+      onClick={async () => {
+        await deleteProfile(profile)
+        const auth = getAuth(firebaseApp)
+        await auth.currentUser?.delete()
+        window.alert('Your account has been deleted!')
+        await logout(false)
       }}
       css={button}
       className={`fr white`}

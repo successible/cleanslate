@@ -34,6 +34,7 @@ Let's keep this short and sweet ❤️
 - Clean Slate will never share your data with a third-party, unless it is for a required service listed above or it is for a feature for which you have given your consent. For example, sharing your logs with a partner.
 - Clean Slate may send you a newsletter or marketing email. You can unsubscribe from all of these emails with one click and never hear from us again.
 - To support our costs, Clean Slate may adopt initiatives such as advertisements, sponsored posts, or affiliate marketing. All of these will be clearly marked as such and will not infringe on your privacy via targeting. In other words, every user of Clean Slate will see the exact same content.
+- If you want to delete your data, delete your account through the Clean Slate interface. All your data will be deleted instantly!
 - If you have any other questions about your data, or wish to download it, email ${getContactEmail()}.
 `
 

@@ -74,7 +74,7 @@ export const Information: React.FC<props> = ({ profile }) => {
       <div className="mt20">
         <div className="fr mt20 ml5">
           <label className="fr">
-            <span className="mr10">Track only food, not calories?</span>
+            <span className="mr10">Track only food, not calories</span>
             <Switch
               onChange={(data) => {
                 updateProfileOnCloud(
@@ -91,7 +91,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         </div>
         <div className="fr mt20 ml5">
           <label className="fr">
-            <span className="mr10">Show the density of each food?</span>
+            <span className="mr10">Show the density of each food</span>
             <Switch
               onChange={(data) => {
                 updateProfileOnCloud(
@@ -108,7 +108,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         </div>
         <div className="fr mt20 ml5">
           <label className="fr">
-            <span className="mr10">Hide prompt to download app?</span>
+            <span className="mr10">Hide prompt to download app</span>
             <Switch
               onChange={(data) => {
                 updateProfileOnCloud(

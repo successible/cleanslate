@@ -40,7 +40,9 @@ export const LoginButtons = () => {
             onClick={() => {
               const auth = getAuth(firebaseApp)
               signInWithPopup(auth, new GoogleAuthProvider()).then(() => {
-                window.location.href = '/'
+                setTimeout(() => {
+                  window.location.reload()
+                }, 100)
               })
             }}
           >
