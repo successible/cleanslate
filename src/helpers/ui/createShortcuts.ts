@@ -1,6 +1,6 @@
 import { getStore } from '../data/getStore'
 
-export type KeyboardShortcutKeys = 'e' | 'f' | 'h' | 'm' | 'q' | 'r' | 'w'
+export type KeyboardShortcutKeys = 'b' | 'e' | 'f' | 'h' | 'l' | 'm' | 'q' | 'r'
 
 export type Key =
   | 'Backspace'
@@ -151,6 +151,9 @@ export type Key =
 export const createKeyboardShortcutDirectory = () => {
   const dispatch = getStore().dispatch
   const keyboardShortcutDirectory: Record<KeyboardShortcutKeys, () => void> = {
+    b: () => {
+      dispatch('openCameraModal')
+    },
     e: () => {
       dispatch('openExerciseModal')
     },
@@ -160,6 +163,9 @@ export const createKeyboardShortcutDirectory = () => {
     h: () => {
       dispatch('openHelpModal')
     },
+    l: () => {
+      dispatch('openModal')
+    },
     m: () => {
       dispatch('openMenu')
     },
@@ -168,9 +174,6 @@ export const createKeyboardShortcutDirectory = () => {
     },
     r: () => {
       dispatch('openRecipeModal')
-    },
-    w: () => {
-      dispatch('openModal')
     },
   }
   return keyboardShortcutDirectory

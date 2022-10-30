@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import { useStoreon } from 'storeon/react'
+import Barcode from '../../../assets/common/barcode.svg'
 import Calculator from '../../../assets/common/calculator.svg'
 import Edit from '../../../assets/common/edit.svg'
 import Runner from '../../../assets/common/exercise.svg'
@@ -157,6 +158,15 @@ export const Shell: React.FC<props> = ({ profile }) => {
             <Image width={30} height={30} src={Search} alt="search" />
             <HiddenInput />
             <div className="ml10">Search</div>
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              dispatch('openCameraModal')
+            }}
+          >
+            <Image width={30} height={30} src={Barcode} alt="Barcode" />
+            <div className="ml10">Barcode</div>
           </button>
           {profile.showCalories && (
             <button

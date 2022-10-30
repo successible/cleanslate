@@ -6,15 +6,14 @@ import { Divider } from '../divider/Divider'
 import { documentation } from '../settings/Settings'
 
 const shortcuts: Record<KeyboardShortcutKeys, string> = {
-  // Secondary,
+  b: 'Scan barcode',
   e: 'Log exercise',
   f: 'List custom foods',
   h: 'Show shortcuts',
+  l: 'Log food',
   m: 'Show menu',
   q: 'Quick add',
   r: 'List recipes',
-  // Primary
-  w: 'Log food',
 }
 
 export const Help: React.FC = () => {
