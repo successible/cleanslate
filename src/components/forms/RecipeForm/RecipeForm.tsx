@@ -4,6 +4,7 @@ import React from 'react'
 import { useStoreon } from 'storeon/react'
 import { Food } from '../../../models/Food/model'
 import { Ingredient } from '../../../models/Ingredient/model'
+import { Profile } from '../../../models/Profile/model'
 import { Recipe } from '../../../models/Recipes/model'
 import { EditorState } from '../../../store/editor/types'
 import { AllEvents } from '../../../store/store'
@@ -15,7 +16,7 @@ import { useReportIsDirty } from '../helpers/useReportIsDirty'
 import { createRecipeLog } from './helpers/createRecipeLog'
 import { submitRecipe } from './helpers/submitRecipe'
 
-type props = { recipe: Recipe | null; foods: Food[] }
+type props = { recipe: Recipe | null; foods: Food[]; profile: Profile }
 
 export type RecipeFormData = {
   name: string
@@ -23,7 +24,7 @@ export type RecipeFormData = {
   ingredients: Ingredient[]
 }
 
-export const RecipeForm: React.FC<props> = ({ recipe }) => {
+export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   const {
     dispatch,
     editor,
@@ -152,7 +153,7 @@ export const RecipeForm: React.FC<props> = ({ recipe }) => {
 
         {ingredients.length > 0 && (
           <div className="background end pbutton-large rounded nohover">
-            <Macros log={createRecipeLog(ingredients)} />
+            <Macros log={createRecipeLog(ingredients)} profile={profile} />
           </div>
         )}
       </div>

@@ -267,6 +267,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       visible={recipeFormModalVisibility}
     >
       <RecipeForm
+        profile={profile}
         foods={foods}
         recipe={
           recipes.filter((recipe) => {

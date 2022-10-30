@@ -101,9 +101,9 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
               <UnitInput item={item} unit={unit} />)
             </div>
           </div>
-          {!isCustomFoodItem && !isRecipeItem && profile?.showDensities && (
+          {!isCustomFoodItem && !isRecipeItem && profile && (
             <div className="fr">
-              <div className="mt5">{renderMacros(item)}</div>
+              <div className="mt5">{renderMacros(item, profile)}</div>
             </div>
           )}
         </div>

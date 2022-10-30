@@ -7,6 +7,7 @@ import Density from '../../assets/common/density.svg'
 
 import ProteinMini from '../../assets/common/proteinmini.svg'
 import { Log } from '../../models/Log/model'
+import { Profile } from '../../models/Profile/model'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { Image } from '../image/Image'
@@ -15,9 +16,10 @@ import { calculateMacros } from './helpers/calculateMacros'
 
 type props = {
   log: Log
+  profile: Profile
 }
 
-export const Macros: React.FC<props> = ({ log }) => {
+export const Macros: React.FC<props> = ({ log, profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
   const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
@@ -78,7 +80,7 @@ export const Macros: React.FC<props> = ({ log }) => {
             />
             <span>{proteinConsumed}</span>
           </div>
-          {densities && (
+          {densities && profile.showDensities && (
             <div
               onClick={() =>
                 dispatch(
