@@ -6,7 +6,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document'
-import { isProduction } from '../helpers/ui/isProduction'
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -166,18 +165,8 @@ export default class CustomDocument extends Document {
             href="/manifest/apple-splash-1136-640.jpg"
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
-
-          {isProduction() ? (
-            <>
-              <script src="/register_v22.js"></script>
-              <script src="/browser_check_v1.js"></script>
-            </>
-          ) : (
-            <>
-              {/* We do not want the run the service worker on development */}
-              <script src="/browser_check_v1.js"></script>
-            </>
-          )}
+          <script src="/register_v23.js"></script>
+          <script src="/browser_check_v1.js"></script>
         </Head>
         <body>
           <Main />

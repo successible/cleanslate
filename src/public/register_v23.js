@@ -18,12 +18,13 @@ const register = () => {
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {
+      console.log(registration)
       // This function runs on every page load, even if the service worker is already registered
-
       const update = throttle(() => {
         console.log('Checking for an update to the service worker...')
         registration.update()
       }, 5000)
+
       window.addEventListener('click', update)
 
       // Let's listen to the installation cascade.
@@ -54,7 +55,9 @@ const register = () => {
 }
 
 const load = () => {
+  console.log("Service worker is available: " + swAvailable)
   if (swAvailable && !origin.includes('localhost')) {
+    console.log("Server worker load event is being registered...")
     window.addEventListener('load', register)
   }
 }

@@ -22,9 +22,9 @@ export const nameStyling = css`
 `
 
 export const imageStyling = css`
-  height: 35px;
-  margin-right: 17.5px;
-  width: 35px;
+  height: 40px;
+  margin-right: 15px;
+  width: 40px;
 `
 
 export const withoutImage = css`
