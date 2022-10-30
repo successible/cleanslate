@@ -13,6 +13,8 @@ export const PROFILE_FRAGMENT = gql`
     proteinTarget
     showCalories
     startTime
+    hidePWAPrompt
+    showDensities
   }
 `
 

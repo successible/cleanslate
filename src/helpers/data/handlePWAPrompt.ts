@@ -12,15 +12,13 @@ export const handlePWAPrompt = (
 ) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
+    const showPrompt =
+      isMobile() && !isPWA() && isProduction() && profile.hidePWAPrompt !== true
+
     setTimeout(() => {
-      if (
-        isMobile() &&
-        !isPWA() &&
-        isProduction() &&
-        profile.hidePWAPrompt !== true
-      ) {
+      if (showPrompt) {
         dispatch('openPWAPrompt')
       }
-    }, 30000)
+    }, 10000)
   }, [dispatch, profile.hidePWAPrompt])
 }

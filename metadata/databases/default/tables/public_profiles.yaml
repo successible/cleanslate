@@ -39,8 +39,10 @@ insert_permissions:
       columns:
         - authId
         - calorieTarget
+        - hidePWAPrompt
         - proteinTarget
         - showCalories
+        - showDensities
         - startTime
         - timezone
 select_permissions:
@@ -51,9 +53,11 @@ select_permissions:
         - authId
         - calorieTarget
         - createdAt
+        - hidePWAPrompt
         - id
         - proteinTarget
         - showCalories
+        - showDensities
         - startTime
         - timezone
         - type
@@ -67,8 +71,10 @@ update_permissions:
       columns:
         - apiToken
         - calorieTarget
+        - hidePWAPrompt
         - proteinTarget
         - showCalories
+        - showDensities
         - startTime
       filter:
         authId:
