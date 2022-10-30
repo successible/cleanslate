@@ -17,6 +17,8 @@ export class Profile {
   startTime: string
   apiToken = uuid()
   timezone: string
+  showDensities: boolean // Default to false
+  hidePWAPrompt: boolean // Default to false
 
   // Relationships
   foods: Food[]

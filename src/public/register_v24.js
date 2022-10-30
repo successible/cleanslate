@@ -57,8 +57,8 @@ const register = () => {
 const load = () => {
   console.log("Service worker is available: " + swAvailable)
   if (swAvailable && !origin.includes('localhost')) {
-    console.log("Server worker load event is being registered...")
-    window.addEventListener('load', register)
+    console.log("Server worker DOMContentLoaded event is being registered...")
+    window.addEventListener('DOMContentLoaded', register)
   }
 }
 
