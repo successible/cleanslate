@@ -5,7 +5,7 @@
   "license": "BUSL-1.1",
   "private": true,
   "engines": {
-    "node": "16"
+    "node": "18"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -71,7 +71,7 @@
     "dot-prop-immutable": "2.1.1",
     "dotenv": "16.0.3",
     "eslint": "8.26.0",
-    "eslint-config-next": "12.3.2",
+    "eslint-config-next": "13.0.1",
     "eslint-plugin-sort": "2.4.0",
     "firebase": "9.13.0",
     "focus-trap-react": "10.0.0",
@@ -81,7 +81,7 @@
     "js-cookie": "3.0.1",
     "just-safe-get": "4.1.1",
     "ms": "2.1.3",
-    "next": "12.3.2",
+    "next": "13.0.1",
     "pg": "8.8.0",
     "pg-format": "1.0.4",
     "prettier": "2.7.1",
