@@ -29,8 +29,8 @@ echo "=> Spin up PostgreSQL and Hasura..."
 docker-compose down -v --remove-orphans -t 0
 docker-compose pull && docker-compose up -d
 
-echo "=> Wait for one second for Hasura to get ready..."
-sleep 1;
+echo "=> Wait for five seconds for Hasura to get ready..."
+sleep 5;
 
 echo "=> Run migrations with Hasura and sync basic foods..."
 node migrate.js
