@@ -1,7 +1,7 @@
 echo "=> Set environmental variables..."
 
 export NODE_ENV="development"
-export DB_HOST="localhost"
+export DB_HOST="127.0.0.1"
 export DB_NAME="postgres"
 export DB_PASSWORD="password"
 export DB_PORT="1276"

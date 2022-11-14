@@ -142,9 +142,9 @@ export const Menu: React.FC = () => {
               'openInformationModal',
               <div>
                 Got something to share? Perhaps some feedback or a bug? Awesome!
-                We collect and track our feedback on GitHub. That way, all
-                feedback is transparent and we{`'`}re notified when new stuff is
-                posted.
+                We collect and track our feedback on the free website
+                GitHub.com. That way, all feedback is transparent to everyone
+                and we{`'`}re notified when new stuff is posted.
                 <br />
                 <br />
                 To get started,{' '}

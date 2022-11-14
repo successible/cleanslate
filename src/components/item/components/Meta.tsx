@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
+import { colors } from 'chagall/src/chagall'
 import { capitalize } from '../../../helpers/utility/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
@@ -95,12 +96,14 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
                     ? '40px !important;'
                     : 'auto'};
                   justify-content: center;
+                  white-space: nowrap;
                 `,
               ]}
             >
               {getNameAndTags(nameToUse, alias || '')}
             </div>
-            {!['food', 'recipe'].includes(type) && (
+
+            {(type === 'ingredient' || type === 'log') && (
               <div
                 className="fr ml5"
                 css={css`
@@ -110,7 +113,23 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
                 `}
               >
                 (<Amount amount={amount} />
-                <UnitInput item={item} unit={unit} />)
+                {<UnitInput item={item} unit={unit} />})
+              </div>
+            )}
+
+            {type === 'unit' && (
+              <div
+                className="fr ml5"
+                css={css`
+                  font-size: 13px !important;
+                  background-color: ${unit === 'PROTEIN'
+                    ? colors.blue
+                    : colors.green};
+                  padding: 5px;
+                  border-radius: 5px;
+                `}
+              >
+                <Amount amount={amount} />
               </div>
             )}
           </div>

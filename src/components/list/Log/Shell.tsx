@@ -177,7 +177,14 @@ export const Shell: React.FC<props> = ({ profile }) => {
             >
               <Image width={30} height={30} src={Rocket} alt="search" />
               <HiddenInput type="text" inputMode="decimal" />
-              <div className="ml10">Quick Add</div>
+              <div
+                className="ml10"
+                css={css`
+                  white-space: nowrap;
+                `}
+              >
+                Quick Add
+              </div>
             </button>
           )}
           {profile.showCalories && (
@@ -218,11 +225,9 @@ export const Shell: React.FC<props> = ({ profile }) => {
                 className="empty inline mr5"
                 onClick={() => dispatch('openQuickAddModal')}
               >
-                <strong>
-                  <u>Quick Add 🚀</u>
-                </strong>
+                <strong>Quick Add 🚀</strong>
               </button>
-              you add calories and protein directly. It{`'`}s magic.
+              you can add calories and protein directly.
             </div>
           </Explanation>
         )}
