@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { Key } from 'readline'
 import { Unit } from '../../../models/Log/types'
 import { SearchResult } from '../../../store/editor/types'
 import { AllEvents } from '../../../store/store'
@@ -39,7 +38,7 @@ export const SearchResults: React.FC<props> = ({
       css={container}
       className={`mb20`}
       onKeyPress={(event) => {
-        if ((event.key as Key) === 'Enter') {
+        if (event.key === 'Enter') {
           event.preventDefault()
           submitReady && submit()
         }
