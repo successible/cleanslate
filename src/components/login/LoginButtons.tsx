@@ -55,7 +55,7 @@ export const LoginButtons = () => {
               Sign in with Google
             </button>
           )}
-          {process.env.NEXT_PUBLIC_LOGIN_WITH_GOOGLE === 'true' && (
+          {process.env.NEXT_PUBLIC_LOGIN_WITH_APPLE === 'true' && (
             <button
               className="black m5 ml5 mr5"
               onClick={() => {
