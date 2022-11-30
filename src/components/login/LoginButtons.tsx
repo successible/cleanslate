@@ -1,8 +1,13 @@
 import 'firebase/compat/auth'
 import { css } from '@emotion/react'
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import {
+  getAuth,
+  GoogleAuthProvider,
+  OAuthProvider,
+  signInWithPopup,
+} from 'firebase/auth'
 import Link from 'next/link'
-import { FaGoogle } from 'react-icons/fa'
+import { FaApple, FaGoogle } from 'react-icons/fa'
 import { firebaseApp } from '../../pages'
 import { Explanation } from '../explanation/Explanation'
 
@@ -30,7 +35,6 @@ export const LoginButtons = () => {
           <button
             className="black m5 ml5 mr5"
             css={css`
-              width: 210px;
               background-color: #4285f4;
               &:hover,
               &:focus {
@@ -48,6 +52,18 @@ export const LoginButtons = () => {
           >
             <FaGoogle className="mr10" size={15} />
             Sign in with Google
+          </button>
+          <button
+            className="black m5 ml5 mr5"
+            onClick={() => {
+              const auth = getAuth(firebaseApp)
+              signInWithPopup(auth, new OAuthProvider('apple.com')).then(() => {
+                window.location.href = '/app'
+              })
+            }}
+          >
+            <FaApple className="mr10" size={15} />
+            Sign in with Apple
           </button>
         </div>
       </div>
