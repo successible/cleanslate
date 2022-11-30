@@ -3,7 +3,7 @@
 
 echo 'What is your ngrok subdomain?'
 read DOMAIN
-export PROXY_ROOT_DOMAIN=$DOMAIN
+export NEXT_PUBLIC_PROXY_ROOT_DOMAIN=$DOMAIN
 
 abspath() {                                               
     cd "$(dirname "$1")"

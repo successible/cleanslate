@@ -99,24 +99,41 @@ If you want to see what Clean Slate looks on a mobile device or share it with a 
 - Create a `.env` file. Replace `XXX` with your values. Read the comments for guidance.
 
 ```bash
-# React
-CONTACT_EMAIL="XXX"
-# Everything with DB_ should come from the Render
+# React #
+#########
+
+# If the values are prefixed with NEXT_PUBLIC, they exposed to the client
+
+NEXT_PUBLIC_CONTACT_EMAIL="XXX"
+NEXT_PUBLIC_ROOT_DOMAIN="mydomain.com" # Exclude https://
+NEXT_PUBLIC_HONEYBADGER_API_KEY="XXX" # Optional: Only need if you use Honeybadger
+
+# By default Login with Google should be enabled and Login with Apple should be disabled
+# That is because Apple requires an Apple Developer Account, which costs $99 per year
+# By contrast, Google is free and easy to setup automatically with Firebase
+
+NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
+NEXT_PUBLIC_LOGIN_WITH_APPLE="false"
+
+# Accessed in the Firebase project settings
+# Be sure to replace these placeholder values with your own values
+
+NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"auth.mydomain.com","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX.appspot.com"}
+
+# These values are NOT exposed to the client
+# They are only used during the build process on pnpm build to apply database migrations
+
 DB_HOST="XXX"
 DB_NAME="XXX"
 DB_PASSWORD="XXX"
 DB_PORT="5432"
 DB_USER="XXX"
-# Exclude https://
-ROOT_DOMAIN="mydomain.com"
-# Accessed in the Firebase project settings
-FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"auth.mydomain.com","messagingSenderId":"XXX","projectId":"my-firebase-project","storageBucket":"my-firebase-project.appspot.com"}
-# Optional: Not needed if you do not use Honeybadger
-HONEYBADGER_API_KEY="XXX"
-NODE_ENV="production"
 SELF_SIGNED_CERTS_OK="true"
 
-# Hasura
+
+# Hasura #
+##########
+
 # Can be any long, random string, like `fireboat1234aslas222ZZlsal`
 HASURA_GRAPHQL_ADMIN_SECRET="XXX"
 HASURA_GRAPHQL_CORS_DOMAIN="https://mydomain.com"

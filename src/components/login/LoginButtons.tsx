@@ -32,39 +32,45 @@ export const LoginButtons = () => {
       {/* Social login buttons */}
       <div className="fcc w100">
         <div className="frc wrap">
-          <button
-            className="black m5 ml5 mr5"
-            css={css`
-              background-color: #4285f4;
-              &:hover,
-              &:focus {
-                background-color: #2472f2;
-              }
-            `}
-            onClick={() => {
-              const auth = getAuth(firebaseApp)
-              signInWithPopup(auth, new GoogleAuthProvider()).then(() => {
-                setTimeout(() => {
-                  window.location.reload()
-                }, 100)
-              })
-            }}
-          >
-            <FaGoogle className="mr10" size={15} />
-            Sign in with Google
-          </button>
-          <button
-            className="black m5 ml5 mr5"
-            onClick={() => {
-              const auth = getAuth(firebaseApp)
-              signInWithPopup(auth, new OAuthProvider('apple.com')).then(() => {
-                window.location.href = '/app'
-              })
-            }}
-          >
-            <FaApple className="mr10" size={15} />
-            Sign in with Apple
-          </button>
+          {process.env.NEXT_PUBLIC_LOGIN_WITH_GOOGLE === 'true' && (
+            <button
+              className="black m5 ml5 mr5"
+              css={css`
+                background-color: #4285f4;
+                &:hover,
+                &:focus {
+                  background-color: #2472f2;
+                }
+              `}
+              onClick={() => {
+                const auth = getAuth(firebaseApp)
+                signInWithPopup(auth, new GoogleAuthProvider()).then(() => {
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 100)
+                })
+              }}
+            >
+              <FaGoogle className="mr10" size={15} />
+              Sign in with Google
+            </button>
+          )}
+          {process.env.NEXT_PUBLIC_LOGIN_WITH_GOOGLE === 'true' && (
+            <button
+              className="black m5 ml5 mr5"
+              onClick={() => {
+                const auth = getAuth(firebaseApp)
+                signInWithPopup(auth, new OAuthProvider('apple.com')).then(
+                  () => {
+                    window.location.href = '/app'
+                  }
+                )
+              }}
+            >
+              <FaApple className="mr10" size={15} />
+              Sign in with Apple
+            </button>
+          )}
         </div>
       </div>
 

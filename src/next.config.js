@@ -1,21 +1,17 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
 
-const configPath = process.env.FIREBASE_CONFIG
+const configPath = process.env.NEXT_PUBLIC_FIREBASE_CONFIG
 const config = configPath ? JSON.parse(configPath) : {}
 const notProduction = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   distDir: 'build',
+  // Everything in env is exposed to the client
   env: {
-    CONTACT_EMAIL: process.env.CONTACT_EMAIL,
     FIREBASE_CONFIG: notProduction
       ? require('../firebase-config.json')
       : config,
-    HONEYBADGER_API_KEY: process.env.HONEYBADGER_API_KEY,
-    // PROXY_ROOT_DOMAIN only used for Cloudflare Tunnels on localhost
-    PROXY_ROOT_DOMAIN: process.env.PROXY_ROOT_DOMAIN,
-    ROOT_DOMAIN: process.env.ROOT_DOMAIN,
   },
   productionBrowserSourceMaps: true,
   reactStrictMode: true,

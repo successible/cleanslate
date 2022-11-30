@@ -2,7 +2,7 @@ import { isProduction } from '../ui/isProduction'
 import { getDomain } from './getDomain'
 
 export const getApiUrl = () => {
-  const proxyDomain = process.env.PROXY_ROOT_DOMAIN
+  const proxyDomain = process.env.NEXT_PUBLIC_PROXY_ROOT_DOMAIN
   const domain = getDomain()
   if (isProduction()) {
     return [

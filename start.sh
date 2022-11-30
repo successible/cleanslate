@@ -1,6 +1,8 @@
 echo "=> Set environmental variables..."
 
 export NODE_ENV="development"
+export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
+export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
 export DB_HOST="127.0.0.1"
 export DB_NAME="postgres"
 export DB_PASSWORD="password"

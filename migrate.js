@@ -9,7 +9,7 @@ const format = require('pg-format')
 
 // Only load from .env in production
 const isProduction = process.env.NODE_ENV === 'production'
-const domain = process.env.ROOT_DOMAIN
+const domain = process.env.NEXT_PUBLIC_ROOT_DOMAIN
 
 if (isProduction) {
   dotenv.config()
