@@ -123,6 +123,7 @@ NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"auth.myd
 # These values are NOT exposed to the client
 # They are only used during the build process on pnpm build to apply database migrations
 
+NODE_ENV="production"
 DB_HOST="XXX"
 DB_NAME="XXX"
 DB_PASSWORD="XXX"
