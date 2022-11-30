@@ -37,6 +37,7 @@ export const LoginButtons = () => {
               className="black m5 ml5 mr5"
               css={css`
                 background-color: #4285f4;
+                width: 187.5px;
                 &:hover,
                 &:focus {
                   background-color: #2472f2;
@@ -57,12 +58,17 @@ export const LoginButtons = () => {
           )}
           {process.env.NEXT_PUBLIC_LOGIN_WITH_APPLE === 'true' && (
             <button
+              css={css`
+                width: 187.5px;
+              `}
               className="black m5 ml5 mr5"
               onClick={() => {
                 const auth = getAuth(firebaseApp)
                 signInWithPopup(auth, new OAuthProvider('apple.com')).then(
                   () => {
-                    window.location.href = '/app'
+                    setTimeout(() => {
+                      window.location.reload()
+                    }, 100)
                   }
                 )
               }}
