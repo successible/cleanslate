@@ -143,9 +143,9 @@ HASURA_GRAPHQL_ENABLE_CONSOLE="true"
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", "issuer": "https://securetoken.google.com/my-firebase-project", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
 
-- Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your `.env` one by one as environmental variables. Do not add any of them as a file. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.tracker.com`
+- Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your `.env` one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.tracker.com`.
 
-- Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your `.env` one by one as environmental variables. Also include `HASURA_GRAPHQL_ADMIN_SECRET`. Do not add any of them as a file. Make sure Auto-Deploy is enabled. Make sure it is hosted on the root of your domain. For example, `tracker.com`.
+- Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your `.env` one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the root of your domain. For example, `tracker.com`.
 
 Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` with your domain!
 
