@@ -32,16 +32,15 @@ If you want to host Clean Slate yourself, cool! Read the section `Hosting Clean 
 To run Clean Slate locally or in production, you have about five minutes of work.
 
 - Make sure you have [Git](https://git-scm.com/downloads) on your computer.
-- Clone down the `git` repository [here](https://github.com/successible/cleanslate).
+- Fork and clone down the `git` repository [here](https://github.com/successible/cleanslate).
 - Install [Node.js](https://nodejs.org/en/) on your computer.
-- Install `pnpm` and the Firebase CLI by running `npm install -g pnpm firebase-tools`.
+- Install the `Firebase CLI` by running `npm install firebase-tools`.
 
 Next, you need to enable Firebase. That is what provides authentication for Clean Slate:
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
 - Enable the Google provider in Firebase.
-- We provide a Terms of Use and Privacy policy. They are located at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you host Clean Slate at.
 - Create your `.firebaserc` in the root with the following content. Example:
 
 ```json
@@ -68,7 +67,7 @@ Next, you need to enable Firebase. That is what provides authentication for Clea
 - Login with Firebase via `firebase login`.
 - Run `firebase deploy` locally to deploy the Firebase functions in `/functions`.
 
-## Developing Clean Slate
+## Developing locally
 
 > Note: Make sure you have completed the **Configuration** section above.
 
@@ -88,15 +87,28 @@ If you want to see what Clean Slate looks on a mobile device or share it with a 
 
 - Finally, open a second terminal and run `pnpm run proxy`. You will be prompted for the subdomain. Provide it. Once the command has finished, you should be able to access Clean Slate on all your devices on the subdomain.
 
-## Hosting Clean Slate
+## Hosting it yourself
 
-> Important: Make sure you have completed the **Configuration** section above.
+Hosting Clean Slate yourself is easy! It is just four components:
 
-> Note: If you do not want to use Render.com, that is fine! However, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build command for React is `pnpm run build`. This build command for Hasura is building the image from the `Dockerfile` and starting it.
+- Client (static) powered by React
+- GraphQL server powered by Hasura
+- Database powered by PostgreSQL
+- Authentication powered by Firebase
 
-- Deploy a PostgreSQL database on [Render.com](https://render.com)
+The first three components can be deployed anywhere. The instructions below are written using Render.com, but you can use any host. It will just be a bit more work, as explained by the note below.
 
-- Create a `.env` file. Replace `XXX` with your values. Read the comments for guidance.
+> Note: If you do not want to use Render.com, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build command for React is `pnpm run build`. This build command for Hasura is building the image from the `Dockerfile` and starting it.
+
+Here are the instructions for deploying on Render.com:
+
+1. Make sure you have completed the **Configuration** section above. This will configure the Firebase and the relevant Firebase function.
+
+> Note: When configuring a social login, you will need to provide a Terms of Use and Privacy policy. We provide these at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you will host Clean Slate at.
+
+1. Deploy a PostgreSQL database on [Render.com](https://render.com). It can be the smallest, paid size. We recommend version 14.
+
+2. Create a text file on your local computer. Replace `XXX` with your values. Read the comments for guidance.
 
 ```bash
 # React #
@@ -106,7 +118,7 @@ If you want to see what Clean Slate looks on a mobile device or share it with a 
 
 NEXT_PUBLIC_CONTACT_EMAIL="XXX"
 NEXT_PUBLIC_ROOT_DOMAIN="mydomain.com" # Exclude https://
-NEXT_PUBLIC_HONEYBADGER_API_KEY="XXX" # Optional: Only need if you use Honeybadger
+NEXT_PUBLIC_REACT_SENTRY_DSN="XXX" # Optional: Only need if you use Sentry to capture errors
 
 # By default Login with Google should be enabled and Login with Apple should be disabled
 # That is because Apple requires an Apple Developer Account, which costs $99 per year
@@ -144,11 +156,13 @@ HASURA_GRAPHQL_ENABLE_CONSOLE="true"
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", "issuer": "https://securetoken.google.com/my-firebase-project", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
 
-- Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your `.env` one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.tracker.com`.
+Now it is time to deploy your client and server!
 
-- Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your `.env` one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the root of your domain. For example, `tracker.com`.
+4. Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your text file one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.tracker.com`.
 
-Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` with your domain!
+5. Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your text file one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure the static site is hosted on the root of your domain. For example, `tracker.com`.
+
+6. Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` and `https://myfirebase.com` with your own values!
 
 ```
 /*, Strict-Transport-Security, max-age=31536000; includeSubDomains; preload
@@ -156,5 +170,5 @@ Finally, add the following HTTP headers to the React static site. This is requir
 /*, X-XSS-Protection, 1; mode=block
 /*, X-Content-Type-Options, nosniff
 /*, Referrer-Policy, strict-origin
-/*, Content-Security-Policy, default-src 'self' *.mydomain.com blob: data:; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com; base-uri 'self'; style-src 'self' *.mydomain.com 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' *.mydomain.com wss://api.mydomain.com/v1/graphql https://api.honeybadger.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' *.mydomain.com https://clean-slate-sila-llc.firebaseapp.com https://www.google.com https://player.vimeo.com; img-src 'self' *.mydomain.com https://www.gstatic.com data:; font-src 'self' *.mydomain.com https://fonts.gstatic.com https://fonts.googleapis.com; object-src 'none';
+/*, Content-Security-Policy, default-src 'self' *.mydomain.com blob: data:; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com; base-uri 'self'; style-src 'self' *.mydomain.com 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' *.mydomain.com wss://api.mydomain.com/v1/graphql https://sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' *.mydomain.com https://myfirebase.com https://www.google.com https://player.vimeo.com; img-src 'self' *.mydomain.com https://www.gstatic.com data:; font-src 'self' *.mydomain.com https://fonts.gstatic.com https://fonts.googleapis.com; object-src 'none';
 ```

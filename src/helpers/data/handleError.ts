@@ -1,4 +1,4 @@
-import Honeybadger from '@honeybadger-io/js'
+import * as Sentry from '@sentry/react'
 import { store } from '../../store/store'
 import { isProduction } from '../ui/isProduction'
 import { dispatchError } from './dispatchError'
@@ -42,9 +42,8 @@ export const handleError = (
   // Log stuff
   console.log(error)
   if (isProduction() && ignoreMessage === false) {
-    Honeybadger.notify(error, {
-      params: { ...params, data: store.get().data.profiles },
-    })
+    Sentry.setUser({ id: store.get().data.profiles[0].id })
+    Sentry.captureException(error)
   }
 
   return objectToReturn || 0

@@ -19,13 +19,14 @@ abspath() {
 }
 export GOOGLE_APPLICATION_CREDENTIALS=$(abspath "firebase-service-account.json")
 
-echo "=> Kill any running local version of Clean Slate..."
-pkill -9 -f "hasura console"
-pkill -9 -f "next dev"
-
 echo "=> Install the dependencies..."
 pnpm install
 cd functions && npm install && cd ..
+
+echo "=> Kill any running local version of Clean Slate..."
+pkill -9 -f "hasura console"
+pkill -9 -f "next dev"
+npx kill-port 3000
 
 echo "=> Spin up PostgreSQL and Hasura..."
 docker-compose down -v --remove-orphans -t 0

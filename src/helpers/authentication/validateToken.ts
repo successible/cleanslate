@@ -1,4 +1,3 @@
-import Honeybadger from '@honeybadger-io/js'
 import firebase from 'firebase/compat/app'
 import { store } from '../../store/store'
 import { handleError } from '../data/handleError'
@@ -17,9 +16,6 @@ export const validateToken = async (userAuth: firebase.User, attempts = 0) => {
     await sleep(200)
     validateToken(userAuth, attempts + 1)
   } else {
-    Honeybadger.setContext({
-      user_id: userAuth.uid,
-    })
     login()
     store.dispatch('updateUser', userAuth)
   }
