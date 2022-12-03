@@ -27,7 +27,7 @@ Let's keep this short and sweet ❤️
 - Clean Slate collects only the minimum data required to operate:
 
   - The data you explicitly provide. That data is stored on the server that serves Clean Slate. For example, app.cleanslate.sh is hosted on [Render.com](https://render.com/privacy). If this instance of Clean Slate is self-hosted, in may be in a different location. Email your host at ${getContactEmail()} for details.
-  - The data needed to handle bugs. That data is stored in [Honeybadger.io](https://www.honeybadger.io/privacy/).
+  - The data needed to handle bugs and performance. That data is stored in [Sentry.io](https://sentry.io/privacy/).
   - The data needed to securely authenticate you. That data is stored in [Firebase.com](https://firebase.google.com/support/privacy), which is owned by Google.
 
 - Clean Slate will never sell your data to a third-party.
