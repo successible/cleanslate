@@ -71,23 +71,23 @@ export const CameraModal = () => {
 
   const parser = UAParser(window.navigator.userAgent)
   const browser = parser.browser
+  // Designed to handle "Invalid argument not valid semver ('15.6,2' received)"
+  const version = String(browser.version).replace(',', '.')
 
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy
 
   const oldSafari =
     isMobileSafari() &&
     // 'wasm-unsafe-eval' is only supported on Safari 16 and above
-    compareVersions('16.0.0', String(browser.version)) == 1
+    compareVersions('16.0.0', version) == 1
 
   // 'wasm-unsafe-eval' is only supported on Chrome 103 and above
   const oldChrome =
-    browser.name == 'Chrome' &&
-    compareVersions('103', String(browser.version)) == 1
+    browser.name == 'Chrome' && compareVersions('103', version) == 1
 
   // 'wasm-unsafe-eval' is only supported on Firefox 102 and above
   const oldFirefox =
-    browser.name == 'Firefox' &&
-    compareVersions('102', String(browser.version)) == 1
+    browser.name == 'Firefox' && compareVersions('102', version) == 1
 
   if (oldSafari || oldChrome || oldFirefox) {
     return (
