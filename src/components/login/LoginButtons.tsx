@@ -79,13 +79,30 @@ export const LoginButtons = () => {
           )}
         </div>
       </div>
-
       <Explanation
         css={css`
           width: 90%;
           font-size: 0.95rem;
           margin-top: 30px;
-          margin-bottom: 10px;
+        `}
+        color="blue"
+      >
+        <div>
+          Clean Slate is a non-judgemental calorie tracker. It can handle custom
+          foods and recipes, scan food by barcode, and more. It is especially
+          useful for people who struggle with binge eating and self-compassion.
+          You can learn more about why{' '}
+          <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
+            here
+          </a>
+          .
+        </div>
+      </Explanation>
+      <Explanation
+        css={css`
+          width: 90%;
+          font-size: 0.95rem;
+          margin-top: 10px;
         `}
         color="yellow"
       >
@@ -100,7 +117,7 @@ export const LoginButtons = () => {
           padding-bottom: 10px;
         `}
       >
-        By signing in, you agree to our <Link href="/legal">Terms</Link> &#38;{' '}
+        By logging in, you agree to our <Link href="/legal">Terms</Link> &#38;{' '}
         <Link href="/legal">Privacy Policy</Link>
       </p>
     </div>
