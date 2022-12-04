@@ -11,7 +11,7 @@ export const handleError = (
     params?: Record<string, any>
   } = { objectToReturn: 0, params: {}, showModal: true }
 ) => {
-  const { objectToReturn, params, showModal } = options
+  const { objectToReturn, showModal } = options
   const message = typeof error === 'string' ? error : error?.message
 
   const ignoreMessage =

@@ -79,23 +79,18 @@ export const LoginButtons = () => {
           )}
         </div>
       </div>
+
       <Explanation
         css={css`
           width: 90%;
           font-size: 0.95rem;
           margin-top: 30px;
         `}
-        color="blue"
+        color="yellow"
       >
         <div>
-          Clean Slate is a non-judgemental calorie tracker. It can handle custom
-          foods and recipes, scan food by barcode, and more. It is especially
-          useful for people who struggle with binge eating and self-compassion.
-          You can learn more about why{' '}
-          <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
-            here
-          </a>
-          .
+          When you login, an account will be created automatically. Clean Slate
+          is also totally free. So enjoy!
         </div>
       </Explanation>
       <Explanation
@@ -103,11 +98,17 @@ export const LoginButtons = () => {
           width: 90%;
           font-size: 0.95rem;
           margin-top: 10px;
+          margin-bottom: 10px;
         `}
-        color="yellow"
+        color="blue"
       >
-        When you login, an account will be created automatically. Clean Slate is
-        also totally free. So enjoy!
+        <div>
+          Want to learn more about Clean Slate and why we{`'`}re different?{' '}
+          <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
+            Go here
+          </a>
+          .
+        </div>
       </Explanation>
       <p
         css={css`

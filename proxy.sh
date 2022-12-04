@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-echo 'What is your ngrok subdomain?'
+echo 'What is your subdomain? Example: 1bd6-73-75-45-179.ngrok.io'
 read DOMAIN
 export NEXT_PUBLIC_PROXY_ROOT_DOMAIN=$DOMAIN
 
