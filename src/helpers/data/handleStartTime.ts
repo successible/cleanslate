@@ -19,7 +19,6 @@ export const handleStartTime = (profile: Profile) => {
         startMinute === now.minute() &&
         justReset === undefined
       if (shouldReset) {
-        console.log(`Reset according to startTime of ${profile.startTime}`)
         // This cookie prevents running window.reload() multiple times on the start time
         // For example, this loop runs every ten seconds. Hence, it will run 6 times on 12:00 AM, the default start time
         Cookies.set('just-reset', 'yes', {

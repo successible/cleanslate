@@ -144,8 +144,6 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
             set: { ...data },
           }
 
-          console.log(data)
-
           if (!caloriesPerCount) {
             return window.alert('Calories per serving cannot be zero or empty!')
           }

@@ -36,7 +36,6 @@ export const CameraModal = () => {
   } = useStoreon()
 
   const fetchData = debounce(100, (code: string) => {
-    console.log('Fetching data from world.openfoodfacts...')
     setRan(true)
     axios
       .get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
@@ -47,7 +46,6 @@ export const CameraModal = () => {
           return
         }
         const product = r.data.product
-        console.log(product)
         const { nutriments, product_name } = product
         const {
           proteins_100g,
@@ -101,7 +99,7 @@ export const CameraModal = () => {
       >
         <div>
           For security reasons, this feature is not supported on your version of
-          the your browser. Please update to the latest version.
+          your browser. Please update to the latest version.
         </div>
       </Explanation>
     )

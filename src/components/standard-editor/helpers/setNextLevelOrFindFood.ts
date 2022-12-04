@@ -22,9 +22,7 @@ export const setNextLevelOrFindFood = (
     // If the category only contains one food, like American: ["American Cheese"]
     // Treat clicking on "American" as requesting the food American Cheese
     if (nextLevel && nextLevel.length === 1) {
-      console.log(nextLevel[0])
       const food = getFoodByName(nextLevel[0], foods) as Food
-      console.log(food)
       onSuccess(food)
     } else {
       updateKeys(nextLevelPath)

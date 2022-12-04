@@ -12,11 +12,6 @@ export const handlePWAPrompt = (
 ) => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   React.useEffect(() => {
-    console.log(
-      `isMobile: ${isMobile()}, isPWA: ${isPWA()}, isProduction: ${isProduction()}, hidePWAPrompt: ${
-        profile.hidePWAPrompt
-      }`
-    )
     const showPrompt =
       isMobile() && !isPWA() && isProduction() && profile.hidePWAPrompt !== true
 
