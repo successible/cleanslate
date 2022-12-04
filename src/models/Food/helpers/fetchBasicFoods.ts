@@ -30,7 +30,8 @@ export const fetchBasicFoods = async (override = false) => {
           dispatch(
             'updateBasicFoods',
             // We should not sort when data.foods is undefined
-            (data.foods ? sortByUpdatedAt(data.foods) : data.foods) as Food[]
+            // Instead, we should make sure it is an empty array
+            (data.foods ? sortByUpdatedAt(data.foods) : []) as Food[]
           )
           localStorage.setItem(fetchBasicFoodsKey, 'true')
         })

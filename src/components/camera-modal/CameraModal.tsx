@@ -72,7 +72,7 @@ export const CameraModal = () => {
   const parser = UAParser(window.navigator.userAgent)
   const browser = parser.browser
   // Bug: Designed to handle "Invalid argument not valid semver ('X.X,X' received)"
-  const version = String(browser.version).replace(',', '.')
+  const version = String(browser.version).replace(',', '.').replace(',', '.')
 
   // https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Content_Security_Policy
 

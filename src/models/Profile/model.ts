@@ -43,5 +43,7 @@ export class Profile {
     this.calorieTarget = defaultTargets[0]
     this.proteinTarget = defaultTargets[1]
     this.startTime = defaultStartTime
+    // We do not want to accidentally show the PWAPrompt if fetching data fails
+    this.hidePWAPrompt = true
   }
 }
