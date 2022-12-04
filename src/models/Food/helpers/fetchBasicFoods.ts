@@ -27,7 +27,11 @@ export const fetchBasicFoods = async (override = false) => {
       client
         .request(stringifyQuery(QUERY_BASIC_FOODS), {})
         .then((data: { foods: Food[] }) => {
-          dispatch('updateBasicFoods', sortByUpdatedAt(data.foods) as Food[])
+          dispatch(
+            'updateBasicFoods',
+            // We should not sort when data.foods is undefined
+            (data.foods ? sortByUpdatedAt(data.foods) : data.foods) as Food[]
+          )
           localStorage.setItem(fetchBasicFoodsKey, 'true')
         })
         .catch((error: any) => {

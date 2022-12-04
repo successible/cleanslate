@@ -42,7 +42,7 @@ export const handleError = (
   // Log stuff
   console.log(error)
   if (isProduction() && ignoreMessage === false) {
-    Sentry.setUser({ id: store.get().data.profiles[0].id })
+    Sentry.setUser({ id: store.get().data.profiles[0].authId })
     Sentry.captureException(error)
   }
 

@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import { subscribeToUser } from '../../helpers/authentication/subscribeToUser'
+import { handlePWAPrompt } from '../../helpers/data/handlePWAPrompt'
 import { handleShortcuts } from '../../helpers/data/handleShortcuts'
 import { handleStartTime } from '../../helpers/data/handleStartTime'
 import { handleSubscription } from '../../helpers/data/handleSubscription'
@@ -30,6 +31,7 @@ export const App = () => {
     profile
   )
   handleBasicFoods(user)
+  handlePWAPrompt(profile, dispatch)
 
   const navbarHeight = 65
   const footerHeight = 65
