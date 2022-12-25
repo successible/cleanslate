@@ -4,9 +4,6 @@
   "author": "Successible",
   "license": "BUSL-1.1",
   "private": true,
-  "engines": {
-    "node": "18"
-  },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
     "plugins": [

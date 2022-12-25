@@ -21,7 +21,7 @@ function _App({ Component, pageProps }: AppProps) {
       <StoreContext.Provider value={store}>
         <Head>
           <title>Clean Slate | App</title>
-          <meta name="description" content={'Track Food without Judgement'} />
+          <meta name="description" content={'Track food without judgement'} />
         </Head>
         <Div100vh>
           <Component {...pageProps} />
