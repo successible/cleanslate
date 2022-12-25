@@ -1,4 +1,4 @@
 src/build
 src/out
-src/public
+src/public/wasm
 build

@@ -15,9 +15,9 @@ const throttle = (func, timeFrame) => {
 }
 
 const register = () => {
-  if (!swAvailable || origin.includes('http://localhost')) return 
-  
-  console.log("Starting to register the service worker at " + swUrl)
+  if (!swAvailable || origin.includes('http://localhost')) return
+
+  console.log('Starting to register the service worker at ' + swUrl)
 
   navigator.serviceWorker
     .register(swUrl)

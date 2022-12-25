@@ -167,7 +167,7 @@ export default class CustomDocument extends Document {
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
           {/* Without this check, when proxying on local development, the PWA will try to register itself and throw an error */}
-          {isProduction() && <script src="/register_v27.js"></script>}
+          {isProduction() && <script src="/register_v28.js"></script>}
           <script src="/browser_check_v1.js"></script>
         </Head>
         <body>
