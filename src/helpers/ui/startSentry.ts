@@ -13,6 +13,7 @@ export const startSentry = () => {
         /Firebase: This operation has been cancelled due to another conflicting popup being opened/,
         /Something went wrong with validateToken/,
         /Firebase: The user did not grant your application the permissions it requested/,
+        /Firebase: This operation is sensitive and requires recent authentication/,
       ],
       integrations: [new BrowserTracing()],
       // We do not use Sentry's tracing functionality
