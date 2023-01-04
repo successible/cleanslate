@@ -23,24 +23,24 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 ## How can I get involved?
 
-- If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! 
+- If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request.
 
 > Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and PostgreSQL as the database.
 
-- If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the free authentication provider for Clean Slate.
+- If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
 
-> Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
+> Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do basically anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
 
 ## Configuration
 
-To run Clean Slate locally or in production, you have about five minutes of work.
+To run Clean Slate locally or in production, you have about five minutes of setup to do.
 
 - Make sure you have [Git](https://git-scm.com/downloads) on your computer.
 - Fork and clone down the `git` repository [here](https://github.com/successible/cleanslate).
 - Install [Node.js](https://nodejs.org/en/) on your computer.
 - Install the `Firebase CLI` by running `npm install firebase-tools`.
 
-Next, you need to enable Firebase. That is what provides authentication for Clean Slate:
+Next, you need to enable Firebase. This is the authentication provider for Clean Slate:
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
@@ -75,21 +75,25 @@ Next, you need to enable Firebase. That is what provides authentication for Clea
 
 > Note: Make sure you have completed the **Configuration** section above.
 
-Run `pnpm run start`. This will spin up these local servers using Docker and various CLIs:
+Run `npm run start`. This will spin up these local servers using Docker and various CLIs:
 
 - PostgreSQL: `http://localhost:1276`
 - Next.js: `http://localhost:3000`.
 - Hasura (Console): `http://localhost:9695`.
 
-If you want to see what Clean Slate looks on a mobile device or share it with a friend, do this:
+## Previewing it locally
 
-- Install `nginx`, `ngrok`, and `mkcert`. The first is to provide HTTPS for Next.js and Hasura. The second is to provide the actual proxy. The third is to create self-signed cert that is recognized by the browser. If you're running Linux or Mac, you can install all three via [Homebrew](https://brew.sh/). Just install `homebrew` first, and then run `brew install nginx ngrok mckert`.
+If you want to see what Clean Slate looks on a mobile device (very optional), do this:
+
+- Install `nginx`, `ngrok`, and `mkcert`. 
+
+> Note: The first is to provide HTTPS for Next.js and Hasura. The second is to provide the actual proxy. The third is to create self-signed cert that is recognized by the browser. If you are running Linux or Mac, you can install all three via [Homebrew](https://brew.sh/). Just install `homebrew` first, and then run `brew install nginx ngrok mckert`.
 
 - Open one terminal and run `ngrok http 443`. It will output a subdomain like this. `40e7-73-75-45-179.ngrok.io`.
 
 - Navigate to the Authentication settings in your Firebase project. Add that subdomain as an authorized domain. Remove this domain when you are done with the proxy for the day.
 
-- Finally, open a second terminal and run `pnpm run proxy`. You will be prompted for the subdomain. Provide it. Once the command has finished, you should be able to access Clean Slate on all your devices on the subdomain.
+- Finally, open a second terminal and run `npm run proxy`. You will be prompted for the subdomain. Provide it. Once the command has finished, you should be able to access Clean Slate on all your devices on the subdomain.
 
 ## Hosting it yourself
 
@@ -102,15 +106,15 @@ Hosting Clean Slate yourself is easy! It is just four components:
 
 The first three components can be deployed anywhere. The instructions below are written using Render.com, but you can use any host. It will just be a bit more work, as explained by the note below.
 
-> Note: If you do not want to use Render.com, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build command for React is `pnpm run build`. This build command for Hasura is building the image from the `Dockerfile` and starting it.
+> Note: If you do not want to use Render.com, your life will be a bit harder. One, you will need to monitor the `main` branch of the two, relevant repositories for changes. We do not use `git` tags or GitHub releases. Instead, we build everything of the `HEAD` of `main`. Two, you must run the build commands when those changes are detected. The build command for React is `npm run build`. This build command for Hasura is building the image from the `Dockerfile` and starting it.
 
 Here are the instructions for deploying on Render.com:
 
-1. Make sure you have completed the **Configuration** section above. This will configure the Firebase and the relevant Firebase function.
+1. Make sure you have completed the **Configuration** section above. This will configure your Firebase project and the relevant Firebase function.
 
-> Note: When configuring a social login, you will need to provide a Terms of Use and Privacy policy. We provide these at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you will host Clean Slate at.
+> Note: When configuring a social login, you will need to provide a Terms of Use and Privacy Policy. We provide these at `https://XXX/terms` and `https://XXX/privacy`. Replace `XXX` with the domain you will host Clean Slate at.
 
-1. Deploy a PostgreSQL database on [Render.com](https://render.com). It can be the smallest, paid size. We recommend version 14.
+1. Deploy a PostgreSQL database on [Render.com](https://render.com). It can be the smallest, paid size. We recommend the newest version.
 
 2. Create a text file on your local computer. Replace `XXX` with your values. Read the comments for guidance.
 
@@ -122,7 +126,7 @@ Here are the instructions for deploying on Render.com:
 
 NEXT_PUBLIC_CONTACT_EMAIL="XXX"
 NEXT_PUBLIC_ROOT_DOMAIN="mydomain.com" # Exclude https://
-NEXT_PUBLIC_REACT_SENTRY_DSN="XXX" # Optional: Only need if you use Sentry to capture errors
+NEXT_PUBLIC_REACT_SENTRY_DSN="XXX" # Optional: Only need if you want to use Sentry to capture errors
 
 # By default Login with Google should be enabled and Login with Apple should be disabled
 # That is because Apple requires an Apple Developer Account, which costs $99 per year
@@ -137,7 +141,7 @@ NEXT_PUBLIC_LOGIN_WITH_APPLE="false"
 NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"auth.mydomain.com","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX.appspot.com"}
 
 # These values are NOT exposed to the client
-# They are only used during the build process on pnpm build to apply database migrations
+# They are only used during the build process on npm run build to apply database migrations
 
 NODE_ENV="production"
 DB_HOST="XXX"
@@ -162,9 +166,9 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", 
 
 Now it is time to deploy your client and server!
 
-4. Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your text file one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.tracker.com`.
+4. Deploy Hasura on Render. Use this [public repo](https://github.com/successible/hasura-for-render). Add the Hasura section of your text file as environmental variables. Make sure Auto-Deploy is enabled. Make sure it is hosted on the subdomain `api` of your domain. For example, `api.mydomain.com`.
 
-5. Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `pnpm run build` as the build command. Add the React section of your text file one by one as environmental variables. Make sure Auto-Deploy is enabled. Make sure the static site is hosted on the root of your domain. For example, `tracker.com`.
+5. Deploy the React static site on Render. Use this [public repo](https://github.com/successible/cleanslate). Use `npm run build` as the build command. Add the React section of your text file as environmental variables. Make sure Auto-Deploy is enabled. Make sure the static site is hosted on the root of your domain. For example, `mydomain.com`.
 
 6. Finally, add the following HTTP headers to the React static site. This is required for security. Do not forget to replace `mydomain.com` and `https://myfirebase.com` with your own values!
 
