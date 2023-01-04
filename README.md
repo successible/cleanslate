@@ -2,7 +2,9 @@
 
 ☀️ Track food without judgment.
 
-Clean Slate is a free calorie tracker and web application. It is designed for people who struggle with:
+## What is Clean Slate?
+
+Clean Slate is a free calorie tracker. It is designed for people who struggle with:
 
 - Binging
 - Self-compassion
@@ -17,13 +19,15 @@ It can do stuff like:
 - Track exercise
 - And so on
 
-It also has a free curriculum, based on science, to help you lose weight.
+To learn more, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
 
-If you want to learn more about Clean Slate, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/DOObodh7V14).
+## How can I get involved?
 
-If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It also uses the awesome server [Hasura](https://hasura.io) as the backend, with PostgreSQL as the database.
+- If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request! 
 
-If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the free authentication provider for Clean Slate.
+> Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and PostgreSQL as the database.
+
+- If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com). You will also need to configure Firebase. It is the free authentication provider for Clean Slate.
 
 > Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
 
@@ -67,7 +71,7 @@ Next, you need to enable Firebase. That is what provides authentication for Clea
 - Login with Firebase via `firebase login`.
 - Run `firebase deploy` locally to deploy the Firebase functions in `/functions`.
 
-## Developing locally
+## Developing it locally
 
 > Note: Make sure you have completed the **Configuration** section above.
 
