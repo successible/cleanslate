@@ -25,7 +25,7 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 - If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request.
 
-> Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and PostgreSQL as the database.
+> Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
 
 - If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
 
@@ -99,10 +99,10 @@ If you want to see what Clean Slate looks on a mobile device (very optional), do
 
 Hosting Clean Slate yourself is easy! It is just four components:
 
-- Client (static) powered by React
-- GraphQL server powered by Hasura
-- Database powered by PostgreSQL
-- Authentication powered by Firebase
+- Static client, powered by React
+- GraphQL server, powered by Hasura
+- Database, powered by PostgreSQL
+- Authentication, powered by Firebase
 
 The first three components can be deployed anywhere. The instructions below are written using Render.com, but you can use any host. It will just be a bit more work, as explained by the note below.
 
