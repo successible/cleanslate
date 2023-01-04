@@ -23,11 +23,11 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 ## How can I get involved?
 
-- If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request.
+If you want to contribute to Clean Slate, awesome! Read the section `Developing Clean Slate`. Then, submit a pull request.
 
 > Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
 
-- If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
+If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
 
 > Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do basically anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
 
