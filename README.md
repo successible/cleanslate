@@ -29,7 +29,7 @@ If you want to contribute to Clean Slate, awesome! Read the section `Developing 
 
 If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
 
-> Note: Clean Slate is licensed under the BSL 1.1 license. Under this license, you can do basically anything except launch a commercial version of Clean Slate. Otherwise, you contribute or use Clean Slate without issue. This license is used by projects such as Sentry.io, MariaDB, CockRoachDB, and so on. You can read more about the license [here](https://open.sentry.io/licensing).
+> Note: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or even host it yourself. You just cannot launch a commercial version of Clean Slate. This license is used by projects such as Sentry.io and MariaDB. You can read more about the license [here](https://open.sentry.io/licensing).
 
 ## Configuration
 
@@ -85,7 +85,7 @@ Run `npm run start`. This will spin up these local servers using Docker and vari
 
 If you want to see what Clean Slate looks on a mobile device (very optional), do this:
 
-- Install `nginx`, `ngrok`, and `mkcert`. 
+- Install `nginx`, `ngrok`, and `mkcert`.
 
 > Note: The first is to provide HTTPS for Next.js and Hasura. The second is to provide the actual proxy. The third is to create self-signed cert that is recognized by the browser. If you are running Linux or Mac, you can install all three via [Homebrew](https://brew.sh/). Just install `homebrew` first, and then run `brew install nginx ngrok mckert`.
 
