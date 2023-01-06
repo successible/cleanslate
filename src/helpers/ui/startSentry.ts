@@ -15,6 +15,7 @@ export const startSentry = () => {
         /Firebase: The user did not grant your application the permissions it requested/,
         /Firebase: This operation is sensitive and requires recent authentication/,
         /Error: AbortError: The operation was aborted/,
+        /AbortError: The operation was aborted/,
       ],
       integrations: [new BrowserTracing()],
       // We do not use Sentry's tracing functionality
