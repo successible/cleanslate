@@ -34,7 +34,7 @@
   "scripts": {
     "build": "bash build.sh",
     "dev": "bash start.sh",
-    "lint": "bash lint.sh --format",
+    "lint": "bash -e lint.sh --format",
     "migrate": "node migrate.js",
     "proxy": "bash proxy.sh",
     "test": "jest"

@@ -1,8 +1,6 @@
 import { css } from '@emotion/react'
-import Link from 'next/link'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
-import AllFoods from '../../assets/common/allfoods.svg'
 import CustomFood from '../../assets/common/food.svg'
 import Logout from '../../assets/common/logout.svg'
 import Mortarboard from '../../assets/common/mortarboard.svg'
@@ -118,16 +116,6 @@ export const Menu: React.FC = () => {
           />
           <div className="ml15">Curriculum</div>
         </button>
-        <Link href={'/foods'} className="button">
-          <Image
-            width={35}
-            height={35}
-            alt="Group of foods"
-            className="icon"
-            src={AllFoods}
-          />
-          <div className="ml15">Density of foods</div>
-        </Link>
       </div>
 
       <div css={section} className={`w100`}>
