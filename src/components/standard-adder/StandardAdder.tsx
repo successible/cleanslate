@@ -66,7 +66,8 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
             padding-left: 10px;
             width: 100%;
             border-radius: 0px;
-            border: ${type === 'ingredient' ? '0px' : undefined};
+            border: 0px;
+            border-bottom: 1px solid #eee;
             &:focus {
               border-color: #eee;
             }

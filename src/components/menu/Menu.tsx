@@ -81,7 +81,7 @@ export const Menu: React.FC = () => {
             className="icon"
             src={CustomFood}
           />
-          <div className="ml15">Custom foods</div>
+          <div className="ml15">Foods</div>
         </button>
 
         <button
