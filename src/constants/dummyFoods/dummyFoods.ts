@@ -2,6 +2,7 @@ import { createDummyFood } from '../../components/standard-adder/helpers/createD
 import { bean } from './bean'
 import { beef } from './beef'
 import { bread } from './bread'
+import { butter } from './butter'
 import { cheese } from './cheese'
 import { chicken } from './chicken'
 import { dairy } from './dairy'
@@ -38,6 +39,7 @@ export const dummyFoods: DummyFoods = {
   ...bean,
   ...beef,
   ...bread,
+  ...butter,
   ...cheese,
   ...chicken,
   ...dairy,
