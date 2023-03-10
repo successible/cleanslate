@@ -5,7 +5,7 @@ export const butter: DummyFoods = {
     Almond: ['Almond butter'],
     Cashew: ['Cashew butter'],
     Cocoa: ['Cocoa butter'],
-    Standard: ['Butter'],
+    Normal: ['Butter'],
     'Sunflower seed': ['Sunflower seed butter'],
   },
 }
