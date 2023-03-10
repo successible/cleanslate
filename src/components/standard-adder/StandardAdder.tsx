@@ -3,12 +3,14 @@ import get from 'just-safe-get'
 import uniqueBy from 'lodash.uniqby'
 import React, { useState } from 'react'
 import { dummyFoods } from '../../constants/dummyFoods/dummyFoods'
+import { pastaNames } from '../../constants/dummyFoods/pasta'
 import { Food } from '../../models/food'
 import { Recipe } from '../../models/recipe'
 import { colors } from '../../theme'
 import { Meta } from './components/Meta'
 import { SearchResult } from './components/SearchResults'
 import { SelectedItem } from './components/SelectedItem'
+import { createDummyFood } from './helpers/createDummyFood'
 import { createSearcher } from './helpers/createSearcher'
 import { getSearchResults } from './helpers/getSearchResults'
 import { mapFoodToDummyFood } from './helpers/mapNameToDummyFood'
@@ -26,7 +28,12 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
   const [selectedItem, setSelectedItem] = useState(null as Food | Recipe | null)
 
   // The searching infrastructure
-  const items = [...foods, ...recipes]
+  const items = [
+    ...foods,
+    ...recipes,
+    // Pasta is special because it is many unique names, like Pastina, mapped to white or wheat pasta
+    ...pastaNames.map((name) => createDummyFood(name, 'Grain', 'Pasta')),
+  ]
   const searcher = createSearcher(items)
 
   const clearEverything = () => {
@@ -88,6 +95,8 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
               const resultsWithoutLeaves = results.map((result) =>
                 mapFoodToDummyFood(result)
               )
+
+              console.log(resultsWithoutLeaves)
 
               // Remove all the duplicate dummy foods (e.g. the dummy food chicken like 40 times)
               // Handles the fact a recipe, custom food, and basic food can all be named the same thing
