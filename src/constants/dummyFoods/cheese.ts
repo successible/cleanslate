@@ -3,9 +3,11 @@ import { DummyFoods } from './dummyFoods'
 export const cheese: DummyFoods = {
   Cheese: {
     American: ['American cheese'],
+    Asiago: ['Asiago cheese'],
     Blue: ['Blue cheese'],
     Brie: ['Brie cheese'],
     'Buffalo cheese': ['Buffalo mozzarella cheese'],
+    'Buffalo milk': ['Buffalo milk cheese'],
     Camembert: ['Camembert cheese'],
     Cheddar: ['Cheddar cheese'],
     Chihuahua: ['Chihuahua cheese'],

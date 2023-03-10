@@ -97,7 +97,7 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
                 (x) => x.name + x.type + x.profile
               )
 
-              setSearchResults(uniqueResults.slice(0, 4))
+              setSearchResults(uniqueResults.slice(0, 6))
             }
           }}
         />
