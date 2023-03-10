@@ -7,8 +7,9 @@ import caratUp from '../../../assets/common/caratup.svg'
 import { Category } from '../../../constants/categories'
 import { Group } from '../../../constants/groups'
 import { VolumeUnit, WeightUnit } from '../../../constants/units'
-import { addFoodToCloud } from '../../../helpers/food/addFoodToCloud'
-import { updateFoodOnCloud } from '../../../helpers/food/updateFoodOnCloud'
+import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
+import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
+
 import { isNumeric } from '../../../helpers/isNumeric'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { useReportIsDirty } from '../../../hooks/useReportIsDirty'
@@ -157,7 +158,6 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           if (!isNumeric(proteinPerCount)) {
             return toast.error('Protein per serving must be a number!')
           }
-
           updateFoodOnCloud(variables, () => close())
         } else {
           addFoodToCloud(data, () => dispatch('closeFoodFormModal'))

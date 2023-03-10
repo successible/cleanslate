@@ -1,5 +1,5 @@
 import React from 'react'
-import { deleteFoodOnCloud } from '../../../helpers/food/deleteFoodOnCloud'
+import { deleteFoodOnCloud } from '../../../helpers/Food/deleteFoodOnCloud'
 import { Food } from '../../../models/food'
 import { Item } from '../../item/Item'
 

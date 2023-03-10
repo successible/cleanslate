@@ -25,7 +25,7 @@ jobs:
         run: pnpm install
 
       - name: Lint the client
-        run: bash lint.sh
+        run: bash -e lint.sh
 
       - name: Run the tests
         run: pnpm test

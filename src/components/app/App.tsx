@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { executeKeyboardShortcuts } from '../../helpers/executeShortcuts'
-import { subscribeToAllBasicFoods } from '../../helpers/food/subscribeToAllBasicFoods'
+import { subscribeToAllBasicFoods } from '../../helpers/Food/subscribeToAllBasicFoods'
 import { subscribeToProfile } from '../../helpers/profile/subscribeToProfile'
 import { useBasicFoods } from '../../hooks/useBasicFoods'
 import { useData } from '../../hooks/useData'

@@ -31,7 +31,7 @@ const syncBasicFoods = async (results) => {
     host: process.env.DB_HOST,
     password: process.env.DB_PASSWORD,
     port: process.env.DB_PORT,
-    // Your production host (like Render) will may use self-signed certificates
+    // Your production host, like Render, will may use self-signed certificates
     // Hence, we want to give people the option to enable support for them.
     ssl: isProduction
       ? {

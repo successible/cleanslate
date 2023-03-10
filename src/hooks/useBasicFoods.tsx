@@ -1,6 +1,6 @@
 import React from 'react'
 import { fetchBasicFoodsKey } from '../helpers/constants'
-import { fetchAllBasicFoods } from '../helpers/food/fetchAllBasicFoods'
+import { fetchAllBasicFoods } from '../helpers/Food/fetchAllBasicFoods'
 import { isBrowser } from '../helpers/isBrowser'
 import { isLoadedUser } from '../helpers/isLoadedUser'
 import { UserStatus } from '../store/navbar/types'
