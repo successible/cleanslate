@@ -106,31 +106,29 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
       {/* The results of that search: all foods and recipes and the first of each dummy food */}
 
       {!selectedItem &&
-        searchResults
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .map((result, i) => {
-            return (
-              <SearchResult
-                result={result}
-                onClick={() => {
-                  if (result.isDummy) {
-                    const newPath = [...path, result.name]
-                    const options: string[] = Object.keys(
-                      get(dummyFoods, newPath)
-                    )
-                    setPath(newPath)
-                    setOptions(options)
-                    path.length === 0 && setDummyFood(result)
-                  } else {
-                    setSelectedItem(result)
-                  }
-                  setSearchResults([])
-                  setSearchText('')
-                }}
-                key={result.name + i}
-              />
-            )
-          })}
+        searchResults.map((result, i) => {
+          return (
+            <SearchResult
+              result={result}
+              onClick={() => {
+                if (result.isDummy) {
+                  const newPath = [...path, result.name]
+                  const options: string[] = Object.keys(
+                    get(dummyFoods, newPath)
+                  )
+                  setPath(newPath)
+                  setOptions(options)
+                  path.length === 0 && setDummyFood(result)
+                } else {
+                  setSelectedItem(result)
+                }
+                setSearchResults([])
+                setSearchText('')
+              }}
+              key={result.name + i}
+            />
+          )
+        })}
 
       {/* Once a dummy food is selected, iterate through the tree of the dummy food */}
 
