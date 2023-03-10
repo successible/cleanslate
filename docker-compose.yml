@@ -1,0 +1,27 @@
+version: '3.8'
+services:
+  database:
+    image: postgres:latest
+    command: ['postgres', '-c', 'log_statement=all']
+    restart: always
+    volumes:
+      - cleanslate:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '${DB_PORT}:5432'
+
+  graphql-engine:
+    image: hasura/graphql-engine:latest
+    ports:
+      - '8120:8080'
+    depends_on:
+      - 'database'
+    restart: always
+    environment:
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
+
+volumes:
+  cleanslate:

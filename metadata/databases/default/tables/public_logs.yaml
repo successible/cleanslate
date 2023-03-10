@@ -1,0 +1,72 @@
+table:
+  name: logs
+  schema: public
+object_relationships:
+  - name: logToFood
+    using:
+      foreign_key_constraint_on: food
+  - name: logToProfile
+    using:
+      foreign_key_constraint_on: profile
+  - name: logToRecipe
+    using:
+      foreign_key_constraint_on: recipe
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      set:
+        profile: x-hasura-User-Id
+      columns:
+        - alias
+        - amount
+        - barcode
+        - food
+        - profile
+        - recipe
+        - unit
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - alias
+        - amount
+        - barcode
+        - createdAt
+        - food
+        - id
+        - profile
+        - recipe
+        - type
+        - unit
+        - updatedAt
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - alias
+        - amount
+        - barcode
+        - food
+        - profile
+        - recipe
+        - unit
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      set:
+        profile: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id

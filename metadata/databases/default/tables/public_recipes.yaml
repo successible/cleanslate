@@ -1,0 +1,79 @@
+table:
+  name: recipes
+  schema: public
+object_relationships:
+  - name: recipeToProfile
+    using:
+      foreign_key_constraint_on: profile
+array_relationships:
+  - name: ingredients
+    using:
+      foreign_key_constraint_on:
+        column: recipe
+        table:
+          name: ingredients
+          schema: public
+  - name: ingredientsOfChildRecipe
+    using:
+      foreign_key_constraint_on:
+        column: childRecipe
+        table:
+          name: ingredients
+          schema: public
+  - name: logs
+    using:
+      foreign_key_constraint_on:
+        column: recipe
+        table:
+          name: logs
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      set:
+        profile: x-hasura-User-Id
+      columns:
+        - containerName
+        - countName
+        - name
+        - profile
+        - servingPerContainer
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - servingPerContainer
+        - containerName
+        - countName
+        - name
+        - profile
+        - type
+        - createdAt
+        - updatedAt
+        - id
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - containerName
+        - countName
+        - name
+        - servingPerContainer
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        profile: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id

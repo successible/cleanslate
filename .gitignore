@@ -1,0 +1,15 @@
+.DS_STORE
+.env
+.firebaserc
+.next
+.vscode/ltex.dictionary.en-US.txt
+*.pem
+build
+firebase-config.json
+functions/lib/**/*.js
+functions/lib/**/*.js.map
+node_modules
+out
+service-account.json
+sitemap.xml
+tsconfig.tsbuildinfo

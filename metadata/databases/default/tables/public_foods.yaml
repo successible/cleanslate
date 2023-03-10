@@ -1,0 +1,122 @@
+table:
+  name: foods
+  schema: public
+configuration:
+  column_config:
+    groupName:
+      custom_name: group
+  custom_column_names:
+    groupName: group
+  custom_root_fields: {}
+object_relationships:
+  - name: foodToProfile
+    using:
+      foreign_key_constraint_on: profile
+array_relationships:
+  - name: ingredients
+    using:
+      foreign_key_constraint_on:
+        column: food
+        table:
+          name: ingredients
+          schema: public
+  - name: logs
+    using:
+      foreign_key_constraint_on:
+        column: food
+        table:
+          name: logs
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      set:
+        profile: x-hasura-User-Id
+      columns:
+        - alias
+        - basicFoodId
+        - caloriesPerCount
+        - caloriesPerGram
+        - category
+        - containerName
+        - countName
+        - countToGram
+        - countToTbsp
+        - groupName
+        - name
+        - preferredVolumeUnit
+        - preferredWeightUnit
+        - profile
+        - proteinPerCount
+        - proteinPerGram
+        - servingPerContainer
+        - tbspToGram
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - alias
+        - basicFoodId
+        - caloriesPerCount
+        - caloriesPerGram
+        - category
+        - containerName
+        - countName
+        - countToGram
+        - countToTbsp
+        - createdAt
+        - groupName
+        - id
+        - name
+        - preferredVolumeUnit
+        - preferredWeightUnit
+        - profile
+        - proteinPerCount
+        - proteinPerGram
+        - servingPerContainer
+        - tbspToGram
+        - type
+        - updatedAt
+      filter:
+        _or:
+          - profile:
+              _eq: X-Hasura-User-Id
+          - profile:
+              _is_null: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - alias
+        - basicFoodId
+        - caloriesPerCount
+        - caloriesPerGram
+        - category
+        - containerName
+        - countName
+        - countToGram
+        - countToTbsp
+        - groupName
+        - name
+        - preferredVolumeUnit
+        - preferredWeightUnit
+        - profile
+        - proteinPerCount
+        - proteinPerGram
+        - servingPerContainer
+        - tbspToGram
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        profile: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id

@@ -1,0 +1,27 @@
+export const modals = [
+  'navbar.addIngredientModalVisibility',
+  'navbar.alertVisibility',
+  'navbar.bodyFatPercentageModalVisibility',
+  'navbar.cameraModalVisibility',
+  'navbar.errorVisibility',
+  'navbar.exerciseModalVisibility',
+  'navbar.foodFormModalVisibility',
+  'navbar.foodModalVisibility',
+  'navbar.helpModalVisibility',
+  'navbar.informationModalVisibility',
+  'navbar.itemModalVisibility',
+  'navbar.menuVisibility',
+  'navbar.modalVisibility',
+  'navbar.pwaPromptVisibility',
+  'navbar.quickAddModalVisibility',
+  'navbar.recipeFormModalVisibility',
+  'navbar.recipeModalVisibility',
+  'navbar.settingsModalVisibility',
+  'navbar.supportModalVisibility',
+  'navbar.targetModalVisibility',
+  'navbar.therapyModalVisibility',
+  'navbar.unitModalVisibility',
+  'navbar.voiceModalVisibility',
+] as const
+
+export type Modals = (typeof modals)[number]

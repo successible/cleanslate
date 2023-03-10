@@ -1,0 +1,93 @@
+table:
+  name: profiles
+  schema: public
+array_relationships:
+  - name: foods
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: foods
+          schema: public
+  - name: ingredients
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: ingredients
+          schema: public
+  - name: logs
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: logs
+          schema: public
+  - name: recipes
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: recipes
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        authId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - authId
+        - calorieTarget
+        - countDown
+        - hidePWAPrompt
+        - proteinTarget
+        - showCalories
+        - showDensities
+        - startTime
+        - timezone
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - apiToken
+        - authId
+        - calorieTarget
+        - countDown
+        - createdAt
+        - hidePWAPrompt
+        - id
+        - proteinTarget
+        - showCalories
+        - showDensities
+        - startTime
+        - timezone
+        - type
+        - updatedAt
+      filter:
+        authId:
+          _eq: X-Hasura-User-Id
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - apiToken
+        - calorieTarget
+        - countDown
+        - hidePWAPrompt
+        - proteinTarget
+        - showCalories
+        - showDensities
+        - startTime
+      filter:
+        authId:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        authId: x-hasura-User-Id
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        authId:
+          _eq: X-Hasura-User-Id

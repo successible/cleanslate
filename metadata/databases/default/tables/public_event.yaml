@@ -1,0 +1,7 @@
+table:
+  name: event
+  schema: public
+object_relationships:
+  - name: eventToProfile
+    using:
+      foreign_key_constraint_on: profile
