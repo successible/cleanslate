@@ -3,6 +3,7 @@ import isToday from 'dayjs/plugin/isToday'
 import Cookies from 'js-cookie'
 import ms from 'ms'
 import React from 'react'
+import { profileKey } from '../helpers/constants'
 import { getDomain } from '../helpers/getDomain'
 
 dayjs.extend(isToday)
@@ -25,6 +26,7 @@ export const useStartTime = () => {
 
       if (!dayjs(lastReset).isToday()) {
         setLastReset()
+        localStorage.setItem(profileKey, 'null')
         window.location.reload()
       }
     }
