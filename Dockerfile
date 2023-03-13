@@ -1,4 +1,4 @@
-FROM hasura/graphql-engine:v2.17.0.ubuntu
+FROM hasura/graphql-engine:v2.11.5
 
 ENV NODE_ENV production
 ENV DEBIAN_FRONTEND=noninteractive
