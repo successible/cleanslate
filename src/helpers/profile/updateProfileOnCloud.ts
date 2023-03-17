@@ -13,6 +13,7 @@ type UpdateTargets = {
     hidePWAPrompt?: boolean
     showDensities?: boolean
     countDown?: boolean
+    enablePlanning?: boolean
   }
 }
 

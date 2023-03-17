@@ -14,12 +14,13 @@ export class Profile {
   calorieTarget: number // Default 2000
   proteinTarget: number // Default 150
   showCalories: boolean // Default to True
-  startTime: string
+  startTime: string // No longer used
   apiToken = uuid()
   timezone: string
   showDensities: boolean // Default to false
   hidePWAPrompt: boolean // Default to false
   countDown: boolean // Default to true
+  enablePlanning: boolean // Default to false
 
   // Relationships
   foods: Food[]

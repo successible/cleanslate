@@ -14,6 +14,7 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [showDensities, setShowDensities] = useState(profile.showDensities)
   const [hidePWAPrompt, setHidePWAPrompt] = useState(profile.hidePWAPrompt)
   const [countDown, setCountDown] = useState(profile.countDown)
+  const [enablePlanning, setEnablePlanning] = useState(profile.enablePlanning)
 
   const info =
     user &&
@@ -69,6 +70,24 @@ export const Information: React.FC<props> = ({ profile }) => {
                 )
               }}
               checked={!showCalories}
+            />
+          </label>
+        </div>
+        <div className="fr mt20 ml5">
+          <label className="fr">
+            <span className="mr10" css={itemLabelStyling}>
+              Enable planning the day
+            </span>
+            <Switch
+              onChange={(data) => {
+                updateProfileOnCloud(
+                  { id: profile.id, set: { enablePlanning: data } },
+                  () => {
+                    setEnablePlanning(data)
+                  }
+                )
+              }}
+              checked={enablePlanning}
             />
           </label>
         </div>

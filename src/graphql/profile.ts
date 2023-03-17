@@ -16,6 +16,7 @@ export const PROFILE_FRAGMENT = gql`
     hidePWAPrompt
     showDensities
     countDown
+    enablePlanning
   }
 `
 

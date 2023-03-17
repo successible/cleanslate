@@ -231,15 +231,15 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
     } else if (barcode) {
       if (unit === 'COUNT') {
         if (metric === 'PROTEIN') {
-          return amount * barcode.protein_per_serving
+          return total + amount * barcode.protein_per_serving
         } else {
-          return amount * barcode.calories_per_serving
+          return total + amount * barcode.calories_per_serving
         }
       } else {
         if (metric === 'PROTEIN') {
-          return amount * barcode.protein_per_gram
+          return total + amount * barcode.protein_per_gram
         } else {
-          return amount * barcode.calories_per_gram
+          return total + amount * barcode.calories_per_gram
         }
       }
     } else if (unit === metric) {
