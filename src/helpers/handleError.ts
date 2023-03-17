@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/react'
+import { toast } from 'react-hot-toast'
 import { store } from '../store/store'
 import { isProduction } from './isProduction'
 
@@ -12,6 +13,13 @@ export const handleError = (
 ) => {
   const { objectToReturn } = options
   console.log(error)
+  if (String(error).includes('foods_profile_name_key')) {
+    toast.error('Custom food with that name already exists!')
+  } else if (String(error).includes('recipes_profile_name_key')) {
+    toast.error('Recipe with that name already exists!')
+  } else {
+    // Do nothing
+  }
   if (isProduction()) {
     Sentry.setUser({ id: store.get().data.profiles[0].authId })
     Sentry.captureException(error)

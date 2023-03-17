@@ -4,7 +4,7 @@ import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanne
 import { Unit } from '../../../constants/units'
 import { deleteLogOnCloud } from '../../../helpers/log/deleteLogOnCloud'
 import { updateLogOnCloud } from '../../../helpers/log/updateLogOnCloud'
-import { Log } from '../../../models/log'
+import { Log, Meal } from '../../../models/log'
 import { Profile } from '../../../models/profile'
 import { Item } from '../../item/Item'
 import { getImagePath, selectFoodImage } from '../helpers/selectFoodImage'
@@ -21,17 +21,23 @@ export const LogItem: React.FC<{
   renderUnit: boolean
 }> = (props) => {
   const { log, profile } = props
-  const { alias, amount, barcode, createdAt, id, type, unit } = log
+  const { alias, amount, barcode, consumed, createdAt, id, meal, type, unit } =
+    log
   const food = log.logToFood
   const recipe = log.logToRecipe
 
   const onUpdate = (
     id: string,
     unit: Unit | null,
-    amount: number | null
+    amount: number | null,
+    consumed: boolean | null,
+    meal: Meal | null
   ): Promise<string | Log> => {
     return new Promise((resolve, reject) => {
-      if (!unit) {
+      if (consumed === null) {
+        toast.error('Please mark the log as consumed or not')
+        reject('Please mark the log as consumed or not')
+      } else if (!unit) {
         const message = logOrIngredientUpdateError[0]
         toast.error(message)
         reject(message)
@@ -40,7 +46,10 @@ export const LogItem: React.FC<{
         toast.error(message)
         reject(message)
       } else {
-        const variables = { pk_columns: { id }, set: { amount, unit } }
+        const variables = {
+          pk_columns: { id },
+          set: { amount, consumed, meal, unit },
+        }
         return updateLogOnCloud(variables, () => {
           resolve('Success!')
         })
@@ -62,9 +71,11 @@ export const LogItem: React.FC<{
         amount,
         barcode,
         childRecipe: null,
+        consumed,
         createdAt,
         food,
         id,
+        meal,
         name,
         onDelete,
         onUpdate,

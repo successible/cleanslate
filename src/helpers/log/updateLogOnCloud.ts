@@ -11,6 +11,7 @@ export type UpdateLog = {
   set: {
     unit: Unit
     amount: number
+    consumed: boolean
   }
 }
 

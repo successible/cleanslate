@@ -8,6 +8,7 @@ export const updateUnitLogsOnCloud = async (
   logs: Log[],
   amount: number,
   unit: QuickAddUnit,
+  enablePlanning: boolean,
   onSuccess: () => void
 ) => {
   try {
@@ -15,7 +16,11 @@ export const updateUnitLogsOnCloud = async (
       .filter((log) => log.unit === unit)
       .map((log) => log.id)
     await deleteLogsOnCloud(logsToDelete, () => {})
-    await addQuickLogToCloud({ objects: [{ amount, unit }] }, () => {})
+    await addQuickLogToCloud(
+      { objects: [{ amount, unit }] },
+      enablePlanning,
+      () => {}
+    )
     onSuccess()
   } catch (error) {
     handleError(error as Error)

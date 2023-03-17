@@ -9,7 +9,6 @@ import { Group } from '../../../constants/groups'
 import { VolumeUnit, WeightUnit } from '../../../constants/units'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
-
 import { isNumeric } from '../../../helpers/isNumeric'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { useReportIsDirty } from '../../../hooks/useReportIsDirty'

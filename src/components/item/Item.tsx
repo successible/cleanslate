@@ -17,8 +17,16 @@ export const Item = (props: { item: CommonItem }) => {
     margin: 20px auto;
   `
 
+  const consumedStyling = css`
+    text-decoration: line-through;
+    opacity: 0.5;
+  `
+
   return (
-    <div css={itemStyles} className={`w100 item item-${type}`}>
+    <div
+      css={[itemStyles, item.consumed && consumedStyling]}
+      className={`w100 item item-${type}`}
+    >
       <div className="fr">
         {/* Meta information */}
         <Meta item={item} dispatch={dispatch} />

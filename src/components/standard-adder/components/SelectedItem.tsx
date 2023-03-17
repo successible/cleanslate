@@ -3,6 +3,8 @@ import { useState } from 'react'
 import { convertToNumber } from '../../../helpers/convertToNumber'
 import { getDispatch } from '../../../helpers/getDispatch'
 import { Food } from '../../../models/food'
+import { defaultMeal } from '../../../models/log'
+import { Profile } from '../../../models/profile'
 import { Recipe } from '../../../models/recipe'
 import { getPrettyUnits } from '../../list/helpers/getPrettyUnits'
 import { getDefaultUnit } from '../helpers/getDefaultUnit'
@@ -17,17 +19,21 @@ type props = {
   selectedItem: Food | Recipe
   setSelectedItem: React.Dispatch<React.SetStateAction<Food | Recipe | null>>
   onBack: () => void
+  profile: Profile
 }
 export const SelectedItem: React.FC<props> = ({
   onBack,
+  profile,
   selectedItem,
   setSelectedItem,
   type,
 }) => {
   const dispatch = getDispatch()
+  const { enablePlanning } = profile
 
   const [amount, setAmount] = useState('')
   const [unit, setUnit] = useState(getDefaultUnit(getPrettyUnits(selectedItem)))
+  const [meal, setMeal] = useState(defaultMeal)
 
   const submitReady = Boolean(amount && unit)
 
@@ -39,6 +45,8 @@ export const SelectedItem: React.FC<props> = ({
       amountAsNumber,
       unit,
       null,
+      enablePlanning,
+      meal,
       dispatch,
       selectedItem
     )
@@ -75,6 +83,9 @@ export const SelectedItem: React.FC<props> = ({
           setUnit={setUnit}
           amount={amount}
           setAmount={setAmount}
+          enablePlanning={enablePlanning}
+          meal={meal}
+          setMeal={setMeal}
         />
         <ButtonPanel showSubmit={submitReady} submit={() => submit()} />
       </div>

@@ -1,7 +1,7 @@
 import toast from 'react-hot-toast'
 import { Unit } from '../../../constants/units'
 import { addIngredient } from '../../../helpers/ingredient/addIngredient'
-import { Barcode } from '../../../models/log'
+import { Barcode, Meal } from '../../../models/log'
 import { SelectedItem } from '../../../store/editor/types'
 import { Dispatch } from '../../../store/store'
 import { AdderItem } from '../StandardAdder'
@@ -13,6 +13,8 @@ export const submitEditor = (
   amount: number | null,
   unit: Unit | null,
   barcode: Barcode | null,
+  enablePlanning: boolean,
+  meal: Meal,
   dispatch: Dispatch,
   searchResult?: SelectedItem
 ) => {
@@ -45,7 +47,17 @@ export const submitEditor = (
   if (type === 'log') {
     const id = searchResult ? searchResult.id : undefined
     const type = searchResult ? searchResult.type : 'food'
-    addLog(dispatch, alias, amount, unit, barcode, id, type)
+    addLog(
+      dispatch,
+      alias,
+      amount,
+      unit,
+      barcode,
+      enablePlanning,
+      meal,
+      type,
+      id
+    )
     return true
   }
 

@@ -2,6 +2,7 @@ import React from 'react'
 import { useStoreon } from 'storeon/react'
 import { QuickAddUnit } from '../../constants/units'
 import { Log } from '../../models/log'
+import { Profile } from '../../models/profile'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { FractionInput } from '../fraction-input/FractionInput'
@@ -11,10 +12,12 @@ import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import { CommonItem } from '../item/types'
 import { updateUnitLogsOnCloud } from '../list/Unit/helpers/updateUnitLogsOnCloud'
 
-type props = { logs: Log[]; item: CommonItem | undefined }
-export const UnitModal: React.FC<props> = ({ item, logs }) => {
+type props = { profile: Profile; logs: Log[]; item: CommonItem | undefined }
+export const UnitModal: React.FC<props> = ({ item, logs, profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
-  const itemToUse = item === undefined ? createDefaultItem() : item
+  const { enablePlanning } = profile
+  const itemToUse =
+    item === undefined ? createDefaultItem(enablePlanning) : item
   const [amount, updateAmount] = React.useState(itemToUse.amount || '')
 
   // Create the local refs
@@ -33,6 +36,7 @@ export const UnitModal: React.FC<props> = ({ item, logs }) => {
           logs,
           Number(amount),
           item?.unit as QuickAddUnit,
+          profile.enablePlanning,
           () => {
             dispatch('closeUnitModal')
           }

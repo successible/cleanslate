@@ -1,8 +1,20 @@
+/* eslint-disable sort/object-properties */
+
 import { Unit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
 import { Food } from './food'
 import { Profile } from './profile'
 import { Recipe } from './recipe'
+
+export type Meal = 'Breakfast' | 'Lunch' | 'Dinner' | 'Snack'
+
+export const defaultMeal: Meal = 'Snack'
+export const MealEnum: Record<Meal, number> = {
+  Breakfast: 0,
+  Lunch: 1,
+  Dinner: 2,
+  Snack: 3,
+}
 
 export type Barcode = {
   name: string
@@ -21,6 +33,8 @@ export class Log {
   unit: Unit
   alias: string | null
   barcode: Barcode | null
+  consumed: boolean
+  meal: Meal
 
   // Foreign keys
   profile: string

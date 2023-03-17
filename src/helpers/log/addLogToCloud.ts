@@ -9,7 +9,15 @@ import { stringifyQuery } from '../stringifyQuery'
 export const addLogToCloud = (log: AddLog, onSuccess: () => void) => {
   getHasuraClient(() => {
     store.dispatch('addLogs', [
-      assembleLog(log.alias, log.amount, log.unit, log.recipe, log.food),
+      assembleLog(
+        log.alias,
+        log.amount,
+        log.unit,
+        log.consumed,
+        log.meal,
+        log.recipe,
+        log.food
+      ),
     ])
   })
     .then((client) => {

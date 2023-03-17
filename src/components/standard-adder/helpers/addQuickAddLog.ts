@@ -8,6 +8,7 @@ import { Dispatch } from '../../../store/types'
 export const addQuickAddLog = (
   calories: number,
   protein: number,
+  enablePlanning: boolean,
   dispatch: Dispatch<keyof NavbarEvents | keyof DataEvents | keyof EditorEvents>
 ) => {
   const variables = {
@@ -30,7 +31,7 @@ export const addQuickAddLog = (
       unit: 'CALORIE' as QuickAddUnit,
     })
   }
-  addQuickLogToCloud(variables, () => {
+  addQuickLogToCloud(variables, enablePlanning, () => {
     dispatch('closeQuickAddModal')
   })
 }

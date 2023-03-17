@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
-
 import CalMini from '../../assets/common/calmini.svg'
 import Density from '../../assets/common/density.svg'
-
 import ProteinMini from '../../assets/common/proteinmini.svg'
 import { Log } from '../../models/log'
 import { Profile } from '../../models/profile'

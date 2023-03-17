@@ -9,6 +9,8 @@ export const LOG_FRAGMENT = gql`
     barcode
     createdAt
     type
+    consumed
+    meal
   }
 `
 

@@ -1,6 +1,6 @@
 import { Unit } from '../../constants/units'
 import { Food } from '../../models/food'
-import { Barcode, Log } from '../../models/log'
+import { Barcode, Log, Meal } from '../../models/log'
 import { Profile } from '../../models/profile'
 import { Recipe } from '../../models/recipe'
 import { Type } from '../../store/data/types'
@@ -16,6 +16,8 @@ export type OnUpdateItem = (
   id: string,
   unit: Unit | null,
   amount: number | null,
+  consumed: boolean | null,
+  meal: Meal | null,
   dispatch: Dispatch<AllEvents>,
   barcode?: Barcode | null
 ) => void | Promise<string | Log>
@@ -40,4 +42,6 @@ export type CommonItem = {
   src: string | null
   type: ItemType
   unit: Unit | null
+  meal: Meal | null
+  consumed: boolean | null
 }

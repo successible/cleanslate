@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useStoreon } from 'storeon/react'
+import { Profile } from '../../models/profile'
 import { DataEvents } from '../../store/data/types'
 import { EditorEvents } from '../../store/editor/types'
 import { NavbarEvents, NavbarState } from '../../store/navbar/types'
@@ -10,7 +11,9 @@ import { colors } from '../../theme'
 import { SubmitButton } from '../item-modal/components/SubmitButton'
 import { addQuickAddLog } from '../standard-adder/helpers/addQuickAddLog'
 
-export const QuickAdder = () => {
+type props = { profile: Profile }
+export const QuickAdder: React.FC<props> = ({ profile }) => {
+  const { enablePlanning } = profile
   const [calories, setCalories] = React.useState(null as number | string | null)
   const [protein, setProtein] = React.useState(null as number | string | null)
 
@@ -63,7 +66,12 @@ export const QuickAdder = () => {
         if (!calories && !protein) {
           toast.error('You must include a value!')
         } else {
-          addQuickAddLog(Number(calories), Number(protein), dispatch)
+          addQuickAddLog(
+            Number(calories),
+            Number(protein),
+            enablePlanning,
+            dispatch
+          )
         }
       }}
       css={form}

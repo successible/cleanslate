@@ -101,7 +101,12 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.modalVisibility"
       visible={modalVisibility}
     >
-      <StandardAdder recipes={recipes} foods={foods} type="log" />
+      <StandardAdder
+        profile={profile}
+        recipes={recipes}
+        foods={foods}
+        type="log"
+      />
     </Modal>,
 
     <Modal
@@ -115,7 +120,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.quickAddModalVisibility"
       visible={quickAddModalVisibility}
     >
-      <QuickAdder />
+      <QuickAdder profile={profile} />
     </Modal>,
 
     // Sidebar
@@ -137,7 +142,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.exerciseModalVisibility"
       visible={exerciseModalVisibility}
     >
-      <ExerciseForm />
+      <ExerciseForm profile={profile} />
     </Modal>,
 
     // Camera Modal
@@ -153,7 +158,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.cameraModalVisibility"
       visible={cameraModalVisibility}
     >
-      <CameraModal />
+      <CameraModal profile={profile} />
     </Modal>,
 
     // target-form
@@ -269,7 +274,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.addIngredientModalVisibility"
       visible={addIngredientModalVisibility}
     >
-      <IngredientModal recipes={recipes} foods={foods} />
+      <IngredientModal profile={profile} recipes={recipes} foods={foods} />
     </Modal>,
 
     // custom-food-form
@@ -305,7 +310,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.itemModalVisibility"
       visible={itemModalVisibility}
     >
-      <ItemModal item={itemToUpdate} />
+      <ItemModal item={itemToUpdate} profile={profile} />
     </Modal>,
     <Modal // unit-modal
       id={'unit-modal'}
@@ -316,7 +321,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.unitModalVisibility"
       visible={unitModalVisibility}
     >
-      <UnitModal item={itemToUpdate} logs={logs} />
+      <UnitModal profile={profile} item={itemToUpdate} logs={logs} />
     </Modal>,
     <Modal
       closeModal={() => {

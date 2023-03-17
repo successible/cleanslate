@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { dummyFoods } from '../../constants/dummyFoods/dummyFoods'
 import { pastaNames } from '../../constants/dummyFoods/pasta'
 import { Food } from '../../models/food'
+import { Profile } from '../../models/profile'
 import { Recipe } from '../../models/recipe'
 import { colors } from '../../theme'
 import { Meta } from './components/Meta'
@@ -17,9 +18,19 @@ import { mapFoodToDummyFood } from './helpers/mapNameToDummyFood'
 
 export type AdderItem = 'ingredient' | 'log'
 
-type props = { recipes: Recipe[]; foods: Food[]; type: AdderItem }
+type props = {
+  profile: Profile
+  recipes: Recipe[]
+  foods: Food[]
+  type: AdderItem
+}
 
-export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
+export const StandardAdder: React.FC<props> = ({
+  foods,
+  profile,
+  recipes,
+  type,
+}) => {
   const [searchText, setSearchText] = useState('')
   const [searchResults, setSearchResults] = useState([] as (Food | Recipe)[])
   const [path, setPath] = useState([] as string[])
@@ -191,6 +202,7 @@ export const StandardAdder: React.FC<props> = ({ foods, recipes, type }) => {
 
       {selectedItem && (
         <SelectedItem
+          profile={profile}
           type={type}
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}

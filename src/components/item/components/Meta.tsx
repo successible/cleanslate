@@ -11,6 +11,7 @@ import { renderMacros } from '../helpers/renderMacros'
 import { spawnItemEditModal } from '../helpers/spawnItemEditModal'
 import { CommonItem } from '../types'
 import { Amount } from './Amount'
+import { ConsumeButton } from './ConsumeButton'
 import { Tags } from './Tags'
 import { UnitInput } from './UnitInput'
 
@@ -154,6 +155,9 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
             <div className="fr">
               <div className="mt5">{renderMacros(item, profile)}</div>
             </div>
+          )}
+          {item.type === 'log' && item.profile?.enablePlanning && (
+            <ConsumeButton item={item} dispatch={dispatch} />
           )}
         </div>
       </div>

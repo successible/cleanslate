@@ -7,7 +7,6 @@ import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
 import Hamburger from '../../assets/common/hamburger.svg'
 import Search from '../../assets/common/magnify.svg'
-
 import { Profile } from '../../models/profile'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
@@ -58,11 +57,15 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
         </button>
       )}
 
-      {profile.showCalories && (
+      {profile.showCalories && profile.enablePlanning && (
         <button
           type="button"
           onClick={() => {
-            dispatch('openQuickAddModal')
+            if (profile.enablePlanning) {
+              dispatch('openFoodFormModal')
+            } else {
+              dispatch('openQuickAddModal')
+            }
           }}
         >
           <HiddenInput type="text" inputMode="decimal" />

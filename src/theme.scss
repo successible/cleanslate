@@ -453,7 +453,7 @@ input[type='checkbox'] {
   width: 25px;
 
   &:checked::before {
-    background-color: $purple;
+    background-color: $success;
     border-radius: 1px;
     content: '';
     height: 50%;
@@ -464,6 +464,13 @@ input[type='checkbox'] {
     width: 50%;
   }
 }
+
+input[type='checkbox'] {
+  &:focus {
+    border-color: $success;
+  }
+}
+
 input[type='radio'] {
   margin-left: 0;
   margin-right: 0;

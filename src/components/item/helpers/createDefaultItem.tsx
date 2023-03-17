@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Unit } from '../../../constants/units'
+import { defaultMeal } from '../../../models/log'
 import { CommonItem } from '../types'
 
 const defaultOnDelete = (id?: string) => {}
@@ -9,15 +10,20 @@ const defaultOnUpdate = (
   amount: number | null
 ) => undefined
 
-export const createDefaultItem = (unit?: Unit): CommonItem => {
+export const createDefaultItem = (
+  enablePlanning: boolean,
+  unit?: Unit
+): CommonItem => {
   return {
     alias: null,
     amount: null,
     barcode: null,
     childRecipe: null,
+    consumed: !enablePlanning,
     createdAt: null,
     food: null,
     id: '',
+    meal: defaultMeal,
     name: '',
     onDelete: defaultOnDelete,
     onUpdate: defaultOnUpdate,

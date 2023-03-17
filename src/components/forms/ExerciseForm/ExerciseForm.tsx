@@ -4,6 +4,7 @@ import { useStoreon } from 'storeon/react'
 import { QuickAddUnit } from '../../../constants/units'
 import { addQuickLogToCloud } from '../../../helpers/log/addQuickLogToCloud'
 import { round } from '../../../helpers/round'
+import { Profile } from '../../../models/profile'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
 import { md } from '../../../theme'
@@ -30,7 +31,8 @@ export const group = [
 ] as const
 export type ExerciseGroup = (typeof group)[number]
 
-export const ExerciseForm = () => {
+type props = { profile: Profile }
+export const ExerciseForm: React.FC<props> = ({ profile }) => {
   const [weight, updateWeight] = React.useState('')
   const [minutes, setMinutes] = React.useState('')
   const [watt, setWatts] = React.useState('')
@@ -127,7 +129,7 @@ export const ExerciseForm = () => {
                 },
               ],
             }
-            addQuickLogToCloud(variables, () => {
+            addQuickLogToCloud(variables, profile.enablePlanning, () => {
               dispatch('closeExerciseModal')
             })
           }

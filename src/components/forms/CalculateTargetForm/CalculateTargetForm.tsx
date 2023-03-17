@@ -1,5 +1,6 @@
 import { css } from '@emotion/react'
 import React from 'react'
+import Switch from 'react-switch'
 import { useStoreon } from 'storeon/react'
 import { updateProfileOnCloud } from '../../../helpers/profile/updateProfileOnCloud'
 import { Profile } from '../../../models/profile'
@@ -8,7 +9,6 @@ import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
 import { lg } from '../../../theme'
 import { Tabs } from '../../tabs/Tabs'
-
 import { calculateTargets } from './helpers/calculateTargets'
 
 export type Goal = 'fat' | 'muscle' | 'maintain'
@@ -207,13 +207,15 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
             </div>
           </div>
 
-          <div className="fr mb10">
+          <div className="fr mb10 mt10">
             <label htmlFor="liftWeights">Do you lift weights?</label>
-            <input
-              onChange={(event) => setLiftWeights(event.target.checked)}
-              checked={liftWeights}
-              type="checkbox"
+            <Switch
+              className="ml20 mt5"
               id="liftWeights"
+              onChange={(data) => {
+                setLiftWeights(data)
+              }}
+              checked={liftWeights}
             />
           </div>
           <button type="submit" className="purple bold">

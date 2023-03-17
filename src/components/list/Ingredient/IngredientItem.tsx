@@ -16,13 +16,20 @@ export const IngredientItem: React.FC<props> = (props) => {
   const food = ingredient.ingredientToFood
   const childRecipe = ingredient.ingredientToChildRecipe
 
-  const onUpdate: OnUpdateItem = (id, unit, amount, dispatch) => {
+  const onUpdate: OnUpdateItem = (
+    id,
+    unit,
+    amount,
+    consumed,
+    meal,
+    dispatch
+  ) => {
     if (!unit) {
       toast.error('Please specify a unit')
     } else if (!amount) {
       toast.error('Please specify a valid amount')
     } else {
-      const updatedIngredient = { ...ingredient, amount, unit }
+      const updatedIngredient = { ...ingredient, amount, consumed, meal, unit }
       dispatch('saveIngredient', updatedIngredient)
     }
   }
@@ -43,9 +50,11 @@ export const IngredientItem: React.FC<props> = (props) => {
         amount,
         barcode: null,
         childRecipe,
+        consumed: null,
         createdAt,
         food,
         id,
+        meal: null,
         name,
         onDelete,
         onUpdate,

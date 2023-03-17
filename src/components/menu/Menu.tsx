@@ -4,7 +4,6 @@ import { useStoreon } from 'storeon/react'
 import CustomFood from '../../assets/common/food.svg'
 import Logout from '../../assets/common/logout.svg'
 import Mortarboard from '../../assets/common/mortarboard.svg'
-
 import CustomRecipe from '../../assets/common/recipe.svg'
 import Feedback from '../../assets/common/review.svg'
 import Settings from '../../assets/common/settings.svg'
@@ -156,7 +155,7 @@ export const Menu: React.FC = () => {
                   navigate to GitHub
                 </a>{' '}
                 and create a free account. It should only take a minute. Then,
-                post on the Discussions page!
+                post on the Issues page!
                 <Explanation color="blue">
                   <div>
                     Don{`'`}t feel comfortable sharing your feedback publicly?

@@ -2,7 +2,6 @@ import { FOOD_FRAGMENT } from '../graphql/food'
 import { INGREDIENT_FRAGMENT } from '../graphql/ingredient'
 import { LOG_FRAGMENT } from '../graphql/log'
 import { PROFILE_FRAGMENT } from '../graphql/profile'
-
 import {
   INGREDIENT_BASE_FRAGMENT,
   RECIPE_BASE_FRAGMENT,

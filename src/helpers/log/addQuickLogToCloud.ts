@@ -1,6 +1,7 @@
 import { assembleLog } from '../../components/standard-adder/helpers/assembleLog'
 import { QuickAddUnit } from '../../constants/units'
 import { CREATE_LOGS } from '../../graphql/log'
+import { defaultMeal } from '../../models/log'
 import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'
@@ -15,11 +16,12 @@ export type AddQuickLog = {
 
 export const addQuickLogToCloud = (
   variables: AddQuickLog,
+  enablePlanning: boolean,
   onSuccess: () => void
 ) =>
   getHasuraClient(() => {
     const logs = variables.objects.map((log) =>
-      assembleLog(null, log.amount, log.unit)
+      assembleLog(null, log.amount, log.unit, enablePlanning, defaultMeal)
     )
     store.dispatch('addLogs', logs)
   })

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import axios from 'axios'
 import { compareVersions } from 'compare-versions'
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { debounce } from 'throttle-debounce'
 import UAParser from 'ua-parser-js'
@@ -10,24 +10,26 @@ import { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
 import { getDispatch } from '../../helpers/getDispatch'
 import { isMobileSafari } from '../../helpers/isMobileSafari'
-import { Barcode } from '../../models/log'
+import { Barcode, defaultMeal } from '../../models/log'
+import { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
-import { FractionInput } from '../fraction-input/FractionInput'
 import { Image } from '../image/Image'
 import Scan from '../scanner/components/scan'
-import { Select } from '../select/Select'
 import { ButtonPanel } from '../standard-adder/components/ButtonPanel'
+import { InputFields } from '../standard-adder/components/InputFields'
 import { submitEditor } from '../standard-adder/helpers/submitEditor'
 
-export const CameraModal = () => {
+type props = { profile: Profile }
+export const CameraModal: React.FC<props> = ({ profile }) => {
+  const { enablePlanning } = profile
   const dispatch = getDispatch()
 
   const [barcode, setBarcode] = useState(null as Barcode | null)
   const [amount, setAmount] = useState('')
+  const [meal, setMeal] = useState(defaultMeal)
+
   const [unit, setUnit] = useState('GRAM' as Unit)
   const [ran, setRan] = useState(false)
-
-  const amountInput = useRef<HTMLInputElement>(null)
 
   const fetchData = debounce(100, (code: string) => {
     setRan(true)
@@ -131,25 +133,29 @@ export const CameraModal = () => {
               {capitalize(barcode.name || 'Unknown')}
             </span>
           </div>
-          <FractionInput
-            inputRef={amountInput}
-            className="m20"
-            value={amount}
-            setValue={(value) => setAmount(value)}
-            placeholder={'Enter amount...'}
-          />
-          <Select
-            focus={false}
-            currentOption={unit}
-            optionDictionary={options}
-            onChange={(newUnit: Unit) => {
-              setUnit(newUnit)
-            }}
+          <InputFields
+            selectedItem={null}
+            unit={unit}
+            setUnit={setUnit}
+            amount={amount}
+            setAmount={setAmount}
+            enablePlanning={enablePlanning}
+            meal={meal}
+            setMeal={setMeal}
           />
           <ButtonPanel
             showSubmit={Boolean(amount && unit)}
             submit={() => {
-              submitEditor('log', null, Number(amount), unit, barcode, dispatch)
+              submitEditor(
+                'log',
+                null,
+                Number(amount),
+                unit,
+                barcode,
+                enablePlanning,
+                meal,
+                dispatch
+              )
             }}
           />
         </div>

@@ -2,11 +2,13 @@ import React from 'react'
 import { useStoreon } from 'storeon/react'
 import { Unit } from '../../constants/units'
 import { round } from '../../helpers/round'
+import { Profile } from '../../models/profile'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { FractionInput } from '../fraction-input/FractionInput'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import { CommonItem } from '../item/types'
+import { MealInput } from '../meal-input/MealInput'
 import { Select } from '../select/Select'
 import { Meta } from './components/Meta'
 import { SubmitButton } from './components/SubmitButton'
@@ -14,17 +16,22 @@ import { UnitInput } from './components/UnitInput'
 import { submitItem } from './helpers/submitItem'
 
 type props = {
+  profile: Profile
   item: CommonItem | undefined
 }
 
-export const ItemModal: React.FC<props> = ({ item }) => {
+export const ItemModal: React.FC<props> = ({ item, profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
+  const { enablePlanning } = profile
   // Extract information from props
-  const itemToUse = item === undefined ? createDefaultItem() : item
-  const { amount, barcode, onUpdate, unit } = itemToUse
+  const itemToUse =
+    item === undefined ? createDefaultItem(enablePlanning) : item
+  const { amount, barcode, consumed, meal, onUpdate, unit } = itemToUse
 
   // Create the local form state
   const [localUnit, setLocalUnit] = React.useState(unit)
+  const [localMeal, setLocalMeal] = React.useState(meal)
+
   const [localAmount, setLocalAmount] = React.useState(
     amount ? String(round(amount, 2)) : ''
   )
@@ -41,7 +48,15 @@ export const ItemModal: React.FC<props> = ({ item }) => {
       className="fcc mw600 mt30"
       onSubmit={(event) => {
         event.preventDefault()
-        submitItem(itemToUse, localAmount, localUnit, dispatch, onUpdate)
+        submitItem(
+          itemToUse,
+          localAmount,
+          localUnit,
+          consumed,
+          localMeal,
+          dispatch,
+          onUpdate
+        )
       }}
     >
       {/* Meta */}
@@ -81,6 +96,11 @@ export const ItemModal: React.FC<props> = ({ item }) => {
           )}
         </div>
       )}
+
+      {meal && localMeal && (
+        <MealInput meal={localMeal} setMeal={setLocalMeal} />
+      )}
+
       {/* Submit button */}
       {amount && unit && <SubmitButton submit={true} />}
     </form>
