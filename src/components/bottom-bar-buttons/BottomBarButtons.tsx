@@ -68,7 +68,9 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
             }
           }}
         >
-          <HiddenInput type="text" inputMode="decimal" />
+          {!profile.enablePlanning && (
+            <HiddenInput type="text" inputMode="decimal" />
+          )}
           <img alt="Rocket" src={Rocket.src} />
         </button>
       )}
