@@ -97,7 +97,7 @@ export const ItemModal: React.FC<props> = ({ item, profile }) => {
         </div>
       )}
 
-      {meal && localMeal && (
+      {meal && localMeal && profile.enablePlanning && (
         <MealInput meal={localMeal} setMeal={setLocalMeal} />
       )}
 
