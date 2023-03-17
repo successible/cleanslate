@@ -42,16 +42,4 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     }
     return dotProp.set(state, 'data.basicFoods', basicFoods)
   })
-
-  store.on('deleteLogs', (state, id) => {
-    const profile = state.data.profiles[0]
-    const newLogs = profile.logs.filter((log) => !id.includes(log.id))
-    return dotProp.set(state, `data.profiles.0.logs`, newLogs)
-  })
-
-  store.on('addLogs', (state, logs) => {
-    const profile = state.data.profiles[0]
-    const newLogs = [...profile.logs, ...logs]
-    return dotProp.set(state, `data.profiles.0.logs`, newLogs)
-  })
 }

@@ -19,8 +19,6 @@ export type DataSlice = {
 export type DataEvents = {
   updateProfile: Profile[]
   updateBasicFoods: Food[]
-  addLogs: Log[]
-  deleteLogs: string[]
   updateCurrentWebsocketClient: SubscriptionClient | null
 }
 

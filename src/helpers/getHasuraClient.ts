@@ -8,16 +8,12 @@ import {
   stopRequestIfOffline,
 } from './stopRequestIfOffline'
 
-export const getHasuraClient = (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  opportunisticUpdate = () => {}
-): PendingClient => {
+export const getHasuraClient = (): PendingClient => {
   return stopRequestIfOffline()
     .then(() => {
       return getJWT()
     })
     .then((token) => {
-      opportunisticUpdate()
       const request: Client = {
         request: (query, variables) => {
           const headers = token
