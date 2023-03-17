@@ -1,11 +1,9 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import Sun from '../../assets/common/sun.svg'
 import { round } from '../../helpers/round'
 import { Log } from '../../models/log'
 import { defaultTargets, Profile } from '../../models/profile'
 import { colors } from '../../theme'
-import { Image } from '../image/Image'
 import { calculateMacros } from '../macros/helpers/calculateMacros'
 
 type props = {
@@ -31,6 +29,7 @@ const number = css`
     font-size: 0.95rem;
     height: 32px;
     margin-left: 10px;
+    min-width: 40px;
 
     div {
       color: ${colors.black};
@@ -66,7 +65,7 @@ export const Numbers: React.FC<props> = (props) => {
   const loading = proteinTarget === defaultTargets[1]
   const hideCalories = loading || profile.showCalories === false
 
-  const calorieFree = <Image width={20} height={20} alt="Sun" src={Sun} />
+  const calorieFree = ''
 
   return (
     <div css={numbers}>

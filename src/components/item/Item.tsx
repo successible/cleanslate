@@ -24,7 +24,10 @@ export const Item = (props: { item: CommonItem }) => {
 
   return (
     <div
-      css={[itemStyles, item.consumed && consumedStyling]}
+      css={[
+        itemStyles,
+        item.consumed && item.profile?.enablePlanning && consumedStyling,
+      ]}
       className={`w100 item item-${type}`}
     >
       <div className="fr">
