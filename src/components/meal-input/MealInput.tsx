@@ -1,5 +1,6 @@
 /* eslint-disable sort/object-properties */
 
+import { css } from '@emotion/react'
 import { Meal } from '../../models/log'
 import { Tabs } from '../tabs/Tabs'
 
@@ -8,6 +9,12 @@ export const MealInput: React.FC<props> = ({ meal, setMeal }) => {
   return (
     <div className="mt10 w100 mb10">
       <Tabs
+        css={css`
+          flex-wrap: nowrap;
+          button > div {
+            font-size: 0.8rem !important;
+          }
+        `}
         selected={meal}
         tabs={{
           Breakfast: {

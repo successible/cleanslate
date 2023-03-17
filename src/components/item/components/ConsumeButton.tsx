@@ -15,8 +15,8 @@ export const ConsumeButton: React.FC<props> = ({ item }) => {
       <div css={nameStyling}>Eaten:</div>
       <input
         css={css`
-          width: 20px !important;
-          height: 20px !important;
+          width: 25px !important;
+          height: 25px !important;
           margin: 0px !important;
           margin-left: 5px !important;
           position: relative;
