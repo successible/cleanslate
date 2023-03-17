@@ -23,7 +23,9 @@ insert_permissions:
         - alias
         - amount
         - barcode
+        - consumed
         - food
+        - meal
         - profile
         - recipe
         - unit
@@ -34,9 +36,11 @@ select_permissions:
         - alias
         - amount
         - barcode
+        - consumed
         - createdAt
         - food
         - id
+        - meal
         - profile
         - recipe
         - type
@@ -52,7 +56,9 @@ update_permissions:
         - alias
         - amount
         - barcode
+        - consumed
         - food
+        - meal
         - profile
         - recipe
         - unit
