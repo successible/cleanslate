@@ -38,7 +38,7 @@ To run Clean Slate locally or in production, you have about five minutes of setu
 
 - Make sure you have [Git](https://git-scm.com/downloads) on your computer.
 - Fork and clone down the `git` repository [here](https://github.com/successible/cleanslate).
-- Install [Node.js](https://nodejs.org/en/).
+- Install [Node.js (LTS)](https://nodejs.org/en/).
 - Install [jq](https://stedolan.github.io/jq/download/).
 - Install the `Firebase CLI` by running `npm install firebase-tools`.
 
