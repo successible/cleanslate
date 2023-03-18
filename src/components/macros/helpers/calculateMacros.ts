@@ -174,7 +174,6 @@ export const calculatePerMacroPerRecipe = (
 ): number => {
   const result = recipe.ingredients.reduce((acc, ingredient) => {
     const childRecipe = ingredient.ingredientToChildRecipe
-
     const food = ingredient.ingredientToFood
 
     if (food) {
