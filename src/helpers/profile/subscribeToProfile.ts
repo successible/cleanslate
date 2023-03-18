@@ -1,6 +1,7 @@
 import dotProp from 'dot-prop-immutable'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { SUBSCRIBE_TO_DATA } from '../../graphql/profile'
+import { Ingredient } from '../../models/ingredient'
 import { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
 import { getBasicFoods } from '../Food/getBasicFoods'
@@ -37,13 +38,22 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
             return log
           })
 
+          const processIngredient = (ingredient: Ingredient) => {
+            const basicFoodId = ingredient.basicFood
+            if (basicFoodId) {
+              ingredient.basicFood = basicFoodId
+              ingredient.ingredientToFood = basicFoodsManifest[basicFoodId]
+            }
+            if (ingredient.ingredientToChildRecipe) {
+              ingredient.ingredientToChildRecipe.ingredients.map(
+                processIngredient
+              )
+            }
+          }
+
           const recipesWithBasicFoods = profiles[0].recipes.map((recipe) => {
             recipe.ingredients = recipe.ingredients.map((ingredient) => {
-              const basicFoodId = ingredient.basicFood
-              if (basicFoodId) {
-                ingredient.basicFood = basicFoodId
-                ingredient.ingredientToFood = basicFoodsManifest[basicFoodId]
-              }
+              processIngredient(ingredient)
               return ingredient
             })
             return recipe

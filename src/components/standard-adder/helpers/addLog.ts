@@ -25,19 +25,22 @@ export const addLog = (
   enablePlanning: boolean,
   meal: Meal,
   type: Type,
-  isCustomFood: boolean,
+  isBasicFood: boolean,
   id: string | undefined
 ) => {
+  const food = type === 'food' && !isBasicFood ? id : undefined
+  const basicFood = type === 'food' && isBasicFood ? id : undefined
+  const recipe = type === 'recipe' ? id : undefined
   if (amount && unit) {
     const log: AddLog = {
       alias,
       amount,
       barcode,
-      basicFood: type === 'food' && !isCustomFood ? id : undefined,
+      basicFood,
       consumed: !enablePlanning,
-      food: type === 'food' && isCustomFood ? id : undefined,
+      food,
       meal,
-      recipe: type === 'recipe' ? id : undefined,
+      recipe,
       unit,
     }
     dispatch('closeModal')
