@@ -1,8 +1,6 @@
 import { css } from '@emotion/react'
 import { executeKeyboardShortcuts } from '../../helpers/executeShortcuts'
-import { subscribeToAllBasicFoods } from '../../helpers/Food/subscribeToAllBasicFoods'
 import { subscribeToProfile } from '../../helpers/profile/subscribeToProfile'
-import { useBasicFoods } from '../../hooks/useBasicFoods'
 import { useData } from '../../hooks/useData'
 import { usePWAPrompt } from '../../hooks/usePWAPrompt'
 import { useShortcuts } from '../../hooks/useShortcuts'
@@ -24,13 +22,7 @@ export const App = () => {
 
   useStartTime()
   useShortcuts(executeKeyboardShortcuts)
-  useSubscription(
-    [subscribeToProfile, subscribeToAllBasicFoods],
-    user,
-    offline,
-    profile
-  )
-  useBasicFoods(user)
+  useSubscription([subscribeToProfile], user, offline, profile)
   usePWAPrompt(profile, dispatch)
 
   const navbarHeight = 65

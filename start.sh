@@ -15,8 +15,6 @@ HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "%s", "issuer": "%s", 
 export HASURA_GRAPHQL_JWT_SECRET=$(printf "$HASURA_GRAPHQL_JWT_SECRET" $FIREBASE_PROJECT_ID https://securetoken.google.com/$FIREBASE_PROJECT_ID)
 export HASURA_GRAPHQL_DATABASE_URL="postgres://postgres:password@database:5432/postgres"
 
-
-
 abspath() {                                               
     cd "$(dirname "$1")"
     printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
@@ -40,7 +38,7 @@ docker-compose pull && docker-compose up -d
 echo "=> Wait for five seconds for Hasura to get ready..."
 sleep 5;
 
-echo "=> Run migrations with Hasura and sync basic foods..."
+echo "=> Run migrations with Hasura..."
 node migrate.js
 
 echo "=> Sync the .dockerignore with the .gitignore"

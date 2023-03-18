@@ -107,8 +107,6 @@ export const StandardAdder: React.FC<props> = ({
                 mapFoodToDummyFood(result)
               )
 
-              console.log(resultsWithoutLeaves)
-
               // Remove all the duplicate dummy foods (e.g. the dummy food chicken like 40 times)
               // Handles the fact a recipe, custom food, and basic food can all be named the same thing
 

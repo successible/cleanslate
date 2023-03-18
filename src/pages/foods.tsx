@@ -2,36 +2,25 @@ import { css } from '@emotion/react'
 import Head from 'next/head'
 import React from 'react'
 // @ts-ignore
-import BasicFoods from '../basicFoods.csv'
 import { DensityItem } from '../components/list/Density/DensityItem'
 import { Navbar } from '../components/navbar/Navbar'
 import { createSearcher } from '../components/standard-adder/helpers/createSearcher'
 import { getSearchResults } from '../components/standard-adder/helpers/getSearchResults'
 import { Tabs } from '../components/tabs/Tabs'
 import { Group, groups } from '../constants/groups'
+import { getBasicFoods } from '../helpers/Food/getBasicFoods'
 import { sortByDensity } from '../helpers/sortByDensity'
 import { Density, Food } from '../models/food'
 
 const Foods = () => {
-  const foods = (
-    BasicFoods as unknown as (Food & {
-      caloriesPer100Gram: number
-      proteinPer100Gram: number
-    })[]
-  ).map((food) => {
-    food['caloriesPerGram'] = food['caloriesPer100Gram'] / 100
-    food['proteinPerGram'] = food['proteinPer100Gram'] / 100
-    food.foodToProfile = null
-    food.type = 'food'
-    food.id = String(food.basicFoodId)
-    return food
-  })
   const [searchText, setSearchText] = React.useState('')
   const [searchResults, setSearchResults] = React.useState([] as Food[])
   const [density, updateDensity] = React.useState('caloric-density' as Density)
   const [group, setGroup] = React.useState('All' as Group | 'All')
 
-  const foodsToUse = foods
+  const basicFoods = getBasicFoods()
+
+  const foodsToUse = basicFoods
     // To avoid confusion, remove the raw or dry dummy foods
     .filter((food) => {
       return (
