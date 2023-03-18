@@ -40,6 +40,7 @@ export class Log {
   profile: string
   food = uuid() || null
   recipe = uuid() || null
+  basicFood = uuid() || null
 
   // Relationships
   logToFood: Food | null

@@ -11,6 +11,7 @@ export const LOG_FRAGMENT = gql`
     type
     consumed
     meal
+    basicFood
   }
 `
 

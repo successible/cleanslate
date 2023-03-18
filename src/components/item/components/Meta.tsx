@@ -56,9 +56,8 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
     unit,
   } = item
 
-  const isRecipeItem = type === 'recipe'
-  const isCustomFoodItem = Boolean(type === 'food' && profile)
-
+  const isRecipe = type === 'recipe'
+  const isCustomFood = Boolean(type === 'food' && profile)
   const isCustomLog =
     type === 'log' && Boolean(food?.foodToProfile?.authId || recipe)
 
@@ -92,8 +91,8 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
                 nameStyling,
                 src === null && withoutImage,
                 isCustomLog && custom,
-                isCustomFoodItem && green,
-                isRecipeItem && blue,
+                isCustomFood && green,
+                isRecipe && blue,
                 css`
                   height: ${['food', 'recipe'].includes(type)
                     ? '40px !important;'
@@ -149,7 +148,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
           <div>
             <Tags tags={result.tags} />
           </div>
-          {!isCustomFoodItem && !isRecipeItem && profile && (
+          {!isCustomFood && !isRecipe && profile && (
             <div className="fr">
               <div className="mt5">{renderMacros(item, profile)}</div>
             </div>

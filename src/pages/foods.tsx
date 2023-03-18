@@ -18,7 +18,7 @@ const Foods = () => {
   const [density, updateDensity] = React.useState('caloric-density' as Density)
   const [group, setGroup] = React.useState('All' as Group | 'All')
 
-  const basicFoods = getBasicFoods()
+  const { basicFoods } = getBasicFoods()
 
   const foodsToUse = basicFoods
     // To avoid confusion, remove the raw or dry dummy foods

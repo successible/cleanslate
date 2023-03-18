@@ -1,4 +1,6 @@
+import dotProp from 'dot-prop-immutable'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
+import { basicFoodsManifest } from '../../components/app/App'
 import { SUBSCRIBE_TO_DATA } from '../../graphql/profile'
 import { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
@@ -23,10 +25,25 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
         if (newData.profiles.length === 0) {
           createProfile().then(() => {})
         } else {
-          // Unlike basic foods, we update the entire profile with every subscription
-          // The payload is so small that it{`'`}s a best practice
-          const { profiles } = newData
-          store.dispatch('updateProfile', profiles)
+          const profiles = newData.profiles
+
+          const logsWithBasicFoods = profiles[0].logs.map((log) => {
+            const basicFoodId = log.basicFood
+            if (basicFoodId) {
+              log.logToFood = basicFoodsManifest[basicFoodId]
+            }
+            return log
+          })
+
+          const profilesWithBasicFoods = dotProp.set(
+            profiles,
+            '0.logs',
+            logsWithBasicFoods
+          )
+
+          // We update the entire profile with every subscription
+          // That is because the payload is so small
+          store.dispatch('updateProfile', profilesWithBasicFoods)
         }
       },
     })

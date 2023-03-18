@@ -1,4 +1,4 @@
-import dotPropImmutable from 'dot-prop-immutable'
+import dotProp from 'dot-prop-immutable'
 import { Food } from '../../../models/food'
 
 export const getFoodByName = (
@@ -18,7 +18,5 @@ export const getFoodByName = (
         name.toLowerCase().includes(food.name.toLowerCase())
     )
   // Add the alias for the alias match
-  return food && food.name !== name
-    ? dotPropImmutable.set(food, 'alias', name)
-    : food
+  return food && food.name !== name ? dotProp.set(food, 'alias', name) : food
 }

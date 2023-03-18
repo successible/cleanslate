@@ -4,23 +4,17 @@ import { Barcode, Meal } from '../../../models/log'
 import { Type } from '../../../store/data/types'
 import { Dispatch } from '../../../store/store'
 
-type SharedFields = {
+export type AddLog = {
   alias: string | null
   amount: number
+  barcode: Barcode | null
+  basicFood: string | undefined
   consumed: boolean
+  food: string | undefined
   meal: Meal
+  recipe: string | undefined
   unit: Unit
 }
-
-export type AddLog =
-  | ({
-      food: string | undefined
-      recipe?: undefined
-    } & SharedFields)
-  | ({
-      food?: undefined
-      recipe: string | undefined
-    } & SharedFields)
 
 export const addLog = (
   dispatch: Dispatch,
@@ -31,23 +25,25 @@ export const addLog = (
   enablePlanning: boolean,
   meal: Meal,
   type: Type,
+  isCustomFood: boolean,
   id: string | undefined
 ) => {
-  const fieldsPresent = Boolean(amount && unit && (id || barcode))
-  const log = fieldsPresent && {
-    amount,
-    unit,
-    ...(type === 'food' ? { barcode, food: id } : { recipe: id }),
-    alias,
-    consumed: !enablePlanning,
-    meal,
-  }
-
-  if (log) {
+  if (amount && unit) {
+    const log: AddLog = {
+      alias,
+      amount,
+      barcode,
+      basicFood: type === 'food' && !isCustomFood ? id : undefined,
+      consumed: !enablePlanning,
+      food: type === 'food' && isCustomFood ? id : undefined,
+      meal,
+      recipe: type === 'recipe' ? id : undefined,
+      unit,
+    }
     dispatch('closeModal')
     dispatch('closeQuickAddModal')
     dispatch('clearEditor')
     dispatch('closeCameraModal')
-    addLogToCloud(log as AddLog, () => {})
+    addLogToCloud(log, () => {})
   }
 }

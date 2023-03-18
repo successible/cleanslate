@@ -47,6 +47,13 @@ export const submitEditor = (
   if (type === 'log') {
     const id = searchResult ? searchResult.id : undefined
     const type = searchResult ? searchResult.type : 'food'
+
+    const customFood = Boolean(
+      searchResult &&
+        searchResult.type === 'food' &&
+        searchResult.basicFoodId === null
+    )
+
     addLog(
       dispatch,
       alias,
@@ -56,6 +63,7 @@ export const submitEditor = (
       enablePlanning,
       meal,
       type,
+      customFood,
       id
     )
     return true
