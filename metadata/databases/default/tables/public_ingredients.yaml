@@ -24,6 +24,7 @@ insert_permissions:
         profile: x-hasura-User-Id
       columns:
         - amount
+        - basicFood
         - childRecipe
         - food
         - profile
@@ -34,15 +35,16 @@ select_permissions:
     permission:
       columns:
         - amount
-        - profile
-        - type
-        - unit
-        - createdAt
-        - updatedAt
+        - basicFood
         - childRecipe
+        - createdAt
         - food
         - id
+        - profile
         - recipe
+        - type
+        - unit
+        - updatedAt
       filter:
         profile:
           _eq: X-Hasura-User-Id
@@ -51,6 +53,7 @@ update_permissions:
     permission:
       columns:
         - amount
+        - basicFood
         - childRecipe
         - food
         - profile
