@@ -81,14 +81,12 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
 
   return (
     <div className={`fr expand`}>
-      <div
-        onClick={() => spawnItemEditModal(item, dispatch)}
-        className={`fr ${isCustomLog ? 'pointer' : ''}`}
-      >
+      <div className={`fr ${isCustomLog ? 'pointer' : ''}`}>
         {src && <img css={imageStyling} alt="Item" src={src}></img>}
         <div className="fc">
           <div className="fr">
             <div
+              onClick={() => spawnItemEditModal(item, dispatch)}
               className={['food', 'recipe'].includes(type) ? 'fcs' : ''}
               css={[
                 nameStyling,
