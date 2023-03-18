@@ -18,11 +18,8 @@ export const submitEditor = (
   dispatch: Dispatch,
   searchResult?: SelectedItem
 ) => {
-  const customFood = Boolean(
-    searchResult &&
-      searchResult.type === 'food' &&
-      searchResult.basicFoodId === null
-  )
+  const basicFoodId =
+    searchResult && searchResult.type === 'food' && searchResult.basicFoodId
 
   if (!amount) {
     toast.error('Please specify a valid amount')
@@ -45,7 +42,12 @@ export const submitEditor = (
   }
 
   if (type === 'ingredient' && searchResult) {
-    const ingredient = addIngredient(searchResult, amount, unit, customFood)
+    const ingredient = addIngredient(
+      searchResult,
+      amount,
+      unit,
+      typeof basicFoodId === 'string' ? basicFoodId : null
+    )
     dispatch('saveIngredient', ingredient)
     return true
   }
@@ -62,7 +64,7 @@ export const submitEditor = (
       enablePlanning,
       meal,
       type,
-      customFood,
+      Boolean(basicFoodId),
       id
     )
     return true

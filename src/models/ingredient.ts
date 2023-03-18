@@ -18,7 +18,6 @@ export class Ingredient {
   recipe = uuid()
 
   // Relationships
-  ingredientToBasicFood: Food | null // Fake, only used in addIngredient in local state
   ingredientToFood: Food | null
   ingredientToRecipe: Recipe
   ingredientToChildRecipe: Recipe | null

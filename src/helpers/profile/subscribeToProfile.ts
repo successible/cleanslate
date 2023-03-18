@@ -31,6 +31,7 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
           const logsWithBasicFoods = profiles[0].logs.map((log) => {
             const basicFoodId = log.basicFood
             if (basicFoodId) {
+              log.basicFood = basicFoodId
               log.logToFood = basicFoodsManifest[basicFoodId]
             }
             return log
@@ -41,8 +42,7 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
               const basicFoodId = ingredient.basicFood
               if (basicFoodId) {
                 ingredient.basicFood = basicFoodId
-                ingredient.ingredientToBasicFood =
-                  basicFoodsManifest[basicFoodId]
+                ingredient.ingredientToFood = basicFoodsManifest[basicFoodId]
               }
               return ingredient
             })

@@ -8,16 +8,16 @@ export const addIngredient = (
   item: Food | Recipe,
   amount: number,
   unit: Unit,
-  customFood: boolean
+  basicFoodId: string | null
 ): Ingredient => {
   const isFood = item.type === 'food'
   const isRecipe = item.type === 'recipe'
   const ingredient = new Ingredient()
-  ingredient.ingredientToFood = isFood && customFood ? item : null
-  ingredient.ingredientToBasicFood = isFood && !customFood ? item : null
-  ingredient.ingredientToChildRecipe = isRecipe ? item : null
   ingredient.amount = amount
-  ingredient.unit = unit
+  ingredient.basicFood = basicFoodId
+  ingredient.ingredientToChildRecipe = isRecipe ? item : null
+  ingredient.ingredientToFood = isFood ? item : null
   ingredient.ingredientToProfile = new Profile()
+  ingredient.unit = unit
   return ingredient
 }
