@@ -57,7 +57,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
         </button>
       )}
 
-      {profile.showCalories && profile.enablePlanning && (
+      {profile.showCalories && (
         <button
           type="button"
           onClick={() => {
