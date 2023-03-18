@@ -23,6 +23,7 @@ insert_permissions:
         - alias
         - amount
         - barcode
+        - basicFood
         - consumed
         - food
         - meal
@@ -36,6 +37,7 @@ select_permissions:
         - alias
         - amount
         - barcode
+        - basicFood
         - consumed
         - createdAt
         - food
@@ -56,6 +58,7 @@ update_permissions:
         - alias
         - amount
         - barcode
+        - basicFood
         - consumed
         - food
         - meal
