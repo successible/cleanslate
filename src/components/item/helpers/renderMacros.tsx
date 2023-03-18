@@ -10,10 +10,8 @@ export const renderMacros = (
   if (item.type === 'log' || item.type === 'ingredient') {
     const log = new Log()
     log.logToFood = item.food
-    log.logToRecipe = item.recipe
+    log.logToRecipe = item.recipe || item.childRecipe
     log.logToProfile = null
-    // These will never be default, but Typescript doesn't believe us :)
-    // Hence, 0 and COUNT are dummy values
     log.amount = item.amount || 0
     log.unit = item.unit || 'COUNT'
     log.barcode = item.barcode

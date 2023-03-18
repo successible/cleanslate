@@ -72,8 +72,6 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
             recipesWithBasicFoods
           )
 
-          console.log(profilesWithBasicFoods)
-
           // We update the entire profile with every subscription
           // That is because the payload is so small
           store.dispatch('updateProfile', profilesWithBasicFoods)
