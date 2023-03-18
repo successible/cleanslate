@@ -18,6 +18,12 @@ export const submitEditor = (
   dispatch: Dispatch,
   searchResult?: SelectedItem
 ) => {
+  const customFood = Boolean(
+    searchResult &&
+      searchResult.type === 'food' &&
+      searchResult.basicFoodId === null
+  )
+
   if (!amount) {
     toast.error('Please specify a valid amount')
     return false
@@ -39,7 +45,7 @@ export const submitEditor = (
   }
 
   if (type === 'ingredient' && searchResult) {
-    const ingredient = addIngredient(searchResult, amount, unit)
+    const ingredient = addIngredient(searchResult, amount, unit, customFood)
     dispatch('saveIngredient', ingredient)
     return true
   }
@@ -47,13 +53,6 @@ export const submitEditor = (
   if (type === 'log') {
     const id = searchResult ? searchResult.id : undefined
     const type = searchResult ? searchResult.type : 'food'
-
-    const customFood = Boolean(
-      searchResult &&
-        searchResult.type === 'food' &&
-        searchResult.basicFoodId === null
-    )
-
     addLog(
       dispatch,
       alias,

@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import { executeKeyboardShortcuts } from '../../helpers/executeShortcuts'
-import { getBasicFoods } from '../../helpers/Food/getBasicFoods'
 import { subscribeToProfile } from '../../helpers/profile/subscribeToProfile'
 import { useData } from '../../hooks/useData'
 import { usePWAPrompt } from '../../hooks/usePWAPrompt'
@@ -16,8 +15,6 @@ import { UnitList } from '../list/Unit/UnitList'
 import Modals from '../modals/Modals'
 import { Numbers } from '../numbers/Numbers'
 import { TopBar } from '../top-bar/TopBar'
-
-export const { basicFoods, basicFoodsManifest } = getBasicFoods()
 
 export const App = () => {
   const { dispatch, foods, logs, offline, profile, recipes } = useData()

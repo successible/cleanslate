@@ -4,10 +4,11 @@ import { Ingredient } from '../../../../models/ingredient'
 
 export type FormattedIngredient = {
   amount: number
-  unit: Unit
+  basicFood: string | null // the ID of the basic food
+  childRecipe: string | null // the ID of the child recipe
   food: string | null // the ID of the food
   recipe?: string
-  childRecipe: string | null // the ID of the child recipe
+  unit: Unit
 }
 
 /** Format the Ingredient object into a shape that Hasura requires.
@@ -19,13 +20,18 @@ export const formatIngredient = (
   recipeId: string | undefined
 ): FormattedIngredient => {
   // @ts-ignore
-  const { amount, childRecipe, food, recipe, unit } = merge(ingredient, {
-    childRecipe: ingredient.ingredientToChildRecipe?.id,
-    food: ingredient.ingredientToFood?.id,
-    recipe: recipeId,
-  })
+  const { amount, basicFood, childRecipe, food, recipe, unit } = merge(
+    ingredient,
+    {
+      basicFood: ingredient.ingredientToBasicFood?.id,
+      childRecipe: ingredient.ingredientToChildRecipe?.id,
+      food: ingredient.ingredientToFood?.id,
+      recipe: recipeId,
+    }
+  )
   return {
     amount,
+    basicFood,
     childRecipe,
     food,
     recipe,

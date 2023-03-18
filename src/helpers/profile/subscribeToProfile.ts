@@ -1,9 +1,9 @@
 import dotProp from 'dot-prop-immutable'
 import { SubscriptionClient } from 'subscriptions-transport-ws'
-import { basicFoodsManifest } from '../../components/app/App'
 import { SUBSCRIBE_TO_DATA } from '../../graphql/profile'
 import { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
+import { getBasicFoods } from '../Food/getBasicFoods'
 import { getStore } from '../getStore'
 import { handleError } from '../handleError'
 import { stringifyQuery } from '../stringifyQuery'
@@ -20,6 +20,7 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
         handleError(e)
       },
       next: (result) => {
+        const { basicFoodsManifest } = getBasicFoods()
         const newData = result.data as Data
         const store = getStore()
         if (newData.profiles.length === 0) {
@@ -35,10 +36,23 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
             return log
           })
 
+          const recipesWithBasicFoods = profiles[0].recipes.map((recipe) => {
+            recipe.ingredients = recipe.ingredients.map((ingredient) => {
+              const basicFoodId = ingredient.basicFood
+              if (basicFoodId) {
+                ingredient.basicFood = basicFoodId
+                ingredient.ingredientToBasicFood =
+                  basicFoodsManifest[basicFoodId]
+              }
+              return ingredient
+            })
+            return recipe
+          })
+
           const profilesWithBasicFoods = dotProp.set(
-            profiles,
-            '0.logs',
-            logsWithBasicFoods
+            dotProp.set(profiles, '0.logs', logsWithBasicFoods),
+            '0.recipes',
+            recipesWithBasicFoods
           )
 
           // We update the entire profile with every subscription

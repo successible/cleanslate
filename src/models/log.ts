@@ -37,10 +37,10 @@ export class Log {
   meal: Meal
 
   // Foreign keys
-  profile: string
-  food = uuid() || null
-  recipe = uuid() || null
   basicFood = uuid() || null
+  food = uuid() || null
+  profile: string
+  recipe = uuid() || null
 
   // Relationships
   logToFood: Food | null

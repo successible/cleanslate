@@ -20,12 +20,15 @@ export const RECIPE_BASE_FRAGMENT = gql`
 
 export const INGREDIENT_BASE_FRAGMENT = gql`
   fragment ingredient_base on ingredients {
-    id
     amount
-    unit
-    profile
+    basicFood
     createdAt
+    food
+    id
+    profile
+    recipe
     type
+    unit
     ingredientToFood {
       ...food
     }

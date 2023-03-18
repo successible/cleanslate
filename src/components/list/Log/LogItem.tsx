@@ -70,6 +70,7 @@ export const LogItem: React.FC<{
         alias,
         amount,
         barcode,
+        basicFood: log.basicFood,
         childRecipe: null,
         consumed,
         createdAt,

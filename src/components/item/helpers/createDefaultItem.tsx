@@ -18,6 +18,7 @@ export const createDefaultItem = (
     alias: null,
     amount: null,
     barcode: null,
+    basicFood: null,
     childRecipe: null,
     consumed: !enablePlanning,
     createdAt: null,

@@ -7,11 +7,15 @@ import { Recipe } from '../../models/recipe'
 export const addIngredient = (
   item: Food | Recipe,
   amount: number,
-  unit: Unit
+  unit: Unit,
+  customFood: boolean
 ): Ingredient => {
+  const isFood = item.type === 'food'
+  const isRecipe = item.type === 'recipe'
   const ingredient = new Ingredient()
-  ingredient.ingredientToFood = item.type === 'food' ? item : null
-  ingredient.ingredientToChildRecipe = item.type === 'recipe' ? item : null
+  ingredient.ingredientToFood = isFood && customFood ? item : null
+  ingredient.ingredientToBasicFood = isFood && !customFood ? item : null
+  ingredient.ingredientToChildRecipe = isRecipe ? item : null
   ingredient.amount = amount
   ingredient.unit = unit
   ingredient.ingredientToProfile = new Profile()

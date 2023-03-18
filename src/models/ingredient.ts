@@ -11,12 +11,14 @@ export class Ingredient {
   unit: Unit
 
   // Foreign keys
+  basicFood = uuid() || null
+  childRecipe = uuid() || null
+  food = uuid() || null
   profile: string
   recipe = uuid()
-  food = uuid() || null
-  childRecipe = uuid() || null
 
   // Relationships
+  ingredientToBasicFood: Food | null // Fake, only used in addIngredient in local state
   ingredientToFood: Food | null
   ingredientToRecipe: Recipe
   ingredientToChildRecipe: Recipe | null

@@ -1,7 +1,7 @@
-import { basicFoods } from '../components/app/App'
 import { Profile } from '../models/profile'
 import { Data } from '../store/data/types'
 import { profileKey } from './constants'
+import { getBasicFoods } from './Food/getBasicFoods'
 import { isBrowser } from './isBrowser'
 
 const isValid = (x: string | null) =>
@@ -14,5 +14,6 @@ export const getCachedData = (): Data => {
     ? (JSON.parse(cachedProfile as string) as Profile[])
     : [new Profile()]
 
-  return { basicFoods: basicFoods, profiles }
+  const { basicFoods } = getBasicFoods()
+  return { basicFoods, profiles }
 }

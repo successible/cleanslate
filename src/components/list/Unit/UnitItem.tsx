@@ -37,6 +37,7 @@ export const UnitItem: React.FC<{ log: Log }> = (props) => {
         alias: null,
         amount,
         barcode: null,
+        basicFood: null,
         childRecipe: null,
         consumed: null,
         createdAt,

@@ -13,7 +13,7 @@ type props = {
 export const IngredientItem: React.FC<props> = (props) => {
   const { deleteIngredient, ingredient } = props
   const { amount, createdAt, id, type, unit } = ingredient
-  const food = ingredient.ingredientToFood
+  const food = ingredient.ingredientToFood || ingredient.ingredientToBasicFood
   const childRecipe = ingredient.ingredientToChildRecipe
 
   const onUpdate: OnUpdateItem = (
@@ -49,6 +49,7 @@ export const IngredientItem: React.FC<props> = (props) => {
         alias: null,
         amount,
         barcode: null,
+        basicFood: ingredient.basicFood,
         childRecipe,
         consumed: null,
         createdAt,

@@ -30,10 +30,13 @@ export type CommonItem = {
   alias: string | null
   amount: number | null
   barcode: Barcode | null
+  basicFood: string | null
   childRecipe: Recipe | null
+  consumed: boolean | null
   createdAt: Date | null
   food: Food | null
   id: string
+  meal: Meal | null
   name: string
   onDelete: OnDeleteItem | null
   onUpdate: OnUpdateItem | null
@@ -42,6 +45,4 @@ export type CommonItem = {
   src: string | null
   type: ItemType
   unit: Unit | null
-  meal: Meal | null
-  consumed: boolean | null
 }

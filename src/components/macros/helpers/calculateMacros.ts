@@ -173,8 +173,11 @@ export const calculatePerMacroPerRecipe = (
   amount: number
 ): number => {
   const result = recipe.ingredients.reduce((acc, ingredient) => {
-    const food = ingredient.ingredientToFood as Food | null
     const childRecipe = ingredient.ingredientToChildRecipe
+
+    const food =
+      ingredient.ingredientToFood || ingredient.ingredientToBasicFood || null
+
     if (food) {
       const [
         perGram,
