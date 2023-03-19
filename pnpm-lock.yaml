@@ -28,7 +28,6 @@ specifiers:
   csv-loader: 3.0.5
   dayjs: 1.11.7
   deepmerge: 4.3.0
-  dot-prop-immutable: 2.1.1
   eslint: 8.36.0
   eslint-config-next: 13.2.4
   eslint-plugin-sort: 2.7.1
@@ -37,6 +36,7 @@ specifiers:
   focus-trap-react: 10.1.1
   graphql: 16.6.0
   hasura-cli: 2.20.0
+  immer: ^9.0.19
   jest: 29.5.0
   js-cookie: 3.0.1
   just-safe-get: 4.2.0
@@ -81,11 +81,11 @@ dependencies:
   csv-loader: 3.0.5
   dayjs: 1.11.7
   deepmerge: 4.3.0
-  dot-prop-immutable: 2.1.1
   firebase: 9.17.2
   focus-trap-react: 10.1.1_v2m5e27vhdewzwhryxwfaorcca
   graphql: 16.6.0
   hasura-cli: 2.20.0
+  immer: 9.0.19
   js-cookie: 3.0.1
   just-safe-get: 4.2.0
   lodash.groupby: 4.6.0
@@ -4261,11 +4261,6 @@ packages:
       esutils: 2.0.3
     dev: true
 
-  /dot-prop-immutable/2.1.1:
-    resolution: {integrity: sha512-e8PVQj1TKXwfeBPP71xvdQUR0ETh9gyhwEBX7VLIuOV7B2bLnrDyTqOzZt7P5zWgrPK+pbZbptK9Q4wZEJTb7Q==}
-    engines: {node: '>=6.0.0'}
-    dev: false
-
   /dot-prop/5.3.0:
     resolution: {integrity: sha512-QM8q3zDe58hqUqjraQOmzZ1LIH9SWQJTlEKCH4kJ2oQvLZk7RbQXvtDM2XEq3fwkV9CCvvH4LA0AV+ogFsBM2Q==}
     engines: {node: '>=8'}
@@ -5566,6 +5561,10 @@ packages:
     resolution: {integrity: sha512-MAb38BcSbH0eHNBxn7ql2NH/kX33OkB3lZ1BNdh7ENeRChHTYsTvWrMubiIAMNS2llXEEgZ1MUOBtXChP3kaFQ==}
     engines: {node: '>= 4'}
     dev: true
+
+  /immer/9.0.19:
+    resolution: {integrity: sha512-eY+Y0qcsB4TZKwgQzLaE/lqYMlKhv5J9dyd2RhhtGhNo2njPXDqU9XPfcNfa3MIDsdtZt5KlkIsirlo4dHsWdQ==}
+    dev: false
 
   /immutable/4.3.0:
     resolution: {integrity: sha512-0AOCmOip+xgJwEVTQj1EfiDDOkPmuyllDuTuEX+DDXUgapLAsBIfkg3sxCYyCEA8mQqZrrxPUGjcOQ2JS3WLkg==}

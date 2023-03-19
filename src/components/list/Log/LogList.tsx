@@ -111,8 +111,7 @@ export const LogList: React.FC<props> = (props) => {
               </div>
             )
           })
-      ) : // Only show the shell if the user is logged in but hasn't added any logs for the day
-      profileIsLoaded(profile) ? (
+      ) : profileIsLoaded(profile) ? (
         <Shell profile={profile} />
       ) : (
         <div className="w100 h100">

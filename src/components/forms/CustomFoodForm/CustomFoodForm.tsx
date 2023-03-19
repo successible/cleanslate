@@ -11,7 +11,6 @@ import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
 import { isNumeric } from '../../../helpers/isNumeric'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
-import { useReportIsDirty } from '../../../hooks/useReportIsDirty'
 import { Food } from '../../../models/food'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
@@ -102,19 +101,6 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [food])
-
-  useReportIsDirty(
-    food,
-    {
-      caloriesPerCount,
-      countToGram: convertedCountToGram,
-      countToTbsp: convertedCountToTbsp,
-      name,
-      proteinPerCount,
-      servingPerContainer: prep(servingPerContainer),
-    },
-    'CustomFoodForm'
-  )
 
   return (
     <form

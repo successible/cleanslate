@@ -45,7 +45,7 @@ export const addLog = (
     }
     dispatch('closeModal')
     dispatch('closeQuickAddModal')
-    dispatch('clearEditor')
+
     dispatch('closeCameraModal')
     addLogToCloud(log, () => {})
   }

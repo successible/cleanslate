@@ -89,7 +89,6 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       <button
         type="button"
         onClick={() => {
-          dispatch('clearEditor')
           dispatch('openModal')
         }}
       >

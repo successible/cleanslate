@@ -16,16 +16,15 @@ export type NavbarState = {
   bodyFatPercentageModalVisibility: boolean
   caloricMaintenanceModalVisibility: boolean
   cameraModalVisibility: boolean
-  error: string
+  error: string | null
   errorVisibility: boolean
   exerciseModalVisibility: boolean
   foodFormModalVisibility: boolean
   foodModalVisibility: boolean
   foodToUpdate: string | null
   helpModalVisibility: boolean
-  Information: EmotionJSX.Element | null
+  Information: EmotionJSX.Element | string | null
   informationModalVisibility: boolean
-  isDirty: Record<Form, boolean>
   itemModalVisibility: boolean
   itemToUpdate: CommonItem | undefined
   menuVisibility: boolean
@@ -76,7 +75,7 @@ export type NavbarEvents = {
   openFoodFormModal: string | null
   openFoodModal: undefined
   openHelpModal: undefined
-  openInformationModal: string | null
+  openInformationModal: EmotionJSX.Element | string | null
   openItemModal: CommonItem
   openMenu: undefined
   openModal: undefined
@@ -89,7 +88,6 @@ export type NavbarEvents = {
   openUnitModal: CommonItem
   setFoodToUpdate: string
   setItemToUpdate: CommonItem
-  updateIsDirty: [Form, boolean]
   updateUser: User | null
 }
 

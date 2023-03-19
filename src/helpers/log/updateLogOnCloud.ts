@@ -1,5 +1,7 @@
 import { Unit } from '../../constants/units'
 import { UPDATE_LOG } from '../../graphql/log'
+import { Log } from '../../models/log'
+import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'
 import { stringifyQuery } from '../stringifyQuery'
@@ -18,8 +20,11 @@ export type UpdateLog = {
 export const updateLogOnCloud = (variables: UpdateLog, onSuccess: () => void) =>
   getHasuraClient()
     .then((client) => {
-      client.request(stringifyQuery(UPDATE_LOG), variables).then(() => {
-        onSuccess()
-      })
+      client
+        .request(stringifyQuery(UPDATE_LOG), variables)
+        .then((result: { update_logs_by_pk: Log }) => {
+          store.dispatch('updateLog', result.update_logs_by_pk)
+          onSuccess()
+        })
     })
     .catch((error) => handleError(error))

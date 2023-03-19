@@ -1,5 +1,5 @@
 import cloneDeep from 'clone-deep'
-import dotProp from 'dot-prop-immutable'
+import reduce from 'immer'
 import { StoreonModule } from 'storeon'
 import { modals } from '../../constants/modals'
 import { updateModal } from '../../helpers/updateModal'
@@ -13,7 +13,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   store.on('@init', () => createInitialSlice())
 
   store.on('updateUser', (state, user) => {
-    return dotProp.set(state, 'navbar.user', user)
+    return reduce(state, (draft) => {
+      draft.navbar.user = user
+    })
   })
 
   store.on('openPWAPrompt', (state) => {
@@ -25,17 +27,23 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('openError', (state, error) => {
-    const newState = dotProp.set(state, 'navbar.error', error)
+    const newState = reduce(state, (draft) => {
+      draft.navbar.error = error
+    })
     return updateModal(newState, 'navbar.errorVisibility', true)
   })
 
   store.on('closeError', (state) => {
-    const newState = dotProp.set(state, 'navbar.error', null)
+    const newState = reduce(state, (draft) => {
+      draft.navbar.error = null
+    })
     return updateModal(newState, 'navbar.errorVisibility', false)
   })
 
   store.on('isOffline', (state, status) => {
-    return dotProp.set(state, 'navbar.offline', status)
+    return reduce(state, (draft) => {
+      draft.navbar.offline = status
+    })
   })
 
   store.on('closeMenu', (state) => {
@@ -56,7 +64,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('closeFoodFormModal', (state) => {
     const newState = updateModal(state, 'navbar.foodFormModalVisibility', false)
-    return dotProp.set(newState, 'navbar.foodToUpdate', null)
+    return reduce(newState, (draft) => {
+      draft.navbar.foodToUpdate = null
+    })
   })
 
   store.on('openFoodFormModal', (state) => {
@@ -64,7 +74,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('setFoodToUpdate', (state, id) => {
-    return dotProp.set(state, 'navbar.foodToUpdate', id)
+    return reduce(state, (draft) => {
+      draft.navbar.foodToUpdate = id
+    })
   })
 
   store.on('closeRecipeModal', (state) => {
@@ -85,7 +97,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.recipeFormModalVisibility',
       true
     )
-    return dotProp.set(newState, 'navbar.recipeToUpdate', event)
+    return reduce(newState, (draft) => {
+      draft.navbar.recipeToUpdate = event
+    })
   })
 
   store.on('openAddIngredientModal', (state, event) => {
@@ -94,11 +108,16 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.addIngredientModalVisibility',
       true
     )
-    return dotProp.set(newState, 'navbar.recipeToUpdate', event)
+    return reduce(newState, (draft) => {
+      draft.navbar.recipeToUpdate = event
+    })
   })
 
   store.on('closeAddIngredientModal', (state) => {
-    return updateModal(state, 'navbar.addIngredientModalVisibility', false)
+    const newState = reduce(state, (draft) => {
+      draft.editor.ingredient = null
+    })
+    return updateModal(newState, 'navbar.addIngredientModalVisibility', false)
   })
 
   store.on('closeItemModal', (state) => {
@@ -107,7 +126,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('openItemModal', (state, event) => {
     const newState = updateModal(state, 'navbar.itemModalVisibility', true)
-    return dotProp.set(newState, 'navbar.itemToUpdate', event)
+    return reduce(newState, (draft) => {
+      draft.navbar.itemToUpdate = event
+    })
   })
 
   store.on('closeUnitModal', (state) => {
@@ -116,7 +137,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('openUnitModal', (state, event) => {
     const newState = updateModal(state, 'navbar.unitModalVisibility', true)
-    return dotProp.set(newState, 'navbar.itemToUpdate', event)
+    return reduce(newState, (draft) => {
+      draft.navbar.itemToUpdate = event
+    })
   })
 
   store.on('closeTargetModal', (state) => {
@@ -157,7 +180,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.informationModalVisibility',
       false
     )
-    return dotProp.set(newState, 'navbar.Information', null)
+    return reduce(newState, (draft) => {
+      draft.navbar.Information = null
+    })
   })
 
   store.on('openInformationModal', (state, Information = null) => {
@@ -166,7 +191,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.informationModalVisibility',
       true
     )
-    return dotProp.set(newState, 'navbar.Information', Information)
+    return reduce(newState, (draft) => {
+      draft.navbar.Information = Information
+    })
   })
 
   store.on('closeExerciseModal', (state) => {
@@ -201,11 +228,6 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.cameraModalVisibility', true)
   })
 
-  store.on('updateIsDirty', (state, target) => {
-    const [name, value] = target
-    return dotProp.set(state, `navbar.isDirty.${name}`, value)
-  })
-
   store.on('closeAllModals', (state) => {
     const newNavbar = cloneDeep(state.navbar)
     newNavbar.Information = null
@@ -219,6 +241,9 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
           newNavbar[modal] = false
         }
       })
-    return dotProp.set(state, 'navbar', newNavbar)
+    return reduce(state, (draft) => {
+      // @ts-ignore
+      draft.navbar = newNavbar
+    })
   })
 }

@@ -1,8 +1,7 @@
 import { css } from '@emotion/react'
 import { curry } from '@typed/curry'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useStoreon } from 'storeon/react'
-import { useReportIsDirty } from '../../../hooks/useReportIsDirty'
 import { Food } from '../../../models/food'
 import { Ingredient } from '../../../models/ingredient'
 import { Profile } from '../../../models/profile'
@@ -30,10 +29,12 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     editor,
   }: { dispatch: Dispatch<AllEvents>; editor: EditorState } =
     useStoreon('editor')
+
   const [name, updateName] = React.useState(recipe?.name || '')
   const [countName, updateCountName] = React.useState(recipe?.countName || '')
   const remoteIngredients = recipe?.ingredients || ([] as Ingredient[])
   const [ingredients, setIngredients] = React.useState(remoteIngredients)
+  const { ingredient } = editor
 
   const data = {
     countName,
@@ -48,19 +49,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     setIngredients(remoteIngredients)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipe])
-
-  React.useEffect(() => {
-    // When the StandardEditor adds a new or edited ingredient to storeon
-    // Pick up the change here and add it local state
-    // Then, clear storeon
-    if (editor.ingredient !== null) {
-      updateIngredients(ingredients, editor.ingredient)
-      dispatch('clearEditor')
-      dispatch('closeAddIngredientModal')
-    }
-  }, [editor.ingredient, ingredients, dispatch])
-
-  useReportIsDirty(recipe, data, 'RecipeForm')
 
   // Helpers
 
@@ -78,6 +66,14 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     )
     setIngredients(updatedIngredients)
   }
+
+  useEffect(() => {
+    if (ingredient !== null) {
+      updateIngredients(ingredients, ingredient)
+      dispatch('saveIngredient', null)
+      dispatch('closeAddIngredientModal', true)
+    }
+  }, [dispatch, ingredient, ingredients])
 
   const addIngredientStyling = css`
     font-size: 0.8rem;

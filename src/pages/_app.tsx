@@ -1,6 +1,7 @@
 import '../theme.scss'
 import 'firebase/compat/auth'
 import * as Sentry from '@sentry/react'
+import { setAutoFreeze } from 'immer'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Div100vh from 'react-div-100vh'
@@ -9,6 +10,9 @@ import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
 import { useErrors } from '../hooks/useErrors'
 import { store } from '../store/store'
+
+// https://github.com/immerjs/immer/issues/959
+setAutoFreeze(false)
 
 function _App({ Component, pageProps }: AppProps) {
   // Listen to unhandled errors and Promise rejections

@@ -94,7 +94,6 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       closeIcon={false}
       closeModal={() => {
         dispatch('closeModal')
-        dispatch('clearEditor')
       }}
       inTransition={'slideInDown'}
       outTransition={'fadeOutHard'}
@@ -246,10 +245,9 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     <Modal
       closeModal={() => {
         const message =
-          'You have unsaved changes that will be deleted. Are you okay with that?'
-        if (navbar.isDirty.RecipeForm === false || window.confirm(message)) {
+          'You may have unsaved changes that will be lost. Is that OK?'
+        if (window.confirm(message)) {
           dispatch('closeRecipeFormModal')
-          dispatch('updateIsDirty', ['RecipeForm', false])
         }
       }}
       name="navbar.recipeFormModalVisibility"
@@ -281,13 +279,9 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     <Modal
       closeModal={() => {
         const message =
-          'You have unsaved changes that will be deleted. Are you okay with that?'
-        if (
-          navbar.isDirty.CustomFoodForm === false ||
-          window.confirm(message)
-        ) {
+          'You may have unsaved changes that will be lost. Is that OK?'
+        if (window.confirm(message)) {
           dispatch('closeFoodFormModal')
-          dispatch('updateIsDirty', ['CustomFoodForm', false])
         }
       }}
       name="navbar.foodFormModalVisibility"

@@ -26,8 +26,6 @@ type props = {
 }
 export const Shell: React.FC<props> = ({ profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const target = profile.calorieTarget
 
   const shell = css`
     margin-bottom: 50px;

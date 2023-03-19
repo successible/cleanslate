@@ -12,19 +12,21 @@ export const LOG_FRAGMENT = gql`
     consumed
     meal
     basicFood
+
+    logToFood {
+      ...food
+    }
+
+    logToRecipe {
+      ...recipe
+    }
   }
 `
 
 export const CREATE_LOG = gql`
   mutation CREATE_LOG($object: logs_insert_input!) {
     insert_logs_one(object: $object) {
-      id
-      logToFood {
-        name
-      }
-      logToRecipe {
-        name
-      }
+      ...log
     }
   }
 `
@@ -43,7 +45,7 @@ export const UPDATE_LOG = gql`
     $set: logs_set_input
   ) {
     update_logs_by_pk(pk_columns: $pk_columns, _set: $set) {
-      id
+      ...log
     }
   }
 `

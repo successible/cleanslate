@@ -51,14 +51,6 @@ export const SUBSCRIBE_TO_DATA = gql`
 
       logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
         ...log
-
-        logToFood {
-          ...food
-        }
-
-        logToRecipe {
-          ...recipe
-        }
       }
 
       recipes {

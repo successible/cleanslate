@@ -4,6 +4,8 @@ import { profileKey } from './constants'
 import { getBasicFoods } from './Food/getBasicFoods'
 import { isBrowser } from './isBrowser'
 
+const { basicFoods } = getBasicFoods()
+
 const isValid = (x: string | null) =>
   ![null, undefined, '', 'null', 'undefined'].includes(x)
 
@@ -14,6 +16,5 @@ export const getCachedData = (): Data => {
     ? (JSON.parse(cachedProfile as string) as Profile[])
     : [new Profile()]
 
-  const { basicFoods } = getBasicFoods()
   return { basicFoods, profiles }
 }
