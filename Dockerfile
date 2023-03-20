@@ -27,6 +27,7 @@ COPY config.yaml ./
 COPY entrypoint.sh ./
 COPY migrate.js ./
 COPY src/basicFoods.csv ./src/basicFoods.csv
+COPY src/basicFoods.json ./src/basicFoods.json
 COPY metadata metadata
 COPY migrations migrations
 

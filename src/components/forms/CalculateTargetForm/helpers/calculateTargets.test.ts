@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals'
 import { calculateTargets } from './calculateTargets'
 
 test('calculateTargets works for a large man who lifts and wants to lose weight', () => {

@@ -4,9 +4,50 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  CI: true
+  CYPRESS_TEST_UID: ${{ secrets.CYPRESS_TEST_UID }}
+  HASURA_GRAPHQL_ADMIN_SECRET: XXX
+  HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+  HASURA_GRAPHQL_JWT_SECRET: ${{ secrets.HASURA_GRAPHQL_JWT_SECRET }}
+  NEXT_PUBLIC_FIREBASE_CONFIG: ${{ secrets.NEXT_PUBLIC_FIREBASE_CONFIG }}
+  POSTGRES_DB: postgres
+  POSTGRES_HOST: postgres
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_PORT: 5432
+  POSTGRES_USER: postgres
+  SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+
 jobs:
   CI:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14.7
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_PORT: 5432
+        ports:
+          - 5432:5432
+        volumes:
+          - postgres:/var/lib/postgresql/data
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      graphql-engine:
+        image: hasura/graphql-engine:v2.11.5
+        ports:
+          - '8120:8080'
+        env:
+          HASURA_GRAPHQL_ADMIN_SECRET: XXX
+          HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
+          HASURA_GRAPHQL_JWT_SECRET: ${{ secrets.HASURA_GRAPHQL_JWT_SECRET }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -27,8 +68,14 @@ jobs:
       - name: Lint the client
         run: bash -e lint.sh
 
-      - name: Run the tests
+      - name: Migrate Hasura metadata
+        run: node migrate.js
+
+      - name: Configure Cypress
+        run: npx cypress install
+
+      - name: Run the Jest and Cypress test suites
         run: pnpm test
 
-      - name: Build the client
+      - name: Build the Next.js bundle
         run: cd src && npx next build

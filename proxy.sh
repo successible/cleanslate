@@ -15,4 +15,4 @@ mkcert localhost
 sudo pkill -9 -f "nginx"
 sudo nginx -c $(abspath "nginx.conf") &
 
-bash start.sh
+bash dev.sh

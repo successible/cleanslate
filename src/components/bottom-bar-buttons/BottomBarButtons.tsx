@@ -87,6 +87,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       )}
 
       <button
+        id="BottomBarSearchButton"
         type="button"
         onClick={() => {
           dispatch('openModal')

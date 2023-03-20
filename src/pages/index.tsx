@@ -3,6 +3,7 @@ import firebase from 'firebase/compat/app'
 import { useEffect, useState } from 'react'
 import { App } from '../components/app/App'
 import { Login } from '../components/login/Login'
+import { getFirebaseConfig } from '../helpers/getFirebaseConfig'
 import { getLoginStatus } from '../helpers/getLoginStatus'
 import { isLoadedUser } from '../helpers/isLoadedUser'
 import { useFirebase } from '../hooks/useFirebase'
@@ -10,11 +11,9 @@ import { useOffline } from '../hooks/useOffline'
 import { useOfflineStatus } from '../hooks/useOfflineStatus'
 import { useUser } from '../hooks/useUser'
 
-const firebaseConfig = process.env.FIREBASE_CONFIG as unknown as object
-
 // Only create Firebase if it has yet to be initialized
 export const firebaseApp = !firebase.apps.length
-  ? firebase.initializeApp(firebaseConfig)
+  ? firebase.initializeApp(getFirebaseConfig())
   : firebase.app()
 
 const Index = () => {

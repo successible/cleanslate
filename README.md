@@ -70,6 +70,16 @@ Next, you need to enable Firebase. This is the authentication provider for Clean
 }
 ```
 
+- Create a `env.json` filled with the following content.
+
+```json
+{
+  // CYPRESS_TEST_UID is the UID of the Firebase user you want to test with
+  // https://www.npmjs.com/package/cypress-firebase
+  "CYPRESS_TEST_UID": "XXX"
+}
+```
+
 - Login with Firebase via `firebase login`.
 - Run `firebase deploy` locally to deploy the Firebase functions in `/functions`.
 
@@ -96,6 +106,15 @@ If you want to see what Clean Slate looks like on a mobile device (very optional
 - Navigate to the Authentication settings in your Firebase project. Add that subdomain as an authorized domain. Remove this domain when you are done with the proxy for the day.
 
 - Finally, open a second terminal and run `npm run proxy`. You will be prompted for the subdomain. Provide it. Once the command has finished, you should be able to access Clean Slate on all your devices on the subdomain.
+
+## Testing it via GitHub Actions
+
+- Add the following as repository secrets to your GitHub repository:
+
+  - `CYPRESS_TEST_UID`. The `uid` of the Firebase user you want to test with.
+  - `HASURA_GRAPHQL_JWT_SECRET`. Described below.
+  - `NEXT_PUBLIC_FIREBASE_CONFIG`: The contents of `firebase-config.json`.
+  - `SERVICE_ACCOUNT`. The contents of `service-account.json`.
 
 ## Hosting it yourself
 

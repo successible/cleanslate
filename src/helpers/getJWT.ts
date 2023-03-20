@@ -9,6 +9,7 @@ export const getJWT = async function (): Promise<string> {
         getCustomAuth().token
       : // This automatically refreshes the tokens
         await firebase.auth().currentUser?.getIdToken()
+
     return JWT || ''
   } catch (error) {
     handleError(error as Error)

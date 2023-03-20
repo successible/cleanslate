@@ -30,6 +30,16 @@ export const UPDATE_PROFILE = gql`
   }
 `
 
+export const DELETE_ALL_PROFILES = gql`
+  mutation DELETE_PROFILES {
+    delete_profiles(where: {}) {
+      returning {
+        id
+      }
+    }
+  }
+`
+
 export const DELETE_PROFILE = gql`
   mutation DELETE_PROFILE($authId: String!) {
     delete_profiles(where: { authId: { _eq: $authId } }) {

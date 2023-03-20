@@ -46,6 +46,7 @@ export const Select = <X extends string>(props: props<X>) => {
             {(Object.keys(optionSet) as X[]).map((option) => (
               <button
                 type="button"
+                id={`Select-${option}`}
                 onClick={() => {
                   onChange(option)
                 }}

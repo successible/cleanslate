@@ -14,10 +14,11 @@ import {
 } from '../../list/helpers/selectFoodImage'
 
 type props = {
+  index: number
   result: Food | Recipe
   onClick: () => void
 }
-export const SearchResult: React.FC<props> = ({ onClick, result }) => {
+export const SearchResult: React.FC<props> = ({ index, onClick, result }) => {
   // Check if a recipe or custom food
   const isRecipe = (result: Recipe | Food) => result.type === 'recipe'
   const isCustomFood = (result: Recipe | Food) =>
@@ -50,6 +51,7 @@ export const SearchResult: React.FC<props> = ({ onClick, result }) => {
       type="button"
       key={result.id}
       className={`normal w100`}
+      id={`StandardAdderSearchResult-${index}`}
     >
       {!result.isDummy && <HiddenInput inputMode="decimal" />}
       <div className="fr w100">

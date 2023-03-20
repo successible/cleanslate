@@ -1,4 +1,3 @@
-import { getCustomAuth, isCustomUser } from './getCustomAuth'
 import { getDomain } from './getDomain'
 import { isProduction } from './isProduction'
 
@@ -9,14 +8,6 @@ export const getApiUrl = () => {
     return [
       `https://api.${domain}/v1/graphql`,
       `wss://api.${domain}/v1/graphql`,
-    ]
-  }
-
-  // This is only useful on development when logging in as a different user
-  if (isCustomUser()) {
-    return [
-      `https://${getCustomAuth().domain}/v1/graphql`,
-      `wss://${getCustomAuth().domain}/v1/graphql`,
     ]
   }
 

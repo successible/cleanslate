@@ -5,11 +5,16 @@
 .vscode/ltex.dictionary.en-US.txt
 *.pem
 build
+env.json
 firebase-config.json
 functions/lib/**/*.js
 functions/lib/**/*.js.map
 node_modules
 out
+secrets.json
 service-account.json
 sitemap.xml
+src/cypress/fixtures
+src/cypress/screenshots
+src/cypress/videos
 tsconfig.tsbuildinfo

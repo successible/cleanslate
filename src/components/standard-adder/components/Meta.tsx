@@ -44,9 +44,10 @@ export const Meta: React.FC<props> = ({
   )
 
   return (
-    <div className={`w100 fr m20`}>
+    <div id="StandardAdderMeta" className={`w100 fr m20`}>
       {/* name and image */}
       <img
+        id="StandardAdderMetaImage"
         css={css`
           height: 50px;
           margin-right: 10px;
@@ -56,6 +57,7 @@ export const Meta: React.FC<props> = ({
         alt="Food"
       />
       <span
+        id="StandardAdderMetaName"
         css={css`
           font-size: 1rem;
           font-weight: 400;
@@ -67,6 +69,7 @@ export const Meta: React.FC<props> = ({
       </span>
       {showBack && (
         <button
+          id="StandardAdderMetaButton"
           onClick={() => {
             onBack()
           }}

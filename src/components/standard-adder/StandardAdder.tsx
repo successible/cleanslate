@@ -71,6 +71,7 @@ export const StandardAdder: React.FC<props> = ({
       {!selectedItem && path.length === 0 && (
         <input
           type="text"
+          id="StandardAdderSearchbar"
           value={searchText}
           autoComplete={'off'}
           autoCorrect={'off'}
@@ -127,6 +128,7 @@ export const StandardAdder: React.FC<props> = ({
         searchResults.map((result, i) => {
           return (
             <SearchResult
+              index={i}
               result={result}
               onClick={() => {
                 if (result.isDummy) {

@@ -21,6 +21,7 @@ export const SubmitButton: React.FC<props> = ({
 
   return (
     <button
+      id="SubmitButton"
       onClick={() => {
         if (onClick) onClick()
       }}

@@ -24,6 +24,7 @@ export const FractionInput: React.FC<props> = ({
   return (
     <div className={`${className} fr w100`}>
       <input
+        id="FractionInputInput"
         onChange={(event) => {
           setValue(event.target.value)
         }}

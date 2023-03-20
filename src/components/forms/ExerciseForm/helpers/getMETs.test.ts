@@ -1,3 +1,4 @@
+import { expect } from '@jest/globals'
 import { getCyclingMET } from './getCyclingMET'
 import { getMETsFromInput } from './getMETsFromInput'
 import { getRowingMET } from './getRowingMET'
