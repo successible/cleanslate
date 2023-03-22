@@ -30,7 +30,7 @@ If you want to contribute to Clean Slate, awesome! Read the section `Developing 
 
 If you want to host Clean Slate yourself, read the section `Hosting Clean Slate`. We recommend [Render.com](https://render.com), but any hosting provider will do. You will also need to configure [Firebase](https://firebase.google.com). It is the (free) authentication provider for Clean Slate.
 
-> Note: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or even host it yourself. You just cannot launch a commercial version of Clean Slate. This license is used by projects such as Sentry.io and MariaDB. You can read more about the license [here](https://open.sentry.io/licensing).
+> Note: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or even host it yourself. You just cannot launch a commercial version of Clean Slate. This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
 
 ## Configuration
 
@@ -40,7 +40,6 @@ To run Clean Slate locally or in production, you have about five minutes of setu
 - Fork and clone down the `git` repository [here](https://github.com/successible/cleanslate).
 - Install [Node.js (LTS)](https://nodejs.org/en/).
 - Install [jq](https://stedolan.github.io/jq/download/).
-- Install the `Firebase CLI` by running `npm install firebase-tools`.
 
 Next, you need to enable Firebase. This is the authentication provider for Clean Slate:
 
@@ -57,7 +56,7 @@ Next, you need to enable Firebase. This is the authentication provider for Clean
 }
 ```
 
-- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that on your project settings page on Firebase.
+- Create a `firebase-config.json` filled with the content of `firebaseConfig`. You can find that on your Project Settings page on Firebase.
 
 ```json
 {
@@ -80,8 +79,10 @@ Next, you need to enable Firebase. This is the authentication provider for Clean
 }
 ```
 
-- Login with Firebase via `firebase login`.
-- Run `firebase deploy` locally to deploy the Firebase functions in `/functions`.
+- Create a `service-account.json` with your service account credentials. This is required to allow Cypress to log in with Firebase. You can find the service account credentials on the Service accounts tab. This tab is within the Project Settings page on Firebase.
+
+- Login with Firebase via `npx firebase login`.
+- Run `npx firebase deploy` to deploy the Firebase functions in `/functions`.
 
 ## Developing it locally
 
@@ -177,7 +178,7 @@ SELF_SIGNED_CERTS_OK="true"
 
 # These are to configure Hasura
 
-# Can be any long, random string, like `fireboat1234aslas222ZZlsal`
+# Can be any long, random string
 HASURA_GRAPHQL_ADMIN_SECRET="XXX"
 HASURA_GRAPHQL_CORS_DOMAIN="https://mydomain.com, http://localhost:3000"
 HASURA_GRAPHQL_DATABASE_URL="XXX"
