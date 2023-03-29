@@ -10,7 +10,7 @@ $xlg: 1024px;
 // Colors
 
 // Greyscale
-$black: #444;
+$black: #333;
 $darkgrey: #666;
 $grey: #ccc;
 $mediumgrey: #999;
@@ -1203,13 +1203,13 @@ input[type='radio'] {
 }
 
 .black {
-  background-color: #222;
+  background-color: $black;
   color: $white;
   font-weight: 700;
   &:hover,
   &:focus,
   &.active {
-    background-color: #010101;
+    background-color: #222;
   }
   &.active {
     font-weight: 500;
@@ -1307,6 +1307,19 @@ input[type='radio'] {
     &:focus {
       background-color: $lightyellow;
     }
+  }
+}
+.facebook {
+  background-color: #4267b2;
+  color: $white;
+  font-weight: 700;
+  &:hover,
+  &:focus,
+  &.active {
+    background-color: darken(#4267b2, 10%);
+  }
+  &.active {
+    font-weight: 500;
   }
 }
 .success {

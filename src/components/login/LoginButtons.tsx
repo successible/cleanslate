@@ -1,13 +1,15 @@
 import 'firebase/compat/auth'
 import { css } from '@emotion/react'
 import {
+  FacebookAuthProvider,
   getAuth,
+  GithubAuthProvider,
   GoogleAuthProvider,
   OAuthProvider,
   signInWithPopup,
 } from 'firebase/auth'
 import Link from 'next/link'
-import { FaApple, FaGoogle } from 'react-icons/fa'
+import { FaApple, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { firebaseApp } from '../../pages'
 import { Explanation } from '../explanation/Explanation'
 
@@ -37,7 +39,7 @@ export const LoginButtons = () => {
               className="black m5 ml5 mr5"
               css={css`
                 background-color: #4285f4;
-                width: 187.5px;
+                width: 210px;
                 &:hover,
                 &:focus {
                   background-color: #2472f2;
@@ -52,14 +54,14 @@ export const LoginButtons = () => {
                 })
               }}
             >
-              <FaGoogle className="mr10" size={15} />
+              <FaGoogle className="mr10" size={18} />
               Sign in with Google
             </button>
           )}
           {process.env.NEXT_PUBLIC_LOGIN_WITH_APPLE === 'true' && (
             <button
               css={css`
-                width: 187.5px;
+                width: 210px;
               `}
               className="black m5 ml5 mr5"
               onClick={() => {
@@ -73,8 +75,46 @@ export const LoginButtons = () => {
                 )
               }}
             >
-              <FaApple className="mr10" size={15} />
+              <FaApple className="mr10" size={18} />
               Sign in with Apple
+            </button>
+          )}
+          {process.env.NEXT_PUBLIC_LOGIN_WITH_FACEBOOK === 'true' && (
+            <button
+              css={css`
+                width: 210px;
+              `}
+              className="facebook m5 ml5 mr5"
+              onClick={() => {
+                const auth = getAuth(firebaseApp)
+                signInWithPopup(auth, new FacebookAuthProvider()).then(() => {
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 100)
+                })
+              }}
+            >
+              <FaFacebook className="mr10" size={18} />
+              Sign in with Facebook
+            </button>
+          )}
+          {process.env.NEXT_PUBLIC_LOGIN_WITH_GITHUB === 'true' && (
+            <button
+              css={css`
+                width: 210px;
+              `}
+              className="black m5 ml5 mr5"
+              onClick={() => {
+                const auth = getAuth(firebaseApp)
+                signInWithPopup(auth, new GithubAuthProvider()).then(() => {
+                  setTimeout(() => {
+                    window.location.reload()
+                  }, 100)
+                })
+              }}
+            >
+              <FaGithub className="mr10" size={18} />
+              Sign in with GitHub
             </button>
           )}
         </div>
@@ -89,25 +129,11 @@ export const LoginButtons = () => {
         color="yellow"
       >
         <div>
-          When you login, an account will be created automatically. Clean Slate
-          is also totally free. So enjoy!
-        </div>
-      </Explanation>
-      <Explanation
-        css={css`
-          width: 90%;
-          font-size: 0.95rem;
-          margin-top: 10px;
-          margin-bottom: 10px;
-        `}
-        color="blue"
-      >
-        <div>
-          Want to learn more about Clean Slate and why we{`'`}re different?{' '}
+          An account is made automatically on login. Clean Slate is also free,
+          so enjoy! To learn more about the app,{' '}
           <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
-            Visit here
+            go here.
           </a>
-          .
         </div>
       </Explanation>
       <p

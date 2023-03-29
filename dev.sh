@@ -50,6 +50,8 @@ if [[ $CI != "true" ]]; then
   export NEXT_PUBLIC_FIREBASE_CONFIG=$(jq . firebase-config.json)
   export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
   export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
+  export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
+  export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
   export NEXT_PUBLIC_VERSION="XXX"
   export NODE_ENV="development"
 

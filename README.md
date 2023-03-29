@@ -153,9 +153,12 @@ NEXT_PUBLIC_REACT_SENTRY_DSN="XXX" # Optional: Only need if you want to use Sent
 # By default Login with Google should be enabled and Login with Apple should be disabled
 # That is because Apple requires an Apple Developer Account, which costs $99 per year
 # By contrast, Google is free and easy to setup automatically with Firebase
+# GitHub and Facebook are off by default to avoid overwhelming users
 
 NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
 NEXT_PUBLIC_LOGIN_WITH_APPLE="false"
+NEXT_PUBLIC_LOGIN_WITH_GITHUB="false"
+NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
 
 # Accessed in the Firebase project settings
 # Be sure to replace these placeholder values with your own values
