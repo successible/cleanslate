@@ -129,8 +129,8 @@ export const LoginButtons = () => {
         color="yellow"
       >
         <div>
-          An account is made automatically on login. Clean Slate is also free,
-          so enjoy! To learn more about the app,{' '}
+          An account is made automatically on login. Clean Slate is free, so
+          enjoy! To learn more about the app,{' '}
           <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
             go here.
           </a>
