@@ -9,6 +9,7 @@ export const errorsToIgnore = [
   /Firebase: The popup has been closed by the user /,
   /Firebase: The user did not grant your application the permissions it requested/,
   /Firebase: This operation has been cancelled due to another conflicting popup being opened/,
+  /Firebase: An account already exists with the same email address but different sign-in credentials/,
   /Firebase: This operation is sensitive and requires recent authentication/,
   /Firebase: Unable to establish a connection with the popup/,
   /Hydration failed because the initial UI does not match what was rendered on the server/,

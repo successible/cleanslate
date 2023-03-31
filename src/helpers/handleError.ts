@@ -17,6 +17,12 @@ export const handleError = (
     toast.error('Custom food with that name already exists!')
   } else if (String(error).includes('recipes_profile_name_key')) {
     toast.error('Recipe with that name already exists!')
+  } else if (
+    String(error).includes(
+      'An account already exists with the same email address'
+    )
+  ) {
+    toast.error('An account already exists with the same email address')
   } else {
     // Do nothing
   }
