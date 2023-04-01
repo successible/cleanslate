@@ -82,7 +82,7 @@ fi
 
 # Start the erms server!
 
-(cd src && npx next dev) & 
+(cd src && npx next dev -H 127.0.0.1) & 
 
 
 if [[ $CYPRESS == "true" ]]; then
