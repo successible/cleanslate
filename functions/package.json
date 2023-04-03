@@ -16,7 +16,7 @@
     "firebase-functions": "4.2.1"
   },
   "devDependencies": {
-    "firebase": "9.18.0",
+    "firebase": "9.19.1",
     "firebase-functions-test": "3.0.0",
     "typescript": "5.0.3"
   }
