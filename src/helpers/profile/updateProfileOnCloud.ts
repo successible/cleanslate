@@ -14,6 +14,7 @@ type UpdateTargets = {
     showDensities?: boolean
     countDown?: boolean
     enablePlanning?: boolean
+    metricSystem?: boolean
   }
 }
 

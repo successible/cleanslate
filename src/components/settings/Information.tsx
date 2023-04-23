@@ -15,6 +15,9 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [hidePWAPrompt, setHidePWAPrompt] = useState(profile.hidePWAPrompt)
   const [countDown, setCountDown] = useState(profile.countDown)
   const [enablePlanning, setEnablePlanning] = useState(profile.enablePlanning)
+  const [enableMetricSystem, setEnableMetricSystem] = useState(
+    profile.metricSystem
+  )
 
   const info =
     user &&
@@ -22,7 +25,7 @@ export const Information: React.FC<props> = ({ profile }) => {
     (user.email || user.providerData[0]?.email || user.phoneNumber)
 
   const itemLabelStyling = css`
-    width: 225px;
+    width: 230px;
   `
 
   return (
@@ -53,6 +56,24 @@ export const Information: React.FC<props> = ({ profile }) => {
         className={`pbutton rounded green nohover mt30 mb20`}
       >
         Preferences
+      </div>
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
+            Use the metric system
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { metricSystem: data } },
+                () => {
+                  setEnableMetricSystem(data)
+                }
+              )
+            }}
+            checked={enableMetricSystem}
+          />
+        </label>
       </div>
       <div className="mt20">
         <div className="fr mt20 ml5">
@@ -112,7 +133,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         <div className="fr mt20 ml5">
           <label className="fr">
             <span className="mr10" css={itemLabelStyling}>
-              Show the density of each food
+              Show density of each food
             </span>
             <Switch
               onChange={(data) => {

@@ -17,6 +17,7 @@ export const PROFILE_FRAGMENT = gql`
     showDensities
     countDown
     enablePlanning
+    metricSystem
   }
 `
 

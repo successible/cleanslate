@@ -33,6 +33,7 @@ export type ExerciseGroup = (typeof group)[number]
 
 type props = { profile: Profile }
 export const ExerciseForm: React.FC<props> = ({ profile }) => {
+  const { metricSystem } = profile
   const [weight, updateWeight] = React.useState('')
   const [minutes, setMinutes] = React.useState('')
   const [watt, setWatts] = React.useState('')
@@ -103,7 +104,8 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
             otherActivity,
             swimmingActivity,
             liftingActivity,
-            Number(mph),
+            // When metric is true, mph is actually is kph.  When metric is false, mph is mph
+            metricSystem ? Number(mph) * 0.6213711922 : Number(mph),
             Number(incline),
             Number(watt)
           )
@@ -116,7 +118,10 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
               exerciseGroup === 'Custom'
                 ? Number(calories)
                 : calculateCaloriesFromMETs(
-                    Number(weight),
+                    // When metric is true, weight is kg.  When metric is false, it is lbs
+                    metricSystem
+                      ? Number(weight) * 2.2046226218
+                      : Number(weight),
                     Number(minutes),
                     MET
                   )
@@ -140,7 +145,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
             <div className="w50">
               <label htmlFor="weight">
                 Weight
-                <span className="pink tag">lbs</span>
+                <span className="pink tag">{metricSystem ? 'kg' : 'lbs'}</span>
               </label>
               <input
                 placeholder="200"
@@ -244,7 +249,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
             <div className="w100">
               <label css={label} htmlFor="miles">
                 Pace
-                <span className="pink tag">mph</span>
+                <span className="pink tag">{metricSystem ? 'kph' : 'mph'}</span>
               </label>
               <input
                 placeholder="3"
@@ -294,7 +299,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
             <div className="w50">
               <label css={label} htmlFor="pace">
                 Pace
-                <span className="pink tag">mph</span>
+                <span className="pink tag">{metricSystem ? 'kph' : 'mph'}</span>
               </label>
               <input
                 placeholder="3"

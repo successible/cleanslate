@@ -16,7 +16,9 @@ export type MeasurementSystem = 'imperial' | 'metric'
 
 type props = { profile: Profile; onUpdate?: () => void }
 export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
-  const [metricSystem, setMetricSystem] = React.useState(false)
+  const [metricSystem, setMetricSystem] = React.useState(
+    Boolean(profile.metricSystem)
+  )
   const [weight, updateWeight] = React.useState('')
   const [feet, updateFeet] = React.useState('')
   const [inches, updateInches] = React.useState('')
@@ -54,6 +56,7 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
               id: profile.id,
               set: {
                 calorieTarget: calorieTarget,
+                metricSystem,
                 proteinTarget: proteinTarget,
               },
             }
@@ -100,9 +103,9 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
             </div>
           </div>
           <div className="group expand">
-            <div className="fr mt10 mb10">
+            <div className="fr mt10 mb0">
               <label htmlFor="metricSystem" className="mt0 mb0">
-                Do you use the metric system?
+                Use the metric system?
               </label>
               <Switch
                 className="ml10 mt5"
