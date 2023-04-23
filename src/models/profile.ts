@@ -21,6 +21,7 @@ export class Profile {
   hidePWAPrompt: boolean // Default to false
   countDown: boolean // Default to true
   enablePlanning: boolean // Default to false
+  metricSystem: boolean // Default to false
 
   // Relationships
   foods: Food[]

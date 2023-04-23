@@ -5,6 +5,7 @@ import { calculateBodyFatPercentageUsingCUN_BAE } from './calculateBodyFatPercen
 import { calculateIdealBodyWeightInKg } from './calculateIdealBodyWeightInKg'
 
 export const calculateTargets = (
+  metric: boolean,
   age: string,
   sex: Sex,
   weight: string,
@@ -13,22 +14,29 @@ export const calculateTargets = (
   liftWeights: boolean,
   goal: Goal
 ) => {
-  const height = Number(feet) * 12 + Number(inches)
-  const idealBodyWeightInKg = calculateIdealBodyWeightInKg(sex, height)
+  // When metric is true, weight is kg, feet is actually cm, and inches is none
+  // When metric is false, inches and feet are inches and feet, and weight is lbs
+  const ageToUse = Number(age)
+  const weightToUse = metric ? Number(weight) * 2.2046226218 : Number(weight)
+  const heightToUse = metric
+    ? 0.3937 * Number(feet)
+    : Number(feet) * 12 + Number(inches)
+
+  const idealBodyWeightInKg = calculateIdealBodyWeightInKg(sex, heightToUse)
 
   const estimatedBodyFatPercentage =
     calculateBodyFatPercentageUsingCUN_BAE(
-      Number(weight),
-      height,
+      weightToUse,
+      heightToUse,
       sex,
-      Number(age)
+      ageToUse
     ) / 100
 
   const leanBodyMassInKg =
-    (Number(weight) * (1 - estimatedBodyFatPercentage)) / 2.2
+    (weightToUse * (1 - estimatedBodyFatPercentage)) / 2.2
 
   const basalMetabolicRate = calculateBMRUsingKatchMcardle(
-    Number(weight),
+    weightToUse,
     estimatedBodyFatPercentage
   )
 

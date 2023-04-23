@@ -12,9 +12,11 @@ import { Tabs } from '../../tabs/Tabs'
 import { calculateTargets } from './helpers/calculateTargets'
 
 export type Goal = 'fat' | 'muscle' | 'maintain'
+export type MeasurementSystem = 'imperial' | 'metric'
 
 type props = { profile: Profile; onUpdate?: () => void }
 export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
+  const [metricSystem, setMetricSystem] = React.useState(false)
   const [weight, updateWeight] = React.useState('')
   const [feet, updateFeet] = React.useState('')
   const [inches, updateInches] = React.useState('')
@@ -39,6 +41,7 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
           onSubmit={(event) => {
             event.preventDefault()
             const { calorieTarget, proteinTarget } = calculateTargets(
+              metricSystem,
               age,
               sex,
               weight,
@@ -61,7 +64,9 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
         >
           <div className="group expand">
             <div className="w100">
-              <label htmlFor="goal">What is your goal?</label>
+              <label className="mt25" htmlFor="goal">
+                What is your goal?
+              </label>
               <Tabs
                 css={css`
                   font-size: 0.8rem !important;
@@ -94,6 +99,22 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
               />
             </div>
           </div>
+          <div className="group expand">
+            <div className="fr mt10 mb10">
+              <label htmlFor="metricSystem" className="mt0 mb0">
+                Do you use the metric system?
+              </label>
+              <Switch
+                className="ml10 mt5"
+                id="metricSystem"
+                onChange={(data) => {
+                  setMetricSystem(data)
+                }}
+                checked={metricSystem}
+              />
+            </div>
+          </div>
+
           <div className="group expand">
             <div className="w50">
               <label htmlFor="age">
@@ -150,10 +171,10 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
             <div className="expand">
               <label htmlFor="currentWeight">
                 Weight
-                <span className="tag pink">lbs</span>
+                <span className="tag pink">{metricSystem ? 'kg' : 'lbs'}</span>
               </label>
               <input
-                id="currentWeight"
+                id={metricSystem ? 'currentKg' : 'currentLbs'}
                 onChange={(event) => {
                   updateWeight(event.target.value)
                 }}
@@ -163,19 +184,19 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
                 autoCorrect={'off'}
                 autoCapitalize={'off'}
                 step="any"
-                placeholder="160"
+                placeholder={metricSystem ? '70' : '160'}
                 required
               />
             </div>
             <div className="expand">
               <label htmlFor="height">
                 Height
-                <span className="tag pink">feet</span>
-                <span className="tag pink">inches</span>
+                <span className="tag pink">{metricSystem ? 'cm' : 'feet'}</span>
+                {!metricSystem && <span className="tag pink">inches</span>}
               </label>
               <div className="frc">
                 <input
-                  id="currentFeet"
+                  id={metricSystem ? 'currentCm' : 'currentFeet'}
                   onChange={(event) => {
                     updateFeet(event.target.value)
                   }}
@@ -185,39 +206,44 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
                   autoCorrect={'off'}
                   autoCapitalize={'off'}
                   step="any"
-                  placeholder="5"
+                  placeholder={metricSystem ? '80' : '5'}
                   required
                 />
-                <input
-                  className="ml10"
-                  id="currentInches"
-                  onChange={(event) => {
-                    updateInches(event.target.value)
-                  }}
-                  value={inches}
-                  type="number"
-                  autoComplete={'off'}
-                  autoCorrect={'off'}
-                  autoCapitalize={'off'}
-                  step="any"
-                  placeholder="8"
-                  required
-                />
+                {!metricSystem && (
+                  <input
+                    className="ml10"
+                    id="currentInches"
+                    onChange={(event) => {
+                      updateInches(event.target.value)
+                    }}
+                    value={inches}
+                    type="number"
+                    autoComplete={'off'}
+                    autoCorrect={'off'}
+                    autoCapitalize={'off'}
+                    step="any"
+                    placeholder="8"
+                    required
+                  />
+                )}
               </div>
             </div>
           </div>
 
-          <div className="fr mb10 mt10">
-            <label htmlFor="liftWeights">Do you lift weights?</label>
-            <Switch
-              className="ml20 mt5"
-              id="liftWeights"
-              onChange={(data) => {
-                setLiftWeights(data)
-              }}
-              checked={liftWeights}
-            />
+          <div className="group expand">
+            <div className="fr mt10 mb10">
+              <label htmlFor="liftWeights">Do you lift weights?</label>
+              <Switch
+                className="ml10 mt5"
+                id="liftWeights"
+                onChange={(data) => {
+                  setLiftWeights(data)
+                }}
+                checked={liftWeights}
+              />
+            </div>
           </div>
+
           <button type="submit" className="purple bold">
             Calculate
           </button>
