@@ -69,12 +69,12 @@ export const SearchResult: React.FC<props> = ({ index, onClick, result }) => {
           </div>
         )}
         {isCustomFood(result) && (
-          <div css={dummyFood} className={`pink`}>
-            Custom
+          <div css={dummyFood} className={`blue`}>
+            Custom food
           </div>
         )}
         {isRecipe(result) && (
-          <div css={dummyFood} className={`pink`}>
+          <div css={dummyFood} className={`green`}>
             Recipe
           </div>
         )}
