@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { StoreonModule } from 'storeon'
 import { profileKey } from '../../helpers/constants'
 import { isBrowser } from '../../helpers/isBrowser'
@@ -10,7 +10,7 @@ import { DataEvents } from './types'
 const updateAndCacheProfile = (state: Readonly<CleanslateSlices>) => {
   const profileWithBasicsFoods = addBasicFoodsToProfile(state.data.profiles)
 
-  const newState = reduce(state, (draft) => {
+  const newState = produce(state, (draft) => {
     draft.data.profiles = profileWithBasicsFoods
   })
 
@@ -26,7 +26,7 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
 
   store.on('updateCurrentWebsocketClient', (state, client) => {
     if (client) {
-      return reduce(state, (draft) => {
+      return produce(state, (draft) => {
         // @ts-ignore
         draft.currentWebsocketClient = client
       })
@@ -37,7 +37,7 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
 
   store.on('addLogs', (state, logs) => {
     return updateAndCacheProfile(
-      reduce(state, (draft) => {
+      produce(state, (draft) => {
         draft.data.profiles[0].logs.push(...logs)
       })
     )
@@ -45,7 +45,7 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
 
   store.on('updateLog', (state, updatedLog) => {
     return updateAndCacheProfile(
-      reduce(state, (draft) => {
+      produce(state, (draft) => {
         const logs = state.data.profiles[0].logs
         const newLogs = logs.map((log) =>
           log.id === updatedLog.id ? updatedLog : log
@@ -57,7 +57,7 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
 
   store.on('removeLogById', (state, id) => {
     return updateAndCacheProfile(
-      reduce(state, (draft) => {
+      produce(state, (draft) => {
         const logs = state.data.profiles[0].logs
         const newLogs = logs.filter((log) => log.id !== id)
         draft.data.profiles[0].logs = newLogs
@@ -67,7 +67,7 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
 
   store.on('updateProfile', (state, newProfile) => {
     return updateAndCacheProfile(
-      reduce(state, (draft) => {
+      produce(state, (draft) => {
         draft.data.profiles = newProfile
       })
     )

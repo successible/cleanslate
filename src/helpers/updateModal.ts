@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { CleanslateSlices } from '../store/store'
 
 /** Keep a running list of all active modals AND hide/show modals */
@@ -18,7 +18,7 @@ export const updateModal = (
     ? [...activeModals, modal]
     : activeModals.filter((name) => name !== modal)
 
-  return reduce(state, (draft) => {
+  return produce(state, (draft) => {
     draft.navbar.activeModals = updatedActiveModals
     // @ts-ignore
     draft.navbar[modal.replace('navbar.', '')] = shouldOpen

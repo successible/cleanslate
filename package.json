@@ -53,7 +53,7 @@
     "focus-trap-react": "10.1.1",
     "graphql": "16.6.0",
     "hasura-cli": "2.23.0",
-    "immer": "9.0.21",
+    "immer": "10.0.1",
     "js-cookie": "3.0.5",
     "just-safe-get": "4.2.0",
     "lodash.groupby": "4.6.0",

@@ -41,8 +41,8 @@ dependencies:
     specifier: 2.23.0
     version: 2.23.0
   immer:
-    specifier: 9.0.21
-    version: 9.0.21
+    specifier: 10.0.1
+    version: 10.0.1
   js-cookie:
     specifier: 3.0.5
     version: 3.0.5
@@ -7090,8 +7090,8 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
-  /immer@9.0.21:
-    resolution: {integrity: sha512-bc4NBHqOqSfRW7POMkHd51LvClaeMXpm8dx0e8oE2GORbq5aRK7Bxl4FyzVLdGtLmvLKL7BTDBG5ACQm4HWjTA==}
+  /immer@10.0.1:
+    resolution: {integrity: sha512-zg++jJLsKKTwXGeSYIw0HgChSYQGtu0UDTnbKx5aGLYgte4CwTmH9eJDYyQ6FheyUtBe+lQW9FrGxya1G+Dtmg==}
     dev: false
 
   /immutable@4.3.0:

@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { Food } from '../../../models/food'
 
 export const getFoodByName = (
@@ -19,7 +19,7 @@ export const getFoodByName = (
     )
   // Add the alias for the alias match
   return food && food.name !== name
-    ? reduce(food, (draft) => {
+    ? produce(food, (draft) => {
         draft.alias = name
       })
     : food

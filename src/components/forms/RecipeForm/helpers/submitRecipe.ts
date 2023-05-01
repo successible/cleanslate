@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { addRecipeToCloud } from '../../../../helpers/recipes/addRecipeToCloud'
 import { updateRecipeOnCloud } from '../../../../helpers/recipes/updateRecipeOnCloud'
 import { Ingredient } from '../../../../models/ingredient'
@@ -28,7 +28,7 @@ export const submitRecipe = (
       ingredients_to_delete: remoteIds,
       ingredients_to_insert: ingredientsToInsert,
       pk_columns: { id: recipe.id },
-      set: reduce(data, (draft) => {
+      set: produce(data, (draft) => {
         // @ts-ignore
         delete draft.ingredients
       }),

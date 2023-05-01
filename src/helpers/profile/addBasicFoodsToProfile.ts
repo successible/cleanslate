@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { Ingredient } from '../../models/ingredient'
 import { Profile } from '../../models/profile'
 import { getBasicFoods } from '../Food/getBasicFoods'
@@ -43,7 +43,7 @@ export const addBasicFoodsToProfile = (profiles: Profile[]) => {
     return recipe
   })
 
-  const profilesWithBasicFoods = reduce(profiles, (draft) => {
+  const profilesWithBasicFoods = produce(profiles, (draft) => {
     draft[0].logs = logsWithBasicFoods
     draft[0].recipes = recipesWithBasicFoods
   })

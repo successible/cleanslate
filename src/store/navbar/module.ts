@@ -1,5 +1,5 @@
 import cloneDeep from 'clone-deep'
-import reduce from 'immer'
+import { produce } from 'immer'
 import { StoreonModule } from 'storeon'
 import { modals } from '../../constants/modals'
 import { updateModal } from '../../helpers/updateModal'
@@ -13,7 +13,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   store.on('@init', () => createInitialSlice())
 
   store.on('updateUser', (state, user) => {
-    return reduce(state, (draft) => {
+    return produce(state, (draft) => {
       draft.navbar.user = user
     })
   })
@@ -27,21 +27,21 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('openError', (state, error) => {
-    const newState = reduce(state, (draft) => {
+    const newState = produce(state, (draft) => {
       draft.navbar.error = error
     })
     return updateModal(newState, 'navbar.errorVisibility', true)
   })
 
   store.on('closeError', (state) => {
-    const newState = reduce(state, (draft) => {
+    const newState = produce(state, (draft) => {
       draft.navbar.error = null
     })
     return updateModal(newState, 'navbar.errorVisibility', false)
   })
 
   store.on('isOffline', (state, status) => {
-    return reduce(state, (draft) => {
+    return produce(state, (draft) => {
       draft.navbar.offline = status
     })
   })
@@ -64,7 +64,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('closeFoodFormModal', (state) => {
     const newState = updateModal(state, 'navbar.foodFormModalVisibility', false)
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.foodToUpdate = null
     })
   })
@@ -74,7 +74,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('setFoodToUpdate', (state, id) => {
-    return reduce(state, (draft) => {
+    return produce(state, (draft) => {
       draft.navbar.foodToUpdate = id
     })
   })
@@ -97,7 +97,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.recipeFormModalVisibility',
       true
     )
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.recipeToUpdate = event
     })
   })
@@ -108,13 +108,13 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.addIngredientModalVisibility',
       true
     )
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.recipeToUpdate = event
     })
   })
 
   store.on('closeAddIngredientModal', (state) => {
-    const newState = reduce(state, (draft) => {
+    const newState = produce(state, (draft) => {
       draft.editor.ingredient = null
     })
     return updateModal(newState, 'navbar.addIngredientModalVisibility', false)
@@ -126,7 +126,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('openItemModal', (state, event) => {
     const newState = updateModal(state, 'navbar.itemModalVisibility', true)
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.itemToUpdate = event
     })
   })
@@ -137,7 +137,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
 
   store.on('openUnitModal', (state, event) => {
     const newState = updateModal(state, 'navbar.unitModalVisibility', true)
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.itemToUpdate = event
     })
   })
@@ -180,7 +180,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.informationModalVisibility',
       false
     )
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.Information = null
     })
   })
@@ -191,7 +191,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
       'navbar.informationModalVisibility',
       true
     )
-    return reduce(newState, (draft) => {
+    return produce(newState, (draft) => {
       draft.navbar.Information = Information
     })
   })
@@ -241,7 +241,7 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
           newNavbar[modal] = false
         }
       })
-    return reduce(state, (draft) => {
+    return produce(state, (draft) => {
       // @ts-ignore
       draft.navbar = newNavbar
     })

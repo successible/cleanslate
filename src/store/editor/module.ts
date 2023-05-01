@@ -1,4 +1,4 @@
-import reduce from 'immer'
+import { produce } from 'immer'
 import { StoreonModule } from 'storeon'
 import { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
@@ -10,7 +10,7 @@ export const editor: StoreonModule<CleanslateSlices, EditorEvents> = (
   store.on('@init', () => createInitialSlice())
 
   store.on('saveIngredient', (state, event) => {
-    return reduce(state, (draft) => {
+    return produce(state, (draft) => {
       draft.editor.ingredient = event
     })
   })
