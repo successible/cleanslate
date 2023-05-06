@@ -9,8 +9,10 @@ type props = {
   localAmount: string
   setLocalAmount: (amount: string) => void
   setLocalUnit: (unit: Unit) => void
+  convertBetweenUnits: boolean
 }
 export const UnitInput: React.FC<props> = ({
+  convertBetweenUnits,
   item,
   localAmount,
   localUnit,
@@ -27,7 +29,8 @@ export const UnitInput: React.FC<props> = ({
         item,
         localAmount,
         localUnit,
-        unit
+        unit,
+        convertBetweenUnits
       )
       setLocalAmount(newAmount)
       setLocalUnit(newUnit)

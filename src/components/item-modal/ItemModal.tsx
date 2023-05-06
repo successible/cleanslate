@@ -92,6 +92,7 @@ export const ItemModal: React.FC<props> = ({ item, profile }) => {
               localUnit={localUnit}
               setLocalAmount={setLocalAmount}
               setLocalUnit={setLocalUnit}
+              convertBetweenUnits={false}
             />
           )}
         </div>

@@ -22,6 +22,7 @@ export class Profile {
   countDown: boolean // Default to true
   enablePlanning: boolean // Default to false
   metricSystem: boolean // Default to false
+  covertBetweenUnits: boolean // Default to false
 
   // Relationships
   foods: Food[]
