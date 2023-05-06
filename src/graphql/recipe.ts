@@ -2,13 +2,16 @@ import { gql } from '../helpers/gql'
 
 export const RECIPE_BASE_FRAGMENT = gql`
   fragment recipe_base on recipes {
+    containerName
+    countName
+    countToGram
+    countToTbsp
+    createdAt
     id
     name
-    countName
-    containerName
-    servingPerContainer
     profile
-    createdAt
+    servingPerContainer
+    servingPerContainer
     type
     recipeToProfile {
       id

@@ -41,10 +41,18 @@ export const submitRecipe = (
     })
   } else {
     const variables = formatDataForMutation(data, ingredientsToUse, recipe?.id)
-    return addRecipeToCloud(variables.object, () => {
-      if (closeModal) {
-        dispatch('closeRecipeFormModal')
+    return addRecipeToCloud(
+      {
+        ...variables.object,
+        countToGram: data.countToGram,
+        countToTbsp: data.countToTbsp,
+        servingPerContainer: data.servingPerContainer,
+      },
+      () => {
+        if (closeModal) {
+          dispatch('closeRecipeFormModal')
+        }
       }
-    })
+    )
   }
 }

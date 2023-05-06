@@ -11,6 +11,8 @@ export class Recipe {
   countName: string | null
   containerName: string | null
   servingPerContainer: number | null
+  countToGram: number | null
+  countToTbsp: number | null
 
   // Foreign keys
   profile: string

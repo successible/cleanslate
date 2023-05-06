@@ -1,4 +1,5 @@
 import { volumeUnits } from '../../../constants/units'
+import { weightUnits } from '../../../constants/units'
 import { QuickAddUnit, Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
 import { Food } from '../../../models/food'
@@ -218,6 +219,9 @@ export const calculatePerMacroPerRecipe = (
 export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
   return logs.reduce((total, log) => {
     const { amount, barcode, unit } = log
+    if (amount === 0) {
+      return 0
+    }
     const food = log.logToFood
     const recipe = log.logToRecipe
     // EXERCISE is the "odd unit out"
@@ -249,7 +253,18 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
     } else if (food) {
       return total + calculatePerMacroPerFood(amount, unit, food, metric)
     } else if (recipe) {
-      return total + calculatePerMacroPerRecipe(recipe, metric, amount)
+      const { countToGram, countToTbsp } = recipe
+      const caloriesPerCount =
+        calculatePerMacroPerRecipe(recipe, metric, amount) / amount
+      if (volumeUnits.includes(unit) && countToTbsp) {
+        const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
+        return (tbsp / countToTbsp) * caloriesPerCount
+      } else if (weightUnits.includes(unit) && countToGram) {
+        const grams = convertFromWeightToGrams(unit, amount)
+        return (grams / countToGram) * caloriesPerCount
+      } else {
+        return total + caloriesPerCount * amount
+      }
     } else {
       // If food is null and the metric does not exist, do nothing
       return total

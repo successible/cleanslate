@@ -3,6 +3,7 @@ import React from 'react'
 import { Unit } from '../../../constants/units'
 
 type props = {
+  title?: string
   amount: string | number
   unit: Unit
   units: Unit[]
@@ -15,6 +16,7 @@ const getAmount = (amount: string | number) =>
 export const UnitSelector: React.FC<props> = ({
   amount,
   onChange,
+  title,
   unit,
   units,
 }) => {
@@ -80,7 +82,7 @@ export const UnitSelector: React.FC<props> = ({
           white-space: nowrap;
         `}
       >
-        {isContainer ? 'per container ' : 'per serving'}
+        {title || (isContainer ? 'per container ' : 'per serving')}
       </span>
     </div>
   )

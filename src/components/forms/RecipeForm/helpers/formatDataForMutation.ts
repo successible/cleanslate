@@ -6,6 +6,9 @@ import { formatIngredient, FormattedIngredient } from './formatIngredient'
 export type RecipeMutationInput = {
   name: string | number
   countName: string | number
+  countToGram: number | null
+  countToTbsp: number | null
+  servingPerContainer: number | null
   ingredients: {
     data: FormattedIngredient[]
   }

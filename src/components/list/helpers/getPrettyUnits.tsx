@@ -14,25 +14,22 @@ import { Recipe } from '../../../models/recipe'
  */
 
 export const getPrettyUnits = (item: Food | Recipe) => {
-  // If tbspToGram exists, include the volume units
   const volume =
-    item.type === 'food'
-      ? item?.countToTbsp || item?.tbspToGram
-        ? volumeUnits
-        : []
+    (item.type === 'food' && (item?.countToTbsp || item?.tbspToGram)) ||
+    (item.type === 'recipe' && item?.countToTbsp)
+      ? volumeUnits
       : []
 
   const volumeDict = zipObject(volume, volume)
 
-  // Only foods have weight units. Recipes deal purely in counts!
   const weight =
-    item.type === 'food' && (item.caloriesPerGram || item.countToGram)
+    (item.type === 'food' && (item.caloriesPerGram || item.countToGram)) ||
+    (item.type === 'recipe' && item.countToGram)
       ? weightUnits
       : []
 
   const weightDict = zipObject(weight, weight)
 
-  // If countName exists OR it is a recipe OR caloriesPerCount or proteinPerCount, include the COUNT unit
   const count =
     item.type === 'recipe' ||
     (item.type === 'food' && item?.countName) ||
@@ -46,7 +43,7 @@ export const getPrettyUnits = (item: Food | Recipe) => {
   if (countDict.COUNT) {
     countDict.COUNT = item.countName || defaultCount
   }
-  // If the item has caloriesPerCount, proteinPerCount, and servingPerCount, only then render the count unit
+
   const container =
     item.type === 'food' &&
     (item.caloriesPerCount || item.caloriesPerCount === 0) &&

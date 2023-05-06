@@ -38,6 +38,8 @@ insert_permissions:
       columns:
         - containerName
         - countName
+        - countToGram
+        - countToTbsp
         - name
         - profile
         - servingPerContainer
@@ -45,15 +47,17 @@ select_permissions:
   - role: user
     permission:
       columns:
-        - servingPerContainer
         - containerName
         - countName
+        - countToGram
+        - countToTbsp
+        - createdAt
+        - id
         - name
         - profile
+        - servingPerContainer
         - type
-        - createdAt
         - updatedAt
-        - id
       filter:
         profile:
           _eq: X-Hasura-User-Id
@@ -63,6 +67,8 @@ update_permissions:
       columns:
         - containerName
         - countName
+        - countToGram
+        - countToTbsp
         - name
         - servingPerContainer
       filter:
