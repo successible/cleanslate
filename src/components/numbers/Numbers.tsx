@@ -89,7 +89,7 @@ export const Numbers: React.FC<props> = (props) => {
                     >
                       /
                     </span>
-                    {calorieTarget}
+                    {calorieTarget + exerciseDone}
                   </>
                 )}
               </div>

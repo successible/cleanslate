@@ -18,6 +18,7 @@ export const PROFILE_FRAGMENT = gql`
     countDown
     enablePlanning
     metricSystem
+    convertBetweenUnits
   }
 `
 

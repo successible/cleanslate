@@ -39,6 +39,7 @@ insert_permissions:
       columns:
         - authId
         - calorieTarget
+        - convertBetweenUnits
         - countDown
         - enablePlanning
         - hidePWAPrompt
@@ -55,6 +56,7 @@ select_permissions:
         - apiToken
         - authId
         - calorieTarget
+        - convertBetweenUnits
         - countDown
         - createdAt
         - enablePlanning
@@ -77,6 +79,7 @@ update_permissions:
       columns:
         - apiToken
         - calorieTarget
+        - convertBetweenUnits
         - countDown
         - enablePlanning
         - hidePWAPrompt

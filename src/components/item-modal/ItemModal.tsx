@@ -22,7 +22,7 @@ type props = {
 
 export const ItemModal: React.FC<props> = ({ item, profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
-  const { enablePlanning } = profile
+  const { convertBetweenUnits, enablePlanning } = profile
   // Extract information from props
   const itemToUse =
     item === undefined ? createDefaultItem(enablePlanning) : item
@@ -92,7 +92,7 @@ export const ItemModal: React.FC<props> = ({ item, profile }) => {
               localUnit={localUnit}
               setLocalAmount={setLocalAmount}
               setLocalUnit={setLocalUnit}
-              convertBetweenUnits={false}
+              convertBetweenUnits={convertBetweenUnits}
             />
           )}
         </div>

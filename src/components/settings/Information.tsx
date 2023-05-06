@@ -18,6 +18,9 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [enableMetricSystem, setEnableMetricSystem] = useState(
     profile.metricSystem
   )
+  const [convertBetweenUnits, setConvertBetweenUnits] = useState(
+    profile.convertBetweenUnits
+  )
 
   const info =
     user &&
@@ -145,6 +148,24 @@ export const Information: React.FC<props> = ({ profile }) => {
                 )
               }}
               checked={showDensities}
+            />
+          </label>
+        </div>
+        <div className="fr mt20 ml5">
+          <label className="fr">
+            <span className="mr10" css={itemLabelStyling}>
+              Convert between units
+            </span>
+            <Switch
+              onChange={(data) => {
+                updateProfileOnCloud(
+                  { id: profile.id, set: { convertBetweenUnits: data } },
+                  () => {
+                    setConvertBetweenUnits(data)
+                  }
+                )
+              }}
+              checked={convertBetweenUnits}
             />
           </label>
         </div>

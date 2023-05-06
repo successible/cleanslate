@@ -15,6 +15,7 @@ type UpdateTargets = {
     countDown?: boolean
     enablePlanning?: boolean
     metricSystem?: boolean
+    convertBetweenUnits?: boolean
   }
 }
 
