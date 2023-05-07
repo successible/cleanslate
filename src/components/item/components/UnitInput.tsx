@@ -15,6 +15,7 @@ export const UnitInput: React.FC<props> = ({ item, unit }) => {
     <div>
       {Number(amount) > 1 &&
       prettyUnit &&
+      unit !== 'mL' &&
       unit !== 'LBS' &&
       unit !== 'OZ' &&
       unit !== 'TBSP' &&

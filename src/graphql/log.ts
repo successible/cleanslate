@@ -34,7 +34,9 @@ export const CREATE_LOG = gql`
 export const CREATE_LOGS = gql`
   mutation CREATE_LOGS($objects: [logs_insert_input!]!) {
     insert_logs(objects: $objects) {
-      affected_rows
+      returning {
+        ...log
+      }
     }
   }
 `

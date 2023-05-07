@@ -1,11 +1,11 @@
 export type QuickAddUnit = 'CALORIE' | 'PROTEIN' | 'EXERCISE'
-export type VolumeUnit = 'TBSP' | 'TSP' | 'CUP'
+export type VolumeUnit = 'TBSP' | 'TSP' | 'CUP' | 'mL'
 export type CountUnit = 'COUNT' | 'CONTAINER'
 export type WeightUnit = 'GRAM' | 'LBS' | 'OZ'
 
 export type Unit = QuickAddUnit | VolumeUnit | CountUnit | WeightUnit
 
-export const volumeUnits: Unit[] = ['CUP', 'TBSP', 'TSP']
+export const volumeUnits: Unit[] = ['CUP', 'TBSP', 'TSP', 'mL']
 
 export const imperialUnits: Unit[] = ['OZ', 'LBS']
 

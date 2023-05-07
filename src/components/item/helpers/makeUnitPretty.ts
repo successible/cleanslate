@@ -20,6 +20,8 @@ export const makeUnitPretty = (item: CommonItem, unit: Unit | null) => {
       item.recipe?.containerName ||
       defaultContainer
     )
+  } else if (unit === 'mL') {
+    return unit
   } else {
     return unit?.toLowerCase()
   }

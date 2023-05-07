@@ -55,11 +55,11 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     )
   })
 
-  store.on('removeLogById', (state, id) => {
+  store.on('removeLogsById', (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
         const logs = state.data.profiles[0].logs
-        const newLogs = logs.filter((log) => log.id !== id)
+        const newLogs = logs.filter((log) => !ids.includes(log.id))
         draft.data.profiles[0].logs = newLogs
       })
     )

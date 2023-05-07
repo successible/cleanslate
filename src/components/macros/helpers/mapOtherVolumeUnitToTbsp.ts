@@ -12,6 +12,8 @@ export const mapOtherVolumeUnitToTbsp = (
     return amount / 3
   } else if (unit === 'CUP') {
     return amount * 16
+  } else if (unit === 'mL') {
+    return amount * 0.067628
   } else {
     return handleError('The unit entered is not a volume unit!')
   }

@@ -10,7 +10,7 @@ export const deleteLogOnCloud = (id: string, onSuccess: () => void) => {
       client
         .request(stringifyQuery(DELETE_LOG), { id })
         .then((result: { delete_logs_by_pk: { id: string } }) => {
-          store.dispatch('removeLogById', result.delete_logs_by_pk.id)
+          store.dispatch('removeLogsById', [result.delete_logs_by_pk.id])
           onSuccess()
         })
     })
