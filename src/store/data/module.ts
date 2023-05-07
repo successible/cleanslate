@@ -1,14 +1,20 @@
 import { produce } from 'immer'
 import { StoreonModule } from 'storeon'
+import { HANDLE_MISSING_BASIC_FOODS } from '../../graphql/food'
 import { profileKey } from '../../helpers/constants'
+import { getHasuraClient } from '../../helpers/getHasuraClient'
+import { handleError } from '../../helpers/handleError'
 import { isBrowser } from '../../helpers/isBrowser'
 import { addBasicFoodsToProfile } from '../../helpers/profile/addBasicFoodsToProfile'
+import { stringifyQuery } from '../../helpers/stringifyQuery'
 import { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
 import { DataEvents } from './types'
 
 const updateAndCacheProfile = (state: Readonly<CleanslateSlices>) => {
-  const profileWithBasicsFoods = addBasicFoodsToProfile(state.data.profiles)
+  const profileWithBasicsFoods = addBasicFoodsToProfile(
+    state.data.profiles
+  ).profiles
 
   const newState = produce(state, (draft) => {
     draft.data.profiles = profileWithBasicsFoods
@@ -32,6 +38,24 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
       })
     } else {
       return state
+    }
+  })
+
+  store.on('handleMissingBasicFoods', (state, missingBasicFoods) => {
+    if (missingBasicFoods.length >= 1) {
+      getHasuraClient()
+        .then((client) => {
+          client
+            .request(stringifyQuery(HANDLE_MISSING_BASIC_FOODS), {
+              ids: missingBasicFoods,
+            })
+            .then((result) => {
+              console.log(result)
+            })
+        })
+        .catch((error) => {
+          handleError(error)
+        })
     }
   })
 

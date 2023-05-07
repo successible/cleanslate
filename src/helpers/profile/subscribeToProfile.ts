@@ -26,10 +26,11 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
         } else {
           // We update the entire profile with every subscription
           // That is because the payload is small
-          store.dispatch(
-            'updateProfile',
-            addBasicFoodsToProfile(newData.profiles)
+          const { missingBasicFoods, profiles } = addBasicFoodsToProfile(
+            newData.profiles
           )
+          store.dispatch('updateProfile', profiles)
+          store.dispatch('handleMissingBasicFoods', missingBasicFoods)
         }
       },
     })
