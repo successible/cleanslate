@@ -258,10 +258,10 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
         calculatePerMacroPerRecipe(recipe, metric, amount) / amount
       if (volumeUnits.includes(unit) && countToTbsp) {
         const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
-        return (tbsp / countToTbsp) * caloriesPerCount
+        return total + (tbsp / countToTbsp) * caloriesPerCount
       } else if (weightUnits.includes(unit) && countToGram) {
         const grams = convertFromWeightToGrams(unit, amount)
-        return (grams / countToGram) * caloriesPerCount
+        return total + (grams / countToGram) * caloriesPerCount
       } else {
         return total + caloriesPerCount * amount
       }
