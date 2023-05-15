@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   database:
-    image: postgres:15.2
+    image: postgres:15.3
     command: ['postgres', '-c', 'log_statement=all']
     restart: always
     volumes:
@@ -12,7 +12,7 @@ services:
       - '${DB_PORT}:5432'
 
   graphql-engine:
-    image: hasura/graphql-engine:v2.24.1
+    image: hasura/graphql-engine:v2.25.0
     ports:
       - '8120:8080'
     depends_on:

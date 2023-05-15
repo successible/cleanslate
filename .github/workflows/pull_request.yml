@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:15.2
+        image: postgres:15.3
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
@@ -40,7 +40,7 @@ jobs:
           --health-retries 5
 
       graphql-engine:
-        image: hasura/graphql-engine:v2.24.1
+        image: hasura/graphql-engine:v2.25.0
         ports:
           - '8120:8080'
         env:
