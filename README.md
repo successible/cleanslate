@@ -20,7 +20,7 @@ It can do stuff like:
 - Track exercise
 - And so on
 
-To learn more, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/Ws9ACZewl0E).
+To learn more, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/wCoqpIImNdg).
 
 ## How can I get involved?
 
