@@ -6,7 +6,6 @@ import { usePWAPrompt } from '../../hooks/usePWAPrompt'
 import { useShortcuts } from '../../hooks/useShortcuts'
 import { useStartTime } from '../../hooks/useStartTime'
 import { useSubscription } from '../../hooks/useSubscription'
-import { useTruncateData } from '../../hooks/useTruncateData'
 import { useUser } from '../../hooks/useUser'
 import { Body } from '../body/Body'
 import { BottomBar } from '../bottom-bar/BottomBar'
@@ -21,7 +20,6 @@ export const App = () => {
   const { dispatch, foods, logs, offline, profile, recipes } = useData()
   const user = useUser()
 
-  useTruncateData()
   useStartTime()
   useShortcuts(executeKeyboardShortcuts)
   useSubscription([subscribeToProfile], user, offline, profile)

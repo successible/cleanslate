@@ -6,7 +6,7 @@ import { Login } from '../components/login/Login'
 import { getFirebaseConfig } from '../helpers/getFirebaseConfig'
 import { getLoginStatus } from '../helpers/getLoginStatus'
 import { isLoadedUser } from '../helpers/isLoadedUser'
-import { useFirebase } from '../hooks/useFirebase'
+import { useAuthentication } from '../hooks/useAuthentication'
 import { useOffline } from '../hooks/useOffline'
 import { useOfflineStatus } from '../hooks/useOfflineStatus'
 import { useUser } from '../hooks/useUser'
@@ -26,7 +26,7 @@ const Index = () => {
   }, [])
 
   useOffline()
-  useFirebase(offline)
+  useAuthentication(offline)
 
   return (
     <>

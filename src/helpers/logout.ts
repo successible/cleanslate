@@ -3,6 +3,7 @@ import toast from 'react-hot-toast'
 import { clearCache } from './clearCache'
 import { clearLoginState } from './clearLoginState'
 import { closeAllModals } from './closeAllModals'
+import { firebaseEnabled } from './getFirebaseConfig'
 import { getStore } from './getStore'
 import { isBrowser } from './isBrowser'
 
@@ -22,7 +23,9 @@ export const logout = async (alert = true) => {
   }
   try {
     // Log out of Firebase
-    await firebase.auth().signOut()
+    if (firebaseEnabled) {
+      await firebase.auth().signOut()
+    }
     closeAllModals()
     store.dispatch('updateUser', null)
     if (isBrowser() && alert) {

@@ -22,6 +22,15 @@ export const PROFILE_FRAGMENT = gql`
   }
 `
 
+export const GET_PROFILE = gql`
+  query GetProfiles($token: String) {
+    profiles(where: { authId: { _eq: $token } }) {
+      authId
+      id
+    }
+  }
+`
+
 export const UPDATE_PROFILE = gql`
   mutation UPDATE_PROFILE($id: uuid!, $set: profiles_set_input) {
     update_profiles(where: { id: { _eq: $id } }, _set: $set) {

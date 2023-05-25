@@ -171,6 +171,7 @@ export default class CustomDocument extends Document {
           {isProduction() && (
             <script src="/register-service-worker.js"></script>
           )}
+
           <script src="/browser-check.js"></script>
         </Head>
         <body>

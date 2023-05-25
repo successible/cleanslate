@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import Head from 'next/head'
 import { Navbar } from '../components/navbar/Navbar'
 import { getContactEmail } from '../helpers/getContactEmail'
+import { firebaseEnabled } from '../helpers/getFirebaseConfig'
 
 const Privacy = () => {
   return (
@@ -100,10 +101,16 @@ const Privacy = () => {
               <li>
                 The data needed to securely authenticate you. That data is
                 stored in{' '}
-                <a href="https://firebase.google.com/support/privacy">
-                  Firebase.com
-                </a>
-                , which is owned by Google.
+                {firebaseEnabled ? (
+                  <>
+                    <a href="https://firebase.google.com/support/privacy">
+                      Firebase.com
+                    </a>
+                    , which is owned by Google.
+                  </>
+                ) : (
+                  <>this server.</>
+                )}
               </li>
             </ul>
           </li>

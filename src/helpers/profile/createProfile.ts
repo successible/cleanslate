@@ -2,6 +2,7 @@ import { getHasuraClient } from '../getHasuraClient'
 import { getUser } from '../getUser'
 import { gql } from '../gql'
 import { handleError } from '../handleError'
+import { logout } from '../logout'
 
 export const createProfileMutation = async (
   authId: string,
@@ -35,10 +36,14 @@ export const createProfile = async () => {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone
     const user = await getUser()
     if (user) {
-      const authId = await user.uid
-      const provider = user.providerData[0]
-      if (provider) {
-        await createProfileMutation(authId, timezone)
+      if ('token' in user) {
+        logout()
+      } else {
+        const authId = await user.uid
+        const provider = user.providerData[0]
+        if (provider) {
+          await createProfileMutation(authId, timezone)
+        }
       }
     }
   } catch (error) {

@@ -8,10 +8,14 @@ import {
   stopRequestIfOffline,
 } from './stopRequestIfOffline'
 
-export const getHasuraClient = (): PendingClient => {
+export const getHasuraClient = (JWT = ''): PendingClient => {
   return stopRequestIfOffline()
     .then(() => {
-      return getJWT()
+      if (JWT) {
+        return JWT
+      } else {
+        return getJWT()
+      }
     })
     .then((token) => {
       const request: Client = {

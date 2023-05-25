@@ -1,7 +1,9 @@
 import { css } from '@emotion/react'
+import { firebaseEnabled } from '../../helpers/getFirebaseConfig'
 import { isBrowser } from '../../helpers/isBrowser'
 import { colors } from '../../theme'
-import { LoginButtons } from './LoginButtons'
+import { FirebaseLoginButtons } from './FirebaseLoginButtons'
+import { TokenLoginButtons } from './TokenLoginButtons'
 
 export const LoginPanel = () => {
   const panel = css`
@@ -25,7 +27,8 @@ export const LoginPanel = () => {
         <h1 style={{ fontSize: '1.8rem' }} className="mt50 mb20 tcenter">
           Clean Slate ❤️
         </h1>
-        {isBrowser() && <LoginButtons />}
+        {isBrowser() && firebaseEnabled && <FirebaseLoginButtons />}
+        {isBrowser() && !firebaseEnabled && <TokenLoginButtons />}
       </div>
     </div>
   )

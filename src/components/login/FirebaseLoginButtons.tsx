@@ -28,7 +28,7 @@ export const loginButton = css`
   }
 `
 
-export const LoginButtons = () => {
+export const FirebaseLoginButtons = () => {
   return (
     <div className="fcc w100">
       {/* Social login buttons */}

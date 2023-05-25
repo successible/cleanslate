@@ -23,6 +23,7 @@ export type DataEvents = {
   updateProfile: Profile[]
   updateCurrentWebsocketClient: SubscriptionClient | null
   handleMissingBasicFoods: string[]
+  clearData: null
 }
 
 export type DataEventsKeys = keyof DataEvents

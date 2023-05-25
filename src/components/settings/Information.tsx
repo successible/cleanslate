@@ -19,10 +19,12 @@ export const Information: React.FC<props> = ({ profile }) => {
     profile.metricSystem
   )
 
+  const userLoaded = user && user !== 'PENDING'
+
   const info =
-    user &&
-    user !== 'PENDING' &&
-    (user.email || user.providerData[0]?.email || user.phoneNumber)
+    userLoaded && 'token' in user
+      ? '&' + user.token
+      : userLoaded && (user.email || user.providerData[0]?.email)
 
   const itemLabelStyling = css`
     width: 230px;
@@ -37,9 +39,9 @@ export const Information: React.FC<props> = ({ profile }) => {
         {info && (
           <>
             <strong className="mr5">
-              {info[0] === '+' ? 'Phone:' : 'Email:'}
+              {info[0] === '&' ? 'Token:' : 'Email:'}
             </strong>
-            {info}
+            {info[0] === '&' ? info.slice(1) : info}
           </>
         )}
       </div>

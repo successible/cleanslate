@@ -7,6 +7,7 @@ import { handleError } from '../../helpers/handleError'
 import { isBrowser } from '../../helpers/isBrowser'
 import { addBasicFoodsToProfile } from '../../helpers/profile/addBasicFoodsToProfile'
 import { stringifyQuery } from '../../helpers/stringifyQuery'
+import { Profile } from '../../models/profile'
 import { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
 import { DataEvents } from './types'
@@ -29,6 +30,13 @@ const updateAndCacheProfile = (state: Readonly<CleanslateSlices>) => {
 
 export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
   store.on('@init', () => createInitialSlice())
+
+  store.on('clearData', (state) => {
+    return produce(state, (draft) => {
+      draft.data.profiles = [new Profile()]
+      draft.data.basicFoods = []
+    })
+  })
 
   store.on('updateCurrentWebsocketClient', (state, client) => {
     if (client) {

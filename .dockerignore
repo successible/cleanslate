@@ -4,6 +4,7 @@
 .next
 .vscode/ltex.dictionary.en-US.txt
 *.pem
+*.txt
 build
 env.json
 firebase-config.json

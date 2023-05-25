@@ -18,3 +18,7 @@ const auth = `--endpoint ${endpoint} ${secret}`
 execSync(`npx hasura metadata apply ${auth}`)
 execSync(`npx hasura migrate apply --all-databases ${auth}`)
 execSync(`npx hasura metadata reload ${auth}`)
+
+if (!isProduction) {
+  execSync(`hasura seed apply --file user.sql ${auth} --database-name default`)
+}
