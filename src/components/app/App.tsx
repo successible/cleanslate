@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import { executeKeyboardShortcuts } from '../../helpers/executeShortcuts'
 import { subscribeToProfile } from '../../helpers/profile/subscribeToProfile'
 import { useData } from '../../hooks/useData'
+import { useLogoutOtherTab } from '../../hooks/useLogoutOtherTab'
 import { usePWAPrompt } from '../../hooks/usePWAPrompt'
 import { useShortcuts } from '../../hooks/useShortcuts'
 import { useStartTime } from '../../hooks/useStartTime'
@@ -24,6 +25,7 @@ export const App = () => {
   useShortcuts(executeKeyboardShortcuts)
   useSubscription([subscribeToProfile], user, offline, profile)
   usePWAPrompt(profile, dispatch)
+  useLogoutOtherTab()
 
   const navbarHeight = 65
   const footerHeight = 65

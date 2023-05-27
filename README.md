@@ -25,9 +25,9 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 > Note: You do not have to host Clean Slate to use it. We maintain an instance at `cleanslate.sh`. It offers free accounts with social login (e.g. Login with Google).
 
-1. Create a PostgreSQL database. We recommend Render.com. However, any host will do.
+1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly price and very convenient. However, another host, such as Digital Ocean or Heroku, will do.
 
-2. Create a static website linked to automatically build from `main` of the [Clean Slate repo](https://github.com/successible/cleanslate). We recommend CloudFlare Pages. However, Netlify, Render, and Vercel will also do. Make sure to add the following environmental variables.
+2. Create a static website linked to build from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free and fast. However, Netlify, Render, and Vercel will also do. Make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -37,7 +37,7 @@ NEXT_PUBLIC_HASURA_DOMAIN=XXX
 NEXT_PUBLIC_CONTACT_EMAIL=XXX
 ```
 
-3. Create a web service that builds and deploys the `Dockerfile` in the [Clean Slate repo](https://github.com/successible/cleanslate) on updates to `main`. We recommend Render.com. Make sure to add the following environmental variables.
+1. Create a web service linked to build from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Configure it for Docker and to deploy the `./Dockerfile`. We recommend Render.com because it fairly priced and automates this process. Make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -53,7 +53,7 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://localhost
 HASURA_GRAPHQL_DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
 ```
 
-4. Go to your web service (Step #3). Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
+4. Go to the domain of your newly deployed web service (Step #3). Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
 5. You can now log in at your static website (Step #2) with that credential.
 
@@ -129,20 +129,21 @@ Production:
 These environment values are added to the static website (Step #2). Replace `XXX` with your own.
 
 ```bash
+# This forces Clean Slate to use Firebase over the authId system
+NEXT_PUBLIC_USE_FIREBASE="true"
+
+# You can find your project config in your Firebase project settings
+NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"XXX","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX"}
+
 # Just setting a value as true does not turn on the provider
 # See the Firebase documentation for how to configure each provider.
 # Google should start as true but that is one click to configure in Firebase
 # And you always need one provider enabled. Otherwise, no one can log in.
 
-NEXT_PUBLIC_USE_FIREBASE="true"
 NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
 NEXT_PUBLIC_LOGIN_WITH_APPLE="false"
 NEXT_PUBLIC_LOGIN_WITH_GITHUB="false"
 NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
-
-# You can find your config in the Firebase project settings
-
-NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"XXX","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX"}
 ```
 
 These environment values are added to the web service (Step #3). Make sure to replace `my-firebase-project` with the name of your own project.

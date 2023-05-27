@@ -68,8 +68,12 @@ export const TokenLoginButtons = () => {
         color="yellow"
       >
         <div>
-          To create an account, use the Hasura Console to create a profile. The
-          value of authId is the token.
+          To create an account, the admin must use the Hasura Console to make a
+          profile. The token is the authId of the profile. To learn more about
+          the app,{' '}
+          <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
+            go here.
+          </a>
         </div>
       </Explanation>
     </form>

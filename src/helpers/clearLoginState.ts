@@ -7,9 +7,6 @@ export const clearLoginState = () => {
   window.history.replaceState(null, 'null', window.location.pathname)
 
   localStorage.setItem(loginKey, 'null')
-  Cookies.remove(loginKey, {
-    domain: getDomain(),
-  })
 
   Cookies.remove(tokenKey, {
     domain: getDomain(),
