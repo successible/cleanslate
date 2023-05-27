@@ -23,11 +23,11 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 ## How to host Clean Slate
 
-> Note: You do not have to host Clean Slate to use it. We maintain an instance at `cleanslate.sh`. It offers free accounts with social login (e.g. Login with Google).
+> Note: You do not have to host Clean Slate to use it. We maintain an instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
-1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly price and very convenient. However, another host, such as Digital Ocean or Heroku, will do.
+1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, another host, such as Digital Ocean or Heroku, will do.
 
-2. Create a static website linked to build from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free and fast. However, Netlify, Render, and Vercel will also do. Make sure to add the following environmental variables.
+2. Create a static website that builds from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, and Vercel will also do. Make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -37,7 +37,7 @@ NEXT_PUBLIC_HASURA_DOMAIN=XXX
 NEXT_PUBLIC_CONTACT_EMAIL=XXX
 ```
 
-1. Create a web service linked to build from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Configure it for Docker and to deploy the `./Dockerfile`. We recommend Render.com because it fairly priced and automates this process. Make sure to add the following environmental variables.
+1. Create a web service that builds from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Configure it for Docker and to deploy the `./Dockerfile`. We recommend Render.com because it fairly priced and automates this process. Make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
