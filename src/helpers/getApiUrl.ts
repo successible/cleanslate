@@ -1,13 +1,13 @@
-import { getDomain } from './getDomain'
 import { isProduction } from './isProduction'
 
 export const getApiUrl = () => {
-  const proxyDomain = process.env.NEXT_PUBLIC_PROXY_ROOT_DOMAIN
-  const domain = getDomain()
+  const proxyDomain = process.env.NEXT_PUBLIC_PROXY_DOMAIN
+  const hasuraDomain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
+
   if (isProduction()) {
     return [
-      `https://api.${domain}/v1/graphql`,
-      `wss://api.${domain}/v1/graphql`,
+      `https://${hasuraDomain}/v1/graphql`,
+      `wss://${hasuraDomain}/v1/graphql`,
     ]
   }
 
