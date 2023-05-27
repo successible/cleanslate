@@ -41,6 +41,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: successible/cleanslate:${{ steps.variables.outputs.SHA }}
+          tags: successible/cleanslate:${{ steps.variables.outputs.SHA }}, successible/cleanslate:latest
           labels: ${{ steps.meta.outputs.labels }}
           file: Dockerfile
