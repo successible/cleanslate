@@ -7,7 +7,6 @@ import Document, {
   NextScript,
 } from 'next/document'
 import { isProduction } from '../helpers/isProduction'
-import { startSentry } from '../helpers/startSentry'
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -175,7 +174,6 @@ export default class CustomDocument extends Document {
           <script src="/browser-check.js"></script>
         </Head>
         <body>
-          <>{startSentry()}</>
           <Main />
           <NextScript />
         </body>

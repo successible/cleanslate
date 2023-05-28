@@ -8,11 +8,13 @@ import Div100vh from 'react-div-100vh'
 import { Toaster } from 'react-hot-toast'
 import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
+import { startSentry } from '../helpers/startSentry'
 import { useErrors } from '../hooks/useErrors'
 import { store } from '../store/store'
 
 // https://github.com/immerjs/immer/issues/959
 setAutoFreeze(false)
+startSentry()
 
 function _App({ Component, pageProps }: AppProps) {
   // Listen to unhandled errors and Promise rejections

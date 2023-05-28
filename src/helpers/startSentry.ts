@@ -1,5 +1,6 @@
 import * as Sentry from '@sentry/react'
-import { BrowserTracing } from '@sentry/tracing'
+
+export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
 
 export const errorsToIgnore = [
   /AbortError: The operation was aborted/,
@@ -26,13 +27,13 @@ export const errorsToIgnore = [
 ]
 
 export const startSentry = () => {
-  const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
   if (dsn) {
+    console.log(`Starting Sentry with ${dsn}`)
     Sentry.init({
-      dsn: process.env.NEXT_PUBLIC_REACT_SENTRY_DSN,
+      dsn,
       ignoreErrors: errorsToIgnore,
       integrations: [
-        new BrowserTracing(),
+        new Sentry.BrowserTracing(),
         new Sentry.Replay({
           blockAllMedia: false,
           maskAllInputs: false,

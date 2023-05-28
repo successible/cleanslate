@@ -151,8 +151,8 @@ NEXT_PUBLIC_LOGIN_WITH_GITHUB="false"
 NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
 ```
 
-These environment values are added to the web service (Step #3). Make sure to replace `my-firebase-project` with the name of your own project.
+These environment values are added to the web service (Step #3). Replace `XXX` with your Firebase Project ID.
 
 ```bash
-HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "my-firebase-project", "issuer": "https://securetoken.google.com/my-firebase-project", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
+HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```

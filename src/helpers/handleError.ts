@@ -1,7 +1,7 @@
 import * as Sentry from '@sentry/react'
 import { toast } from 'react-hot-toast'
 import { store } from '../store/store'
-import { isProduction } from './isProduction'
+import { dsn } from './startSentry'
 
 export const handleError = (
   error: Error | string,
@@ -13,23 +13,21 @@ export const handleError = (
 ) => {
   const { objectToReturn } = options
   console.log(error)
+  const sameEmail = 'An account already exists with the same email address'
   if (String(error).includes('foods_profile_name_key')) {
     toast.error('Custom food with that name already exists!')
   } else if (String(error).includes('recipes_profile_name_key')) {
     toast.error('Recipe with that name already exists!')
-  } else if (
-    String(error).includes(
-      'An account already exists with the same email address'
-    )
-  ) {
-    toast.error('An account already exists with the same email address')
-  } else {
-    // Do nothing
+  } else if (String(error).includes(sameEmail)) {
+    toast.error(sameEmail)
   }
-  if (isProduction()) {
-    Sentry.setUser({ id: store.get().data.profiles[0].authId })
+  if (dsn) {
+    try {
+      Sentry.setUser({ id: store.get().data.profiles[0].authId })
+    } catch (e) {
+      console.log('Storeon not configured yet. Skipping.')
+    }
     Sentry.captureException(error)
   }
-
   return objectToReturn || 0
 }
