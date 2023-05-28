@@ -29,7 +29,7 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
-2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. Ensure these environmental variables exist when running the build command.
+2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Also, ensure these environmental variables exist when running the build command.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
