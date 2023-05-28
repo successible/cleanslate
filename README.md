@@ -55,7 +55,7 @@ And if you would rather build the image and run the container on your own server
 ```bash
 docker build -t cleanslate .
 # This assume the environmental variables above are in a .env file
-docker run --env-file .env -p 8080:8080 cleanslate"
+docker run --env-file .env -p 8080:8080 cleanslate
 ```
 
 4. Go to the domain of your newly deployed web service (Step #3). Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
