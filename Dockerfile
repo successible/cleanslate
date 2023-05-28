@@ -1,33 +1,11 @@
-FROM hasura/graphql-engine:v2.25.1
+FROM hasura/graphql-engine:v2.25.1.cli-migrations-v3
 
-ENV NODE_ENV production
-ENV DEBIAN_FRONTEND=noninteractive
-
-# Install Node.js
-
+# Make sure dependencies are up to date
 RUN apt-get update -y
-RUN apt-get install build-essential curl -y
-RUN curl -sL https://deb.nodesource.com/setup_18.x | bash -
-RUN apt-get install nodejs -y
-
-WORKDIR /cleanslate
-
-# # Install the JavaScript dependencies
-
-COPY package.json ./
-COPY pnpm-lock.yaml ./
-COPY .npmrc ./
-
-RUN npm install -g pnpm
-RUN pnpm install --production 
 
 # Files needed to migrate and run Hasura
+COPY metadata hasura-metadata
+COPY migrations hasura-migrations
 
-COPY config.yaml ./
-COPY entrypoint.sh ./
-COPY migrate.js ./
-COPY src/basicFoods.json ./src/basicFoods.json
-COPY metadata metadata
-COPY migrations migrations
-
-ENTRYPOINT [ "bash", "entrypoint.sh" ]
+# Set the environmental variables before starting the container
+ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true

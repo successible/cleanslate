@@ -27,7 +27,7 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
-2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, and Vercel will also do. For all hosts, use `npm install -g pnpm; pnpm run build` as your build command. Use `/build` as your build output directory. And make sure to add the following environmental variables.
+2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. Ensure these environmental variables exist when running the build command.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -37,17 +37,25 @@ NEXT_PUBLIC_HASURA_DOMAIN=XXX
 NEXT_PUBLIC_CONTACT_EMAIL=XXX
 ```
 
-3. Create a web service that builds and image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Set the runtime as Docker. We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add the following environmental variables.
+3. Create a web service that builds an image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add these environmental variables to the running container.
 
 ```bash
 # Make this a very long, random string
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
 
-# Set CORS. Make sure to include https://
-HASURA_GRAPHQL_CORS_DOMAIN=https://localhost
-
 # The credentials to access PostgreSQL. Replace the contents of <> with your own values
 HASURA_GRAPHQL_DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
+
+# Optional: Set CORS. It should be the domain of the static website (Step #2)
+HASURA_GRAPHQL_CORS_DOMAIN=https://localhost
+```
+
+And if you would rather build the image and run the container on your own server:
+
+```bash
+docker build -t cleanslate .
+# This assume the environmental variables above are in a .env file
+docker run --env-file .env -p 8080:8080 cleanslate"
 ```
 
 4. Go to the domain of your newly deployed web service (Step #3). Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
