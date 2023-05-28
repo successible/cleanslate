@@ -25,9 +25,9 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 > Note: You do not have to host Clean Slate to use it. We maintain an instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
-1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, another host, such as Digital Ocean or Heroku, will do.
+1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
-2. Create a static website that builds from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, and Vercel will also do. Make sure to add the following environmental variables.
+2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, and Vercel will also do. For all hosts, use `npm install -g pnpm; pnpm run build` as your build command. Use `/build` as your build output directory. And make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -37,7 +37,7 @@ NEXT_PUBLIC_HASURA_DOMAIN=XXX
 NEXT_PUBLIC_CONTACT_EMAIL=XXX
 ```
 
-1. Create a web service that builds from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Configure it for Docker and to deploy the `./Dockerfile`. We recommend Render.com because it fairly priced and automates this process. Make sure to add the following environmental variables.
+1. Create a web service that builds and image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Set the runtime as Docker. We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add the following environmental variables.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -57,7 +57,7 @@ HASURA_GRAPHQL_DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<data
 
 5. You can now log in at your static website (Step #2) with that credential.
 
-> Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) was created for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
+> Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
 
 ## How to contribute to Clean Slate
 
