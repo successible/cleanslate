@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-export const localUser = 'cef434cf-17a1-4c99-9974-4f64a3c03f48'
+export const localUser = '22140ebd-0d06-46cd-8d44-aff5cb7e7101'
 describe('Is Clean Slate working?', () => {
   it('Add a log', () => {
     cy.visit('http://localhost:3000')

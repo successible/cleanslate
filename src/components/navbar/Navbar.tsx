@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import Link from 'next/link'
-import { getLoginStatus } from '../../helpers/getLoginStatus'
 import { colors } from '../../theme'
 
 export const Navbar = () => {
@@ -46,7 +45,7 @@ export const Navbar = () => {
             text-decoration: none !important;
           `}
         >
-          {getLoginStatus() ? 'App' : 'Login'}
+          App
         </button>
       </Link>
     </nav>

@@ -8,10 +8,10 @@ import {
   OAuthProvider,
   signInWithPopup,
 } from 'firebase/auth'
-import Link from 'next/link'
 import { FaApple, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'
 import { firebaseApp } from '../../pages'
 import { Explanation } from '../explanation/Explanation'
+import { LegalDisclaimer } from './LegalDisclaimer'
 
 export const loginButton = css`
   border-radius: 5px;
@@ -125,6 +125,7 @@ export const FirebaseLoginButtons = () => {
           width: 90%;
           font-size: 0.95rem;
           margin-top: 30px;
+          margin-bottom: 20px;
         `}
         color="yellow"
       >
@@ -136,17 +137,7 @@ export const FirebaseLoginButtons = () => {
           </a>
         </div>
       </Explanation>
-      <p
-        css={css`
-          font-size: 0.7rem;
-          margin-top: 20px;
-          text-align: center;
-          padding-bottom: 10px;
-        `}
-      >
-        By logging in, you agree to our <Link href="/legal">Terms</Link> &#38;{' '}
-        <Link href="/legal">Privacy Policy</Link>
-      </p>
+      <LegalDisclaimer />
     </div>
   )
 }

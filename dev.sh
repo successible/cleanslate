@@ -23,6 +23,7 @@ if [[ $CI != "true" ]]; then
   export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
   export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
   export NEXT_PUBLIC_VERSION="XXX"
+  export NEXT_PUBLIC_LEGAL_LINK="http://localhost:3000/legal"
   export NODE_ENV="development"
 
   if [[ $FIREBASE != "true" ]]; then

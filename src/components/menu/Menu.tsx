@@ -7,11 +7,9 @@ import Mortarboard from '../../assets/common/mortarboard.svg'
 import CustomRecipe from '../../assets/common/recipe.svg'
 import Feedback from '../../assets/common/review.svg'
 import Settings from '../../assets/common/settings.svg'
-import { getContactEmail } from '../../helpers/getContactEmail'
 import { logout } from '../../helpers/logout'
 import { NavbarEvents, NavbarState } from '../../store/navbar/types'
 import { Dispatch } from '../../store/types'
-import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
 
 export const Menu: React.FC = () => {
@@ -141,31 +139,17 @@ export const Menu: React.FC = () => {
               'openInformationModal',
               <div>
                 Got something to share? Perhaps some feedback or a bug? Awesome!
-                We collect and track our feedback on the free website
-                GitHub.com. That way, all feedback is transparent to everyone
-                and we{`'`}re notified when new stuff is posted.
+                We collect and track all feedback on GitHub.com.
                 <br />
                 <br />
-                To get started,{' '}
                 <a
                   target="_blank"
                   href="https://github.com/successible/cleanslate/issues/new/choose"
                   rel="noreferrer"
                 >
-                  navigate to GitHub
+                  Go to GitHub.com
                 </a>{' '}
-                and create a free account. It should only take a minute. Then,
-                post on the Issues page!
-                <Explanation color="blue">
-                  <div>
-                    Don{`'`}t feel comfortable sharing your feedback publicly?
-                    No worries! You can also email us at{' '}
-                    <a href={`mailto:${getContactEmail()}`}>
-                      {getContactEmail()}
-                    </a>
-                    .
-                  </div>
-                </Explanation>
+                and create a free account. Then, create an Issue!
               </div>
             )
           }}

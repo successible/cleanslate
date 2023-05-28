@@ -6,7 +6,7 @@ on:
 
 env:
   CI: true
-  HASURA_GRAPHQL_ADMIN_SECRET: XXX
+  HASURA_GRAPHQL_ADMIN_SECRET: secret
   HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
   HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
   POSTGRES_DB: postgres
@@ -41,7 +41,7 @@ jobs:
         ports:
           - '8120:8080'
         env:
-          HASURA_GRAPHQL_ADMIN_SECRET: XXX
+          HASURA_GRAPHQL_ADMIN_SECRET: secret
           HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
           HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
 

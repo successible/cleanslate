@@ -3,7 +3,6 @@ import { useStoreon } from 'storeon/react'
 import ErrorImage from '../../assets/common/error.svg'
 import { clearCache } from '../../helpers/clearCache'
 import { clearLoginState } from '../../helpers/clearLoginState'
-import { getContactEmail } from '../../helpers/getContactEmail'
 import { isBrowser } from '../../helpers/isBrowser'
 import { logout } from '../../helpers/logout'
 import { mapError } from '../../helpers/mapError'
@@ -87,8 +86,14 @@ export const Error = () => {
             <div className="mt30">
               <Explanation color="blue">
                 <div className="tcenter no-wrap">
-                  <strong>Still stuck?</strong> Email{' '}
-                  <a href={getContactEmail()}>{getContactEmail()}</a>
+                  <strong>Still stuck?</strong> Open an issue on{' '}
+                  <a
+                    target="_blank"
+                    href="https://github.com/successible/cleanslate/issues/new/choose"
+                    rel="noreferrer"
+                  >
+                    GitHub.com
+                  </a>
                 </div>
               </Explanation>
             </div>

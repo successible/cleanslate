@@ -25,6 +25,8 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 > Note: You do not have to host Clean Slate to use it. We maintain an instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
+> Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+
 1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
 2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. Ensure these environmental variables exist when running the build command.
@@ -33,8 +35,8 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
 NEXT_PUBLIC_HASURA_DOMAIN=XXX
 
-# Your email for the privacy policy for your instance. Example: contact@example.com
-NEXT_PUBLIC_CONTACT_EMAIL=XXX
+# Optional: Link to your own Terms of Use and Privacy Policy.
+NEXT_PUBLIC_LEGAL_LINK="https://<file-sharing-service>/legal.pdf"
 ```
 
 3. Create a web service that builds an image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add these environmental variables to the running container.
@@ -80,9 +82,7 @@ Here's how to run Clean Slate locally:
   - Next.js: `http://localhost:3000`.
   - Hasura (Console): `http://localhost:9695`.
 
-- Navigate to `http://localhost:3000` and login with token `cef434cf-17a1-4c99-9974-4f64a3c03f48`.
-
-> Note: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or even host it yourself. You just cannot launch a commercial version of Clean Slate. This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+- Navigate to `http://localhost:3000` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
 ## Appendix
 

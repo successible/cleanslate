@@ -4,11 +4,8 @@ import { tokenKey } from './constants'
 import { firebaseEnabled } from './getFirebaseConfig'
 import { handleError } from './handleError'
 
-// The token is an API token but Hasura requires it in the format of a JWT
-// However, an API token is already secure due to the length
-// Hence, this JWT is a pointless (and insecure) wrapper for the very secure API token
-// And because it is pointless, we leave the key on the client so that a server
-// Is not required to generate it
+// The token is a glorified API token but Hasura requires it in the format of a JWT
+// Hence, this JWT is a pointless (and insecure) wrapper around the very secure API token
 
 export const SIGNING_KEY = 'd374e7c8-912c-4871-bac2-7dde6afc2b55'
 

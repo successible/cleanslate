@@ -8,6 +8,7 @@ import { getJWT } from '../../helpers/getJWT'
 import { getStore } from '../../helpers/getStore'
 import { login } from '../../helpers/login'
 import { Explanation } from '../explanation/Explanation'
+import { LegalDisclaimer } from './LegalDisclaimer'
 
 export const TokenLoginButtons = () => {
   const [token, setToken] = useState('')
@@ -59,7 +60,7 @@ export const TokenLoginButtons = () => {
           width: 100%;
           font-size: 0.95rem;
           margin-top: 30px;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
         `}
         color="yellow"
       >
@@ -72,6 +73,7 @@ export const TokenLoginButtons = () => {
           </a>
         </div>
       </Explanation>
+      <LegalDisclaimer />
     </form>
   )
 }
