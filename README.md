@@ -40,9 +40,6 @@ NEXT_PUBLIC_CONTACT_EMAIL=XXX
 3. Create a web service that builds and image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). Set the runtime as Docker. We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add the following environmental variables.
 
 ```bash
-# The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
-HASURA_DOMAIN=XXX
-
 # Make this a very long, random string
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
 

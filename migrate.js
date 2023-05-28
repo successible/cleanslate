@@ -3,11 +3,9 @@
 const { execSync } = require('child_process')
 
 const isProduction = process.env.NODE_ENV === 'production'
-const domain = process.env.HASURA_DOMAIN
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET || 'XXX'
 
-const endpoint = isProduction ? 'https://' + domain : 'http://localhost:8120'
-
+const endpoint = 'http://localhost:8120'
 const secret = `--admin-secret ${adminSecret}`
 const auth = `--endpoint ${endpoint} ${secret}`
 
