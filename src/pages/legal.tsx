@@ -31,7 +31,7 @@ const Privacy = () => {
         `}
       >
         <p>
-          <strong>Last updated: 10/30/2022</strong>
+          <strong>Last updated: 05/28/2023</strong>
         </p>
         <p>Let&#39;s keep this short and sweet ❤️</p>
         <ul>
@@ -45,8 +45,7 @@ const Privacy = () => {
             via email.
           </li>
           <li>
-            If you want to contact us about something, such as this Terms of Use
-            or Privacy Policy, email{' '}
+            If you want to contact us about something, email{' '}
             <a href={`mailto:${contactEmail}`}>{contactEmail}</a>.
           </li>
         </ul>
@@ -54,8 +53,8 @@ const Privacy = () => {
         <ul>
           <li>
             You cannot use Clean Slate in a way that infringes upon the rights
-            of others, or in any way that is illegal, threatening, fraudulent,
-            or harmful.{' '}
+            of others, or is in any way that is illegal, threatening,
+            fraudulent, or harmful.{' '}
           </li>
           <li>
             We reserve the right to refuse service and terminate accounts on our
@@ -76,14 +75,8 @@ const Privacy = () => {
             </p>
             <ul>
               <li>
-                The data you explicitly provide. That data is stored in the
-                database provided by Clean Slate. For example,{' '}
-                <a href="app.cleanslate.sh">app.cleanslate.sh</a> is hosted on{' '}
-                <a href="https://render.com/privacy">Render.com</a>. If this
-                instance of Clean Slate is self-hosted, in may be in a different
-                location. Email your host at{' '}
-                {<a href={`mailto:${contactEmail}`}>{contactEmail}</a>} for
-                details.
+                The data you explicitly provide. That data is stored in our
+                database on <a href="https://render.com/privacy">Render.com</a>.
               </li>
               <li>
                 The data needed to handle bugs and performance. That data is
@@ -91,16 +84,16 @@ const Privacy = () => {
               </li>
               <li>
                 The data needed to securely authenticate you. That data is
-                stored{' '}
+                stored in{' '}
                 {firebaseEnabled ? (
                   <>
                     <a href="https://firebase.google.com/support/privacy">
-                      in Firebase.com
+                      Firebase.com
                     </a>
                     , which is owned by Google.
                   </>
                 ) : (
-                  <>on server.</>
+                  <>our database.</>
                 )}
               </li>
             </ul>
@@ -110,9 +103,9 @@ const Privacy = () => {
           </li>
           <li>
             Clean Slate will never share your data with a third-party, unless it
-            is for a required service listed above or it is for a feature for
-            which you have given your consent. For example, sharing your logs
-            with a partner.
+            is for a service listed above or it is for a feature for which you
+            have given your consent. For example, sharing your logs with a
+            partner.
           </li>
           <li>
             Clean Slate may send you a newsletter or marketing email. You can
