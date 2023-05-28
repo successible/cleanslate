@@ -122,12 +122,13 @@ Clean Slate can use Firebase as the other authentication provider. Here's how yo
 
 You can now run Firebase locally or in production with these last steps.
 
-Locally:
+Locally (Linux or Mac):
 
-- Install [jq](https://stedolan.github.io/jq/download/).
+- Install [jq](https://stedolan.github.io/jq/download/)
+- Mac only: Install and use GNU [sed](https://formulae.brew.sh/formula/gnu-sed)
 - Run `export FIREBASE='true'; npm run dev`
 
-Production:
+Production (Linux):
 
 - Add the environment values to the correct location.
 

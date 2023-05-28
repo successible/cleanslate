@@ -17,6 +17,6 @@ cd ..
 
 cp build/service-worker.js build/sw.js
 cp build/service-worker.js.map build/sw.js.map
-sed -i '' "s/(NEXT_PUBLIC_HASURA_DOMAIN)/$NEXT_PUBLIC_HASURA_DOMAIN/g" 'build/_headers'
+sed -i "s/(NEXT_PUBLIC_HASURA_DOMAIN)/$NEXT_PUBLIC_HASURA_DOMAIN/g" 'build/_headers'
 
 echo $VERSION > build/version.txt
