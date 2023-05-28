@@ -1,6 +1,5 @@
 import firebase from 'firebase/compat/app'
 import * as jose from 'jose'
-import Cookies from 'js-cookie'
 import { tokenKey } from './constants'
 import { firebaseEnabled } from './getFirebaseConfig'
 import { handleError } from './handleError'
@@ -23,7 +22,7 @@ export const getJWT = async function (token = ''): Promise<string> {
       return ''
     }
   } else {
-    const tokenToUse = token || Cookies.get(tokenKey)
+    const tokenToUse = token || localStorage.getItem(tokenKey)
     const customClaims = {
       'https://hasura.io/jwt/claims': {
         'x-hasura-allowed-roles': ['user', 'admin'],

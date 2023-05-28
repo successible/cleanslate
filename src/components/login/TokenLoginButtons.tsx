@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
-import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { GET_PROFILE } from '../../graphql/profile'
 import { tokenKey } from '../../helpers/constants'
-import { getDomain } from '../../helpers/getDomain'
 import { getHasuraClient } from '../../helpers/getHasuraClient'
 import { getJWT } from '../../helpers/getJWT'
 import { getStore } from '../../helpers/getStore'
@@ -45,9 +43,7 @@ export const TokenLoginButtons = () => {
             if (response === undefined || response.profiles.length === 0) {
               toast.error('No profile matches that token!')
             } else {
-              Cookies.set(tokenKey, token, {
-                domain: getDomain(),
-              })
+              localStorage.setItem(tokenKey, token)
               login()
               getStore().dispatch('updateUser', { token })
             }

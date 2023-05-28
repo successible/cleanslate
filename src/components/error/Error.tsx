@@ -3,7 +3,7 @@ import { useStoreon } from 'storeon/react'
 import ErrorImage from '../../assets/common/error.svg'
 import { clearCache } from '../../helpers/clearCache'
 import { clearLoginState } from '../../helpers/clearLoginState'
-import { getDomain } from '../../helpers/getDomain'
+import { getContactEmail } from '../../helpers/getContactEmail'
 import { isBrowser } from '../../helpers/isBrowser'
 import { logout } from '../../helpers/logout'
 import { mapError } from '../../helpers/mapError'
@@ -19,7 +19,6 @@ export const Error = () => {
     navbar: NavbarState
   } = useStoreon('navbar')
 
-  const domain = getDomain()
   const { error } = navbar
 
   const errorStyling = css`
@@ -89,7 +88,7 @@ export const Error = () => {
               <Explanation color="blue">
                 <div className="tcenter no-wrap">
                   <strong>Still stuck?</strong> Email{' '}
-                  <a href={`mailto:contact@${domain}`}>contact@{domain}</a>
+                  <a href={getContactEmail()}>{getContactEmail()}</a>
                 </div>
               </Explanation>
             </div>
