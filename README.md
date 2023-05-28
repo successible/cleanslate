@@ -29,7 +29,7 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
-2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Otherwise, Clean Slate will not work. For additional security, you can also have `nginx` serve the HTTP security headers in `src/public/_headers`. However, that is optional. Finally, ensure these environmental variables exist when running the build command.
+2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, Netlify, Render, or any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory, which you can serve with a host, like Cloudflare, or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Otherwise, Clean Slate will not work. Finally, ensure these environmental variables exist when running the build command.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -65,6 +65,8 @@ docker run --env-file .env -p 8080:8080 cleanslate
 5. You can now log in at your static website (Step #2) with that credential.
 
 > Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
+
+> Optional: For additional security, you can also have `nginx` serve the HTTP security headers in `src/public/_headers`. Make sure to replace the expression (NEXT_PUBLIC_HASURA_DOMAIN) with your own value.
 
 ## How to contribute to Clean Slate
 
