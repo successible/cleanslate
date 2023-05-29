@@ -29,7 +29,7 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
 
-2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, any host with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory. You can service it with Cloudflare Pages or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Otherwise, Clean Slate will not work. Finally, ensure these environmental variables exist when running the build command.
+2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, any Linux server with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory. You can service it with Cloudflare Pages or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Otherwise, Clean Slate will not work. Finally, ensure these environmental variables exist when running the build command.
 
 ```bash
 # The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
@@ -39,7 +39,7 @@ NEXT_PUBLIC_HASURA_DOMAIN=XXX
 NEXT_PUBLIC_LEGAL_LINK="https://<file-sharing-service>/legal.pdf"
 ```
 
-3. Create a web service that builds an image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend Render.com because it fairly priced and automates this process. However, any server that can build the `Dockerfile` and serve the container will do. Make sure to add these environmental variables to the running container.
+3. Create a web service that builds an image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend Render.com because it fairly priced and automates this process. However, any Linux server that can build the `Dockerfile` and serve the container will do. Make sure to add these environmental variables to the running container.
 
 ```bash
 # Make this a very long, random string
@@ -78,7 +78,7 @@ Here's how to run Clean Slate locally:
 
 - Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), and [Node.js (LTS)](https://nodejs.org/en/). Make sure Docker Desktop is running.
 
-- Run `npm run dev` after cloning down the repository. Doing so will spin up servers on localhost:
+- Run `npm run dev` after cloning down the repository. This will spin up these servers:
 
   - PostgreSQL: `http://localhost:1276`
   - Next.js: `http://localhost:3000`.
@@ -90,7 +90,7 @@ Here's how to run Clean Slate locally:
 
 ### Using Firebase
 
-Clean Slate can use Firebase as the other authentication provider. Here's how you to configure it:
+Clean Slate can use Firebase as the alternative authentication provider. Here's how:
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
