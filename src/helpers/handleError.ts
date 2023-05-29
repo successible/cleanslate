@@ -27,6 +27,7 @@ export const handleError = (
     } catch (e) {
       console.log('Storeon not configured yet. Skipping.')
     }
+    Sentry.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')
     Sentry.captureException(error)
   }
   return objectToReturn || 0

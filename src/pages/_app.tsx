@@ -21,7 +21,17 @@ function _App({ Component, pageProps }: AppProps) {
   useErrors()
 
   return (
-    <Sentry.ErrorBoundary fallback={<ErrorComponent />}>
+    <Sentry.ErrorBoundary
+      fallback={<ErrorComponent />}
+      beforeCapture={(scope) => {
+        try {
+          scope.setUser({ id: store.get().data.profiles[0].authId })
+        } catch (e) {
+          console.log('Storeon not configured yet. Skipping.')
+        }
+        scope.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')
+      }}
+    >
       <Toaster
         position="top-right"
         toastOptions={{
