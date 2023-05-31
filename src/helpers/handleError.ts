@@ -1,6 +1,7 @@
 import * as Sentry from '@sentry/react'
 import { toast } from 'react-hot-toast'
 import { store } from '../store/store'
+import { logout } from './logout'
 import { dsn } from './startSentry'
 
 export const handleError = (
@@ -13,14 +14,25 @@ export const handleError = (
 ) => {
   const { objectToReturn } = options
   console.log(error)
+  const e = String(error)
   const sameEmail = 'An account already exists with the same email address'
-  if (String(error).includes('foods_profile_name_key')) {
+  const logoutMessage = 'Your login has expired. Please login again.'
+  if (e.includes('foods_profile_name_key')) {
     toast.error('Custom food with that name already exists!')
-  } else if (String(error).includes('recipes_profile_name_key')) {
+  } else if (e.includes('recipes_profile_name_key')) {
     toast.error('Recipe with that name already exists!')
-  } else if (String(error).includes(sameEmail)) {
+  } else if (e.includes(sameEmail)) {
     toast.error(sameEmail)
+  } else if (
+    // Example: (reading 'insert_logs_one')
+    e.includes('Cannot read properties of undefined (reading') ||
+    e.includes('SecurityError: The operation is insecure')
+  ) {
+    toast.error(logoutMessage)
+    logout(false)
+    return 0
   }
+
   if (dsn) {
     try {
       Sentry.setUser({ id: store.get().data.profiles[0].authId })

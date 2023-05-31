@@ -6,29 +6,30 @@ export const errorsToIgnore = [
   /AbortError: The operation was aborted/,
   /Could not verify JWT: JWTExpired/,
   /Error: AbortError: The operation was aborted/,
+  /Error: validateToken/,
   /Firebase: A network AuthError/,
+  /Firebase: An account already exists with the same email address but different sign-in credentials/,
   /Firebase: The popup has been closed by the user /,
   /Firebase: The user did not grant your application the permissions it requested/,
   /Firebase: This operation has been cancelled due to another conflicting popup being opened/,
-  /Firebase: An account already exists with the same email address but different sign-in credentials/,
   /Firebase: This operation is sensitive and requires recent authentication/,
   /Firebase: Unable to establish a connection with the popup/,
   /Hydration failed because the initial UI does not match what was rendered on the server/,
   /INTERNAL ASSERTION FAILED: Pending promise was never set/,
   /Missing 'Authorization' or 'Cookie' header in JWT authentication mode/,
   /Network Error/,
+  /Non-Error exception captured with keys/,
   /NotAllowedError: play() can only be initiated by a user gesture/,
   /Request aborted/,
-  /Error: validateToken/,
   /Text content does not match server-rendered HTML/,
   /the entire root will switch to client rendering/,
   /There was an error while hydrating/,
   /Uniqueness violation/,
+  /UnknownError: Error looking up record in object store by key range/,
 ]
 
 export const startSentry = () => {
   if (dsn) {
-    console.log(`Starting Sentry with ${dsn}`)
     Sentry.init({
       dsn,
       ignoreErrors: errorsToIgnore,
