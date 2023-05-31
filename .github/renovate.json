@@ -1,7 +1,7 @@
 {
   "extends": ["config:base", "docker:enableMajor"],
   "timezone": "America/Chicago",
-  "labels": ["dependency"],
+  "labels": ["enhancement"],
   "configMigration": true,
   "packageRules": [
     {
