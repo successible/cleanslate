@@ -8,6 +8,7 @@ import Div100vh from 'react-div-100vh'
 import { Toaster } from 'react-hot-toast'
 import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
+import { handleError } from '../helpers/handleError'
 import { startSentry } from '../helpers/startSentry'
 import { useErrors } from '../hooks/useErrors'
 import { store } from '../store/store'
@@ -22,6 +23,10 @@ function _App({ Component, pageProps }: AppProps) {
 
   return (
     <Sentry.ErrorBoundary
+      onError={(e) => {
+        // Sentry is already capturing the error here, we do not want to report it again
+        handleError(e, { hideFromSentry: true })
+      }}
       fallback={<ErrorComponent />}
       beforeCapture={(scope) => {
         try {

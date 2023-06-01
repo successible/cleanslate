@@ -8,12 +8,12 @@ export const handleError = (
   error: Error | string,
   options: {
     showModal?: boolean
+    hideFromSentry?: boolean
     objectToReturn?: 0
     params?: Record<string, any>
   } = { objectToReturn: 0, params: {}, showModal: true }
 ) => {
-  const { objectToReturn } = options
-  console.log(error)
+  const { hideFromSentry, objectToReturn } = options
   const e = String(error)
   const sameEmail = 'An account already exists with the same email address'
   const logoutMessage = 'Your login has expired. Please login again.'
@@ -33,7 +33,7 @@ export const handleError = (
     return 0
   }
 
-  if (dsn) {
+  if (dsn && hideFromSentry !== true) {
     try {
       Sentry.setUser({ id: store.get().data.profiles[0].authId })
     } catch (e) {
