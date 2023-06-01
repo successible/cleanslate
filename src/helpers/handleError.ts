@@ -26,7 +26,9 @@ export const handleError = (
   } else if (
     // Example: (reading 'insert_logs_one')
     e.includes('Cannot read properties of undefined (reading') ||
-    e.includes('the operation is insecure')
+    e.includes('the operation is insecure') ||
+    // Example: undefined is not an object (evaluating 'e.insert_logs.returning')
+    e.includes('e.insert_logs.returning')
   ) {
     toast.error(logoutMessage)
     logout(false)
