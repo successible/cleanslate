@@ -4,6 +4,7 @@ import { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
 import { getStore } from '../getStore'
 import { handleError } from '../handleError'
+import { login } from '../login'
 import { stringifyQuery } from '../stringifyQuery'
 import { addBasicFoodsToProfile } from './addBasicFoodsToProfile'
 import { createProfile } from './createProfile'
@@ -21,13 +22,11 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
       next: (result) => {
         const newData = result.data as Data
         const store = getStore()
-        // Gracefully handle the edge case of profile not existing for some reason
-        if (!newData || !newData.profiles) {
+        if (!newData || !newData.profiles || newData.profiles.length === 0) {
           createProfile().then(() => {
+            login()
             window.location.reload()
           })
-        } else if (newData.profiles.length === 0) {
-          createProfile().then(() => {})
         } else {
           // We update the entire profile with every subscription
           // That is because the payload is small
