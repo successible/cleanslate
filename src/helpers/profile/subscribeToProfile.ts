@@ -21,7 +21,12 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
       next: (result) => {
         const newData = result.data as Data
         const store = getStore()
-        if (newData.profiles.length === 0) {
+        // Gracefully handle the edge case of profile not existing for some reason
+        if (!newData || !newData.profiles) {
+          createProfile().then(() => {
+            window.location.reload()
+          })
+        } else if (newData.profiles.length === 0) {
           createProfile().then(() => {})
         } else {
           // We update the entire profile with every subscription
