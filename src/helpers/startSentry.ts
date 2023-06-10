@@ -4,6 +4,7 @@ export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
 
 export const errorsToIgnore = [
   /AbortError: The operation was aborted/,
+  /Connection to Indexed Database server lost/,
   /Could not verify JWT: JWTExpired/,
   /Error: AbortError: The operation was aborted/,
   /Error: validateToken/,
