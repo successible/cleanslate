@@ -21,9 +21,9 @@ const register = () => {
 
   navigator.serviceWorker
     .register(swUrl)
+    // This function runs on every page load, even if the service worker is already registered
     .then((registration) => {
       console.log(registration)
-      // This function runs on every page load, even if the service worker is already registered
       const update = throttle(() => {
         console.log('Checking for an update to the service worker...')
         window.fetch('/version.txt').then((response) => {
@@ -47,6 +47,7 @@ const register = () => {
         })
       }, 5000)
       window.addEventListener('click', update)
+      update()
     })
     .catch((error) => {
       console.log(error)
