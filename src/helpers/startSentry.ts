@@ -19,6 +19,7 @@ export const errorsToIgnore = [
   /INTERNAL ASSERTION FAILED: Pending promise was never set/,
   /Missing 'Authorization' or 'Cookie' header in JWT authentication mode/,
   /Network Error/,
+  /NetworkError when attempting to fetch resource/,
   /Non-Error exception captured with keys/,
   /NotAllowedError: play() can only be initiated by a user gesture/,
   /Request aborted/,
