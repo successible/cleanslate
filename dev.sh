@@ -62,7 +62,7 @@ if [[ $CI != "true" ]]; then
   echo "=> Run migrations with Hasura..."
   node migrate.js
 
-  npx hasura console --no-browser --admin-secret 'secret' &
+  hasura console --no-browser --admin-secret 'secret' &
   (cd src && (npx tsc --watch --preserveWatchOutput)) &
 
 fi

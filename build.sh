@@ -5,7 +5,7 @@ export NEXT_PUBLIC_VERSION=$VERSION
 
 rm -rf build
 
-pnpm install
+pnpm install --prod
 
 cd src
 npx next build
