@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/react'
 export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
 
 export const errorsToIgnore = [
-  /AbortError: The operation was aborted/,
+  /AbortError/,
   /Connection to Indexed Database server lost/,
   /Could not verify JWT: JWTExpired/,
   /Error: AbortError: The operation was aborted/,
@@ -17,6 +17,7 @@ export const errorsToIgnore = [
   /Firebase: Unable to establish a connection with the popup/,
   /Hydration failed because the initial UI does not match what was rendered on the server/,
   /INTERNAL ASSERTION FAILED: Pending promise was never set/,
+  /Load failed/,
   /Missing 'Authorization' or 'Cookie' header in JWT authentication mode/,
   /Network Error/,
   /NetworkError when attempting to fetch resource/,
@@ -41,6 +42,7 @@ export const startSentry = () => {
           blockAllMedia: false,
           maskAllInputs: false,
           maskAllText: false,
+          networkDetailAllowUrls: [window.location.origin],
         }),
       ],
       replaysOnErrorSampleRate: 1.0,
