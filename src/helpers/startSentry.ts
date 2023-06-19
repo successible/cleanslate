@@ -43,7 +43,6 @@ export const startSentry = () => {
           blockAllMedia: false,
           maskAllInputs: false,
           maskAllText: false,
-          networkDetailAllowUrls: [window.location.origin],
         }),
       ],
       replaysOnErrorSampleRate: 1.0,
