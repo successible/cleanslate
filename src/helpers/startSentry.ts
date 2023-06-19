@@ -1,4 +1,5 @@
 import * as Sentry from '@sentry/react'
+import { isBrowser } from './isBrowser'
 
 export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
 
@@ -32,7 +33,7 @@ export const errorsToIgnore = [
 ]
 
 export const startSentry = () => {
-  if (dsn) {
+  if (dsn && isBrowser()) {
     Sentry.init({
       dsn,
       ignoreErrors: errorsToIgnore,
@@ -42,6 +43,7 @@ export const startSentry = () => {
           blockAllMedia: false,
           maskAllInputs: false,
           maskAllText: false,
+          networkDetailAllowUrls: [window.location.origin],
         }),
       ],
       replaysOnErrorSampleRate: 1.0,
