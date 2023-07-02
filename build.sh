@@ -1,6 +1,11 @@
 #!/bin/bash
 
-VERSION=$(git rev-parse --short HEAD)
+if which git > /dev/null; then
+    echo "Skipping git rev-parse"
+else
+    VERSION=$(git rev-parse --short HEAD)
+fi
+
 export NEXT_PUBLIC_VERSION=$VERSION
 
 rm -rf build

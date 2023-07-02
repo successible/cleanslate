@@ -3,6 +3,8 @@
 .firebaserc
 .next
 .vscode/ltex.dictionary.en-US.txt
+*.crt
+*.key
 *.pem
 *.txt
 build

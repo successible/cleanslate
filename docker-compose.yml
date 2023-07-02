@@ -1,27 +1,44 @@
-version: '3.8'
+version: '3'
 services:
   database:
     image: postgres:15.3
-    command: ['postgres', '-c', 'log_statement=all']
     restart: always
-    volumes:
-      - cleanslate:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-    ports:
-      - '${DB_PORT}:5432'
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - database:/var/lib/postgresql/data
 
-  graphql-engine:
-    image: hasura/graphql-engine:v2.28.0
-    ports:
-      - '8120:8080'
-    depends_on:
-      - 'database'
+  server:
     restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - '8080:8080'
+    depends_on:
+      - database
     environment:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
-      HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@host.docker.internal:5432/postgres
+      HASURA_GRAPHQL_CORS_DOMAIN: https://${NEXT_PUBLIC_HASURA_DOMAIN}
+
+  client:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+      args:
+        - VERSION=${VERSION}
+        - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
+    ports:
+      - '443:443'
+    depends_on:
+      - database
+      - server
+    volumes:
+      - ./certificates:/etc/ssl
 
 volumes:
-  cleanslate:
+  database:

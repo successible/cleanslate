@@ -3,6 +3,8 @@
 .firebaserc
 .next
 .vscode/ltex.dictionary.en-US.txt
+*.crt
+*.key
 *.pem
 *.txt
 build
@@ -15,7 +17,9 @@ out
 secrets.json
 service-account.json
 sitemap.xml
-src/cypress/fixtures
-src/cypress/screenshots
-src/cypress/videos
+src/.next
+src/build
+src/cypress
+src/cypress.config.ts
+src/out
 tsconfig.tsbuildinfo

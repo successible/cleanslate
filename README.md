@@ -27,46 +27,32 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 > Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
 
-1. Create a PostgreSQL database. We recommend [Render.com](https://render.com/) because it fairly priced and very convenient. However, any another host will do, such as Digital Ocean or Heroku.
+Hosting Clean Slate is easy. You just need a Linux server with Git and Docker Compose.
 
-2. Create a static website built from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend [CloudFlare Pages](https://pages.cloudflare.com/) because it is free, fast, and easy to link. However, any Linux server with Node.js will do. Use `npm install -g pnpm; pnpm run build` as your build command. It will produce a folder of static files called `build`. That is your output directory. You can service it with Cloudflare Pages or your own `nginx`. If you opt for the latter, you must serve the folder over HTTPS (SSL). Otherwise, Clean Slate will not work. Finally, ensure these environmental variables exist when running the build command.
+1. Create a new folder on your server and `cd` (move) inside.
 
-```bash
-# The domain you are hosting the web service (Hasura) at. Example: api.mydomain.com
-NEXT_PUBLIC_HASURA_DOMAIN=XXX
-
-# Optional: Link to your own Terms of Use and Privacy Policy.
-NEXT_PUBLIC_LEGAL_LINK="https://<file-sharing-service>/legal.pdf"
-```
-
-3. Create a web service that builds an image from `main` of the public [Clean Slate repo](https://github.com/successible/cleanslate). We recommend Render.com because it fairly priced and automates this process. However, any Linux server that can build the `Dockerfile` and serve the container will do. Make sure to add these environmental variables to the running container.
+2. Create this `.env` file with these variables. Replace `<>` with your values.
 
 ```bash
-# Make this a very long, random string
-HASURA_GRAPHQL_ADMIN_SECRET=XXX
-
-# The credentials to access PostgreSQL. Replace the contents of <> with your own values
-HASURA_GRAPHQL_DATABASE_URL=postgres://<username>:<password>@<host>:<port>/<database>
-
-# Optional: Set CORS. It should be the domain of the static website (Step #2)
-HASURA_GRAPHQL_CORS_DOMAIN=https://localhost
+POSTGRES_PASSWORD=<your-desired-password>
+NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
+HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
+HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-And if you would rather build the image and run the container on your own server:
+2. Create a folder called `certificates`. Place your certificate (`crt`) and private key (`key`) inside. They must be called `cleanslate.crt` and `cleanslate.key`. Clean Slate will now be served with HTTPS, which is required for operation. You can generate the `key` and `crt` for free with Let's Encrypt [^1] or purchase them from a vendor, such as Namecheap.
 
-```bash
-docker build -t cleanslate .
-# This assume the environmental variables above are in a .env file
-docker run --env-file .env -p 8080:8080 cleanslate
-```
+3. Run `git clone https://github.com/successible/cleanslate && bash deploy.sh`.
 
-4. Go to the domain of your newly deployed web service (Step #3). Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
-
-5. You can now log in at your static website (Step #2) with that credential.
+4. Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
 > Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
 
-> Optional: Have your reverse proxy (`nginx`) serve these [HTTP security headers](https://github.com/successible/cleanslate/blob/main/src/public/_headers). Make sure to replace the expression (NEXT_PUBLIC_HASURA_DOMAIN) with your own value.
+5. You can now log in to `https://<your-domain>` with that credential.
+
+6. To deploy the newest version of Clean Slate, run `bash deploy.sh`. We deploy a new version of Clean Slate at least twice a week, on Monday and Tuesday. We recommend deploying every Sunday.
+
+> Note: You may want to change how Clean Slate is deployed. For example, you may wish to connect to an existing database, rather than spin up a new one. Or you may wish to run the client not on `443` and without `ssl` so that your own `nginx` can handle it. To change how Clean Slate is deployed, modify a copy of `docker-compose.yml`. Then, deploy Clean Slate with `export COMPOSE_FILE=<my-file.yml>; bash deploy.sh`.
 
 ## How to contribute to Clean Slate
 
@@ -159,3 +145,5 @@ These environment values are added to the web service (Step #3). Replace `XXX` w
 ```bash
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
+
+[^1]: https://tecadmin.net/how-to-generate-lets-encrypt-ssl-using-certbot/

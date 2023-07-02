@@ -53,8 +53,8 @@ if [[ $CI != "true" ]]; then
   cd functions && npm install && cd ..
 
   echo "=> Spin up PostgreSQL and Hasura..."
-  docker-compose down -v --remove-orphans -t 0
-  docker-compose pull && docker-compose up -d
+  docker-compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
+  docker-compose -f docker-compose-dev.yml pull && docker-compose -f docker-compose-dev.yml up -d
 
   echo "=> Wait for five seconds for Hasura to get ready..."
   sleep 5;
