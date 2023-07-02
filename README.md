@@ -23,13 +23,13 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 ## How to host Clean Slate
 
-> Note: You do not have to host Clean Slate to use it. We maintain an instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
+> Note: You do not have to host Clean Slate to use it. We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
 > Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
 
 Hosting Clean Slate is easy. You just need a Linux server with Git and Docker Compose.
 
-1. Create a new folder on your server and `cd` (move) inside.
+1. Create a new folder on your server and `cd` inside it.
 
 2. Create this `.env` file with these variables. Replace `<>` with your values.
 
@@ -52,7 +52,7 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 
 6. To deploy the newest version of Clean Slate, run `bash deploy.sh`. We deploy a new version of Clean Slate at least twice a week, on Monday and Tuesday. We recommend deploying every Sunday.
 
-> Note: You may want to change how Clean Slate is deployed. For example, you may wish to connect to an existing database, rather than spin up a new one. Or you may wish to run the client not on `443` and without `ssl` so that your own `nginx` can handle it. To change how Clean Slate is deployed, modify a copy of `docker-compose.yml`. Then, deploy Clean Slate with `export COMPOSE_FILE=<my-file.yml>; bash deploy.sh`.
+> Note: You may want to change how Clean Slate is deployed. For example, you may wish to connect to an existing database, rather than spin up a new one. Or you may wish to run the client not on `443` and without `ssl` so that your own `nginx` can handle it. To change how Clean Slate is deployed, modify a copy of `docker-compose.yml`. Then, deploy Clean Slate with `export COMPOSE_FILE=<your-file.yml>; bash deploy.sh`.
 
 ## How to contribute to Clean Slate
 

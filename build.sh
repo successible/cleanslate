@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$DOCKER" == "false" ]; then
+    VERSION=$(git rev-parse --short HEAD)
+    export NEXT_PUBLIC_VERSION=$VERSION
+fi
+
 rm -rf build
 
 pnpm install --prod
