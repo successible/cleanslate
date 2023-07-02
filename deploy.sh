@@ -1,5 +1,5 @@
 export $(xargs < .env)
-export VERSION=$(git rev-parse --short HEAD)
+export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
 
 if [ -n "$COMPOSE_FILE" ]; then
   echo "Deploying with file: $COMPOSE_FILE"

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-VERSION=$(git rev-parse --short HEAD)
-export NEXT_PUBLIC_VERSION=$VERSION
-
 rm -rf build
 
 pnpm install --prod

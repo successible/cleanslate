@@ -30,7 +30,7 @@ services:
       context: .
       dockerfile: Dockerfile.client
       args:
-        - VERSION=${VERSION}
+        - NEXT_PUBLIC_VERSION=${VERSION}
         - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
     ports:
       - '443:443'
