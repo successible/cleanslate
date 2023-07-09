@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base", "docker:enableMajor"],
+  "extends": ["config:recommended", "docker:enableMajor"],
   "timezone": "America/Chicago",
   "labels": ["enhancement"],
   "configMigration": true,
