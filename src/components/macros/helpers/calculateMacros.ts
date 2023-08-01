@@ -107,7 +107,7 @@ export const getMeasurements = (
   number | null,
   number | null,
   number | null,
-  number | null
+  number | null,
 ] => {
   const countToGram = food.countToGram
   const countToTbsp = food.countToTbsp
