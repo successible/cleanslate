@@ -84,14 +84,6 @@ NEXT_PUBLIC_HASURA_DOMAIN=localhost
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
 ```
 
-## Appendix
-
-## Handling the database
-
-By default, Clean Slate uses the `postgres` user and `postgres` database in a container. It will also use the most recent, major version of PostgreSQL. Usually within a couple of months of release. The major version used is outlined in the `docker-compose.yml` file used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade` once a year.
-
-If you do not like either of these behaviors, your best option is to use a custom `docker-compose.yml`. For example, let's say you want to connect to a database not managed by our Docker Compose. Great! Make a copy of our `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services and the `cleanslate` volume. Update `HASURA_GRAPHQL_DATABASE_URL` to point to your database. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh`. All done!
-
 ### Handling authentication
 
 Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section of the appendix for how to set up Firebase with Clean Slate.
@@ -172,4 +164,3 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https
 
 [^1]: https://caddyserver.com/docs/getting-started
 [^2]: https://letsencrypt.org/
-[^3]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
