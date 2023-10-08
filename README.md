@@ -23,15 +23,15 @@ To learn more, visit [our website](https://cleanslate.sh) or [watch our demo vid
 
 ## How to host Clean Slate
 
-> Note: You do not have to host Clean Slate to use it. We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
+> Note: You do not have to host Clean Slate to use it. We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
-> Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+> Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
 
 Hosting Clean Slate is easy. You just need a Linux server with Git and Docker Compose installed.
 
-1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
+1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2. Create an `.env` file in the `cleanslate` folder with these variables. Replace `<>` with your values.
+2.  Create a `.env` file in the `cleanslate` folder with these variables. Replace `<>` with your values.
 
 ```bash
 POSTGRES_PASSWORD=<your-desired-password>
@@ -40,17 +40,15 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-3. Create a folder in tbe `cleanslate` folder called `certificates`. Place your certificate (`crt`) and private key (`key`) inside it. They must be called `cleanslate.crt` and `cleanslate.key` respectively. Both are required to serve Clean Slate over HTTPS. Clean Slate will not work if served over HTTP. You can generate the `key` and `crt` for free via Let's Encrypt [^1] or purchase them from a vendor, such as Namecheap.
+3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. Clean Slate is now running. However, you cannot yet access Clean Slate. That is because Clean Slate must be run over `https` (SSL) to work. Hence, you must configure a reverse proxy with SSL, such as `nginx` or `caddy`, and point it to `http://localhost:1000`. That is the port on which the client of Clean Slate is running. The client, which is running an internal version of `nginx`, will take it from there.
 
-> Note: You may want to change how Clean Slate is deployed. For example, you may want to connect to an existing database, rather than spin up a new one. Or you may want to skip Step #2 above and handle SSL on your own. Great! To change how Clean Slate is deployed, modify a copy of `docker-compose.yml` in the `cleanslate` folder. Then, deploy Clean Slate with `export COMPOSE_FILE=<your-file.yml>; bash deploy.sh`. This is the same command as outlined in Step #4. Just with the added environmental variable to change the Docker Compose file used.
+> Note: We recommend Caddy [^1] as the reverse proxy. That is because it handles SSL automatically (and for free) via Let's Encrypt [^2].
 
-4. Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. Clean Slate is now running!
+4.  Once your reverse proxy is set up, go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
-5. Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
+5.  You can now log in to `https://<your-domain>` with that credential.
 
-6. You can now log in to `https://<your-domain>` with that credential.
-
-7. To deploy the newest version of Clean Slate, run `bash deploy.sh`. We deploy a new version of Clean Slate at least twice a week, on Monday and Tuesday. We recommend deploying every Sunday.
+6.  To deploy the newest version of Clean Slate, run `bash deploy.sh`. We deploy a new version of Clean Slate at least twice a week, on Monday and Tuesday. We recommend deploying every Sunday.
 
 > Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
 
@@ -146,4 +144,5 @@ These environment values are added to the web service (Step #3). Replace `XXX` w
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
 
-[^1]: https://tecadmin.net/how-to-generate-lets-encrypt-ssl-using-certbot/
+[^1]: https://caddyserver.com/docs/getting-started
+[^2]: https://letsencrypt.org/

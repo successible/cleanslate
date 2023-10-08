@@ -1,7 +1,7 @@
 version: '3'
 services:
   database:
-    image: postgres:16.0
+    image: postgres:15.4
     restart: always
     ports:
       - '5432:5432'
@@ -33,12 +33,10 @@ services:
         - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
         - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
     ports:
-      - '443:443'
+      - '1000:80'
     depends_on:
       - database
       - server
-    volumes:
-      - ./certificates:/etc/ssl
 
 volumes:
   database:
