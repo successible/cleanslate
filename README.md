@@ -47,7 +47,7 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 
 3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:1000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on ``
 
-4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:1000`. Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy. That is because it handles SSL automatically (and for free) via Let's Encrypt [^2].
+4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:1000`. Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
 
 5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
@@ -88,7 +88,7 @@ HASURA_GRAPHQL_ADMIN_SECRET=XXX
 
 ## Handling the database
 
-By default, Clean Slate uses the `postgres` user and `postgres` database in a container. It will also use the most recent, major version of PostgreSQL. Usually within a couple of months of release. That new version is outlined in the `docker-compose.yml` used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade` once a year.
+By default, Clean Slate uses the `postgres` user and `postgres` database in a container. It will also use the most recent, major version of PostgreSQL. Usually within a couple of months of release. The major version used is outlined in the `docker-compose.yml` file used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade` once a year.
 
 If you do not like either of these behaviors, your best option is to use a custom `docker-compose.yml`. For example, let's say you want to connect to a database not managed by our Docker Compose. Great! Make a copy of our `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services and the `cleanslate` volume. Update `HASURA_GRAPHQL_DATABASE_URL` to point to your database. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh`. All done!
 
