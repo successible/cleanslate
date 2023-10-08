@@ -18,7 +18,8 @@
       "groupSlug": "all-major",
       "groupName": "all major dependencies",
       "schedule": ["on the first day of the month before 6:00am"],
-      "automerge": false
+      "automerge": false,
+      "ignoreDeps": ["postgres"]
     }
   ],
   "lockFileMaintenance": {
