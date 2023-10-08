@@ -45,6 +45,7 @@ export const startSentry = () => {
           maskAllText: false,
         }),
       ],
+      maxValueLength: 1000,
       replaysOnErrorSampleRate: 1.0,
       tracesSampleRate: 0,
     })
