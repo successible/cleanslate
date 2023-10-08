@@ -21,38 +21,41 @@ It can do stuff like:
 
 To learn more, visit [our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/wCoqpIImNdg).
 
-## How to host Clean Slate
+## Do I need to host Clean Slate to use it?
 
-> Note: You do not have to host Clean Slate to use it. We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
+Nope! We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login (e.g. Login with Google).
 
-> Important: Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+## How is Clean Slate licensed?
 
-Hosting Clean Slate is easy. You just need a Linux server with Git and Docker Compose installed.
+Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+
+## How do I host Clean Slate?
+
+Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and Docker Compose installed.
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
 2.  Create a `.env` file in the `cleanslate` folder with these variables. Replace `<>` with your values.
 
 ```bash
+# Required
 POSTGRES_PASSWORD=<your-desired-password>
 NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
 HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. Clean Slate is now running. However, you cannot yet access Clean Slate. That is because Clean Slate must be run over `https` (SSL) to work. Hence, you must configure a reverse proxy with SSL, such as `nginx` or `caddy`, and point it to `http://localhost:1000`. That is the port on which the client of Clean Slate is running. The client, which is running an internal version of `nginx`, will take it from there.
+3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:1000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on ``
 
-> Note: We recommend Caddy [^1] as the reverse proxy. That is because it handles SSL automatically (and for free) via Let's Encrypt [^2].
+4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:1000`. Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy. That is because it handles SSL automatically (and for free) via Let's Encrypt [^2].
 
-> Warning: Clean Slate uses the most recent, major version of PostgreSQL. That new version is outlined in the `docker-compose.yml` used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade` once a year. If you do not like this behavior, your best option is to use a custom `docker-compose.yml`. For example, let's say you want to connect to a database not managed by Docker Compose. Great! Create a copy of `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services. Make sure your `.env` file has the correct credentials. Run `export COMPOSE_FILE=custom.yml; bash deploy.sh`. Boom! You are good to go.
+5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
-4.  Once your reverse proxy is set up, go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
+6.  You can now log in to `https://<your-domain>` with that credential!
 
-5.  You can now log in to `https://<your-domain>` with that credential.
+7.  To deploy the newest version of Clean Slate, run `bash deploy.sh` again. Read `CHANGELOG.md` every time before you deploy to read about any breaking changes.
 
-6.  To deploy the newest version of Clean Slate, run `bash deploy.sh`. We deploy a new version of Clean Slate at least twice a week, on Monday and Tuesday. We recommend deploying every Sunday. However, before deploying, make sure to check out `CHANGELOG.md`. This is where breaking changes are covered.
-
-> Note: Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the appendix for how to set up Firebase with Clean Slate. However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. We created the default authentication system (`authId`) for them. The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
+This section covers the "essentials" on deploying Clean Slate. However, you should also read the appendix for more details.
 
 ## How to contribute to Clean Slate
 
@@ -72,11 +75,32 @@ Here's how to run Clean Slate locally:
 
 - Navigate to `http://localhost:3000` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
+> Note: To test the hosting process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start`. `caddy` will pick up the `Caddyfile` and serve Clean Slate on `https://localhost`.
+
+```bash
+# .env for testing the hosting process locally. Do not use in an actual production setting!
+POSTGRES_PASSWORD=XXX
+NEXT_PUBLIC_HASURA_DOMAIN=localhost
+HASURA_GRAPHQL_ADMIN_SECRET=XXX
+```
+
 ## Appendix
 
-### Using Firebase
+## Handling the database
 
-Clean Slate can use Firebase as the alternative authentication provider. Here's how:
+By default, Clean Slate uses the `postgres` user and `postgres` database in a container. It will also use the most recent, major version of PostgreSQL. That new version is outlined in the `docker-compose.yml` used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade` once a year.
+
+If you do not like either of these behaviors, your best option is to use a custom `docker-compose.yml`. For example, let's say you want to connect to a database not managed by our Docker Compose. Great! Make a copy of our `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services and the `cleanslate` volume. Update `HASURA_GRAPHQL_DATABASE_URL` to point to your database. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh`. All done!
+
+### Handling authentication
+
+Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section of the appendix for how to set up Firebase with Clean Slate.
+
+However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. Hence, our default authentication system, `authId`, works differently.
+
+The `authId` system is incredibly simple. There is no username or password. Clean Slate does not even require a server that can send email. Instead, Clean Slate uses very long tokens (uuid4) stored as plain text in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
+
+### Using Firebase
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
