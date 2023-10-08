@@ -44,6 +44,8 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 
 > Note: We recommend Caddy [^1] as the reverse proxy. That is because it handles SSL automatically (and for free) via Let's Encrypt [^2].
 
+> Warning: Clean Slate uses the most recent, major version of PostgreSQL. That new version is outlined in the `docker-compose.yml` used by `deploy.sh`. Hence, when you run `deploy.sh` with an older version of PostgreSQL managed by Docker Compose, you will get an error. Specifically, that your `database files are incompatible with server`. Hence, to get Clean Slate to work, you will be forced to upgrade your database using `pg_upgrade`. If you do not like this behavior, your best option is to use a custom `docker-compose.yml`. For example, let's say you want to connect to a database not managed by Docker Compose. Great! Create a copy of `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services. Make sure your `.env` file has the correct credentials. Run `export COMPOSE_FILE=custom.yml; bash deploy.sh`. Boom! You are good to go.
+
 4.  Once your reverse proxy is set up, go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
 5.  You can now log in to `https://<your-domain>` with that credential.
@@ -146,3 +148,4 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https
 
 [^1]: https://caddyserver.com/docs/getting-started
 [^2]: https://letsencrypt.org/
+[^3]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
