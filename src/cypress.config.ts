@@ -11,7 +11,7 @@ export default defineConfig({
     watchForFileChanges: true,
   },
   fixturesFolder: 'cypress/fixtures',
-  projectId: 'ay3623',
+  projectId: '4g7662',
   screenshotsFolder: 'cypress/screenshots',
   video: false,
   videosFolder: 'cypress/videos',
