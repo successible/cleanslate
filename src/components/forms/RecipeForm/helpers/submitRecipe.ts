@@ -33,14 +33,13 @@ export const submitRecipe = (
         delete draft.ingredients
       }),
     }
-    if (
-      (recipe.countToGram &&
-        (data.countToGram === null || data.countToGram === undefined)) ||
-      (recipe.countToTbsp &&
-        (data.countToTbsp === null || data.countToTbsp === undefined))
-    ) {
+
+    const countToGramZeroedOut = recipe.countToGram && !data.countToGram
+    const countToTbspZeroedOut = recipe.countToTbsp && !data.countToTbsp
+
+    if (countToGramZeroedOut || countToTbspZeroedOut) {
       alert(
-        'When you remove a unit from a recipe, it can break the recipes and the logs that depend on that recipe. Make sure you fix them after this update!'
+        'When you remove a unit from a recipe, it can break the recipes and the logs if they have stored the recipe with that unit. For example, you have made a log with 500mL of pudding and you remove the tbsp per recipe. Make sure you fix them after this update!'
       )
     }
 

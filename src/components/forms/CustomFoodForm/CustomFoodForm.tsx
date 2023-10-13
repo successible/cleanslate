@@ -145,14 +145,19 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           if (!isNumeric(proteinPerCount)) {
             return toast.error('Protein per serving must be a number!')
           }
+
+          const countToGramZeroedOut = food.countToGram && !data.countToGram
+          const countToTbspZeroedOut = food.countToTbsp && !data.countToTbsp
+          const servingPerContainerZeroedOut =
+            food.servingPerContainer && !data.servingPerContainer
+
           if (
-            (food.countToGram ??
-              (data.countToGram === null || data.countToGram === undefined)) ||
-            (food.countToTbsp ??
-              (data.countToTbsp === null || data.countToTbsp === undefined))
+            countToGramZeroedOut ||
+            countToTbspZeroedOut ||
+            servingPerContainerZeroedOut
           ) {
             alert(
-              'When you remove a unit from a custom food, it can break the recipes and the logs that depend on that custom food. Make sure you fix them after this update!'
+              'When you remove a unit from a custom food, it can break the recipes and the logs if they have stored the custom food with that unit. For example, you have made a log with 500mL of pudding and you remove the tbsp per recipe. Make sure you fix them after this update!'
             )
           }
 
