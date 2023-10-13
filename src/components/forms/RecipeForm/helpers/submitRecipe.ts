@@ -33,6 +33,17 @@ export const submitRecipe = (
         delete draft.ingredients
       }),
     }
+    if (
+      (recipe.countToGram &&
+        (data.countToGram === null || data.countToGram === undefined)) ||
+      (recipe.countToTbsp &&
+        (data.countToTbsp === null || data.countToTbsp === undefined))
+    ) {
+      alert(
+        'When you remove a unit from a recipe, it can break the recipes and the logs that depend on that recipe. Make sure you fix them after this update!'
+      )
+    }
+
     return updateRecipeOnCloud(variables, () => {
       if (closeModal) {
         dispatch('closeRecipeFormModal')

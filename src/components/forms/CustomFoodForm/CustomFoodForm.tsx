@@ -2,11 +2,14 @@ import { css } from '@emotion/react'
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useStoreon } from 'storeon/react'
-import caratDown from '../../../assets/common/caratdown.svg'
-import caratUp from '../../../assets/common/caratup.svg'
 import { Category } from '../../../constants/categories'
 import { Group } from '../../../constants/groups'
-import { VolumeUnit, WeightUnit } from '../../../constants/units'
+import {
+  VolumeUnit,
+  volumeUnits,
+  WeightUnit,
+  weightUnits,
+} from '../../../constants/units'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
 import { isNumeric } from '../../../helpers/isNumeric'
@@ -16,7 +19,7 @@ import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
 import { colors } from '../../../theme'
 import { Divider } from '../../divider/Divider'
-import { Image } from '../../image/Image'
+import { Explanation } from '../../explanation/Explanation'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
 import { getAdjustedVolumeAmount } from './helpers/getAdjustedVolumeAmount'
@@ -42,7 +45,6 @@ type props = { food: Food | undefined }
 export const CustomFoodForm: React.FC<props> = ({ food }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
-  const [showOptional, updateShowOptional] = React.useState(false)
   const [name, updateName] = React.useState(food?.name || '')
   const [caloriesPerCount, updateCaloriesPerCount] = React.useState(
     food?.caloriesPerCount || ''
@@ -143,6 +145,17 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           if (!isNumeric(proteinPerCount)) {
             return toast.error('Protein per serving must be a number!')
           }
+          if (
+            (food.countToGram ??
+              (data.countToGram === null || data.countToGram === undefined)) ||
+            (food.countToTbsp ??
+              (data.countToTbsp === null || data.countToTbsp === undefined))
+          ) {
+            alert(
+              'When you remove a unit from a custom food, it can break the recipes and the logs that depend on that custom food. Make sure you fix them after this update!'
+            )
+          }
+
           updateFoodOnCloud(variables, () => close())
         } else {
           addFoodToCloud(data, () => dispatch('closeFoodFormModal'))
@@ -212,69 +225,49 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           />
         </div>
       </div>
-      <button
-        type="button"
-        css={css`
-          border-radius: 5px;
-          img {
-            margin-left: 10px;
-            width: 10px;
-          }
+
+      <Divider
+        height={1}
+        className="mt20 mb0"
+        styles={css`
+          background-color: ${colors.lightgrey};
         `}
-        className={`blue mt25 mb25 pbutton`}
-        onClick={() => {
-          updateShowOptional(!showOptional)
-        }}
-      >
-        {food ? 'Edit' : 'Add'} units{' '}
-        {showOptional ? (
-          <Image width={10} height={10} src={caratUp} alt="Arrow pointing up" />
-        ) : (
-          <Image
-            width={10}
-            height={10}
-            src={caratDown}
-            alt="Arrow pointing Down"
-          />
-        )}
-      </button>
-      {showOptional && (
-        <div className="mb20">
-          <div className="mt20">
-            <UnitSelector
-              amount={countToTbsp}
-              unit={volumeUnit}
-              units={['CUP', 'TBSP', 'TSP']}
-              onChange={(unit, amount) => {
-                setCountToTbsp(amount)
-                setVolumeUnit(unit as VolumeUnit)
-              }}
-            />
-            <UnitSelector
-              amount={countToGram}
-              unit={weightUnit}
-              units={['GRAM', 'OZ', 'LBS']}
-              onChange={(unit, amount) => {
-                setCountToGram(amount)
-                setWeightUnit(unit as WeightUnit)
-              }}
-            />
-            <Divider
-              height={1}
-              className="mt20 mb0"
-              styles={css`
-                background-color: ${colors.lightgrey};
-              `}
-            />
-            <UnitSelector
-              unit={'CONTAINER'}
-              amount={servingPerContainer}
-              units={['CONTAINER']}
-              onChange={(unit, amount) => updateServingPerContainer(amount)}
-            />
-          </div>
+      />
+
+      <Explanation color="blue">
+        <div>
+          <strong>Note:</strong> These units are optional
         </div>
-      )}
+      </Explanation>
+
+      <div className="mb20">
+        <div className="mt20">
+          <UnitSelector
+            amount={countToTbsp}
+            unit={volumeUnit}
+            units={volumeUnits}
+            onChange={(unit, amount) => {
+              setCountToTbsp(amount)
+              setVolumeUnit(unit as VolumeUnit)
+            }}
+          />
+          <UnitSelector
+            amount={countToGram}
+            unit={weightUnit}
+            units={weightUnits}
+            onChange={(unit, amount) => {
+              setCountToGram(amount)
+              setWeightUnit(unit as WeightUnit)
+            }}
+          />
+          <UnitSelector
+            unit={'CONTAINER'}
+            amount={servingPerContainer}
+            units={['CONTAINER']}
+            onChange={(unit, amount) => updateServingPerContainer(amount)}
+          />
+        </div>
+      </div>
 
       <button type="submit" className="purple bold mt30 mb10">
         {food ? 'Update Food' : 'Create Food'}

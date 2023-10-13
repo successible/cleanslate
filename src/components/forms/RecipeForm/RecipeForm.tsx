@@ -2,9 +2,12 @@ import { css } from '@emotion/react'
 import { curry } from '@typed/curry'
 import React, { useEffect } from 'react'
 import { useStoreon } from 'storeon/react'
-import caratDown from '../../../assets/common/caratdown.svg'
-import caratUp from '../../../assets/common/caratup.svg'
-import { VolumeUnit, WeightUnit } from '../../../constants/units'
+import {
+  VolumeUnit,
+  volumeUnits,
+  WeightUnit,
+  weightUnits,
+} from '../../../constants/units'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { Food } from '../../../models/food'
 import { Ingredient } from '../../../models/ingredient'
@@ -13,7 +16,9 @@ import { Recipe } from '../../../models/recipe'
 import { EditorState } from '../../../store/editor/types'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
-import { Image } from '../../image/Image'
+import { colors } from '../../../theme'
+import { Divider } from '../../divider/Divider'
+import { Explanation } from '../../explanation/Explanation'
 import { IngredientList } from '../../list/Ingredient/IngredientList'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
@@ -41,7 +46,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   }: { dispatch: Dispatch<AllEvents>; editor: EditorState } =
     useStoreon('editor')
 
-  const [showOptional, updateShowOptional] = React.useState(false)
   const [name, updateName] = React.useState(recipe?.name || '')
   const [countName, updateCountName] = React.useState(recipe?.countName || '')
 
@@ -199,72 +203,45 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
         updateIngredient={curry(updateIngredients)(ingredients)}
         deleteIngredient={deleteIngredient}
       />
-      <div className="w100">
-        <button
-          type="button"
-          css={css`
-            border-radius: 5px;
-            img {
-              margin-left: 10px;
-              width: 10px;
-            }
-          `}
-          className={`blue pbutton mt30`}
-          onClick={() => {
-            updateShowOptional(!showOptional)
-          }}
-        >
-          {recipe ? 'Edit' : 'Add'} units{' '}
-          {showOptional ? (
-            <Image
-              width={10}
-              height={10}
-              src={caratUp}
-              alt="Arrow pointing up"
-            />
-          ) : (
-            <Image
-              width={10}
-              height={10}
-              src={caratDown}
-              alt="Arrow pointing Down"
-            />
-          )}
-        </button>
-        {showOptional && (
-          <div className="mb20">
-            <div className="mt20">
-              <UnitSelector
-                title={'per recipe'}
-                amount={countToTbsp}
-                unit={volumeUnit}
-                units={['CUP', 'TBSP', 'TSP']}
-                onChange={(unit, amount) => {
-                  setCountToTbsp(amount)
-                  setVolumeUnit(unit as VolumeUnit)
-                }}
-              />
-              <UnitSelector
-                title={'per recipe'}
-                amount={countToGram}
-                unit={weightUnit}
-                units={['GRAM', 'OZ', 'LBS']}
-                onChange={(unit, amount) => {
-                  setCountToGram(amount)
-                  setWeightUnit(unit as WeightUnit)
-                }}
-              />
 
-              {/* Because countName of "bowl" is ambiguous between serving and container, we disable container  */}
-              {/* <UnitSelector
-                unit={'CONTAINER'}
-                amount={servingPerContainer}
-                units={['CONTAINER']}
-                onChange={(unit, amount) => updateServingPerContainer(amount)}
-              /> */}
-            </div>
+      <Divider
+        height={1}
+        className="mt20 mb0"
+        styles={css`
+          background-color: ${colors.lightgrey};
+        `}
+      />
+
+      <Explanation color="blue">
+        <div>
+          <strong>Note:</strong> These units are optional
+        </div>
+      </Explanation>
+      <div className="w100">
+        <div className="mb20">
+          <div className="mt20">
+            <UnitSelector
+              title={'per recipe'}
+              amount={countToTbsp}
+              unit={volumeUnit}
+              units={volumeUnits}
+              onChange={(unit, amount) => {
+                setCountToTbsp(amount)
+                setVolumeUnit(unit as VolumeUnit)
+              }}
+            />
+            <UnitSelector
+              title={'per recipe'}
+              amount={countToGram}
+              unit={weightUnit}
+              units={weightUnits}
+              onChange={(unit, amount) => {
+                setCountToGram(amount)
+                setWeightUnit(unit as WeightUnit)
+              }}
+            />
           </div>
-        )}
+        </div>
       </div>
 
       <button type="submit" className="purple bold mt20 start">

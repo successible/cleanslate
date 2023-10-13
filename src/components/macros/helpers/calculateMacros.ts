@@ -1,5 +1,4 @@
-import { volumeUnits } from '../../../constants/units'
-import { weightUnits } from '../../../constants/units'
+import { volumeUnits, weightUnits } from '../../../constants/units'
 import { QuickAddUnit, Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
 import { Food } from '../../../models/food'
@@ -171,9 +170,20 @@ export const calculatePerMacroPerFood = (
 export const calculatePerMacroPerRecipe = (
   recipe: Recipe,
   metric: QuickAddUnit,
-  amount: number
+  amount: number,
+  unit: Unit
 ): number => {
-  const result = recipe.ingredients.reduce((acc, ingredient) => {
+  const { countToGram, countToTbsp } = recipe
+  const isVolume = volumeUnits.includes(unit) && countToTbsp
+  const isWeight = weightUnits.includes(unit) && countToGram
+
+  const amountToUse = isVolume
+    ? mapOtherVolumeUnitToTbsp(unit, amount) / countToTbsp
+    : isWeight
+    ? convertFromWeightToGrams(unit, amount) / countToGram
+    : amount
+
+  const total = recipe.ingredients.reduce((acc, ingredient) => {
     const childRecipe = ingredient.ingredientToChildRecipe
     const food = ingredient.ingredientToFood
 
@@ -186,22 +196,26 @@ export const calculatePerMacroPerRecipe = (
         countToTbsp,
         servingPerContainer,
       ] = getMeasurements(metric, food)
-      return (
-        acc +
-        calculatePerFood(
-          food,
-          ingredient.amount,
-          ingredient.unit,
-          perGram,
-          perTbsp,
-          countToGram,
-          perCount,
-          countToTbsp,
-          servingPerContainer
-        )
+      const macro = calculatePerFood(
+        food,
+        ingredient.amount,
+        ingredient.unit,
+        perGram,
+        perTbsp,
+        countToGram,
+        perCount,
+        countToTbsp,
+        servingPerContainer
       )
+      return acc + macro
     } else if (childRecipe) {
-      return acc + calculatePerMacroPerRecipe(childRecipe, metric, amount)
+      const macro = calculatePerMacroPerRecipe(
+        childRecipe,
+        metric,
+        ingredient.amount,
+        ingredient.unit
+      )
+      return acc + macro
     } else {
       return handleError(
         `Error: calculatePerMacroPerRecipe: ${JSON.stringify({
@@ -212,7 +226,8 @@ export const calculatePerMacroPerRecipe = (
       )
     }
   }, 0)
-  return result * amount
+
+  return total * amountToUse
 }
 
 /** This function calculates the total calories, protein in all logs present for a given metric */
@@ -253,18 +268,7 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
     } else if (food) {
       return total + calculatePerMacroPerFood(amount, unit, food, metric)
     } else if (recipe) {
-      const { countToGram, countToTbsp } = recipe
-      const caloriesPerCount =
-        calculatePerMacroPerRecipe(recipe, metric, amount) / amount
-      if (volumeUnits.includes(unit) && countToTbsp) {
-        const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
-        return total + (tbsp / countToTbsp) * caloriesPerCount
-      } else if (weightUnits.includes(unit) && countToGram) {
-        const grams = convertFromWeightToGrams(unit, amount)
-        return total + (grams / countToGram) * caloriesPerCount
-      } else {
-        return total + caloriesPerCount * amount
-      }
+      return total + calculatePerMacroPerRecipe(recipe, metric, amount, unit)
     } else {
       // If food is null and the metric does not exist, do nothing
       return total

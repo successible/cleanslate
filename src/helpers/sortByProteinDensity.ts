@@ -15,8 +15,8 @@ export const sortByProteinDensity = (items: (Food | Recipe)[]) => {
           ? calculateFoodDensities(itemsA)[1]
           : calculateRecipeDensities(
               1,
-              calculatePerMacroPerRecipe(itemsA, 'CALORIE', 1),
-              calculatePerMacroPerRecipe(itemsA, 'PROTEIN', 1),
+              calculatePerMacroPerRecipe(itemsA, 'CALORIE', 1, 'COUNT'),
+              calculatePerMacroPerRecipe(itemsA, 'PROTEIN', 1, 'COUNT'),
               itemsA
             )[1]
 
@@ -25,8 +25,8 @@ export const sortByProteinDensity = (items: (Food | Recipe)[]) => {
           ? calculateFoodDensities(itemsB)[1]
           : calculateRecipeDensities(
               1,
-              calculatePerMacroPerRecipe(itemsB, 'CALORIE', 1),
-              calculatePerMacroPerRecipe(itemsB, 'PROTEIN', 1),
+              calculatePerMacroPerRecipe(itemsB, 'CALORIE', 1, 'COUNT'),
+              calculatePerMacroPerRecipe(itemsB, 'PROTEIN', 1, 'COUNT'),
               itemsB
             )[1]
 
