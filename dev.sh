@@ -7,6 +7,12 @@ pkill -9 -f "next dev"
 pkill -9 -f "next-router-worker"
 pkill -9 -f "npm exec tsc --watch"
 pkill -9 -f "tsc --watch"
+caddy stop
+
+export NEXT_PUBLIC_VERSION="XXX"
+export NEXT_PUBLIC_HASURA_DOMAIN="localhost"
+
+docker-compose -f docker-compose.yml down -t 0 --remove-orphans
 
 echo "=> Configure the local machine"
 
@@ -15,15 +21,15 @@ if [[ $CI != "true" ]]; then
   export DB_HOST="127.0.0.1"
   export DB_NAME="postgres"
   export DB_PASSWORD="password"
-  export DB_PORT="1276"
+  export DB_PORT="1270"
   export DB_USER="postgres"
+  export HASURA_CONSOLE_PORT='9695'
   export HASURA_GRAPHQL_ADMIN_SECRET='secret'
   export HASURA_GRAPHQL_DATABASE_URL="postgres://postgres:password@database:5432/postgres"
   export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
   export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
   export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
   export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
-  export NEXT_PUBLIC_VERSION="XXX"
   export NEXT_PUBLIC_LEGAL_LINK="XXX"
   export NODE_ENV="development"
 
@@ -82,5 +88,11 @@ if [[ $CYPRESS == "true" ]]; then
     cd src && npx cypress open &
 
   fi
+
+fi
+
+if [[ $CI != "true" ]]; then
+
+sleep 5 && caddy start -c Caddyfile.dev &
 
 fi

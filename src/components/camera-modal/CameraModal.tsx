@@ -10,6 +10,8 @@ import { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
 import { getDispatch } from '../../helpers/getDispatch'
 import { isMobileSafari } from '../../helpers/isMobileSafari'
+import { isNumeric } from '../../helpers/isNumeric'
+import { Food } from '../../models/food'
 import { Barcode, defaultMeal } from '../../models/log'
 import { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
@@ -101,10 +103,22 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
     )
   }
 
-  // If serving is not present in the database, do not show it as an option!
-  const options = [{ GRAM: 'GRAM' } as Record<Unit, string>]
-  if (barcode?.calories_per_serving || barcode?.protein_per_serving) {
-    options[0].COUNT = 'SERVING'
+  const selectedItem = new Food()
+  if (barcode) {
+    if (isNumeric(barcode.serving_quantity)) {
+      selectedItem.servingPerContainer = Number(barcode.serving_quantity)
+    }
+    if (
+      isNumeric(barcode?.calories_per_gram) &&
+      isNumeric(barcode?.protein_per_gram) &&
+      isNumeric(barcode?.calories_per_serving)
+    ) {
+      selectedItem.caloriesPerGram = barcode.calories_per_gram
+      selectedItem.proteinPerGram = barcode.protein_per_gram
+      selectedItem.countToGram =
+        barcode.calories_per_serving / barcode.calories_per_gram
+      selectedItem.countName = 'Serving'
+    }
   }
 
   return (
@@ -134,7 +148,7 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
             </span>
           </div>
           <InputFields
-            selectedItem={null}
+            selectedItem={selectedItem}
             unit={unit}
             setUnit={setUnit}
             amount={amount}

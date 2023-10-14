@@ -45,9 +45,33 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:1000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on ``
+3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on ``
 
-4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:1000`. Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
+4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080`. Use the proxy paths, as shown in a sample `Caddyfile`. If you wish to use the `Caddyfile`, replace `XXX` with your own domain.
+
+```
+XXX/v1* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
+
+XXX/v2* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
+
+XXX/console* {
+	# Admin panel (Hasura).
+	reverse_proxy localhost:8080
+}
+
+XXX {
+	# Static files (Clean Slate)
+	reverse_proxy localhost:3000
+}
+```
+
+> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
 
 5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
@@ -65,17 +89,20 @@ Run Clean Slate locally, make changes, and then submit a pull request on GitHub.
 
 Here's how to run Clean Slate locally:
 
-- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), and [Node.js (LTS)](https://nodejs.org/en/). Make sure Docker Desktop is running.
+- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Caddy](https://caddyserver.com/docs/install). Make sure Docker Desktop is running.
 
 - Run `npm run dev` after cloning down the repository. This will spin up these servers:
 
-  - PostgreSQL: `http://localhost:1276`
-  - Next.js: `http://localhost:3000`.
+  - Hasura (API): `http://localhost:8080`.
   - Hasura (Console): `http://localhost:9695`.
+  - Next.js: `http://localhost:3000`.
+  - PostgreSQL: `http://localhost:1270`
 
 - Navigate to `http://localhost:3000` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
-> Note: To test the hosting process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start`. `caddy` will pick up the `Caddyfile` and serve Clean Slate on `https://localhost`.
+> Note: To test the deployment process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
+
+> Note: If you want to proxy the development version of Clean Slate to test on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
 ```bash
 # .env for testing the hosting process locally. Do not use in an actual production setting!

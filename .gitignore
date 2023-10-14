@@ -1,5 +1,6 @@
 .DS_Store
 .env
+.vscode
 node_modules
 src/build
 src/tsconfig.tsbuildinfo

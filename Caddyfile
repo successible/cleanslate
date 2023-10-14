@@ -1,3 +1,0 @@
-localhost {
-	reverse_proxy localhost:1000
-}

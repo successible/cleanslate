@@ -14,7 +14,7 @@ services:
     image: hasura/graphql-engine:v2.34.0
     restart: always
     ports:
-      - '8120:8080'
+      - '8080:8080'
     depends_on:
       - 'database'
     environment:

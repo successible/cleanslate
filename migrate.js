@@ -2,7 +2,7 @@
 
 const { execSync } = require('child_process')
 
-const endpoint = 'http://localhost:8120'
+const endpoint = 'http://localhost:8080'
 const secret = `--admin-secret secret`
 const auth = `--endpoint ${endpoint} ${secret}`
 

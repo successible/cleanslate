@@ -38,7 +38,7 @@ COPY src/workbox-config.js src/workbox-config.js
 COPY build.sh .
 RUN ["bash", "-e", "build.sh"]
 
-FROM debian:bookworm-slim as runner
+FROM busybox:1.36.1 as runner
 
 # Copy over the built version of Clean Slate
 
@@ -46,7 +46,4 @@ COPY --from=builder build build
 
 # Install nginx and serve Clean Slate with it
 
-RUN ["apt-get", "update", "-y"]
-RUN ["apt-get", "install", "nginx", "-y", "--no-install-recommends"]
-COPY nginx.conf /etc/nginx/nginx.conf
-ENTRYPOINT [ "nginx", "-c", "/etc/nginx/nginx.conf" ]
+CMD ["busybox", "httpd", "-f", "-v", "-p", "3000", "-h", "build"]

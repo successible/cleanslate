@@ -11,6 +11,7 @@ import { Select } from '../../select/Select'
 type props = {
   selectedItem: Food | Recipe | null
   unit: Unit | null
+  units?: Unit
   setUnit: (unit: Unit) => void
   amount: string | number
   setAmount: (amount: string) => void
