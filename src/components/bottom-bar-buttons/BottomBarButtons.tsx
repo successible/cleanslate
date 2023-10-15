@@ -39,6 +39,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
   return (
     <div id="footer" css={buttons} className={`frc w100`}>
       <button
+        id="openMenu"
         type="button"
         onClick={() => {
           dispatch('openMenu')
@@ -48,6 +49,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       </button>
       {profile.showCalories && (
         <button
+          id="openExerciseModal"
           type="button"
           onClick={() => {
             dispatch('openExerciseModal')
@@ -60,6 +62,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       {profile.showCalories && (
         <button
           type="button"
+          id="openQuickAddModal"
           onClick={() => {
             if (profile.enablePlanning) {
               dispatch('openFoodFormModal')
@@ -77,6 +80,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
 
       {profile.showCalories && (
         <button
+          id="openBarcodeModal"
           type="button"
           onClick={() => {
             dispatch('openBarcodeModal')
@@ -87,7 +91,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
       )}
 
       <button
-        id="BottomBarSearchButton"
+        id="openModal"
         type="button"
         onClick={() => {
           dispatch('openModal')

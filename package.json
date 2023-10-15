@@ -103,7 +103,7 @@
     "@jest/globals": "29.7.0",
     "@typescript-eslint/eslint-plugin": "6.7.4",
     "@typescript-eslint/parser": "6.7.4",
-    "cypress": "13.3.0",
+    "cypress": "13.3.1",
     "eslint-config-next": "13.5.4",
     "eslint-plugin-sort": "2.10.0",
     "eslint": "8.51.0",

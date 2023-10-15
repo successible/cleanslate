@@ -6,7 +6,8 @@ describe('Is Clean Slate working?', () => {
     cy.visit('http://localhost:3000')
     cy.get('#token').type(localUser)
     cy.get('#login-button').click()
-    cy.get('#BottomBarSearchButton').should('be.visible').click()
+
+    cy.get('#openModal').should('be.visible').click()
     cy.get('#StandardAdderSearchbar').should('be.visible').type('Sage')
     cy.get('#StandardAdderSearchResult-0').should('be.visible').click()
     cy.get('#StandardAdderMetaName').should('be.visible').contains('Sage')
@@ -36,5 +37,18 @@ describe('Is Clean Slate working?', () => {
     cy.get('#MacrosCalories').should('have.text', '1080')
     cy.get('#TopBarCalories .green').should('have.text', '920')
     cy.get('#TopBarProtein .blue').should('have.text', '87')
+
+    // Create a custom food
+    cy.get('#openMenu').click()
+    cy.get('#openFoodModal').click()
+    cy.get('#openFoodFormModal').click()
+    cy.get('#name').type('Pudding')
+    cy.get('#caloriesPerCount').type('120')
+    cy.get('#proteinPerCount').type('20')
+    cy.get(':nth-child(1) > #unit-selector-input')
+    cy.get(':nth-child(1) > #unit-selector-input').type('50')
+    cy.get(':nth-child(1) > #unit-selector-select').select('mL')
+    cy.get('#submitCustomFoodForm').click()
+    cy.get('#MetaItemName').should('have.text', 'Pudding')
   })
 })

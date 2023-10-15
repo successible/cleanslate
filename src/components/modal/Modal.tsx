@@ -6,6 +6,7 @@ import ReturnArrow from '../../assets/common/return-arrow.svg'
 import { Modals } from '../../constants/modals'
 import { getAnimationDuration } from '../../helpers/getAnimationDuration'
 import { isMobile } from '../../helpers/isMobile'
+import { isProduction } from '../../helpers/isProduction'
 import { colors } from '../../theme'
 import { xlg } from '../../theme'
 import { Image } from '../image/Image'
@@ -182,7 +183,7 @@ export const Modal: React.FC<props> = (props) => {
   if (isMobile()) {
     return modalComponent
   } else {
-    return shouldRender ? (
+    return shouldRender && !isProduction() ? (
       <FocusTrap>{modalComponent}</FocusTrap>
     ) : (
       modalComponent

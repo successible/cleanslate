@@ -206,6 +206,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     >
       <div className="w100 h100 fcs expand">
         <button
+          id="openFoodFormModal"
           type="button"
           onClick={() => {
             dispatch('openFoodFormModal', null)

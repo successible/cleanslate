@@ -66,6 +66,7 @@ export const Menu: React.FC = () => {
         <div>Create</div>
 
         <button
+          id="openFoodModal"
           ref={buttonToFocus}
           onClick={() => {
             dispatch('openFoodModal')
@@ -82,6 +83,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          id="openRecipeModal"
           onClick={() => {
             dispatch('openRecipeModal')
           }}
@@ -119,6 +121,7 @@ export const Menu: React.FC = () => {
         <div>Other</div>
 
         <button
+          id="openSettingsModal"
           onClick={() => {
             dispatch('openSettingsModal')
           }}
@@ -134,6 +137,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          id="openInformationModal"
           onClick={() => {
             dispatch(
               'openInformationModal',
@@ -165,6 +169,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          id="logout"
           onClick={() => {
             logout()
           }}

@@ -291,7 +291,11 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
         </div>
       </div>
 
-      <button type="submit" className="purple bold mt20 start">
+      <button
+        id="submitRecipeForm"
+        type="submit"
+        className="purple bold mt20 start"
+      >
         {recipe ? 'Update Recipe' : 'Create Recipe'}
       </button>
     </form>

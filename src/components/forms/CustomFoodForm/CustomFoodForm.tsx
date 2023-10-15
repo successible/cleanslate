@@ -274,7 +274,11 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
         </div>
       </div>
 
-      <button type="submit" className="purple bold mt30 mb10">
+      <button
+        id="submitCustomFoodForm"
+        type="submit"
+        className="purple bold mt30 mb10"
+      >
         {food ? 'Update Food' : 'Create Food'}
       </button>
     </form>
