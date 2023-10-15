@@ -1,5 +1,6 @@
 import React from 'react'
 import toast from 'react-hot-toast'
+import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
 import { Ingredient } from '../../../models/ingredient'
 import { Item } from '../../item/Item'
 import { OnUpdateItem } from '../../item/types'
@@ -12,7 +13,7 @@ type props = {
 }
 export const IngredientItem: React.FC<props> = (props) => {
   const { deleteIngredient, ingredient } = props
-  const { amount, createdAt, id, type, unit } = ingredient
+  const { amount, barcode, createdAt, id, type, unit } = ingredient
   const food = ingredient.ingredientToFood
   const childRecipe = ingredient.ingredientToChildRecipe
 
@@ -48,7 +49,7 @@ export const IngredientItem: React.FC<props> = (props) => {
       item={{
         alias: null,
         amount,
-        barcode: null,
+        barcode,
         basicFood: ingredient.basicFood,
         childRecipe,
         consumed: null,
@@ -61,7 +62,7 @@ export const IngredientItem: React.FC<props> = (props) => {
         onUpdate,
         profile: ingredient.ingredientToProfile,
         recipe: null,
-        src,
+        src: barcode ? BarcodeWithoutScanner.src : src,
         type,
         unit,
       }}

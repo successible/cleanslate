@@ -26,6 +26,7 @@ export const RECIPE_BASE_FRAGMENT = gql`
 export const INGREDIENT_BASE_FRAGMENT = gql`
   fragment ingredient_base on ingredients {
     amount
+    barcode
     basicFood
     createdAt
     food

@@ -1,14 +1,16 @@
 import merge from 'deepmerge'
 import { Unit } from '../../../../constants/units'
 import { Ingredient } from '../../../../models/ingredient'
+import { Barcode } from '../../../../models/log'
 
 export type FormattedIngredient = {
   amount: number
-  unit: Unit
+  barcode: Barcode | null
   basicFood: string | null // the ID of the food
+  childRecipe: string | null // the ID of the child recipe
   food: string | null // the ID of the food
   recipe?: string
-  childRecipe: string | null // the ID of the child recipe
+  unit: Unit
 }
 
 /** Format the Ingredient object into a shape that Hasura requires.
@@ -19,9 +21,10 @@ export const formatIngredient = (
   ingredient: Ingredient,
   recipeId: string | undefined
 ): FormattedIngredient => {
-  const { amount, basicFood, childRecipe, food, recipe, unit } = merge(
+  const { amount, barcode, basicFood, childRecipe, food, recipe, unit } = merge(
     ingredient,
     {
+      barcode: ingredient.barcode,
       basicFood: ingredient.basicFood,
       childRecipe: ingredient.ingredientToChildRecipe?.id,
       food: !ingredient.basicFood ? ingredient.ingredientToFood?.id : null,
@@ -30,6 +33,7 @@ export const formatIngredient = (
   )
   return {
     amount,
+    barcode,
     basicFood,
     childRecipe,
     food,

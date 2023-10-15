@@ -63,7 +63,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
 
   const result = getNameAndTags(
     type !== 'log'
-      ? name
+      ? name || capitalize(barcode?.name || '')
       : recipe?.name ||
           food?.name ||
           capitalize(barcode?.name || '') ||

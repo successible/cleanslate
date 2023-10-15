@@ -15,9 +15,10 @@ import { calculateMacros } from './helpers/calculateMacros'
 type props = {
   log: Log
   profile: Profile
+  showTitles: boolean
 }
 
-export const Macros: React.FC<props> = ({ log, profile }) => {
+export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
   const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
@@ -71,17 +72,19 @@ export const Macros: React.FC<props> = ({ log, profile }) => {
     return (
       <div id="macros" css={macros}>
         <div className="fr">
-          <div>
+          <div className="fr">
             <Image width={10} height={10} alt="Fire" src={CalMini} />
+            {showTitles && <div className="mr5">Calories:</div>}
             <span>{caloriesConsumed}</span>
           </div>
-          <div>
+          <div className={`fr ${showTitles ? 'ml5' : ''}`}>
             <Image
               width={10}
               height={10}
               alt="Strong arm flexing"
               src={ProteinMini}
             />
+            {showTitles && <div className="mr5">Protein:</div>}
             <span>{proteinConsumed}</span>
           </div>
           {densities && profile.showDensities && (

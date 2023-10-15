@@ -186,8 +186,23 @@ export const calculatePerMacroPerRecipe = (
   const total = recipe.ingredients.reduce((acc, ingredient) => {
     const childRecipe = ingredient.ingredientToChildRecipe
     const food = ingredient.ingredientToFood
+    const barcode = ingredient.barcode
 
-    if (food) {
+    if (barcode) {
+      if (ingredient.unit === 'COUNT') {
+        if (metric === 'PROTEIN') {
+          return acc + ingredient.amount * barcode.protein_per_serving
+        } else {
+          return acc + ingredient.amount * barcode.calories_per_serving
+        }
+      } else {
+        if (metric === 'PROTEIN') {
+          return acc + ingredient.amount * barcode.protein_per_gram
+        } else {
+          return acc + ingredient.amount * barcode.calories_per_gram
+        }
+      }
+    } else if (food) {
       const [
         perGram,
         perTbsp,

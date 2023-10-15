@@ -178,19 +178,21 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
             meal={meal}
             setMeal={setMeal}
           />
-          <div className="fr">
-            <label htmlFor="customFood">
-              Create a custom food from this scan?
-            </label>
-            <input
-              checked={createCustomFood}
-              onChange={(e) => {
-                setCreateCustomFood(e.target.checked)
-              }}
-              id="customFood"
-              type="checkbox"
-            />
-          </div>
+          {type === 'log' && (
+            <div className="fr">
+              <label htmlFor="customFood">
+                Create a custom food from this scan?
+              </label>
+              <input
+                checked={createCustomFood}
+                onChange={(e) => {
+                  setCreateCustomFood(e.target.checked)
+                }}
+                id="customFood"
+                type="checkbox"
+              />
+            </div>
+          )}
 
           <ButtonPanel
             showSubmit={Boolean(amount && unit)}
@@ -204,7 +206,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
                 enablePlanning,
                 meal,
                 dispatch,
-                selectedItem,
+                undefined,
                 createCustomFood ? selectedItem : undefined
               )
             }}

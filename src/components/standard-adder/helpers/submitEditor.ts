@@ -39,22 +39,6 @@ export const submitEditor = (
     return false
   }
 
-  if (type === 'ingredient' && !searchResult) {
-    toast.error('Please specify a valid food or recipe')
-    return false
-  }
-
-  if (type === 'ingredient' && searchResult) {
-    const ingredient = addIngredient(
-      searchResult,
-      amount,
-      unit,
-      typeof basicFoodId === 'string' ? basicFoodId : null
-    )
-    dispatch('saveIngredient', ingredient)
-    return true
-  }
-
   if (customFoodToCreate) {
     addFoodToCloud(
       {
@@ -106,6 +90,18 @@ export const submitEditor = (
       Boolean(basicFoodId),
       id
     )
+    return true
+  }
+
+  if (type === 'ingredient' && !customFoodToCreate) {
+    const ingredient = addIngredient(
+      searchResult,
+      barcode,
+      amount,
+      unit,
+      typeof basicFoodId === 'string' ? basicFoodId : null
+    )
+    dispatch('saveIngredient', ingredient)
     return true
   }
 

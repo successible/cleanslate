@@ -205,31 +205,34 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
       }}
     >
       {fields()}
+      <div className="fc w100 mt20 mb25">
+        <div className="bold">Add ingredients +</div>
+        <div className="fr mt20">
+          <button
+            onClick={() => dispatch('openAddIngredientModal', recipe?.id)}
+            type="button"
+            css={addIngredientStyling}
+            className={`green mr20`}
+          >
+            By Search
+          </button>
 
-      <div className="fr w100 mt20 mb25">
-        <button
-          onClick={() => dispatch('openAddIngredientModal', recipe?.id)}
-          type="button"
-          css={addIngredientStyling}
-          className={`green`}
-        >
-          Add ingredient +
-        </button>
-
-        {ingredients.length > 0 && (
-          <div className="background end pbutton-large rounded nohover">
-            <Macros log={createRecipeLog(ingredients)} profile={profile} />
-          </div>
-        )}
+          <button
+            onClick={() => dispatch('openBarcodeModal')}
+            type="button"
+            css={addIngredientStyling}
+            className={`green`}
+          >
+            By Barcode
+          </button>
+        </div>
       </div>
-
       <IngredientList
         recipe={recipe}
         ingredients={ingredients}
         updateIngredient={curry(updateIngredients)(ingredients)}
         deleteIngredient={deleteIngredient}
       />
-
       <Divider
         height={1}
         className="mt20 mb0"
@@ -237,7 +240,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
           background-color: ${colors.lightgrey};
         `}
       />
-
       <Explanation color="blue">
         <div>
           <strong>Note:</strong> These units are optional
@@ -267,6 +269,25 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
               }}
             />
           </div>
+        </div>
+      </div>
+
+      <Divider
+        height={1}
+        className="mb0"
+        styles={css`
+          background-color: ${colors.lightgrey};
+        `}
+      />
+
+      <div className="fc w100 mt20">
+        <div className="bold">Total</div>
+        <div className="background pbutton-large rounded nohover mt20 mb20">
+          <Macros
+            log={createRecipeLog(ingredients)}
+            profile={profile}
+            showTitles
+          />
         </div>
       </div>
 

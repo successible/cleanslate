@@ -16,7 +16,7 @@ export const renderMacros = (
     log.unit = item.unit || 'COUNT'
     log.barcode = item.barcode
 
-    return <Macros log={log} profile={profile} />
+    return <Macros log={log} profile={profile} showTitles={false} />
   } else {
     return <div>{''}</div>
   }
