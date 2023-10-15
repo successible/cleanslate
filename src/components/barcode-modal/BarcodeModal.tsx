@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import axios from 'axios'
 import { compareVersions } from 'compare-versions'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
 import { debounce } from 'throttle-debounce'
 import UAParser from 'ua-parser-js'
@@ -9,8 +9,11 @@ import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.s
 import { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
 import { getDispatch } from '../../helpers/getDispatch'
+import { isMobile } from '../../helpers/isMobile'
 import { isMobileSafari } from '../../helpers/isMobileSafari'
 import { isNumeric } from '../../helpers/isNumeric'
+import { isProduction } from '../../helpers/isProduction'
+import { round } from '../../helpers/round'
 import { Food } from '../../models/food'
 import { Barcode, defaultMeal } from '../../models/log'
 import { Profile } from '../../models/profile'
@@ -21,14 +24,15 @@ import { ButtonPanel } from '../standard-adder/components/ButtonPanel'
 import { InputFields } from '../standard-adder/components/InputFields'
 import { submitEditor } from '../standard-adder/helpers/submitEditor'
 
-type props = { profile: Profile }
-export const CameraModal: React.FC<props> = ({ profile }) => {
+type props = { profile: Profile; type: 'ingredient' | 'log' }
+export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const { enablePlanning } = profile
   const dispatch = getDispatch()
 
   const [barcode, setBarcode] = useState(null as Barcode | null)
   const [amount, setAmount] = useState('')
   const [meal, setMeal] = useState(defaultMeal)
+  const [createCustomFood, setCreateCustomFood] = useState(false)
 
   const [unit, setUnit] = useState('GRAM' as Unit)
   const [ran, setRan] = useState(false)
@@ -39,7 +43,7 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
       .get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
       .then((r) => {
         if (r.data.status_verbose !== 'product found') {
-          dispatch('closeCameraModal')
+          dispatch('closeBarcodeModal')
           toast.error('Matching food not found!')
           return
         }
@@ -64,6 +68,15 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
         })
       })
   })
+
+  useEffect(() => {
+    // On localhost on development on a desktop, we want to "mock" the barcode scanning operation
+    // That way, you do not need to proxy to your phone every time you want test the feature
+    if (!isProduction() && !isMobile()) {
+      fetchData('3017620422003') // Nutella
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const parser = UAParser(window.navigator.userAgent)
   const browser = parser.browser
@@ -105,9 +118,7 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
 
   const selectedItem = new Food()
   if (barcode) {
-    if (isNumeric(barcode.serving_quantity)) {
-      selectedItem.servingPerContainer = Number(barcode.serving_quantity)
-    }
+    selectedItem.name = barcode.name
     if (
       isNumeric(barcode?.calories_per_gram) &&
       isNumeric(barcode?.protein_per_gram) &&
@@ -115,9 +126,19 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
     ) {
       selectedItem.caloriesPerGram = barcode.calories_per_gram
       selectedItem.proteinPerGram = barcode.protein_per_gram
-      selectedItem.countToGram =
-        barcode.calories_per_serving / barcode.calories_per_gram
+      selectedItem.countToGram = round(
+        barcode.calories_per_serving / barcode.calories_per_gram,
+        0
+      )
       selectedItem.countName = 'Serving'
+      selectedItem.caloriesPerCount = round(
+        barcode.calories_per_gram * selectedItem.countToGram,
+        0
+      )
+      selectedItem.proteinPerCount = round(
+        barcode.protein_per_gram * selectedItem.countToGram,
+        0
+      )
     }
   }
 
@@ -157,18 +178,34 @@ export const CameraModal: React.FC<props> = ({ profile }) => {
             meal={meal}
             setMeal={setMeal}
           />
+          <div className="fr">
+            <label htmlFor="customFood">
+              Create a custom food from this scan?
+            </label>
+            <input
+              checked={createCustomFood}
+              onChange={(e) => {
+                setCreateCustomFood(e.target.checked)
+              }}
+              id="customFood"
+              type="checkbox"
+            />
+          </div>
+
           <ButtonPanel
             showSubmit={Boolean(amount && unit)}
             submit={() => {
               submitEditor(
-                'log',
+                type,
                 null,
                 Number(amount),
                 unit,
                 barcode,
                 enablePlanning,
                 meal,
-                dispatch
+                dispatch,
+                undefined,
+                createCustomFood ? selectedItem : undefined
               )
             }}
           />

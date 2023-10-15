@@ -1,6 +1,8 @@
 import toast from 'react-hot-toast'
 import { Unit } from '../../../constants/units'
+import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { addIngredient } from '../../../helpers/ingredient/addIngredient'
+import { Food } from '../../../models/food'
 import { Barcode, Meal } from '../../../models/log'
 import { SelectedItem } from '../../../store/editor/types'
 import { Dispatch } from '../../../store/store'
@@ -16,7 +18,8 @@ export const submitEditor = (
   enablePlanning: boolean,
   meal: Meal,
   dispatch: Dispatch,
-  searchResult?: SelectedItem
+  searchResult?: SelectedItem,
+  customFoodToCreate?: Food
 ) => {
   const basicFoodId =
     searchResult && searchResult.type === 'food' && searchResult.basicFoodId
@@ -52,7 +55,43 @@ export const submitEditor = (
     return true
   }
 
-  if (type === 'log') {
+  if (customFoodToCreate) {
+    addFoodToCloud(
+      {
+        caloriesPerCount: customFoodToCreate?.caloriesPerCount,
+        category: 'Food',
+        containerName: 'Container',
+        countName: 'Serving',
+        countToGram: customFoodToCreate?.countToGram,
+        countToTbsp: customFoodToCreate?.countToTbsp,
+        group: 'Custom',
+        name: customFoodToCreate.name,
+        preferredVolumeUnit: 'TBSP',
+        preferredWeightUnit: 'GRAM',
+        proteinPerCount: customFoodToCreate?.proteinPerCount,
+        servingPerContainer: customFoodToCreate?.servingPerContainer,
+      },
+      (id) => {
+        toast.success(`Created the ${customFoodToCreate.name} custom food!`)
+        if (type === 'log') {
+          addLog(
+            dispatch,
+            alias,
+            amount,
+            unit,
+            null,
+            enablePlanning,
+            meal,
+            'food',
+            false,
+            id
+          )
+        }
+      }
+    )
+  }
+
+  if (type === 'log' && !customFoodToCreate) {
     const id = searchResult ? searchResult.id : undefined
     const type = searchResult ? searchResult.type : 'food'
     addLog(

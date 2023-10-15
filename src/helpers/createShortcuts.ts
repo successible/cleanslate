@@ -152,7 +152,7 @@ export const createKeyboardShortcutDirectory = () => {
   const dispatch = getStore().dispatch
   const keyboardShortcutDirectory: Record<KeyboardShortcutKeys, () => void> = {
     b: () => {
-      dispatch('openCameraModal')
+      dispatch('openBarcodeModal')
     },
     e: () => {
       dispatch('openExerciseModal')

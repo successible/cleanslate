@@ -9,7 +9,7 @@ import { Log } from '../../models/log'
 import { Profile } from '../../models/profile'
 import { Recipe } from '../../models/recipe'
 import { NavbarState } from '../../store/navbar/types'
-import { CameraModal } from '../camera-modal/CameraModal'
+import { BarcodeModal } from '../barcode-modal/BarcodeModal'
 import { Error } from '../error/Error'
 import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
 import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
@@ -51,8 +51,8 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
   const {
     activeModals,
     addIngredientModalVisibility,
+    barcodeModalVisibility,
     bodyFatPercentageModalVisibility,
-    cameraModalVisibility,
     errorVisibility,
     exerciseModalVisibility,
     foodFormModalVisibility,
@@ -144,7 +144,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       <ExerciseForm profile={profile} />
     </Modal>,
 
-    // Camera Modal
+    // Barcode Modal
     <Modal
       styles={css`
         > div {
@@ -152,12 +152,15 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
         }
       `}
       closeModal={() => {
-        dispatch('closeCameraModal')
+        dispatch('closeBarcodeModal')
       }}
-      name="navbar.cameraModalVisibility"
-      visible={cameraModalVisibility}
+      name="navbar.barcodeModalVisibility"
+      visible={barcodeModalVisibility}
     >
-      <CameraModal profile={profile} />
+      <BarcodeModal
+        profile={profile}
+        type={recipeModalVisibility ? 'ingredient' : 'log'}
+      />
     </Modal>,
 
     // target-form

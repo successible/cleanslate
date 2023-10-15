@@ -131,7 +131,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
           <button
             type="button"
             onClick={() => {
-              dispatch('openCameraModal')
+              dispatch('openBarcodeModal')
             }}
           >
             <Image width={30} height={30} src={Barcode} alt="Barcode" />

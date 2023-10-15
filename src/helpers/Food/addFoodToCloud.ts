@@ -6,14 +6,14 @@ import { stringifyQuery } from '../stringifyQuery'
 
 export const addFoodToCloud = (
   variables: FoodSubmission,
-  onSuccess: () => void
+  onSuccess: (id: string) => void
 ) =>
   getHasuraClient()
     .then((client) => {
       client
         .request(stringifyQuery(CREATE_FOOD), { object: variables })
-        .then(() => {
-          onSuccess()
+        .then((e: { insert_foods_one: { id: string } }) => {
+          onSuccess(e.insert_foods_one.id)
         })
     })
     .catch((error) => handleError(error))

@@ -2,7 +2,7 @@ export const modals = [
   'navbar.addIngredientModalVisibility',
   'navbar.alertVisibility',
   'navbar.bodyFatPercentageModalVisibility',
-  'navbar.cameraModalVisibility',
+  'navbar.barcodeModalVisibility',
   'navbar.errorVisibility',
   'navbar.exerciseModalVisibility',
   'navbar.foodFormModalVisibility',

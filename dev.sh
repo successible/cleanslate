@@ -1,3 +1,7 @@
+#!/bin/bash
+
+if [[ $CI != "true" ]]; then
+
 echo "=> Kill the local version of Clean Slate..."
 
 pkill -9 -f "cypress"
@@ -13,6 +17,8 @@ export NEXT_PUBLIC_VERSION="XXX"
 export NEXT_PUBLIC_HASURA_DOMAIN="localhost"
 
 docker-compose -f docker-compose.yml down -t 0 --remove-orphans
+
+fi
 
 echo "=> Configure the local machine"
 
@@ -78,7 +84,7 @@ fi
 
 (cd src && npx next dev) & 
 
-if [[ $CYPRESS == "true" ]]; then
+if [[ $NEXT_PUBLIC_CYPRESS == "true" ]]; then
 
   if [[ $CI == "true" ]]; then
     cd src && npx cypress run --browser chrome
@@ -91,7 +97,7 @@ if [[ $CYPRESS == "true" ]]; then
 
 fi
 
-if [[ $CI != "true" ]]; then
+if [[ $NEXT_PUBLIC_CYPRESS != "true" ]]; then
 
 sleep 5 && caddy start -c Caddyfile.dev &
 

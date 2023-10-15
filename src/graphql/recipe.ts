@@ -9,6 +9,8 @@ export const RECIPE_BASE_FRAGMENT = gql`
     createdAt
     id
     name
+    preferredVolumeUnit
+    preferredWeightUnit
     profile
     servingPerContainer
     servingPerContainer

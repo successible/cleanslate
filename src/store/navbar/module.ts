@@ -220,12 +220,12 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.bodyFatPercentageModalVisibility', true)
   })
 
-  store.on('closeCameraModal', (state) => {
-    return updateModal(state, 'navbar.cameraModalVisibility', false)
+  store.on('closeBarcodeModal', (state) => {
+    return updateModal(state, 'navbar.barcodeModalVisibility', false)
   })
 
-  store.on('openCameraModal', (state) => {
-    return updateModal(state, 'navbar.cameraModalVisibility', true)
+  store.on('openBarcodeModal', (state) => {
+    return updateModal(state, 'navbar.barcodeModalVisibility', true)
   })
 
   store.on('closeAllModals', (state) => {

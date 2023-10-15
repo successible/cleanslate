@@ -33,10 +33,10 @@ export const InputFields: React.FC<props> = ({
   const amountInput = React.useRef<HTMLInputElement>(null)
 
   React.useEffect(() => {
-    if (selectedItem) {
+    if (selectedItem?.name) {
       amountInput.current?.focus()
     }
-  }, [selectedItem])
+  }, [selectedItem?.name])
 
   return (
     <div className={`w100`}>

@@ -23,6 +23,8 @@ import { IngredientList } from '../../list/Ingredient/IngredientList'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
 import { Macros } from '../../macros/Macros'
+import { getAdjustedVolumeAmount } from '../CustomFoodForm/helpers/getAdjustedVolumeAmount'
+import { getAdjustedWeightAmount } from '../CustomFoodForm/helpers/getAdjustedWeightAmount'
 import { UnitSelector } from '../CustomFoodForm/UnitSelector'
 import { upsertItem } from '../helpers/upsertItem'
 import { createRecipeLog } from './helpers/createRecipeLog'
@@ -59,8 +61,15 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   const [servingPerContainer, updateServingPerContainer] = React.useState(
     recipe?.servingPerContainer || ''
   )
-  const [volumeUnit, setVolumeUnit] = React.useState('TBSP' as VolumeUnit)
-  const [weightUnit, setWeightUnit] = React.useState('GRAM' as WeightUnit)
+  const [volumeUnit, setVolumeUnit] = React.useState(
+    recipe?.preferredVolumeUnit || ('TBSP' as VolumeUnit)
+  )
+  const [weightUnit, setWeightUnit] = React.useState(
+    recipe?.preferredWeightUnit || ('GRAM' as WeightUnit)
+  )
+
+  const [convertVolume, updateConvertVolume] = React.useState(true)
+  const [convertWeight, updateConvertWeight] = React.useState(true)
 
   const remoteIngredients = recipe?.ingredients || ([] as Ingredient[])
   const [ingredients, setIngredients] = React.useState(remoteIngredients)
@@ -82,6 +91,8 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     countToTbsp: convertedCountToTbsp,
     ingredients,
     name,
+    preferredVolumeUnit: volumeUnit,
+    preferredWeightUnit: weightUnit,
     servingPerContainer: prep(servingPerContainer),
   }
 
@@ -90,6 +101,20 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     updateName(recipe?.name || '')
     updateCountName(recipe?.countName || '')
     setIngredients(remoteIngredients)
+    setVolumeUnit(recipe?.preferredVolumeUnit || ('TBSP' as VolumeUnit))
+    setWeightUnit(recipe?.preferredWeightUnit || ('GRAM' as WeightUnit))
+
+    // Only convert the volume and weight on the first time the page loads.
+    // After that, treat them as "dumb numbers" until submission
+    if (convertVolume) {
+      setCountToTbsp(getAdjustedVolumeAmount(countToTbsp, volumeUnit))
+      updateConvertVolume(false)
+    }
+    if (convertWeight) {
+      setCountToGram(getAdjustedWeightAmount(countToGram, weightUnit))
+      updateConvertWeight(false)
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipe])
 

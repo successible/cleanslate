@@ -37,7 +37,7 @@
     "docker": "docker build -t cleanslate . && docker run --env-file .env -p 8080:8080 cleanslate",
     "lint": "bash -e lint.sh --format",
     "proxy": "bash proxy.sh",
-    "test": "export CYPRESS='true'; jest; bash dev.sh"
+    "test": "export NEXT_PUBLIC_CYPRESS='true'; jest; bash dev.sh"
   },
   "dependencies": {
     "@emotion/react": "11.11.1",

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export $(xargs < .env)
 export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
 
