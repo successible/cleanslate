@@ -70,7 +70,7 @@ export const Numbers: React.FC<props> = (props) => {
   return (
     <div css={numbers}>
       <div className="fr">
-        <div css={number} className={`frc`}>
+        <div id="TopBarCalories" css={number} className={`frc`}>
           Calories
           <div className={`green fcc`}>
             {hideCalories ? (
@@ -96,7 +96,7 @@ export const Numbers: React.FC<props> = (props) => {
             )}
           </div>
         </div>
-        <div css={number} className={`frc`}>
+        <div id="TopBarProtein" css={number} className={`frc`}>
           Protein
           <div
             className={`fcc ${

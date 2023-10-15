@@ -9,6 +9,7 @@ type props = {
 }
 export const DeleteButton: React.FC<props> = ({ id, onDelete }) => (
   <button
+    data-id="delete-button"
     type="button"
     className="background frc deleteButton"
     css={css`

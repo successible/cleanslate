@@ -1,20 +1,11 @@
-import { defineConfig } from 'cypress'
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-var-requires */
 
-export default defineConfig({
-  downloadsFolder: 'cypress/downloads',
+const { defineConfig } = require('cypress')
+
+module.exports = defineConfig({
   e2e: {
     experimentalStudio: true,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setupNodeEvents(on, config) {},
-    specPattern: 'cypress/tests/**/*.{js,jsx,ts,tsx}',
-    supportFile: 'cypress/support/index.ts',
-    watchForFileChanges: true,
+    setupNodeEvents(on: unknown, config: unknown) {},
   },
-  fixturesFolder: 'cypress/fixtures',
-  projectId: '4g7662',
-  screenshotsFolder: 'cypress/screenshots',
-  video: false,
-  videosFolder: 'cypress/videos',
-  viewportHeight: 900,
-  viewportWidth: 1400,
 })

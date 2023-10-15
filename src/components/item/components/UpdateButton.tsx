@@ -16,6 +16,7 @@ export const UpdateButton: React.FC<props> = ({ dispatch, item }) => {
   const clickable = ['ingredient', 'log', 'unit'].includes(type)
   return (
     <button
+      data-id="update-button"
       css={css`
         width: 42px;
         height: 42px;

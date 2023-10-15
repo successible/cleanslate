@@ -72,12 +72,12 @@ export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
     return (
       <div id="macros" css={macros}>
         <div className="fr">
-          <div className="fr">
+          <div id="MacrosCalories" className="fr">
             <Image width={10} height={10} alt="Fire" src={CalMini} />
             {showTitles && <div className="mr5">Calories:</div>}
             <span>{caloriesConsumed}</span>
           </div>
-          <div className={`fr ${showTitles ? 'ml5' : ''}`}>
+          <div id="MacrosProtein" className={`fr ${showTitles ? 'ml5' : ''}`}>
             <Image
               width={10}
               height={10}

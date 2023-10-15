@@ -1,3 +1,0 @@
-import './commands'
-
-beforeEach(() => {})
