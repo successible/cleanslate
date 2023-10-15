@@ -12,6 +12,7 @@ export const upsertItem = <Item extends { id: string }>(
       item.id === existingIngredient.id ? updatedItem : item
     )
   } else {
+    console.log([...items, updatedItem])
     return [...items, updatedItem]
   }
 }

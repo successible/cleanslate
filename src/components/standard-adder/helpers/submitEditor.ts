@@ -70,9 +70,22 @@ export const submitEditor = (
             false,
             id
           )
+          return true
+        } else if (searchResult && type === 'ingredient') {
+          searchResult.id = id
+          const ingredient = addIngredient(
+            searchResult,
+            null,
+            amount,
+            unit,
+            null
+          )
+          dispatch('saveIngredient', ingredient)
+          return true
         }
       }
     )
+    return true
   }
 
   if (type === 'log' && !customFoodToCreate) {
