@@ -140,6 +140,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
       updateIngredients(ingredients, ingredient)
       dispatch('saveIngredient', null)
       dispatch('closeAddIngredientModal', true)
+      dispatch('closeBarcodeModal')
     }
   }, [dispatch, ingredient, ingredients])
 

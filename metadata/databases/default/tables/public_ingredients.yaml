@@ -24,6 +24,7 @@ insert_permissions:
         profile: x-hasura-User-Id
       columns:
         - amount
+        - barcode
         - basicFood
         - childRecipe
         - food
@@ -35,6 +36,7 @@ select_permissions:
     permission:
       columns:
         - amount
+        - barcode
         - basicFood
         - childRecipe
         - createdAt
@@ -53,6 +55,7 @@ update_permissions:
     permission:
       columns:
         - amount
+        - barcode
         - basicFood
         - childRecipe
         - food

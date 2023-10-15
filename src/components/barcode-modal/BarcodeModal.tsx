@@ -204,7 +204,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
                 enablePlanning,
                 meal,
                 dispatch,
-                undefined,
+                selectedItem,
                 createCustomFood ? selectedItem : undefined
               )
             }}

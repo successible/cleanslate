@@ -1,6 +1,7 @@
 import { Unit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
 import { Food } from './food'
+import { Barcode } from './log'
 import { Profile } from './profile'
 import { Recipe } from './recipe'
 
@@ -8,6 +9,7 @@ import { Recipe } from './recipe'
 export class Ingredient {
   // Data
   amount: number
+  barcode: Barcode | null
   unit: Unit
 
   // Foreign keys
