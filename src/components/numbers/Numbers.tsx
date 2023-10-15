@@ -68,7 +68,7 @@ export const Numbers: React.FC<props> = (props) => {
   const calorieFree = ''
 
   return (
-    <div css={numbers}>
+    <div id="numbers" css={numbers}>
       <div className="fr">
         <div id="TopBarCalories" css={number} className={`frc`}>
           Calories

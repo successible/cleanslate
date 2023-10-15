@@ -7,6 +7,7 @@ describe('Is Clean Slate working?', () => {
     cy.get('#token').type(localUser)
     cy.get('#login-button').click()
 
+    // Add a log
     cy.get('#openModal').should('be.visible').click()
     cy.get('#StandardAdderSearchbar').should('be.visible').type('Sage')
     cy.get('#StandardAdderSearchResult-0').should('be.visible').click()
@@ -19,7 +20,7 @@ describe('Is Clean Slate working?', () => {
     cy.get('#MetaItemName').should('contain', 'Sage')
     cy.get('.frc > img').click()
 
-    /* ==== Add a custom food (Nutella) and log with the barcode ==== */
+    // Add a custom food (Nutella) and log with the barcode
     cy.get('#footer > :nth-child(4)').click()
     cy.get('#FractionInputInput').clear()
     cy.get('#FractionInputInput').type('100')
@@ -29,7 +30,7 @@ describe('Is Clean Slate working?', () => {
     cy.get('#TopBarCalories .green').should('have.text', '1460')
     cy.get('#TopBarProtein .blue').should('have.text', '93')
 
-    /* ==== Double the amount ==== */
+    // Double the amount
     cy.get('[data-id=update-button]').click()
     cy.get('#FractionInputInput').click()
     cy.get('#FractionInputInput').type('200')
@@ -50,5 +51,25 @@ describe('Is Clean Slate working?', () => {
     cy.get(':nth-child(1) > #unit-selector-select').select('mL')
     cy.get('#submitCustomFoodForm').click()
     cy.get('#MetaItemName').should('have.text', 'Pudding')
+    cy.get('#MetaItemName').should('have.text', 'Pudding')
+    cy.get('.mr5 > img').click()
+    cy.get('#name').should('have.value', 'Pudding')
+    cy.get('#caloriesPerCount').should('have.value', '120')
+    cy.get('#proteinPerCount').should('have.value', '20')
+    cy.get(':nth-child(1) > #unit-selector-input').should('have.value', '50')
+    cy.get('#modal-navbar\\.foodFormModalVisibility > .animate').click()
+    cy.get(':nth-child(2) > #unit-selector-input').type('50')
+    cy.get('#submitCustomFoodForm').click()
+    cy.get('body').type('{ESC}')
+    cy.get('#openModal').click()
+    cy.get('#StandardAdderSearchbar').type('pud')
+    cy.get('#StandardAdderSearchResult-1').click()
+    cy.get('#FractionInputInput').type('10')
+    cy.get('#SubmitButton > img').click()
+    cy.get('#TopBarCalories .green').should('have.text', '800')
+    cy.get('#TopBarProtein .success').should('have.text', '✓')
+    cy.get('.frc > img').click()
+    cy.get('#TopBarCalories .green').should('have.text', '2000')
+    cy.get('#TopBarProtein .blue').should('have.text', '100')
   })
 })

@@ -7,5 +7,7 @@ module.exports = defineConfig({
   e2e: {
     experimentalStudio: true,
     setupNodeEvents(on: unknown, config: unknown) {},
+    viewportHeight: 900,
+    viewportWeight: 1400,
   },
 })
