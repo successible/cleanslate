@@ -39,7 +39,19 @@ export const submitEditor = (
     return false
   }
 
-  if (customFoodToCreate) {
+  if (type === 'ingredient') {
+    const ingredient = addIngredient(
+      searchResult,
+      barcode,
+      amount,
+      unit,
+      typeof basicFoodId === 'string' ? basicFoodId : null
+    )
+    dispatch('saveIngredient', ingredient)
+    return true
+  }
+
+  if (customFoodToCreate && type === 'log') {
     addFoodToCloud(
       {
         caloriesPerCount: customFoodToCreate?.caloriesPerCount,
@@ -57,32 +69,19 @@ export const submitEditor = (
       },
       (id) => {
         toast.success(`Created the ${customFoodToCreate.name} custom food!`)
-        if (type === 'log') {
-          addLog(
-            dispatch,
-            alias,
-            amount,
-            unit,
-            null,
-            enablePlanning,
-            meal,
-            'food',
-            false,
-            id
-          )
-          return true
-        } else if (searchResult && type === 'ingredient') {
-          searchResult.id = id
-          const ingredient = addIngredient(
-            searchResult,
-            null,
-            amount,
-            unit,
-            null
-          )
-          dispatch('saveIngredient', ingredient)
-          return true
-        }
+        addLog(
+          dispatch,
+          alias,
+          amount,
+          unit,
+          null,
+          enablePlanning,
+          meal,
+          'food',
+          false,
+          id
+        )
+        return true
       }
     )
     return true
@@ -103,18 +102,6 @@ export const submitEditor = (
       Boolean(basicFoodId),
       id
     )
-    return true
-  }
-
-  if (type === 'ingredient' && !customFoodToCreate) {
-    const ingredient = addIngredient(
-      searchResult,
-      barcode,
-      amount,
-      unit,
-      typeof basicFoodId === 'string' ? basicFoodId : null
-    )
-    dispatch('saveIngredient', ingredient)
     return true
   }
 

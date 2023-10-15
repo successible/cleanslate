@@ -182,8 +182,11 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
             setMeal={setMeal}
           />
           {/* Custom foods require a count. Hence, if the per serving is missing, you cannot add a custom food */}
+          {/* We only want to create a custom food from a barcode. Doing so from a recipe adds to much complexity */}
+          {/* As the recipe form must re-render with the custom food */}
           {isNumeric(barcode?.calories_per_serving) &&
-            isNumeric(barcode?.protein_per_serving) && (
+            isNumeric(barcode?.protein_per_serving) &&
+            type === 'log' && (
               <div className="fr">
                 <label htmlFor="customFood">
                   Create a custom food from this scan?

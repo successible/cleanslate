@@ -72,7 +72,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   const [convertWeight, updateConvertWeight] = React.useState(true)
 
   const remoteIngredients = recipe?.ingredients || ([] as Ingredient[])
-  const [ingredients, setIngredients] = React.useState([] as Ingredient[])
+  const [ingredients, setIngredients] = React.useState(remoteIngredients)
   const { ingredient } = editor
 
   const convertedCountToGram = convertFromWeightToGrams(
@@ -100,7 +100,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   React.useEffect(() => {
     updateName(recipe?.name || '')
     updateCountName(recipe?.countName || '')
-    setIngredients([...remoteIngredients, ...ingredients])
+    setIngredients(remoteIngredients)
     setVolumeUnit(recipe?.preferredVolumeUnit || ('TBSP' as VolumeUnit))
     setWeightUnit(recipe?.preferredWeightUnit || ('GRAM' as WeightUnit))
 
