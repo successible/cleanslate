@@ -1,3 +1,4 @@
+import { VolumeUnit, WeightUnit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
 import { Density } from './food'
 import { Ingredient } from './ingredient'
@@ -13,6 +14,8 @@ export class Recipe {
   servingPerContainer: number | null
   countToGram: number | null
   countToTbsp: number | null
+  preferredVolumeUnit: VolumeUnit | null
+  preferredWeightUnit: WeightUnit | null
 
   // Foreign keys
   profile: string
