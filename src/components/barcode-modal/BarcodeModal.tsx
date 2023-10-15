@@ -207,7 +207,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
                 enablePlanning,
                 meal,
                 dispatch,
-                undefined, // Needs to be undefined, otherwise submitEditor erroneously thinks the barcode is a basic food
+                type === 'ingredient' ? selectedItem : undefined,
                 createCustomFood ? selectedItem : undefined
               )
             }}
