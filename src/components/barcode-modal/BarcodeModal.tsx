@@ -121,24 +121,27 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
     selectedItem.name = barcode.name
     if (
       isNumeric(barcode?.calories_per_gram) &&
-      isNumeric(barcode?.protein_per_gram) &&
-      isNumeric(barcode?.calories_per_serving)
+      isNumeric(barcode?.protein_per_gram)
     ) {
       selectedItem.caloriesPerGram = barcode.calories_per_gram
       selectedItem.proteinPerGram = barcode.protein_per_gram
-      selectedItem.countToGram = round(
-        barcode.calories_per_serving / barcode.calories_per_gram,
-        0
-      )
-      selectedItem.countName = 'Serving'
-      selectedItem.caloriesPerCount = round(
-        barcode.calories_per_gram * selectedItem.countToGram,
-        0
-      )
-      selectedItem.proteinPerCount = round(
-        barcode.protein_per_gram * selectedItem.countToGram,
-        0
-      )
+      if (
+        isNumeric(barcode?.calories_per_serving) &&
+        isNumeric(barcode?.protein_per_serving)
+      ) {
+        selectedItem.countToGram = round(
+          barcode.calories_per_serving / barcode.calories_per_gram,
+          0
+        )
+        selectedItem.caloriesPerCount = round(
+          barcode.calories_per_gram * selectedItem.countToGram,
+          0
+        )
+        selectedItem.proteinPerCount = round(
+          barcode.protein_per_gram * selectedItem.countToGram,
+          0
+        )
+      }
     }
   }
 
@@ -204,7 +207,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
                 enablePlanning,
                 meal,
                 dispatch,
-                selectedItem,
+                undefined, // Needs to be undefined, otherwise submitEditor erroneously thinks the barcode is a basic food
                 createCustomFood ? selectedItem : undefined
               )
             }}

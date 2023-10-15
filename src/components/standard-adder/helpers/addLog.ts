@@ -45,7 +45,6 @@ export const addLog = (
     }
     dispatch('closeModal')
     dispatch('closeQuickAddModal')
-
     dispatch('closeBarcodeModal')
     addLogToCloud(log, () => {})
   }
