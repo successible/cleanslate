@@ -181,19 +181,23 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
             meal={meal}
             setMeal={setMeal}
           />
-          <div className="fr">
-            <label htmlFor="customFood">
-              Create a custom food from this scan?
-            </label>
-            <input
-              checked={createCustomFood}
-              onChange={(e) => {
-                setCreateCustomFood(e.target.checked)
-              }}
-              id="customFood"
-              type="checkbox"
-            />
-          </div>
+          {/* Custom foods require a count. Hence, if the per serving is missing, you cannot add a custom food */}
+          {isNumeric(barcode?.calories_per_serving) &&
+            isNumeric(barcode?.protein_per_serving) && (
+              <div className="fr">
+                <label htmlFor="customFood">
+                  Create a custom food from this scan?
+                </label>
+                <input
+                  checked={createCustomFood}
+                  onChange={(e) => {
+                    setCreateCustomFood(e.target.checked)
+                  }}
+                  id="customFood"
+                  type="checkbox"
+                />
+              </div>
+            )}
 
           <ButtonPanel
             showSubmit={Boolean(amount && unit)}
