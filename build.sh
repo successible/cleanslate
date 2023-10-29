@@ -11,7 +11,6 @@ pnpm install --prod
 
 cd src
 npx next build
-npx next export -o out
 
 npx workbox generateSW workbox-config.js
 cp -r out ../build
