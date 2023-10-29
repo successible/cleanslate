@@ -1,6 +1,6 @@
 module.exports = {
   clientsClaim: true,
-  globDirectory: 'out',
+  globDirectory: 'build',
   globPatterns: ['**/*.{html,css,js}'],
   runtimeCaching: [
     {
@@ -9,5 +9,5 @@ module.exports = {
     },
   ],
   skipWaiting: true,
-  swDest: 'out/service-worker.js',
+  swDest: 'build/service-worker.js',
 }
