@@ -7,7 +7,7 @@ fi
 
 rm -rf build
 
-pnpm install --prod
+pnpm install
 
 cd src
 npx next build

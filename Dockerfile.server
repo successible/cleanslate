@@ -8,5 +8,5 @@ COPY migrations hasura-migrations
 ENV HASURA_GRAPHQL_ENABLE_CONSOLE=true
 ENV PORT 8080
 # Read this file for an explanation of the value of HASURA_GRAPHQL_JWT_SECRET
-# https://github.com/successible/cleanslate/blob/main/src/helpers/getJWT.ts
+# https://github.com/paulzakin/cleanslate/blob/main/src/helpers/getJWT.ts
 ENV HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'

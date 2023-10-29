@@ -148,7 +148,7 @@ export const Menu: React.FC = () => {
                 <br />
                 <a
                   target="_blank"
-                  href="https://github.com/successible/cleanslate/issues/new/choose"
+                  href="https://github.com/paulzakin/cleanslate/issues/new/choose"
                   rel="noreferrer"
                 >
                   Go to GitHub.com

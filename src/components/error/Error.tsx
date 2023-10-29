@@ -89,7 +89,7 @@ export const Error = () => {
                   <strong>Still stuck?</strong> Open an issue on{' '}
                   <a
                     target="_blank"
-                    href="https://github.com/successible/cleanslate/issues/new/choose"
+                    href="https://github.com/paulzakin/cleanslate/issues/new/choose"
                     rel="noreferrer"
                   >
                     GitHub.com
