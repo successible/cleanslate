@@ -4,6 +4,7 @@
 .vscode
 build
 node_modules
+src/.next
 src/build
 src/out
 src/tsconfig.tsbuildinfo
