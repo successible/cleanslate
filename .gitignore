@@ -1,5 +1,6 @@
 .DS_Store
 .env
+.tool-versions
 .vscode
 build
 node_modules
