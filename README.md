@@ -174,6 +174,8 @@ These environment values are added to the static website via `.env` (Step #2). R
 ```bash
 # This forces Clean Slate to use Firebase over the authId system
 NEXT_PUBLIC_USE_FIREBASE="true"
+# This is required for Firebase to work on the client
+NEXT_PUBLIC_HASURA_DOMAIN="XXX"
 
 # You can find your project config in your Firebase project settings
 NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"XXX","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX"}
@@ -189,6 +191,7 @@ NEXT_PUBLIC_LOGIN_WITH_GITHUB="false"
 NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
 
 # Required for Hasura to use Firebase
+# Replace XXX with your project-id
 
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
