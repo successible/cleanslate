@@ -5,5 +5,4 @@
 build
 node_modules
 src/build
-src/out
 src/tsconfig.tsbuildinfo

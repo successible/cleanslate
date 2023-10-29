@@ -13,7 +13,7 @@ cd src
 npx next build
 
 npx workbox generateSW workbox-config.js
-cp -r out ../build
+cp -r build ../build
 cd ..
 
 cp build/service-worker.js build/sw.js
