@@ -2,5 +2,6 @@
     Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
     X-Frame-Options: deny
     X-XSS-Protection: 1; mode=block
+    X-Content-Type-Options: nosniff
     Referrer-Policy: strict-origin
     Content-Security-Policy: default-src 'self' blob: data:; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com; base-uri 'self'; worker-src 'self' blob: data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' wss: (NEXT_PUBLIC_HASURA_DOMAIN) *.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' *.firebaseapp.com https://www.google.com https://player.vimeo.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; object-src 'none';
