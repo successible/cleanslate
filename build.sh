@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$DOCKER" == "false" ]; then
+if [ "$DOCKER" != "true" ]; then
     VERSION=$(git rev-parse --short HEAD)
     export NEXT_PUBLIC_VERSION=$VERSION
 fi
