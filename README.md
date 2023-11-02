@@ -198,4 +198,4 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https
 
 [^1]: https://caddyserver.com/docs/getting-started
 [^2]: https://letsencrypt.org/
-[^3]: https://github.com/paulzakin/cleanslate/blob/main/docker-compose.yml
+[^3]: https://github.com/successible-org/cleanslate/blob/main/docker-compose.yml

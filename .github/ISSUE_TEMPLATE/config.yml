@@ -1,11 +1,11 @@
 blank_issues_enabled: true
 contact_links:
   - name: Bug 🪲
-    url: https://github.com/paulzakin/cleanslate/issues/new
+    url: https://github.com/successible-org/cleanslate/issues/new
     about: Report a bug
   - name: Feature 🚀
-    url: https://github.com/paulzakin/cleanslate/issues/new
+    url: https://github.com/successible-org/cleanslate/issues/new
     about: Request a feature
   - name: Question 💬
-    url: https://github.com/paulzakin/cleanslate/issues/new
+    url: https://github.com/successible-org/cleanslate/issues/new
     about: Ask a question
