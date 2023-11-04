@@ -87,7 +87,7 @@ Run Clean Slate locally, make changes, and then submit a pull request on GitHub.
 
 > Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
 
-Here's how to run Clean Slate locally:
+Here is how to run Clean Slate locally:
 
 - Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Caddy](https://caddyserver.com/docs/install). Make sure Docker Desktop is running.
 
