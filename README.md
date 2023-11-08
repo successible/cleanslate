@@ -33,7 +33,7 @@ Clean Slate is licensed under the BSL 1.1 license. The license is quite permissi
 
 Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and Docker Compose installed.
 
-1.  Run `git clone https://github.com/successible-org/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
+1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
 2.  Create a `.env` file in the `cleanslate` folder with these variables. Replace `<>` with your values.
 
@@ -198,4 +198,4 @@ HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https
 
 [^1]: https://caddyserver.com/docs/getting-started
 [^2]: https://letsencrypt.org/
-[^3]: https://github.com/successible-org/cleanslate/blob/main/docker-compose.yml
+[^3]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
