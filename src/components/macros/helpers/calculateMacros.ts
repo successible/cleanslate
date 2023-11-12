@@ -70,7 +70,7 @@ const calculatePerFood = (
     const grams = convertFromWeightToGrams(unit, amount)
     if (countToGram && (perCount || perCount === 0)) {
       return (grams / countToGram) * perCount
-    } else if (perGram) {
+    } else if (perGram || perGram === 0) {
       return grams * perGram
     } else {
       return handleError(

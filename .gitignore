@@ -1,6 +1,7 @@
 .DS_Store
 .env
 .vscode
+Brewfile.lock.json
 build
 node_modules
 src/.next
