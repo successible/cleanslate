@@ -89,7 +89,7 @@ Run Clean Slate locally, make changes, and then submit a pull request on GitHub.
 
 Here is how to run Clean Slate locally:
 
-- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Caddy](https://caddyserver.com/docs/install). Make sure Docker Desktop is running.
+- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Homebrew](https://brew.sh/). Make sure Docker Desktop is running.
 
 - Run `npm run dev` after cloning down the repository. This will spin up these servers:
 
@@ -98,7 +98,7 @@ Here is how to run Clean Slate locally:
   - Next.js: `http://localhost:3000`.
   - PostgreSQL: `http://localhost:1270`
 
-- Navigate to `http://localhost:3000` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
+- Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
 > Note: To test the deployment process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
 

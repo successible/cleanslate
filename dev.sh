@@ -9,6 +9,7 @@ pkill -9 -f "Cypress"
 pkill -9 -f "hasura console"
 pkill -9 -f "next dev"
 pkill -9 -f "next-router-worker"
+pkill -9 -f "next-server"
 pkill -9 -f "npm exec tsc --watch"
 pkill -9 -f "tsc --watch"
 caddy stop
@@ -62,6 +63,7 @@ if [[ $CI != "true" ]]; then
 
  
   echo "=> Install the dependencies..."
+  brew bundle
   pnpm install
   cd functions && npm install && cd ..
 
