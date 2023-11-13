@@ -180,8 +180,8 @@ export const calculatePerMacroPerRecipe = (
   const amountToUse = isVolume
     ? mapOtherVolumeUnitToTbsp(unit, amount) / countToTbsp
     : isWeight
-    ? convertFromWeightToGrams(unit, amount) / countToGram
-    : amount
+      ? convertFromWeightToGrams(unit, amount) / countToGram
+      : amount
 
   const total = recipe.ingredients.reduce((acc, ingredient) => {
     const childRecipe = ingredient.ingredientToChildRecipe

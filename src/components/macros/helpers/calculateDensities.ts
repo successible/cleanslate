@@ -127,13 +127,13 @@ export const calculateFoodOrRecipeDensities = (
       item.type === 'food'
         ? calculateFoodDensities(item)
         : item.type === 'recipe'
-        ? calculateRecipeDensities(
-            amount,
-            caloriesConsumed,
-            proteinConsumed,
-            item
-          )
-        : null
+          ? calculateRecipeDensities(
+              amount,
+              caloriesConsumed,
+              proteinConsumed,
+              item
+            )
+          : null
     return output
   }
 }
