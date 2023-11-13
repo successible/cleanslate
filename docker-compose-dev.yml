@@ -11,7 +11,7 @@ services:
       - cleanslate:/var/lib/postgresql/data
 
   graphql-engine:
-    image: hasura/graphql-engine:v2.35.0
+    image: hasura/graphql-engine:v2.35.1
     restart: always
     ports:
       - '8080:8080'
