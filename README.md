@@ -45,7 +45,7 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-3.  Optional: Clean Slate uses the default `postgres` user and `postgres` database. It also runs Postgres (15) in a container managed by Docker Compose, rather than on the server itself. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. Here's how:
+3.  Optional: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. Here's how:
 
     1. Make a copy of our `docker-compose.yml` [^1] and call it `custom.yml`.
 
