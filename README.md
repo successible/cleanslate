@@ -51,29 +51,27 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 
 5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080`. Use the proxy paths, as shown in a sample `Caddyfile`. If you wish to use the `Caddyfile`, replace `XXX` with your own domain.
 
-```{=html}
-<!-- -->
 ```
+XXX/v1* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
 
-    XXX/v1* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
+XXX/v2* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
 
-    XXX/v2* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
+XXX/console* {
+	# Admin panel (Hasura).
+	reverse_proxy localhost:8080
+}
 
-    XXX/console* {
-        # Admin panel (Hasura).
-        reverse_proxy localhost:8080
-    }
-
-    XXX {
-        # Static files (Clean Slate)
-        reverse_proxy localhost:3000
-    }
+XXX {
+	# Static files (Clean Slate)
+	reverse_proxy localhost:3000
+}
+```
 
 > Note: Clean Slate must be served over `https` to function. We recommend Caddy [^3] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^4].
 
