@@ -53,7 +53,7 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 
     3. Replace the entire value of `HASURA_GRAPHQL_DATABASE_URL` with `postgres://<user>:<password>@<host>:<port>/<database>`.
 
-    4. Replace `<>` with the values of your own database. If your database is on the same server as the Clean Slate, the `<host>` should equal `host.docker.internal`, as explained by Docker [^2]. This is because Hasura (server) is inside a container and trying to access `localhost` from outside it.
+    4. Replace `<>` your own values from your own database. If your database is on the same server as the Clean Slate, the `<host>` should equal `host.docker.internal`, as explained by Docker [^2]. This is because Hasura (server) is inside a container and trying to access `localhost` from outside it.
 
     5. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh` whenever you deploy. This is opposed to the simpler `bash.deploy`, outlined in step #4.
 
