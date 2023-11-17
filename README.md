@@ -48,9 +48,13 @@ HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 3.  Optional: Clean Slate uses the default `postgres` user and `postgres` database. It also runs Postgres (15) in a container managed by Docker Compose, rather than on the server itself. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. Here's how:
 
 a. Make a copy of our `docker-compose.yml` [^1] and call it `custom.yml`.
+
 b. Remove both the `cleanslate` volume and `database` from the list of services.
+
 c. Replace the entire value of `HASURA_GRAPHQL_DATABASE_URL` with `postgres://<user>:<password>@<host>:<port>/<database>`.
+
 d. Replace `<>` with the values of your own database. If your database is on the same server as the Clean Slate, the `<host>` should equal `host.docker.internal`, as explained by Docker [^2]. This is because Hasura (server) is inside a container and trying to access `localhost` from outside it.
+
 e. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh` whenever you deploy. This is opposed to the simpler `bash.deploy`, outlined in step #4.
 
 4.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on `5432`.
