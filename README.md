@@ -45,39 +45,43 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
 ```
 
-3.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on ``
+3.  Optional: Clean Slate uses the default `postgres` user and `postgres` database. It also runs Postgres (15) in a container managed by Docker Compose, rather than on the server itself. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. Here is how to do that. Make a copy of our `docker-compose.yml` [^1] and call it `custom.yml`. Remove both the `cleanslate` volume and `database` from the list of services. Replace the entire value of `HASURA_GRAPHQL_DATABASE_URL` with `postgres://<user>:<password>@<host>:<port>/<database>`. Replace `<>` with the values of your own database. If your database is on the same server as the Clean Slate, the `<host>` should equal `host.docker.internal`, as explained by Docker [^2]. This is because Hasura (server) is inside a container and trying to access `localhost` from outside it. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh` whenever you deploy. This is opposed to the simpler `bash.deploy`, outlined in step #4.
 
-4.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080`. Use the proxy paths, as shown in a sample `Caddyfile`. If you wish to use the `Caddyfile`, replace `XXX` with your own domain.
+4.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on `5432`.
 
-```
-XXX/v1* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
+5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080`. Use the proxy paths, as shown in a sample `Caddyfile`. If you wish to use the `Caddyfile`, replace `XXX` with your own domain.
 
-XXX/v2* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
-
-XXX/console* {
-	# Admin panel (Hasura).
-	reverse_proxy localhost:8080
-}
-
-XXX {
-	# Static files (Clean Slate)
-	reverse_proxy localhost:3000
-}
+```{=html}
+<!-- -->
 ```
 
-> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
+    XXX/v1* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
 
-5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
+    XXX/v2* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
 
-6.  You can now log in to `https://<your-domain>` with that credential!
+    XXX/console* {
+        # Admin panel (Hasura).
+        reverse_proxy localhost:8080
+    }
 
-7.  To deploy the newest version of Clean Slate, run `bash deploy.sh` again. Read `CHANGELOG.md` every time before you deploy to read about any breaking changes.
+    XXX {
+        # Static files (Clean Slate)
+        reverse_proxy localhost:3000
+    }
+
+> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^3] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^4].
+
+6.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
+
+7.  You can now log in to `https://<your-domain>` with that credential!
+
+8.  To deploy the newest version of Clean Slate, run `bash deploy.sh` again. Read `CHANGELOG.md` every time before you deploy to read about any breaking changes.
 
 This section covers the "essentials" on deploying Clean Slate. However, you should also read the appendix for more details.
 
@@ -110,12 +114,6 @@ POSTGRES_PASSWORD=XXX
 NEXT_PUBLIC_HASURA_DOMAIN=localhost
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
 ```
-
-## Handling the database
-
-Clean Slate uses the default `postgres` user and `postgres` database. It also runs Postgres (15) in a container managed by Docker Compose, rather than on the server itself. If you do not like that behavior, you should use a custom `docker-compose.yml`.
-
-Make a copy of our `docker-compose.yml` [^3] and call it `custom.yml`. Remove `database` from the list of services and the `cleanslate` volume. Update `HASURA_GRAPHQL_DATABASE_URL` to point to your database. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh` whenever you deploy.
 
 ### Handling authentication
 
@@ -196,6 +194,7 @@ NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
 HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
 ```
 
-[^1]: https://caddyserver.com/docs/getting-started
-[^2]: https://letsencrypt.org/
-[^3]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
+[^1]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
+[^2]: https://docs.docker.com/desktop/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host
+[^3]: https://caddyserver.com/docs/getting-started
+[^4]: https://letsencrypt.org/
