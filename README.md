@@ -27,7 +27,7 @@ Nope! We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It 
 
 ## How is Clean Slate licensed?
 
-Clean Slate is licensed under the BSL 1.1 license. The license is quite permissive. You can view the code, contribute to Clean Slate, or host it yourself. You just cannot launch a commercial version of Clean Slate (i.e. one that makes money). This license is used by projects such as `Sentry.io` and `MariaDB`. You can read more about the license [here](https://open.sentry.io/licensing).
+Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
