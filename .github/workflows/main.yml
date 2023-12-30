@@ -26,13 +26,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-        name: Login to the GitHub Container Registry
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-  
+
       - name: Set variables
         id: variables
         run: echo "::set-output name=SHA::$(git rev-parse --short HEAD)"
