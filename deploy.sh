@@ -12,6 +12,7 @@ fi
 
 
 git pull origin main
+docker rmi $(docker images -q | tail -n +5)
 docker compose -f $COMPOSE_FILE build
 docker compose -f $COMPOSE_FILE down --remove-orphans -t=0
 docker compose -f $COMPOSE_FILE up -d
