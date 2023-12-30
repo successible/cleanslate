@@ -3,6 +3,7 @@
 .vscode
 Brewfile.lock.json
 build
+Caddyfile
 node_modules
 src/.next
 src/build
