@@ -36,12 +36,3 @@ jobs:
       - name: Set variables
         id: variables
         run: echo "::set-output name=SHA::$(git rev-parse --short HEAD)"
-
-        name: Build and push the Docker image
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          push: true
-          tags: successible/cleanslate:${{ steps.variables.outputs.SHA }}, successible/cleanslate:latest
-          labels: ${{ steps.meta.outputs.labels }}
-          file: Dockerfile
