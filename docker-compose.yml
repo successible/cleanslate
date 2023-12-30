@@ -40,9 +40,9 @@ services:
         - NEXT_PUBLIC_LOGIN_WITH_GOOGLE=${NEXT_PUBLIC_LOGIN_WITH_GOOGLE}
         - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN}
         - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE}
+        - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
     ports:
       - 3000:3000
-
     depends_on:
       - database
       - server
