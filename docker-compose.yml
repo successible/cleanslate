@@ -29,8 +29,7 @@ services:
 
   client:
     build:
-      context: .
-      dockerfile: Dockerfile
+      image: 
       args:
         - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG}
         - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
