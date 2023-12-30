@@ -37,8 +37,8 @@ jobs:
         id: variables
         run: echo "::set-output name=SHA::$(git rev-parse --short HEAD)"
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@5.1
+        name: Build and push the Docker image
+        uses: docker/build-push-action@v5
         with:
           context: .
           push: true
