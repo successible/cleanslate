@@ -35,93 +35,69 @@ Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and 
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder with these variables. Replace `<>` with your values.
+2.  Create a `.env` file in the `cleanslate` folder. Replace `<>` with your values.
 
 ```bash
-# Required
 POSTGRES_PASSWORD=<your-desired-password>
 NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
 HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
+# Read this file for an explanation of the value of HASURA_GRAPHQL_JWT_SECRET
+# https://github.com/successible/cleanslate/blob/main/src/helpers/getJWT.ts
+# Only change this value if you are using Firebase.
+# It will look like something like this: '{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
+HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
+
+# Change if using Firebase
+# You can find your project config in your Firebase project settings
+# If it will look like '{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
+NEXT_PUBLIC_FIREBASE_CONFIG='{}'
+NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
+NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
+NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
+NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
+NEXT_PUBLIC_REACT_SENTRY_DSN='' # Change to your DSN if you are using Sentry
+NEXT_PUBLIC_USE_FIREBASE='false' # Change to true if using Firebase
 ```
-
-3.  Optional: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. Here's how:
-
-    1. Make a copy of our `docker-compose.yml` [^1] and call it `custom.yml`.
-
-    2. Remove both the `cleanslate` volume and `database` from the list of services.
-
-    3. Replace the entire value of `HASURA_GRAPHQL_DATABASE_URL` with `postgres://<user>:<password>@<host>:<port>/<database>`.
-
-    4. Replace `<>` your own values from your own database. If your database is on the same server as the Clean Slate, the `<host>` should equal `host.docker.internal`, as explained by Docker [^2]. This is because Hasura (server) is inside a container and trying to access `localhost` from outside it.
-
-    5. Finally, run `export COMPOSE_FILE=custom.yml; bash deploy.sh` whenever you deploy. This is opposed to the simpler `bash.deploy`, outlined in step #4.
 
 4.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on `5432`.
 
-5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080`. Use the proxy paths, as shown in a sample `Caddyfile`. If you wish to use the `Caddyfile`, replace `XXX` with your own domain.
+> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. You can do that by running export COMPOSE_FILE=custom.yml; bash deploy.sh
 
-```
-XXX/v1* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
+5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080` as outlined in this `Caddyfile`.
 
-XXX/v2* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
+> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
 
-XXX/console* {
-	# Admin panel (Hasura).
-	reverse_proxy localhost:8080
-}
+    XXX/v1* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
 
-XXX {
-	# Static files (Clean Slate)
-	reverse_proxy localhost:3000
-}
-```
+    XXX/v2* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
 
-> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^3] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^4].
+    XXX/console* {
+        # Admin panel (Hasura).
+        reverse_proxy localhost:8080
+    }
+
+    XXX/healthz* {
+        # Health check (Hasura).
+        reverse_proxy localhost:8080
+    }
+
+    XXX {
+        # Static files (Clean Slate)
+        reverse_proxy localhost:3000
+    }
 
 6.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
-7.  You can now log in to `https://<your-domain>` with that credential!
+7.  You can now log in to `https://<your-domain>` with that credential.
 
-8.  To deploy the newest version of Clean Slate, run `bash deploy.sh` again. Read `CHANGELOG.md` every time before you deploy to read about any breaking changes.
-
-This section covers the "essentials" on deploying Clean Slate. However, you should also read the appendix for more details.
-
-## How to contribute to Clean Slate
-
-Run Clean Slate locally, make changes, and then submit a pull request on GitHub.
-
-> Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
-
-Here is how to run Clean Slate locally:
-
-- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Homebrew](https://brew.sh/). Make sure Docker Desktop is running.
-
-- Run `npm run dev` after cloning down the repository. This will spin up these servers:
-
-  - Hasura (API): `http://localhost:8080`.
-  - Hasura (Console): `http://localhost:9695`.
-  - Next.js: `http://localhost:3000`.
-  - PostgreSQL: `http://localhost:1270`
-
-- Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
-
-> Note: To test the deployment process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
-
-> Note: If you want to proxy the development version of Clean Slate to test on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
-
-```bash
-# .env for testing the hosting process locally. Do not use in an actual production setting!
-POSTGRES_PASSWORD=XXX
-NEXT_PUBLIC_HASURA_DOMAIN=localhost
-HASURA_GRAPHQL_ADMIN_SECRET=XXX
-```
+8.  To deploy the newest version of Clean Slate, run `bash deploy.sh` again. Before you deploy, read `CHANGELOG.md`. We will list any breaking changes that have occurred.
 
 ### Handling authentication
 
@@ -173,36 +149,37 @@ Locally (Linux or Mac):
 
 Production (Linux):
 
-- Add the environment values to the correct location.
+- Change the values in the `.env` as outlined above.
 
-These environment values are added to the static website via `.env` (Step #2). Replace `XXX` with your own.
+## How to contribute to Clean Slate
+
+Run Clean Slate locally, make changes, and then submit a pull request on GitHub.
+
+> Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
+
+Here is how to run Clean Slate locally:
+
+- Install [Git](https://git-scm.com/downloads), [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/), [Node.js (LTS)](https://nodejs.org/en/), and [Homebrew](https://brew.sh/). Make sure Docker Desktop is running.
+
+- Run `npm run dev` after cloning down the repository. This will spin up these servers:
+
+  - Hasura (API): `http://localhost:8080`.
+  - Hasura (Console): `http://localhost:9695`.
+  - Next.js: `http://localhost:3000`.
+  - PostgreSQL: `http://localhost:1270`
+
+- Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
+
+> Note: To test the deployment process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
+
+> Note: If you want to proxy the development version of Clean Slate to test on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
 ```bash
-# This forces Clean Slate to use Firebase over the authId system
-NEXT_PUBLIC_USE_FIREBASE="true"
-# This is required for Firebase to work on the client
-NEXT_PUBLIC_HASURA_DOMAIN="XXX"
-
-# You can find your project config in your Firebase project settings
-NEXT_PUBLIC_FIREBASE_CONFIG={"apiKey":"XXX","appId":"XXX","authDomain":"XXX","messagingSenderId":"XXX","projectId":"XXX","storageBucket":"XXX"}
-
-# Just setting a value as true does not turn on the provider
-# See the Firebase documentation for how to configure each provider.
-# Google should start as true but that is one click to configure in Firebase
-# And you always need one provider enabled. Otherwise, no one can log in.
-
-NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
-NEXT_PUBLIC_LOGIN_WITH_APPLE="false"
-NEXT_PUBLIC_LOGIN_WITH_GITHUB="false"
-NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="false"
-
-# Required for Hasura to use Firebase
-# Replace XXX with your project-id
-
-HASURA_GRAPHQL_JWT_SECRET={ "type": "RS256", "audience": "XXX", "issuer": "https://securetoken.google.com/XXX", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }
+# .env for testing the hosting process locally. Do not use in an actual production setting!
+POSTGRES_PASSWORD=XXX
+NEXT_PUBLIC_HASURA_DOMAIN=localhost
+HASURA_GRAPHQL_ADMIN_SECRET=XXX
 ```
 
-[^1]: https://github.com/successible/cleanslate/blob/main/docker-compose.yml
-[^2]: https://docs.docker.com/desktop/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host
-[^3]: https://caddyserver.com/docs/getting-started
-[^4]: https://letsencrypt.org/
+[^1]: https://caddyserver.com/docs/getting-started
+[^2]: https://letsencrypt.org/

@@ -1,39 +1,48 @@
 version: '3'
 services:
   database:
-    image: postgres:15.5
-    restart: always
-    ports:
-      - '5432:5432'
+    image: postgres:15
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - database:/var/lib/postgresql/data
 
   server:
-    restart: always
-    build:
-      context: .
-      dockerfile: Dockerfile.server
+    image: hasura/graphql-engine:v2.36.0.cli-migrations-v3
     ports:
-      - '8080:8080'
-    depends_on:
-      - database
+      - "8080:8080"
     environment:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
-      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@host.docker.internal:5432/postgres
-      HASURA_GRAPHQL_CORS_DOMAIN: https://${NEXT_PUBLIC_HASURA_DOMAIN}
+      HASURA_GRAPHQL_CORS_DOMAIN: ${HASURA_GRAPHQL_CORS_DOMAIN}
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@database:5432/postgres
+      HASURA_GRAPHQL_DEV_MODE: true
+      HASURA_GRAPHQL_ENABLE_CONSOLE: true
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_GRAPHQL_METADATA_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@database:5432/postgres
+      PG_DATABASE_URL: postgres://postgres:${POSTGRES_PASSWORD}@postgres:5432/database
+    volumes:
+      - ./migrations:/hasura-migrations
+      - ./metadata:/hasura-metadata
+    depends_on:
+      - database
 
   client:
-    restart: always
     build:
       context: .
-      dockerfile: Dockerfile.client
+      dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
+        - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG}
         - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
+        - NEXT_PUBLIC_LOGIN_WITH_APPLE=${NEXT_PUBLIC_LOGIN_WITH_APPLE}
+        - NEXT_PUBLIC_LOGIN_WITH_FACEBOOK=${NEXT_PUBLIC_LOGIN_WITH_FACEBOOK}
+        - NEXT_PUBLIC_LOGIN_WITH_GITHUB=${NEXT_PUBLIC_LOGIN_WITH_GITHUB}
+        - NEXT_PUBLIC_LOGIN_WITH_GOOGLE=${NEXT_PUBLIC_LOGIN_WITH_GOOGLE}
+        - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN}
+        - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE}
     ports:
-      - '3000:3000'
+      - 3000:3000
+
     depends_on:
       - database
       - server
