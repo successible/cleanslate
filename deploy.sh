@@ -12,6 +12,6 @@ fi
 
 
 git pull origin main
-docker-compose -f $COMPOSE_FILE build
-docker-compose -f $COMPOSE_FILE down --remove-orphans -t=0
-docker-compose -f $COMPOSE_FILE up -d
+docker compose -f $COMPOSE_FILE build
+docker compose -f $COMPOSE_FILE down --remove-orphans -t=0
+docker compose -f $COMPOSE_FILE up -d
