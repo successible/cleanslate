@@ -45,7 +45,7 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 
 4.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on `5432`.
 
-> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that, you **must** create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; bash deploy.sh`
+> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that, you **must** create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; git pull origin main; bash deploy.sh`
 
 5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080` as outlined in this `Caddyfile`.
 
@@ -165,7 +165,7 @@ Here is how to run Clean Slate locally:
 
 - Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
-> Note: To test the deployment process locally, install `caddy`. Then, run `bash deploy.sh` after creating the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
+> Note: To test the deployment process locally, install `caddy`. Then, run `git pull origin main; bash deploy.sh`. Make sure to create the `.env` below in your `cleanslate` folder. Then, run `caddy start -c Caddyfile.dev`. `caddy` will pick up the `Caddyfile.dev` and serve Clean Slate on `https://localhost`.
 
 > Note: If you want to proxy the development version of Clean Slate to test on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 

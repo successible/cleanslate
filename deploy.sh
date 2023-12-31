@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Pull down any new updates
+git pull origin main
+
 # Set the environmental variables
 # Read this file for an explanation of the value of HASURA_GRAPHQL_JWT_SECRET
 # https://github.com/successible/cleanslate/blob/main/src/helpers/getJWT.ts
@@ -21,7 +24,6 @@ else
   echo "Deploying with file: $COMPOSE_FILE"
 fi
 
-git pull origin main
 docker compose -f $COMPOSE_FILE build
 docker compose -f $COMPOSE_FILE down --remove-orphans -t=0
 docker compose -f $COMPOSE_FILE up -d
