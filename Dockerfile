@@ -64,6 +64,6 @@ FROM busybox:1.36.1 as runner
 
 COPY --from=builder build build
 
-# Service Clean Slate with busybox
+# Serve Clean Slate with busybox
 
 CMD ["busybox", "httpd", "-f", "-v", "-p", "3000", "-h", "build"]
