@@ -1,5 +1,9 @@
-import { volumeUnits, weightUnits } from '../../../constants/units'
-import { defaultContainer, defaultCount, Unit } from '../../../constants/units'
+import {
+  defaultContainer,
+  volumeUnits,
+  weightUnits,
+} from '../../../constants/units'
+import { defaultCount, Unit } from '../../../constants/units'
 import { zipObject } from '../../../helpers/zipObject'
 import { Food } from '../../../models/food'
 import { Recipe } from '../../../models/recipe'
@@ -39,26 +43,28 @@ export const getPrettyUnits = (item: Food | Recipe) => {
       ? ['COUNT']
       : []
 
-  const countDict = zipObject(count, count)
-  if (countDict.COUNT) {
-    countDict.COUNT = item.countName || defaultCount
-  }
-
   const container =
-    item.type === 'food' &&
-    (item.caloriesPerCount || item.caloriesPerCount === 0) &&
-    (item.proteinPerCount || item.proteinPerCount === 0) &&
-    item.servingPerContainer
+    (item.type === 'food' &&
+      (item.caloriesPerCount || item.caloriesPerCount === 0) &&
+      (item.proteinPerCount || item.proteinPerCount === 0) &&
+      item.servingPerContainer) ||
+    (item.type === 'recipe' &&
+      item.servingPerContainer &&
+      item.servingPerContainer !== 0)
       ? ['CONTAINER']
       : []
 
-  const containerDict = zipObject(container, container)
-  if (containerDict.COUNT) {
-    containerDict.COUNT = item.countName || defaultContainer
+  const countDict = {
+    ...zipObject(container, container),
+    ...zipObject(count, count),
   }
 
-  return [{ ...countDict, ...containerDict }, weightDict, volumeDict] as Record<
-    Unit,
-    string
-  >[]
+  if (countDict.COUNT && !countDict.CONTAINER) {
+    countDict.COUNT = item.countName || defaultCount
+  } else if (countDict.COUNT && countDict.CONTAINER) {
+    countDict.COUNT = defaultCount
+    countDict.CONTAINER = item.countName || defaultContainer
+  }
+
+  return [countDict, weightDict, volumeDict] as Record<Unit, string>[]
 }

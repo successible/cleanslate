@@ -103,6 +103,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     setIngredients(remoteIngredients)
     setVolumeUnit(recipe?.preferredVolumeUnit || ('TBSP' as VolumeUnit))
     setWeightUnit(recipe?.preferredWeightUnit || ('GRAM' as WeightUnit))
+    updateServingPerContainer(recipe?.servingPerContainer || '')
 
     // Only convert the volume and weight on the first time the page loads.
     // After that, treat them as "dumb numbers" until submission
@@ -268,6 +269,44 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
                 setWeightUnit(unit as WeightUnit)
               }}
             />
+            <div className="fr w100 mt20">
+              <input
+                id={`servings-per-container-input`}
+                value={servingPerContainer}
+                inputMode="decimal"
+                onChange={(e) => {
+                  updateServingPerContainer(e.target.value)
+                }}
+                className="mr10"
+                css={css`
+                  width: 90px;
+                `}
+                type="text"
+                placeholder={''}
+              />
+              <span
+                className="mr20 fr"
+                css={css`
+                  width: 100px;
+                  padding-left: 10px;
+                  border: 1px solid #ededed;
+                  height: 41px;
+                  border-radius: 5px;
+                `}
+              >
+                <span>servings</span>
+              </span>
+              <span
+                className=""
+                css={css`
+                  white-space: nowrap;
+                  position: relative;
+                  left: -5px;
+                `}
+              >
+                per recipe
+              </span>
+            </div>
           </div>
         </div>
       </div>

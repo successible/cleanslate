@@ -59,21 +59,6 @@ export const DELETE_FOOD = gql`
   }
 `
 
-export const HANDLE_MISSING_BASIC_FOODS = gql`
-  mutation HandlingMissingBasicFoods($ids: [uuid!]) {
-    delete_ingredients(where: { basicFood: { _in: $ids } }) {
-      returning {
-        id
-      }
-    }
-    delete_logs(where: { basicFood: { _in: $ids } }) {
-      returning {
-        id
-      }
-    }
-  }
-`
-
 export const SUBSCRIBE_TO_BASIC_FOOD = gql`
   subscription SUBSCRIBE_TO_BASIC_FOOD {
     foods(

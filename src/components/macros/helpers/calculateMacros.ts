@@ -173,15 +173,24 @@ export const calculatePerMacroPerRecipe = (
   amount: number,
   unit: Unit
 ): number => {
-  const { countToGram, countToTbsp } = recipe
+  const { countToGram, countToTbsp, servingPerContainer } = recipe
   const isVolume = volumeUnits.includes(unit) && countToTbsp
   const isWeight = weightUnits.includes(unit) && countToGram
 
-  const amountToUse = isVolume
+  const countAdjustedForVolumeAndWeight = isVolume
     ? mapOtherVolumeUnitToTbsp(unit, amount) / countToTbsp
     : isWeight
       ? convertFromWeightToGrams(unit, amount) / countToGram
       : amount
+
+  // The default behavior of recipe is too assume that a COUNT stands for everything
+  // However, if servingPerContainer has been set, COUNT becomes serving, and CONTAINER is the countName (e.g. bowl)
+  // Hence, we need to divide the count accordingly
+
+  const countAdjustedForContainer =
+    unit === 'COUNT' && servingPerContainer && servingPerContainer !== 0
+      ? countAdjustedForVolumeAndWeight / servingPerContainer
+      : countAdjustedForVolumeAndWeight
 
   const total = recipe.ingredients.reduce((acc, ingredient) => {
     const childRecipe = ingredient.ingredientToChildRecipe
@@ -242,7 +251,7 @@ export const calculatePerMacroPerRecipe = (
     }
   }, 0)
 
-  return total * amountToUse
+  return total * countAdjustedForContainer
 }
 
 /** This function calculates the total calories, protein in all logs present for a given metric */

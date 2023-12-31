@@ -22,7 +22,6 @@ export type DataEvents = {
   removeLogsById: string[]
   updateProfile: Profile[]
   updateCurrentWebsocketClient: SubscriptionClient | null
-  handleMissingBasicFoods: string[]
   clearData: null
 }
 
