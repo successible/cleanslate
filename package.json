@@ -2,7 +2,7 @@
   "name": "cleanslate",
   "repository": "https://github.com/successible/cleanslate.git",
   "author": "Paul Zakin",
-  "license": "BUSL-1.1",
+  "license": "Apache-2.0",
   "private": true,
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
@@ -32,7 +32,6 @@
     }
   },
   "scripts": {
-    "build": "bash build.sh",
     "dev": "bash dev.sh",
     "lint": "bash -e lint.sh --format",
     "proxy": "bash proxy.sh",

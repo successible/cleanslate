@@ -1,14 +1,5 @@
 #!/bin/bash
 
-if [ "$DOCKER" != "true" ]; then
-    VERSION=$(git rev-parse --short HEAD)
-    export NEXT_PUBLIC_VERSION=$VERSION
-fi
-
-rm -rf build
-
-pnpm install --prod
-
 cd src
 npx next build
 

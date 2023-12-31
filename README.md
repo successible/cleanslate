@@ -41,57 +41,42 @@ Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and 
 POSTGRES_PASSWORD=<your-desired-password>
 NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
 HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
-HASURA_GRAPHQL_CORS_DOMAIN=https://<your-server-domain>
-# Read this file for an explanation of the value of HASURA_GRAPHQL_JWT_SECRET
-# https://github.com/successible/cleanslate/blob/main/src/helpers/getJWT.ts
-# Only change this value if you are using Firebase.
-# It will look like something like this: '{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
-HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
-
-# Change if using Firebase
-# You can find your project config in your Firebase project settings
-# If it will look like '{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
-NEXT_PUBLIC_FIREBASE_CONFIG='{}'
-NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
-NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
-NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
-NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
-NEXT_PUBLIC_REACT_SENTRY_DSN='' # Change to your DSN if you are using Sentry
-NEXT_PUBLIC_USE_FIREBASE='false' # Change to true if using Firebase
 ```
 
 4.  Run `bash deploy.sh`. This script will build and start the database, client, and server via Docker Compose. The client is what the user will interact with. It runs on `http://localhost:3000`. The server (Hasura) runs on port `8080`. The database (PostgreSQL) runs on `5432`.
 
-> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that behavior, you **must** create a custom `docker-compose.yml` and use that. You can do that by running export COMPOSE_FILE=custom.yml; bash deploy.sh
+> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs the database, Postgres 15, on port `5432` in a container managed by Docker Compose. If you do not like that, you **must** create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; bash deploy.sh`
 
 5.  On your domain, point a reverse proxy, like Caddy or Nginx, to `http://localhost:3000` and `http://localhost:8080` as outlined in this `Caddyfile`.
 
 > Note: Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2].
 
-    XXX/v1* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
+```
+XXX/v1* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
 
-    XXX/v2* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
+XXX/v2* {
+	# API (Hasura)
+	reverse_proxy localhost:8080
+}
 
-    XXX/console* {
-        # Admin panel (Hasura).
-        reverse_proxy localhost:8080
-    }
+XXX/console* {
+	# Admin panel (Hasura).
+	reverse_proxy localhost:8080
+}
 
-    XXX/healthz* {
-        # Health check (Hasura).
-        reverse_proxy localhost:8080
-    }
+XXX/healthz* {
+	# Health check (Hasura).
+	reverse_proxy localhost:8080
+}
 
-    XXX {
-        # Static files (Clean Slate)
-        reverse_proxy localhost:3000
-    }
+XXX {
+	# Static files (Clean Slate)
+	reverse_proxy localhost:3000
+}
+```
 
 6.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, enter no input. Instead, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) credential to log in.
 
@@ -101,7 +86,7 @@ NEXT_PUBLIC_USE_FIREBASE='false' # Change to true if using Firebase
 
 ### Handling authentication
 
-Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section of the appendix for how to set up Firebase with Clean Slate.
+Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section for how to set up Firebase with Clean Slate.
 
 However, Firebase is too complex for the most common hosting scenario. That scenario is a privacy conscious user who wants to host Clean Slate for individual or family use. Hence, our default authentication system, `authId`, works differently.
 
@@ -149,7 +134,17 @@ Locally (Linux or Mac):
 
 Production (Linux):
 
-- Change the values in the `.env` as outlined above.
+- Add the values in the `.env` as outlined below. Replace `<XXX>` with your own values. You can find your project config in your Firebase project settings
+
+```
+# NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
+# NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
+# NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
+# NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
+# NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
+# NEXT_PUBLIC_USE_FIREBASE='false'
+HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
+```
 
 ## How to contribute to Clean Slate
 
