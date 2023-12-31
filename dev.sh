@@ -63,7 +63,10 @@ if [[ $CI != "true" ]]; then
 
  
   echo "=> Install the dependencies..."
-  brew bundle
+  if type brew >/dev/null 2>&1
+  then
+    brew bundle
+  fi
   pnpm install
   cd functions && npm install && cd ..
 

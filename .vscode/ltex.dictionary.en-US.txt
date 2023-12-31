@@ -1,5 +1,8 @@
+authId
+busybox
 CHANGELOG
-self-hoster
-proxying
 GNU sed
 jq
+pnpm
+proxying
+self-hoster
