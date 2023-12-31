@@ -1,6 +1,11 @@
 {
-  "extends": ["config:recommended", "docker:enableMajor"],
-  "timezone": "America/Chicago",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests",
+    ":pinDevDependencies",
+    "docker:enableMajor"
+  ],
+  "timezone": "America/New_York",
   "labels": ["enhancement"],
   "configMigration": true,
   "packageRules": [
