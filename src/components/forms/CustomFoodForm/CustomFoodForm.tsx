@@ -265,12 +265,44 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
               setWeightUnit(unit as WeightUnit)
             }}
           />
-          <UnitSelector
-            unit={'CONTAINER'}
-            amount={servingPerContainer}
-            units={['CONTAINER']}
-            onChange={(unit, amount) => updateServingPerContainer(amount)}
-          />
+          <div className="fr w100 mt20">
+            <input
+              id={`servings-per-container-input`}
+              value={servingPerContainer}
+              inputMode="decimal"
+              onChange={(e) => {
+                updateServingPerContainer(e.target.value)
+              }}
+              className="mr10"
+              css={css`
+                width: 90px;
+              `}
+              type="text"
+              placeholder={''}
+            />
+            <span
+              className="mr20 fr"
+              css={css`
+                width: 100px;
+                padding-left: 10px;
+                border: 1px solid #ededed;
+                height: 41px;
+                border-radius: 5px;
+              `}
+            >
+              <span>servings</span>
+            </span>
+            <span
+              className=""
+              css={css`
+                white-space: nowrap;
+                position: relative;
+                left: -5px;
+              `}
+            >
+              per food
+            </span>
+          </div>
         </div>
       </div>
 

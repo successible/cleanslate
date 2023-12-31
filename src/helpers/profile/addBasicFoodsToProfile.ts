@@ -55,7 +55,7 @@ export const addBasicFoodsToProfile = (profiles: Profile[]) => {
     })
     .filter((log) => {
       // In the event that basic foods are missing, we want to hide the dependent logs
-      // Until handleMissingBasicFoods has had a chance to run.
+      // Until  has had a chance to run.
       // That way, we avoid a flicker of the log as water
       const basicFoodId = log.basicFood
       return (basicFoodId && basicFoodsManifest[basicFoodId]) || !basicFoodId
