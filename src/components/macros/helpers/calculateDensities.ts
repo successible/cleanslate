@@ -69,16 +69,31 @@ export const calculateGramsInRecipe = (
   amount: number | null
 ): number => {
   const recipeInGrams = recipe.ingredients.reduce((acc, ingredient) => {
+    const childRecipe = ingredient.ingredientToChildRecipe
     return (
       acc +
-      convertToGrams(
-        ingredient.amount,
-        ingredient.unit,
-        ingredient.ingredientToFood?.countToGram,
-        ingredient.ingredientToFood?.tbspToGram,
-        ingredient.ingredientToFood?.countToTbsp,
-        ingredient.ingredientToFood?.servingPerContainer
-      )
+      // We need to recursively calculate the density when a ingredient with a child recipe is passed
+      // Rather than an ingredient with a food
+      (childRecipe
+        ? calculateGramsInRecipe(
+            childRecipe,
+            // Just like in Macros.tsx
+            // When COUNT is being treated as Serving, not Container, as servingPerContainer is set
+            // We need to adjust the amount (down), otherwise the caloric density will be wrong
+            ingredient.unit === 'COUNT' &&
+              childRecipe.servingPerContainer &&
+              childRecipe.servingPerContainer !== 0
+              ? ingredient.amount / childRecipe.servingPerContainer
+              : ingredient.amount
+          )
+        : convertToGrams(
+            ingredient.amount,
+            ingredient.unit,
+            ingredient.ingredientToFood?.countToGram,
+            ingredient.ingredientToFood?.tbspToGram,
+            ingredient.ingredientToFood?.countToTbsp,
+            ingredient.ingredientToFood?.servingPerContainer
+          ))
     )
   }, 0)
   return amount ? recipeInGrams * amount : recipeInGrams
@@ -94,11 +109,15 @@ export const calculateRecipeDensities = (
 ): [number, number, number] => {
   // Unlike food, the caloric density of recipe is calculated from caloriesConsumed
   // Thus, it must take into account the amount of the recipe
-  const caloriesPerGram =
-    caloriesConsumed / calculateGramsInRecipe(recipe, amount)
-  const CD = round(caloriesPerGram * 100, 0)
-  const PD = round((proteinConsumed / caloriesConsumed) * 4 * 100, 0)
-  return [CD, PD, calculateCombinedDensity(CD, PD)]
+  const grams = calculateGramsInRecipe(recipe, amount)
+  const caloriesPerGram = caloriesConsumed / grams
+  const proteinDensity = round((proteinConsumed / caloriesConsumed) * 100, 0)
+  const caloricDensity = round(caloriesPerGram * 100, 0)
+  return [
+    caloricDensity,
+    proteinDensity,
+    calculateCombinedDensity(caloricDensity, proteinDensity),
+  ]
 }
 
 /** Calculate the food score OR recipe score when you are unsure which you have been given */
