@@ -94,7 +94,6 @@ export const calculateRecipeDensities = (
 ): [number, number, number] => {
   // Unlike food, the caloric density of recipe is calculated from caloriesConsumed
   // Thus, it must take into account the amount of the recipe
-  // Otherwise, calculateGramsInRecipe will return the wrong amount as the amount > 1
   const caloriesPerGram =
     caloriesConsumed / calculateGramsInRecipe(recipe, amount)
   const CD = round(caloriesPerGram * 100, 0)

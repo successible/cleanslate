@@ -25,9 +25,22 @@ export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
     Math.round(v)
   )
 
+  const recipe = log.logToRecipe
+  const food = log.logToFood
+
+  // When COUNT is being treated as Serving, not Container, as servingPerContainer is set
+  // We need to adjust the amount (down), otherwise the caloric density will be wrong
+  const amountToUse =
+    recipe &&
+    log.unit === 'COUNT' &&
+    recipe.servingPerContainer &&
+    recipe.servingPerContainer !== 0
+      ? log.amount / recipe.servingPerContainer
+      : log.amount
+
   const densities = calculateFoodOrRecipeDensities(
-    log.amount,
-    log.barcode || log.logToFood || log.logToRecipe,
+    amountToUse,
+    log.barcode || food || recipe,
     caloriesConsumed,
     proteinConsumed
   )
