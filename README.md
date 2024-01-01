@@ -131,7 +131,7 @@ However, Firebase is too complex for the most common hosting scenario. That is a
 ```
 
 - Login with Firebase locally via `npx firebase login`.
-- Run `npx firebase deploy` to deploy the Firebase functions in `/functions`.
+- Run `npx firebase deploy --only functions`. This will deploy Firebase functions in `/functions`.
 
 You can now run Firebase locally or in production with these last steps.
 
