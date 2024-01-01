@@ -1,8 +1,11 @@
 .DS_Store
 .env
+.firebaserc
 Brewfile.lock.json
 build
 Caddyfile
+firebase-config.json
+firebase-debug.log
 node_modules
 src/.next
 src/build

@@ -1,6 +1,7 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'
+import Density from '../../assets/common/density.svg'
 import CustomFood from '../../assets/common/food.svg'
 import Logout from '../../assets/common/logout.svg'
 import Mortarboard from '../../assets/common/mortarboard.svg'
@@ -113,7 +114,21 @@ export const Menu: React.FC = () => {
             className="icon"
             src={Mortarboard}
           />
-          <div className="ml15">Curriculum</div>
+          <div className="ml15">Skills</div>
+        </button>
+        <button
+          onClick={() => {
+            dispatch('openDensityModal')
+          }}
+        >
+          <Image
+            width={35}
+            height={35}
+            alt="Molecules"
+            className="icon"
+            src={Density}
+          />
+          <div className="ml15">Density</div>
         </button>
       </div>
 

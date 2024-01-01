@@ -53,7 +53,6 @@ if [[ $CI != "true" ]]; then
     }
 
     export NEXT_PUBLIC_USE_FIREBASE="true"
-    export GOOGLE_APPLICATION_CREDENTIALS=$(abspath "firebase-service-account.json")
     export FIREBASE_PROJECT_ID=$(jq -r .projectId firebase-config.json)
     export NEXT_PUBLIC_FIREBASE_CONFIG=$(jq . firebase-config.json)
     HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "%s", "issuer": "%s", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
@@ -68,7 +67,6 @@ if [[ $CI != "true" ]]; then
     brew bundle
   fi
   pnpm install
-  cd functions && npm install && cd ..
 
   echo "=> Spin up PostgreSQL and Hasura..."
   docker-compose -f docker-compose-dev.yml down -v --remove-orphans -t 0

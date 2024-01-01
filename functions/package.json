@@ -1,23 +1,8 @@
 {
-  "name": "@cleanslate/functions",
   "private": true,
-  "scripts": {
-    "build": "tsc",
-    "serve": "npm run build && firebase emulators:start --only functions",
-    "shell": "npm run build && firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
-  },
-  "main": "lib/index.js",
+  "main": "index.js",
   "dependencies": {
-    "@firebase/app-types": "0.9.0",
-    "firebase-admin": "11.11.1",
+    "firebase-admin": "11.10.1",
     "firebase-functions": "4.5.0"
-  },
-  "devDependencies": {
-    "firebase": "10.7.1",
-    "firebase-functions-test": "3.1.0",
-    "typescript": "5.3.3"
   }
 }

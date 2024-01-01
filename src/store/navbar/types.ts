@@ -13,9 +13,10 @@ export type Form = 'CustomFoodForm' | 'RecipeForm'
 export type NavbarState = {
   activeModals: readonly any[]
   addIngredientModalVisibility: boolean
+  barcodeModalVisibility: boolean
   bodyFatPercentageModalVisibility: boolean
   caloricMaintenanceModalVisibility: boolean
-  barcodeModalVisibility: boolean
+  densityModalVisibility: boolean
   error: string | null
   errorVisibility: boolean
   exerciseModalVisibility: boolean
@@ -45,8 +46,9 @@ export type NavbarState = {
 export type NavbarEvents = {
   closeAddIngredientModal: undefined
   closeAllModals: undefined
-  closeBodyFatPercentageModal: undefined
   closeBarcodeModal: undefined
+  closeBodyFatPercentageModal: undefined
+  closeDensityModal: undefined
   closeError: undefined
   closeExerciseModal: undefined
   closeFoodFormModal: undefined
@@ -68,8 +70,9 @@ export type NavbarEvents = {
   closeUnitModal: undefined
   isOffline: boolean
   openAddIngredientModal: string | null
-  openBodyFatPercentageModal: undefined
   openBarcodeModal: undefined
+  openBodyFatPercentageModal: undefined
+  openDensityModal: undefined
   openError: string
   openExerciseModal: undefined
   openFoodFormModal: string | null
