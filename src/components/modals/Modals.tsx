@@ -10,6 +10,7 @@ import { Profile } from '../../models/profile'
 import { Recipe } from '../../models/recipe'
 import { NavbarState } from '../../store/navbar/types'
 import { BarcodeModal } from '../barcode-modal/BarcodeModal'
+import { DensityModal } from '../density-modal/DensityModal'
 import { Error } from '../error/Error'
 import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
 import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
@@ -53,6 +54,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     addIngredientModalVisibility,
     barcodeModalVisibility,
     bodyFatPercentageModalVisibility,
+    densityModalVisibility,
     errorVisibility,
     exerciseModalVisibility,
     foodFormModalVisibility,
@@ -360,6 +362,16 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       }}
     >
       <PWAPrompt profile={profile} />
+    </Modal>,
+    // Density modal
+    <Modal
+      closeModal={() => {
+        dispatch('closeDensityModal')
+      }}
+      name="navbar.densityModalVisibility"
+      visible={densityModalVisibility}
+    >
+      <DensityModal />
     </Modal>,
   ]
 

@@ -228,6 +228,14 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.barcodeModalVisibility', true)
   })
 
+  store.on('closeDensityModal', (state) => {
+    return updateModal(state, 'navbar.densityModalVisibility', false)
+  })
+
+  store.on('openDensityModal', (state) => {
+    return updateModal(state, 'navbar.densityModalVisibility', true)
+  })
+
   store.on('closeAllModals', (state) => {
     const newNavbar = cloneDeep(state.navbar)
     newNavbar.Information = null
