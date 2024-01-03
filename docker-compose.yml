@@ -2,15 +2,22 @@ version: '3'
 services:
   database:
     image: postgres:15
+    restart: always
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - database:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   server:
     image: hasura/graphql-engine:v2.36.0.cli-migrations-v3
+    restart: always
     ports:
-      - "8080:8080"
+      - '8080:8080'
     environment:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       HASURA_GRAPHQL_CORS_DOMAIN: https://${NEXT_PUBLIC_HASURA_DOMAIN}
@@ -25,7 +32,8 @@ services:
       - ./migrations:/hasura-migrations
       - ./metadata:/hasura-metadata
     depends_on:
-      - database
+      database:
+        condition: service_healthy
 
   client:
     build:
@@ -41,6 +49,7 @@ services:
         - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN}
         - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE}
         - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
+    restart: always
     ports:
       - 3000:3000
     depends_on:
