@@ -45,13 +45,7 @@ NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
 HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 ```
 
-4.  Run `git pull origin main; bash deploy.sh`. This script will build and start the three things via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the server (Hasura).
-
-> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; git pull origin main; bash deploy.sh`
-
-5.  On your production server, point a reverse proxy (Caddy) to `http://localhost:3000` and `http://localhost:8080` as outlined in this `Caddyfile`.
-
-> Note: Clean Slate must be served over `https` to function. We recommend Caddy [^1] as the reverse proxy, and have tested Clean Slate with it. Caddy is great because it handles `https` automatically and for free via Let's Encrypt [^2]. However, you could also use `nginx`, `apache`, etc.
+3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. You could also use `nginx`, `apache`, etc. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
 
 ```bash
 # Caddyfile
@@ -88,21 +82,25 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 }
 ```
 
-6.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) password to log in.
+4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the server (Hasura).
 
-7.  You can now log in to `https://<your-domain>` with that password.
+> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; git pull origin main; bash deploy.sh`
 
-8.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, read `CHANGELOG.md`. We will list any breaking changes that have occurred.
+5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) password to log in.
+
+6.  You can now log in to `https://<your-domain>` with that password.
+
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, read `CHANGELOG.md`. We will list any breaking changes that have occurred.
 
 ## How do I handle authentication in Clean Slate?
 
-### Authentication via authId
+### Default: Authentication via authId
 
 Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section (below) for how to set up Firebase with Clean Slate.
 
 However, Firebase is too complex for the most common hosting scenario. That is a privacy-focused user who wants to host Clean Slate for their personal use. Hence, our default authentication system, `authId`, is much simpler. There is no username or password and no need for your server to send email. Instead, we use very long tokens (uuid4) stored as plain text in the `authId` column in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
 
-### Authentication via Firebase
+### Optional: Authentication via Firebase
 
 - Create a new Firebase project.
 - Enable Firebase authentication.
@@ -143,7 +141,7 @@ Locally (Linux or Mac):
 
 Production (Linux):
 
-- Add these items to your `.env` as outlined below. Replace `<XXX>` with your own values. You can find your project config in your Firebase project settings
+- Add these items to your `.env` as outlined below. Replace `<XXX>` with your own values. You can find your project config in your Firebase project settings. Do not add these values unless you are doing authentication via Firebase.
 
 ```bash
 NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
