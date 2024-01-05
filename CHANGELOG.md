@@ -2,7 +2,7 @@
 
 New versions of Clean Slate are deployed off the HEAD of the `main` branch. Unless specified here, every commit on main is not breaking for a self-hoster. For every commit on `main` that is a breaking change, we will state the following:
 
-- The date and the hash
+- The date
 - Steps to migrate
 
 ## 2023-10-03
