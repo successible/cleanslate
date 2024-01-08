@@ -2,7 +2,7 @@
   "private": true,
   "main": "index.js",
   "dependencies": {
-    "firebase-admin": "11.10.1",
-    "firebase-functions": "4.5.0"
+    "firebase-admin": "11.11.1",
+    "firebase-functions": "4.6.0"
   }
 }
