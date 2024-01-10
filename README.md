@@ -89,6 +89,7 @@ Here is an example `nginx.conf`. Replace `<XXX>` with your own content.
 > Note: With `nginx`, you will need to get your own SSL certificate.
 
 ```bash
+error_log /dev/stdout crit;
 http {
   server {
       listen 443 http2 ssl;
