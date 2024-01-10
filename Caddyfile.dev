@@ -1,25 +1,23 @@
 
-{$NEXT_PUBLIC_HASURA_DOMAIN:localhost}/v1* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
-
-{$NEXT_PUBLIC_HASURA_DOMAIN:localhost}/v2* {
-	# API (Hasura)
-	reverse_proxy localhost:8080
-}
-
-{$NEXT_PUBLIC_HASURA_DOMAIN:localhost}/console* {
-	# Admin panel (Hasura).
-	reverse_proxy localhost:{$HASURA_CONSOLE_PORT:8080}
-}
-
-{$NEXT_PUBLIC_HASURA_DOMAIN:localhost}/healthz* {
-	# Health check (Hasura).
-	reverse_proxy localhost:{$HASURA_CONSOLE_PORT:8080}
-}
-
 {$NEXT_PUBLIC_HASURA_DOMAIN:localhost} {
-	# Static files (Clean Slate)
-	reverse_proxy localhost:3000
+	route /v1* {
+		# API (Hasura)
+		reverse_proxy localhost:8080
+	}
+	route /v2* {
+		# API (Hasura)
+		reverse_proxy localhost:8080
+	}
+	route /console* {
+		# Admin panel (Hasura).
+		reverse_proxy localhost:8080
+	}
+	route /healthz* {
+		# Healthcheck (Hasura).
+		reverse_proxy localhost:8080
+	}
+	route /* {
+		# Static files (Clean Slate)
+		reverse_proxy localhost:3000
+	}
 }
