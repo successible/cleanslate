@@ -47,6 +47,8 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 
 3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. You could also use `nginx`, `apache`, etc. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
 
+Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
+
 ```bash
 # Caddyfile
 <XXX>/v1* {
@@ -78,6 +80,55 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
         X-Content-Type-Options "nosniff"
         X-Frame-Options "DENY"
         X-XSS-Protection "1; mode=block;"
+    }
+}
+```
+
+Here is an example `nginx.conf`. Replace `<XXX>` with your own content.
+
+> Note: With `nginx`, you will need to get your own SSL certificate.
+
+```bash
+server {
+    listen 443 http2 ssl;
+    listen [::]:443 http2 ssl;
+    server_name <XXX>;
+
+    ssl_certificate <XXX>
+    ssl_certificate_key <XXX>;
+
+    location /v1 {
+      # API (Hasura)
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'Upgrade';
+      proxy_set_header Host $host;
+      proxy_pass http://localhost:8080;
+    }
+
+    location /v2 {
+        # API (Hasura)
+        proxy_pass http://localhost:8080;
+    }
+
+    location /console {
+        # Admin panel (Hasura)
+        proxy_pass http://localhost:8080;
+    }
+
+    location /healthz {
+        # Health check (Hasura)
+        proxy_pass http://localhost:8080;
+    }
+
+    location / {
+        # Static files (Clean Slate)
+        proxy_pass http://localhost:3000;
+        add_header Referrer-Policy "strict-origin";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;";
+        add_header X-Content-Type-Options "nosniff";
+        add_header X-Frame-Options "DENY";
+        add_header X-XSS-Protection "1; mode=block;";
     }
 }
 ```
