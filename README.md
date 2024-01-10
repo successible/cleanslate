@@ -75,6 +75,10 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
   # Static files (Clean Slate)
   reverse_proxy localhost:3000
   header {
+        # HTTP Security Headers
+        # You can remove the Google, Firebase, and Sentry policies if you are not using them
+    		Content-Security-Policy "default-src 'self' blob: data:; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
+        Permissions-Policy "accelerometer=(self), ambient-light-sensor=(self), autoplay=(self), battery=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), document-domain=(self), encrypted-media=(self), execution-while-not-rendered=(self), execution-while-out-of-viewport=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), navigation-override=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), web-share=(self), xr-spatial-tracking=(self)"
         Referrer-Policy "strict-origin"
         Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;"
         X-Content-Type-Options "nosniff"
@@ -126,6 +130,11 @@ http {
       location / {
           # Static files (Clean Slate)
           proxy_pass http://localhost:3000;
+
+          # HTTP Security Headers
+          # You can remove the Google, Firebase, and Sentry policies if you are not using them
+          add_header Content-Security-Policy "default-src 'self' blob: data:; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
+          add_header Permissions-Policy "accelerometer=(self), ambient-light-sensor=(self), autoplay=(self), battery=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), document-domain=(self), encrypted-media=(self), execution-while-not-rendered=(self), execution-while-out-of-viewport=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), navigation-override=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), web-share=(self), xr-spatial-tracking=(self)"
           add_header Referrer-Policy "strict-origin";
           add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;";
           add_header X-Content-Type-Options "nosniff";
