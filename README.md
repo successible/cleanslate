@@ -53,7 +53,7 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 <XXX> {
   header {
     Referrer-Policy "strict-origin"
-    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;"
+    Strict-Transport-Security "max-age=31536000; includeSubDomains;"
     X-Content-Type-Options "nosniff"
     X-Frame-Options "DENY"
     X-XSS-Protection "1; mode=block;"
