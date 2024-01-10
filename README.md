@@ -80,7 +80,7 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
     Content-Security-Policy "default-src 'self' blob: data:; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
     Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
     Referrer-Policy "strict-origin"
-    Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;"
+    Strict-Transport-Security "max-age=31536000; includeSubDomains;"
     X-Content-Type-Options "nosniff"
     X-Frame-Options "DENY"
     X-XSS-Protection "1; mode=block;"
@@ -136,7 +136,7 @@ http {
           add_header Content-Security-Policy "default-src 'self' blob: data:; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
           add_header Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
           add_header Referrer-Policy "strict-origin";
-          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload;";
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains;";
           add_header X-Content-Type-Options "nosniff";
           add_header X-Frame-Options "DENY";
           add_header X-XSS-Protection "1; mode=block;";
