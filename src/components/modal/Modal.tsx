@@ -18,6 +18,7 @@ type props = {
   children: React.ReactNode
   visible: boolean
   closeIcon?: boolean
+  shouldPrompt?: boolean
   inTransition?: string
   outTransition?: string
   shellOutTransition?: string
@@ -38,6 +39,7 @@ export const Modal: React.FC<props> = (props) => {
     name,
     outTransition,
     shellOutTransition,
+    shouldPrompt,
     styles,
     visible,
   } = props
@@ -48,11 +50,22 @@ export const Modal: React.FC<props> = (props) => {
 
   // State
   const [shouldRender, updateShouldRender] = React.useState(visible)
+  const [isDirty, setIsDirty] = React.useState(false)
 
   // Animation configuration
   const IT = inTransition || (sidebarPresent() ? 'slideInLeft' : 'fadeIn')
   const OUT = outTransition || (sidebarPresent() ? 'slideOutLeft' : 'fadeOut')
   const d = duration || getAnimationDuration(visible ? IT : OUT)[0]
+
+  const message = 'You may have unsaved changes that will be lost. Is that OK?'
+
+  const close = () => {
+    if (shouldPrompt && isDirty && window.confirm(message)) {
+      closeModal()
+    } else {
+      closeModal()
+    }
+  }
 
   React.useEffect(() => {
     visible && updateShouldRender(true)
@@ -130,7 +143,9 @@ export const Modal: React.FC<props> = (props) => {
     <div
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
-          closeModal()
+          close()
+        } else {
+          setIsDirty(true)
         }
       }}
       id={`modal-${name}`}
@@ -156,7 +171,7 @@ export const Modal: React.FC<props> = (props) => {
             className={`fr ultra`}
             ref={closeButton}
             onClick={() => {
-              closeModal()
+              close()
             }}
             type="button"
           >
@@ -174,7 +189,7 @@ export const Modal: React.FC<props> = (props) => {
       {/* The height is dynamically set with JavaScript depending on the height of the modal */}
       <div
         onClick={() => {
-          closeModal()
+          close()
         }}
         css={backgroundStyling}
       ></div>
