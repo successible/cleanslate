@@ -1,4 +1,3 @@
-import { closeAllModals } from './closeAllModals'
 import {
   createKeyboardShortcutDirectory,
   Key,
@@ -18,9 +17,5 @@ export const executeKeyboardShortcuts = (event: KeyboardEvent) => {
     if (action && key !== 'Escape') {
       action()
     }
-  }
-  // Close all modals by pressing ESC
-  if (key === 'Escape') {
-    closeAllModals()
   }
 }
