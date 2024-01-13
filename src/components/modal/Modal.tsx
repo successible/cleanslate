@@ -128,6 +128,11 @@ export const Modal: React.FC<props> = (props) => {
 
   const modalComponent = shouldRender ? (
     <div
+      onKeyDown={(event) => {
+        if (event.key === 'Escape') {
+          closeModal()
+        }
+      }}
       id={`modal-${name}`}
       css={[modalStyling, styles]}
       onAnimationEnd={() => !visible && updateShouldRender(false)}
