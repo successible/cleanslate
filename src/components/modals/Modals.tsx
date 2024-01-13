@@ -250,13 +250,10 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     // custom-recipe-form
     <Modal
       closeModal={() => {
-        const message =
-          'You may have unsaved changes that will be lost. Is that OK?'
-        if (window.confirm(message)) {
-          dispatch('closeRecipeFormModal')
-        }
+        dispatch('closeRecipeFormModal')
       }}
       name="navbar.recipeFormModalVisibility"
+      shouldPrompt={true}
       visible={recipeFormModalVisibility}
     >
       <RecipeForm
@@ -284,13 +281,10 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     // custom-food-form
     <Modal
       closeModal={() => {
-        const message =
-          'You may have unsaved changes that will be lost. Is that OK?'
-        if (window.confirm(message)) {
-          dispatch('closeFoodFormModal')
-        }
+        dispatch('closeFoodFormModal')
       }}
       name="navbar.foodFormModalVisibility"
+      shouldPrompt={true}
       visible={foodFormModalVisibility}
     >
       <CustomFoodForm
