@@ -1,16 +1,12 @@
 {
-  "extends": [
-    "config:recommended",
-    "helpers:pinGitHubActionDigests",
-    "docker:enableMajor"
-  ],
+  "extends": ["config:recommended", "docker:enableMajor"],
   "timezone": "America/New_York",
   "labels": ["enhancement"],
   "configMigration": true,
   "packageRules": [
     {
       "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "matchUpdateTypes": ["minor", "patch"],
       "groupSlug": "all-minor-patch",
       "groupName": "all non-major dependencies",
       "schedule": ["before 6:00am on Monday"],
