@@ -8,6 +8,13 @@ const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET']
 const useFirebase = process.env['NEXT_PUBLIC_USE_FIREBASE']
 const isProduction = process.env.NODE_ENV === 'production'
 
+if (!signingKey && !useFirebase) {
+  throw Error('Your JWT_SIGNING_SECRET is invalid')
+}
+if (!adminSecret && !useFirebase) {
+  throw Error('Your HASURA_GRAPHQL_ADMIN_SECRET is invalid')
+}
+
 const app = express()
 app.use(express.json())
 isProduction && app.use(helmet())
