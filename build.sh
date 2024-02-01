@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd src
-npx next out
+npx next build
 
 npx workbox generateSW workbox-config.js
 cp -r out ../out
