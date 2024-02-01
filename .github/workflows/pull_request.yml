@@ -50,18 +50,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2.4.0
-        with:
-          version: latest
-
       - name: Use Node.js
         uses: actions/setup-node@v4
-        with:
-          node-version: latest
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: npm install -g pnpm; pnpm install
 
       - name: Install Hasura CLI
         run: curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
@@ -76,7 +69,7 @@ jobs:
         run: npx cypress install
 
       - name: Run the Jest and Cypress test suites
-        run: pnpm test
+        run: npm run test
 
       - name: Build the Next.js bundle
         run: cd src && npx next build
