@@ -1,10 +1,9 @@
 import { css } from '@emotion/react'
+import axios from 'axios'
 import { useState } from 'react'
 import { toast } from 'react-hot-toast'
-import { GET_PROFILE } from '../../graphql/profile'
+import { getConfig } from '../../helpers/config'
 import { tokenKey } from '../../helpers/constants'
-import { getHasuraClient } from '../../helpers/getHasuraClient'
-import { getJWT } from '../../helpers/getJWT'
 import { getStore } from '../../helpers/getStore'
 import { login } from '../../helpers/login'
 import { Explanation } from '../explanation/Explanation'
@@ -36,17 +35,21 @@ export const TokenLoginButtons = () => {
         onClick={async (e) => {
           e.preventDefault()
           if (token) {
-            const JWT = await getJWT(token)
-            const client = await getHasuraClient(JWT)
-            const response = await client.request(GET_PROFILE, {
-              token,
-            })
-            if (response === undefined || response.profiles.length === 0) {
-              toast.error('No profile matches that token!')
-            } else {
-              localStorage.setItem(tokenKey, token)
-              login()
-              getStore().dispatch('updateUser', { token })
+            try {
+              const response = await axios.post(
+                getConfig().authenticationServerUri + '/login',
+                { token }
+              )
+              if (response.data) {
+                localStorage.setItem('JWT', response.data)
+                localStorage.setItem(tokenKey, token)
+                login()
+                getStore().dispatch('updateUser', { token })
+              } else {
+                toast.error('No matching profile found!')
+              }
+            } catch {
+              toast.error('No matching profile found!')
             }
           } else {
             toast.error('You must enter your token!')

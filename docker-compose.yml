@@ -35,6 +35,21 @@ services:
       database:
         condition: service_healthy
 
+  authentication_server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    restart: always
+    ports:
+      - 3001:3001
+    environment:
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      JWT_SIGNING_SECRET: ${JWT_SIGNING_SECRET}
+      NEXT_PUBLIC_HASURA_DOMAIN: ${NEXT_PUBLIC_HASURA_DOMAIN}
+    depends_on:
+      - database
+      - server
+
   client:
     build:
       context: .

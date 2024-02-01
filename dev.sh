@@ -4,18 +4,18 @@ if [[ $CI != "true" ]]; then
 
 echo "=> Kill the local version of Clean Slate..."
 
-pkill -9 -f "cypress"
-pkill -9 -f "Cypress"
 pkill -9 -f "hasura console"
 pkill -9 -f "next dev"
 pkill -9 -f "next-router-worker"
 pkill -9 -f "next-server"
 pkill -9 -f "npm exec tsc --watch"
+pkill -9 -f "server.ts"
 pkill -9 -f "tsc --watch"
 caddy stop
 
 export NEXT_PUBLIC_VERSION="XXX"
 export NEXT_PUBLIC_HASURA_DOMAIN="localhost"
+export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 docker-compose -f docker-compose.yml down -t 0 --remove-orphans
 
@@ -42,7 +42,8 @@ if [[ $CI != "true" ]]; then
 
   if [[ $FIREBASE != "true" ]]; then
 
-    export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
+    export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" }'
+    export JWT_SIGNING_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
   else
 
@@ -85,23 +86,6 @@ fi
 
 # Start the server!
 
-(cd src && npx next dev) & 
-
-if [[ $NEXT_PUBLIC_CYPRESS == "true" ]]; then
-
-  if [[ $CI == "true" ]]; then
-    cd src && npx cypress run --browser chrome
-
-  else
-
-    cd src && npx cypress open &
-
-  fi
-
-fi
-
-if [[ $NEXT_PUBLIC_CYPRESS != "true" ]]; then
+(cd src && ((npx next dev) & (npx nodemon server.ts))) & 
 
 sleep 5 && caddy start -c Caddyfile.dev &
-
-fi

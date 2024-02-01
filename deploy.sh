@@ -4,9 +4,6 @@
 git pull origin main
 
 # Set the environmental variables
-# Read this file for an explanation of the value of HASURA_GRAPHQL_JWT_SECRET
-# https://github.com/successible/cleanslate/blob/main/src/helpers/getJWT.ts
-export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
 export NEXT_PUBLIC_FIREBASE_CONFIG='{}'
 export NEXT_PUBLIC_LOGIN_WITH_APPLE='no'
 export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='no'
@@ -16,6 +13,7 @@ export NEXT_PUBLIC_REACT_SENTRY_DSN=''
 export NEXT_PUBLIC_USE_FIREBASE='no'
 export $(xargs < .env)
 export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
+export HASURA_GRAPHQL_JWT_SECRET='{"type": "HS256", "key": "'"$JWT_SIGNING_SECRET"'"}'
 
 if [ -n "$COMPOSE_FILE" ]; then
   echo "Deploying with file: $COMPOSE_FILE"

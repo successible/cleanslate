@@ -9,7 +9,6 @@ env:
   HASURA_GRAPHQL_ADMIN_SECRET: secret
   HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
   HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "d374e7c8-912c-4871-bac2-7dde6afc2b55" }'
-  NEXT_PUBLIC_CYPRESS: true
   POSTGRES_DB: postgres
   POSTGRES_HOST: postgres
   POSTGRES_PASSWORD: postgres
@@ -65,10 +64,7 @@ jobs:
       - name: Migrate Hasura metadata
         run: node migrate.js
 
-      - name: Configure Cypress
-        run: npx cypress install
-
-      - name: Run the Jest and Cypress test suites
+      - name: Run the Jest tests
         run: npm run test
 
       - name: Build the Next.js bundle

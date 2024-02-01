@@ -16,6 +16,10 @@
 		# Healthcheck (Hasura).
 		reverse_proxy localhost:8080
 	}
+	route /auth* {
+		# API (Hasura)
+		reverse_proxy localhost:3001
+	}
 	route /* {
 		# Static files (Clean Slate)
 		reverse_proxy localhost:3000
