@@ -40,8 +40,8 @@ export const TokenLoginButtons = () => {
                 getConfig().authenticationServerUri + '/login',
                 { token }
               )
-              if (response.data.jwt) {
-                localStorage.setItem('JWT', response.data.jwt)
+              if (response.data) {
+                localStorage.setItem('JWT', response.data)
                 localStorage.setItem(tokenKey, token)
                 login()
                 getStore().dispatch('updateUser', { token })

@@ -6,6 +6,7 @@ export const clearLoginState = () => {
 
   localStorage.setItem(loginKey, 'null')
   localStorage.setItem(tokenKey, 'null')
+  localStorage.setItem('JWT', 'null')
 
   // Tell the other tab that the user has logged out
   window.dispatchEvent(new Event('storage'))

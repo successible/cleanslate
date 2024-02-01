@@ -43,6 +43,7 @@ if [[ $CI != "true" ]]; then
   if [[ $FIREBASE != "true" ]]; then
 
     export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" }'
+    export JWT_SIGNING_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
   else
 

@@ -21,7 +21,7 @@ if (!domain) {
 
 const app = express()
 app.use(express.json())
-process.env.NODE_ENV === 'production' && app.use(helmet())
+isProduction && app.use(helmet())
 const port = 3001
 
 app.get('/auth', (req, res) => {
@@ -29,14 +29,15 @@ app.get('/auth', (req, res) => {
 })
 
 app.post('/auth/login', async (req, res) => {
-  if (!useFirebase) {
-    res.sendStatus(403).send('This route is disabled when Firebase is active!')
+  if (useFirebase) {
+    return res.sendStatus(403)
   }
 
   const token = req.body.token
   if (!req.body.token) {
-    res.sendStatus(422).send('You must provide a token!')
+    return res.sendStatus(422)
   }
+
   const document = gql`
     query GET_PROFILES($token: String!) {
       profiles(where: { authId: { _eq: $token } }) {
@@ -47,7 +48,9 @@ app.post('/auth/login', async (req, res) => {
   `
   const response: { profiles: [{ authId: string; id: string }] } =
     await request(
-      isProduction ? `https://${domain}/auth` : `https://localhost/auth`,
+      isProduction
+        ? `https://${domain}/v1/graphql`
+        : `https://localhost/v1/graphql`,
       document,
       {
         token,
@@ -68,9 +71,9 @@ app.post('/auth/login', async (req, res) => {
     const JWT = await new jose.SignJWT(customClaims)
       .setProtectedHeader({ alg })
       .sign(secret)
-    res.send(JWT)
+    return res.send(JWT)
   } else {
-    res.sendStatus(500).send('Unauthorized access!')
+    return res.sendStatus(403)
   }
 })
 

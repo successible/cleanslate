@@ -3,7 +3,10 @@ import firebase from 'firebase/compat/app'
 import { useEffect, useState } from 'react'
 import { App } from '../components/app/App'
 import { Login } from '../components/login/Login'
-import { getFirebaseConfig } from '../helpers/getFirebaseConfig'
+import {
+  firebaseEnabled,
+  getFirebaseConfig,
+} from '../helpers/getFirebaseConfig'
 import { getLoginStatus } from '../helpers/getLoginStatus'
 import { isLoadedUser } from '../helpers/isLoadedUser'
 import { useAuthentication } from '../hooks/useAuthentication'
@@ -31,7 +34,7 @@ const Index = () => {
   return (
     <>
       {mounted ? (
-        isLoadedUser(user) || getLoginStatus() ? (
+        (isLoadedUser(user) && firebaseEnabled) || getLoginStatus() ? (
           <App />
         ) : (
           <Login />
