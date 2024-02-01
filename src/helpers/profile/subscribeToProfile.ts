@@ -2,6 +2,7 @@ import { SubscriptionClient } from 'subscriptions-transport-ws'
 import { SUBSCRIBE_TO_DATA } from '../../graphql/profile'
 import { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
+import { firebaseEnabled } from '../getFirebaseConfig'
 import { getStore } from '../getStore'
 import { handleError } from '../handleError'
 import { login } from '../login'
@@ -22,7 +23,10 @@ export const subscribeToProfile = (client: SubscriptionClient) => {
       next: (result) => {
         const newData = result.data as Data
         const store = getStore()
-        if (!newData || !newData.profiles || newData.profiles.length === 0) {
+        if (
+          (!newData || !newData.profiles || newData.profiles.length === 0) &&
+          firebaseEnabled
+        ) {
           createProfile().then(() => {
             login()
             window.location.reload()

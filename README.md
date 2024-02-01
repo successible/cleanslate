@@ -43,6 +43,7 @@ Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and 
 POSTGRES_PASSWORD=<your-desired-password>
 NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
 HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
+JWT_SIGNING_SECRET=<long-secret-value>
 ```
 
 3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. You could also use `nginx`, `apache`, etc. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
@@ -74,6 +75,10 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
     # Health check (Hasura)
     reverse_proxy localhost:8080
   }
+  route /auth* {
+    # Authentication server (Express.js)
+		reverse_proxy localhost:3001
+	}
   route /* {
     # Static files (Clean Slate)
     reverse_proxy localhost:3000
@@ -128,10 +133,16 @@ http {
           proxy_pass http://localhost:8080;
       }
 
+      location /auth {
+        # Authentication server (Express.js)
+		    reverse_proxy localhost:3001
+	    }
+
       location /healthz {
           # Health check (Hasura)
           proxy_pass http://localhost:8080;
       }
+
 
       location / {
           # Static files (Clean Slate)
@@ -145,15 +156,15 @@ http {
 }
 ```
 
-4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the server (Hasura).
+4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the GraphQL server (Hasura). Four, the authentication server (Express.js).
 
 > Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; git pull origin main; bash deploy.sh`
 
-5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) password to log in.
+5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `authId` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure.
 
 6.  You can now log in to `https://<your-domain>` with that password.
 
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, read `CHANGELOG.md`. We will list any breaking changes that have occurred.
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, check GitHub Releases.
 
 ## How do I handle authentication in Clean Slate?
 
@@ -216,6 +227,8 @@ NEXT_PUBLIC_USE_FIREBASE='false'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
 
+- Remove these items from your `.env`: `JWT_SIGNING_SECRET`.
+
 ## How do I contribute to Clean Slate?
 
 Run Clean Slate locally, make changes, and then submit a pull request on GitHub!
@@ -251,7 +264,7 @@ Here is how to run Clean Slate locally:
 POSTGRES_PASSWORD=XXX
 NEXT_PUBLIC_HASURA_DOMAIN=localhost
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
-HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXX" }'
+JWT_SIGNING_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 [^1]: https://caddyserver.com/docs/getting-started
