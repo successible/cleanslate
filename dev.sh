@@ -85,7 +85,7 @@ fi
 
 # Start the server!
 
-(cd src && npx next dev) & 
+(cd src && npx next dev & npx nodemon server.ts) & 
 
 if [[ $NEXT_PUBLIC_CYPRESS == "true" ]]; then
 
