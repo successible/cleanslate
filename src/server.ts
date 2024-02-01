@@ -49,7 +49,7 @@ app.post('/auth/login', async (req, res) => {
   const response: { profiles: [{ authId: string; id: string }] } =
     await request(
       isProduction
-        ? `https://${domain}/v1/graphql`
+        ? `http://graphql-server:8080/v1/graphql`
         : `https://localhost/v1/graphql`,
       document,
       {

@@ -9,6 +9,8 @@ RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
 COPY src/tsconfig.json src/tsconfig.json
 COPY src/server.ts src/server.ts
 
+ENV NODE_ENV "production"
+
 CMD [ "npx", "ts-node", "src/server.ts" ]
 
 EXPOSE 3001

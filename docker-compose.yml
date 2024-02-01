@@ -3,6 +3,7 @@ services:
   database:
     image: postgres:15
     restart: always
+    container_name: database
     environment:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
@@ -13,9 +14,10 @@ services:
       timeout: 5s
       retries: 5
 
-  server:
+  graphql-server:
     image: hasura/graphql-engine:v2.36.0.cli-migrations-v3
     restart: always
+    container_name: graphql-server
     ports:
       - '8080:8080'
     environment:
@@ -34,12 +36,15 @@ services:
     depends_on:
       database:
         condition: service_healthy
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
-  authentication_server:
+  authentication-server:
     build:
       context: .
       dockerfile: Dockerfile.server
     restart: always
+    container_name: authentication-server
     ports:
       - 3001:3001
     environment:
@@ -48,7 +53,9 @@ services:
       NEXT_PUBLIC_HASURA_DOMAIN: ${NEXT_PUBLIC_HASURA_DOMAIN}
     depends_on:
       - database
-      - server
+      - graphql-server
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
   client:
     build:
@@ -65,11 +72,14 @@ services:
         - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE}
         - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
     restart: always
+    container_name: client
     ports:
       - 3000:3000
     depends_on:
       - database
-      - server
+      - graphql-server
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
 
 volumes:
   database:
