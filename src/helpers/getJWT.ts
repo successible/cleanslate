@@ -33,7 +33,6 @@ export const getJWT = async function (token = ''): Promise<string> {
     const JWT = await new jose.SignJWT(customClaims)
       .setProtectedHeader({ alg })
       .sign(secret)
-
     return JWT
   }
 }

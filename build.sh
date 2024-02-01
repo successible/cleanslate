@@ -1,13 +1,13 @@
 #!/bin/bash
 
 cd src
-npx next build
+npx next out
 
 npx workbox generateSW workbox-config.js
-cp -r build ../build
+cp -r out ../out
 cd ..
 
-cp build/service-worker.js build/sw.js
-cp build/service-worker.js.map build/sw.js.map
+cp out/service-worker.js out/sw.js
+cp out/service-worker.js.map out/sw.js.map
 
-echo $NEXT_PUBLIC_VERSION > build/version.txt
+echo $NEXT_PUBLIC_VERSION > out/version.txt

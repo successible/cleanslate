@@ -1,4 +1,6 @@
 build
+out
 src/.next
 src/build
+src/out
 src/public/wasm

@@ -62,8 +62,8 @@ FROM busybox:1.36.1 as runner
 
 # Copy over the built version of Clean Slate
 
-COPY --from=builder build build
+COPY --from=builder out out
 
 # Serve Clean Slate with busybox
 
-CMD ["busybox", "httpd", "-f", "-v", "-p", "3000", "-h", "build"]
+CMD ["busybox", "httpd", "-f", "-v", "-p", "3000", "-h", "out"]

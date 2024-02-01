@@ -7,6 +7,7 @@ Caddyfile
 firebase-config.json
 firebase-debug.log
 node_modules
+out
 src/.next
 src/build
 src/out
