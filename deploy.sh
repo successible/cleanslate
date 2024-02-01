@@ -11,9 +11,9 @@ export NEXT_PUBLIC_LOGIN_WITH_GITHUB='no'
 export NEXT_PUBLIC_LOGIN_WITH_GOOGLE='no'
 export NEXT_PUBLIC_REACT_SENTRY_DSN=''
 export NEXT_PUBLIC_USE_FIREBASE='no'
-export $(xargs < .env)
 export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
 export HASURA_GRAPHQL_JWT_SECRET='{"type": "HS256", "key": "'"$JWT_SIGNING_SECRET"'"}'
+export $(xargs < .env)
 
 if [ -n "$COMPOSE_FILE" ]; then
   echo "Deploying with file: $COMPOSE_FILE"

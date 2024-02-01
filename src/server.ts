@@ -3,20 +3,16 @@ import { gql, request } from 'graphql-request'
 import helmet from 'helmet'
 import * as jose from 'jose'
 
-const signingKey = process.env['JWT_SIGNING_SECRET'] || ''
-const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET'] || ''
-const domain = process.env['NEXT_PUBLIC_HASURA_DOMAIN'] || ''
+const signingKey = process.env['JWT_SIGNING_SECRET']
+const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET']
 const useFirebase = process.env['NEXT_PUBLIC_USE_FIREBASE']
 const isProduction = process.env.NODE_ENV === 'production'
 
-if (!signingKey) {
+if (!signingKey && !useFirebase) {
   throw Error('Your JWT_SIGNING_SECRET is invalid')
 }
-if (!adminSecret) {
+if (!adminSecret && !useFirebase) {
   throw Error('Your HASURA_GRAPHQL_ADMIN_SECRET is invalid')
-}
-if (!domain) {
-  throw Error('Your NEXT_PUBLIC_HASURA_DOMAIN is invalid')
 }
 
 const app = express()
@@ -55,7 +51,7 @@ app.post('/auth/login', async (req, res) => {
       {
         token,
       },
-      { 'X-Hasura-Admin-Secret': adminSecret }
+      { 'X-Hasura-Admin-Secret': adminSecret || '' }
     )
   if (response.profiles.length === 1) {
     const customClaims = {
