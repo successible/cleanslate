@@ -251,6 +251,7 @@ Here is how to run Clean Slate locally:
 POSTGRES_PASSWORD=XXX
 NEXT_PUBLIC_HASURA_DOMAIN=localhost
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
+HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXX" }'
 ```
 
 [^1]: https://caddyserver.com/docs/getting-started
