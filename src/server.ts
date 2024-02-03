@@ -56,7 +56,7 @@ app.post('/auth/login', async (req, res) => {
   if (response.profiles.length === 1) {
     const customClaims = {
       'https://hasura.io/jwt/claims': {
-        'x-hasura-allowed-roles': ['user', 'admin'],
+        'x-hasura-allowed-roles': ['user'],
         'x-hasura-default-role': 'user',
         'x-hasura-user-id': token,
         'x-hasura-username': token,
