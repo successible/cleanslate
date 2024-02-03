@@ -24,7 +24,7 @@ export const handleError = (
   } else if (e.includes(sameEmail)) {
     toast.error(sameEmail)
   } else if (
-    // Example: (reading 'insert_logs_one')
+    e.includes('JWT') ||
     e.includes('Cannot read properties of undefined (reading') ||
     e.includes('the operation is insecure') ||
     // Example: undefined is not an object (evaluating 'e.insert_logs.returning')
@@ -33,6 +33,8 @@ export const handleError = (
     toast.error(logoutMessage)
     logout(false)
     return 0
+  } else {
+    // Do nothing
   }
 
   if (dsn && hideFromSentry !== true) {
