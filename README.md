@@ -29,7 +29,7 @@ To learn more, [visit our website](https://cleanslate.sh) or [watch our demo vid
 
 Nope!
 
-We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login. For example, "Login with Google".
+We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login via Firebase. For example, "Login with Google".
 
 ## How is Clean Slate licensed?
 
