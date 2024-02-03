@@ -2,6 +2,10 @@
 
 ☀️ Track food without judgment.
 
+## Warning
+
+Any self-hosted version of Clean Slate below v2 **that does not use Firebase** is insecure and should upgraded. 
+
 ## What is Clean Slate?
 
 Clean Slate is a free calorie tracker. It is designed for people who struggle with:
