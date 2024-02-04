@@ -2,13 +2,6 @@
 
 ☀️ Track food without judgment.
 
-## Warning
-
-- Any version below v2.0.0 that does not use Firebase. Uses insecure JWTs and should be upgraded.
-- Any version below v2.3.0. Should replace their `Caddyfile` or `nginx.conf` with the more secure version below.
-
-> Note: To upgrade Clean Slate, simply go through the "How do I host Clean Slate?" section again.
-
 ## What is Clean Slate?
 
 Clean Slate is a free calorie tracker. It is designed for people who struggle with:
@@ -170,7 +163,7 @@ http {
 
 6.  You can now log in to `https://<your-domain>` with that password.
 
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, check GitHub Releases.
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, check [GitHub Releases](https://github.com/successible/cleanslate/releases). Here, we list all the changes that Clean Slate has gone through. These include security fixes, bug fixes, enhancements, and any breaking changes.
 
 ## How do I handle authentication in Clean Slate?
 

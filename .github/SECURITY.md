@@ -11,4 +11,4 @@ If you find a vulnerability, **do not create an issue** in GitHub. Instead, emai
 Once, the patch is ready to go, we will:
 
 - Push the code to main and tag it for release.
-- Add a disclosure to the README.md and GitHub Release notes.
+- Add a disclosure to that version on [GitHub Releases](https://github.com/successible/cleanslate/releases).
