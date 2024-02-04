@@ -147,7 +147,6 @@ http {
           proxy_pass http://localhost:8080;
       }
 
-
       location / {
           # Static files (Clean Slate)
           proxy_pass http://localhost:3000;
