@@ -81,8 +81,8 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
   }
   route /auth* {
     # Authentication server (Express.js)
-		reverse_proxy localhost:3001
-	}
+    reverse_proxy localhost:3001
+  }
   route /* {
     # Static files (Clean Slate)
     reverse_proxy localhost:3000
@@ -139,8 +139,8 @@ http {
 
       location /auth {
         # Authentication server (Express.js)
-		    reverse_proxy localhost:3001
-	    }
+           reverse_proxy localhost:3001
+      }
 
       location /healthz {
           # Health check (Hasura)
