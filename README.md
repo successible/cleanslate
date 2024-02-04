@@ -4,8 +4,8 @@
 
 ## Warning
 
-- Any version below v2.0.0 **that does not use Firebase** uses insecure JWTs and should be upgraded.
-- Any version below v2.2.0 should replace their `Caddyfile` or `nginx.conf` with the more secure version below.
+- Any version below v2.0.0 that does not use Firebase uses insecure JWTs and should be upgraded.
+- Any version below v2.3.0 should replace their `Caddyfile` or `nginx.conf` with the more secure version below.
 
 > Note: To upgrade Clean Slate, simply go through the "How do I host Clean Slate?" section again.
 
