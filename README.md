@@ -4,7 +4,7 @@
 
 ## Warning
 
-Any version of Clean Slate below v2 **that does not use Firebase** uses insecure JWTs and should be upgraded.
+Any version of Clean Slate below v2 **that does not use Firebase** uses insecure JWTs and should be upgraded. You can do this by going through the "How do I host Clean Slate?" section below.
 
 ## What is Clean Slate?
 
