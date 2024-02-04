@@ -21,6 +21,12 @@ It can do stuff like:
 
 To learn more, [visit our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/wCoqpIImNdg).
 
+## Where can I see the updates to Clean Slate?
+
+On our [GitHub Releases](https://github.com/successible/cleanslate/releases) page!
+
+Here, we list all the changes that Clean Slate has gone through in each version. These include security fixes, bug fixes, and enhancements. They also include breaking changes, and the associated steps to migrate. All of this information is especially important for people who want to host Clean Slate on their own.
+
 ## Do I need to host Clean Slate to use it?
 
 Nope!
@@ -33,7 +39,7 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-Hosting Clean Slate is easy. You just need a Linux server with Git, Docker, and Docker Compose installed.
+Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed.
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
@@ -46,7 +52,7 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 JWT_SIGNING_SECRET=<long-secret-value>
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. You could also use `nginx`, `apache`, etc. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
+3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
@@ -163,7 +169,7 @@ http {
 
 6.  You can now log in to `https://<your-domain>` with that password.
 
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Before you deploy, check [GitHub Releases](https://github.com/successible/cleanslate/releases). Here, we list all the changes that Clean Slate has gone through. These include security fixes, bug fixes, enhancements, and any breaking changes.
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy!
 
 ## How do I handle authentication in Clean Slate?
 
