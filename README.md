@@ -25,7 +25,7 @@ To learn more, [visit our website](https://cleanslate.sh) or [watch our demo vid
 
 On our [GitHub Releases](https://github.com/successible/cleanslate/releases) page!
 
-Here, we list all the changes that Clean Slate has gone through in each version. These include security fixes, bug fixes, and enhancements. They also include breaking changes, and the associated steps to migrate. All of this information is especially important for people who want to host Clean Slate on their own.
+Here, we list all the changes that Clean Slate has gone through in each version. Each version outlines any security fixes, bug fixes, and enhancements. It also outlines any breaking changes, and the associated steps to migrate. All of this information is especially important for people who want to host Clean Slate on their own.
 
 ## Do I need to host Clean Slate to use it?
 
