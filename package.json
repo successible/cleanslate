@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "bash dev.sh",
-    "lint": "bash -e lint.sh --format",
+    "lint": "pnpm install && bash -e lint.sh --format",
     "proxy": "bash proxy.sh",
     "test": "jest"
   },
