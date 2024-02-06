@@ -19,7 +19,7 @@ It can do stuff like:
 - Scan barcodes
 - Track exercise
 
-To learn more, [visit our website](https://cleanslate.sh) or [watch our demo video](https://youtu.be/wCoqpIImNdg).
+To learn more, [visit our website](https://cleanslate.sh) or [watch the demo video](https://youtu.be/wCoqpIImNdg).
 
 ## Where can I see the updates to Clean Slate?
 
