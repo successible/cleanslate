@@ -10,7 +10,7 @@ import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import { CommonItem } from '../item/types'
 import { Meta } from '../item-modal/components/Meta'
 import { SubmitButton } from '../item-modal/components/SubmitButton'
-import { updateUnitLogsOnCloud } from '../list/Unit/helpers/updateUnitLogsOnCloud'
+import { updateUnitLogsOnCloud } from '../../helpers/quick-log/updateUnitLogsOnCloud'
 
 type props = { profile: Profile; logs: Log[]; item: CommonItem | undefined }
 export const UnitModal: React.FC<props> = ({ item, logs, profile }) => {

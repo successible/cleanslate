@@ -31,6 +31,7 @@ export type CommonItem = {
   amount: number | null
   barcode: Barcode | null
   basicFood: string | null
+  calories: number | null
   childRecipe: Recipe | null
   consumed: boolean | null
   createdAt: Date | null
@@ -41,6 +42,7 @@ export type CommonItem = {
   onDelete: OnDeleteItem | null
   onUpdate: OnUpdateItem | null
   profile: Profile | null
+  protein: number | null
   recipe: Recipe | null
   src: string | null
   type: ItemType

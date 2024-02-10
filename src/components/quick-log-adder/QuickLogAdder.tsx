@@ -2,30 +2,21 @@ import { css } from '@emotion/react'
 import React from 'react'
 import toast from 'react-hot-toast'
 import { useStoreon } from 'storeon/react'
-import { Profile } from '../../models/profile'
-import { DataEvents } from '../../store/data/types'
-import { EditorEvents } from '../../store/editor/types'
-import { NavbarEvents, NavbarState } from '../../store/navbar/types'
-import { Dispatch } from '../../store/types'
+import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
+import { NavbarState } from '../../store/navbar/types'
 import { colors } from '../../theme'
 import { SubmitButton } from '../item-modal/components/SubmitButton'
-import { addQuickAddLog } from '../standard-adder/helpers/addQuickAddLog'
 
-type props = { profile: Profile }
-export const QuickAdder: React.FC<props> = ({ profile }) => {
-  const { enablePlanning } = profile
+export const QuickLogAdder: React.FC = () => {
   const [calories, setCalories] = React.useState(null as number | string | null)
   const [protein, setProtein] = React.useState(null as number | string | null)
+  const [name, setName] = React.useState('')
 
   const inputToFocus = React.useRef<HTMLInputElement>(null)
 
   const {
-    dispatch,
     navbar,
   }: {
-    dispatch: Dispatch<
-      keyof NavbarEvents | keyof DataEvents | keyof EditorEvents
-    >
     navbar: NavbarState
   } = useStoreon('navbar')
 
@@ -48,13 +39,13 @@ export const QuickAdder: React.FC<props> = ({ profile }) => {
     border: 0;
     border-radius: 0;
     height: 60px;
+    border-right: 1px solid ${colors.lightgrey};
+
     &:focus {
       font-weight: 400;
     }
-    &:first-of-type {
-      border-right: 1px solid ${colors.lightgrey};
-    }
-    &:nth-of-type(2) {
+
+    &:nth-of-type(3) {
       padding-left: 30px;
     }
   `
@@ -66,12 +57,7 @@ export const QuickAdder: React.FC<props> = ({ profile }) => {
         if (!calories && !protein) {
           toast.error('You must include a value!')
         } else {
-          addQuickAddLog(
-            Number(calories),
-            Number(protein),
-            enablePlanning,
-            dispatch
-          )
+          addQuickLogToCloud(name, Number(calories), Number(protein))
         }
       }}
       css={form}
@@ -82,7 +68,7 @@ export const QuickAdder: React.FC<props> = ({ profile }) => {
         autoComplete={'off'}
         autoCorrect={'off'}
         css={input}
-        className={`w50`}
+        className={`w33`}
         id="calories"
         inputMode="decimal"
         onChange={(event) => {
@@ -94,12 +80,13 @@ export const QuickAdder: React.FC<props> = ({ profile }) => {
         type="number"
         value={calories || ''}
       />
+
       <input
         autoCapitalize={'off'}
         autoComplete={'off'}
         autoCorrect={'off'}
         css={input}
-        className={`w50`}
+        className={`w33`}
         id="protein"
         inputMode="decimal"
         onChange={(event) => {
@@ -109,6 +96,23 @@ export const QuickAdder: React.FC<props> = ({ profile }) => {
         step="any"
         type="number"
         value={protein || ''}
+      />
+
+      <input
+        autoCapitalize={'off'}
+        autoComplete={'off'}
+        autoCorrect={'off'}
+        css={input}
+        className={`w33`}
+        id="name"
+        onChange={(event) => {
+          setName(event.target.value)
+        }}
+        placeholder="Food"
+        step="any"
+        type="string"
+        value={name || ''}
+        required
       />
 
       <SubmitButton

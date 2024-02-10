@@ -1,8 +1,6 @@
 import { css } from '@emotion/react'
 import groupBy from 'lodash.groupby'
 import React from 'react'
-import { quickAddUnits } from '../../../constants/units'
-import { Unit } from '../../../constants/units'
 import { profileIsLoaded } from '../../../helpers/profileIsLoaded'
 import { Food } from '../../../models/food'
 import { Log, Meal, MealEnum } from '../../../models/log'
@@ -21,11 +19,8 @@ type props = {
 
 export const LogList: React.FC<props> = (props) => {
   const { logs, profile } = props
-  const units: Unit[] = quickAddUnits
 
-  const logsToUse = sortByCreatedAt(
-    [...logs].filter((log) => !units.includes(log.unit))
-  ) as Log[]
+  const logsToUse = sortByCreatedAt(logs) as Log[]
 
   const groupedLogs = groupBy(logsToUse, 'meal')
   const consumptionByGroup: Record<Meal, boolean> = {

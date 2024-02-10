@@ -26,7 +26,7 @@ import { RecipeList } from '../list/Recipe/RecipeList'
 import { Menu } from '../menu/Menu'
 import { Modal } from '../modal/Modal'
 import { PWAPrompt } from '../pwa-prompt/PWAPrompt'
-import { QuickAdder } from '../quick-adder/QuickAdder'
+import { QuickLogAdder } from '../quick-log-adder/QuickLogAdder'
 import { Settings } from '../settings/Settings'
 import { StandardAdder } from '../standard-adder/StandardAdder'
 import { UnitModal } from '../unit-modal/UnitModal'
@@ -121,7 +121,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.quickAddModalVisibility"
       visible={quickAddModalVisibility}
     >
-      <QuickAdder profile={profile} />
+      <QuickLogAdder />
     </Modal>,
 
     // Sidebar

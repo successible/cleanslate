@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
 import truncate from 'lodash.truncate'
-import { quickAddUnits } from '../../../constants/units'
 import { capitalize } from '../../../helpers/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'
-import { blue, colors, green } from '../../../theme'
+import { blue, green } from '../../../theme'
+import { QuickLogMacros } from '../../macros/QuickLogMacros'
 import { getNameAndTags, TRUNCATE_LENGTH } from '../helpers/getNameAndTags'
 import { renderMacros } from '../helpers/renderMacros'
 import { spawnItemEditModal } from '../helpers/spawnItemEditModal'
@@ -47,9 +47,11 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
     alias,
     amount,
     barcode,
+    calories,
     food,
     name,
     profile,
+    protein,
     recipe,
     src,
     type,
@@ -73,8 +75,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
   )
 
   const truncateLength =
-    (type === 'log' && unit && !quickAddUnits.includes(unit)) ||
-    type === 'ingredient'
+    (type === 'log' && unit) || type === 'ingredient'
       ? TRUNCATE_LENGTH - 11
       : TRUNCATE_LENGTH - 5
 
@@ -100,9 +101,6 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
                     : 'auto'};
                   justify-content: center;
                   white-space: nowrap;
-                  width: ${unit && quickAddUnits.includes(unit)
-                    ? '125px'
-                    : undefined};
                 `,
               ]}
             >
@@ -122,29 +120,6 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
                 {<UnitInput item={item} unit={unit} />})
               </div>
             )}
-
-            {type === 'unit' && (
-              <div
-                className="fr ml5"
-                css={css`
-                  font-size: 13px !important;
-                  background-color: ${unit === 'PROTEIN'
-                    ? colors.blue
-                    : colors.green};
-                  padding: 5px;
-                  border-radius: 5px;
-                  min-width: 40px;
-                `}
-              >
-                <div
-                  css={css`
-                    margin: 0px auto;
-                  `}
-                >
-                  <Amount amount={amount} />
-                </div>
-              </div>
-            )}
           </div>
           <div>
             <Tags tags={result.tags} />
@@ -152,6 +127,13 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
           {!isCustomFood && !isRecipe && profile && (
             <div className="fr">
               <div className="mt5">{renderMacros(item, profile)}</div>
+            </div>
+          )}
+          {type === 'quick-log' && (
+            <div className="fr">
+              <div className="mt10">
+                <QuickLogMacros protein={protein} calories={calories} />{' '}
+              </div>
             </div>
           )}
           {item.type === 'log' && item.profile?.enablePlanning && (

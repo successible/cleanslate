@@ -53,6 +53,22 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     )
   })
 
+  store.on('addQuickLogs', (state, quick_logs) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        draft.data.profiles[0].quick_logs.push(...quick_logs)
+      })
+    )
+  })
+
+  store.on('addExerciseLogs', (state, exercise_logs) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        draft.data.profiles[0].exercise_logs.push(...exercise_logs)
+      })
+    )
+  })
+
   store.on('updateLog', (state, updatedLog) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {

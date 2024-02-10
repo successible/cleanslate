@@ -1,8 +1,8 @@
-import { QuickAddUnit } from '../../../../constants/units'
-import { handleError } from '../../../../helpers/handleError'
-import { addQuickLogToCloud } from '../../../../helpers/log/addQuickLogToCloud'
-import { deleteLogsOnCloud } from '../../../../helpers/log/deleteLogsOnCloud'
-import { Log } from '../../../../models/log'
+import { QuickAddUnit } from '../../constants/units'
+import { Log } from '../../models/log'
+import { handleError } from '../handleError'
+import { deleteLogsOnCloud } from '../log/deleteLogsOnCloud'
+import { addQuickLogToCloud } from './addQuickLogToCloud'
 
 export const updateUnitLogsOnCloud = async (
   logs: Log[],

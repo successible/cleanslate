@@ -70,12 +70,20 @@ export const SUBSCRIBE_TO_DATA = gql`
         ...food
       }
 
+      recipes {
+        ...recipe
+      }
+
       logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
         ...log
       }
 
-      recipes {
-        ...recipe
+      quick_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+        ...quick_log
+      }
+
+      exercise_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+        ...exercise_log
       }
     }
   }

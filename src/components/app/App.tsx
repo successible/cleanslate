@@ -12,13 +12,22 @@ import { Body } from '../body/Body'
 import { BottomBar } from '../bottom-bar/BottomBar'
 import { BottomBarButtons } from '../bottom-bar-buttons/BottomBarButtons'
 import { LogList } from '../list/Log/LogList'
-import { UnitList } from '../list/Unit/UnitList'
+import { QuickLogList } from '../list/QuickLog/QuickLogList'
 import Modals from '../modals/Modals'
 import { Numbers } from '../numbers/Numbers'
 import { TopBar } from '../top-bar/TopBar'
 
 export const App = () => {
-  const { dispatch, foods, logs, offline, profile, recipes } = useData()
+  const {
+    dispatch,
+    exercise_logs,
+    foods,
+    logs,
+    offline,
+    profile,
+    quick_logs,
+    recipes,
+  } = useData()
   const user = useUser()
 
   useStartTime()
@@ -53,7 +62,7 @@ export const App = () => {
       </TopBar>
 
       <Body navbar={navbarHeight} footer={footerHeight} profile={profile}>
-        <UnitList logs={logs} />
+        <QuickLogList quick_logs={quick_logs} />
         <LogList profile={profile} logs={logs} foods={foods} />
       </Body>
 
