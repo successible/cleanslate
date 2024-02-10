@@ -20,7 +20,7 @@ type props = {
   item: CommonItem | undefined
 }
 
-export const ItemModal: React.FC<props> = ({ item, profile }) => {
+export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
   const { convertBetweenUnits, enablePlanning } = profile
   // Extract information from props

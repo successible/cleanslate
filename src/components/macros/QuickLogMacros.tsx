@@ -12,7 +12,7 @@ type props = {
 export const QuickLogMacros: React.FC<props> = ({ calories, protein }) => {
   const showTitles = false
   return (
-    <div id="macros" css={macros}>
+    <div className="mt10" id="macros" css={macros}>
       <div className="fr">
         <div id="MacrosCalories" className="fr">
           <Image width={10} height={10} alt="Fire" src={CalMini} />

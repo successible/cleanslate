@@ -5,7 +5,7 @@ import { useStoreon } from 'storeon/react'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
 import { NavbarState } from '../../store/navbar/types'
 import { colors } from '../../theme'
-import { SubmitButton } from '../item-modal/components/SubmitButton'
+import { SubmitButton } from '../item-update-modal/components/SubmitButton'
 
 export const QuickLogAdder: React.FC = () => {
   const [calories, setCalories] = React.useState(null as number | string | null)
@@ -25,7 +25,6 @@ export const QuickLogAdder: React.FC = () => {
     // Clear the numbers when the components mounts and unmounts
     setCalories(null)
     setProtein(null)
-
     if (inputToFocus.current && navbar.quickAddModalVisibility) {
       inputToFocus.current?.focus()
     }
@@ -108,11 +107,10 @@ export const QuickLogAdder: React.FC = () => {
         onChange={(event) => {
           setName(event.target.value)
         }}
-        placeholder="Food"
+        placeholder="Food (Optional)"
         step="any"
         type="string"
         value={name || ''}
-        required
       />
 
       <SubmitButton

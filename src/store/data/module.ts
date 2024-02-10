@@ -81,6 +81,18 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     )
   })
 
+  store.on('updateQuickLog', (state, updatedQuickLog) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        const quick_logs = state.data.profiles[0].quick_logs
+        const newQuickLogs = quick_logs.map((quickLog) =>
+          quickLog.id === updatedQuickLog.id ? updatedQuickLog : quickLog
+        )
+        draft.data.profiles[0].quick_logs = newQuickLogs
+      })
+    )
+  })
+
   store.on('removeLogsById', (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {

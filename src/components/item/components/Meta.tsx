@@ -131,7 +131,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
           )}
           {type === 'quick-log' && (
             <div className="fr">
-              <div className="mt10">
+              <div className="mt5">
                 <QuickLogMacros protein={protein} calories={calories} />{' '}
               </div>
             </div>

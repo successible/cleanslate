@@ -4,6 +4,7 @@ import { defaultMeal } from '../../../models/log'
 import { CommonItem } from '../types'
 
 const defaultOnDelete = (id?: string) => {}
+
 const defaultOnUpdate = (
   id: string | null,
   unit: Unit | null,

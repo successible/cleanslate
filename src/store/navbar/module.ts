@@ -131,12 +131,16 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     })
   })
 
-  store.on('closeUnitModal', (state) => {
-    return updateModal(state, 'navbar.unitModalVisibility', false)
+  store.on('closeQuickLogEditModal', (state) => {
+    return updateModal(state, 'navbar.quickLogEditModalVisibility', false)
   })
 
-  store.on('openUnitModal', (state, event) => {
-    const newState = updateModal(state, 'navbar.unitModalVisibility', true)
+  store.on('openQuickLogEditModal', (state, event) => {
+    const newState = updateModal(
+      state,
+      'navbar.quickLogEditModalVisibility',
+      true
+    )
     return produce(newState, (draft) => {
       draft.navbar.itemToUpdate = event
     })

@@ -39,7 +39,7 @@ export type NavbarState = {
   recipeToUpdate: string | null
   settingsModalVisibility: boolean
   targetModalVisibility: boolean
-  unitModalVisibility: boolean
+  quickLogEditModalVisibility: boolean
   user: UserStatus
 }
 
@@ -67,7 +67,7 @@ export type NavbarEvents = {
   closeSupportModal: undefined
   closeTargetModal: undefined
   closeTherapyModal: undefined
-  closeUnitModal: undefined
+  closeQuickLogEditModal: undefined
   isOffline: boolean
   openAddIngredientModal: string | null
   openBarcodeModal: undefined
@@ -88,7 +88,7 @@ export type NavbarEvents = {
   openRecipeModal: undefined
   openSettingsModal: undefined
   openTargetModal: undefined
-  openUnitModal: CommonItem
+  openQuickLogEditModal: CommonItem
   setFoodToUpdate: string
   setItemToUpdate: CommonItem
   updateUser: User | null

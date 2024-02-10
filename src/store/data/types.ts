@@ -42,6 +42,7 @@ export type DataEvents = {
   updateCurrentWebsocketClient: SubscriptionClient | null
   updateLog: Log
   updateProfile: Profile[]
+  updateQuickLog: QuickLog
 }
 
 export type DataEventsKeys = keyof DataEvents

@@ -1,5 +1,5 @@
 import React from 'react'
-import { SubmitButton } from '../../item-modal/components/SubmitButton'
+import { SubmitButton } from '../../item-update-modal/components/SubmitButton'
 
 type props = {
   showSubmit: boolean

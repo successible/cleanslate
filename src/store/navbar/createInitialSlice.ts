@@ -32,7 +32,7 @@ export const createInitialSlice = (): NavbarSlice => {
       recipeToUpdate: null,
       settingsModalVisibility: false,
       targetModalVisibility: false,
-      unitModalVisibility: false,
+      quickLogEditModalVisibility: false,
       user: 'PENDING',
     },
   }

@@ -20,16 +20,16 @@ import { TargetForm } from '../forms/TargetForm/TargetForm'
 import { Help } from '../help/Help'
 import { InformationModal } from '../information-modal/InformationModal'
 import { IngredientModal } from '../ingredient-modal/IngredientModal'
-import { ItemModal } from '../item-modal/ItemModal'
+import { ItemUpdateModal } from '../item-update-modal/ItemUpdateModal'
 import { FoodList } from '../list/Food/FoodList'
 import { RecipeList } from '../list/Recipe/RecipeList'
 import { Menu } from '../menu/Menu'
 import { Modal } from '../modal/Modal'
 import { PWAPrompt } from '../pwa-prompt/PWAPrompt'
 import { QuickLogAdder } from '../quick-log-adder/QuickLogAdder'
+import { QuickLogUpdateModal } from '../quick-log-update-modal/QuickLogUpdateModal'
 import { Settings } from '../settings/Settings'
 import { StandardAdder } from '../standard-adder/StandardAdder'
-import { UnitModal } from '../unit-modal/UnitModal'
 import { getOrderedModals } from './getOrderedModal'
 import { getErrorStyling, modalContainerStyling } from './styling'
 
@@ -40,7 +40,7 @@ type props = {
   logs: Log[]
 }
 
-const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
+const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
   const {
     navbar,
   }: {
@@ -74,7 +74,7 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
     recipeToUpdate,
     settingsModalVisibility,
     targetModalVisibility,
-    unitModalVisibility,
+    quickLogEditModalVisibility,
   } = navbar
 
   const editorStyling = css`
@@ -304,18 +304,18 @@ const Modals: React.FC<props> = ({ foods, logs, profile, recipes }) => {
       name="navbar.itemModalVisibility"
       visible={itemModalVisibility}
     >
-      <ItemModal item={itemToUpdate} profile={profile} />
+      <ItemUpdateModal item={itemToUpdate} profile={profile} />
     </Modal>,
     <Modal // unit-modal
       id={'unit-modal'}
       closeIcon={true}
       closeModal={() => {
-        dispatch('closeUnitModal')
+        dispatch('closeQuickLogEditModal')
       }}
-      name="navbar.unitModalVisibility"
-      visible={unitModalVisibility}
+      name="navbar.quickLogEditModalVisibility"
+      visible={quickLogEditModalVisibility}
     >
-      <UnitModal profile={profile} item={itemToUpdate} logs={logs} />
+      <QuickLogUpdateModal profile={profile} item={itemToUpdate} />
     </Modal>,
     <Modal
       closeModal={() => {
