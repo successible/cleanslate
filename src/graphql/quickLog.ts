@@ -22,3 +22,10 @@ export const CREATE_QUICK_LOG = gql`
     }
   }
 `
+export const DELETE_QUICK_LOG = gql`
+  mutation DELETE_QUICK_LOG($id: uuid!) {
+    delete_quick_logs_by_pk(id: $id) {
+      id
+    }
+  }
+`

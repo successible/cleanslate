@@ -1,5 +1,6 @@
 import React from 'react'
 import Lightning from '../../../assets/common/lightning.svg'
+import { deleteQuickLogOnCloud } from '../../../helpers/quick-log/deleteQuickLogOnCloud'
 import { QuickLog } from '../../../models/quickLog'
 import { Item } from '../../item/Item'
 
@@ -7,7 +8,9 @@ export const UnitItem: React.FC<{ quick_log: QuickLog }> = (props) => {
   const { quick_log } = props
   const { calories, createdAt, id, name, protein } = quick_log
 
-  const onDelete = () => {}
+  const onDelete = () => {
+    deleteQuickLogOnCloud(id, () => {})
+  }
 
   const src = Lightning.src
 

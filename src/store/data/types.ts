@@ -33,14 +33,15 @@ export type DataSlice = {
 }
 
 export type DataEvents = {
+  addExerciseLogs: ExerciseLog[]
   addLogs: Log[]
   addQuickLogs: QuickLog[]
-  addExerciseLogs: ExerciseLog[]
-  updateLog: Log
-  removeLogsById: string[]
-  updateProfile: Profile[]
-  updateCurrentWebsocketClient: SubscriptionClient | null
   clearData: null
+  removeLogsById: string[]
+  removeQuickLogsById: string[]
+  updateCurrentWebsocketClient: SubscriptionClient | null
+  updateLog: Log
+  updateProfile: Profile[]
 }
 
 export type DataEventsKeys = keyof DataEvents
