@@ -37,7 +37,7 @@ export const TokenLoginButtons = () => {
           if (token) {
             try {
               const response = await axios.post(
-                getConfig().authenticationServerUri + '/login',
+                getConfig().authenticationServerUri + '/session',
                 { token }
               )
               if (response.data) {

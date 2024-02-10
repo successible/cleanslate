@@ -26,19 +26,19 @@ app.get('/auth', (req, res) => {
   res.send('The server is healthy!')
 })
 
-app.post('/auth/login', async (req, res) => {
-  if (useFirebase) {
-    return res.sendStatus(403)
-  }
-
+app.post('/auth/session', async (req, res) => {
   const token = req.body.token
   if (!req.body.token) {
     return res.sendStatus(422)
   }
 
   const document = gql`
-    query GET_PROFILES($token: String!) {
-      profiles(where: { authId: { _eq: $token } }) {
+    query GET_PROFILES($token: String!, $apiToken: uuid!) {
+      profiles(
+        where: {
+          _or: [{ authId: { _eq: $token } }, { apiToken: { _eq: $apiToken } }]
+        }
+      ) {
         authId
         id
       }
@@ -51,6 +51,7 @@ app.post('/auth/login', async (req, res) => {
         : `https://localhost/v1/graphql`,
       document,
       {
+        apiToken: token,
         token,
       },
       { 'X-Hasura-Admin-Secret': adminSecret || '' }
