@@ -20,6 +20,7 @@ if (!adminSecret && !useFirebase) {
 const app = express()
 app.use(express.json())
 isProduction && app.use(helmet())
+
 const port = 3001
 const graphqlUrl = isProduction
   ? `http://graphql-server:8080/v1/graphql`
@@ -27,12 +28,8 @@ const graphqlUrl = isProduction
 
 const getProfiles = async (token: string) => {
   const document = gql`
-    query GET_PROFILES($token: String!, $apiToken: uuid!) {
-      profiles(
-        where: {
-          _or: [{ authId: { _eq: $token } }, { apiToken: { _eq: $apiToken } }]
-        }
-      ) {
+    query GET_PROFILES($apiToken: uuid!) {
+      profiles(where: { apiToken: { _eq: $apiToken } }) {
         authId
         id
       }
@@ -44,7 +41,6 @@ const getProfiles = async (token: string) => {
       document,
       {
         apiToken: token,
-        token,
       },
       { 'X-Hasura-Admin-Secret': adminSecret || '' }
     )
@@ -112,6 +108,11 @@ app.post('/auth/graphql', async (req, res) => {
   } else {
     return res.sendStatus(403)
   }
+})
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((err: any, req: any, res: any, next: any) => {
+  res.status(500).send(String(err))
 })
 
 app.listen(port, () => {
