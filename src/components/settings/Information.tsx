@@ -4,6 +4,7 @@ import Switch from 'react-switch'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import { useUser } from '../../hooks/useUser'
 import { Profile } from '../../models/profile'
+import { Explanation } from '../explanation/Explanation'
 import { subheader } from './Settings'
 
 type props = { profile: Profile }
@@ -51,6 +52,20 @@ export const Information: React.FC<props> = ({ profile }) => {
           <strong className="mr5">Version:</strong>
           {process.env.NEXT_PUBLIC_VERSION}
         </>
+      </div>
+      <div className="ml5 mt5">
+        <>
+          <strong className="mr5">API token:</strong>
+          {profile.apiToken}
+        </>
+        <Explanation color="background">
+          <div>
+            To learn how to make an API request,{' '}
+            <a href="https://studio.apollographql.com/graph/Clean-Slate/variant/current/home">
+              read the docs.
+            </a>
+          </div>
+        </Explanation>
       </div>
 
       <div

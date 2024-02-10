@@ -171,6 +171,10 @@ http {
 
 7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy!
 
+## How can I make an API request to Clean Slate?
+
+Check out the API documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home).
+
 ## How do I handle authentication in Clean Slate?
 
 ### Default: Authentication via authId
@@ -181,10 +185,18 @@ However, Firebase is too complex for the most common hosting scenario. That is a
 
 ### Optional: Authentication via Firebase
 
-- Create a new Firebase project.
-- Enable Firebase authentication.
-- Enable the Google provider in Firebase.
-- Create your `.firebaserc` locally in the root with the following content. Example:
+Firebase needs to be configured in three places:
+
+- Your local machine (Local)
+- Your production server (Production)
+- The Firebase console (Web)
+
+Here is how you do it:
+
+- Web: Create a new Firebase project.
+- Web: Enable Firebase authentication.
+- Web: Enable the Google provider in Firebase.
+- Local: Create your `.firebaserc` in the root with the following content. Example:
 
 ```json
 {
@@ -194,7 +206,7 @@ However, Firebase is too complex for the most common hosting scenario. That is a
 }
 ```
 
-- Create a `firebase-config.json` locally filled with the content of `firebaseConfig`. You can find that on your Project Settings page on Firebase.
+- Local: Create a `firebase-config.json` locally filled with the content of `firebaseConfig`. You can find that on your Project Settings page on Firebase.
 
 ```json
 {
@@ -207,20 +219,11 @@ However, Firebase is too complex for the most common hosting scenario. That is a
 }
 ```
 
-- Login with Firebase locally via `npx firebase login`.
-- Run `npx firebase deploy --only functions`. This will deploy Firebase functions in `/functions`.
+- Local: Login with Firebase via `npx firebase login`.
 
-You can now run Firebase locally or in production with these last steps.
+- Local: Run `npx firebase deploy --only functions`. This will deploy Firebase functions in `/functions`.
 
-Locally (Linux or Mac):
-
-- Install [jq](https://stedolan.github.io/jq/download/)
-- Mac only: Install and use GNU [sed](https://formulae.brew.sh/formula/gnu-sed)
-- Run `export FIREBASE='true'; npm run dev`
-
-Production (Linux):
-
-- Add these items to your `.env` as outlined below. Replace `<XXX>` with your own values. You can find your project config in your Firebase project settings. Do not add these values unless you are doing authentication via Firebase.
+- Production: Add these items to your `.env` on your production server. Replace `<XXX>` with your own values. You can find your project config in your Firebase project settings. Do not add these values unless you are doing authentication via Firebase.
 
 ```bash
 NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
@@ -228,11 +231,11 @@ NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
 NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
 NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
 NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
-NEXT_PUBLIC_USE_FIREBASE='false'
+NEXT_PUBLIC_USE_FIREBASE='true'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
 
-- Remove these items from your `.env`: `JWT_SIGNING_SECRET`.
+- Production: Remove these items from your `.env`: `JWT_SIGNING_SECRET`.
 
 ## How do I contribute to Clean Slate?
 
@@ -259,6 +262,8 @@ Here is how to run Clean Slate locally:
   - PostgreSQL: `http://localhost:1270`
 
 - Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
+
+> Note: To run Clean Slate with Firebase, do all the `Local` and `Web` outlined above. Install [jq](https://jqlang.github.io/jq/download/) locally. Finally, tweak the development command. Run `export FIREBASE='true'; pnpm dev` instead.
 
 > Note: To test the deployment process, run `git pull origin main; bash deploy.sh`. Make sure to create the `.env` (below) and `Caddyfile` (above) first.
 

@@ -44,6 +44,25 @@ array_relationships:
         table:
           name: recipes
           schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        authId:
+          _eq: X-Hasura-User-Id
+      columns:
+        - authId
+        - calorieTarget
+        - convertBetweenUnits
+        - countDown
+        - enablePlanning
+        - hidePWAPrompt
+        - metricSystem
+        - proteinTarget
+        - showCalories
+        - showDensities
+        - startTime
+        - timezone
 select_permissions:
   - role: user
     permission:
