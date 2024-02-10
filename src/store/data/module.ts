@@ -93,6 +93,20 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     )
   })
 
+  store.on('updateExerciseLog', (state, updatedExerciseLog) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        const exercise_logs = state.data.profiles[0].exercise_logs
+        const newExerciseLogs = exercise_logs.map((exerciseLog) =>
+          exerciseLog.id === updatedExerciseLog.id
+            ? updatedExerciseLog
+            : exerciseLog
+        )
+        draft.data.profiles[0].exercise_logs = newExerciseLogs
+      })
+    )
+  })
+
   store.on('removeLogsById', (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
@@ -111,6 +125,18 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
           (quick_log) => !ids.includes(quick_log.id)
         )
         draft.data.profiles[0].quick_logs = newQuickLogs
+      })
+    )
+  })
+
+  store.on('removeExerciseLogsById', (state, ids) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        const exercise_logs = state.data.profiles[0].exercise_logs
+        const newExerciseLogs = exercise_logs.filter(
+          (exercise_log) => !ids.includes(exercise_log.id)
+        )
+        draft.data.profiles[0].exercise_logs = newExerciseLogs
       })
     )
   })

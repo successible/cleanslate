@@ -1,12 +1,9 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
-import { QuickAddUnit } from '../../../constants/units'
-import { addQuickLogToCloud } from '../../../helpers/quick-log/addQuickLogToCloud'
+import { addExerciseLogToCloud } from '../../../helpers/exercise-log/addExerciseLogToCloud'
+import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { round } from '../../../helpers/round'
 import { Profile } from '../../../models/profile'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
 import { md } from '../../../theme'
 import {
   LiftingActivity,
@@ -52,12 +49,6 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
   const [liftingActivity, setLiftingActivity] = React.useState(
     'Machines' as LiftingActivity
   )
-
-  const {
-    dispatch,
-  }: {
-    dispatch: Dispatch<AllEvents>
-  } = useStoreon()
 
   const groupButtonStyling = css`
     min-width: 20%;
@@ -112,7 +103,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
           // If MET === -1, then no valid MET was found
           // Thus, we definitely don't want to submit a request using a bad MET!
           if (MET !== -1) {
-            const caloriesBurned =
+            const amount =
               // Custom is when the user just adds the calories directly
               // Hence, you don't need to calculate calories from METS
               exerciseGroup === 'Custom'
@@ -125,17 +116,23 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
                     Number(minutes),
                     MET
                   )
-
-            const variables = {
-              objects: [
-                {
-                  amount: round(caloriesBurned, 0),
-                  unit: 'EXERCISE' as QuickAddUnit,
-                },
-              ],
-            }
-            addQuickLogToCloud(variables, profile.enablePlanning, () => {
-              dispatch('closeExerciseModal')
+            addExerciseLogToCloud({
+              amount: round(amount, 0),
+              category:
+                exerciseGroup === 'Lifting'
+                  ? liftingActivity
+                  : exerciseGroup === 'Swimming'
+                    ? swimmingActivity
+                    : exerciseGroup === 'Custom'
+                      ? otherActivity
+                      : null,
+              duration: prep(minutes),
+              groupName: exerciseGroup,
+              incline: prep(incline),
+              name: '',
+              pace: prep(mph),
+              power: prep(watt),
+              weight: prep(weight),
             })
           }
         }}

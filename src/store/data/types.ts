@@ -37,9 +37,11 @@ export type DataEvents = {
   addLogs: Log[]
   addQuickLogs: QuickLog[]
   clearData: null
+  removeExerciseLogsById: string[]
   removeLogsById: string[]
   removeQuickLogsById: string[]
   updateCurrentWebsocketClient: SubscriptionClient | null
+  updateExerciseLog: ExerciseLog
   updateLog: Log
   updateProfile: Profile[]
   updateQuickLog: QuickLog

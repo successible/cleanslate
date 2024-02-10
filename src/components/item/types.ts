@@ -1,16 +1,19 @@
 import { Unit } from '../../constants/units'
+import { ExerciseCategory } from '../../models/exerciseLog'
 import { Food } from '../../models/food'
 import { Barcode, Log, Meal } from '../../models/log'
 import { Profile } from '../../models/profile'
 import { QuickLog } from '../../models/quickLog'
 import { Recipe } from '../../models/recipe'
 import { Type } from '../../store/data/types'
+import { ExerciseGroup } from '../forms/ExerciseForm/ExerciseForm'
 
 // Essentially, FoodItem, RecipeItem, IngredientItem all have onUpdate methods that are purely synchronous
 // For example, on IngredientItem creates an item in the local state
 // FoodItem, RecipeItem, and DensityItem actually do nothing. They are null
-// Importantly, none of them send a request EXCEPT for LogItem or QuickLogItem, which does.
-// Hence, it returns Promise<string | Log> or  Promise<string | QuickLog>
+// Importantly, none of them send a request EXCEPT for LogItem
+// Hence, it returns Promise<string | Log>
+// And QuickLogItem and ExerciseFormItem do not use the <ItemModal>
 
 export type OnUpdateItem = (
   ...args: any[]
@@ -26,10 +29,12 @@ export type CommonItem = {
   barcode: Barcode | null
   basicFood: string | null
   calories: number | null
+  category: ExerciseCategory | null
   childRecipe: Recipe | null
   consumed: boolean | null
   createdAt: Date | null
   food: Food | null
+  group: ExerciseGroup | null
   id: string
   meal: Meal | null
   name: string

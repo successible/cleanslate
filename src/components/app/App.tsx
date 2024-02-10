@@ -11,6 +11,7 @@ import { useUser } from '../../hooks/useUser'
 import { Body } from '../body/Body'
 import { BottomBar } from '../bottom-bar/BottomBar'
 import { BottomBarButtons } from '../bottom-bar-buttons/BottomBarButtons'
+import { ExerciseLogList } from '../list/ExerciseLogList/ExerciseLogList'
 import { LogList } from '../list/Log/LogList'
 import { QuickLogList } from '../list/QuickLog/QuickLogList'
 import Modals from '../modals/Modals'
@@ -62,6 +63,7 @@ export const App = () => {
       </TopBar>
 
       <Body navbar={navbarHeight} footer={footerHeight} profile={profile}>
+        <ExerciseLogList exercise_logs={exercise_logs} />
         <QuickLogList quick_logs={quick_logs} />
         <LogList profile={profile} logs={logs} foods={foods} />
       </Body>
