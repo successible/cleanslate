@@ -27,6 +27,7 @@ export const QuickLogItem: React.FC<{ quick_log: QuickLog }> = (props) => {
         childRecipe: null,
         consumed: null,
         createdAt,
+        data: quick_log,
         food: null,
         group: null,
         id,

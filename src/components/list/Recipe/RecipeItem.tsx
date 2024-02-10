@@ -23,7 +23,7 @@ export const RecipeItem: React.FC<{ recipe: Recipe }> = (props) => {
         childRecipe: null,
         consumed: null,
         createdAt,
-        data: null,
+        data: recipe,
         food: null,
         group: null,
         id,

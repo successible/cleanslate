@@ -38,11 +38,7 @@ export const getPrettyContainer = (item: CommonItem) => {
 }
 
 export const makeUnitPretty = (item: CommonItem, unit: Unit | null) => {
-  if (unit === 'CALORIE') {
-    return 'calories'
-  } else if (unit === 'EXERCISE') {
-    return 'calories burned'
-  } else if (unit === 'COUNT') {
+  if (unit === 'COUNT') {
     return getPrettyCount(item)
   } else if (unit === 'CONTAINER') {
     return getPrettyContainer(item)

@@ -59,7 +59,12 @@ export const App = () => {
           profile.showCalories ? dispatch('openTargetModal') : undefined
         }
       >
-        <Numbers profile={profile} logs={logs} />
+        <Numbers
+          profile={profile}
+          logs={logs}
+          quick_logs={quick_logs}
+          exercise_logs={exercise_logs}
+        />
       </TopBar>
 
       <Body navbar={navbarHeight} footer={footerHeight} profile={profile}>

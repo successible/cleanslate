@@ -37,9 +37,11 @@ export const macros = css`
 export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
-  const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
-    Math.round(v)
-  )
+  const [caloriesConsumed, proteinConsumed] = calculateMacros(
+    [log],
+    [],
+    []
+  ).map((v) => Math.round(v))
 
   const recipe = log.logToRecipe
   const food = log.logToFood
