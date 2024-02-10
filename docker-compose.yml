@@ -55,6 +55,10 @@ services:
     depends_on:
       - database
       - graphql-server
+    volumes:
+      - type: bind
+        source: ~/.cleanslate
+        target: /.cleanslate
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 

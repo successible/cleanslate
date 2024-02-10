@@ -3,6 +3,11 @@
 # Pull down any new updates
 git pull origin main
 
+# Create the .cleanslate folder if it does not exist
+if [ ! -d ~/.cleanslate ]; then
+  mkdir -p ~/.cleanslate;
+fi
+
 # Set the environmental variables
 export NEXT_PUBLIC_FIREBASE_CONFIG='{}'
 export NEXT_PUBLIC_LOGIN_WITH_APPLE='no'

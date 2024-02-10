@@ -2,6 +2,8 @@ import express from 'express'
 import { gql, request } from 'graphql-request'
 import helmet from 'helmet'
 import * as jose from 'jose'
+import os from 'os'
+import * as admin from 'firebase-admin'
 
 const signingKey = process.env['JWT_SIGNING_SECRET']
 const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET']
@@ -15,6 +17,18 @@ if (!signingKey && !useFirebase) {
 }
 if (!adminSecret && !useFirebase) {
   throw Error('Your HASURA_GRAPHQL_ADMIN_SECRET is invalid')
+}
+
+if (useFirebase) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const serviceAccount = require(
+    isProduction
+      ? '/.cleanslate/service-account.json'
+      : os.homedir() + '/.cleanslate/service-account.json'
+  )
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  })
 }
 
 const app = express()
@@ -57,22 +71,33 @@ app.post('/auth/session', async (req, res) => {
       { 'X-Hasura-Admin-Secret': adminSecret || '' }
     )
   if (response.profiles.length === 1) {
-    const customClaims = {
-      'https://hasura.io/jwt/claims': {
-        'x-hasura-allowed-roles': ['user'],
-        'x-hasura-default-role': 'user',
-        'x-hasura-user-id': token,
-        'x-hasura-username': token,
-      },
+    if (!useFirebase) {
+      const customClaims = {
+        'https://hasura.io/jwt/claims': {
+          'x-hasura-allowed-roles': ['user'],
+          'x-hasura-default-role': 'user',
+          'x-hasura-user-id': token,
+          'x-hasura-username': token,
+        },
+      }
+      const secret = new TextEncoder().encode(signingKey)
+      const alg = 'HS256'
+      const JWT = await new jose.SignJWT(customClaims)
+        .setProtectedHeader({ alg })
+        .setAudience(`urn:${domain}`)
+        .setExpirationTime('30d')
+        .sign(secret)
+      return res.send(JWT)
+    } else {
+      const JWT = await admin.auth().createCustomToken(token, {
+        'https://hasura.io/jwt/claims': {
+          'x-hasura-allowed-roles': ['user'],
+          'x-hasura-default-role': 'user',
+          'x-hasura-user-id': token,
+        },
+      })
+      return res.send(JWT)
     }
-    const secret = new TextEncoder().encode(signingKey)
-    const alg = 'HS256'
-    const JWT = await new jose.SignJWT(customClaims)
-      .setProtectedHeader({ alg })
-      .setAudience(`urn:${domain}`)
-      .setExpirationTime('30d')
-      .sign(secret)
-    return res.send(JWT)
   } else {
     return res.sendStatus(403)
   }

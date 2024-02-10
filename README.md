@@ -232,6 +232,8 @@ NEXT_PUBLIC_USE_FIREBASE='false'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
 
+- Download your service account from `https://console.firebase.google.com`. Navigate to the `home` directory of server. You can do that via `cd ~`. Once there, create the `.cleanslate` folder. Stick the file inside it. Name the file `service-account.json`. That way your server can issue JWTs for users who want to access Clean Slate via the API.
+
 - Remove these items from your `.env`: `JWT_SIGNING_SECRET`.
 
 ## How do I contribute to Clean Slate?
