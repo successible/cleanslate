@@ -323,8 +323,5 @@ export const calculateMacros = (
 
   const protein = proteinConsumedFromLogs + proteinConsumedFromQuickLogs
 
-  console.log(calories)
-  console.log(protein)
-
   return [calories, protein]
 }
