@@ -175,6 +175,8 @@ http {
 
 Check out the API documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home).
 
+> Note: The documentation is a live GraphQL schema in Apollo Studio. You will need to make a free Apollo Studio account to view them.
+
 ## How do I handle authentication in Clean Slate?
 
 ### Default: Authentication via authId
