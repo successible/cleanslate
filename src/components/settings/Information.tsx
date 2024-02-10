@@ -52,6 +52,12 @@ export const Information: React.FC<props> = ({ profile }) => {
           {process.env.NEXT_PUBLIC_VERSION}
         </>
       </div>
+      <div className="ml5 mt5">
+        <>
+          <strong className="mr5">API token:</strong>
+          {profile.apiToken}
+        </>
+      </div>
 
       <div
         css={subheader}
