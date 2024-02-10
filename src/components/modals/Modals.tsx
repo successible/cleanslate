@@ -69,12 +69,12 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
     modalVisibility,
     pwaPromptVisibility,
     quickAddModalVisibility,
+    quickLogEditModalVisibility,
     recipeFormModalVisibility,
     recipeModalVisibility,
     recipeToUpdate,
     settingsModalVisibility,
     targetModalVisibility,
-    quickLogEditModalVisibility,
   } = navbar
 
   const editorStyling = css`
@@ -143,7 +143,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       name="navbar.exerciseModalVisibility"
       visible={exerciseModalVisibility}
     >
-      <ExerciseForm profile={profile} />
+      <ExerciseForm profile={profile} item={itemToUpdate} />
     </Modal>,
 
     // Barcode Modal

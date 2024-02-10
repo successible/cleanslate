@@ -56,6 +56,7 @@ export const IngredientItem: React.FC<props> = (props) => {
         childRecipe,
         consumed: null,
         createdAt,
+        data: null,
         food,
         group: null,
         id,

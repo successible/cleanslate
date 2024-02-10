@@ -74,7 +74,7 @@ export type NavbarEvents = {
   openBodyFatPercentageModal: undefined
   openDensityModal: undefined
   openError: string
-  openExerciseModal: undefined
+  openExerciseModal: CommonItem | null
   openFoodFormModal: string | null
   openFoodModal: undefined
   openHelpModal: undefined

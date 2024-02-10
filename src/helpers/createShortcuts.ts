@@ -155,7 +155,7 @@ export const createKeyboardShortcutDirectory = () => {
       dispatch('openBarcodeModal')
     },
     e: () => {
-      dispatch('openExerciseModal')
+      dispatch('openExerciseModal', null)
     },
     f: () => {
       dispatch('openFoodModal')

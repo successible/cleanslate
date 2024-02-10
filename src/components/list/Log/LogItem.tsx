@@ -76,6 +76,7 @@ export const LogItem: React.FC<{
         childRecipe: null,
         consumed,
         createdAt,
+        data: null,
         food,
         group: null,
         id,

@@ -160,7 +160,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
             <button
               type="button"
               onClick={() => {
-                dispatch('openExerciseModal')
+                dispatch('openExerciseModal', null)
               }}
             >
               <Image width={30} height={30} src={Runner} alt="search" />

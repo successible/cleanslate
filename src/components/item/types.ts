@@ -24,6 +24,7 @@ export type OnDeleteItem = (id?: string) => void
 export type ItemType = Type | 'all'
 
 export type CommonItem = {
+  data: any // Escape hatch to hold any extra data in common item
   alias: string | null
   amount: number | null
   barcode: Barcode | null

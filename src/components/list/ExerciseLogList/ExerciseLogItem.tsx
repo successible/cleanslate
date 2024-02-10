@@ -30,6 +30,7 @@ export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
         childRecipe: null,
         consumed: null,
         createdAt,
+        data: exercise_log,
         food: null,
         group: groupName,
         id,

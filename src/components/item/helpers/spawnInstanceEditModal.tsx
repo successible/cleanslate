@@ -16,5 +16,7 @@ export const spawnInstanceEditModal = (
     dispatch('openItemModal', item)
   } else if (type === 'quick-log') {
     dispatch('openQuickLogEditModal', item)
+  } else if (type === 'exercise-log') {
+    dispatch('openExerciseModal', item)
   }
 }
