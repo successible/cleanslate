@@ -228,7 +228,7 @@ NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
 NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
 NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
 NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
-NEXT_PUBLIC_USE_FIREBASE='false'
+NEXT_PUBLIC_USE_FIREBASE='true'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
 
