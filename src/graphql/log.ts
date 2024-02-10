@@ -2,16 +2,16 @@ import { gql } from '../helpers/gql'
 
 export const LOG_FRAGMENT = gql`
   fragment log on logs {
-    id
     alias
     amount
-    unit
     barcode
-    createdAt
-    type
-    consumed
-    meal
     basicFood
+    consumed
+    createdAt
+    id
+    meal
+    type
+    unit
 
     logToFood {
       ...food

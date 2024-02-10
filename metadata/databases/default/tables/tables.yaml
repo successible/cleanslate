@@ -1,5 +1,7 @@
-- "!include public_foods.yaml"
-- "!include public_ingredients.yaml"
-- "!include public_logs.yaml"
-- "!include public_profiles.yaml"
-- "!include public_recipes.yaml"
+- '!include public_exercise_logs.yaml'
+- '!include public_foods.yaml'
+- '!include public_ingredients.yaml'
+- '!include public_logs.yaml'
+- '!include public_profiles.yaml'
+- '!include public_quick_logs.yaml'
+- '!include public_recipes.yaml'

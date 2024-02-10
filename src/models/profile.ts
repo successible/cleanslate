@@ -1,7 +1,9 @@
 import { uuid } from '../helpers/uuid'
+import { ExerciseLog } from './exerciseLog'
 import { Food } from './food'
 import { Ingredient } from './ingredient'
 import { Log } from './log'
+import { QuickLog } from './quickLog'
 import { Recipe } from './recipe'
 
 // The default targets are ludicrous by design
@@ -11,24 +13,26 @@ export const defaultStartTime = '00:00:00'
 
 export class Profile {
   // Data
-  calorieTarget: number // Default 2000
-  proteinTarget: number // Default 150
-  showCalories: boolean // Default to True
-  startTime: string // No longer used
   apiToken = uuid()
-  timezone: string
-  showDensities: boolean // Default to false
-  hidePWAPrompt: boolean // Default to false
+  calorieTarget: number // Default 2000
+  convertBetweenUnits: boolean // Default to false
   countDown: boolean // Default to true
   enablePlanning: boolean // Default to false
+  hidePWAPrompt: boolean // Default to false
   metricSystem: boolean // Default to false
-  convertBetweenUnits: boolean // Default to false
+  proteinTarget: number // Default 150
+  showCalories: boolean // Default to True
+  showDensities: boolean // Default to false
+  startTime: string // No longer used
+  timezone: string
 
   // Relationships
   foods: Food[]
   logs: Log[]
   recipes: Recipe[]
   ingredients: Ingredient[]
+  quick_logs: QuickLog[]
+  exercise_logs: ExerciseLog[]
 
   // Foreign keys
   authId = uuid()
@@ -44,6 +48,8 @@ export class Profile {
     this.recipes = [] as Recipe[]
     this.logs = [] as Log[]
     this.ingredients = [] as Ingredient[]
+    this.quick_logs = [] as QuickLog[]
+    this.exercise_logs = [] as ExerciseLog[]
     this.calorieTarget = defaultTargets[0]
     this.proteinTarget = defaultTargets[1]
     this.startTime = defaultStartTime

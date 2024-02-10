@@ -2,6 +2,13 @@ table:
   name: profiles
   schema: public
 array_relationships:
+  - name: exercise_logs
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: exercise_logs
+          schema: public
   - name: foods
     using:
       foreign_key_constraint_on:
@@ -22,6 +29,13 @@ array_relationships:
         column: profile
         table:
           name: logs
+          schema: public
+  - name: quick_logs
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: quick_logs
           schema: public
   - name: recipes
     using:

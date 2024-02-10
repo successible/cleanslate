@@ -2,23 +2,23 @@ import { gql } from '../helpers/gql'
 
 export const PROFILE_FRAGMENT = gql`
   fragment profile on profiles {
-    id
-    authId
     apiToken
-    timezone
-    updatedAt
-    createdAt
-    type
+    authId
     calorieTarget
+    convertBetweenUnits
+    countDown
+    createdAt
+    enablePlanning
+    hidePWAPrompt
+    id
+    metricSystem
     proteinTarget
     showCalories
-    startTime
-    hidePWAPrompt
     showDensities
-    countDown
-    enablePlanning
-    metricSystem
-    convertBetweenUnits
+    startTime
+    timezone
+    type
+    updatedAt
   }
 `
 
