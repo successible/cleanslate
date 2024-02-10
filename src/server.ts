@@ -108,7 +108,6 @@ app.post('/auth/graphql', async (req, res) => {
         'X-Hasura-User-Id': profiles[0].authId,
       }
     )
-    console.log(result)
     res.send(result)
   } else {
     return res.sendStatus(403)
