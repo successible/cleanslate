@@ -39,7 +39,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         {info && (
           <>
             <strong className="mr5">
-              {info[0] === '&' ? 'Token:' : 'Email:'}
+              {info[0] === '&' ? 'Username:' : 'Username:'}
             </strong>
             {info[0] === '&' ? info.slice(1) : info}
           </>
