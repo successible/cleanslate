@@ -25,7 +25,7 @@ insert_permissions:
         - profile
         - type
         - weight
-    comment: ''
+    comment: ""
 select_permissions:
   - role: user
     permission:
@@ -47,7 +47,7 @@ select_permissions:
       filter:
         profile:
           _eq: X-Hasura-User-Id
-    comment: ''
+    comment: ""
 update_permissions:
   - role: user
     permission:
@@ -68,11 +68,11 @@ update_permissions:
       check: null
       set:
         profile: x-hasura-User-Id
-    comment: ''
+    comment: ""
 delete_permissions:
   - role: user
     permission:
       filter:
         profile:
           _eq: X-Hasura-User-Id
-    comment: ''
+    comment: ""
