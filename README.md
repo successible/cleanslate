@@ -171,6 +171,10 @@ http {
 
 7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy!
 
+## How can I make an API request to Clean Slate?
+
+Check out the API documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home).
+
 ## How do I handle authentication in Clean Slate?
 
 ### Default: Authentication via authId

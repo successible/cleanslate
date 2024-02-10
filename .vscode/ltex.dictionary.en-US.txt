@@ -6,3 +6,4 @@ jq
 pnpm
 proxying
 self-hoster
+stringified
