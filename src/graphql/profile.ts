@@ -2,23 +2,23 @@ import { gql } from '../helpers/gql'
 
 export const PROFILE_FRAGMENT = gql`
   fragment profile on profiles {
-    id
-    authId
     apiToken
-    timezone
-    updatedAt
-    createdAt
-    type
+    authId
     calorieTarget
+    convertBetweenUnits
+    countDown
+    createdAt
+    enablePlanning
+    hidePWAPrompt
+    id
+    metricSystem
     proteinTarget
     showCalories
-    startTime
-    hidePWAPrompt
     showDensities
-    countDown
-    enablePlanning
-    metricSystem
-    convertBetweenUnits
+    startTime
+    timezone
+    type
+    updatedAt
   }
 `
 
@@ -70,12 +70,20 @@ export const SUBSCRIBE_TO_DATA = gql`
         ...food
       }
 
+      recipes {
+        ...recipe
+      }
+
       logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
         ...log
       }
 
-      recipes {
-        ...recipe
+      quick_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+        ...quick_log
+      }
+
+      exercise_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+        ...exercise_log
       }
     }
   }

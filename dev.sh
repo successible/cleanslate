@@ -11,6 +11,7 @@ pkill -9 -f "next-server"
 pkill -9 -f "npm exec tsc --watch"
 pkill -9 -f "server.ts"
 pkill -9 -f "tsc --watch"
+pkill -9 -f "nginx" # May compete with caddy
 caddy stop
 
 export NEXT_PUBLIC_VERSION="XXX"

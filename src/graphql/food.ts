@@ -2,28 +2,28 @@ import { gql } from '../helpers/gql'
 
 export const FOOD_FRAGMENT = gql`
   fragment food on foods {
-    id
-    basicFoodId
-    name
-    countName
-    containerName
-    group
-    category
     alias
-    caloriesPerGram
-    proteinPerGram
+    basicFoodId
     caloriesPerCount
-    proteinPerCount
+    caloriesPerGram
+    category
+    containerName
+    countName
     countToGram
     countToTbsp
-    tbspToGram
-    servingPerContainer
+    createdAt
+    group
+    id
+    name
     preferredVolumeUnit
     preferredWeightUnit
-    createdAt
-    updatedAt
-    type
     profile
+    proteinPerCount
+    proteinPerGram
+    servingPerContainer
+    tbspToGram
+    type
+    updatedAt
     foodToProfile {
       id
       authId

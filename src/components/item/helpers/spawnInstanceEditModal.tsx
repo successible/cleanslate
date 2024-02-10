@@ -14,7 +14,9 @@ export const spawnInstanceEditModal = (
     dispatch('openRecipeFormModal', id)
   } else if (type === 'log' || type === 'ingredient') {
     dispatch('openItemModal', item)
-  } else if (type === 'unit') {
-    dispatch('openUnitModal', item)
+  } else if (type === 'quick-log') {
+    dispatch('openQuickLogEditModal', item)
+  } else if (type === 'exercise-log') {
+    dispatch('openExerciseModal', item)
   }
 }

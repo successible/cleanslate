@@ -1,0 +1,78 @@
+table:
+  name: exercise_logs
+  schema: public
+object_relationships:
+  - name: exerciseLogToProfile
+    using:
+      foreign_key_constraint_on: profile
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        profile:
+          _eq: X-Hasura-User-Id
+      set:
+        profile: x-hasura-User-Id
+      columns:
+        - amount
+        - category
+        - duration
+        - groupName
+        - incline
+        - name
+        - pace
+        - power
+        - profile
+        - type
+        - weight
+    comment: ""
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - amount
+        - duration
+        - incline
+        - pace
+        - power
+        - weight
+        - category
+        - groupName
+        - name
+        - profile
+        - type
+        - createdAt
+        - updatedAt
+        - id
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+    comment: ""
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - amount
+        - category
+        - duration
+        - groupName
+        - incline
+        - name
+        - pace
+        - power
+        - profile
+        - weight
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+      check: null
+      set:
+        profile: x-hasura-User-Id
+    comment: ""
+delete_permissions:
+  - role: user
+    permission:
+      filter:
+        profile:
+          _eq: X-Hasura-User-Id
+    comment: ""

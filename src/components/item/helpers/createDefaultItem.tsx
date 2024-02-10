@@ -4,6 +4,7 @@ import { defaultMeal } from '../../../models/log'
 import { CommonItem } from '../types'
 
 const defaultOnDelete = (id?: string) => {}
+
 const defaultOnUpdate = (
   id: string | null,
   unit: Unit | null,
@@ -19,16 +20,21 @@ export const createDefaultItem = (
     amount: null,
     barcode: null,
     basicFood: null,
+    calories: null,
+    category: null,
     childRecipe: null,
     consumed: !enablePlanning,
     createdAt: null,
+    data: null,
     food: null,
+    group: null,
     id: '',
     meal: defaultMeal,
     name: '',
     onDelete: defaultOnDelete,
     onUpdate: defaultOnUpdate,
     profile: null,
+    protein: null,
     recipe: null,
     src: '',
     type: 'log',

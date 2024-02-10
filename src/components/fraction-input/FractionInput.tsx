@@ -6,12 +6,14 @@ type props = {
   value: string | number
   setValue: (value: string) => void
   placeholder?: string
+  label?: string
   className?: string
   inputRef?: React.RefObject<HTMLInputElement>
 }
 export const FractionInput: React.FC<props> = ({
   className,
   inputRef,
+  label,
   placeholder,
   setValue,
   value,
@@ -23,6 +25,7 @@ export const FractionInput: React.FC<props> = ({
 
   return (
     <div className={`${className} fr w100`}>
+      {label && <label>{label}</label>}
       <input
         id="FractionInputInput"
         onChange={(event) => {

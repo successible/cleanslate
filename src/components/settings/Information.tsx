@@ -39,7 +39,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         {info && (
           <>
             <strong className="mr5">
-              {info[0] === '&' ? 'Token:' : 'Email:'}
+              {info[0] === '&' ? 'Username:' : 'Username:'}
             </strong>
             {info[0] === '&' ? info.slice(1) : info}
           </>
@@ -62,6 +62,42 @@ export const Information: React.FC<props> = ({ profile }) => {
       <div className="fr mt20 ml5">
         <label className="fr">
           <span className="mr10" css={itemLabelStyling}>
+            Show calories
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { showCalories: data } },
+                () => {
+                  setShowCalories(data)
+                }
+              )
+            }}
+            checked={showCalories}
+          />
+        </label>
+      </div>
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
+            Calories {'&'} protein count down
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { countDown: data } },
+                () => {
+                  setCountDown(data)
+                }
+              )
+            }}
+            checked={countDown}
+          />
+        </label>
+      </div>
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
             Use the metric system
           </span>
           <Switch
@@ -77,98 +113,61 @@ export const Information: React.FC<props> = ({ profile }) => {
           />
         </label>
       </div>
-      <div className="mt20">
-        <div className="fr mt20 ml5">
-          <label className="fr">
-            <span className="mr10" css={itemLabelStyling}>
-              Do not show calories
-            </span>
-            <Switch
-              onChange={(data) => {
-                updateProfileOnCloud(
-                  { id: profile.id, set: { showCalories: !data } },
-                  () => {
-                    setShowCalories(!data)
-                  }
-                )
-              }}
-              checked={!showCalories}
-            />
-          </label>
-        </div>
-        <div className="fr mt20 ml5">
-          <label className="fr">
-            <span className="mr10" css={itemLabelStyling}>
-              Enable planning the day
-            </span>
-            <Switch
-              onChange={(data) => {
-                updateProfileOnCloud(
-                  { id: profile.id, set: { enablePlanning: data } },
-                  () => {
-                    setEnablePlanning(data)
-                  }
-                )
-              }}
-              checked={enablePlanning}
-            />
-          </label>
-        </div>
-        <div className="fr mt20 ml5">
-          <label className="fr">
-            <span className="mr10" css={itemLabelStyling}>
-              Calories {'&'} protein count up
-            </span>
-            <Switch
-              onChange={(data) => {
-                updateProfileOnCloud(
-                  { id: profile.id, set: { countDown: !data } },
-                  () => {
-                    setCountDown(!data)
-                  }
-                )
-              }}
-              checked={!countDown}
-            />
-          </label>
-        </div>
-        <div className="fr mt20 ml5">
-          <label className="fr">
-            <span className="mr10" css={itemLabelStyling}>
-              Show density of each food
-            </span>
-            <Switch
-              onChange={(data) => {
-                updateProfileOnCloud(
-                  { id: profile.id, set: { showDensities: data } },
-                  () => {
-                    setShowDensities(data)
-                  }
-                )
-              }}
-              checked={showDensities}
-            />
-          </label>
-        </div>
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
+            Enable planning the day
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { enablePlanning: data } },
+                () => {
+                  setEnablePlanning(data)
+                }
+              )
+            }}
+            checked={enablePlanning}
+          />
+        </label>
+      </div>
 
-        <div className="fr mt20 ml5">
-          <label className="fr">
-            <span className="mr10" css={itemLabelStyling}>
-              Hide prompt to download app
-            </span>
-            <Switch
-              onChange={(data) => {
-                updateProfileOnCloud(
-                  { id: profile.id, set: { hidePWAPrompt: data } },
-                  () => {
-                    setHidePWAPrompt(data)
-                  }
-                )
-              }}
-              checked={hidePWAPrompt}
-            />
-          </label>
-        </div>
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
+            Show density of each food
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { showDensities: data } },
+                () => {
+                  setShowDensities(data)
+                }
+              )
+            }}
+            checked={showDensities}
+          />
+        </label>
+      </div>
+
+      <div className="fr mt20 ml5">
+        <label className="fr">
+          <span className="mr10" css={itemLabelStyling}>
+            Hide prompt to download app
+          </span>
+          <Switch
+            onChange={(data) => {
+              updateProfileOnCloud(
+                { id: profile.id, set: { hidePWAPrompt: data } },
+                () => {
+                  setHidePWAPrompt(data)
+                }
+              )
+            }}
+            checked={hidePWAPrompt}
+          />
+        </label>
       </div>
     </div>
   )

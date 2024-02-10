@@ -1,14 +1,18 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { round } from '../../helpers/round'
+import { ExerciseLog } from '../../models/exerciseLog'
 import { Log } from '../../models/log'
 import { defaultTargets, Profile } from '../../models/profile'
+import { QuickLog } from '../../models/quickLog'
 import { colors } from '../../theme'
 import { calculateMacros } from '../macros/helpers/calculateMacros'
 
 type props = {
   profile: Profile
   logs: Log[]
+  quick_logs: QuickLog[]
+  exercise_logs: ExerciseLog[]
 }
 
 const numbers = css`
@@ -47,11 +51,13 @@ const check = css`
 `
 
 export const Numbers: React.FC<props> = (props) => {
-  const { logs, profile } = props
+  const { exercise_logs, logs, profile, quick_logs } = props
   const countDown = profile.countDown
 
-  const [caloriesConsumed, proteinConsumed, exerciseDone] = calculateMacros(
-    logs
+  const [caloriesConsumed, proteinConsumed] = calculateMacros(
+    logs,
+    quick_logs,
+    exercise_logs
   ).map((v) => Math.round(v))
 
   let [calorieTarget, proteinTarget] = defaultTargets
@@ -59,7 +65,7 @@ export const Numbers: React.FC<props> = (props) => {
   calorieTarget = profile.calorieTarget
   proteinTarget = profile.proteinTarget
 
-  const calorieDifference = calorieTarget + exerciseDone - caloriesConsumed
+  const calorieDifference = calorieTarget - caloriesConsumed
   const proteinDifference = proteinTarget - proteinConsumed
 
   const loading = proteinTarget === defaultTargets[1]
@@ -89,7 +95,7 @@ export const Numbers: React.FC<props> = (props) => {
                     >
                       /
                     </span>
-                    {calorieTarget + exerciseDone}
+                    {calorieTarget}
                   </>
                 )}
               </div>

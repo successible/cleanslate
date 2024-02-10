@@ -18,12 +18,30 @@ type props = {
   showTitles: boolean
 }
 
+export const macros = css`
+  font-size: 12px;
+  margin-left: auto;
+  white-space: nowrap;
+  margin-top: 3px;
+
+  img {
+    margin: 0px 6px;
+    margin-left: 0px;
+  }
+
+  span {
+    margin-right: 6px;
+  }
+`
+
 export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
-  const [caloriesConsumed, proteinConsumed] = calculateMacros([log]).map((v) =>
-    Math.round(v)
-  )
+  const [caloriesConsumed, proteinConsumed] = calculateMacros(
+    [log],
+    [],
+    []
+  ).map((v) => Math.round(v))
 
   const recipe = log.logToRecipe
   const food = log.logToFood
@@ -64,22 +82,6 @@ export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
       combinedDensity = 0
     }
   }
-
-  const macros = css`
-    font-size: 12px;
-    margin-left: auto;
-    white-space: nowrap;
-    margin-top: 3px;
-
-    img {
-      margin: 0px 6px;
-      margin-left: 0px;
-    }
-
-    span {
-      margin-right: 6px;
-    }
-  `
 
   if (caloriesConsumed >= 0) {
     return (

@@ -2,16 +2,16 @@ import { gql } from '../helpers/gql'
 
 export const LOG_FRAGMENT = gql`
   fragment log on logs {
-    id
     alias
     amount
-    unit
     barcode
-    createdAt
-    type
-    consumed
-    meal
     basicFood
+    consumed
+    createdAt
+    id
+    meal
+    type
+    unit
 
     logToFood {
       ...food
@@ -27,16 +27,6 @@ export const CREATE_LOG = gql`
   mutation CREATE_LOG($object: logs_insert_input!) {
     insert_logs_one(object: $object) {
       ...log
-    }
-  }
-`
-
-export const CREATE_LOGS = gql`
-  mutation CREATE_LOGS($objects: [logs_insert_input!]!) {
-    insert_logs(objects: $objects) {
-      returning {
-        ...log
-      }
     }
   }
 `

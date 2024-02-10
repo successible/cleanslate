@@ -1,13 +1,14 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
-import { QuickAddUnit } from '../../../constants/units'
-import { addQuickLogToCloud } from '../../../helpers/log/addQuickLogToCloud'
+import { addExerciseLogToCloud } from '../../../helpers/exercise-log/addExerciseLogToCloud'
+import { updateExerciseLogOnCloud } from '../../../helpers/exercise-log/updateExerciseLogOnCloud'
+import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { round } from '../../../helpers/round'
+import { ExerciseLog } from '../../../models/exerciseLog'
 import { Profile } from '../../../models/profile'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import { store } from '../../../store/store'
 import { md } from '../../../theme'
+import { CommonItem } from '../../item/types'
 import {
   LiftingActivity,
   liftingMET,
@@ -31,33 +32,28 @@ export const group = [
 ] as const
 export type ExerciseGroup = (typeof group)[number]
 
-type props = { profile: Profile }
-export const ExerciseForm: React.FC<props> = ({ profile }) => {
+type props = { profile: Profile; item: CommonItem | undefined }
+export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
   const { metricSystem } = profile
-  const [weight, updateWeight] = React.useState('')
-  const [minutes, setMinutes] = React.useState('')
-  const [watt, setWatts] = React.useState('')
-  const [mph, setMph] = React.useState('')
-  const [incline, setIncline] = React.useState('')
-  const [calories, setCalories] = React.useState('')
+  const exerciseLog = item?.data as ExerciseLog | undefined
+  const [weight, updateWeight] = React.useState(exerciseLog?.weight || '')
+  const [minutes, setMinutes] = React.useState(exerciseLog?.duration || '')
+  const [watt, setWatts] = React.useState(exerciseLog?.power || '')
+  const [mph, setMph] = React.useState(exerciseLog?.pace || '')
+  const [incline, setIncline] = React.useState(exerciseLog?.incline || '')
+  const [calories, setCalories] = React.useState(exerciseLog?.amount || '')
   const [exerciseGroup, setExerciseGroup] = React.useState(
-    'Custom' as ExerciseGroup
+    exerciseLog?.groupName || 'Custom'
   )
   const [otherActivity, setOtherActivity] = React.useState(
-    'Baseball' as OtherActivity
+    exerciseLog?.category || ('Baseball' as OtherActivity)
   )
   const [swimmingActivity, setSwimmingActivity] = React.useState(
-    'Backstroke' as SwimmingActivity
+    exerciseLog?.category || ('Backstroke' as SwimmingActivity)
   )
   const [liftingActivity, setLiftingActivity] = React.useState(
-    'Machines' as LiftingActivity
+    exerciseLog?.category || ('Machines' as LiftingActivity)
   )
-
-  const {
-    dispatch,
-  }: {
-    dispatch: Dispatch<AllEvents>
-  } = useStoreon()
 
   const groupButtonStyling = css`
     min-width: 20%;
@@ -101,9 +97,9 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
           event.preventDefault()
           const MET = getMETsFromInput(
             exerciseGroup,
-            otherActivity,
-            swimmingActivity,
-            liftingActivity,
+            otherActivity as unknown as OtherActivity,
+            swimmingActivity as unknown as SwimmingActivity,
+            liftingActivity as unknown as LiftingActivity,
             // When metric is true, mph is actually is kph.  When metric is false, mph is mph
             metricSystem ? Number(mph) * 0.6213711922 : Number(mph),
             Number(incline),
@@ -112,7 +108,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
           // If MET === -1, then no valid MET was found
           // Thus, we definitely don't want to submit a request using a bad MET!
           if (MET !== -1) {
-            const caloriesBurned =
+            const amount =
               // Custom is when the user just adds the calories directly
               // Hence, you don't need to calculate calories from METS
               exerciseGroup === 'Custom'
@@ -125,18 +121,34 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
                     Number(minutes),
                     MET
                   )
-
-            const variables = {
-              objects: [
-                {
-                  amount: round(caloriesBurned, 0),
-                  unit: 'EXERCISE' as QuickAddUnit,
-                },
-              ],
+            const dataToSubmit = {
+              amount: round(amount, 0),
+              category:
+                exerciseGroup === 'Lifting'
+                  ? liftingActivity
+                  : exerciseGroup === 'Swimming'
+                    ? swimmingActivity
+                    : exerciseGroup === 'Custom'
+                      ? otherActivity
+                      : null,
+              duration: prep(minutes),
+              groupName: exerciseGroup,
+              incline: prep(incline),
+              name: '',
+              pace: prep(mph),
+              power: prep(watt),
+              weight: prep(weight),
             }
-            addQuickLogToCloud(variables, profile.enablePlanning, () => {
-              dispatch('closeExerciseModal')
-            })
+            if (exerciseLog?.id) {
+              updateExerciseLogOnCloud(
+                { pk_columns: { id: exerciseLog.id }, set: dataToSubmit },
+                () => {
+                  store.dispatch('closeExerciseModal')
+                }
+              )
+            } else {
+              addExerciseLogToCloud(dataToSubmit)
+            }
           }
         }}
       >
@@ -364,7 +376,7 @@ export const ExerciseForm: React.FC<props> = ({ profile }) => {
         )}
 
         <button type="submit" className="purple bold mt30 mb10">
-          Add calories burned
+          {exerciseLog?.id ? 'Edit Exercise' : 'Add Exercise'}
         </button>
       </form>
     </div>

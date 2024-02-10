@@ -1,11 +1,15 @@
 import { volumeUnits, weightUnits } from '../../../constants/units'
-import { QuickAddUnit, Unit } from '../../../constants/units'
+import { Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
+import { ExerciseLog } from '../../../models/exerciseLog'
 import { Food } from '../../../models/food'
 import { Log } from '../../../models/log'
+import { QuickLog } from '../../../models/quickLog'
 import { Recipe } from '../../../models/recipe'
 import { convertFromWeightToGrams } from './convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from './mapOtherVolumeUnitToTbsp'
+
+type Macro = 'CALORIE' | 'PROTEIN'
 
 // These three functions calculate the perTbsp number for the countToGram and tbspToGram
 export const calculateProteinPerTbsp = (food: Food) => {
@@ -98,7 +102,7 @@ const calculatePerFood = (
 
 /** Given a food and a unit (protein/calorie) returns the perGram, perTbsp, and perCount amount */
 export const getMeasurements = (
-  metric: QuickAddUnit,
+  metric: Macro,
   food: Food
 ): [
   number | null,
@@ -144,7 +148,7 @@ export const calculatePerMacroPerFood = (
   amount: number,
   unit: Unit,
   food: Food,
-  metric: QuickAddUnit
+  metric: Macro
 ) => {
   const [
     perGram,
@@ -169,7 +173,7 @@ export const calculatePerMacroPerFood = (
 
 export const calculatePerMacroPerRecipe = (
   recipe: Recipe,
-  metric: QuickAddUnit,
+  metric: Macro,
   amount: number,
   unit: Unit
 ): number => {
@@ -255,7 +259,7 @@ export const calculatePerMacroPerRecipe = (
 }
 
 /** This function calculates the total calories, protein in all logs present for a given metric */
-export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
+export const calculatePerMacroInLog = (metric: Macro, logs: Log[]) => {
   return logs.reduce((total, log) => {
     const { amount, barcode, unit } = log
     if (amount === 0) {
@@ -263,16 +267,7 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
     }
     const food = log.logToFood
     const recipe = log.logToRecipe
-    // EXERCISE is the "odd unit out"
-    // If the metric and log do not match up exactly
-    // Return 0 no matter what!
-    if (metric === 'EXERCISE') {
-      if (unit === 'EXERCISE') {
-        return total + log.amount
-      } else {
-        return total
-      }
-    } else if (barcode) {
+    if (barcode) {
       if (unit === 'COUNT') {
         if (metric === 'PROTEIN') {
           return total + amount * barcode.protein_per_serving
@@ -286,9 +281,6 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
           return total + amount * barcode.calories_per_gram
         }
       }
-    } else if (unit === metric) {
-      // EX: If the log is of type CALORIE | PROTEIN
-      return total + amount
     } else if (food) {
       return total + calculatePerMacroPerFood(amount, unit, food, metric)
     } else if (recipe) {
@@ -304,9 +296,35 @@ export const calculatePerMacro = (metric: QuickAddUnit, logs: Log[]) => {
  *
  * It returns [caloriesConsumed, proteinConsumed]
  */
-export const calculateMacros = (logs: Log[]) => {
-  const caloriesConsumed = calculatePerMacro('CALORIE', logs)
-  const proteinConsumed = calculatePerMacro('PROTEIN', logs)
-  const exerciseDone = calculatePerMacro('EXERCISE', logs)
-  return [caloriesConsumed, proteinConsumed, exerciseDone]
+export const calculateMacros = (
+  logs: Log[],
+  quick_logs: QuickLog[],
+  exercise_logs: ExerciseLog[]
+) => {
+  const caloriesConsumedFromLogs = calculatePerMacroInLog('CALORIE', logs)
+  const proteinConsumedFromLogs = calculatePerMacroInLog('PROTEIN', logs)
+
+  const caloriesConsumedFromQuickLogs = quick_logs.reduce((acc, item) => {
+    return acc + item.calories
+  }, 0)
+
+  const proteinConsumedFromQuickLogs = quick_logs.reduce((acc, item) => {
+    return acc + item.protein
+  }, 0)
+
+  const caloriesBurnedFromExercise = exercise_logs.reduce((acc, item) => {
+    return acc + item.amount
+  }, 0)
+
+  const calories =
+    caloriesConsumedFromLogs +
+    caloriesConsumedFromQuickLogs -
+    caloriesBurnedFromExercise
+
+  const protein = proteinConsumedFromLogs + proteinConsumedFromQuickLogs
+
+  console.log(calories)
+  console.log(protein)
+
+  return [calories, protein]
 }

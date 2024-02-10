@@ -52,7 +52,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
           id="openExerciseModal"
           type="button"
           onClick={() => {
-            dispatch('openExerciseModal')
+            dispatch('openExerciseModal', null)
           }}
         >
           <img alt="Person running" src={Exercise.src} />

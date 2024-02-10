@@ -1,6 +1,7 @@
 import cloneDeep from 'clone-deep'
 import { produce } from 'immer'
 import { StoreonModule } from 'storeon'
+import { CommonItem } from '../../components/item/types'
 import { modals } from '../../constants/modals'
 import { updateModal } from '../../helpers/updateModal'
 import { CleanslateSlices } from '../store'
@@ -131,12 +132,16 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     })
   })
 
-  store.on('closeUnitModal', (state) => {
-    return updateModal(state, 'navbar.unitModalVisibility', false)
+  store.on('closeQuickLogEditModal', (state) => {
+    return updateModal(state, 'navbar.quickLogEditModalVisibility', false)
   })
 
-  store.on('openUnitModal', (state, event) => {
-    const newState = updateModal(state, 'navbar.unitModalVisibility', true)
+  store.on('openQuickLogEditModal', (state, event) => {
+    const newState = updateModal(
+      state,
+      'navbar.quickLogEditModalVisibility',
+      true
+    )
     return produce(newState, (draft) => {
       draft.navbar.itemToUpdate = event
     })
@@ -197,11 +202,22 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('closeExerciseModal', (state) => {
-    return updateModal(state, 'navbar.exerciseModalVisibility', false)
+    const newState = updateModal(state, 'navbar.exerciseModalVisibility', false)
+    return produce(newState, (draft) => {
+      draft.navbar.itemToUpdate = undefined
+    })
   })
 
-  store.on('openExerciseModal', (state) => {
-    return updateModal(state, 'navbar.exerciseModalVisibility', true)
+  store.on('openExerciseModal', (state, item: CommonItem | null) => {
+    const newState = updateModal(state, 'navbar.exerciseModalVisibility', true)
+
+    if (item) {
+      return produce(newState, (draft) => {
+        draft.navbar.itemToUpdate = item
+      })
+    }
+
+    return newState
   })
 
   store.on('closeSettingsModal', (state) => {

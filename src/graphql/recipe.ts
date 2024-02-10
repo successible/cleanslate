@@ -16,8 +16,8 @@ export const RECIPE_BASE_FRAGMENT = gql`
     servingPerContainer
     type
     recipeToProfile {
-      id
       authId
+      id
       showDensities
     }
   }
