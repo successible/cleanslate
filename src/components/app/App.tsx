@@ -70,7 +70,13 @@ export const App = () => {
       <Body navbar={navbarHeight} footer={footerHeight} profile={profile}>
         <ExerciseLogList exercise_logs={exercise_logs} />
         <QuickLogList quick_logs={quick_logs} />
-        <LogList profile={profile} logs={logs} foods={foods} />
+        <LogList
+          profile={profile}
+          logs={logs}
+          foods={foods}
+          quick_logs={quick_logs}
+          exercise_logs={exercise_logs}
+        />
       </Body>
 
       <BottomBar height={footerHeight}>

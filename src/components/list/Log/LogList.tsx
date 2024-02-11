@@ -2,9 +2,11 @@ import { css } from '@emotion/react'
 import groupBy from 'lodash.groupby'
 import React from 'react'
 import { profileIsLoaded } from '../../../helpers/profileIsLoaded'
+import { ExerciseLog } from '../../../models/exerciseLog'
 import { Food } from '../../../models/food'
 import { Log, Meal, MealEnum } from '../../../models/log'
 import { Profile } from '../../../models/profile'
+import { QuickLog } from '../../../models/quickLog'
 import { colors } from '../../../theme'
 import { Spinner } from '../../spinner/Spinner'
 import { sortByCreatedAt } from './helpers/sortByCreatedAt'
@@ -15,10 +17,12 @@ type props = {
   logs: Log[]
   foods: Food[]
   profile: Profile
+  quick_logs: QuickLog[]
+  exercise_logs: ExerciseLog[]
 }
 
 export const LogList: React.FC<props> = (props) => {
-  const { logs, profile } = props
+  const { exercise_logs, logs, profile, quick_logs } = props
 
   const logsToUse = sortByCreatedAt(logs) as Log[]
 
@@ -65,7 +69,7 @@ export const LogList: React.FC<props> = (props) => {
         width: 90%;
       `}
     >
-      {logs.length > 0 ? (
+      {logs.length > 0 || quick_logs.length > 0 || exercise_logs.length > 0 ? (
         Object.keys(groupedLogs)
           .sort((a, b) => {
             const mealA = a as Meal

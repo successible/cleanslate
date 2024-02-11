@@ -11,6 +11,7 @@ type props = {
 
 export const ExerciseLogList: React.FC<props> = (props) => {
   const { exercise_logs } = props
+  const logs = exercise_logs || []
 
   return (
     <div
@@ -19,15 +20,13 @@ export const ExerciseLogList: React.FC<props> = (props) => {
         width: 90%;
       `}
     >
-      {sortByCreatedAt(exercise_logs).map((exercise_log) => (
+      {sortByCreatedAt(logs).map((exercise_log) => (
         <ExerciseLogItem
           key={exercise_log.id}
           exercise_log={exercise_log as ExerciseLog}
         />
       ))}
-      {exercise_logs.length >= 1 && (
-        <Divider height={2} className="mt25 mb20" />
-      )}
+      {logs.length >= 1 && <Divider height={2} className="mt25 mb20" />}
     </div>
   )
 }
