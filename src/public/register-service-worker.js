@@ -38,6 +38,9 @@ const register = () => {
                   Promise.all(registrations.map((r) => r.unregister()))
                 )
                 .then(() => {
+                  localStorage.setItem('profile', 'null')
+                  localStorage.setItem('basicFoods', 'null')
+                  localStorage.setItem('fetched-basic-foods', 'null')
                   window.alert('Update complete! 🚀 Reloading app.')
                   window.location.reload()
                 })
