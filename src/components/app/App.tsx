@@ -19,6 +19,8 @@ import { Numbers } from '../numbers/Numbers'
 import { TopBar } from '../top-bar/TopBar'
 
 export const App = () => {
+  useStartTime()
+
   const {
     dispatch,
     exercise_logs,
@@ -31,7 +33,6 @@ export const App = () => {
   } = useData()
   const user = useUser()
 
-  useStartTime()
   useShortcuts(executeKeyboardShortcuts)
   useSubscription([subscribeToProfile], user, offline, profile)
   usePWAPrompt(profile, dispatch)
