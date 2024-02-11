@@ -304,17 +304,26 @@ export const calculateMacros = (
   const caloriesConsumedFromLogs = calculatePerMacroInLog('CALORIE', logs)
   const proteinConsumedFromLogs = calculatePerMacroInLog('PROTEIN', logs)
 
-  const caloriesConsumedFromQuickLogs = quick_logs.reduce((acc, item) => {
-    return acc + item.calories
-  }, 0)
+  const caloriesConsumedFromQuickLogs = (quick_logs || []).reduce(
+    (acc, item) => {
+      return acc + item.calories
+    },
+    0
+  )
 
-  const proteinConsumedFromQuickLogs = quick_logs.reduce((acc, item) => {
-    return acc + item.protein
-  }, 0)
+  const proteinConsumedFromQuickLogs = (quick_logs || []).reduce(
+    (acc, item) => {
+      return acc + item.protein
+    },
+    0
+  )
 
-  const caloriesBurnedFromExercise = exercise_logs.reduce((acc, item) => {
-    return acc + item.amount
-  }, 0)
+  const caloriesBurnedFromExercise = (exercise_logs || []).reduce(
+    (acc, item) => {
+      return acc + item.amount
+    },
+    0
+  )
 
   const calories =
     caloriesConsumedFromLogs +
