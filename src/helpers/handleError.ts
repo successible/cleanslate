@@ -41,7 +41,7 @@ export const handleError = (
     try {
       Sentry.setUser({ id: store.get().data.profiles[0].authId })
     } catch (e) {
-      console.log('Storeon is not configured yet. Skipping.')
+      console.log('Storeon is not configured yet. Skipping...')
     }
     Sentry.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')
     Sentry.captureException(error)
