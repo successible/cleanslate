@@ -27,12 +27,12 @@ export const createInitialSlice = (): NavbarSlice => {
       offline: false,
       pwaPromptVisibility: false,
       quickAddModalVisibility: false,
+      quickLogEditModalVisibility: false,
       recipeFormModalVisibility: false,
       recipeModalVisibility: false,
       recipeToUpdate: null,
       settingsModalVisibility: false,
       targetModalVisibility: false,
-      quickLogEditModalVisibility: false,
       user: 'PENDING',
     },
   }

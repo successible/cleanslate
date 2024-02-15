@@ -54,11 +54,17 @@ export const Numbers: React.FC<props> = (props) => {
   const { exercise_logs, logs, profile, quick_logs } = props
   const countDown = profile.countDown
 
-  const [caloriesConsumed, proteinConsumed] = calculateMacros(
-    logs,
-    quick_logs,
-    exercise_logs
-  ).map((v) => Math.round(v))
+  const [
+    caloriesConsumedFromLogs,
+    caloriesConsumedFromQuickLogs,
+    caloriesBurnedFromExercise,
+    proteinConsumed,
+  ] = calculateMacros(logs, quick_logs, exercise_logs).map(Math.round)
+
+  const caloriesConsumed =
+    caloriesConsumedFromLogs +
+    caloriesConsumedFromQuickLogs -
+    caloriesBurnedFromExercise
 
   let [calorieTarget, proteinTarget] = defaultTargets
 
@@ -87,7 +93,7 @@ export const Numbers: React.FC<props> = (props) => {
                   round(calorieDifference, 0)
                 ) : (
                   <>
-                    {caloriesConsumed}
+                    {caloriesConsumedFromLogs + caloriesConsumedFromQuickLogs}
                     <span
                       css={css`
                         margin: 0px 2px;
@@ -95,7 +101,7 @@ export const Numbers: React.FC<props> = (props) => {
                     >
                       /
                     </span>
-                    {calorieTarget}
+                    {calorieTarget + caloriesBurnedFromExercise}
                   </>
                 )}
               </div>
