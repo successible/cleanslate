@@ -325,11 +325,12 @@ export const calculateMacros = (
     0
   )
 
-  const calories =
-    caloriesConsumedFromLogs +
-    caloriesConsumedFromQuickLogs -
-    caloriesBurnedFromExercise
-
   const protein = proteinConsumedFromLogs + proteinConsumedFromQuickLogs
-  return [calories, protein]
+  return [
+    caloriesConsumedFromLogs,
+    caloriesConsumedFromQuickLogs,
+    caloriesBurnedFromExercise,
+
+    protein,
+  ]
 }

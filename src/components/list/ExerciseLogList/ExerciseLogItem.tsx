@@ -8,7 +8,7 @@ export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
   props
 ) => {
   const { exercise_log } = props
-  const { amount, category, createdAt, groupName, id } = exercise_log
+  const { amount, category, createdAt, groupName, id, name } = exercise_log
 
   const onUpdate = () => {}
 
@@ -35,7 +35,12 @@ export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
         group: groupName,
         id,
         meal: null,
-        name: category ? `${groupName} (${category})` : `${groupName}`,
+        name:
+          name !== ''
+            ? `Custom (${name})`
+            : category && ['Other', 'Swimming', 'Lifting'].includes(groupName)
+              ? `${groupName} (${category})`
+              : `${groupName}`,
         onDelete,
         onUpdate: onUpdate,
         profile: null,

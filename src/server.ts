@@ -28,8 +28,12 @@ const graphqlUrl = isProduction
 
 const getProfiles = async (token: string) => {
   const document = gql`
-    query GET_PROFILES($apiToken: uuid!) {
-      profiles(where: { apiToken: { _eq: $apiToken } }) {
+    query GET_PROFILES($token: String!, $apiToken: uuid!) {
+      profiles(
+        where: {
+          _or: [{ authId: { _eq: $token } }, { apiToken: { _eq: $apiToken } }]
+        }
+      ) {
         authId
         id
       }
@@ -41,6 +45,7 @@ const getProfiles = async (token: string) => {
       document,
       {
         apiToken: token,
+        token,
       },
       { 'X-Hasura-Admin-Secret': adminSecret || '' }
     )

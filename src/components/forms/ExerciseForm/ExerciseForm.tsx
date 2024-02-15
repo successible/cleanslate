@@ -36,6 +36,7 @@ type props = { profile: Profile; item: CommonItem | undefined }
 export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
   const { metricSystem } = profile
   const exerciseLog = item?.data as ExerciseLog | undefined
+  const [name, setName] = React.useState(exerciseLog?.name || '')
   const [weight, updateWeight] = React.useState(exerciseLog?.weight || '')
   const [minutes, setMinutes] = React.useState(exerciseLog?.duration || '')
   const [watt, setWatts] = React.useState(exerciseLog?.power || '')
@@ -134,7 +135,7 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
               duration: prep(minutes),
               groupName: exerciseGroup,
               incline: prep(incline),
-              name: '',
+              name,
               pace: prep(mph),
               power: prep(watt),
               weight: prep(weight),
@@ -354,6 +355,24 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
         {exerciseGroup === 'Custom' && (
           <div className="group">
             <div className="w100">
+              <div className="w100 mb20">
+                <label css={label} htmlFor="calories">
+                  Name (Optional)
+                </label>
+                <input
+                  placeholder="Jai alai"
+                  id="calories"
+                  onChange={(event) => {
+                    setName(event.target.value)
+                  }}
+                  value={name}
+                  type="text"
+                  autoComplete={'off'}
+                  autoCorrect={'off'}
+                  autoCapitalize={'off'}
+                  step="any"
+                />
+              </div>
               <label css={label} htmlFor="calories">
                 Calories burned
               </label>
