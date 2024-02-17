@@ -57,7 +57,7 @@ app.get('/auth', (req, res) => {
 })
 
 app.post('/auth/login', async (req, res) => {
-  if (useFirebase) {
+  if (useFirebase !== 'no') {
     return res.sendStatus(403)
   }
   const token = req.body.token

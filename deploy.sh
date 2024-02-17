@@ -4,6 +4,7 @@
 git pull origin main
 
 # Set the environmental variables
+export $(xargs <.env)
 export NEXT_PUBLIC_FIREBASE_CONFIG='{}'
 export NEXT_PUBLIC_LOGIN_WITH_APPLE='no'
 export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='no'
