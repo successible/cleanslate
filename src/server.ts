@@ -5,7 +5,7 @@ import * as jose from 'jose'
 
 const signingKey = process.env['JWT_SIGNING_SECRET']
 const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET']
-const useFirebase = process.env['NEXT_PUBLIC_USE_FIREBASE']
+const useFirebase = process.env['NEXT_PUBLIC_USE_FIREBASE'] == 'true'
 const domain = process.env['NEXT_PUBLIC_HASURA_DOMAIN']
 
 const isProduction = process.env.NODE_ENV === 'production'
