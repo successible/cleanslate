@@ -16,6 +16,11 @@ if [ "$NEXT_PUBLIC_USE_FIREBASE" != "true" ]; then
     export NEXT_PUBLIC_USE_FIREBASE='false'
     export HASURA_GRAPHQL_JWT_SECRET='{"type": "HS256", "key": "'"$JWT_SIGNING_SECRET"'"}'
 fi
+if [ "$NEXT_PUBLIC_USE_FIREBASE" == "true" ]; then
+    # This value is unused by Firebase, but it silences the Docker Compose warning
+    export JWT_SIGNING_SECRET=$(uuidgen)
+fi
+
 
 if [ -n "$COMPOSE_FILE" ]; then
   echo "Deploying with file: $COMPOSE_FILE"

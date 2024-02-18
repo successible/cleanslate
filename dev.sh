@@ -18,6 +18,18 @@ export NEXT_PUBLIC_VERSION="XXX"
 export NEXT_PUBLIC_HASURA_DOMAIN="localhost"
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
+if [ "$FIREBASE" != "true" ]; then
+  export NEXT_PUBLIC_FIREBASE_CONFIG='{}'
+  export NEXT_PUBLIC_LOGIN_WITH_APPLE='no'
+  export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='no'
+  export NEXT_PUBLIC_LOGIN_WITH_GITHUB='no'
+  export NEXT_PUBLIC_LOGIN_WITH_GOOGLE='no'
+  export NEXT_PUBLIC_REACT_SENTRY_DSN=''
+  export NEXT_PUBLIC_USE_FIREBASE='false'
+  export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" }'
+  export JWT_SIGNING_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+fi
+
 docker-compose -f docker-compose.yml down -t 0 --remove-orphans
 
 fi
@@ -40,13 +52,9 @@ if [[ $CI != "true" ]]; then
   export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
   export NEXT_PUBLIC_LEGAL_LINK="XXX"
   export NODE_ENV="development"
+  
 
-  if [[ $FIREBASE != "true" ]]; then
-
-    export HASURA_GRAPHQL_JWT_SECRET='{ "type": "HS256", "key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" }'
-    export JWT_SIGNING_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-
-  else
+  if [[ $FIREBASE == "true" ]]; then
 
     abspath() {                                               
       cd "$(dirname "$1")"
