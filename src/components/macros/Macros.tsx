@@ -41,7 +41,6 @@ export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
     caloriesConsumedFromLogs,
     caloriesConsumedFromQuickLogs,
     caloriesBurnedFromExercise,
-    ,
     proteinConsumed,
   ] = calculateMacros([log], [], []).map((v) => Math.round(v))
 
