@@ -44,7 +44,7 @@ export type SwimmingMET = typeof swimmingMET
 export type SwimmingActivity = keyof SwimmingMET
 
 export const liftingMET = {
-  'Free weights': 5,
+  'Free Weights': 5,
   Machines: 3.5,
 } as const
 

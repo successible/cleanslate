@@ -122,20 +122,23 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
                     Number(minutes),
                     MET
                   )
+            const category =
+              exerciseGroup === 'Lifting'
+                ? liftingActivity
+                : exerciseGroup === 'Swimming'
+                  ? swimmingActivity
+                  : exerciseGroup === 'Other'
+                    ? otherActivity
+                    : null
+
+            console.log(category)
             const dataToSubmit = {
               amount: round(amount, 0),
-              category:
-                exerciseGroup === 'Lifting'
-                  ? liftingActivity
-                  : exerciseGroup === 'Swimming'
-                    ? swimmingActivity
-                    : exerciseGroup === 'Custom'
-                      ? otherActivity
-                      : null,
+              category,
               duration: prep(minutes),
               groupName: exerciseGroup,
               incline: prep(incline),
-              name,
+              name: exerciseGroup === 'Custom' ? name : '',
               pace: prep(mph),
               power: prep(watt),
               weight: prep(weight),
