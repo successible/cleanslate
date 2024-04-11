@@ -145,7 +145,7 @@ http {
 
       location /auth {
           # Authentication server (Express.js)
-          reverse_proxy localhost:3001
+          proxy_pass localhost:3001;
       }
 
       location /healthz {
