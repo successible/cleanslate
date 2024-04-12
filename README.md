@@ -39,7 +39,7 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed.
+Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to use Docker's installation instructions, rather than using your distribution's repositories, which tend to be out of date.
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
