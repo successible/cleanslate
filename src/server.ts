@@ -102,7 +102,7 @@ app.post('/auth/graphql', async (req, res) => {
     const result = await request(
       graphqlUrl,
       req.body.query,
-      {},
+      req.body.variables ? req.body.variables : {},
       {
         'X-Hasura-Admin-Secret': adminSecret || '',
         'X-Hasura-Role': 'user',
