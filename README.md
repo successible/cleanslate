@@ -25,7 +25,7 @@ To learn more, [visit our website](https://cleanslate.sh) or [watch the demo vid
 
 On our [GitHub Releases](https://github.com/successible/cleanslate/releases) page!
 
-Here, we list all the changes that Clean Slate has gone through in each version. Each version covers any security & bug fixes and enhancements that were added. It also outlines any breaking changes, and the associated steps to migrate. All of this information is especially important for people who want to host Clean Slate on their own.
+Here, we list all the changes that Clean Slate has gone through in each version. Each version covers the enhancements and the security and bug fixes. Each version also outlines any breaking changes, and the steps to migrate, if any. All of this information is especially important for people who want to host Clean Slate on their own.
 
 ## Do I need to host Clean Slate to use it?
 
@@ -39,7 +39,7 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to use Docker's installation instructions, rather than using your distribution's repositories, which tend to be out of date.
+Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to install Docker from the official website [^1]. That is because the Docker bundled with your distribution is likely out of date.
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
@@ -52,49 +52,49 @@ HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
 JWT_SIGNING_SECRET=<long-secret-value>
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^1] because it handles `https` automatically and is easy to use [^2].
+3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3].
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
 ```bash
 <XXX> {
-	header /* {
-		Referrer-Policy "strict-origin"
-		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-		X-Content-Type-Options "nosniff"
-		X-Frame-Options "DENY"
-		X-XSS-Protection "1; mode=block;"
-		# You can remove the Google, Firebase, and Sentry policies if you are not using them
-		Content-Security-Policy "default-src 'self'; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
-		Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
-	}
-	header /console* {
-		-Content-Security-Policy
-	}
-	route /v1* {
-		# API (Hasura)
-		reverse_proxy localhost:8080
-	}
-	route /v2* {
-		# API (Hasura)
-		reverse_proxy localhost:8080
-	}
-	route /console* {
-		# Admin panel (Hasura)
-		reverse_proxy localhost:8080
-	}
-	route /healthz {
-		# Health check (Hasura)
-		reverse_proxy localhost:8080
-	}
-	route /auth* {
-		# Authentication server (Express.js)
-		reverse_proxy localhost:3001
-	}
-	route /* {
-		# Static files (Clean Slate)
-		reverse_proxy localhost:3000
-	}
+    header /* {
+        Referrer-Policy "strict-origin"
+        Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        X-XSS-Protection "1; mode=block;"
+        # You can remove the Google, Firebase, and Sentry policies if you are not using them
+        Content-Security-Policy "default-src 'self'; script-src 'self' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self';"
+        Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
+    }
+    header /console* {
+        -Content-Security-Policy
+    }
+    route /v1* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
+    route /v2* {
+        # API (Hasura)
+        reverse_proxy localhost:8080
+    }
+    route /console* {
+        # Admin panel (Hasura)
+        reverse_proxy localhost:8080
+    }
+    route /healthz {
+        # Health check (Hasura)
+        reverse_proxy localhost:8080
+    }
+    route /auth* {
+        # Authentication server (Express.js)
+        reverse_proxy localhost:3001
+    }
+    route /* {
+        # Static files (Clean Slate)
+        reverse_proxy localhost:3000
+    }
 }
 ```
 
@@ -279,5 +279,6 @@ HASURA_GRAPHQL_ADMIN_SECRET=XXX
 JWT_SIGNING_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-[^1]: https://caddyserver.com/docs/getting-started
-[^2]: https://letsencrypt.org/
+[^1]: https://docs.docker.com/engine/install/
+[^2]: https://caddyserver.com/docs/getting-started
+[^3]: https://letsencrypt.org/
