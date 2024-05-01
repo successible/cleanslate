@@ -1,46 +1,46 @@
-import { ax } from "./axios";
-import { getConfig } from "./config";
-import { getJWT } from "./getJWT";
+import { ax } from './axios'
+import { getConfig } from './config'
+import { getJWT } from './getJWT'
 import {
   type Client,
   type PendingClient,
   stopRequestIfOffline,
-} from "./stopRequestIfOffline";
+} from './stopRequestIfOffline'
 
-export const getHasuraClient = (JWT = ""): PendingClient => {
+export const getHasuraClient = (JWT = ''): PendingClient => {
   return stopRequestIfOffline()
     .then(() => {
       if (JWT) {
-        return JWT;
+        return JWT
       }
-      return getJWT();
+      return getJWT()
     })
     .then((token) => {
       const request: Client = {
         request: (query, variables) => {
           const headers = token
             ? { Authorization: `Bearer ${token}` }
-            : { Authorization: "" };
+            : { Authorization: '' }
           return ax()
             .post(
               getConfig().resourceServerUri,
               { query, variables },
-              { headers },
+              { headers }
             )
             .then((response) => {
-              const { data } = response;
+              const { data } = response
               if (data.errors && data.errors.length >= 1) {
-                const message = data.errors[0].message;
-                throw message;
+                const message = data.errors[0].message
+                throw message
               }
               // Hasura return data, as does Axios, hence double data!
-              return data.data;
+              return data.data
             })
             .catch((error) => {
-              throw error;
-            });
+              throw error
+            })
         },
-      };
-      return request;
-    });
-};
+      }
+      return request
+    })
+}

@@ -5,12 +5,12 @@ import Document, {
   Html,
   Main,
   NextScript,
-} from "next/document";
-import { isProduction } from "../helpers/isProduction";
+} from 'next/document'
+import { isProduction } from '../helpers/isProduction'
 
 export default class CustomDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    return await Document.getInitialProps(ctx);
+    return await Document.getInitialProps(ctx)
   }
 
   render() {
@@ -176,6 +176,6 @@ export default class CustomDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }

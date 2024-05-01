@@ -1,4 +1,4 @@
-import { gql } from "../helpers/gql";
+import { gql } from '../helpers/gql'
 
 export const PROFILE_FRAGMENT = gql`
   fragment profile on profiles {
@@ -20,7 +20,7 @@ export const PROFILE_FRAGMENT = gql`
     type
     updatedAt
   }
-`;
+`
 
 export const GET_PROFILE = gql`
   query GetProfiles($token: String) {
@@ -29,7 +29,7 @@ export const GET_PROFILE = gql`
       id
     }
   }
-`;
+`
 
 export const UPDATE_PROFILE = gql`
   mutation UPDATE_PROFILE($id: uuid!, $set: profiles_set_input) {
@@ -39,7 +39,7 @@ export const UPDATE_PROFILE = gql`
       }
     }
   }
-`;
+`
 
 export const DELETE_ALL_PROFILES = gql`
   mutation DELETE_PROFILES {
@@ -49,7 +49,7 @@ export const DELETE_ALL_PROFILES = gql`
       }
     }
   }
-`;
+`
 
 export const DELETE_PROFILE = gql`
   mutation DELETE_PROFILE($authId: String!) {
@@ -59,7 +59,7 @@ export const DELETE_PROFILE = gql`
       }
     }
   }
-`;
+`
 
 export const SUBSCRIBE_TO_DATA = gql`
   subscription SUBSCRIBE_TO_DATA($today: timestamptz, $tomorrow: timestamptz) {
@@ -87,4 +87,4 @@ export const SUBSCRIBE_TO_DATA = gql`
       }
     }
   }
-`;
+`

@@ -1,5 +1,5 @@
-import { loginKey } from "./constants";
+import { loginKey } from './constants'
 
 export const login = () => {
-  localStorage.setItem(loginKey, "true");
-};
+  localStorage.setItem(loginKey, 'true')
+}

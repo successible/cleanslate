@@ -1,2 +1,2 @@
 export const isIpad = () =>
-  navigator.userAgent.includes("Mac") && "ontouchend" in document;
+  navigator.userAgent.includes('Mac') && 'ontouchend' in document

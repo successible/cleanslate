@@ -1,52 +1,52 @@
-import type { StoreonModule } from "storeon";
-import type { SubscriptionClient } from "subscriptions-transport-ws";
-import type { ExerciseLog } from "../../models/exerciseLog";
-import type { Food } from "../../models/food";
-import type { Log } from "../../models/log";
-import type { Profile } from "../../models/profile";
-import type { QuickLog } from "../../models/quickLog";
-import type { Recipe } from "../../models/recipe";
+import type { StoreonModule } from 'storeon'
+import type { SubscriptionClient } from 'subscriptions-transport-ws'
+import type { ExerciseLog } from '../../models/exerciseLog'
+import type { Food } from '../../models/food'
+import type { Log } from '../../models/log'
+import type { Profile } from '../../models/profile'
+import type { QuickLog } from '../../models/quickLog'
+import type { Recipe } from '../../models/recipe'
 
-export type Data = { profiles: Profile[]; basicFoods: Food[] };
+export type Data = { profiles: Profile[]; basicFoods: Food[] }
 
-export type Model = Food | Log | Profile | Recipe;
+export type Model = Food | Log | Profile | Recipe
 
 export type Type =
-  | "food"
-  | "log"
-  | "profile"
-  | "recipe"
-  | "ingredient"
-  | "quick-log"
-  | "exercise-log";
+  | 'food'
+  | 'log'
+  | 'profile'
+  | 'recipe'
+  | 'ingredient'
+  | 'quick-log'
+  | 'exercise-log'
 
 export type Collections =
-  | "foods"
-  | "logs"
-  | "recipes"
-  | "quick-logs"
-  | "exercise-logs";
+  | 'foods'
+  | 'logs'
+  | 'recipes'
+  | 'quick-logs'
+  | 'exercise-logs'
 
 export type DataSlice = {
-  data: Data;
-  currentWebsocketClient: SubscriptionClient | null;
-};
+  data: Data
+  currentWebsocketClient: SubscriptionClient | null
+}
 
 export type DataEvents = {
-  addExerciseLogs: ExerciseLog[];
-  addLogs: Log[];
-  addQuickLogs: QuickLog[];
-  clearData: null;
-  removeExerciseLogsById: string[];
-  removeLogsById: string[];
-  removeQuickLogsById: string[];
-  updateCurrentWebsocketClient: SubscriptionClient | null;
-  updateExerciseLog: ExerciseLog;
-  updateLog: Log;
-  updateProfile: Profile[];
-  updateQuickLog: QuickLog;
-};
+  addExerciseLogs: ExerciseLog[]
+  addLogs: Log[]
+  addQuickLogs: QuickLog[]
+  clearData: null
+  removeExerciseLogsById: string[]
+  removeLogsById: string[]
+  removeQuickLogsById: string[]
+  updateCurrentWebsocketClient: SubscriptionClient | null
+  updateExerciseLog: ExerciseLog
+  updateLog: Log
+  updateProfile: Profile[]
+  updateQuickLog: QuickLog
+}
 
-export type DataEventsKeys = keyof DataEvents;
+export type DataEventsKeys = keyof DataEvents
 
-export type DataModule = StoreonModule<DataSlice, DataEvents>;
+export type DataModule = StoreonModule<DataSlice, DataEvents>

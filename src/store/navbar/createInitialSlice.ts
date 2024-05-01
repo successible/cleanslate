@@ -1,4 +1,4 @@
-import type { NavbarSlice } from "./types";
+import type { NavbarSlice } from './types'
 
 /** Create the initial state of the navbar module */
 export const createInitialSlice = (): NavbarSlice => {
@@ -10,7 +10,7 @@ export const createInitialSlice = (): NavbarSlice => {
       bodyFatPercentageModalVisibility: false,
       caloricMaintenanceModalVisibility: false,
       densityModalVisibility: false,
-      error: "",
+      error: '',
       errorVisibility: false,
       exerciseModalVisibility: false,
       foodFormModalVisibility: false,
@@ -33,7 +33,7 @@ export const createInitialSlice = (): NavbarSlice => {
       recipeToUpdate: null,
       settingsModalVisibility: false,
       targetModalVisibility: false,
-      user: "PENDING",
+      user: 'PENDING',
     },
-  };
-};
+  }
+}

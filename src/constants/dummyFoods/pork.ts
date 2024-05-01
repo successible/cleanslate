@@ -1,26 +1,26 @@
-import type { DummyFoods } from "./dummyFoods";
+import type { DummyFoods } from './dummyFoods'
 
 export const pork: DummyFoods = {
   Pork: {
     Belly: {
-      Cooked: ["Pork belly (cooked)"],
-      Raw: ["Pork belly (raw)"],
+      Cooked: ['Pork belly (cooked)'],
+      Raw: ['Pork belly (raw)'],
     },
     Chops: {
-      Cooked: ["Pork chops (cooked)"],
-      Raw: ["Pork chops (raw)"],
+      Cooked: ['Pork chops (cooked)'],
+      Raw: ['Pork chops (raw)'],
     },
     Leg: {
-      Cooked: ["Pork leg (cooked)"],
-      Raw: ["Pork leg (raw)"],
+      Cooked: ['Pork leg (cooked)'],
+      Raw: ['Pork leg (raw)'],
     },
     Loin: {
-      Cooked: ["Pork loin (cooked)"],
-      Raw: ["Pork loin (raw)"],
+      Cooked: ['Pork loin (cooked)'],
+      Raw: ['Pork loin (raw)'],
     },
     Shoulder: {
-      Cooked: ["Pork shoulder (cooked)"],
-      Raw: ["Pork shoulder (raw)"],
+      Cooked: ['Pork shoulder (cooked)'],
+      Raw: ['Pork shoulder (raw)'],
     },
   },
-};
+}

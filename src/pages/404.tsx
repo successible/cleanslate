@@ -1,8 +1,8 @@
-import { css } from "@emotion/react";
-import Head from "next/head";
-import Link from "next/link";
-import { Navbar } from "../components/navbar/Navbar";
-import { colors } from "../theme";
+import { css } from '@emotion/react'
+import Head from 'next/head'
+import Link from 'next/link'
+import { Navbar } from '../components/navbar/Navbar'
+import { colors } from '../theme'
 
 const NotFound = () => {
   const panel = css`
@@ -12,7 +12,7 @@ const NotFound = () => {
       max-width: 85%;
       padding: 40px 60px;
     }
-  `;
+  `
 
   return (
     <>
@@ -20,7 +20,7 @@ const NotFound = () => {
         <title>Clean Slate | 404</title>
       </Head>
       <Navbar />
-      <div css={panel} className={"w100 fcc expand h100 fcc"}>
+      <div css={panel} className={'w100 fcc expand h100 fcc'}>
         <div className="white fcc tcenter">
           <h1 className="no-wrap">Page not found!</h1>
           <button className="danger normal mt10">
@@ -29,7 +29,7 @@ const NotFound = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default NotFound;
+export default NotFound

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react'
 
 export const useShortcuts = (shortcuts: (event: KeyboardEvent) => void) => {
   React.useEffect(() => {
-    window.addEventListener("keyup", shortcuts);
+    window.addEventListener('keyup', shortcuts)
     return () => {
-      window.removeEventListener("keyup", shortcuts);
-    };
-  }, [shortcuts]);
-};
+      window.removeEventListener('keyup', shortcuts)
+    }
+  }, [shortcuts])
+}

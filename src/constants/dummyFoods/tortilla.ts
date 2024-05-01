@@ -1,8 +1,8 @@
-import type { DummyFoods } from "./dummyFoods";
+import type { DummyFoods } from './dummyFoods'
 
 export const tortilla: DummyFoods = {
   Tortilla: {
-    Corn: ["Corn tortilla"],
-    Flour: ["Flour tortilla"],
+    Corn: ['Corn tortilla'],
+    Flour: ['Flour tortilla'],
   },
-};
+}

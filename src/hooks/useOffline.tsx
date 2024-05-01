@@ -1,13 +1,13 @@
-import React from "react";
-import { store } from "../store/store";
+import React from 'react'
+import { store } from '../store/store'
 
 export const useOffline = () => {
   React.useEffect(() => {
-    window.addEventListener("offline", () => {
-      store.dispatch("isOffline", true);
-    });
-    window.addEventListener("online", () => {
-      store.dispatch("isOffline", false);
-    });
-  }, []);
-};
+    window.addEventListener('offline', () => {
+      store.dispatch('isOffline', true)
+    })
+    window.addEventListener('online', () => {
+      store.dispatch('isOffline', false)
+    })
+  }, [])
+}

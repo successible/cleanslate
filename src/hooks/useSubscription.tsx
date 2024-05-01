@@ -1,34 +1,34 @@
-import React from "react";
-import type { SubscriptionClient } from "subscriptions-transport-ws";
-import { getLoginStatus } from "../helpers/getLoginStatus";
-import { getWebsocketClient } from "../helpers/getWebsocketClient";
-import { isLoadedUser } from "../helpers/isLoadedUser";
-import { isOffline } from "../helpers/isOffline";
-import type { Profile } from "../models/profile";
-import type { UserStatus } from "../store/navbar/types";
+import React from 'react'
+import type { SubscriptionClient } from 'subscriptions-transport-ws'
+import { getLoginStatus } from '../helpers/getLoginStatus'
+import { getWebsocketClient } from '../helpers/getWebsocketClient'
+import { isLoadedUser } from '../helpers/isLoadedUser'
+import { isOffline } from '../helpers/isOffline'
+import type { Profile } from '../models/profile'
+import type { UserStatus } from '../store/navbar/types'
 
 export type Subscriber = (
   client: SubscriptionClient,
-  profile?: Profile,
+  profile?: Profile
 ) => {
-  unsubscribe: () => void;
-};
+  unsubscribe: () => void
+}
 
 export const useSubscription = (
   subscribers: Subscriber[],
   user: UserStatus,
   offline: boolean,
-  profile: Profile,
+  profile: Profile
 ) => {
-  const isOnline = !isOffline(offline);
+  const isOnline = !isOffline(offline)
   React.useEffect(() => {
     if (getLoginStatus() && isOnline && isLoadedUser(user)) {
       getWebsocketClient().then((client) => {
         subscribers.forEach((subscriber) => {
-          subscriber(client, profile);
-        });
-      });
+          subscriber(client, profile)
+        })
+      })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user, offline]);
-};
+  }, [user, offline])
+}

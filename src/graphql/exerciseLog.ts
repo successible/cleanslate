@@ -1,4 +1,4 @@
-import { gql } from "../helpers/gql";
+import { gql } from '../helpers/gql'
 
 export const EXERCISE_LOG_FRAGMENT = gql`
   fragment exercise_log on exercise_logs {
@@ -17,7 +17,7 @@ export const EXERCISE_LOG_FRAGMENT = gql`
     groupName
     category
   }
-`;
+`
 
 export const CREATE_EXERCISE_LOG = gql`
   mutation CREATE_EXERCISE_LOG($object: exercise_logs_insert_input!) {
@@ -25,7 +25,7 @@ export const CREATE_EXERCISE_LOG = gql`
       ...exercise_log
     }
   }
-`;
+`
 
 export const UPDATE_EXERCISE_LOG = gql`
   mutation UPDATE_LOG(
@@ -36,7 +36,7 @@ export const UPDATE_EXERCISE_LOG = gql`
       ...exercise_log
     }
   }
-`;
+`
 
 export const DELETE_EXERCISE_LOG = gql`
   mutation DELETE_EXERCISE_LOG($id: uuid!) {
@@ -44,4 +44,4 @@ export const DELETE_EXERCISE_LOG = gql`
       id
     }
   }
-`;
+`

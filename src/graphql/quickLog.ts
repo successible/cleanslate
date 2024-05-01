@@ -1,4 +1,4 @@
-import { gql } from "../helpers/gql";
+import { gql } from '../helpers/gql'
 
 export const QUICK_LOG_FRAGMENT = gql`
   fragment quick_log on quick_logs {
@@ -13,7 +13,7 @@ export const QUICK_LOG_FRAGMENT = gql`
     meal
     type
   }
-`;
+`
 
 export const CREATE_QUICK_LOG = gql`
   mutation CREATE_QUICK_LOG($object: quick_logs_insert_input!) {
@@ -21,7 +21,7 @@ export const CREATE_QUICK_LOG = gql`
       ...quick_log
     }
   }
-`;
+`
 
 export const UPDATE_QUICK_LOG = gql`
   mutation UPDATE_LOG(
@@ -32,7 +32,7 @@ export const UPDATE_QUICK_LOG = gql`
       ...quick_log
     }
   }
-`;
+`
 
 export const DELETE_QUICK_LOG = gql`
   mutation DELETE_QUICK_LOG($id: uuid!) {
@@ -40,4 +40,4 @@ export const DELETE_QUICK_LOG = gql`
       id
     }
   }
-`;
+`

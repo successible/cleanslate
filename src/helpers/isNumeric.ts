@@ -1,3 +1,3 @@
 export const isNumeric = (number: any) => {
-  return Number.isNaN(number) === false;
-};
+  return Number.isNaN(number) === false
+}

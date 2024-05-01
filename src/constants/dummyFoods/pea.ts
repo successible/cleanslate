@@ -1,9 +1,9 @@
-import type { DummyFoods } from "./dummyFoods";
+import type { DummyFoods } from './dummyFoods'
 
 export const pea: DummyFoods = {
   Pea: {
-    Green: ["Green peas"],
-    Split: ["Split peas"],
-    "Sugar snap": ["Sugar snap peas"],
+    Green: ['Green peas'],
+    Split: ['Split peas'],
+    'Sugar snap': ['Sugar snap peas'],
   },
-};
+}
