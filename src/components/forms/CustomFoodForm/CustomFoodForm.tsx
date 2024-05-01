@@ -101,7 +101,6 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
       setCountToGram(getAdjustedWeightAmount(countToGram, weightUnit))
       updateConvertWeight(false)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [food])
 
   return (

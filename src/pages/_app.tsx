@@ -19,7 +19,6 @@ startSentry()
 
 function _App({ Component, pageProps }: AppProps) {
   // Listen to unhandled errors and Promise rejections
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   useErrors()
 
   return (

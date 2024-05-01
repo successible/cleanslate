@@ -1,5 +1,3 @@
-/* eslint-disable sort/object-properties */
-
 import type { ExerciseGroup } from '../components/forms/ExerciseForm/ExerciseForm'
 import type {
   LiftingActivity,

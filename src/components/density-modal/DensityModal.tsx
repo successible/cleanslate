@@ -77,7 +77,6 @@ export const DensityModal = () => {
             image: '',
             title: 'Caloric density',
           },
-          // eslint-disable-next-line sort/object-properties
           'protein-density': {
             image: '',
             title: 'Protein density',

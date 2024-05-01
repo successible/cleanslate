@@ -1,5 +1,3 @@
-/* eslint-disable sort/object-properties */
-
 import { css } from '@emotion/react'
 import { Meal } from '../../models/log'
 import { colors } from '../../theme'

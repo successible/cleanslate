@@ -1,5 +1,3 @@
-/* eslint-disable sort/object-properties */
-
 import { uuid } from '../helpers/uuid'
 import type { Meal } from './log'
 import type { Profile } from './profile'

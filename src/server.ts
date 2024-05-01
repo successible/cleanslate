@@ -114,7 +114,6 @@ app.post('/auth/graphql', async (req, res) => {
   }
 })
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.use((err: any, req: any, res: any, next: any) => {
   res.status(500).send(String(err))
 })

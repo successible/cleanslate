@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'

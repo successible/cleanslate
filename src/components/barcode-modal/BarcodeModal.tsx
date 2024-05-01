@@ -75,7 +75,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
     if (!isProduction() && !isMobile()) {
       fetchData('3017620422003') // Nutella
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const parser = UAParser(window.navigator.userAgent)

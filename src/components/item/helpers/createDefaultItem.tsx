@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Unit } from '../../../constants/units'
 import { defaultMeal } from '../../../models/log'
 import { CommonItem } from '../types'

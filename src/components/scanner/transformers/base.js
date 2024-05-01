@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 class Transformer {
   codeType() {
     return 'TODO'

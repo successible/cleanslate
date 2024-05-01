@@ -56,7 +56,6 @@ export const List: React.FC<props> = ({
   })
   // This function sets the number of items per page
   // Only use forcedNumberOfItems on /foods where the page container can change unreliably
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const adjustNumberOfItems = forcedNumberOfItems
     ? () => setNumberOfItems(forcedNumberOfItems)
     : getNumberOfItemsFromPage

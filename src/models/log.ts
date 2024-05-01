@@ -1,5 +1,3 @@
-/* eslint-disable sort/object-properties */
-
 import type { Unit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
 import type { Food } from './food'
