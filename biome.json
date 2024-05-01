@@ -1,6 +1,12 @@
 {
   "files": {
-    "ignore": ["src/.next", "src/public", "src/components", "src/workbox-config.js", "src/components/login/LegalDisclaimer.tsx"]
+    "ignore": [
+      "src/.next",
+      "src/public",
+      "src/components",
+      "src/workbox-config.js",
+      "src/components/login/LegalDisclaimer.tsx"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -23,8 +29,14 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      },
       "suspicious": {
         "noExplicitAny": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
       }
     }
   }

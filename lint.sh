@@ -15,8 +15,6 @@ cd ..
 
 echo "=> Compiling src with Biome..."
 
-npx biome format src
-npx biome check src
-npx biome lint src
+npx biome check .
 
 echo "=> All checks passed with Biome..."

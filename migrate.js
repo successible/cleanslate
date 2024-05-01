@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { execSync } = require('child_process')
+const { execSync } = require('node:child_process')
 
 const endpoint = 'http://localhost:8080'
-const secret = `--admin-secret secret`
+const secret = '--admin-secret secret'
 const auth = `--endpoint ${endpoint} ${secret}`
 
 execSync(`hasura metadata apply ${auth}`)

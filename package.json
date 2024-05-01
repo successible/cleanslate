@@ -6,10 +6,7 @@
   "private": true,
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",
-    "plugins": [
-      "@typescript-eslint",
-      "sort"
-    ],
+    "plugins": ["@typescript-eslint", "sort"],
     "extends": [
       "eslint:recommended",
       "next/core-web-vitals",
@@ -20,9 +17,7 @@
       "react/no-unknown-property": [
         "error",
         {
-          "ignore": [
-            "css"
-          ]
+          "ignore": ["css"]
         }
       ],
       "@typescript-eslint/no-explicit-any": "off",
