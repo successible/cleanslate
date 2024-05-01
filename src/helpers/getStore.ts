@@ -1,3 +1,3 @@
-import { store } from '../store/store'
+import { store } from "../store/store";
 
-export const getStore = () => store
+export const getStore = () => store;

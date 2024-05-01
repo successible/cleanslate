@@ -1,4 +1,4 @@
-import { gql } from '../helpers/gql'
+import { gql } from "../helpers/gql";
 
 export const RECIPE_BASE_FRAGMENT = gql`
   fragment recipe_base on recipes {
@@ -21,7 +21,7 @@ export const RECIPE_BASE_FRAGMENT = gql`
       showDensities
     }
   }
-`
+`;
 
 export const INGREDIENT_BASE_FRAGMENT = gql`
   fragment ingredient_base on ingredients {
@@ -44,7 +44,7 @@ export const INGREDIENT_BASE_FRAGMENT = gql`
       showDensities
     }
   }
-`
+`;
 
 export const RECIPE_FRAGMENT = gql`
   fragment recipe on recipes {
@@ -53,7 +53,7 @@ export const RECIPE_FRAGMENT = gql`
       ...ingredient
     }
   }
-`
+`;
 
 export const CREATE_RECIPE = gql`
   mutation CREATE_RECIPE($object: recipes_insert_input!) {
@@ -61,7 +61,7 @@ export const CREATE_RECIPE = gql`
       id
     }
   }
-`
+`;
 
 export const UPDATE_RECIPE = gql`
   mutation UPDATE_RECIPE(
@@ -86,7 +86,7 @@ export const UPDATE_RECIPE = gql`
       id
     }
   }
-`
+`;
 
 export const DELETE_RECIPE = gql`
   mutation DELETE_RECIPE($id: uuid!) {
@@ -94,4 +94,4 @@ export const DELETE_RECIPE = gql`
       id
     }
   }
-`
+`;

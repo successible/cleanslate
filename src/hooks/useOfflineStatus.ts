@@ -1,7 +1,7 @@
-import { useStoreon } from 'storeon/react'
-import { NavbarState } from '../store/navbar/types'
+import { useStoreon } from "storeon/react";
+import type { NavbarState } from "../store/navbar/types";
 
 export const useOfflineStatus = () => {
-  const { navbar }: { navbar: NavbarState } = useStoreon('navbar')
-  return navbar.offline
-}
+  const { navbar }: { navbar: NavbarState } = useStoreon("navbar");
+  return navbar.offline;
+};

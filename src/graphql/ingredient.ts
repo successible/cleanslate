@@ -1,4 +1,4 @@
-import { gql } from '../helpers/gql'
+import { gql } from "../helpers/gql";
 
 export const INGREDIENT_FRAGMENT = gql`
   fragment ingredient on ingredients {
@@ -13,4 +13,4 @@ export const INGREDIENT_FRAGMENT = gql`
       }
     }
   }
-`
+`;

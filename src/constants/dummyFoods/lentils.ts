@@ -1,8 +1,8 @@
-import { DummyFoods } from './dummyFoods'
+import type { DummyFoods } from "./dummyFoods";
 
 export const lentils: DummyFoods = {
   Lentils: {
-    Cooked: ['Lentils (cooked)'],
-    Dry: ['Lentils (dry)'],
+    Cooked: ["Lentils (cooked)"],
+    Dry: ["Lentils (dry)"],
   },
-}
+};

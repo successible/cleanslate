@@ -1,4 +1,4 @@
-import { gql } from '../helpers/gql'
+import { gql } from "../helpers/gql";
 
 export const LOG_FRAGMENT = gql`
   fragment log on logs {
@@ -21,7 +21,7 @@ export const LOG_FRAGMENT = gql`
       ...recipe
     }
   }
-`
+`;
 
 export const CREATE_LOG = gql`
   mutation CREATE_LOG($object: logs_insert_input!) {
@@ -29,7 +29,7 @@ export const CREATE_LOG = gql`
       ...log
     }
   }
-`
+`;
 
 export const UPDATE_LOG = gql`
   mutation UPDATE_LOG(
@@ -40,7 +40,7 @@ export const UPDATE_LOG = gql`
       ...log
     }
   }
-`
+`;
 
 export const DELETE_LOG = gql`
   mutation DELETE_LOG($id: uuid!) {
@@ -48,7 +48,7 @@ export const DELETE_LOG = gql`
       id
     }
   }
-`
+`;
 export const DELETE_LOGS = gql`
   mutation DELETE_LOGS($id: [uuid!] = "") {
     delete_logs(where: { id: { _in: $id } }) {
@@ -57,4 +57,4 @@ export const DELETE_LOGS = gql`
       }
     }
   }
-`
+`;

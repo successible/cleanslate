@@ -1,10 +1,10 @@
-import { DummyFoods } from './dummyFoods'
+import type { DummyFoods } from "./dummyFoods";
 
 export const wine: DummyFoods = {
   Wine: {
-    Red: ['Red wine'],
-    Shaoxing: ['Shaoxing wine'],
-    Sherry: ['Sherry wine'],
-    White: ['White wine'],
+    Red: ["Red wine"],
+    Shaoxing: ["Shaoxing wine"],
+    Sherry: ["Sherry wine"],
+    White: ["White wine"],
   },
-}
+};

@@ -1,3 +1,3 @@
-import { tokenKey } from './constants'
+import { tokenKey } from "./constants";
 
-export const getToken = () => localStorage.getItem(tokenKey) || ''
+export const getToken = () => localStorage.getItem(tokenKey) || "";

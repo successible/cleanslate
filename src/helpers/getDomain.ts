@@ -1,4 +1,4 @@
-import { isProduction } from './isProduction'
+import { isProduction } from "./isProduction";
 
 export const getDomain = () =>
-  isProduction() ? window.location.hostname : 'localhost'
+  isProduction() ? window.location.hostname : "localhost";

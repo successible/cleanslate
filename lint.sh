@@ -13,10 +13,10 @@ echo "=> TypeScript compiled /src successfully!"
 
 cd ..
 
-npx prettier --check --cache src 
+echo "=> Compiling src with Biome..."
 
-echo "=> All files in /src pass Prettier"
+npx biome format src
+npx biome check src
+npx biome lint src
 
-npx eslint src --fix --max-warnings 0
-
-echo "=> All files in /src pass ESLint"
+echo "=> All checks passed with Biome..."

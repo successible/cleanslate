@@ -1,8 +1,8 @@
-import { DELETE_LOG } from '../../graphql/log'
-import { store } from '../../store/store'
-import { getHasuraClient } from '../getHasuraClient'
-import { handleError } from '../handleError'
-import { stringifyQuery } from '../stringifyQuery'
+import { DELETE_LOG } from "../../graphql/log";
+import { store } from "../../store/store";
+import { getHasuraClient } from "../getHasuraClient";
+import { handleError } from "../handleError";
+import { stringifyQuery } from "../stringifyQuery";
 
 export const deleteLogOnCloud = (id: string, onSuccess: () => void) => {
   return getHasuraClient()
@@ -10,11 +10,11 @@ export const deleteLogOnCloud = (id: string, onSuccess: () => void) => {
       client
         .request(stringifyQuery(DELETE_LOG), { id })
         .then((result: { delete_logs_by_pk: { id: string } }) => {
-          store.dispatch('removeLogsById', [result.delete_logs_by_pk.id])
-          onSuccess()
-        })
+          store.dispatch("removeLogsById", [result.delete_logs_by_pk.id]);
+          onSuccess();
+        });
     })
     .catch((error) => {
-      handleError(error)
-    })
-}
+      handleError(error);
+    });
+};

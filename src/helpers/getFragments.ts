@@ -1,14 +1,14 @@
-import { EXERCISE_LOG_FRAGMENT } from '../graphql/exerciseLog'
-import { FOOD_FRAGMENT } from '../graphql/food'
-import { INGREDIENT_FRAGMENT } from '../graphql/ingredient'
-import { LOG_FRAGMENT } from '../graphql/log'
-import { PROFILE_FRAGMENT } from '../graphql/profile'
-import { QUICK_LOG_FRAGMENT } from '../graphql/quickLog'
+import { EXERCISE_LOG_FRAGMENT } from "../graphql/exerciseLog";
+import { FOOD_FRAGMENT } from "../graphql/food";
+import { INGREDIENT_FRAGMENT } from "../graphql/ingredient";
+import { LOG_FRAGMENT } from "../graphql/log";
+import { PROFILE_FRAGMENT } from "../graphql/profile";
+import { QUICK_LOG_FRAGMENT } from "../graphql/quickLog";
 import {
   INGREDIENT_BASE_FRAGMENT,
   RECIPE_BASE_FRAGMENT,
   RECIPE_FRAGMENT,
-} from '../graphql/recipe'
+} from "../graphql/recipe";
 
 export const getFragments = () => {
   return `
@@ -21,5 +21,5 @@ ${INGREDIENT_BASE_FRAGMENT}
 ${INGREDIENT_FRAGMENT}
 ${RECIPE_BASE_FRAGMENT}
 ${RECIPE_FRAGMENT}
-`
-}
+`;
+};

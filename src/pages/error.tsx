@@ -1,5 +1,5 @@
-import Head from 'next/head'
-import { Navbar } from '../components/navbar/Navbar'
+import Head from "next/head";
+import { Navbar } from "../components/navbar/Navbar";
 
 const ErrorPage = () => {
   return (
@@ -14,14 +14,14 @@ const ErrorPage = () => {
           type="button"
           className="button purple bold"
           onClick={() => {
-            throw new Error('This is a test of Sentry')
+            throw new Error("This is a test of Sentry");
           }}
         >
           Test Sentry
         </button>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default ErrorPage
+export default ErrorPage;

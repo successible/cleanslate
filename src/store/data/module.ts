@@ -1,151 +1,150 @@
-import { produce } from 'immer'
-import { StoreonModule } from 'storeon'
-import { profileKey } from '../../helpers/constants'
-import { isBrowser } from '../../helpers/isBrowser'
-import { addBasicFoodsToProfile } from '../../helpers/profile/addBasicFoodsToProfile'
-import { Profile } from '../../models/profile'
-import { CleanslateSlices } from '../store'
-import { createInitialSlice } from './createInitialSlice'
-import { DataEvents } from './types'
+import { produce } from "immer";
+import type { StoreonModule } from "storeon";
+import { profileKey } from "../../helpers/constants";
+import { isBrowser } from "../../helpers/isBrowser";
+import { addBasicFoodsToProfile } from "../../helpers/profile/addBasicFoodsToProfile";
+import { Profile } from "../../models/profile";
+import type { CleanslateSlices } from "../store";
+import { createInitialSlice } from "./createInitialSlice";
+import type { DataEvents } from "./types";
 
 const updateAndCacheProfile = (state: Readonly<CleanslateSlices>) => {
   const profileWithBasicsFoods = addBasicFoodsToProfile(
-    state.data.profiles
-  ).profiles
+    state.data.profiles,
+  ).profiles;
 
   const newState = produce(state, (draft) => {
-    draft.data.profiles = profileWithBasicsFoods
-  })
+    draft.data.profiles = profileWithBasicsFoods;
+  });
 
   if (isBrowser()) {
-    localStorage.setItem(profileKey, JSON.stringify(profileWithBasicsFoods))
+    localStorage.setItem(profileKey, JSON.stringify(profileWithBasicsFoods));
   }
 
-  return newState
-}
+  return newState;
+};
 
 export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
-  store.on('@init', () => createInitialSlice())
+  store.on("@init", () => createInitialSlice());
 
-  store.on('clearData', (state) => {
+  store.on("clearData", (state) => {
     return produce(state, (draft) => {
-      draft.data.profiles = [new Profile()]
-      draft.data.basicFoods = []
-    })
-  })
+      draft.data.profiles = [new Profile()];
+      draft.data.basicFoods = [];
+    });
+  });
 
-  store.on('updateCurrentWebsocketClient', (state, client) => {
+  store.on("updateCurrentWebsocketClient", (state, client) => {
     if (client) {
       return produce(state, (draft) => {
         // @ts-ignore
-        draft.currentWebsocketClient = client
-      })
-    } else {
-      return state
+        draft.currentWebsocketClient = client;
+      });
     }
-  })
+    return state;
+  });
 
-  store.on('addLogs', (state, logs) => {
+  store.on("addLogs", (state, logs) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        draft.data.profiles[0].logs.push(...logs)
-      })
-    )
-  })
+        draft.data.profiles[0].logs.push(...logs);
+      }),
+    );
+  });
 
-  store.on('addQuickLogs', (state, quick_logs) => {
+  store.on("addQuickLogs", (state, quick_logs) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        draft.data.profiles[0].quick_logs.push(...quick_logs)
-      })
-    )
-  })
+        draft.data.profiles[0].quick_logs.push(...quick_logs);
+      }),
+    );
+  });
 
-  store.on('addExerciseLogs', (state, exercise_logs) => {
+  store.on("addExerciseLogs", (state, exercise_logs) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        draft.data.profiles[0].exercise_logs.push(...exercise_logs)
-      })
-    )
-  })
+        draft.data.profiles[0].exercise_logs.push(...exercise_logs);
+      }),
+    );
+  });
 
-  store.on('updateLog', (state, updatedLog) => {
+  store.on("updateLog", (state, updatedLog) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const logs = state.data.profiles[0].logs
+        const logs = state.data.profiles[0].logs;
         const newLogs = logs.map((log) =>
-          log.id === updatedLog.id ? updatedLog : log
-        )
-        draft.data.profiles[0].logs = newLogs
-      })
-    )
-  })
+          log.id === updatedLog.id ? updatedLog : log,
+        );
+        draft.data.profiles[0].logs = newLogs;
+      }),
+    );
+  });
 
-  store.on('updateQuickLog', (state, updatedQuickLog) => {
+  store.on("updateQuickLog", (state, updatedQuickLog) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const quick_logs = state.data.profiles[0].quick_logs
+        const quick_logs = state.data.profiles[0].quick_logs;
         const newQuickLogs = quick_logs.map((quickLog) =>
-          quickLog.id === updatedQuickLog.id ? updatedQuickLog : quickLog
-        )
-        draft.data.profiles[0].quick_logs = newQuickLogs
-      })
-    )
-  })
+          quickLog.id === updatedQuickLog.id ? updatedQuickLog : quickLog,
+        );
+        draft.data.profiles[0].quick_logs = newQuickLogs;
+      }),
+    );
+  });
 
-  store.on('updateExerciseLog', (state, updatedExerciseLog) => {
+  store.on("updateExerciseLog", (state, updatedExerciseLog) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const exercise_logs = state.data.profiles[0].exercise_logs
+        const exercise_logs = state.data.profiles[0].exercise_logs;
         const newExerciseLogs = exercise_logs.map((exerciseLog) =>
           exerciseLog.id === updatedExerciseLog.id
             ? updatedExerciseLog
-            : exerciseLog
-        )
-        draft.data.profiles[0].exercise_logs = newExerciseLogs
-      })
-    )
-  })
+            : exerciseLog,
+        );
+        draft.data.profiles[0].exercise_logs = newExerciseLogs;
+      }),
+    );
+  });
 
-  store.on('removeLogsById', (state, ids) => {
+  store.on("removeLogsById", (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const logs = state.data.profiles[0].logs
-        const newLogs = logs.filter((log) => !ids.includes(log.id))
-        draft.data.profiles[0].logs = newLogs
-      })
-    )
-  })
+        const logs = state.data.profiles[0].logs;
+        const newLogs = logs.filter((log) => !ids.includes(log.id));
+        draft.data.profiles[0].logs = newLogs;
+      }),
+    );
+  });
 
-  store.on('removeQuickLogsById', (state, ids) => {
+  store.on("removeQuickLogsById", (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const quick_logs = state.data.profiles[0].quick_logs
+        const quick_logs = state.data.profiles[0].quick_logs;
         const newQuickLogs = quick_logs.filter(
-          (quick_log) => !ids.includes(quick_log.id)
-        )
-        draft.data.profiles[0].quick_logs = newQuickLogs
-      })
-    )
-  })
+          (quick_log) => !ids.includes(quick_log.id),
+        );
+        draft.data.profiles[0].quick_logs = newQuickLogs;
+      }),
+    );
+  });
 
-  store.on('removeExerciseLogsById', (state, ids) => {
+  store.on("removeExerciseLogsById", (state, ids) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        const exercise_logs = state.data.profiles[0].exercise_logs
+        const exercise_logs = state.data.profiles[0].exercise_logs;
         const newExerciseLogs = exercise_logs.filter(
-          (exercise_log) => !ids.includes(exercise_log.id)
-        )
-        draft.data.profiles[0].exercise_logs = newExerciseLogs
-      })
-    )
-  })
+          (exercise_log) => !ids.includes(exercise_log.id),
+        );
+        draft.data.profiles[0].exercise_logs = newExerciseLogs;
+      }),
+    );
+  });
 
-  store.on('updateProfile', (state, newProfile) => {
+  store.on("updateProfile", (state, newProfile) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
-        draft.data.profiles = newProfile
-      })
-    )
-  })
-}
+        draft.data.profiles = newProfile;
+      }),
+    );
+  });
+};

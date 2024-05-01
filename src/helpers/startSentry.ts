@@ -1,7 +1,7 @@
-import * as Sentry from '@sentry/react'
-import { isBrowser } from './isBrowser'
+import * as Sentry from "@sentry/react";
+import { isBrowser } from "./isBrowser";
 
-export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN
+export const dsn = process.env.NEXT_PUBLIC_REACT_SENTRY_DSN;
 
 export const errorsToIgnore = [
   /AbortError/,
@@ -30,7 +30,7 @@ export const errorsToIgnore = [
   /There was an error while hydrating/,
   /Uniqueness violation/,
   /UnknownError: Error looking up record in object store by key range/,
-]
+];
 
 export const startSentry = () => {
   if (dsn && isBrowser()) {
@@ -48,6 +48,6 @@ export const startSentry = () => {
       maxValueLength: 1000,
       replaysOnErrorSampleRate: 1.0,
       tracesSampleRate: 0,
-    })
+    });
   }
-}
+};

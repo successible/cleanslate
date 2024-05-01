@@ -5,7 +5,7 @@ module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: 'export',
+  output: "export",
   productionBrowserSourceMaps: true,
   reactStrictMode: true,
-}
+};

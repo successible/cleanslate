@@ -1,5 +1,5 @@
-import generate from 'uuid-random'
+import generate from "uuid-random";
 
 export const uuid = () => {
-  return generate()
-}
+  return generate();
+};
