@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 type props = {
   width: number
   height: number

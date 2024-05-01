@@ -1,10 +1,5 @@
 #!/bin/bash
 
-if [[ $1 == "--format" ]]; then
-    echo "=> Running Prettier in write mode"
-    npx prettier --write --cache src
-fi
-
 echo "=> Compiling src with TypeScript..."
 
 cd src && npx tsc 

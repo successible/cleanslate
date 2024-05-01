@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { css, SerializedStyles } from '@emotion/react'
 import React from 'react'
 import { colors } from '../../theme'

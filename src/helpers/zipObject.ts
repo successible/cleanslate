@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /** Zips two lists into one object.
  *
  * For example: zipObject(['a', 'b'], [1, 2]) => { 'a': 1, 'b': 2 } */

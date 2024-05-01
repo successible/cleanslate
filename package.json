@@ -4,28 +4,6 @@
   "author": "Paul Zakin",
   "license": "Apache-2.0",
   "private": true,
-  "eslintConfig": {
-    "parser": "@typescript-eslint/parser",
-    "plugins": ["@typescript-eslint", "sort"],
-    "extends": [
-      "eslint:recommended",
-      "next/core-web-vitals",
-      "plugin:@typescript-eslint/recommended",
-      "plugin:sort/recommended"
-    ],
-    "rules": {
-      "react/no-unknown-property": [
-        "error",
-        {
-          "ignore": ["css"]
-        }
-      ],
-      "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-empty-function": "off",
-      "@typescript-eslint/ban-ts-comment": "off",
-      "@next/next/no-html-link-for-pages": "off"
-    }
-  },
   "scripts": {
     "dev": "bash dev.sh",
     "lint": "pnpm install && bash -e lint.sh --format",

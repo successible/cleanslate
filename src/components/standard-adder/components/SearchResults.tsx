@@ -1,5 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
-
 import { css } from '@emotion/react'
 import truncate from 'lodash.truncate'
 import React from 'react'

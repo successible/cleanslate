@@ -57,7 +57,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
   const [countToTbsp, setCountToTbsp] = React.useState(
     (recipe?.countToTbsp || '') as string | number
   )
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [servingPerContainer, updateServingPerContainer] = React.useState(
     recipe?.servingPerContainer || ''
   )
@@ -116,7 +115,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
       updateConvertWeight(false)
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [recipe])
 
   // Helpers

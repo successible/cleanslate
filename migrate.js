@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const { execSync } = require('node:child_process')
 
 const endpoint = 'http://localhost:8080'

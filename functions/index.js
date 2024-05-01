@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-
 const functions = require('firebase-functions')
 const admin = require('firebase-admin')
 

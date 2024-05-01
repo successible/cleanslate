@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
 import { capitalize } from '../../../helpers/capitalize'
 import { imageStyling, nameStyling } from '../../item/components/Meta'

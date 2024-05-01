@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import { css } from '@emotion/react'
 import React from 'react'
 import { useStoreon } from 'storeon/react'

@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-sync-scripts */
 import Document, {
   type DocumentContext,
   Head,
