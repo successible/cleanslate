@@ -5,7 +5,6 @@ export const getLoginStatus = (): boolean => {
   if (isBrowser()) {
     const status = localStorage.getItem(loginKey) === 'true'
     return Boolean(status)
-  } else {
-    return false
   }
+  return false
 }

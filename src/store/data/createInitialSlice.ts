@@ -1,5 +1,5 @@
 import { getCachedData } from '../../helpers/getCachedData'
-import { DataSlice } from './types'
+import type { DataSlice } from './types'
 
 export const createInitialSlice = (): DataSlice => {
   const { basicFoods, profiles } = getCachedData()

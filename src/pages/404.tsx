@@ -20,10 +20,10 @@ const NotFound = () => {
         <title>Clean Slate | 404</title>
       </Head>
       <Navbar />
-      <div css={panel} className={`w100 fcc expand h100 fcc`}>
+      <div css={panel} className={'w100 fcc expand h100 fcc'}>
         <div className="white fcc tcenter">
           <h1 className="no-wrap">Page not found!</h1>
-          <button className="danger normal mt10">
+          <button type="button" className="danger normal mt10">
             <Link href="/">Take me home</Link>
           </button>
         </div>

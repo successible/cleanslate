@@ -1,9 +1,9 @@
-import { VolumeUnit, WeightUnit } from '../constants/units'
+import type { VolumeUnit, WeightUnit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
-import { Density } from './food'
-import { Ingredient } from './ingredient'
-import { Log } from './log'
-import { Profile } from './profile'
+import type { Density } from './food'
+import type { Ingredient } from './ingredient'
+import type { Log } from './log'
+import type { Profile } from './profile'
 
 // Called recipes in Hasura
 export class Recipe {

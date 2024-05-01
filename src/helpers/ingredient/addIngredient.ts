@@ -1,9 +1,9 @@
-import { Unit } from '../../constants/units'
-import { Food } from '../../models/food'
+import type { Unit } from '../../constants/units'
+import type { Food } from '../../models/food'
 import { Ingredient } from '../../models/ingredient'
-import { Barcode } from '../../models/log'
+import type { Barcode } from '../../models/log'
 import { Profile } from '../../models/profile'
-import { Recipe } from '../../models/recipe'
+import type { Recipe } from '../../models/recipe'
 
 export const addIngredient = (
   item: Food | Recipe | null | undefined,

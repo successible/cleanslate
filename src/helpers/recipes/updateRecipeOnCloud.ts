@@ -1,4 +1,4 @@
-import { FormattedIngredient } from '../../components/forms/RecipeForm/helpers/formatIngredient'
+import type { FormattedIngredient } from '../../components/forms/RecipeForm/helpers/formatIngredient'
 import { UPDATE_RECIPE } from '../../graphql/recipe'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

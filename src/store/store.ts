@@ -1,10 +1,10 @@
-import { createStoreon, StoreonDispatch, StoreonStore } from 'storeon'
+import { type StoreonDispatch, type StoreonStore, createStoreon } from 'storeon'
 import { data } from './data/module'
-import { DataEvents, DataSlice } from './data/types'
+import type { DataEvents, DataSlice } from './data/types'
 import { editor } from './editor/module'
-import { EditorEvents, EditorSlice } from './editor/types'
+import type { EditorEvents, EditorSlice } from './editor/types'
 import { navbar } from './navbar/module'
-import { NavbarEvents, NavbarSlice } from './navbar/types'
+import type { NavbarEvents, NavbarSlice } from './navbar/types'
 
 export type CleanslateEvents = DataEvents & NavbarEvents & EditorEvents
 

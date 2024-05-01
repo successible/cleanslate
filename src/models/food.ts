@@ -1,10 +1,10 @@
-import { Category } from '../constants/categories'
-import { Group } from '../constants/groups'
-import { VolumeUnit, WeightUnit } from '../constants/units'
+import type { Category } from '../constants/categories'
+import type { Group } from '../constants/groups'
+import type { VolumeUnit, WeightUnit } from '../constants/units'
 import { uuid } from '../helpers/uuid'
-import { Ingredient } from './ingredient'
-import { Log } from './log'
-import { Profile } from './profile'
+import type { Ingredient } from './ingredient'
+import type { Log } from './log'
+import type { Profile } from './profile'
 
 export type Density = 'caloric-density' | 'protein-density' | 'combined-density'
 

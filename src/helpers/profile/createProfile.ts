@@ -19,9 +19,7 @@ export const createProfileMutation = async (
     }
   `
   try {
-    const response = await (
-      await getHasuraClient()
-    ).request(mutation, {
+    const response = await (await getHasuraClient()).request(mutation, {
       authId,
       timezone,
     })

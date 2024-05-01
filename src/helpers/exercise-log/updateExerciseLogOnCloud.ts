@@ -1,5 +1,5 @@
 import { UPDATE_EXERCISE_LOG } from '../../graphql/exerciseLog'
-import { ExerciseData, ExerciseLog } from '../../models/exerciseLog'
+import type { ExerciseData, ExerciseLog } from '../../models/exerciseLog'
 import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

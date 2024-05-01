@@ -1,4 +1,4 @@
-import { Group } from './groups'
+import type { Group } from './groups'
 
 export const customCategories = ['Food', 'Recipe'] as const
 export type CustomCategories = (typeof customCategories)[number]
@@ -149,25 +149,27 @@ export const mapGroupToCategories = (group: Group): Category[] => {
 export const mapCategoryToGroup = (category: Category): Group | null => {
   if ((customCategories as unknown as Category[]).includes(category)) {
     return 'Custom'
-  } else if ((dairyCategories as unknown as Category[]).includes(category)) {
-    return 'Dairy'
-  } else if (
-    (fatsAndSugarsCategories as unknown as Category[]).includes(category)
-  ) {
-    return 'Fat or sugar'
-  } else if ((fruitCategories as unknown as Category[]).includes(category)) {
-    return 'Fruit'
-  } else if ((grainCategories as unknown as Category[]).includes(category)) {
-    return 'Grain'
-  } else if ((otherCategories as unknown as Category[]).includes(category)) {
-    return 'Other'
-  } else if ((proteinCategories as unknown as Category[]).includes(category)) {
-    return 'Protein'
-  } else if (
-    (vegetableCategories as unknown as Category[]).includes(category)
-  ) {
-    return 'Vegetable'
-  } else {
-    return null
   }
+  if ((dairyCategories as unknown as Category[]).includes(category)) {
+    return 'Dairy'
+  }
+  if ((fatsAndSugarsCategories as unknown as Category[]).includes(category)) {
+    return 'Fat or sugar'
+  }
+  if ((fruitCategories as unknown as Category[]).includes(category)) {
+    return 'Fruit'
+  }
+  if ((grainCategories as unknown as Category[]).includes(category)) {
+    return 'Grain'
+  }
+  if ((otherCategories as unknown as Category[]).includes(category)) {
+    return 'Other'
+  }
+  if ((proteinCategories as unknown as Category[]).includes(category)) {
+    return 'Protein'
+  }
+  if ((vegetableCategories as unknown as Category[]).includes(category)) {
+    return 'Vegetable'
+  }
+  return null
 }

@@ -1,6 +1,6 @@
-import { AddLog } from '../../components/standard-adder/helpers/addLog'
+import type { AddLog } from '../../components/standard-adder/helpers/addLog'
 import { CREATE_LOG } from '../../graphql/log'
-import { Log } from '../../models/log'
+import type { Log } from '../../models/log'
 import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

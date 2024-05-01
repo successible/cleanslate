@@ -2,8 +2,8 @@ import { ax } from './axios'
 import { getConfig } from './config'
 import { getJWT } from './getJWT'
 import {
-  Client,
-  PendingClient,
+  type Client,
+  type PendingClient,
   stopRequestIfOffline,
 } from './stopRequestIfOffline'
 
@@ -12,9 +12,8 @@ export const getHasuraClient = (JWT = ''): PendingClient => {
     .then(() => {
       if (JWT) {
         return JWT
-      } else {
-        return getJWT()
       }
+      return getJWT()
     })
     .then((token) => {
       const request: Client = {
@@ -33,10 +32,9 @@ export const getHasuraClient = (JWT = ''): PendingClient => {
               if (data.errors && data.errors.length >= 1) {
                 const message = data.errors[0].message
                 throw message
-              } else {
-                // Hasura return data, as does Axios, hence double data!
-                return data.data
               }
+              // Hasura return data, as does Axios, hence double data!
+              return data.data
             })
             .catch((error) => {
               throw error

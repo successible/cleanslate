@@ -1,4 +1,4 @@
-import { NavbarSlice } from './types'
+import type { NavbarSlice } from './types'
 
 /** Create the initial state of the navbar module */
 export const createInitialSlice = (): NavbarSlice => {

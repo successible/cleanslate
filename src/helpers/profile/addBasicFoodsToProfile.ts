@@ -1,6 +1,6 @@
 import { produce } from 'immer'
-import { Ingredient } from '../../models/ingredient'
-import { Profile } from '../../models/profile'
+import type { Ingredient } from '../../models/ingredient'
+import type { Profile } from '../../models/profile'
 import { getBasicFoods } from '../Food/getBasicFoods'
 
 const { basicFoodsManifest } = getBasicFoods()

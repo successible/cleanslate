@@ -1,4 +1,4 @@
-import { DummyFoods } from './dummyFoods'
+import type { DummyFoods } from './dummyFoods'
 
 export const wine: DummyFoods = {
   Wine: {

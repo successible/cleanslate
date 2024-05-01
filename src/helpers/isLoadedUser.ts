@@ -1,3 +1,3 @@
-import { UserStatus } from '../store/navbar/types'
+import type { UserStatus } from '../store/navbar/types'
 
 export const isLoadedUser = (user: UserStatus) => user && user !== 'PENDING'

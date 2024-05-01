@@ -1,11 +1,11 @@
-import { StoreonModule } from 'storeon'
-import { SubscriptionClient } from 'subscriptions-transport-ws'
-import { ExerciseLog } from '../../models/exerciseLog'
-import { Food } from '../../models/food'
-import { Log } from '../../models/log'
-import { Profile } from '../../models/profile'
-import { QuickLog } from '../../models/quickLog'
-import { Recipe } from '../../models/recipe'
+import type { StoreonModule } from 'storeon'
+import type { SubscriptionClient } from 'subscriptions-transport-ws'
+import type { ExerciseLog } from '../../models/exerciseLog'
+import type { Food } from '../../models/food'
+import type { Log } from '../../models/log'
+import type { Profile } from '../../models/profile'
+import type { QuickLog } from '../../models/quickLog'
+import type { Recipe } from '../../models/recipe'
 
 export type Data = { profiles: Profile[]; basicFoods: Food[] }
 

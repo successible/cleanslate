@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-sync-scripts */
 import Document, {
-  DocumentContext,
+  type DocumentContext,
   Head,
   Html,
   Main,
@@ -167,11 +167,9 @@ export default class CustomDocument extends Document {
             media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
           {/* Without this check, when proxying on local development, the PWA will try to register itself and throw an error */}
-          {isProduction() && (
-            <script src="/register-service-worker.js"></script>
-          )}
+          {isProduction() && <script src="/register-service-worker.js" />}
 
-          <script src="/browser-check.js"></script>
+          <script src="/browser-check.js" />
         </Head>
         <body>
           <Main />

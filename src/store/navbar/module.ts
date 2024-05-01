@@ -1,12 +1,12 @@
 import cloneDeep from 'clone-deep'
 import { produce } from 'immer'
-import { StoreonModule } from 'storeon'
-import { CommonItem } from '../../components/item/types'
+import type { StoreonModule } from 'storeon'
+import type { CommonItem } from '../../components/item/types'
 import { modals } from '../../constants/modals'
 import { updateModal } from '../../helpers/updateModal'
-import { CleanslateSlices } from '../store'
+import type { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
-import { NavbarEvents } from './types'
+import type { NavbarEvents } from './types'
 
 export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   store

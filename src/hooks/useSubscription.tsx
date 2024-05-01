@@ -1,11 +1,11 @@
 import React from 'react'
-import { SubscriptionClient } from 'subscriptions-transport-ws'
+import type { SubscriptionClient } from 'subscriptions-transport-ws'
 import { getLoginStatus } from '../helpers/getLoginStatus'
 import { getWebsocketClient } from '../helpers/getWebsocketClient'
 import { isLoadedUser } from '../helpers/isLoadedUser'
 import { isOffline } from '../helpers/isOffline'
-import { Profile } from '../models/profile'
-import { UserStatus } from '../store/navbar/types'
+import type { Profile } from '../models/profile'
+import type { UserStatus } from '../store/navbar/types'
 
 export type Subscriber = (
   client: SubscriptionClient,

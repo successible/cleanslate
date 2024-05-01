@@ -1,4 +1,4 @@
-import { RecipeMutationInput } from '../../components/forms/RecipeForm/helpers/formatDataForMutation'
+import type { RecipeMutationInput } from '../../components/forms/RecipeForm/helpers/formatDataForMutation'
 import { CREATE_RECIPE } from '../../graphql/recipe'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

@@ -1,7 +1,7 @@
 import {
+  type Key,
+  type KeyboardShortcutKeys,
   createKeyboardShortcutDirectory,
-  Key,
-  KeyboardShortcutKeys,
 } from './createShortcuts'
 import { modalsAreActive } from './modalsAreActive'
 
@@ -12,7 +12,7 @@ export const executeKeyboardShortcuts = (event: KeyboardEvent) => {
     // Do nothing
   } else {
     const keyboardShortcutDirectory = createKeyboardShortcutDirectory()
-    const action: () => void | undefined =
+    const action: () => void =
       keyboardShortcutDirectory[key as KeyboardShortcutKeys]
     if (action && key !== 'Escape') {
       action()

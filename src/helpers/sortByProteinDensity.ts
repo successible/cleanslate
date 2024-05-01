@@ -3,8 +3,8 @@ import {
   calculateRecipeDensities,
 } from '../components/macros/helpers/calculateDensities'
 import { calculatePerMacroPerRecipe } from '../components/macros/helpers/calculateMacros'
-import { Food } from '../models/food'
-import { Recipe } from '../models/recipe'
+import type { Food } from '../models/food'
+import type { Recipe } from '../models/recipe'
 import { categoriesToIgnore } from './sortByCaloricDensity'
 
 export const sortByProteinDensity = (items: (Food | Recipe)[]) => {
@@ -35,8 +35,7 @@ export const sortByProteinDensity = (items: (Food | Recipe)[]) => {
     .filter((food) => {
       if (food.type === 'food' && categoriesToIgnore.includes(food.category)) {
         return false
-      } else {
-        return true
       }
+      return true
     })
 }

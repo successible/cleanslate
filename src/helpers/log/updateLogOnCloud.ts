@@ -1,6 +1,6 @@
-import { Unit } from '../../constants/units'
+import type { Unit } from '../../constants/units'
 import { UPDATE_LOG } from '../../graphql/log'
-import { Log } from '../../models/log'
+import type { Log } from '../../models/log'
 import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

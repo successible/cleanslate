@@ -26,7 +26,6 @@ export const stopRequestIfOffline = async (
     closeModals ? closeAllModals() : store.dispatch('closeError')
     showMessage && toast.error(offlineMessage)
     throw new Error('You are offline!')
-  } else {
-    return 'You are online!'
   }
+  return 'You are online!'
 }

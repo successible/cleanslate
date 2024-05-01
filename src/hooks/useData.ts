@@ -1,9 +1,9 @@
 import { useStoreon } from 'storeon/react'
 import { extractData } from '../helpers/extractData'
-import { Data } from '../store/data/types'
-import { NavbarState } from '../store/navbar/types'
-import { AllEvents } from '../store/store'
-import { Dispatch } from '../store/types'
+import type { Data } from '../store/data/types'
+import type { NavbarState } from '../store/navbar/types'
+import type { AllEvents } from '../store/store'
+import type { Dispatch } from '../store/types'
 
 export const useData = () => {
   const {

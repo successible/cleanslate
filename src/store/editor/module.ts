@@ -1,8 +1,8 @@
 import { produce } from 'immer'
-import { StoreonModule } from 'storeon'
-import { CleanslateSlices } from '../store'
+import type { StoreonModule } from 'storeon'
+import type { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
-import { EditorEvents } from './types'
+import type { EditorEvents } from './types'
 
 export const editor: StoreonModule<CleanslateSlices, EditorEvents> = (
   store

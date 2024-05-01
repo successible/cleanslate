@@ -1,7 +1,7 @@
 import { getAuth } from 'firebase/auth'
 import toast from 'react-hot-toast'
 import { DELETE_PROFILE } from '../../graphql/profile'
-import { Profile } from '../../models/profile'
+import type { Profile } from '../../models/profile'
 import { firebaseApp } from '../../pages'
 import { firebaseEnabled } from '../getFirebaseConfig'
 import { getHasuraClient } from '../getHasuraClient'

@@ -1,13 +1,13 @@
 /* eslint-disable sort/object-properties */
 
-import {
+import type { ExerciseGroup } from '../components/forms/ExerciseForm/ExerciseForm'
+import type {
   LiftingActivity,
   OtherActivity,
   SwimmingActivity,
 } from '../components/forms/ExerciseForm/constants'
-import { ExerciseGroup } from '../components/forms/ExerciseForm/ExerciseForm'
 import { uuid } from '../helpers/uuid'
-import { Profile } from './profile'
+import type { Profile } from './profile'
 
 export type ExerciseCategory =
   | (OtherActivity | SwimmingActivity | LiftingActivity)

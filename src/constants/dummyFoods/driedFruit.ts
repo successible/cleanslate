@@ -1,4 +1,4 @@
-import { DummyFoods } from './dummyFoods'
+import type { DummyFoods } from './dummyFoods'
 
 // Reference for dried fruit: https://www.bellaviva.com/dried-fruit
 export const driedFruit: DummyFoods = {

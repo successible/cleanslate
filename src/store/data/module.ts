@@ -1,12 +1,12 @@
 import { produce } from 'immer'
-import { StoreonModule } from 'storeon'
+import type { StoreonModule } from 'storeon'
 import { profileKey } from '../../helpers/constants'
 import { isBrowser } from '../../helpers/isBrowser'
 import { addBasicFoodsToProfile } from '../../helpers/profile/addBasicFoodsToProfile'
 import { Profile } from '../../models/profile'
-import { CleanslateSlices } from '../store'
+import type { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
-import { DataEvents } from './types'
+import type { DataEvents } from './types'
 
 const updateAndCacheProfile = (state: Readonly<CleanslateSlices>) => {
   const profileWithBasicsFoods = addBasicFoodsToProfile(
@@ -40,9 +40,8 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
         // @ts-ignore
         draft.currentWebsocketClient = client
       })
-    } else {
-      return state
     }
+    return state
   })
 
   store.on('addLogs', (state, logs) => {

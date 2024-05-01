@@ -7,8 +7,7 @@ export const getAnimationDuration = (
   // Disable the fadeIn and fadeOut animation on anything bigger than an iPad Pro
   if (['fadeIn', 'fadeOut', 'fadeOutHard'].includes(animationName || '')) {
     return ['0s', 0]
-  } else {
-    // If the animation name is included but not matched, assumed the duration is 0.5s
-    return ['0.5s', 500]
   }
+  // If the animation name is included but not matched, assumed the duration is 0.5s
+  return ['0.5s', 500]
 }

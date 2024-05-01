@@ -1,4 +1,4 @@
-import firebase from 'firebase/compat/app'
+import type firebase from 'firebase/compat/app'
 import { store } from '../store/store'
 import { handleError } from './handleError'
 import { login } from './login'

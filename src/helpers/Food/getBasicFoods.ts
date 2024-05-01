@@ -1,5 +1,5 @@
 import basicFoodsJson from '../../basicFoods.json'
-import { Food } from '../../models/food'
+import type { Food } from '../../models/food'
 
 export const getBasicFoods = () => {
   const basicFoods = basicFoodsJson as unknown as Food[]

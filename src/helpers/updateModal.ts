@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import { CleanslateSlices } from '../store/store'
+import type { CleanslateSlices } from '../store/store'
 
 /** Keep a running list of all active modals AND hide/show modals */
 export const updateModal = (

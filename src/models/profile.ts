@@ -1,10 +1,10 @@
 import { uuid } from '../helpers/uuid'
-import { ExerciseLog } from './exerciseLog'
-import { Food } from './food'
-import { Ingredient } from './ingredient'
-import { Log } from './log'
-import { QuickLog } from './quickLog'
-import { Recipe } from './recipe'
+import type { ExerciseLog } from './exerciseLog'
+import type { Food } from './food'
+import type { Ingredient } from './ingredient'
+import type { Log } from './log'
+import type { QuickLog } from './quickLog'
+import type { Recipe } from './recipe'
 
 // The default targets are ludicrous by design
 // That is how progress bars will know to show the placeholder

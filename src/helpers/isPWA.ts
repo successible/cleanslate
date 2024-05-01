@@ -4,7 +4,7 @@ export const isPWA = () => {
   if (isBrowser()) {
     const displayMode = ['fullscreen', 'standalone', 'minimal-ui'].some(
       (displayMode) =>
-        window.matchMedia('(display-mode: ' + displayMode + ')').matches
+        window.matchMedia(`(display-mode: ${displayMode})`).matches
     )
     return (
       displayMode ||

@@ -1,4 +1,4 @@
-import { DummyFoods } from './dummyFoods'
+import type { DummyFoods } from './dummyFoods'
 
 // Source: https://cooking.stackexchange.com/questions/75391/what-percentage-of-my-chicken-legs-are-bone
 

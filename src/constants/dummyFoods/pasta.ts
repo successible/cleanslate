@@ -30,12 +30,12 @@ export const pastaNames = [
 export const pasta = {
   Pasta: {
     White: {
-      Cooked: [`White pasta (cooked)`],
-      Dry: [`White pasta (dry)`],
+      Cooked: ['White pasta (cooked)'],
+      Dry: ['White pasta (dry)'],
     },
     'Whole wheat': {
-      Cooked: [`Whole wheat pasta (cooked)`],
-      Dry: [`Whole wheat pasta (dry)`],
+      Cooked: ['Whole wheat pasta (cooked)'],
+      Dry: ['Whole wheat pasta (dry)'],
     },
   },
 }

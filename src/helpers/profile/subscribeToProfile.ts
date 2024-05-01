@@ -1,6 +1,6 @@
-import { SubscriptionClient } from 'subscriptions-transport-ws'
+import type { SubscriptionClient } from 'subscriptions-transport-ws'
 import { SUBSCRIBE_TO_DATA } from '../../graphql/profile'
-import { Data } from '../../store/data/types'
+import type { Data } from '../../store/data/types'
 import { createDateRange } from '../createDateRange'
 import { firebaseEnabled } from '../getFirebaseConfig'
 import { getStore } from '../getStore'

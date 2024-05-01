@@ -1,4 +1,4 @@
-import { FoodSubmission } from '../../components/forms/CustomFoodForm/CustomFoodForm'
+import type { FoodSubmission } from '../../components/forms/CustomFoodForm/CustomFoodForm'
 import { UPDATE_FOOD } from '../../graphql/food'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

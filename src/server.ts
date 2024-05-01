@@ -3,10 +3,10 @@ import { gql, request } from 'graphql-request'
 import helmet from 'helmet'
 import * as jose from 'jose'
 
-const signingKey = process.env['JWT_SIGNING_SECRET']
-const adminSecret = process.env['HASURA_GRAPHQL_ADMIN_SECRET']
-const useFirebase = process.env['NEXT_PUBLIC_USE_FIREBASE'] == 'true'
-const domain = process.env['NEXT_PUBLIC_HASURA_DOMAIN']
+const signingKey = process.env.JWT_SIGNING_SECRET
+const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET
+const useFirebase = process.env.NEXT_PUBLIC_USE_FIREBASE === 'true'
+const domain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
 
 const isProduction = process.env.NODE_ENV === 'production'
 
@@ -23,8 +23,8 @@ isProduction && app.use(helmet())
 
 const port = 3001
 const graphqlUrl = isProduction
-  ? `http://graphql-server:8080/v1/graphql`
-  : `https://localhost/v1/graphql`
+  ? 'http://graphql-server:8080/v1/graphql'
+  : 'https://localhost/v1/graphql'
 
 const getProfiles = async (token: string) => {
   const document = gql`
@@ -84,9 +84,8 @@ app.post('/auth/login', async (req, res) => {
       .setExpirationTime('30d')
       .sign(secret)
     return res.send(JWT)
-  } else {
-    return res.sendStatus(403)
   }
+  return res.sendStatus(403)
 })
 
 app.post('/auth/graphql', async (req, res) => {

@@ -8,9 +8,8 @@ export const getWebsocketClient = async () => {
   if (currentClient) {
     // Do nothing, reuse the existing client
     return currentClient
-  } else {
-    const client = createWebsocketClient()
-    store.dispatch('updateCurrentWebsocketClient', client)
-    return client
   }
+  const client = createWebsocketClient()
+  store.dispatch('updateCurrentWebsocketClient', client)
+  return client
 }

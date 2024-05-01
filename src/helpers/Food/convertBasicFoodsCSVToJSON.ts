@@ -1,5 +1,5 @@
 import get from 'just-safe-get'
-import { Food } from '../../models/food'
+import type { Food } from '../../models/food'
 
 export const convertBasicFoodsCSVToJSON = () => {
   // BasicFoods must derive from CSV
@@ -7,8 +7,8 @@ export const convertBasicFoodsCSVToJSON = () => {
   const basicFoodsManifest: Record<string, Food> = {}
   const basicFoods = (BasicFoods as unknown as Food[]).map((food) => {
     const basicFoodId = String(food.basicFoodId)
-    food['caloriesPerGram'] = Number(get(food, 'caloriesPer100Gram')) / 100
-    food['proteinPerGram'] = Number(get(food, 'proteinPer100Gram')) / 100
+    food.caloriesPerGram = Number(get(food, 'caloriesPer100Gram')) / 100
+    food.proteinPerGram = Number(get(food, 'proteinPer100Gram')) / 100
     food.foodToProfile = null
     food.type = 'food'
     food.id = basicFoodId

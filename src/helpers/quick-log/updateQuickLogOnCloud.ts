@@ -1,5 +1,5 @@
 import { UPDATE_QUICK_LOG } from '../../graphql/quickLog'
-import { QuickLog } from '../../models/quickLog'
+import type { QuickLog } from '../../models/quickLog'
 import { store } from '../../store/store'
 import { getHasuraClient } from '../getHasuraClient'
 import { handleError } from '../handleError'

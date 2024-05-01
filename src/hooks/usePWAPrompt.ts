@@ -1,10 +1,10 @@
 import React from 'react'
 import { isMobile } from '../helpers/isMobile'
-import { isProduction } from '../helpers/isProduction'
 import { isPWA } from '../helpers/isPWA'
-import { Profile } from '../models/profile'
-import { AllEvents } from '../store/store'
-import { Dispatch } from '../store/types'
+import { isProduction } from '../helpers/isProduction'
+import type { Profile } from '../models/profile'
+import type { AllEvents } from '../store/store'
+import type { Dispatch } from '../store/types'
 
 export const usePWAPrompt = (
   profile: Profile,
