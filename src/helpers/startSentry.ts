@@ -37,16 +37,8 @@ export const startSentry = () => {
     Sentry.init({
       dsn,
       ignoreErrors: errorsToIgnore,
-      integrations: [
-        new Sentry.BrowserTracing(),
-        new Sentry.Replay({
-          blockAllMedia: false,
-          maskAllInputs: false,
-          maskAllText: false,
-        }),
-      ],
       maxValueLength: 1000,
-      replaysOnErrorSampleRate: 1.0,
+      replaysOnErrorSampleRate: 0,
       tracesSampleRate: 0,
     })
   }
