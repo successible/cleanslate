@@ -106,7 +106,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
           <Explanation color="background">
             <div className="fr">
               <strong css={explanationHeader}>Remember: </strong> Logs reset
-              each day at midnight
+              daily at midnight
             </div>
           </Explanation>
         </div>
