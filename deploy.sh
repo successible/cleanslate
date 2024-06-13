@@ -33,8 +33,5 @@ docker compose -f $COMPOSE_FILE build
 docker compose -f $COMPOSE_FILE down --remove-orphans -t=0
 docker compose -f $COMPOSE_FILE up -d
 
-if type caddy >/dev/null 2>&1
-then
-    caddy stop
-    caddy start
-fi
+sudo caddy stop
+sudo caddy start
