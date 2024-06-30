@@ -198,7 +198,7 @@ Here is how you do it:
 - Web: Create a new Firebase project.
 - Web: Enable Firebase authentication.
 - Web: Enable the Google provider in Firebase.
-- Local: Create your `.firebaserc` in the root with the following content. Example:
+- Local: Create the `.firebaserc` in the root with the following content. Example:
 
 ```json
 {
