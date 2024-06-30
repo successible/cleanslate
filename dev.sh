@@ -4,14 +4,14 @@ if [[ $CI != "true" ]]; then
 
 echo "=> Kill the local version of Clean Slate..."
 
-pkill -9 -f "hasura console"
-pkill -9 -f "next dev"
-pkill -9 -f "next-router-worker"
-pkill -9 -f "next-server"
-pkill -9 -f "npm exec tsc --watch"
-pkill -9 -f "server.ts"
-pkill -9 -f "tsc --watch"
-pkill -9 -f "nginx" # May compete with caddy
+sudo pkill -9 -f "hasura console"
+sudo pkill -9 -f "next dev"
+sudo pkill -9 -f "next-router-worker"
+sudo pkill -9 -f "next-server"
+sudo pkill -9 -f "npm exec tsc --watch"
+sudo pkill -9 -f "server.ts"
+sudo pkill -9 -f "tsc --watch"
+sudo pkill -9 -f "nginx" # May compete with caddy
 caddy stop
 
 export NEXT_PUBLIC_VERSION="XXX"
@@ -97,4 +97,4 @@ fi
 
 (cd src && ((npx next dev) & (npx nodemon server.ts))) & 
 
-sleep 5 && caddy start -c Caddyfile.dev &
+sleep 5 && caddy start -c Caddyfile.dev --adapter caddyfile &

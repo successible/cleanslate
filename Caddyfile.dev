@@ -1,4 +1,3 @@
-
 {$NEXT_PUBLIC_HASURA_DOMAIN:localhost} {
 	route /v1* {
 		# API (Hasura)

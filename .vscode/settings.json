@@ -8,6 +8,7 @@
     "fullscreen",
     "geolocation",
     "HASURA",
+    "Healthcheck",
     "healthz",
     "nosniff",
     "publickey"

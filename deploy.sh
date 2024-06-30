@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Pull down any new updates
-git fetch --tags -f
 git pull origin main
 
 # Set the environmental variables
