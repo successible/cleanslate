@@ -29,7 +29,7 @@ Here, we list all the changes that Clean Slate has gone through in each version.
 
 ## Do I need to host Clean Slate to use it?
 
-Nope!
+You do not!
 
 We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login via Firebase. For example, "Login with Google".
 
