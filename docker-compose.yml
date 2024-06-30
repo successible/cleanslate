@@ -8,7 +8,7 @@ services:
     volumes:
       - database:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      test: [ 'CMD-SHELL', 'pg_isready -U postgres']
       interval: 10s
       timeout: 5s
       retries: 5
@@ -64,6 +64,7 @@ services:
       args:
         - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG}
         - NEXT_PUBLIC_HASURA_DOMAIN=${NEXT_PUBLIC_HASURA_DOMAIN}
+        - NEXT_PUBLIC_LEGAL_LINK=${NEXT_PUBLIC_LEGAL_LINK}
         - NEXT_PUBLIC_LOGIN_WITH_APPLE=${NEXT_PUBLIC_LOGIN_WITH_APPLE}
         - NEXT_PUBLIC_LOGIN_WITH_FACEBOOK=${NEXT_PUBLIC_LOGIN_WITH_FACEBOOK}
         - NEXT_PUBLIC_LOGIN_WITH_GITHUB=${NEXT_PUBLIC_LOGIN_WITH_GITHUB}
