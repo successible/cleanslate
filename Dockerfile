@@ -1,4 +1,4 @@
-FROM node:21 as builder
+FROM node:latest AS builder
 
 # Install the dependencies needed to build Clean Slate
 
@@ -58,7 +58,7 @@ ENV NEXT_PUBLIC_VERSION=$NEXT_PUBLIC_VERSION
 COPY build.sh .
 RUN ["bash", "-e", "build.sh"]
 
-FROM busybox:1.36.1 as runner
+FROM busybox:latest AS runner
 
 # Copy over the built version of Clean Slate
 
