@@ -2,15 +2,23 @@
   "cSpell.words": [
     "autoplay",
     "barcodes",
+    "biomejs",
     "Caddyfile",
     "cleanslate",
+    "deepmerge",
     "firebaserc",
     "fullscreen",
     "geolocation",
+    "groupby",
     "HASURA",
     "Healthcheck",
     "healthz",
+    "immer",
+    "koder",
+    "maslick",
     "nosniff",
-    "publickey"
+    "publickey",
+    "storeon",
+    "uniqby"
   ]
 }
