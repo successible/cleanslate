@@ -5,7 +5,7 @@ import { logout } from './logout'
 import { dsn } from './startSentry'
 
 export const handleError = (
-  error: Error | string,
+  error: unknown,
   options: {
     showModal?: boolean
     hideFromSentry?: boolean
