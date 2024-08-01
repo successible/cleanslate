@@ -39,7 +39,7 @@
     "firebase": "10.12.4",
     "focus-trap-react": "10.2.3",
     "graphql": "16.9.0",
-    "graphql-request": "6.1.0",
+    "graphql-request": "7.1.0",
     "helmet": "7.1.0",
     "immer": "10.1.1",
     "jose": "5.6.3",
