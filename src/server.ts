@@ -1,5 +1,5 @@
+import axios from 'axios'
 import express from 'express'
-import { gql, request } from 'graphql-request'
 import helmet from 'helmet'
 import * as jose from 'jose'
 
@@ -27,7 +27,7 @@ const graphqlUrl = isProduction
   : 'https://localhost/v1/graphql'
 
 const getProfiles = async (token: string) => {
-  const document = gql`
+  const document = `
     query GET_PROFILES($token: String!, $apiToken: uuid!) {
       profiles(
         where: {
@@ -39,17 +39,23 @@ const getProfiles = async (token: string) => {
       }
     }
   `
-  const response: { profiles: [{ authId: string; id: string }] } =
-    await request(
-      graphqlUrl,
-      document,
-      {
+  const response = await axios({
+    url: graphqlUrl,
+    method: 'post',
+    headers: {
+      'content-type': 'application/json',
+      'X-Hasura-Admin-Secret': adminSecret || '',
+    },
+    data: {
+      operationName: 'GET_PROFILES',
+      query: document,
+      variables: {
         apiToken: token,
         token,
       },
-      { 'X-Hasura-Admin-Secret': adminSecret || '' }
-    )
-  return response.profiles
+    },
+  })
+  return response.data.data.profiles as [{ authId: string; id: string }]
 }
 
 app.get('/auth', (req, res) => {
@@ -98,17 +104,21 @@ app.post('/auth/graphql', async (req, res) => {
   }
   const profiles = await getProfiles(token)
   if (profiles.length === 1) {
-    const result = await request(
-      graphqlUrl,
-      req.body.query,
-      req.body.variables ? req.body.variables : {},
-      {
+    const result = await axios({
+      url: graphqlUrl,
+      method: 'post',
+      headers: {
+        'content-type': 'application/json',
         'X-Hasura-Admin-Secret': adminSecret || '',
         'X-Hasura-Role': 'user',
         'X-Hasura-User-Id': profiles[0].authId,
-      }
-    )
-    res.send(result)
+      },
+      data: {
+        query: req.body.query,
+        variables: req.body.variables ? req.body.variables : {},
+      },
+    })
+    res.send(result.data.data)
   } else {
     return res.sendStatus(403)
   }
