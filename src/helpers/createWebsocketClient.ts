@@ -8,6 +8,11 @@ import { handleError } from './handleError'
 export const createWebsocketClient = () => {
   const client = new GraphQLWsLink(
     createClient({
+      shouldRetry: (e) => {
+        console.log(`Error or Close Event: ${e}`)
+        return true
+      },
+      retryAttempts: 5,
       url: getConfig().resourceServerUriWs,
       connectionParams: () => {
         const JWT = getJWT()
