@@ -10,6 +10,6 @@ cd ..
 
 echo "=> Compiling src with Biome..."
 
-npx biome check .
+npx biome check --fix --unsafe
 
 echo "=> All checks passed with Biome..."

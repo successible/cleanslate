@@ -1,5 +1,6 @@
 import '../theme.scss'
 import 'firebase/compat/auth'
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import * as Sentry from '@sentry/react'
 import { setAutoFreeze } from 'immer'
 import type { AppProps } from 'next/app'
@@ -8,6 +9,8 @@ import Div100vh from 'react-div-100vh'
 import { Toaster } from 'react-hot-toast'
 import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
+import { getConfig } from '../helpers/config'
+import { createWebsocketClient } from '../helpers/createWebsocketClient'
 import { handleError } from '../helpers/handleError'
 import { startSentry } from '../helpers/startSentry'
 import { useErrors } from '../hooks/useErrors'
@@ -16,6 +19,12 @@ import { store } from '../store/store'
 // https://github.com/immerjs/immer/issues/959
 setAutoFreeze(false)
 startSentry()
+
+const client = new ApolloClient({
+  uri: getConfig().resourceServerUriWs,
+  cache: new InMemoryCache(),
+  link: createWebsocketClient(),
+})
 
 function _App({ Component, pageProps }: AppProps) {
   // Listen to unhandled errors and Promise rejections
@@ -43,15 +52,18 @@ function _App({ Component, pageProps }: AppProps) {
           duration: 4000,
         }}
       />
-      <StoreContext.Provider value={store}>
-        <Head>
-          <title>Clean Slate | App</title>
-          <meta name="description" content={'Track food without judgement'} />
-        </Head>
-        <Div100vh>
-          <Component {...pageProps} />
-        </Div100vh>
-      </StoreContext.Provider>
+
+      <ApolloProvider client={client}>
+        <StoreContext.Provider value={store}>
+          <Head>
+            <title>Clean Slate | App</title>
+            <meta name="description" content={'Track food without judgement'} />
+          </Head>
+          <Div100vh>
+            <Component {...pageProps} />
+          </Div100vh>
+        </StoreContext.Provider>
+      </ApolloProvider>
     </Sentry.ErrorBoundary>
   )
 }

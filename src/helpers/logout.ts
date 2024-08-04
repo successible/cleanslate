@@ -16,11 +16,6 @@ export const logout = async (alert = true) => {
 
   // Close the Websocket connections to save bandwidth
   const store = getStore()
-  const client = store.get().currentWebsocketClient
-  if (client) {
-    client.unsubscribeAll()
-    client.close(true, true)
-  }
   try {
     // Log out of Firebase
     if (firebaseEnabled) {

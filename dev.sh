@@ -4,14 +4,13 @@ if [[ $CI != "true" ]]; then
 
 echo "=> Kill the local version of Clean Slate..."
 
-sudo pkill -9 -f "hasura console"
-sudo pkill -9 -f "next dev"
-sudo pkill -9 -f "next-router-worker"
-sudo pkill -9 -f "next-server"
-sudo pkill -9 -f "npm exec tsc --watch"
-sudo pkill -9 -f "server.ts"
-sudo pkill -9 -f "tsc --watch"
-sudo pkill -9 -f "nginx" # May compete with caddy
+pkill -9 -f "hasura console"
+pkill -9 -f "next dev"
+pkill -9 -f "next-router-worker"
+pkill -9 -f "next-server"
+pkill -9 -f "npm exec tsc --watch"
+pkill -9 -f "server.ts"
+pkill -9 -f "tsc --watch"
 caddy stop
 
 export NEXT_PUBLIC_VERSION="XXX"
@@ -30,7 +29,7 @@ if [ "$FIREBASE" != "true" ]; then
   export JWT_SIGNING_SECRET="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 fi
 
-docker-compose -f docker-compose.yml down -t 0 --remove-orphans
+docker compose -f docker-compose.yml down -t 0 --remove-orphans
 
 fi
 
@@ -79,8 +78,8 @@ if [[ $CI != "true" ]]; then
   pnpm install
 
   echo "=> Spin up PostgreSQL and Hasura..."
-  docker-compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
-  docker-compose -f docker-compose-dev.yml pull && docker-compose -f docker-compose-dev.yml up -d
+  docker compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
+  docker compose -f docker-compose-dev.yml pull && docker compose -f docker-compose-dev.yml up -d
 
   echo "=> Wait for five seconds for Hasura to get ready..."
   sleep 5;
