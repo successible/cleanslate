@@ -1,30 +1,50 @@
 {
-  "extends": ["config:recommended", "docker:enableMajor"],
+  "extends": [
+    "config:recommended",
+    "docker:enableMajor"
+  ],
   "timezone": "America/New_York",
-  "labels": ["enhancement"],
+  "labels": [
+    "enhancement"
+  ],
   "configMigration": true,
   "packageRules": [
     {
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["minor", "patch"],
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
       "groupSlug": "all-minor-patch",
       "groupName": "all non-major dependencies",
-      "schedule": ["before 6:00am on Monday"],
-      "automerge": true
+      "schedule": [
+        "before 6:00am on Monday"
+      ],
+      "automerge": true,
+      "matchPackageNames": [
+        "*"
+      ]
     },
     {
-      "matchPackagePatterns": ["*"],
-      "matchUpdateTypes": ["major"],
+      "matchUpdateTypes": [
+        "major"
+      ],
       "groupSlug": "all-major",
       "groupName": "all major dependencies",
-      "schedule": ["on the first day of the month before 6:00am"],
+      "schedule": [
+        "on the first day of the month before 6:00am"
+      ],
       "automerge": false,
-      "excludePackagePatterns": ["^postgres"]
+      "matchPackageNames": [
+        "*",
+        "!/^postgres/"
+      ]
     }
   ],
   "lockFileMaintenance": {
     "enabled": true,
     "automerge": true,
-    "schedule": ["before 6:00am on Tuesday"]
+    "schedule": [
+      "before 6:00am on Tuesday"
+    ]
   }
 }
