@@ -1,6 +1,6 @@
 services:
   database:
-    image: postgres:15.7
+    image: postgres:15.8
     restart: always
     ports:
       - '${DB_PORT}:5432'
@@ -10,7 +10,7 @@ services:
       - cleanslate:/var/lib/postgresql/data
 
   graphql-engine:
-    image: hasura/graphql-engine:v2.41.0
+    image: hasura/graphql-engine:v2.42.0
     restart: always
     ports:
       - '8080:8080'
