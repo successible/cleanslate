@@ -27,8 +27,6 @@ if [ "$NEXT_PUBLIC_USE_FIREBASE" != "true" ]; then
     export NEXT_PUBLIC_USE_FIREBASE='false'
 fi
 
-echo $HASURA_GRAPHQL_JWT_SECRET
-
 if [ "$NEXT_PUBLIC_USE_FIREBASE" == "true" ]; then
     # This value is unused by Firebase, but it silences the Docker Compose warning
     export JWT_SIGNING_SECRET=$(uuidgen)
