@@ -43,13 +43,14 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder. Replace `<>` with your values.
+2.  Create a `.env` file in the `cleanslate` folder. Replace `<>` with your values. The `second-long-secret-value` of `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should be the same.
 
 ```bash
-POSTGRES_PASSWORD=<your-desired-password>
+HASURA_GRAPHQL_ADMIN_SECRET=<first-long-secret-value>
+HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"<second-long-secret-value>"}'
+JWT_SIGNING_SECRET=<second-long-secret-value>
 NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
-HASURA_GRAPHQL_ADMIN_SECRET=<long-secret-value>
-JWT_SIGNING_SECRET=<long-secret-value>
+POSTGRES_PASSWORD=<third-long-secret-value>
 ```
 
 3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3].

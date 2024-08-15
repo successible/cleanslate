@@ -7,3 +7,4 @@ pnpm
 proxying
 self-hoster
 stringified
+GRAPHQL

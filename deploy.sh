@@ -5,6 +5,17 @@ git pull origin main
 
 # Set the environmental variables
 export $(xargs < .env)
+
+# Check that HASURA_GRAPHQL_JWT_SECRET has been set in the .env
+if [ -z ${HASURA_GRAPHQL_JWT_SECRET+x} ];
+then
+    echo "You need to define the HASURA_GRAPHQL_JWT_SECRET in your .env. Consult Step #2 in the How do I host Clean Slate? section of the README.md"
+    exit 1
+else
+    echo ""
+fi
+
+# Set the rest of the environmental variables
 export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
 if [ "$NEXT_PUBLIC_USE_FIREBASE" != "true" ]; then
     export NEXT_PUBLIC_FIREBASE_CONFIG='{}'
@@ -14,8 +25,10 @@ if [ "$NEXT_PUBLIC_USE_FIREBASE" != "true" ]; then
     export NEXT_PUBLIC_LOGIN_WITH_GOOGLE='no'
     export NEXT_PUBLIC_REACT_SENTRY_DSN=''
     export NEXT_PUBLIC_USE_FIREBASE='false'
-    export HASURA_GRAPHQL_JWT_SECRET='{"type": "HS256", "key": "'"$JWT_SIGNING_SECRET"'"}'
 fi
+
+echo $HASURA_GRAPHQL_JWT_SECRET
+
 if [ "$NEXT_PUBLIC_USE_FIREBASE" == "true" ]; then
     # This value is unused by Firebase, but it silences the Docker Compose warning
     export JWT_SIGNING_SECRET=$(uuidgen)
