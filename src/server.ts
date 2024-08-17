@@ -28,10 +28,10 @@ const graphqlUrl = isProduction
 
 const getProfiles = async (token: string) => {
   const document = `
-    query GET_PROFILES($token: String!, $apiToken: uuid!) {
+    query GET_PROFILES($token: uuid!) {
       profiles(
         where: {
-          _or: [{ authId: { _eq: $token } }, { apiToken: { _eq: $apiToken } }]
+          _or: [{ apiToken: { _eq: $token } }]
         }
       ) {
         authId
@@ -50,7 +50,6 @@ const getProfiles = async (token: string) => {
       operationName: 'GET_PROFILES',
       query: document,
       variables: {
-        apiToken: token,
         token,
       },
     },
@@ -64,22 +63,27 @@ app.get('/auth', (req, res) => {
 
 app.post('/auth/login', async (req, res) => {
   if (useFirebase) {
+    console.log('This endpoint is disabled because Firebase is enabled.')
     return res.sendStatus(403)
   }
   const token = req.body.token
   if (!req.body.token) {
+    console.log('This endpoint requires you to pass a token.')
     return res.sendStatus(422)
   }
 
   const profiles = await getProfiles(token)
+  console.log(`Profiles ${profiles}`)
+
   if (profiles.length === 1) {
+    const authId = profiles[0].authId
     const customClaims = {
       'https://hasura.io/jwt/claims': {
         'x-hasura-allowed-roles': ['user'],
         'x-hasura-default-role': 'user',
         'x-hasura-role': 'user',
-        'x-hasura-user-id': token,
-        'x-hasura-username': token,
+        'x-hasura-user-id': authId,
+        'x-hasura-username': authId,
       },
     }
     const secret = new TextEncoder().encode(signingKey)
@@ -91,6 +95,7 @@ app.post('/auth/login', async (req, res) => {
       .sign(secret)
     return res.send(JWT)
   }
+  console.log('No profile was found matching that token.')
   return res.sendStatus(403)
 })
 

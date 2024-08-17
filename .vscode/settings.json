@@ -20,6 +20,7 @@
     "nosniff",
     "publickey",
     "storeon",
+    "tcenter",
     "timestamptz",
     "uniqby"
   ]

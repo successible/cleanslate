@@ -11,6 +11,7 @@ import { LegalDisclaimer } from './LegalDisclaimer'
 
 export const TokenLoginButtons = () => {
   const [token, setToken] = useState('')
+  const noMatch = 'No matching profile found! Make sure to login with apiToken, not authId.'
 
   return (
     <form
@@ -46,10 +47,10 @@ export const TokenLoginButtons = () => {
                 login()
                 getStore().dispatch('updateUser', { token })
               } else {
-                toast.error('No matching profile found!')
+                toast.error(noMatch)
               }
             } catch {
-              toast.error('No matching profile found!')
+              toast.error(noMatch)
             }
           } else {
             toast.error('You must enter your token!')
@@ -69,7 +70,7 @@ export const TokenLoginButtons = () => {
       >
         <div>
           To create an account, the admin must use the Hasura Console to make a
-          profile. The token is the authId of the profile. To learn more about
+          profile. The token is the apiToken of the profile. To learn more about
           the app,{' '}
           <a href="https://cleanslate.sh/" target="_blank" rel="noreferrer">
             go here.
