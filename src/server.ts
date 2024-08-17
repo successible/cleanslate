@@ -73,8 +73,6 @@ app.post('/auth/login', async (req, res) => {
   }
 
   const profiles = await getProfiles(token)
-  console.log(`Profiles ${profiles}`)
-
   if (profiles.length === 1) {
     const authId = profiles[0].authId
     const customClaims = {
