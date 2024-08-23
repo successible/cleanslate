@@ -15,6 +15,7 @@
     "Healthcheck",
     "healthz",
     "immer",
+    "initialised",
     "koder",
     "maslick",
     "nosniff",
@@ -22,6 +23,7 @@
     "storeon",
     "tcenter",
     "timestamptz",
-    "uniqby"
+    "uniqby",
+    "uuidv"
   ]
 }
