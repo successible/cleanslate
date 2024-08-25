@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import { Unit } from '../../../constants/units'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { addIngredient } from '../../../helpers/ingredient/addIngredient'

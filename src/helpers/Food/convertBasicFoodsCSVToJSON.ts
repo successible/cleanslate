@@ -1,4 +1,4 @@
-import get from 'just-safe-get'
+import { get } from 'lodash-es'
 import type { Food } from '../../models/food'
 
 export const convertBasicFoodsCSVToJSON = () => {

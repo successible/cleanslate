@@ -1,5 +1,4 @@
-import { curry } from '@typed/curry'
-import React from 'react'
+import { curry } from 'lodash-es'
 import { Unit } from '../../../constants/units'
 import { Food } from '../../../models/food'
 import { Recipe } from '../../../models/recipe'

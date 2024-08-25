@@ -1,12 +1,12 @@
 import '../theme.scss'
+import 'react-toastify/dist/ReactToastify.css'
 import 'firebase/compat/auth'
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client'
 import * as Sentry from '@sentry/react'
 import { setAutoFreeze } from 'immer'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Div100vh from 'react-div-100vh'
-import { Toaster } from 'react-hot-toast'
+import { ToastContainer } from 'react-toastify'
 import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
 import { getConfig } from '../helpers/config'
@@ -46,24 +46,18 @@ function _App({ Component, pageProps }: AppProps) {
         scope.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')
       }}
     >
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          duration: 4000,
-        }}
-      />
-
       <ApolloProvider client={client}>
         <StoreContext.Provider value={store}>
           <Head>
             <title>Clean Slate | App</title>
             <meta name="description" content={'Track food without judgement'} />
           </Head>
-          <Div100vh>
+          <div className="body">
             <Component {...pageProps} />
-          </Div100vh>
+          </div>
         </StoreContext.Provider>
       </ApolloProvider>
+      <ToastContainer closeOnClick />
     </Sentry.ErrorBoundary>
   )
 }

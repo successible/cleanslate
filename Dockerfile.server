@@ -1,16 +1,22 @@
 FROM node:latest
 
+WORKDIR /app
+
 COPY package.json .
 COPY pnpm-lock.yaml .
 
 RUN ["npm", "install", "pnpm", "-g"]
 RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
 
-COPY src/tsconfig.json src/tsconfig.json
-COPY src/server.ts src/server.ts
+COPY src/tsconfig.json tsconfig.json
+COPY src/tsconfig-server.json tsconfig-server.json
+COPY src/server.ts server.ts  
+
+RUN [ "npx", "tsc", "-p", "tsconfig-server.json"]
 
 ENV NODE_ENV "production"
 
-CMD [ "npx", "ts-node", "src/server.ts" ]
-
 EXPOSE 3001
+
+CMD [ "node", "server.js" ]
+

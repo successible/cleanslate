@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import truncate from 'lodash.truncate'
+import { truncate } from 'lodash-es'
 import { capitalize } from '../../../helpers/capitalize'
 import { AllEvents } from '../../../store/store'
 import { Dispatch } from '../../../store/types'

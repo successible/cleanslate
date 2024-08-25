@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify'
 import { store } from '../store/store'
 import { closeAllModals } from './closeAllModals'
 import { isOffline } from './isOffline'

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import { useStoreon } from 'storeon/react'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
 import { NavbarState } from '../../store/navbar/types'

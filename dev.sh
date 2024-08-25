@@ -9,7 +9,7 @@ pkill -9 -f "next dev"
 pkill -9 -f "next-router-worker"
 pkill -9 -f "next-server"
 pkill -9 -f "npm exec tsc --watch"
-pkill -9 -f "server.ts"
+pkill -9 -f "server.js"
 pkill -9 -f "tsc --watch"
 caddy stop
 
@@ -88,12 +88,12 @@ if [[ $CI != "true" ]]; then
   node migrate.js
 
   hasura console --no-browser --admin-secret 'secret' &
-  (cd src && (npx tsc --watch --preserveWatchOutput)) &
+  (cd src && ((npx tsc --watch --preserveWatchOutput) & (npx tsc -p tsconfig-server.json --watch --preserveWatchOutput))) &
 
 fi
 
 # Start the server!
 
-(cd src && ((npx next dev) & (npx nodemon server.ts))) & 
+(cd src && ((npx next dev) & (npx nodemon server.js))) & 
 
 sleep 5 && caddy start -c Caddyfile.dev --adapter caddyfile &

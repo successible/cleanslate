@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import groupBy from 'lodash.groupby'
+import { groupBy } from 'lodash-es'
 import React from 'react'
 import { profileIsLoaded } from '../../../helpers/profileIsLoaded'
 import { ExerciseLog } from '../../../models/exerciseLog'

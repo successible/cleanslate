@@ -102,6 +102,10 @@ body {
   /* stylelint-enable */
 }
 
+.body {
+  height: 100svh;
+}
+
 // Headers
 h1,
 h2,
@@ -451,6 +455,7 @@ input[type='checkbox'] {
   padding: 0;
   position: relative;
   width: 25px;
+  border-color: #111;
 
   &:checked::before {
     background-color: $success;

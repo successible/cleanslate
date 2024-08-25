@@ -1,5 +1,5 @@
 import React from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
 import { Unit } from '../../../constants/units'
 import { deleteLogOnCloud } from '../../../helpers/log/deleteLogOnCloud'
