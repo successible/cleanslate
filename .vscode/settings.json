@@ -23,6 +23,7 @@
     "storeon",
     "tcenter",
     "timestamptz",
+    "toastify",
     "uniqby",
     "upsert",
     "uuidv"

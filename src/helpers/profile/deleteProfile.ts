@@ -1,5 +1,5 @@
 import { getAuth } from 'firebase/auth'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify'
 import { DELETE_PROFILE } from '../../graphql/profile'
 import type { Profile } from '../../models/profile'
 import { firebaseApp } from '../../pages'

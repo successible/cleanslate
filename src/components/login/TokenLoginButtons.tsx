@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
 import axios from 'axios'
 import { useState } from 'react'
-import { toast } from 'react-hot-toast'
+import { toast } from 'react-toastify'
 import { getConfig } from '../../helpers/config'
 import { tokenKey } from '../../helpers/constants'
 import { getStore } from '../../helpers/getStore'

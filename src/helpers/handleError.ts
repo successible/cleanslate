@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/react'
-import { toast } from 'react-hot-toast'
+import { toast } from 'react-toastify'
 import { store } from '../store/store'
 import { logout } from './logout'
 import { dsn } from './startSentry'

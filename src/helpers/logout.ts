@@ -1,5 +1,5 @@
 import firebase from 'firebase/compat/app'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify'
 import { clearCache } from './clearCache'
 import { clearLoginState } from './clearLoginState'
 import { closeAllModals } from './closeAllModals'

@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import axios from 'axios'
 import { compareVersions } from 'compare-versions'
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import { toast } from 'react-toastify';
 import { debounce } from 'lodash-es'
 import UAParser from 'ua-parser-js'
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
