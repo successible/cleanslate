@@ -8,7 +8,7 @@
     "dev": "bash dev.sh",
     "lint": "pnpm install && bash -e lint.sh --format",
     "proxy": "bash proxy.sh",
-    "test": "ts-jest"
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "3.11.4",
