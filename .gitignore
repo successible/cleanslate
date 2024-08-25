@@ -8,7 +8,9 @@ firebase-config.json
 firebase-debug.log
 node_modules
 out
+server.js
 src/.next
 src/build
 src/out
+src/tsconfig-server.tsbuildinfo
 src/tsconfig.tsbuildinfo
