@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import { SerializedStyles } from '@emotion/react'
-import FocusTrap from 'focus-trap-react'
 import React from 'react'
 import ReturnArrow from '../../assets/common/return-arrow.svg'
 import { Modals } from '../../constants/modals'
@@ -198,14 +197,5 @@ export const Modal: React.FC<props> = (props) => {
     <div />
   )
 
-  // Activating the focus trap on mobile causes a whole bunch of problems!
-  if (isMobile()) {
-    return modalComponent
-  } else {
-    return shouldRender ? (
-      <FocusTrap>{modalComponent}</FocusTrap>
-    ) : (
-      modalComponent
-    )
-  }
+  return modalComponent
 }

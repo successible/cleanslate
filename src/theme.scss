@@ -455,6 +455,7 @@ input[type='checkbox'] {
   padding: 0;
   position: relative;
   width: 25px;
+  border-color: #111;
 
   &:checked::before {
     background-color: $success;

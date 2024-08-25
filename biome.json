@@ -3,10 +3,11 @@
   "files": {
     "ignore": [
       "src/.next",
-      "src/public",
       "src/components",
-      "src/workbox-config.js",
-      "src/components/login/LegalDisclaimer.tsx"
+      "src/components/login/LegalDisclaimer.tsx",
+      "src/public",
+      "src/server.js",
+      "src/workbox-config.js"
     ]
   },
   "formatter": {

@@ -46,7 +46,6 @@ function _App({ Component, pageProps }: AppProps) {
         scope.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')
       }}
     >
-      <ToastContainer />
       <ApolloProvider client={client}>
         <StoreContext.Provider value={store}>
           <Head>
@@ -58,6 +57,7 @@ function _App({ Component, pageProps }: AppProps) {
           </div>
         </StoreContext.Provider>
       </ApolloProvider>
+      <ToastContainer closeOnClick />
     </Sentry.ErrorBoundary>
   )
 }
