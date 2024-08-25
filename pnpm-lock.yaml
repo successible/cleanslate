@@ -23,6 +23,9 @@ importers:
       '@sentry/tracing':
         specifier: 7.114.0
         version: 7.114.0
+      '@typed/curry':
+        specifier: 1.0.1
+        version: 1.0.1
       '@types/clone-deep':
         specifier: 4.0.4
         version: 4.0.4
@@ -1677,6 +1680,9 @@ packages:
 
   '@tsconfig/node16@1.0.4':
     resolution: {integrity: sha512-vxhUy4J8lyeyinH7Azl1pdd43GJhZH/tP2weN8TntQblOY+A0XbT8DJk1/oCPuOOyg/Ja757rG0CgHcWC8OfMA==}
+
+  '@typed/curry@1.0.1':
+    resolution: {integrity: sha512-ifSe9XfT+K0pycWdfIAOJda0gqHCjqMXqv+Ecb0mm6uCOI6SnDXykl7vU1lOafZbuptAmeFbdBqj+093GX5GxQ==}
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -7545,6 +7551,8 @@ snapshots:
   '@tsconfig/node14@1.0.3': {}
 
   '@tsconfig/node16@1.0.4': {}
+
+  '@typed/curry@1.0.1': {}
 
   '@types/babel__core@7.20.5':
     dependencies:
