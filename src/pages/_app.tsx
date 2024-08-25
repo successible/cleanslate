@@ -5,7 +5,6 @@ import * as Sentry from '@sentry/react'
 import { setAutoFreeze } from 'immer'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Div100vh from 'react-div-100vh'
 import { Toaster } from 'react-hot-toast'
 import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
@@ -59,9 +58,9 @@ function _App({ Component, pageProps }: AppProps) {
             <title>Clean Slate | App</title>
             <meta name="description" content={'Track food without judgement'} />
           </Head>
-          <Div100vh>
+          <div className="body">
             <Component {...pageProps} />
-          </Div100vh>
+          </div>
         </StoreContext.Provider>
       </ApolloProvider>
     </Sentry.ErrorBoundary>

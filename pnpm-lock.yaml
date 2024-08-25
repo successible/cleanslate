@@ -113,9 +113,6 @@ importers:
       react:
         specifier: 18.3.1
         version: 18.3.1
-      react-div-100vh:
-        specifier: 0.7.0
-        version: 0.7.0(react@18.3.1)
       react-dom:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
@@ -4299,11 +4296,6 @@ packages:
 
   re2@1.21.3:
     resolution: {integrity: sha512-GI+KoGkHT4kxTaX+9p0FgNB1XUnCndO9slG5qqeEoZ7kbf6Dk6ohQVpmwKVeSp7LPLn+g6Q3BaCopz4oHuBDuQ==}
-
-  react-div-100vh@0.7.0:
-    resolution: {integrity: sha512-I3d77tQyaSlOx/6vurDDLk7upb5GA2ldEtVXkk7Kn5cy+tLlS0KlqDK14xUxlxh7jz4StjgKcwFyrpymsPpomA==}
-    peerDependencies:
-      react: '>=16.8.0'
 
   react-dom@18.3.1:
     resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
@@ -10578,10 +10570,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
     optional: true
-
-  react-div-100vh@0.7.0(react@18.3.1):
-    dependencies:
-      react: 18.3.1
 
   react-dom@18.3.1(react@18.3.1):
     dependencies:
