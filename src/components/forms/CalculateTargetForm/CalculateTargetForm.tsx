@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import Switch from 'react-switch'
 import { useStoreon } from 'storeon/react'
 import { updateProfileOnCloud } from '../../../helpers/profile/updateProfileOnCloud'
 import { Profile } from '../../../models/profile'
@@ -106,15 +105,16 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
             <div className="fr mt10 mb0">
               <label htmlFor="metricSystem" className="mt0 mb0">
                 Use the metric system?
+                <input
+                  checked={metricSystem}
+                  onChange={(e) => {
+                    const checked = e.target.checked
+                    setMetricSystem(checked)
+                  }}
+                  id="metricSystem"
+                  type="checkbox"
+                />
               </label>
-              <Switch
-                className="ml10 mt5"
-                id="metricSystem"
-                onChange={(data) => {
-                  setMetricSystem(data)
-                }}
-                checked={metricSystem}
-              />
             </div>
           </div>
 
@@ -235,15 +235,18 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
 
           <div className="group expand">
             <div className="fr mt10 mb10">
-              <label htmlFor="liftWeights">Do you lift weights?</label>
-              <Switch
-                className="ml10 mt5"
-                id="liftWeights"
-                onChange={(data) => {
-                  setLiftWeights(data)
-                }}
-                checked={liftWeights}
-              />
+              <label htmlFor="liftWeights">
+                Do you lift weights?
+                <input
+                  checked={liftWeights}
+                  onChange={(e) => {
+                    const checked = e.target.checked
+                    setLiftWeights(checked)
+                  }}
+                  id="liftWeights"
+                  type="checkbox"
+                />
+              </label>              
             </div>
           </div>
 

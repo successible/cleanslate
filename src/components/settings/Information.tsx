@@ -1,17 +1,20 @@
 import { css } from '@emotion/react'
 import { useState } from 'react'
-import Switch from 'react-switch'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import { useUser } from '../../hooks/useUser'
 import { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
 import { subheader } from './Settings'
+import { toast } from 'react-toastify'
 
 type props = { profile: Profile }
 
 export const Information: React.FC<props> = ({ profile }) => {
   const user = useUser()
-  const [showCalories, setShowCalories] = useState(profile.showCalories)
+  const [showCalories, setShowCalories] = useState(() => {
+    console.log("FOO")
+    return profile.showCalories
+  })
   const [showDensities, setShowDensities] = useState(profile.showDensities)
   const [hidePWAPrompt, setHidePWAPrompt] = useState(profile.hidePWAPrompt)
   const [countDown, setCountDown] = useState(profile.countDown)
@@ -19,6 +22,9 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [enableMetricSystem, setEnableMetricSystem] = useState(
     profile.metricSystem
   )
+
+  console.log(showCalories)
+
 
   const userLoaded = user && user !== 'PENDING'
 
@@ -74,113 +80,137 @@ export const Information: React.FC<props> = ({ profile }) => {
       >
         Preferences
       </div>
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr"  htmlFor="showCalories">
           <span className="mr10" css={itemLabelStyling}>
             Show calories
           </span>
-          <Switch
-            onChange={(data) => {
+          <input
+            checked={showCalories}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { showCalories: data } },
+                { id: profile.id, set: { showCalories: checked } },
                 () => {
-                  setShowCalories(data)
+                  setShowCalories(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={showCalories}
+            id="showCalories"
+            type="checkbox"
           />
         </label>
       </div>
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr" htmlFor='countDown'>
           <span className="mr10" css={itemLabelStyling}>
             Calories {'&'} protein count down
           </span>
-          <Switch
-            onChange={(data) => {
+          <input
+            checked={countDown}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { countDown: data } },
+                { id: profile.id, set: { countDown: checked } },
                 () => {
-                  setCountDown(data)
+                  setCountDown(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={countDown}
+            id="countDown"
+            type="checkbox"
           />
         </label>
       </div>
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr" htmlFor='enableMetricSystem'>
           <span className="mr10" css={itemLabelStyling}>
             Use the metric system
           </span>
-          <Switch
-            onChange={(data) => {
+          <input
+            checked={enableMetricSystem}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { metricSystem: data } },
+                { id: profile.id, set: { metricSystem: checked } },
                 () => {
-                  setEnableMetricSystem(data)
+                  setEnableMetricSystem(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={enableMetricSystem}
+            id="enableMetricSystem"
+            type="checkbox"
           />
         </label>
       </div>
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr" htmlFor='enablePlanning'>
           <span className="mr10" css={itemLabelStyling}>
             Enable planning the day
           </span>
-          <Switch
-            onChange={(data) => {
+          <input
+            checked={enablePlanning}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { enablePlanning: data } },
+                { id: profile.id, set: { enablePlanning: checked } },
                 () => {
-                  setEnablePlanning(data)
+                  setEnablePlanning(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={enablePlanning}
+            id="enablePlanning"
+            type="checkbox"
           />
         </label>
       </div>
 
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr" htmlFor='showDensities'>
           <span className="mr10" css={itemLabelStyling}>
             Show density of each food
           </span>
-          <Switch
-            onChange={(data) => {
+           <input
+            checked={showDensities}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { showDensities: data } },
+                { id: profile.id, set: { showDensities: checked } },
                 () => {
-                  setShowDensities(data)
+                  setShowDensities(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={showDensities}
+            id="showDensities"
+            type="checkbox"
           />
         </label>
       </div>
 
-      <div className="fr mt20 ml5">
-        <label className="fr">
+      <div className="fr ml5">
+        <label className="fr" htmlFor='hidePWAPrompt'>
           <span className="mr10" css={itemLabelStyling}>
             Hide prompt to download app
           </span>
-          <Switch
-            onChange={(data) => {
+          <input
+            checked={hidePWAPrompt}
+            onChange={(e) => {
+              const checked = e.target.checked
               updateProfileOnCloud(
-                { id: profile.id, set: { hidePWAPrompt: data } },
+                { id: profile.id, set: { hidePWAPrompt: checked } },
                 () => {
-                  setHidePWAPrompt(data)
+                  setHidePWAPrompt(checked)
                 }
               )
+              toast.success("Settings updated!")
             }}
-            checked={hidePWAPrompt}
+            id="hidePWAPrompt"
+            type="checkbox"
           />
         </label>
       </div>
