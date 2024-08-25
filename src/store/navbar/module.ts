@@ -1,4 +1,4 @@
-import cloneDeep from 'clone-deep'
+import { cloneDeep } from 'lodash-es'
 import { produce } from 'immer'
 import type { StoreonModule } from 'storeon'
 import type { CommonItem } from '../../components/item/types'

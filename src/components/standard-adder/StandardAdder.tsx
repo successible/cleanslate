@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
-import get from 'just-safe-get'
-import uniqueBy from 'lodash.uniqby'
+import { uniqBy, get } from 'lodash-es'
 import React, { useState } from 'react'
 import { dummyFoods } from '../../constants/dummyFoods/dummyFoods'
 import { pastaNames } from '../../constants/dummyFoods/pasta'
@@ -111,7 +110,7 @@ export const StandardAdder: React.FC<props> = ({
               // Remove all the duplicate dummy foods (e.g. the dummy food chicken like 40 times)
               // Handles the fact a recipe, custom food, and basic food can all be named the same thing
 
-              const uniqueResults = uniqueBy(
+              const uniqueResults = uniqBy(
                 resultsWithoutLeaves,
                 (x) => x.name + x.type + x.profile
               )

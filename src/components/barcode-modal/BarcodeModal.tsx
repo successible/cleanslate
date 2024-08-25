@@ -3,7 +3,7 @@ import axios from 'axios'
 import { compareVersions } from 'compare-versions'
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { debounce } from 'throttle-debounce'
+import { debounce } from 'lodash-es'
 import UAParser from 'ua-parser-js'
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
 import { Unit } from '../../constants/units'
@@ -37,7 +37,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const [unit, setUnit] = useState('GRAM' as Unit)
   const [ran, setRan] = useState(false)
 
-  const fetchData = debounce(100, (code: string) => {
+  const fetchData = debounce((code: string) => {
     setRan(true)
     axios
       .get(`https://world.openfoodfacts.org/api/v0/product/${code}.json`)
@@ -67,7 +67,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
           serving_size,
         })
       })
-  })
+  }, 100)
 
   useEffect(() => {
     // On localhost on development on a desktop, we want to "mock" the barcode scanning operation

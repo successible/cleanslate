@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { curry } from '@typed/curry'
+import { curry } from 'lodash-es'
 import React, { useEffect } from 'react'
 import { useStoreon } from 'storeon/react'
 import {

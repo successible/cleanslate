@@ -1,5 +1,5 @@
 import React from 'react'
-import { debounce } from 'throttle-debounce'
+import { debounce } from 'lodash-es'
 import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import { Type } from '../../../store/data/types'
 import { splitIntoPages } from '../../paginator/helpers/splitIntoPages'
@@ -48,12 +48,12 @@ export const List: React.FC<props> = ({
   const itemContainer = React.useRef<HTMLDivElement>(null)
   const firstItem = React.useRef<HTMLDivElement>(null)
 
-  const getNumberOfItemsFromPage = debounce(100, () => {
+  const getNumberOfItemsFromPage = debounce(() => {
     const numberOfItems = getNumberOfItems(itemContainer, firstItem)
     if (numberOfItems) {
       setNumberOfItems(numberOfItems)
     }
-  })
+  }, 100)
   // This function sets the number of items per page
   // Only use forcedNumberOfItems on /foods where the page container can change unreliably
   const adjustNumberOfItems = forcedNumberOfItems

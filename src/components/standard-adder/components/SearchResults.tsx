@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import truncate from 'lodash.truncate'
+import { truncate } from 'lodash-es'
 import React from 'react'
 import { Food } from '../../../models/food'
 import { Recipe } from '../../../models/recipe'
