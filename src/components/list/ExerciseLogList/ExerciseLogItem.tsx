@@ -17,9 +17,7 @@ export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
   }
 
   const src = Exercise.src
-
-  console.log(category)
-
+  
   return (
     <Item
       item={{

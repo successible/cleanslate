@@ -12,7 +12,6 @@ type props = { profile: Profile }
 export const Information: React.FC<props> = ({ profile }) => {
   const user = useUser()
   const [showCalories, setShowCalories] = useState(() => {
-    console.log("FOO")
     return profile.showCalories
   })
   const [showDensities, setShowDensities] = useState(profile.showDensities)
@@ -22,9 +21,6 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [enableMetricSystem, setEnableMetricSystem] = useState(
     profile.metricSystem
   )
-
-  console.log(showCalories)
-
 
   const userLoaded = user && user !== 'PENDING'
 

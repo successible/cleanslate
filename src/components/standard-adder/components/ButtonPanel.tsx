@@ -7,7 +7,7 @@ type props = {
 }
 export const ButtonPanel: React.FC<props> = ({ showSubmit, submit }) => {
   return (
-    <div className="w100 fre mb20">
+    <div className="fre mb20">
       {showSubmit && (
         <SubmitButton className="mt20" submit={false} onClick={submit} />
       )}

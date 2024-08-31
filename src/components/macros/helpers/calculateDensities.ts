@@ -2,6 +2,7 @@ import { round } from '../../../helpers/round'
 import { Food } from '../../../models/food'
 import { Barcode } from '../../../models/log'
 import { Recipe } from '../../../models/recipe'
+import { calculatePerMacroPerRecipe } from './calculateMacros'
 import { convertToGrams } from './convertToGrams'
 
 // Helpers //
@@ -102,17 +103,18 @@ export const calculateGramsInRecipe = (
 /** Given the calories and protein totals for a recipe, calculate the caloric density and percentage protein,
  * Then, pass those numbers to calculate the score */
 export const calculateRecipeDensities = (
-  amount: number | null,
   caloriesConsumed: number,
   proteinConsumed: number,
   recipe: Recipe
 ): [number, number, number] => {
-  // Unlike food, the caloric density of recipe is calculated from caloriesConsumed
-  // Thus, it must take into account the amount of the recipe
-  const grams = calculateGramsInRecipe(recipe, amount)
-  const caloriesPerGram = caloriesConsumed / grams
-  const proteinDensity = round((proteinConsumed / caloriesConsumed) * 100, 0)
-  const caloricDensity = round(caloriesPerGram * 100, 0)
+  // We calculate the total weight of the recipe from the sum of all the ingredients
+  // However, recipes math can get "weird" depending on what the user does
+  // Hence, we always calculate the density from one container
+  const grams = calculateGramsInRecipe(recipe, 1)
+  const caloriesPerGram = calculatePerMacroPerRecipe(recipe, "CALORIE", 1, "CONTAINER") / grams
+  const proteinPerGram = calculatePerMacroPerRecipe(recipe, "PROTEIN", 1, "CONTAINER") /grams 
+  const proteinDensity = getProteinDensityFromPerGram(caloriesPerGram, proteinPerGram)
+  const caloricDensity = getCaloricDensityFromPerGram(caloriesPerGram)
   return [
     caloricDensity,
     proteinDensity,
@@ -146,7 +148,6 @@ export const calculateFoodOrRecipeDensities = (
         ? calculateFoodDensities(item)
         : item.type === 'recipe'
           ? calculateRecipeDensities(
-              amount,
               caloriesConsumed,
               proteinConsumed,
               item
