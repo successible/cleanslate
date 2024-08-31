@@ -24,6 +24,7 @@ COPY src/basicFoods.json src/basicFoods.json
 COPY src/index.d.ts src/index.d.ts
 COPY src/next-env.d.ts src/next-env.d.ts
 COPY src/next.config.js src/next.config.js
+COPY src/storeon.ts src/storeon.ts
 COPY src/theme.scss src/theme.scss
 COPY src/theme.ts src/theme.ts
 COPY src/tsconfig.json src/tsconfig.json
