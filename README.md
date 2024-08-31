@@ -274,10 +274,11 @@ Here is how to run Clean Slate locally:
 
 ```bash
 # .env for testing the hosting process locally. Do not use in an actual production setting!
-POSTGRES_PASSWORD=XXX
-NEXT_PUBLIC_HASURA_DOMAIN=localhost
 HASURA_GRAPHQL_ADMIN_SECRET=XXX
+HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}'
 JWT_SIGNING_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+NEXT_PUBLIC_HASURA_DOMAIN=localhost
+POSTGRES_PASSWORD=XXX
 ```
 
 [^1]: https://docs.docker.com/engine/install/
