@@ -7,7 +7,6 @@ import { setAutoFreeze } from 'immer'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { ToastContainer } from 'react-toastify'
-import { StoreContext } from 'storeon/react'
 import { ErrorComponent } from '../components/error/ErrorBoundary'
 import { getConfig } from '../helpers/config'
 import { createWebsocketClient } from '../helpers/createWebsocketClient'
@@ -15,6 +14,7 @@ import { handleError } from '../helpers/handleError'
 import { startSentry } from '../helpers/startSentry'
 import { useErrors } from '../hooks/useErrors'
 import { store } from '../store/store'
+import { StoreContext } from '../storeon'
 
 // https://github.com/immerjs/immer/issues/959
 setAutoFreeze(false)

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import { Unit } from '../../constants/units'
 import { round } from '../../helpers/round'
 import { Profile } from '../../models/profile'
@@ -14,6 +13,7 @@ import { Meta } from './components/Meta'
 import { SubmitButton } from './components/SubmitButton'
 import { UnitInput } from './components/UnitInput'
 import { submitItem } from './helpers/submitItem'
+import { useStoreon } from '../../storeon'
 
 type props = {
   profile: Profile

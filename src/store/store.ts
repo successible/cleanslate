@@ -1,4 +1,8 @@
-import { type StoreonDispatch, type StoreonStore, createStoreon } from 'storeon'
+import {
+  type StoreonDispatch,
+  type StoreonStore,
+  createStoreon,
+} from '../storeon'
 import { data } from './data/module'
 import type { DataEvents, DataSlice } from './data/types'
 import { editor } from './editor/module'

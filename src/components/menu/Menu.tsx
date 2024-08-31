@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import Density from '../../assets/common/density.svg'
 import CustomFood from '../../assets/common/food.svg'
 import Logout from '../../assets/common/logout.svg'
@@ -12,6 +11,7 @@ import { logout } from '../../helpers/logout'
 import { NavbarEvents, NavbarState } from '../../store/navbar/types'
 import { Dispatch } from '../../store/types'
 import { Image } from '../image/Image'
+import { useStoreon } from '../../storeon'
 
 export const Menu: React.FC = () => {
   const {

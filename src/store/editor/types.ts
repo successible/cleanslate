@@ -1,7 +1,7 @@
-import type { StoreonModule } from 'storeon'
 import type { Food } from '../../models/food'
 import type { Ingredient } from '../../models/ingredient'
 import type { Recipe } from '../../models/recipe'
+import type { StoreonModule } from '../../storeon'
 
 export type SelectedItem = Food | Recipe | null
 

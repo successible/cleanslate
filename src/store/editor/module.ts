@@ -1,5 +1,5 @@
 import { produce } from 'immer'
-import type { StoreonModule } from 'storeon'
+import type { StoreonModule } from '../../storeon'
 import type { CleanslateSlices } from '../store'
 import { createInitialSlice } from './createInitialSlice'
 import type { EditorEvents } from './types'

@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { toast } from 'react-toastify';
-import { useStoreon } from 'storeon/react'
 import { Category } from '../../../constants/categories'
 import { Group } from '../../../constants/groups'
 import {
@@ -25,6 +24,7 @@ import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUni
 import { getAdjustedVolumeAmount } from './helpers/getAdjustedVolumeAmount'
 import { getAdjustedWeightAmount } from './helpers/getAdjustedWeightAmount'
 import { UnitSelector } from './UnitSelector'
+import { useStoreon } from '../../../storeon';
 
 export type FoodSubmission = {
   name: string
