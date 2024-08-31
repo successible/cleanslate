@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Unit } from '../../constants/units'
 import { round } from '../../helpers/round'
 import { Profile } from '../../models/profile'
@@ -14,6 +14,11 @@ import { SubmitButton } from './components/SubmitButton'
 import { UnitInput } from './components/UnitInput'
 import { submitItem } from './helpers/submitItem'
 import { useStoreon } from '../../storeon'
+import { MacroDisplay } from '../macros/MacroDisplay'
+import { prep } from '../../helpers/prepareFractionalInputForSubmission'
+import { calculatePerMacroPerFood, calculatePerMacroPerRecipe } from '../macros/helpers/calculateMacros'
+import { calculateFoodOrRecipeDensities } from '../macros/helpers/calculateDensities'
+import { Explanation } from '../explanation/Explanation'
 
 type props = {
   profile: Profile
@@ -37,11 +42,45 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
   )
   // Create the local refs
   const amountRef = React.useRef<HTMLInputElement>(null)
+  const submitReady = Boolean(amount && unit)
+
+  const [calories, setCalories] = useState(null as number | null)
+  const [protein, setProtein] = useState(null as number | null)
+  const [densities, setDensities] = useState(null as  [number, number, number] | null)
+
 
   React.useEffect(() => {
     // Focus the amount input when the item modal is spawned
     amountRef.current?.focus()
   }, [amountRef])
+
+  const amountAsNumber = prep(localAmount)
+
+
+  useEffect(() => {
+    if (submitReady && amountAsNumber && localUnit && item?.food) {
+      const calories = calculatePerMacroPerFood(amountAsNumber, localUnit, item.food, "CALORIE")
+      const protein =  calculatePerMacroPerFood(amountAsNumber, localUnit, item.food, "PROTEIN")
+      const densities = calculateFoodOrRecipeDensities(amountAsNumber, item.food, calories, protein)
+      setCalories(calories)
+      setProtein(protein)
+      setDensities(densities)
+    }
+    else if (submitReady && amountAsNumber && localUnit && item?.recipe) {
+      const calories = calculatePerMacroPerRecipe(item.recipe, "CALORIE", amountAsNumber, localUnit)
+      const protein = calculatePerMacroPerRecipe(item.recipe, "PROTEIN", amountAsNumber, localUnit)
+      const densities = calculateFoodOrRecipeDensities(amountAsNumber, item.recipe, calories, protein)
+      setCalories(calories)
+      setProtein(protein)
+      setDensities(densities)
+      
+    } else {
+      setCalories(null)
+      setProtein(null)
+      setDensities(densities)
+    }
+  }, [submitReady, amountAsNumber, localUnit, item, setCalories, setProtein, setDensities])
+
 
   return (
     <form
@@ -103,7 +142,15 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
       )}
 
       {/* Submit button */}
-      {amount && unit && <SubmitButton submit={true} />}
+
+      <div className='fr w100'>
+        {submitReady && <Explanation color="green" className='mt0 frc w100 mr20' css={{height: 50}}>
+          <div>
+          {<MacroDisplay calories={calories || 0} protein={protein || 0} densities={densities || [0, 0, 0]} profile={profile} showTitles={true} />}
+          </div>
+        </Explanation>}
+        {submitReady && <SubmitButton submit={true} />}
+        </div>
     </form>
   )
 }

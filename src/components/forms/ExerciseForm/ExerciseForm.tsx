@@ -131,7 +131,6 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
                     ? otherActivity
                     : null
 
-            console.log(category)
             const dataToSubmit = {
               amount: round(amount, 0),
               category,

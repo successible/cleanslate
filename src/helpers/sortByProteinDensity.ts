@@ -13,22 +13,12 @@ export const sortByProteinDensity = (items: (Food | Recipe)[]) => {
       const A =
         itemsA.type === 'food'
           ? calculateFoodDensities(itemsA)[1]
-          : calculateRecipeDensities(
-              1,
-              calculatePerMacroPerRecipe(itemsA, 'CALORIE', 1, 'COUNT'),
-              calculatePerMacroPerRecipe(itemsA, 'PROTEIN', 1, 'COUNT'),
-              itemsA
-            )[1]
+          : calculateRecipeDensities(itemsA)[1]
 
       const B =
         itemsB.type === 'food'
           ? calculateFoodDensities(itemsB)[1]
-          : calculateRecipeDensities(
-              1,
-              calculatePerMacroPerRecipe(itemsB, 'CALORIE', 1, 'COUNT'),
-              calculatePerMacroPerRecipe(itemsB, 'PROTEIN', 1, 'COUNT'),
-              itemsB
-            )[1]
+          : calculateRecipeDensities(itemsB)[1]
 
       return B - A
     })

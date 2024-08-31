@@ -2,7 +2,7 @@ import React from 'react'
 import CalMini from '../../assets/common/calmini.svg'
 import ProteinMini from '../../assets/common/proteinmini.svg'
 import { Image } from '../image/Image'
-import { macros } from './Macros'
+import { macros } from './MacroDisplay'
 
 type props = {
   calories: number | null
