@@ -39,7 +39,7 @@ jobs:
       graphql-engine:
         image: hasura/graphql-engine:v2.42.0
         ports:
-          - '8080:8080'
+          - "8080:8080"
         env:
           HASURA_GRAPHQL_ADMIN_SECRET: secret
           HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:postgres@postgres:5432/postgres
@@ -67,5 +67,8 @@ jobs:
       - name: Run the Jest tests
         run: npm run test
 
-      - name: Build the Next.js bundle
-        run: cd src && npx next build
+      - name: Build the client Docker image
+        run: docker build -f Dockerfile .
+
+      - name: Build the server Docker image
+        run: docker build -f Dockerfile.server .

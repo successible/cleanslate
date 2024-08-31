@@ -14,7 +14,7 @@ COPY src/server.ts server.ts
 
 RUN [ "npx", "tsc", "-p", "tsconfig-server.json"]
 
-ENV NODE_ENV "production"
+ENV NODE_ENV="production"
 
 EXPOSE 3001
 
