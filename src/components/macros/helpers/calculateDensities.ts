@@ -103,8 +103,6 @@ export const calculateGramsInRecipe = (
 /** Given the calories and protein totals for a recipe, calculate the caloric density and percentage protein,
  * Then, pass those numbers to calculate the score */
 export const calculateRecipeDensities = (
-  caloriesConsumed: number,
-  proteinConsumed: number,
   recipe: Recipe
 ): [number, number, number] => {
   // We calculate the total weight of the recipe from the sum of all the ingredients
@@ -147,11 +145,7 @@ export const calculateFoodOrRecipeDensities = (
       item.type === 'food'
         ? calculateFoodDensities(item)
         : item.type === 'recipe'
-          ? calculateRecipeDensities(
-              caloriesConsumed,
-              proteinConsumed,
-              item
-            )
+          ? calculateRecipeDensities(item)
           : null
     return output
   }
