@@ -119,9 +119,6 @@ importers:
       sass:
         specifier: 1.77.8
         version: 1.77.8
-      storeon:
-        specifier: 3.1.5
-        version: 3.1.5(react@18.3.1)
       traverse:
         specifier: 0.6.9
         version: 0.6.9
@@ -4628,18 +4625,6 @@ packages:
   statuses@2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
-
-  storeon@3.1.5:
-    resolution: {integrity: sha512-VuW4GQr3LGQr+gqscqsOz2c9asK9N+B+8+sWs7Pj4OqU7bngYIqsPF3IYpkbmccKNWjs7wwxUAlR+gtL9cEMEg==}
-    engines: {node: '>=10.0.0'}
-    peerDependencies:
-      preact: '>=10.0.0'
-      react: '>=16.8.0'
-    peerDependenciesMeta:
-      preact:
-        optional: true
-      react:
-        optional: true
 
   stream-chain@2.2.5:
     resolution: {integrity: sha512-1TJmBx6aSWqZ4tx7aTpBDXK0/e2hhcNSTV8+CbFJtDjbb+I1mZ8lHit0Grw9GRT+6JbIrrDd8esncgBi8aBXGA==}
@@ -10865,10 +10850,6 @@ snapshots:
   statuses@1.5.0: {}
 
   statuses@2.0.1: {}
-
-  storeon@3.1.5(react@18.3.1):
-    optionalDependencies:
-      react: 18.3.1
 
   stream-chain@2.2.5: {}
 

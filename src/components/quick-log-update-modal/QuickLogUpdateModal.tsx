@@ -1,5 +1,4 @@
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import { updateQuickLogOnCloud } from '../../helpers/quick-log/updateQuickLogOnCloud'
 import { Profile } from '../../models/profile'
 import { AllEvents } from '../../store/store'
@@ -7,6 +6,7 @@ import { Dispatch } from '../../store/types'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import { CommonItem } from '../item/types'
 import { SubmitButton } from '../item-update-modal/components/SubmitButton'
+import { useStoreon } from '../../storeon'
 
 type props = { profile: Profile; item: CommonItem | undefined }
 export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {

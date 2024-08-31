@@ -1,7 +1,7 @@
 import type { EmotionJSX } from '@emotion/react/types/jsx-namespace'
-import type { StoreonModule } from 'storeon'
 import type { CommonItem } from '../../components/item/types'
 import type { User } from '../../helpers/getUser'
+import type { StoreonModule } from '../../storeon'
 
 export type NavbarSlice = {
   navbar: NavbarState

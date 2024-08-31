@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { useStoreon } from 'storeon/react'
 import Barcode from '../../../assets/common/barcode.svg'
 import Calculator from '../../../assets/common/calculator.svg'
 import Edit from '../../../assets/common/edit.svg'
@@ -20,6 +19,7 @@ import { md } from '../../../theme'
 import { HiddenInput } from '../../buttons/HiddenInput'
 import { Explanation } from '../../explanation/Explanation'
 import { Image } from '../../image/Image'
+import { useStoreon } from '../../../storeon'
 
 type props = {
   profile: Profile

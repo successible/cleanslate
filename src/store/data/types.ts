@@ -1,11 +1,11 @@
 import type { GraphQLWsLink } from '@apollo/client/link/subscriptions'
-import type { StoreonModule } from 'storeon'
 import type { ExerciseLog } from '../../models/exerciseLog'
 import type { Food } from '../../models/food'
 import type { Log } from '../../models/log'
 import type { Profile } from '../../models/profile'
 import type { QuickLog } from '../../models/quickLog'
 import type { Recipe } from '../../models/recipe'
+import type { StoreonModule } from '../../storeon'
 
 export type Data = { profiles: Profile[]; basicFoods: Food[] }
 

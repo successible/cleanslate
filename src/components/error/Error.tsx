@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import { useStoreon } from 'storeon/react'
 import ErrorImage from '../../assets/common/error.svg'
 import { clearCache } from '../../helpers/clearCache'
 import { clearLoginState } from '../../helpers/clearLoginState'
@@ -10,6 +9,7 @@ import { NavbarState } from '../../store/navbar/types'
 import { colors } from '../../theme'
 import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
+import { useStoreon } from '../../storeon'
 
 export const Error = () => {
   const {

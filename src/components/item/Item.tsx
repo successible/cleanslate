@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
-import { useStoreon } from 'storeon/react'
 import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { DeleteButton } from './components/DeleteButton'
 import { Meta } from './components/Meta'
 import { UpdateButton } from './components/UpdateButton'
 import { CommonItem } from './types'
+import { useStoreon } from '../../storeon'
 
 export const Item = (props: { item: CommonItem }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()

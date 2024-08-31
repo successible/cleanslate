@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import Barcode from '../../assets/common/barcode.svg'
 import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
@@ -11,6 +10,7 @@ import { AllEvents } from '../../store/store'
 import { Dispatch } from '../../store/types'
 import { colors } from '../../theme'
 import { HiddenInput } from '../buttons/HiddenInput'
+import { useStoreon } from '../../storeon'
 
 type props = { profile: Profile }
 export const BottomBarButtons: React.FC<props> = ({ profile }) => {

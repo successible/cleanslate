@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import CalMini from '../../assets/common/calmini.svg'
 import Density from '../../assets/common/density.svg'
 import ProteinMini from '../../assets/common/proteinmini.svg'
@@ -11,6 +10,7 @@ import { Dispatch } from '../../store/types'
 import { Image } from '../image/Image'
 import { calculateFoodOrRecipeDensities } from './helpers/calculateDensities'
 import { calculateMacros } from './helpers/calculateMacros'
+import { useStoreon } from '../../storeon'
 
 type props = {
   log: Log

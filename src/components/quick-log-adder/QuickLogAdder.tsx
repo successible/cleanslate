@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { toast } from 'react-toastify';
-import { useStoreon } from 'storeon/react'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
 import { NavbarState } from '../../store/navbar/types'
 import { colors } from '../../theme'
 import { SubmitButton } from '../item-update-modal/components/SubmitButton'
+import { useStoreon } from '../../storeon';
 
 export const QuickLogAdder: React.FC = () => {
   const [calories, setCalories] = React.useState(null as number | string | null)

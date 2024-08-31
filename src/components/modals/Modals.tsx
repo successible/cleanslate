@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { useStoreon } from 'storeon/react'
 import { modals } from '../../constants/modals'
 import { getDispatch } from '../../helpers/getDispatch'
 import { Food } from '../../models/food'
@@ -31,6 +30,7 @@ import { Settings } from '../settings/Settings'
 import { StandardAdder } from '../standard-adder/StandardAdder'
 import { getOrderedModals } from './getOrderedModal'
 import { getErrorStyling, modalContainerStyling } from './styling'
+import { useStoreon } from '../../storeon'
 
 type props = {
   profile: Profile

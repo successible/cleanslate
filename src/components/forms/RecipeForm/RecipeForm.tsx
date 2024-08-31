@@ -1,7 +1,6 @@
 import { css } from '@emotion/react'
 import { curry } from 'lodash-es'
 import React, { useEffect } from 'react'
-import { useStoreon } from 'storeon/react'
 import {
   VolumeUnit,
   volumeUnits,
@@ -29,6 +28,7 @@ import { UnitSelector } from '../CustomFoodForm/UnitSelector'
 import { upsertItem } from '../helpers/upsertItem'
 import { createRecipeLog } from './helpers/createRecipeLog'
 import { submitRecipe } from './helpers/submitRecipe'
+import { useStoreon } from '../../../storeon'
 
 type props = { recipe: Recipe | null; foods: Food[]; profile: Profile }
 
