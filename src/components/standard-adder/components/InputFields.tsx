@@ -39,7 +39,7 @@ export const InputFields: React.FC<props> = ({
   }, [selectedItem?.name])
 
   return (
-    <div className={`w100`}>
+    <div className={`w100 wrap`}>
       {/* amount */}
       <FractionInput
         inputRef={amountInput}
