@@ -143,8 +143,8 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
 
       {/* Submit button */}
 
-      <div className='fr w100'>
-        {submitReady && <Explanation color="green" className='mt0 frc w100 mr20' css={{height: 50}}>
+      <div className='fr w100 wrap'>
+        {submitReady && <Explanation color="green" className='mt0 frc w100' css={{height: 50}}>
           <div>
           {<MacroDisplay calories={calories || 0} protein={protein || 0} densities={densities || [0, 0, 0]} profile={profile} showTitles={true} />}
           </div>
