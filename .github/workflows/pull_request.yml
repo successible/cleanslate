@@ -59,7 +59,7 @@ jobs:
         run: curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
 
       - name: Lint the client
-        run: cd src && npx tsc && npx biome check --fix --unsafe
+        run: cd src && npx tsc && npx biome check
 
       - name: Migrate Hasura metadata
         run: node migrate.js
