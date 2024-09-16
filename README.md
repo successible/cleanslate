@@ -180,15 +180,15 @@ As you explore the schema, you will see that you can query seven tables using Gr
 
 - `logs`: Contains your logs for food and recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/log.ts).
 
-- `quick_logs`: Contains your logs made by "quick adding". See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/quickLogs.ts).
+- `quick_logs`: Contains your logs made by "quick adding". See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/quickLog.ts)
 
-- `exercise_logs`: Contains your logs for exercise. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/exerciseLogs.ts).
+- `exercise_logs`: Contains your logs for exercise. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/exerciseLog.ts)
 
-- `foods`: Contains your basic foods and your custom foods. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/foods.ts).
+- `foods`: Contains your basic foods and your custom foods. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/food.ts).
 
-- `recipes`: Contains your recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/recipes.ts).
+- `recipes`: Contains your recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/recipe.ts).
 
-- `ingredients`: Contains your ingredients for recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/ingredients.ts).
+- `ingredients`: Contains your ingredients for recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/ingredient.ts).
 
 Here is an example of the `body` for a `query` that returns the `id` of every log with the unit `COUNT`.
 
