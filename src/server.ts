@@ -110,6 +110,9 @@ app.post('/auth/graphql', async (req, res) => {
     const result = await axios({
       url: graphqlUrl,
       method: 'post',
+      // If you include the X-Hasura-Admin-Secret header and also add the X-Hasura-Role and other user specific headers such as X-Hasura-User-Id,
+      // Hasura GraphQL Engine will process the request using the defined access-control rules for that user and role and not as an admin.
+      // https://hasura.io/docs/2.0/auth/authentication/admin-secret-access/
       headers: {
         'content-type': 'application/json',
         'X-Hasura-Admin-Secret': adminSecret || '',
@@ -121,6 +124,7 @@ app.post('/auth/graphql', async (req, res) => {
         variables: req.body.variables ? req.body.variables : {},
       },
     })
+    console.log(result.data)
     res.send(result.data.data)
   } else {
     return res.sendStatus(403)

@@ -174,9 +174,68 @@ http {
 
 ## How can I make an API request to Clean Slate?
 
-Check out the API documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home).
+You can review a GraphQL representation of the documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home). The documentation is a "live" GraphQL schema in Apollo Studio. You will need to make a free Apollo Studio account to view them.
 
-> Note: The documentation is a live GraphQL schema in Apollo Studio. You will need to make a free Apollo Studio account to view them.
+As you explore the schema, you will see that you can query seven tables using GraphQL.
+
+- `logs`: Contains your logs for food and recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/log.ts).
+
+- `quick_logs`: Contains your logs made by "quick adding". See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/quickLogs.ts).
+
+- `exercise_logs`: Contains your logs for exercise. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/exerciseLogs.ts).
+
+- `foods`: Contains your basic foods and your custom foods. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/foods.ts).
+
+- `recipes`: Contains your recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/recipes.ts).
+
+- `ingredients`: Contains your ingredients for recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/ingredients.ts).
+
+Here is an example of the `body` for a `query` that returns the `id` of every log with the unit `COUNT`.
+
+```json
+{
+  "token": "XXX",
+  "query": "query MyQuery($unit: String) { logs(where: {unit: {_eq: $unit}}) { id } }",
+  "variables": { "unit": "COUNT" }
+}
+```
+
+Here is an example of the `body` for a `mutation` that will add a log of a basic food. You can get the `id` of the basic food from the [list here](https://github.com/successible/cleanslate/blob/main/src/basicFoods.json).
+
+```json
+{
+  "token": "XXX",
+  "query": "mutation CREATE_LOG($i: logs_insert_input!) { insert_logs_one(object: $i) { id } }",
+  "variables": {
+    "i": {
+      "alias": null,
+      "amount": 1,
+      "barcode": null,
+      "basicFood": "24bdfa6f-3ab3-46d4-9a57-f78a85128fa3",
+      "consumed": true,
+      "food": null,
+      "meal": "Snack",
+      "recipe": null,
+      "unit": "GRAM"
+    }
+  }
+}
+```
+
+If you want to add a log of a custom food or recipe instead, fine! You will need to set their `id` in the `food` or `recipe` part of the payload. If you want to set a `barcode`, you will need to pass these values from the Open Food Facts API.
+
+```ts
+type Barcode = {
+  name: string;
+  code: string;
+  calories_per_gram: number;
+  protein_per_gram: number;
+  calories_per_serving: number;
+  protein_per_serving: number;
+  serving_size: number; // "2 Tbsp (30 g)"
+  serving_quantity: string; // 30
+};
+```
 
 ## How do I handle authentication in Clean Slate?
 
