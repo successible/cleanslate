@@ -27,6 +27,7 @@ import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud
 import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
 import { getDomain } from '../../helpers/getDomain'
+import { toast } from 'react-toastify'
 
 export const App = () => {
 
@@ -80,7 +81,10 @@ export const App = () => {
         domain: getDomain(),
         expires: time.toDate(),
       })
-      window.location.reload()
+      toast.success("Your day has been reset!")
+      setTimeout(() => {
+        window.location.reload()
+      }, 3000)
     }
   }, [loading, profile])
 
