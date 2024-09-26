@@ -24,6 +24,9 @@ import { handleData } from '../../helpers/handleData'
 import { useEffect } from 'react'
 import { isLoadedUser } from '../../helpers/isLoadedUser'
 import { getLoginStatus } from '../../helpers/getLoginStatus'
+import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
+import dayjs from 'dayjs'
+import Cookies from 'js-cookie'
 
 export const App = () => {
   useStartTime()
@@ -39,7 +42,7 @@ export const App = () => {
   } = useData()
 
   const user = useUser()
-  const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), {variables: createDateRange() })
+  const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), {variables: createDateRange(profile) })
   useEffect(() => {
     if (!loading && data && isLoadedUser(user) && getLoginStatus()) {
       handleData(data)
@@ -52,6 +55,20 @@ export const App = () => {
 
   const navbarHeight = 65
   const footerHeight = 65
+
+  useEffect(() => {
+    if (!loading && profile.timeToExecuteFrameChange) {
+      if (dayjs(profile.timeToExecuteFrameChange).unix() < dayjs().unix()) [
+        updateProfileOnCloud(
+          { id: profile.id, set: { timeToExecuteFrameChange: null} },
+          () => {
+            Cookies.remove("last-reset")
+            window.location.reload()
+          }
+        )
+      ]
+    }
+  }, [loading, profile])
 
   return (
     <div

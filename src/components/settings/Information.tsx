@@ -6,6 +6,10 @@ import { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
 import { subheader } from './Settings'
 import { toast } from 'react-toastify'
+import { debounce } from 'lodash-es'
+import dayjs from 'dayjs'
+import Cookies from 'js-cookie'
+import { getDomain } from '../../helpers/getDomain'
 
 type props = { profile: Profile }
 
@@ -21,7 +25,7 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [enableMetricSystem, setEnableMetricSystem] = useState(
     profile.metricSystem
   )
-
+  const [startTime, setStartTime] = useState(profile.startTime)
   const userLoaded = user && user !== 'PENDING'
 
   const info =
@@ -75,6 +79,43 @@ export const Information: React.FC<props> = ({ profile }) => {
         className={`pbutton rounded green nohover mt30 mb20`}
       >
         Preferences
+      </div>
+      <div className="fr ml5">
+        <label className="fr" htmlFor='startTime'>
+          <span className="mr10" css={itemLabelStyling}>
+            Start Time
+          </span>
+          <input
+            value={startTime}
+            onChange={(e) => {
+              setStartTime(e.target.value)
+            }}
+            id="startTime"
+            type="time"
+          />
+        </label>
+        <button onClick={() => {
+          const midnight = dayjs().startOf('day')
+          const [hour, minute] = startTime.split(':').map(Number)
+          const today = midnight
+            .set('hour', hour)
+            .set('minute', minute)
+
+           const useFrameChange =  (today.unix() <= dayjs().unix()) ? null : today.toISOString()
+           updateProfileOnCloud(
+            { id: profile.id, set: { startTime, timeToExecuteFrameChange: useFrameChange }},
+            () => {
+              if (!useFrameChange) {
+                Cookies.remove("last-reset")
+                Cookies.set('last-reset', today.toString(), {
+                  domain: getDomain(),
+                  expires: 5,
+                })
+              }
+              toast.success("Settings updated!")
+            }
+          )
+        }} type='button' className="purple bold ml15">Save</button>
       </div>
       <div className="fr ml5">
         <label className="fr"  htmlFor="showCalories">

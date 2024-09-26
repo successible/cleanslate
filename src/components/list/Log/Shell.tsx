@@ -20,6 +20,7 @@ import { HiddenInput } from '../../buttons/HiddenInput'
 import { Explanation } from '../../explanation/Explanation'
 import { Image } from '../../image/Image'
 import { useStoreon } from '../../../storeon'
+import dayjs from "dayjs"
 
 type props = {
   profile: Profile
@@ -90,6 +91,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
         Here are some things to do
       </div>
 
+
       {profile.showCalories && (
         <div css={section} className={`fc`}>
           <div css={sectionHeader} className={`fr`}>
@@ -106,7 +108,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
           <Explanation color="background">
             <div className="fr">
               <strong css={explanationHeader}>Remember: </strong> Logs reset
-              daily at midnight
+              daily at {profile.startTime === "00:00:00" ? "midnight" : profile.startTime.split(":").slice(0, 2).join(":")}.
             </div>
           </Explanation>
         </div>

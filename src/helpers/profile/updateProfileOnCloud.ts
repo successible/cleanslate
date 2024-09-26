@@ -5,17 +5,18 @@ import { stringifyQuery } from '../stringifyQuery'
 type UpdateTargets = {
   id: string
   set: {
-    calorieTarget?: string | number
-    proteinTarget?: string | number
     apiToken?: string
-    showCalories?: boolean
-    startTime?: string
-    hidePWAPrompt?: boolean
-    showDensities?: boolean
+    calorieTarget?: string | number
+    convertBetweenUnits?: boolean
     countDown?: boolean
     enablePlanning?: boolean
+    hidePWAPrompt?: boolean
     metricSystem?: boolean
-    convertBetweenUnits?: boolean
+    proteinTarget?: string | number
+    showCalories?: boolean
+    showDensities?: boolean
+    startTime?: string
+    timeToExecuteFrameChange?: string | null
   }
 }
 

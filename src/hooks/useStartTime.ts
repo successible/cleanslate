@@ -21,10 +21,11 @@ export const useStartTime = () => {
       const lastReset = Cookies.get('last-reset')
 
       if (lastReset === undefined) {
-        return setLastReset()
+        setLastReset()
+        return
       }
 
-      if (!dayjs(lastReset).isToday()) {
+      if (dayjs(lastReset).add(1, 'day').unix() < dayjs().unix()) {
         setLastReset()
         localStorage.setItem(profileKey, 'null')
         window.location.reload()
