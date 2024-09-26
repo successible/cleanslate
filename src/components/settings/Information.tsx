@@ -66,9 +66,9 @@ export const Information: React.FC<props> = ({ profile }) => {
         </>
         <Explanation color="background">
           <div>
-            To learn how to make an API request,{' '}
+            To learn how to make an API request, view the <a href="https://github.com/successible/cleanslate/blob/main/README.md#how-can-i-make-an-api-request-to-clean-slate">README</a> and the {' '}
             <a href="https://studio.apollographql.com/graph/Clean-Slate/variant/current/home">
-              read the docs.
+              GraphQL schema.
             </a>
           </div>
         </Explanation>
@@ -83,7 +83,7 @@ export const Information: React.FC<props> = ({ profile }) => {
       <div className="fr ml5">
         <label className="fr" htmlFor='startTime'>
           <span className="mr10" css={itemLabelStyling}>
-            Start Time
+            Start time
           </span>
           <input
             value={startTime}
@@ -100,7 +100,6 @@ export const Information: React.FC<props> = ({ profile }) => {
           const today = midnight
             .set('hour', hour)
             .set('minute', minute)
-
            const useFrameChange =  (today.unix() <= dayjs().unix()) ? null : today.toISOString()
            updateProfileOnCloud(
             { id: profile.id, set: { startTime, timeToExecuteFrameChange: useFrameChange }},
@@ -117,6 +116,11 @@ export const Information: React.FC<props> = ({ profile }) => {
           )
         }} type='button' className="purple bold ml15">Save</button>
       </div>
+      <Explanation className='mt20 mb20' color='blue'>
+        <div>
+          Control when the day is restarted. Default is 12:00 AM to restart the logs at midnight.
+        </div>
+      </Explanation>
       <div className="fr ml5">
         <label className="fr"  htmlFor="showCalories">
           <span className="mr10" css={itemLabelStyling}>
