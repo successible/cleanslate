@@ -4,7 +4,6 @@ import { useData } from '../../hooks/useData'
 import { useLogoutOtherTab } from '../../hooks/useLogoutOtherTab'
 import { usePWAPrompt } from '../../hooks/usePWAPrompt'
 import { useShortcuts } from '../../hooks/useShortcuts'
-import { useStartTime } from '../../hooks/useStartTime'
 import { useUser } from '../../hooks/useUser'
 import { Body } from '../body/Body'
 import { BottomBar } from '../bottom-bar/BottomBar'
@@ -27,9 +26,11 @@ import { getLoginStatus } from '../../helpers/getLoginStatus'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
+import { getDomain } from '../../helpers/getDomain'
+import { toast } from 'react-toastify'
+import ms from 'ms'
 
 export const App = () => {
-  useStartTime()
 
   const {
     dispatch,
@@ -43,6 +44,7 @@ export const App = () => {
 
   const user = useUser()
   const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), {variables: createDateRange(profile) })
+
   useEffect(() => {
     if (!loading && data && isLoadedUser(user) && getLoginStatus()) {
       handleData(data)
@@ -62,7 +64,7 @@ export const App = () => {
         updateProfileOnCloud(
           { id: profile.id, set: { timeToExecuteFrameChange: null} },
           () => {
-            Cookies.remove("last-reset")
+            Cookies.remove("last-refreshed")
             window.location.reload()
           }
         )
@@ -70,6 +72,30 @@ export const App = () => {
     }
   }, [loading, profile])
 
+
+useEffect(() => {
+  const handler = () => {
+    if (!loading) {
+      const cookie = Cookies.get("last-refreshed")
+      const hour = Number(profile.startTime.split(":")[0])
+      const minute = Number(profile.startTime.split(":")[1])
+      const time = dayjs()
+      if ((time.hour() == hour) && (time.minute() == minute) && (cookie === undefined)) {
+        Cookies.set('last-refreshed', dayjs().toISOString(), {
+          domain: getDomain(),
+          expires: time.add(5, "minutes").toDate(),
+        })
+        toast.success("Your day is restarting in five seconds!")
+        setTimeout(() => {
+          window.location.reload()
+        }, 5000)
+      }
+    }
+  }
+  const interval = setInterval(handler, ms('1 second'))
+  return () => clearInterval(interval)
+}, [loading, profile])
+1
   return (
     <div
       id="app"
