@@ -20,7 +20,6 @@ import { HiddenInput } from '../../buttons/HiddenInput'
 import { Explanation } from '../../explanation/Explanation'
 import { Image } from '../../image/Image'
 import { useStoreon } from '../../../storeon'
-import dayjs from "dayjs"
 
 type props = {
   profile: Profile
