@@ -28,6 +28,7 @@ import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
 import { getDomain } from '../../helpers/getDomain'
 import { toast } from 'react-toastify'
+import ms from 'ms'
 
 export const App = () => {
 
@@ -71,22 +72,29 @@ export const App = () => {
     }
   }, [loading, profile])
 
-  useEffect(() => {
-    const cookie = Cookies.get("last-refreshed")
-    const hour = Number(profile.startTime.split(":")[0])
-    const minute = Number(profile.startTime.split(":")[1])
-    const time = dayjs()
-    if ((time.hour() == hour) && (time.minute() == minute) && !cookie) {
-      Cookies.set('last-refreshed', dayjs().toISOString(), {
-        domain: getDomain(),
-        expires: time.toDate(),
-      })
-      toast.success("Your day has been reset!")
-      setTimeout(() => {
-        window.location.reload()
-      }, 3000)
+
+useEffect(() => {
+  const handler = () => {
+    if (!loading) {
+      const cookie = Cookies.get("last-refreshed")
+      const hour = Number(profile.startTime.split(":")[0])
+      const minute = Number(profile.startTime.split(":")[1])
+      const time = dayjs()
+      if ((time.hour() == hour) && (time.minute() == minute) && (cookie === undefined)) {
+        Cookies.set('last-refreshed', dayjs().toISOString(), {
+          domain: getDomain(),
+          expires: time.add(5, "minutes").toDate(),
+        })
+        toast.success("Your day has been reset!")
+        setTimeout(() => {
+          window.location.reload()
+        }, 3000)
+      }
     }
-  }, [loading, profile])
+  }
+  const interval = setInterval(handler, ms('1 second'))
+  return () => clearInterval(interval)
+}, [loading, profile])
 
   return (
     <div
