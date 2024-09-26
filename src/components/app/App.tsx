@@ -4,7 +4,6 @@ import { useData } from '../../hooks/useData'
 import { useLogoutOtherTab } from '../../hooks/useLogoutOtherTab'
 import { usePWAPrompt } from '../../hooks/usePWAPrompt'
 import { useShortcuts } from '../../hooks/useShortcuts'
-import { useStartTime } from '../../hooks/useStartTime'
 import { useUser } from '../../hooks/useUser'
 import { Body } from '../body/Body'
 import { BottomBar } from '../bottom-bar/BottomBar'
@@ -27,9 +26,9 @@ import { getLoginStatus } from '../../helpers/getLoginStatus'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
+import { getDomain } from '../../helpers/getDomain'
 
 export const App = () => {
-  useStartTime()
 
   const {
     dispatch,
@@ -43,6 +42,7 @@ export const App = () => {
 
   const user = useUser()
   const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), {variables: createDateRange(profile) })
+
   useEffect(() => {
     if (!loading && data && isLoadedUser(user) && getLoginStatus()) {
       handleData(data)
@@ -67,6 +67,20 @@ export const App = () => {
           }
         )
       ]
+    }
+  }, [loading, profile])
+
+  useEffect(() => {
+    const cookie = Cookies.get("last-reset")
+    const hour = Number(profile.startTime.split(":")[0])
+    const minute = Number(profile.startTime.split(":")[1])
+    const time = dayjs()
+    if ((time.hour() == hour) && (time.minute() == minute) && !cookie) {
+      Cookies.set('last-reset', dayjs().toString(), {
+        domain: getDomain(),
+        expires: time.add(5, 'minute').unix(),
+      })
+      window.location.reload()
     }
   }, [loading, profile])
 

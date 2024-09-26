@@ -106,10 +106,6 @@ export const Information: React.FC<props> = ({ profile }) => {
             () => {
               if (!useFrameChange) {
                 Cookies.remove("last-reset")
-                Cookies.set('last-reset', today.toString(), {
-                  domain: getDomain(),
-                  expires: 5,
-                })
               }
               toast.success("Settings updated!")
             }
