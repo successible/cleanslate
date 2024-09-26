@@ -85,7 +85,10 @@ useEffect(() => {
           domain: getDomain(),
           expires: time.add(5, "minutes").toDate(),
         })
-        window.location.reload()
+        toast.success("Your day is restarting in five seconds!")
+        setTimeout(() => {
+          window.location.reload()
+        }, 5000)
       }
     }
   }
