@@ -27,6 +27,10 @@ type props = {
 export const Shell: React.FC<props> = ({ profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
+  const hour = +profile.startTime.split(":")[0] % 24;
+  const minute = profile.startTime.split(":")[1]
+  const time = (hour % 12 || 12) + ":" + minute + (hour < 12 ? " AM" : " PM")
+
   const shell = css`
     margin-bottom: 50px;
     margin-top: 50px;
@@ -90,6 +94,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
         Here are some things to do
       </div>
 
+
       {profile.showCalories && (
         <div css={section} className={`fc`}>
           <div css={sectionHeader} className={`fr`}>
@@ -106,7 +111,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
           <Explanation color="background">
             <div className="fr">
               <strong css={explanationHeader}>Remember: </strong> Logs reset
-              daily at midnight
+              daily at {profile.startTime === "00:00:00" ? "midnight" : time}.
             </div>
           </Explanation>
         </div>

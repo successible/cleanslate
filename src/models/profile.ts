@@ -23,7 +23,8 @@ export class Profile {
   proteinTarget: number // Default 150
   showCalories: boolean // Default to True
   showDensities: boolean // Default to false
-  startTime: string // No longer used
+  startTime: string
+  timeToExecuteFrameChange: string | null
   timezone: string
 
   // Relationships

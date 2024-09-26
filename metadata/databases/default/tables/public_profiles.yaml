@@ -62,6 +62,7 @@ insert_permissions:
         - showCalories
         - showDensities
         - startTime
+        - timeToExecuteFrameChange
         - timezone
 select_permissions:
   - role: user
@@ -81,6 +82,7 @@ select_permissions:
         - showCalories
         - showDensities
         - startTime
+        - timeToExecuteFrameChange
         - timezone
         - type
         - updatedAt
@@ -102,6 +104,7 @@ update_permissions:
         - showCalories
         - showDensities
         - startTime
+        - timeToExecuteFrameChange
       filter:
         authId:
           _eq: X-Hasura-User-Id

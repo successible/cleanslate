@@ -6,6 +6,10 @@ import { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
 import { subheader } from './Settings'
 import { toast } from 'react-toastify'
+import { debounce } from 'lodash-es'
+import dayjs from 'dayjs'
+import Cookies from 'js-cookie'
+import { getDomain } from '../../helpers/getDomain'
 
 type props = { profile: Profile }
 
@@ -21,7 +25,7 @@ export const Information: React.FC<props> = ({ profile }) => {
   const [enableMetricSystem, setEnableMetricSystem] = useState(
     profile.metricSystem
   )
-
+  const [startTime, setStartTime] = useState(profile.startTime)
   const userLoaded = user && user !== 'PENDING'
 
   const info =
@@ -62,9 +66,9 @@ export const Information: React.FC<props> = ({ profile }) => {
         </>
         <Explanation color="background">
           <div>
-            To learn how to make an API request,{' '}
+            To learn how to make an API request, view the <a href="https://github.com/successible/cleanslate/blob/main/README.md#how-can-i-make-an-api-request-to-clean-slate">README</a> and the {' '}
             <a href="https://studio.apollographql.com/graph/Clean-Slate/variant/current/home">
-              read the docs.
+              GraphQL schema.
             </a>
           </div>
         </Explanation>
@@ -76,6 +80,47 @@ export const Information: React.FC<props> = ({ profile }) => {
       >
         Preferences
       </div>
+      <div className="fr ml5">
+        <label className="fr" htmlFor='startTime'>
+          <span className="mr10" css={itemLabelStyling}>
+            Start time
+          </span>
+          <input
+            value={startTime}
+            onChange={(e) => {
+              setStartTime(e.target.value)
+            }}
+            id="startTime"
+            type="time"
+          />
+        </label>
+        <button onClick={() => {
+          const midnight = dayjs().startOf('day')
+          const [hour, minute] = startTime.split(':').map(Number)
+          const today = midnight
+            .set('hour', hour)
+            .set('minute', minute)
+           const useFrameChange =  (today.unix() <= dayjs().unix()) ? null : today.toISOString()
+           updateProfileOnCloud(
+            { id: profile.id, set: { startTime, timeToExecuteFrameChange: useFrameChange }},
+            () => {
+              if (!useFrameChange) {
+                Cookies.remove("last-reset")
+                Cookies.set('last-reset', today.toString(), {
+                  domain: getDomain(),
+                  expires: 5,
+                })
+              }
+              toast.success("Settings updated!")
+            }
+          )
+        }} type='button' className="purple bold ml15">Save</button>
+      </div>
+      <Explanation className='mt20 mb20' color='blue'>
+        <div>
+          Control when the day is restarted. Default is 12:00 AM to restart the logs at midnight.
+        </div>
+      </Explanation>
       <div className="fr ml5">
         <label className="fr"  htmlFor="showCalories">
           <span className="mr10" css={itemLabelStyling}>
