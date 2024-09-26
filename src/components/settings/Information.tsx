@@ -105,7 +105,7 @@ export const Information: React.FC<props> = ({ profile }) => {
             { id: profile.id, set: { startTime, timeToExecuteFrameChange: useFrameChange }},
             () => {
               if (!useFrameChange) {
-                Cookies.remove("last-reset")
+                Cookies.remove("last-refreshed")
               }
               toast.success("Settings updated!")
             }

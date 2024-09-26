@@ -62,7 +62,7 @@ export const App = () => {
         updateProfileOnCloud(
           { id: profile.id, set: { timeToExecuteFrameChange: null} },
           () => {
-            Cookies.remove("last-reset")
+            Cookies.remove("last-refreshed")
             window.location.reload()
           }
         )
@@ -71,14 +71,14 @@ export const App = () => {
   }, [loading, profile])
 
   useEffect(() => {
-    const cookie = Cookies.get("last-reset")
+    const cookie = Cookies.get("last-refreshed")
     const hour = Number(profile.startTime.split(":")[0])
     const minute = Number(profile.startTime.split(":")[1])
     const time = dayjs()
     if ((time.hour() == hour) && (time.minute() == minute) && !cookie) {
-      Cookies.set('last-reset', dayjs().toString(), {
+      Cookies.set('last-refreshed', dayjs().toISOString(), {
         domain: getDomain(),
-        expires: time.add(5, 'minute').unix(),
+        expires: time.toDate(),
       })
       window.location.reload()
     }
