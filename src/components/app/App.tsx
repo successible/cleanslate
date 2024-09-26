@@ -85,17 +85,14 @@ useEffect(() => {
           domain: getDomain(),
           expires: time.add(5, "minutes").toDate(),
         })
-        toast.success("Your day has been reset!")
-        setTimeout(() => {
-          window.location.reload()
-        }, 3000)
+        window.location.reload()
       }
     }
   }
   const interval = setInterval(handler, ms('1 second'))
   return () => clearInterval(interval)
 }, [loading, profile])
-
+1
   return (
     <div
       id="app"
