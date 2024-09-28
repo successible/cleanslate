@@ -47,6 +47,7 @@ insert_permissions:
         - countToTbsp
         - groupName
         - name
+        - openFoodFactsCode
         - preferredVolumeUnit
         - preferredWeightUnit
         - profile
@@ -71,6 +72,7 @@ select_permissions:
         - groupName
         - id
         - name
+        - openFoodFactsCode
         - preferredVolumeUnit
         - preferredWeightUnit
         - profile
@@ -101,6 +103,7 @@ update_permissions:
         - countToTbsp
         - groupName
         - name
+        - openFoodFactsCode
         - preferredVolumeUnit
         - preferredWeightUnit
         - profile

@@ -27,6 +27,7 @@ export class Food {
   servingPerContainer: number | null
   preferredVolumeUnit: VolumeUnit | null
   preferredWeightUnit: WeightUnit | null
+  openFoodFactsCode: string | null
 
   // Foreign keys
   profile: string | null

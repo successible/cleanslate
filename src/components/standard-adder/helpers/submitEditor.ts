@@ -19,7 +19,7 @@ export const submitEditor = (
   meal: Meal,
   dispatch: Dispatch,
   searchResult?: SelectedItem,
-  customFoodToCreate?: Food
+  customFoodToCreate?: Food,
 ) => {
   const basicFoodId =
     searchResult && searchResult.type === 'food' && searchResult.basicFoodId
@@ -66,6 +66,7 @@ export const submitEditor = (
         preferredWeightUnit: 'GRAM',
         proteinPerCount: customFoodToCreate?.proteinPerCount,
         servingPerContainer: customFoodToCreate?.servingPerContainer,
+        openFoodFactsCode: barcode?.code || null
       },
       (id) => {
         toast.success(`Created the ${customFoodToCreate.name} custom food!`)

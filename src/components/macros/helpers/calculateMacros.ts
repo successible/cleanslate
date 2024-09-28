@@ -55,13 +55,8 @@ const calculatePerFood = (
   if (unit === 'GRAM') {
     if (countToGram && (perCount || perCount === 0)) {
       return (amount / countToGram) * perCount
-      // per gram exists, including when it is zero
-    } else if (perGram || perGram === 0) {
-      return amount * perGram
     } else {
-      return handleError(
-        `Error: calculatePerFood and GRAM: ${JSON.stringify(data)}`
-      )
+      return amount * (perGram || 0)
     }
   } else if (volumeUnits.includes(unit)) {
     const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
@@ -74,12 +69,8 @@ const calculatePerFood = (
     const grams = convertFromWeightToGrams(unit, amount)
     if (countToGram && (perCount || perCount === 0)) {
       return (grams / countToGram) * perCount
-    } else if (perGram || perGram === 0) {
-      return grams * perGram
     } else {
-      return handleError(
-        `Error: calculatePerFood and OZ/LBS: ${JSON.stringify(data)}`
-      )
+      return grams * (perGram || 0)
     }
   } else {
     const countToUse =
@@ -90,12 +81,8 @@ const calculatePerFood = (
     // The classic: slice of cheese is 30 grams (countToGram) * calories per gram of cheese * amount of slices
     if ((countToGram || countToGram === 0) && (perGram || perGram === 0)) {
       return countToUse * countToGram * perGram
-    } else if (perCount || perCount === 0) {
-      return countToUse * perCount
-    } else {
-      return handleError(
-        `Error: calculatePerFood and COUNT ${JSON.stringify(data)}`
-      )
+    } {
+      return countToUse * (perCount || 0)
     }
   }
 }

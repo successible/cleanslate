@@ -15,6 +15,7 @@ export const FOOD_FRAGMENT = gql`
     group
     id
     name
+    openFoodFactsCode
     preferredVolumeUnit
     preferredWeightUnit
     profile
