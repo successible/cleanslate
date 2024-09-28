@@ -73,7 +73,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
     // On localhost on development on a desktop, we want to "mock" the barcode scanning operation
     // That way, you do not need to proxy to your phone every time you want test the feature
     if (!isProduction() && !isMobile()) {
-      fetchData('5449000121134') // Nutella
+      fetchData('3017620422003') // Nutella
     }
   }, [])
 
