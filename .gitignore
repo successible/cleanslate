@@ -14,3 +14,4 @@ src/build
 src/out
 src/tsconfig-server.tsbuildinfo
 src/tsconfig.tsbuildinfo
+.*

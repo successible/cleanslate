@@ -11,11 +11,11 @@ export const LegalDisclaimer = () => {
       `}
     >
       By logging in, you agree to our{' '}
-      <a target="_blank" rel="noopener noreferer" href={legalLink}>
+      <a target="_blank" rel="noopener noreferrer" href={legalLink}>
         Terms
       </a>{' '}
       &#38;{' '}
-      <a target="_blank" rel="noopener noreferer" href={legalLink}>
+      <a target="_blank" rel="noopener noreferrer" href={legalLink}>
         Privacy Policy
       </a>
     </p>

@@ -39,6 +39,7 @@ export type FoodSubmission = {
   countToTbsp: number | null
   preferredVolumeUnit: VolumeUnit
   preferredWeightUnit: WeightUnit
+  openFoodFactsCode: string | null
 }
 
 type props = { food: Food | undefined }
@@ -120,6 +121,7 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           preferredWeightUnit: weightUnit,
           proteinPerCount: prep(proteinPerCount),
           servingPerContainer: prep(servingPerContainer),
+          openFoodFactsCode: food?.openFoodFactsCode || null
         }
 
         const close = () => {
@@ -304,6 +306,14 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           </div>
         </div>
       </div>
+
+      {food?.openFoodFactsCode && (
+        <Explanation color="background">
+          <div>
+            Barcode (Open Food Facts): <a target="_blank" rel="noopener noreferrer" href={`https://world.openfoodfacts.org/product/${food.openFoodFactsCode}`}>{food.openFoodFactsCode}</a>
+          </div>
+        </Explanation>
+      )}
 
       <button
         id="submitCustomFoodForm"
