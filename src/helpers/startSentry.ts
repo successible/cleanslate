@@ -30,6 +30,7 @@ export const errorsToIgnore = [
   /Text content does not match server-rendered HTML/,
   /the entire root will switch to client rendering/,
   /There was an error while hydrating/,
+  /Unable to open database file on disk/,
   /Uniqueness violation/,
   /UnknownError: Error looking up record in object store by key range/,
 ]
