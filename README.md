@@ -18,6 +18,9 @@ It can do stuff like:
 - Create custom foods and recipes
 - Scan barcodes
 - Track exercise
+- Track meals.
+
+And it works on any device that has a browser.
 
 To learn more, [visit our website](https://cleanslate.sh) or [watch the demo video](https://youtu.be/wCoqpIImNdg).
 
