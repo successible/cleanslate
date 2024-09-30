@@ -5,7 +5,6 @@ import * as jose from 'jose'
 
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET
 const domain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
-const hasuraPort = process.env.HASURA_PORT || 8080
 const isProduction = process.env.NODE_ENV === 'production'
 const signingKey = process.env.JWT_SIGNING_SECRET
 const useFirebase = process.env.NEXT_PUBLIC_USE_FIREBASE === 'true'
@@ -23,7 +22,7 @@ isProduction && app.use(helmet())
 
 const port = 3001
 const graphqlUrl = isProduction
-  ? `http://graphql-server:${hasuraPort}/v1/graphql`
+  ? 'http://graphql-server:8080/v1/graphql'
   : 'https://localhost/v1/graphql'
 
 const getProfiles = async (token: string) => {
@@ -39,6 +38,9 @@ const getProfiles = async (token: string) => {
       }
     }
   `
+
+  console.log('1')
+
   const response = await axios({
     url: graphqlUrl,
     method: 'post',
@@ -54,14 +56,18 @@ const getProfiles = async (token: string) => {
       },
     },
   })
+
+  console.log('!')
   return response.data.data.profiles as [{ authId: string; id: string }]
 }
 
 app.get('/auth', (req, res) => {
+  console.log('A')
   res.send('The server is healthy!')
 })
 
 app.post('/auth/login', async (req, res) => {
+  console.log('B')
   if (useFirebase) {
     console.log('This endpoint is disabled because Firebase is enabled.')
     return res.sendStatus(403)
@@ -72,6 +78,8 @@ app.post('/auth/login', async (req, res) => {
     return res.sendStatus(422)
   }
 
+  console.log('C')
+  console.log(token)
   const profiles = await getProfiles(token)
   if (profiles.length === 1) {
     const authId = profiles[0].authId
@@ -124,7 +132,6 @@ app.post('/auth/graphql', async (req, res) => {
         variables: req.body.variables ? req.body.variables : {},
       },
     })
-    console.log(result.data)
     res.send(result.data.data)
   } else {
     return res.sendStatus(403)
