@@ -39,8 +39,6 @@ const getProfiles = async (token: string) => {
     }
   `
 
-  console.log('1')
-
   const response = await axios({
     url: graphqlUrl,
     method: 'post',
@@ -57,17 +55,14 @@ const getProfiles = async (token: string) => {
     },
   })
 
-  console.log('!')
   return response.data.data.profiles as [{ authId: string; id: string }]
 }
 
 app.get('/auth', (req, res) => {
-  console.log('A')
   res.send('The server is healthy!')
 })
 
 app.post('/auth/login', async (req, res) => {
-  console.log('B')
   if (useFirebase) {
     console.log('This endpoint is disabled because Firebase is enabled.')
     return res.sendStatus(403)
@@ -78,8 +73,6 @@ app.post('/auth/login', async (req, res) => {
     return res.sendStatus(422)
   }
 
-  console.log('C')
-  console.log(token)
   const profiles = await getProfiles(token)
   if (profiles.length === 1) {
     const authId = profiles[0].authId
