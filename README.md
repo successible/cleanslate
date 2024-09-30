@@ -31,7 +31,7 @@ Here, we list all the changes that Clean Slate has gone through in each version.
 
 You do not!
 
-We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login via Firebase. For example, "Login with Google".
+We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login via Firebase. For example, "Login with Google". Currently, we support login with Apple, Facebook, GitHub, and Google.
 
 ## How is Clean Slate licensed?
 
