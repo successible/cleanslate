@@ -46,7 +46,7 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder. Replace `<>` with your values. The `second-long-secret-value` of `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should be the same. If you are using a port that differs `nginx` or `caddy` (Step #3), you must change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
+2.  Create a `.env` file in the `cleanslate` folder. Replace the values inside `< >` with your values. The `second-long-secret-value` of `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should be the same. If you are using a port that differs `nginx` or `caddy` (Step #3), you must change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
 
 ```bash
 AUTHENTICATION_SERVER_PORT=3001
