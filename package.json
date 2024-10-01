@@ -34,7 +34,7 @@
     "firebase": "10.13.2",
     "graphql-ws": "5.16.0",
     "graphql": "16.9.0",
-    "helmet": "7.2.0",
+    "helmet": "8.0.0",
     "immer": "10.1.1",
     "jose": "5.9.3",
     "js-cookie": "3.0.5",
