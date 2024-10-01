@@ -46,20 +46,20 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder. Replace the values inside `< >` with your values. The `second-long-secret-value` of `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should be the same. If you are using a port that differs `nginx` or `caddy` (Step #3), you must change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
+2.  Create a `.env` file in the `cleanslate` folder. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate. Also, if you are using a port that differs `nginx` or `caddy` (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
 
 ```bash
 AUTHENTICATION_SERVER_PORT=3001
 CLIENT_PORT=3000
-HASURA_GRAPHQL_ADMIN_SECRET=<first-long-secret-value>
-HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"<second-long-secret-value>"}'
+HASURA_GRAPHQL_ADMIN_SECRET=first-long-secret-value
+HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"second-long-secret-value"}'
 HASURA_PORT=8080
-JWT_SIGNING_SECRET=<second-long-secret-value>
-NEXT_PUBLIC_HASURA_DOMAIN=<your-server-domain>
-POSTGRES_PASSWORD=<third-long-secret-value>
+JWT_SIGNING_SECRET=second-long-secret-value
+NEXT_PUBLIC_HASURA_DOMAIN=your-server-domain
+POSTGRES_PASSWORD=third-long-secret-value
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000` and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `<XXX>` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3].
+3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3].
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
@@ -105,7 +105,7 @@ Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 }
 ```
 
-Here is an example `nginx.conf`. Replace `<XXX>` with your own content.
+Here is an example `nginx.conf`. Replace `XXX` with your own content.
 
 > Note: With `nginx`, you will need to get your own SSL certificate.
 
@@ -115,10 +115,10 @@ http {
   server {
       listen 443 http2 ssl;
       listen [::]:443 http2 ssl;
-      server_name <XXX>;
+      server_name XXX;
 
-      ssl_certificate <XXX>
-      ssl_certificate_key <XXX>;
+      ssl_certificate XXX
+      ssl_certificate_key XXX;
 
       # HTTP Security Headers
       add_header Referrer-Policy "strict-origin";
@@ -170,11 +170,11 @@ http {
 
 4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the GraphQL server (Hasura). Four, the authentication server (Express.js).
 
-> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=<your-custom-file.yml>; git pull origin main; bash deploy.sh`
+> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=your-custom-file.yml; git pull origin main; bash deploy.sh`. Make sure to change `your-custom-file.yml` to the name of your actual file!
 
-5.  Go to the `https://<your-domain>/console`. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access you account.
+5.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access you account.
 
-6.  You can now log in to `https://<your-domain>` with that token.
+6.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
 7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy!
 
