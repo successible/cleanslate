@@ -245,11 +245,11 @@ type Barcode = {
 
 ## How do I handle authentication in Clean Slate?
 
-### Default: Authentication via authId
+### Default: Authentication via apiToken
 
 Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section (below) for how to set up Firebase with Clean Slate.
 
-However, Firebase is too complex for the most common hosting scenario. That is a privacy-focused user who wants to host Clean Slate for their personal use. Hence, our default authentication system, `authId`, is much simpler. There is no username or password and no need for your server to send email. Instead, we use very long tokens (uuid4) stored as plain text in the `authId` column in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `authId`, you can just use the Hasura Console. If you would rather not use the `authId` system, you will need to use Firebase instead.
+However, Firebase is too complex for the most common hosting scenario. That is a privacy-focused user who wants to host Clean Slate for their personal use. Hence, our default authentication system, `apiToken`, is much simpler. There is no username or password and no need for your server to send email. Instead, we use very long tokens (uuid4) stored as plain text in the `apiToken` column in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `apiToken`, you can just use the Hasura Console. If you would rather not use the `apiToken` system, you will need to use Firebase instead.
 
 ### Optional: Authentication via Firebase
 
