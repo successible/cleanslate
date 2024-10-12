@@ -28,6 +28,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Set variables needed for building the images
+        id: variables
+        run: echo "NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
       - name: Build the client and push it to the GitHub Container Registry
         uses: docker/build-push-action@v6.9.0
         with:
@@ -36,6 +40,7 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/${{ github.repository }}/client:${{ github.ref_name }}, ghcr.io/${{ github.repository }}/client:latest
+          build-args: NEXT_PUBLIC_VERSION=${{ steps.vars.outputs.NEXT_PUBLIC_VERSION }}
 
       - name: Build the authentication server and push it to the GitHub Container Registry
         uses: docker/build-push-action@v6.9.0
@@ -45,3 +50,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/${{ github.repository }}/authentication-server:${{ github.ref_name }}, ghcr.io/${{ github.repository }}/authentication-server:latest
+          build-args: NEXT_PUBLIC_VERSION=${{ steps.vars.outputs.NEXT_PUBLIC_VERSION }}
