@@ -34,7 +34,6 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ github.repository }}/client:${{ github.ref_name }}
           tags: ghcr.io/${{ github.repository }}/client:${{ github.ref_name }}
 
       - name: Build the authentication server and push it to the GitHub Container Registry
@@ -44,4 +43,3 @@ jobs:
           file: Dockerfile
           push: true
           tags: ghcr.io/${{ github.repository }}/authentication-server:${{ github.ref_name }}
-
