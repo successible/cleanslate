@@ -35,11 +35,13 @@ jobs:
           file: Dockerfile
           push: true
           tags: ${{ github.repository }}/client:${{ github.ref_name }}
+          tags: ghcr.io/${{ github.repository }}/client:${{ github.ref_name }}
 
       - name: Build the authentication server and push it to the GitHub Container Registry
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
-          file: Dockerfile.server
+          file: Dockerfile
           push: true
-          tags: ${{ github.repository }}/authentication-server:${{ github.ref_name }}
+          tags: ghcr.io/${{ github.repository }}/authentication-server:${{ github.ref_name }}
+
