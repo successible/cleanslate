@@ -43,15 +43,15 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.server
-    pull_policy: '${PULL_POLICY:-always}'
-    restart: always
+    pull_policy: ${PULL_POLICY:-always}
+    restart: alwaysg
     container_name: authentication-server
     ports:
       - '${AUTHENTICATION_SERVER_PORT:-3001}:3001'
     environment:
       HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
       JWT_SIGNING_SECRET: ${JWT_SIGNING_SECRET}
-      NEXT_PUBLIC_USE_FIREBASE: ${NEXT_PUBLIC_USE_FIREBASE}
+      NEXT_PUBLIC_USE_FIREBASE: ${NEXT_PUBLIC_USE_FIREBASE:-false}
     depends_on:
       - database
       - graphql-server
@@ -64,16 +64,16 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG:'{}'}
-        - NEXT_PUBLIC_LEGAL_LINK=${NEXT_PUBLIC_LEGAL_LINK:''}
-        - NEXT_PUBLIC_LOGIN_WITH_APPLE=${NEXT_PUBLIC_LOGIN_WITH_APPLE:'no'}
-        - NEXT_PUBLIC_LOGIN_WITH_FACEBOOK=${NEXT_PUBLIC_LOGIN_WITH_FACEBOOK:'no'}
-        - NEXT_PUBLIC_LOGIN_WITH_GITHUB=${NEXT_PUBLIC_LOGIN_WITH_GITHUB:'no'}
-        - NEXT_PUBLIC_LOGIN_WITH_GOOGLE=${NEXT_PUBLIC_LOGIN_WITH_GOOGLE:'no'}
-        - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN:''}
-        - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE:'false'}
-        - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION:''}
-    pull_policy: '${PULL_POLICY:-always}'
+        - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG:-{}}
+        - NEXT_PUBLIC_LEGAL_LINK=${NEXT_PUBLIC_LEGAL_LINK:-''}
+        - NEXT_PUBLIC_LOGIN_WITH_APPLE=${NEXT_PUBLIC_LOGIN_WITH_APPLE:-no}
+        - NEXT_PUBLIC_LOGIN_WITH_FACEBOOK=${NEXT_PUBLIC_LOGIN_WITH_FACEBOOK:-no}
+        - NEXT_PUBLIC_LOGIN_WITH_GITHUB=${NEXT_PUBLIC_LOGIN_WITH_GITHUB:-no}
+        - NEXT_PUBLIC_LOGIN_WITH_GOOGLE=${NEXT_PUBLIC_LOGIN_WITH_GOOGLE:-no}
+        - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN:-''}
+        - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE:-false}
+        - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION:-""}
+    pull_policy: ${PULL_POLICY:-always}
     restart: always
     container_name: client
     ports:
