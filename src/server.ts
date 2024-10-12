@@ -65,12 +65,12 @@ app.get('/auth', (req, res) => {
 app.post('/auth/login', async (req, res) => {
   if (useFirebase) {
     console.log('This endpoint is disabled because Firebase is enabled.')
-    return res.sendStatus(403)
+    res.sendStatus(403)
   }
   const token = req.body.token
   if (!req.body.token) {
     console.log('This endpoint requires you to pass a token.')
-    return res.sendStatus(422)
+    res.sendStatus(422)
   }
 
   const profiles = await getProfiles(token)
@@ -92,19 +92,19 @@ app.post('/auth/login', async (req, res) => {
       .setAudience(`urn:${domain}`)
       .setExpirationTime('30d')
       .sign(secret)
-    return res.send(JWT)
+    res.send(JWT)
   }
   console.log('No profile was found matching that token.')
-  return res.sendStatus(403)
+  res.sendStatus(403)
 })
 
 app.post('/auth/graphql', async (req, res) => {
   const token = req.body.token
   if (!req.body.token) {
-    return res.sendStatus(422)
+    res.sendStatus(422)
   }
   if (!req.body.query) {
-    return res.sendStatus(422)
+    res.sendStatus(422)
   }
   const profiles = await getProfiles(token)
   if (profiles.length === 1) {
@@ -127,7 +127,7 @@ app.post('/auth/graphql', async (req, res) => {
     })
     res.send(result.data.data)
   } else {
-    return res.sendStatus(403)
+    res.sendStatus(403)
   }
 })
 
