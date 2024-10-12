@@ -168,9 +168,26 @@ http {
 }
 ```
 
-4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. One, the database (PostgreSQL). Two, the client (React via busybox). Three, the GraphQL server (Hasura). Four, the authentication server (Express.js).
+4.  Run `git pull origin main; bash deploy.sh`. This script will build and start three servers on `localhost` via Docker Compose. The first server is the database (PostgreSQL). Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. The second server is the client (React via busybox). The third server is the GraphQL server (Hasura). The four server is the authentication server (Express.js). It will also start Caddy. If you do not like any of these behaviors, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) locally. It is less than ten lines of `bash`, as shown below.
 
-> Note: Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. If you do not like this behavior, you must create your own `docker-compose.yml`. Then, run `export COMPOSE_FILE=your-custom-file.yml; git pull origin main; bash deploy.sh`. Make sure to change `your-custom-file.yml` to the name of your actual file!
+```bash
+# Pull down any new updates from GitHub
+git pull origin main
+
+# Set the environmental variables from your .env
+export $(xargs < .env)
+export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
+
+# Build the containers and run them with Docker Compose
+COMPOSE_FILE=docker-compose.yml
+docker compose -f $COMPOSE_FILE build
+docker compose -f $COMPOSE_FILE down --remove-orphans -t=0
+docker compose -f $COMPOSE_FILE up -d
+
+# Start the reverse proxy, assuming the proxy is caddy
+sudo caddy stop
+sudo caddy start
+```
 
 5.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access you account.
 
