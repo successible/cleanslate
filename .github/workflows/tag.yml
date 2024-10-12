@@ -46,7 +46,7 @@ jobs:
         uses: docker/build-push-action@v6.9.0
         with:
           context: .
-          file: Dockerfile
+          file: Dockerfile.server
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ghcr.io/${{ github.repository }}/authentication-server:${{ github.ref_name }}, ghcr.io/${{ github.repository }}/authentication-server:latest
