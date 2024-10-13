@@ -81,10 +81,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         Preferences
       </div>
       <div className="fr ml5">
-        <label className="fr" htmlFor='startTime'>
-          <span className="mr10" css={itemLabelStyling}>
-            Start time
-          </span>
+        <label className="fr w100" htmlFor='startTime'>
           <input
             value={startTime}
             onChange={(e) => {
@@ -92,6 +89,7 @@ export const Information: React.FC<props> = ({ profile }) => {
             }}
             id="startTime"
             type="time"
+            className='w100'
           />
         </label>
         <button onClick={() => {
@@ -114,7 +112,7 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
       <Explanation className='mt20 mb20' color='blue'>
         <div>
-          Control when the day is restarted. Default is 12:00 AM to restart the logs at midnight.
+          <strong>Start Time:</strong> Control when day is restarted. Default is 12:00 AM to restart logs at midnight.
         </div>
       </Explanation>
       <div className="fr ml5">
