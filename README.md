@@ -182,7 +182,9 @@ http {
 
 6.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy!
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy.
+
+> Note: There is a ten-minute lag between each new release and the images being available. That is for two reasons. One, it takes about that long for the [GitHub Action building the image](https://github.com/successible/cleanslate/actions/workflows/tag.yml) to finish, on average. Two, the trigger for that action is the tag itself.
 
 ## How can I make an API request to Clean Slate?
 
