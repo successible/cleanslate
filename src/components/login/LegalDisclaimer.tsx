@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 
 export const LegalDisclaimer = () => {
   const legalLink = process.env.NEXT_PUBLIC_LEGAL_LINK
-  return legalLink ? (
+  return legalLink && legalLink !== "no" ? (
     <p
       css={css`
         font-size: 0.7rem;
