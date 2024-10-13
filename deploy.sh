@@ -9,6 +9,7 @@ export NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)
 if [ "$NEXT_PUBLIC_USE_FIREBASE" == "true" ]; then
     export PULL_POLICY="build"
 fi
+export PULL_POLICY="build"
 
 # Build the containers and run them with Docker Compose
 COMPOSE_FILE=docker-compose.yml

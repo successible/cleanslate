@@ -37,7 +37,7 @@ export const handleError = (
     // Do nothing
   }
 
-  if (dsn && hideFromSentry !== true) {
+  if (dsn && dsn !== 'no' && hideFromSentry !== true) {
     try {
       Sentry.setUser({ id: store.get().data.profiles[0].authId })
     } catch (e) {
