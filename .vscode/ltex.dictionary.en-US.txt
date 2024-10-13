@@ -8,3 +8,4 @@ proxying
 self-hoster
 stringified
 GRAPHQL
+apiToken

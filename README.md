@@ -168,7 +168,15 @@ http {
 }
 ```
 
-4.  Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. The first server is the database, PostgreSQL, from Docker Hub. Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose. The second server is the GraphQL server, Hasura, from Docker Hub. The third server is the client (React via busybox), from [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fclient). The fourth server is the authentication server (Express.js), from [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fauthentication-server). It will also start Caddy. If you do not like any of these behaviors, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) locally. It is less than ten lines of bash. You can also modify the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) used to deploy Clean Slate.
+4.  Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) locally. It is less than ten lines of bash. You can also modify the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) used to deploy Clean Slate.
+
+- The first server is the database, PostgreSQL, [on Docker Hub](https://hub.docker.com/_/postgres). Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose.
+
+- The second server is the GraphQL server, Hasura, [on Docker Hub](https://hub.docker.com/r/hasura/graphql-engine).
+
+- The third server is the client (busybox). It is built by us and stored on our [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fclient).
+
+- The fourth server is the authentication server (Express.js). It is built by us and stored on our [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fauthentication-server).
 
 5.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access you account.
 
@@ -300,8 +308,6 @@ NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
 NEXT_PUBLIC_USE_FIREBASE='true'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
-
-- Production: Remove these items from your `.env`: `JWT_SIGNING_SECRET`.
 
 - Production: You need to build the `client` and `authentication-server` images. You cannot use the ones that have already been built. That is because the `client` image has build arguments that are unique to each instance. If you use the `deploy.sh` and `docker-compose.yml` as written, you are set. The images will be built for you automatically. However, if you modify either of those files, you may need to built them yourself.
 
