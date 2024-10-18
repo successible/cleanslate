@@ -1,9 +1,7 @@
 import axios from 'axios'
 
 export const ax = () => {
-  const client = axios.create({
-    withCredentials: true,
-  }) as typeof axios
+  const client = axios.create({}) as typeof axios
 
   client.interceptors.request.use(
     (request) => {
