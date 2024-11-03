@@ -20,49 +20,29 @@ $white: #fff;
 // Text
 $background: #f7f7f7;
 $text: #606c76;
-$seashell: #fff6ed;
-$mediumseashell: darken(
-  $color: $seashell,
-  $amount: 5%,
-);
+
 // Primary
 $purple: #ad90de;
-$darkpurple: darken($purple, 20%);
+
 // Secondary
 $pink: #ffa6a6;
-$lightpink: lighten(
-  $color: $pink,
-  $amount: 13%,
-);
-$mediumpink: lighten(
-  $color: $pink,
-  $amount: 8%,
-);
+$lightpink: #ffe8e8;
+$mediumpink: #ffcfcf;
+
 // Tertiary
+
 // Blue
-$lightblue: lighten(
-  $color: #bae8e8,
-  $amount: 13%,
-);
-$mediumblue: darken(
-  $color: $lightblue,
-  $amount: 10%,
-);
+$lightblue: #ecf9f9;
+$mediumblue: #c5eded;
+
 // Green
-$lightgreen: lighten(
-  $color: #bae8c0,
-  $amount: 13%,
-);
-$mediumgreen: darken(
-  $color: $lightgreen,
-  $amount: 20%,
-);
+$lightgreen: #ecf9ed;
+$mediumgreen: #9ee1a4;
+
 // Yellow
 $lightyellow: #fff6c2;
-$mediumyellow: darken(
-  $color: $lightyellow,
-  $amount: 10%,
-);
+$mediumyellow: #ffee8f;
+
 // Alerts
 $success: #2cb67d;
 $danger: #ff5470;
@@ -1226,7 +1206,7 @@ input[type='radio'] {
   &:hover,
   &:focus,
   &.active {
-    background-color: darken($color: $background, $amount: 5%);
+    background-color: #eaeaea;
   }
   &.active {
     font-weight: 500;
@@ -1238,20 +1218,13 @@ input[type='radio'] {
     }
   }
 }
-.seashell {
-  background-color: $seashell;
-  color: $text;
-  &:hover,
-  &:focus {
-    background-color: $mediumseashell;
-  }
-}
+
 .purple {
   background-color: $purple;
   color: white;
   &:hover,
   &:focus {
-    background-color: darken($color: $purple, $amount: 5%);
+    background-color: #9e7cd8;
   }
 }
 .pink {
@@ -1321,7 +1294,7 @@ input[type='radio'] {
   &:hover,
   &:focus,
   &.active {
-    background-color: darken(#4267b2, 10%);
+    background-color: #34518d;
   }
   &.active {
     font-weight: 500;
@@ -1332,7 +1305,7 @@ input[type='radio'] {
   color: white;
   &:hover,
   &:focus {
-    background-color: darken($color: $success, $amount: 5%);
+    background-color: #27a16f;
   }
 }
 .danger {
@@ -1340,7 +1313,7 @@ input[type='radio'] {
   color: white;
   &:hover,
   &:focus {
-    background-color: darken($color: $danger, $amount: 5%);
+    background-color: #ff3b5b;
   }
 }
 

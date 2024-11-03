@@ -266,11 +266,7 @@ class Scan extends React.Component {
     if (this.state.scanning) return { backgroundColor: 'red', ...style }
     else return { backgroundColor: '', ...style }
   }
-  flashStyle = () => {
-    const style = { textAlign: 'center', width: 64 }
-    if (this.state.flash) return { backgroundColor: 'lavender', ...style }
-    else return { backgroundColor: 'yellow', ...style }
-  }
+
 
   render() {
     if (this.state.resultOpen) {
@@ -320,7 +316,7 @@ class Scan extends React.Component {
             {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
           </button>
           <button
-              className="yellow bold"
+              className={`${this.state.flash ? "background" : "yellow"} bold mt10`}
               css={css`
             display: ${!this.state.neverScanned 
                 ? 'unset' 
@@ -331,7 +327,6 @@ class Scan extends React.Component {
                   : '0px !important'};
           `}
               onClick={this.onFlashClickHandler}
-              style={this.flashStyle()}
           >
             {this.state.flash ? 'Turn off flash' : 'Turn on flash'}
           </button>
