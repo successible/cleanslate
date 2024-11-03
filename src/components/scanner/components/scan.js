@@ -53,6 +53,7 @@ class Scan extends React.Component {
       openModal: false,
       rawCode: '',
       scanning: false,
+      flash: false,
       transformToggle: true,
       worker: this.props.worker,
     }
@@ -102,12 +103,14 @@ class Scan extends React.Component {
       scanning: true,
       transformToggle: true,
     })
-    navigator.mediaDevices
-      .getUserMedia({ audio: false, video: { facingMode: 'environment' } })
-      .then((stream) => {
+    navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
+        .then((stream) => {
         this.video.srcObject = stream
         this.video.setAttribute('playsinline', 'true')
         this.video.play()
+            // turn on/off flash
+        stream.getVideoTracks()[0].applyConstraints({advanced: [{torch: this.state.flash}]})
+            .catch((err) => console.log(err))
         requestAnimationFrame(this.tick)
       })
       .catch((err) => {
@@ -157,7 +160,11 @@ class Scan extends React.Component {
     })
     this.video.pause()
     if (this.video.srcObject) {
-      this.video.srcObject.getVideoTracks().forEach((track) => track.stop())
+      // also disable torch
+      this.video.srcObject.getVideoTracks().forEach((track => {
+        track.applyConstraints({advanced: [{torch: false}]})
+        track.stop()
+      }))
       this.video.srcObject = null
     }
   }
@@ -246,6 +253,13 @@ class Scan extends React.Component {
     if (this.state.scanning) this.stopScan()
     else this.startScan()
   }
+  onFlashClickHandler = (e) => {
+    e.preventDefault()
+    if (this.state.flash) this.setState({flash: false})
+    else this.setState({flash: true})
+    // "restart" camera to regain focus
+    this.startScan()
+  }
 
   startStyle = () => {
     const style = { textAlign: 'center', width: 64 }
@@ -253,54 +267,70 @@ class Scan extends React.Component {
     else return { backgroundColor: '', ...style }
   }
 
+
   render() {
     if (this.state.resultOpen) {
       const result = this.renderQrCodeResult()
       this.props.onScan(result)
     }
     return (
-      <div
-        className="fcs"
-        css={css`
-          width: 90%;
-          height: 100%;
-          max-width: 400px;
-        `}
-      >
-        <button
-          className="purple bold"
-          css={css`
-            width: 100% !important;
-            margin: 20px auto !important;
-            margin-bottom: ${!this.state.neverScanned
-              ? '20px !important'
-              : '0px !important'};
-          `}
-          onTouchStart={this.initializeAudio}
-          onClick={this.onBtnClickHandler}
-          style={this.startStyle()}
+        <div
+            className="fcs"
+            css={css`
+              width: 90%;
+              height: 100%;
+              max-width: 400px;
+            `}
         >
-          {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
-        </button>
-        {this.state.neverScanned && (
-          <Explanation color="blue">
-            <div>
-              This barcode scanner uses the Open Food Facts database. Because
-              this database is a free service, it may not have every food. Just
-              a heads up!
-            </div>
-          </Explanation>
-        )}
-        <canvas
-          css={css`
-            width: 100%;
-            max-width: 400px;
-            max-height: ${this.state.neverScanned ? '0px' : '400px'};
-            margin: 0px auto;
+          {this.state.neverScanned && (
+              <Explanation color="blue">
+                <div>
+                  This barcode scanner uses the Open Food Facts database. Because
+                  this database is a free service, it may not have every food. Just
+                  a heads up!
+                </div>
+              </Explanation>
+          )}
+          <canvas
+              css={css`
+                width: 100%;
+                max-width: 400px;
+                max-height: ${this.state.neverScanned ? '0px' : '400px'};
+                margin: 0px auto;
+              `}
+              id="canvas"
+          />
+          <button
+              className="purple bold"
+              css={css`
+                width: 100% !important;
+                margin: 20px auto !important;
+                margin-bottom: ${!this.state.neverScanned
+                    ? '20px !important'
+                    : '0px !important'};
+              `}
+              onTouchStart={this.initializeAudio}
+              onClick={this.onBtnClickHandler}
+              style={this.startStyle()}
+          >
+            {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
+          </button>
+          <button
+              className={`${this.state.flash ? "background" : "yellow"} bold mt10`}
+              css={css`
+            display: ${!this.state.neverScanned 
+                ? 'unset' 
+                : 'none'};
+            width: 100% !important;
+            margin-bottom: ${!this.state.neverScanned
+                  ? '20px !important'
+                  : '0px !important'};
           `}
-          id="canvas"
-        />
-      </div>
+              onClick={this.onFlashClickHandler}
+          >
+            {this.state.flash ? 'Turn off flash' : 'Turn on flash'}
+          </button>
+        </div>
     )
   }
 
