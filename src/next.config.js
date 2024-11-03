@@ -9,5 +9,5 @@ module.exports = {
   reactStrictMode: true,
   sassOptions: {
     silenceDeprecations: ['legacy-js-api'],
-  }
+  },
 }
