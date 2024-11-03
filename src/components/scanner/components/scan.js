@@ -101,7 +101,6 @@ class Scan extends React.Component {
       rawCode: '',
       resultOpen: false,
       scanning: true,
-      flash: false,
       transformToggle: true,
     })
     navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
@@ -109,6 +108,9 @@ class Scan extends React.Component {
         this.video.srcObject = stream
         this.video.setAttribute('playsinline', 'true')
         this.video.play()
+            // turn on/off flash
+        stream.getVideoTracks()[0].applyConstraints({advanced: [{torch: this.state.flash}]})
+            .catch((err) => console.log(err))
         requestAnimationFrame(this.tick)
       })
       .catch((err) => {
@@ -158,7 +160,11 @@ class Scan extends React.Component {
     })
     this.video.pause()
     if (this.video.srcObject) {
-      this.video.srcObject.getVideoTracks().forEach((track) => track.stop())
+      // also disable torch
+      this.video.srcObject.getVideoTracks().forEach((track => {
+        track.applyConstraints({advanced: [{torch: false}]})
+        track.stop()
+      }))
       this.video.srcObject = null
     }
   }
@@ -249,24 +255,10 @@ class Scan extends React.Component {
   }
   onFlashClickHandler = (e) => {
     e.preventDefault()
-    if (this.state.flash) {
-      this.setState({flash: false})
-      navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
-          .then((stream) => {
-            this.video.srcObject = stream
-            stream.getVideoTracks()[0].applyConstraints({advanced: [{torch: false}]}).catch(err =>
-                console.log(err))
-          })
-    }
-    else {
-      this.setState({flash: true})
-      navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
-          .then((stream) => {
-            this.video.srcObject = stream
-            stream.getVideoTracks()[0].applyConstraints({advanced: [{torch: true}]}).catch(err =>
-            console.log(err))
-          })
-    }
+    if (this.state.flash) this.setState({flash: false})
+    else this.setState({flash: true})
+    // "restart" camera to regain focus
+    this.startScan()
   }
 
   startStyle = () => {
@@ -276,10 +268,8 @@ class Scan extends React.Component {
   }
   flashStyle = () => {
     const style = { textAlign: 'center', width: 64 }
-    if (this.state.scanning) return { display: 'unset', ...style }
-    else return { display: 'none', ...style }
-    if (this.state.flash) return { backgroundColor: 'yellow', ...style }
-    else return { backgroundColor: '', ...style }
+    if (this.state.flash) return { backgroundColor: 'lavender', ...style }
+    else return { backgroundColor: 'yellow', ...style }
   }
 
   render() {
@@ -332,6 +322,9 @@ class Scan extends React.Component {
           <button
               className="yellow bold"
               css={css`
+            display: ${!this.state.neverScanned 
+                ? 'unset' 
+                : 'none'};
             width: 100% !important;
             margin-bottom: ${!this.state.neverScanned
                   ? '20px !important'
