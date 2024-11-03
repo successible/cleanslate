@@ -60,7 +60,7 @@ POSTGRES_PASSWORD=third-long-secret-value
 POSTGRES_PORT=5432
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. And keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via `nginx`.
+3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. And keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy.
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
@@ -204,6 +204,8 @@ As you explore the schema, you will see that you can query seven tables using Gr
 - `recipes`: Contains your recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/recipe.ts).
 
 - `ingredients`: Contains your ingredients for recipes. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/ingredient.ts).
+
+- `profiles`: Contains your profile information. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/profile.ts).
 
 Here is an example of the `body` for a `query` that returns the `id` of every log with the unit `COUNT`.
 
