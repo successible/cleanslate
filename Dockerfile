@@ -1,4 +1,4 @@
-FROM node:latest AS builder
+FROM node:lts AS builder
 
 # Install the dependencies needed to build Clean Slate
 
