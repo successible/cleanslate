@@ -31,7 +31,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "41042ff4-621d-4d7f-a9ab-62210eaa4325",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Asiago-Käse" }
+    }
   },
   {
     "name": "Blue cheese",
@@ -47,7 +49,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "06e93fa7-b814-46e0-949d-dc5b4c7ffd1f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Blauschimmelkäse" }
+    }
   },
   {
     "name": "Brie cheese",
@@ -63,7 +67,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5074d94c-59b1-4785-aeea-34d0cab52b49",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brie-Käse" }
+    }
   },
   {
     "name": "Buffalo milk cheese",
@@ -79,7 +85,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e61603eb-e150-4c2a-8c1a-c5aa75663b45",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Büffelmilchkäse" }
+    }
   },
   {
     "name": "Camembert cheese",
@@ -95,7 +103,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c7d09ba8-4fd7-46b6-aa70-6d7ce5d4624a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Camembert" }
+    }
   },
   {
     "name": "Cheddar cheese",
@@ -111,7 +121,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8792cde0-7c65-4a08-bba2-8d9849722da8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cheddar", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Chihuahua cheese",
@@ -127,7 +139,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0fa8dea0-fd0b-4969-bd7b-593320381172",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chihuahua-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Colby cheese",
@@ -143,7 +157,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a34e509d-c003-4a81-bd4d-97878f63b696",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Colby-Käse" }
+    }
   },
   {
     "name": "Cotija cheese",
@@ -159,7 +175,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "04c22000-9f05-450e-a1d5-416038d4e130",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cotija-Käse" }
+    }
   },
   {
     "name": "Cream cheese",
@@ -175,7 +193,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dbf4f476-ec17-4cb7-968a-0ad5f17cc340",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Frischkäse" }
+    }
   },
   {
     "name": "Edam cheese",
@@ -191,7 +211,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0a28ff53-087f-45c8-8613-55ca403db11c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Edamer" }
+    }
   },
   {
     "name": "Emmentaler cheese",
@@ -207,7 +229,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2a67e083-5dab-4e48-bb07-3006d077a74c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Emmentaler", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Epoisses cheese",
@@ -223,7 +247,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6c037075-b383-4a1c-b96c-6dbc0077cbf3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Epoisses-Käse" }
+    }
   },
   {
     "name": "Feta cheese",
@@ -239,7 +265,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "822aa8be-4991-4943-9b49-8725ee73755e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Feta" }
+    }
   },
   {
     "name": "Fontina cheese",
@@ -255,7 +283,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "71c38d58-dd72-4cd9-816d-32157ccafe7a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fontina-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Goat cheese",
@@ -271,7 +301,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "db9de03c-eaeb-4ed0-aeb0-6b39e5dbbebc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ziegenkäse" }
+    }
   },
   {
     "name": "Gorgonzola cheese",
@@ -287,7 +319,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "65ad9055-7ac7-4bc0-b88c-5d7042ea92db",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gorgonzola", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Gouda cheese",
@@ -303,7 +337,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bec07bc7-2a98-426f-89c7-73c0b13c1982",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gouda" }
+    }
   },
   {
     "name": "Gruyere cheese",
@@ -319,7 +355,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9e733abe-c562-432a-8867-bdfeb7e545a8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Greyerzer", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Havarti cheese",
@@ -335,7 +373,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "37bf3aea-14e2-4128-a75f-ad4d10eb53ad",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Havarti-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Jarlsberg cheese",
@@ -351,7 +391,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "59813844-2802-442f-9e5c-23fd70d9d43b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Jarlsberg-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Manchego cheese",
@@ -367,7 +409,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aab417fb-0512-49f5-a96f-09a7aa3913af",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Manchego-Käse" }
+    }
   },
   {
     "name": "Mexican blend",
@@ -383,7 +427,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a73d29ab-9927-494a-95ca-b38ff9f02e9f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mexikanische Käsemischung" }
+    }
   },
   {
     "name": "Monterey Jack cheese",
@@ -399,7 +445,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "31ac72f9-251c-44cc-be71-7bbd5973decb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Monterey Jack-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Mozzarella cheese",
@@ -415,7 +463,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "47acdad9-7991-4291-af00-a019ed9db96a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mozzarella" }
+    }
   },
   {
     "name": "Muenster cheese",
@@ -431,7 +481,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "707dafdd-9504-429f-9ed9-d99638af0e3b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Münster-Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Neufchatel cheese",
@@ -447,7 +499,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b8a766b6-c0b1-4fcd-b11f-09f849f9b496",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Neufchâtel-Käse" }
+    }
   },
   {
     "name": "Parmesan cheese",
@@ -463,7 +517,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2a15735e-fc18-40f1-a05e-d42da325abfb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Parmesan" }
+    }
   },
   {
     "name": "Pecorino Romano cheese",
@@ -479,7 +535,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "406d0cc5-8e93-464e-b8fb-2fd1417a545b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pecorino Romano" }
+    }
   },
   {
     "name": "Provolone cheese",
@@ -495,7 +553,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c835e6d9-c734-4092-8233-18f7cd353fd1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Provolone", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Ricotta cheese",
@@ -511,7 +571,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6b42376b-fa0e-4ba4-93c7-75d9657f311f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ricotta" }
+    }
   },
   {
     "name": "Roquefort cheese",
@@ -527,7 +589,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7b725ee6-e10b-49d3-88f2-b6c35e172d76",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Roquefort" }
+    }
   },
   {
     "name": "Stilton cheese",
@@ -543,7 +607,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "586f15cb-8459-4bfb-8c18-936573734c6f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Stilton-Käse" }
+    }
   },
   {
     "name": "Swiss cheese",
@@ -559,7 +625,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7e5aa1b3-4a07-4520-8ec5-a133c0bb8126",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweizer Käse", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Cottage cheese (1%)",
@@ -575,7 +643,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "31c964a4-db12-402a-b6db-c9bd8bd2abc9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüttenkäse (1%)" }
+    }
   },
   {
     "name": "Cottage cheese (2%)",
@@ -591,7 +661,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "add43ccc-65ef-4e6b-839e-645cec06e090",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüttenkäse (2%)" }
+    }
   },
   {
     "name": "Buttermilk",
@@ -607,7 +679,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "60f01795-e1c4-4ef1-9613-204bcc33e9a1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Buttermilch" }
+    }
   },
   {
     "name": "Milk (1%)",
@@ -623,7 +697,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "01f50b3b-f473-49a5-8cc2-06341dc96b57",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Milch (1%)" }
+    }
   },
   {
     "name": "Milk (2%)",
@@ -639,7 +715,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e9344307-dce7-4cfd-b483-b03c4d35e144",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Milch (2%)" }
+    }
   },
   {
     "name": "Skim milk",
@@ -655,7 +733,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "62494ea9-f6b4-4023-9329-90bc43b9e5c1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Magermilch" }
+    }
   },
   {
     "name": "Whole milk",
@@ -671,7 +751,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8a9c0db4-bad9-454b-95ad-f703633deeac",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vollmilch" }
+    }
   },
   {
     "name": "Almond milk",
@@ -687,7 +769,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "703d88d0-f9b8-4792-973b-a8dc74e33ee1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mandelmilch" }
+    }
   },
   {
     "name": "Cashew milk",
@@ -703,7 +787,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "06239b33-78c2-460d-acfd-f96fb390290c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cashewmilch" }
+    }
   },
   {
     "name": "Coconut milk",
@@ -719,7 +805,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e24d4279-2325-4323-81b3-bddbe2fc3886",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kokosmilch" }
+    }
   },
   {
     "name": "Flax milk",
@@ -735,7 +823,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2cbbe378-4496-4c4d-b71c-8133171d3683",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Leinsamen-Milch" }
+    }
   },
   {
     "name": "Hemp milk",
@@ -751,7 +841,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "11e83e88-3685-4c2d-8ba8-06fdfc9a6d09",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hanfmilch" }
+    }
   },
   {
     "name": "Macadamia nut milk",
@@ -767,7 +859,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7ab2ee35-558c-49f7-b373-dd28bca8eaaa",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Macadamianuss-Milch" }
+    }
   },
   {
     "name": "Oat milk",
@@ -783,7 +877,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a94e90ae-47d7-413d-8366-f5ee483edf49",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hafermilch" }
+    }
   },
   {
     "name": "Rice milk",
@@ -799,7 +895,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f50c1f53-8108-4c36-824c-d09b39526254",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Reismilch" }
+    }
   },
   {
     "name": "Soy milk",
@@ -815,7 +913,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6fa5a5ad-21b6-42a5-b4ee-147036716374",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sojamilch" }
+    }
   },
   {
     "name": "Quark",
@@ -831,7 +931,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d39b7e01-deb3-4cbf-87c7-65d2d27ff4f1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Quark" }
+    }
   },
   {
     "name": "Greek yogurt (2%)",
@@ -847,7 +949,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a71aa06b-f828-475d-ae91-88620a060b36",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Griechischer Joghurt (2%)" }
+    }
   },
   {
     "name": "Greek yogurt (non-fat)",
@@ -863,7 +967,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9a7d980d-5588-4baa-a528-26612553a0f9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Griechischer Joghurt (fettfrei)" }
+    }
   },
   {
     "name": "Greek yogurt (whole)",
@@ -879,7 +985,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bf0aa8f1-6ea2-4edc-a516-52167df9f90e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Griechischer Joghurt (vollfett)" }
+    }
   },
   {
     "name": "Plain yogurt (low-fat)",
@@ -895,7 +1003,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7d2d88a7-bc8b-4ed5-a810-a4dd4db7eac1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Naturjoghurt (fettarm)" }
+    }
   },
   {
     "name": "Plain yogurt (non-fat)",
@@ -911,7 +1021,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c6cf12f9-671d-4bef-9d8e-929ee16fdc87",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Naturjoghurt (fettfrei)" }
+    }
   },
   {
     "name": "Plain yogurt (whole)",
@@ -927,7 +1039,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5405765a-b06c-44cd-833b-2c2fccca0b7c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Naturjoghurt (vollfett)" }
+    }
   },
   {
     "name": "Almond butter",
@@ -943,7 +1057,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4c483260-b91d-4361-883f-578c51c0e7d3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mandelbutter" }
+    }
   },
   {
     "name": "Butter",
@@ -959,7 +1075,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "eba1b354-c878-474f-b08c-27691b208978",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Butter" }
+    }
   },
   {
     "name": "Cashew butter",
@@ -975,7 +1093,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ba859351-36db-4278-b026-06feab85918f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cashewbutter" }
+    }
   },
   {
     "name": "Cocoa butter",
@@ -991,7 +1111,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9b4c88e2-ea0b-4e9c-a16f-40b89b0473f5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kakaobutter" }
+    }
   },
   {
     "name": "Ghee",
@@ -1007,7 +1129,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b87a758c-d05c-4020-b64e-4225765f6d53",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ghee" }
+    }
   },
   {
     "name": "Peanut butter",
@@ -1023,7 +1147,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d49db2ff-94a3-4220-94d8-42b95ae815e7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erdnussbutter" }
+    }
   },
   {
     "name": "Shortening",
@@ -1039,7 +1165,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "39333ac9-ee4d-45a6-8ec3-fe3e8964eed8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Backfett" }
+    }
   },
   {
     "name": "Sunflower seed butter",
@@ -1055,7 +1183,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8d0ae5d6-b894-492e-b2aa-4221e8c0ad6a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sonnenblumenkernbutter" }
+    }
   },
   {
     "name": "Tahini",
@@ -1071,7 +1201,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "32954b48-783b-4b53-b860-2fb56a317f06",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tahini" }
+    }
   },
   {
     "name": "Half and half",
@@ -1087,7 +1219,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "049eb34f-faf0-4477-b7a3-3de8e2070911",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Halbrahm" }
+    }
   },
   {
     "name": "Heavy cream",
@@ -1103,7 +1237,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "603ecb93-7e95-49cb-86f5-66b1ebe9d036",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schlagsahne" }
+    }
   },
   {
     "name": "Whipped cream",
@@ -1119,7 +1255,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "180f2ee5-414f-4e7a-9c30-35390185913a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schlagsahne (geschlagen)" }
+    }
   },
   {
     "name": "Mayonnaise (full-fat)",
@@ -1135,7 +1273,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "05988298-215f-46ae-a825-ea008836f08b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mayonnaise (vollfett)" }
+    }
   },
   {
     "name": "Mayonnaise (light)",
@@ -1151,7 +1291,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7d38e4a7-dcbb-4407-aa47-efef6de5874a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mayonnaise (light)" }
+    }
   },
   {
     "name": "Almonds",
@@ -1167,7 +1309,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "95791dba-633d-412e-bcfb-6362017330a4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mandeln" }
+    }
   },
   {
     "name": "Brazil nuts",
@@ -1183,7 +1327,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "291363ab-509f-4124-839c-061aef3ba1ed",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Paranüsse", "countName": "Nuss" }
+    }
   },
   {
     "name": "Cashews",
@@ -1199,7 +1345,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dd7ba2e9-053c-4eff-9642-18260cb7d51c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cashewnüsse" }
+    }
   },
   {
     "name": "Hazelnuts",
@@ -1215,7 +1363,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cfb70dbe-ea05-4d49-8532-d1905ed72a25",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Haselnüsse", "countName": "Nuss" }
+    }
   },
   {
     "name": "Macadamias",
@@ -1231,7 +1381,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "77fb6084-85ea-46c5-aa69-6ea7fcebcc85",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Macadamianüsse", "countName": "Nuss" }
+    }
   },
   {
     "name": "Peanuts",
@@ -1247,7 +1399,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7a5cac56-a360-4720-b529-33a07b246751",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erdnüsse" }
+    }
   },
   {
     "name": "Pecan",
@@ -1263,7 +1417,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "295265e8-26d2-48ec-b7b8-11fdcd887e2c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pekannüsse", "countName": "Nuss" }
+    }
   },
   {
     "name": "Pine nuts",
@@ -1279,7 +1435,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3a23c671-6122-4806-830f-54cf6c457059",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pinienkerne", "countName": "Nuss" }
+    }
   },
   {
     "name": "Pistachios",
@@ -1295,7 +1453,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bd094570-087c-4a9f-89d1-c66c052dd2af",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pistazien", "countName": "Nuss" }
+    }
   },
   {
     "name": "Walnuts",
@@ -1311,7 +1471,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "46a3931f-e053-463d-bb14-4b3d3b85ac90",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Walnüsse" }
+    }
   },
   {
     "name": "Coconut oil",
@@ -1327,7 +1489,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "81458d6e-1553-418f-8e20-d0ef4179f5ec",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kokosöl" }
+    }
   },
   {
     "name": "Lard",
@@ -1343,7 +1507,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e75753bd-f909-4d98-b6b6-8a08744309b5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schmalz" }
+    }
   },
   {
     "name": "Oil",
@@ -1359,7 +1525,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "054af21c-5f31-40f8-9cca-972397a17d32",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Öl" }
+    }
   },
   {
     "name": "Chia seeds",
@@ -1375,7 +1543,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "167f7e4a-512d-49ea-9c7d-4ee5ad7f37c0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chiasamen" }
+    }
   },
   {
     "name": "Flax seeds",
@@ -1391,7 +1561,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "26884845-cf2d-41c1-974a-f0478d1379b5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Leinsamen" }
+    }
   },
   {
     "name": "Hemp seeds",
@@ -1407,7 +1579,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "87dd2775-f497-4d5d-83c0-4259bfaaa7b3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hanfsamen" }
+    }
   },
   {
     "name": "Poppy seeds",
@@ -1423,7 +1597,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f7299cd8-00ac-4666-aa73-c44ba110b8f1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mohnsamen" }
+    }
   },
   {
     "name": "Pumpkin seeds",
@@ -1439,7 +1615,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b283585a-4e24-461d-9aab-9e8370d83d77",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kürbiskerne" }
+    }
   },
   {
     "name": "Sesame seeds",
@@ -1455,7 +1633,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a4be13b1-e81e-4fe2-a0d7-1d74253d691a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sesamsamen" }
+    }
   },
   {
     "name": "Sunflower seeds",
@@ -1471,7 +1651,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3e53e438-8b2a-44e1-b552-26840e767688",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sonnenblumenkerne" }
+    }
   },
   {
     "name": "Sour cream (full-fat)",
@@ -1487,7 +1669,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f2ae256f-f9b2-4829-9c2f-cb5df33c5cbf",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sauerrahm (vollfett)" }
+    }
   },
   {
     "name": "Sour cream (light)",
@@ -1503,7 +1687,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "65ffe48f-b18e-4ccd-9495-a4e95e46f10e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sauerrahm (light)" }
+    }
   },
   {
     "name": "Agave syrup",
@@ -1519,7 +1705,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e7fc3993-4e47-45f8-a9d4-6390a99439cc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Agavensirup" }
+    }
   },
   {
     "name": "Aspartame",
@@ -1535,7 +1723,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "15a51eb6-a6bf-4a7a-8fab-cc8a34a93109",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Aspartam" }
+    }
   },
   {
     "name": "Brown sugar",
@@ -1551,7 +1741,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "17d27034-1174-4e6b-9ffe-5e78fb74ee1b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brauner Zucker" }
+    }
   },
   {
     "name": "Cane sugar",
@@ -1567,7 +1759,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8612ed68-0066-48b9-a604-a5ba6b83a740",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rohrzucker" }
+    }
   },
   {
     "name": "Coconut sugar",
@@ -1583,7 +1777,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8195b61-302b-4ac1-ad1c-00f4955920d7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kokoszucker" }
+    }
   },
   {
     "name": "Erythritol",
@@ -1599,7 +1795,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f0ec42cb-4425-451d-9a03-461e97080b83",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erythrit" }
+    }
   },
   {
     "name": "Honey",
@@ -1615,7 +1813,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "105eacd7-6279-4606-8f26-5e9e886de220",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Honig" }
+    }
   },
   {
     "name": "Maple syrup",
@@ -1631,7 +1831,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "150a8704-a0bb-4809-96e8-e7d8c3a6e6fd",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ahornsirup" }
+    }
   },
   {
     "name": "Molasses",
@@ -1647,7 +1849,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "052af3e3-f706-49d6-8782-e11cadbdd5e6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Melasse" }
+    }
   },
   {
     "name": "Stevia",
@@ -1663,7 +1867,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1a3a6b61-c93b-4dbd-92f9-fc5cc8e138b8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Stevia" }
+    }
   },
   {
     "name": "Sucralose",
@@ -1679,7 +1885,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e220d05c-da0f-469c-b5d1-9b763927504a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sucralose", "countName": "Paket" }
+    }
   },
   {
     "name": "Sugar",
@@ -1695,7 +1903,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b2c4f38a-e962-44d5-9cab-ef9a24ea0c47",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zucker" }
+    }
   },
   {
     "name": "Xylitol",
@@ -1711,7 +1921,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e3d65d33-93b4-42f7-b9a0-696a8971c2d3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Xylit" }
+    }
   },
   {
     "name": "Apple chips",
@@ -1727,7 +1939,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "65126e8b-cd65-4a30-b3b1-52f87931a387",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Apfelchips", "countName": "Stück" }
+    }
   },
   {
     "name": "Banana chips",
@@ -1743,7 +1957,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f1daa094-56ea-4058-bb7a-b3b9af8f1119",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bananenchips", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried apricots",
@@ -1759,7 +1975,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f45165e2-fc60-43f8-bcd6-be13a03b239f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Aprikosen" }
+    }
   },
   {
     "name": "Dried blueberries",
@@ -1775,7 +1993,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "141fffc9-b678-49d3-a906-cf4fa8eb0fef",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Heidelbeeren" }
+    }
   },
   {
     "name": "Dried cherries",
@@ -1791,7 +2011,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5ea79961-9352-4476-9d77-0041a989ecc5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Kirschen" }
+    }
   },
   {
     "name": "Dried cranberries",
@@ -1807,7 +2029,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "264d18a6-1cf0-4f61-8883-97b93c0fbf13",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Cranberries" }
+    }
   },
   {
     "name": "Dried currants",
@@ -1823,7 +2047,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e6d36065-8f3d-41cd-a77d-cfa188383e45",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Johannisbeeren" }
+    }
   },
   {
     "name": "Dried figs",
@@ -1839,7 +2065,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1a94697a-d4ec-4214-8f9a-f6ad69c72675",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Feigen", "countName": "Feige" }
+    }
   },
   {
     "name": "Dried kiwi",
@@ -1855,7 +2083,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ef2eb45e-fd31-4075-b57a-708d0d9d437e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Kiwis", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried mango",
@@ -1871,7 +2101,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6d64ecec-60e8-49b9-a352-4348c34ff2c8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Mango", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried nectarines",
@@ -1887,7 +2119,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "040b7fd2-66f2-42dd-8a0c-3bd3a496bc5b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Nektarinen", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried peaches",
@@ -1903,7 +2137,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d83405b8-8c77-4de8-bcd4-bd5afebff158",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Pfirsiche", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried pears",
@@ -1919,7 +2155,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "69ec7b61-73b6-4d5e-aef9-c1fd35993106",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Birnen", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried persimmons",
@@ -1935,7 +2173,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "08a57353-1cdc-49ef-91d3-82fcfea12546",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Kakis", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried pluots",
@@ -1951,7 +2191,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7c7c4bd3-adc8-41b7-a054-da000f8c224d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Pluots", "countName": "Stück" }
+    }
   },
   {
     "name": "Dried strawberries",
@@ -1967,7 +2209,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a9762573-5e2e-4767-9d6f-e26984b165ec",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Erdbeeren", "countName": "Stück" }
+    }
   },
   {
     "name": "Orange chips",
@@ -1983,7 +2227,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ee0ec766-63f9-4565-a6c1-caa71a8ccd0e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Orangenchips", "countName": "Stück" }
+    }
   },
   {
     "name": "Prune",
@@ -1999,7 +2245,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ad7a22f7-baff-4118-96b2-bd36e1372daa",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pflaume", "countName": "Pflaume" }
+    }
   },
   {
     "name": "Raisin",
@@ -2015,7 +2263,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c3c3e4a6-f349-467d-a0b3-5b0e014a9091",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rosinen", "countName": "Rosine" }
+    }
   },
   {
     "name": "Apples",
@@ -2031,7 +2281,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "253fe63e-6fb7-4696-91f7-c9a4a623b6d1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Äpfel", "countName": "Apfel" }
+    }
   },
   {
     "name": "Apricots",
@@ -2047,7 +2299,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b311fe5c-f9a0-4f5c-a24a-fb07e0054613",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Aprikosen", "countName": "Aprikose" }
+    }
   },
   {
     "name": "Avocados",
@@ -2063,7 +2317,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "68bc9990-5502-4932-8c67-58d8806450a8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Avocados", "countName": "Avocado" }
+    }
   },
   {
     "name": "Bananas",
@@ -2079,7 +2335,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "64be3daf-4993-4691-967a-a76c5c164bfc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bananen", "countName": "Banane" }
+    }
   },
   {
     "name": "Blackberries",
@@ -2095,7 +2353,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "050867ca-8315-470d-8d60-ea08a0550d94",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brombeeren", "countName": "Brombeere" }
+    }
   },
   {
     "name": "Blueberries",
@@ -2111,7 +2371,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "75c207bf-b958-4fdd-98fc-e5a18976c37f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Heidelbeeren", "countName": "Heidelbeere" }
+    }
   },
   {
     "name": "Boysenberries",
@@ -2127,7 +2389,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8327debd-a224-4742-b290-1c72af36e22a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Boysenbeeren" }
+    }
   },
   {
     "name": "Cantaloupe ",
@@ -2143,7 +2407,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "08fd1de6-bb50-4e91-b626-10ab47f82513",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cantaloupe-Melone", "countName": "Cantaloupe" }
+    }
   },
   {
     "name": "Cherries",
@@ -2159,7 +2425,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a40bd8bf-a574-4b8c-9da3-96f3305c1846",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kirschen", "countName": "Kirsche" }
+    }
   },
   {
     "name": "Clementines",
@@ -2175,7 +2443,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "234cc179-9ffb-45e7-9a02-f84a860570a6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Clementinen", "countName": "Clementine" }
+    }
   },
   {
     "name": "Coconut meat",
@@ -2191,7 +2461,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "db963345-a2ad-40b7-b160-c9f14d153485",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kokosnussfleisch", "countName": "Kokosnuss" }
+    }
   },
   {
     "name": "Cranberries",
@@ -2207,7 +2479,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b17bd3b5-b94d-44df-9f0b-5d40a9d69b98",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cranberries", "countName": "Cranberry" }
+    }
   },
   {
     "name": "Currants",
@@ -2223,7 +2497,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ce54a8fa-e4e7-4713-9dee-2909592c3d49",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Johannisbeeren" }
+    }
   },
   {
     "name": "Date",
@@ -2239,7 +2515,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5228d48a-792b-47e9-9622-cff91410ea55",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dattel", "countName": "Dattel" }
+    }
   },
   {
     "name": "Dragon fruit",
@@ -2255,7 +2533,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c95b6ec9-0647-469e-b0e1-1b7b908d0ae7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Drachenfrucht" }
+    }
   },
   {
     "name": "Figs",
@@ -2271,7 +2551,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e1ca6d6a-a0e1-4be8-8a3e-56be3545e56d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Feigen", "countName": "Feige" }
+    }
   },
   {
     "name": "Gooseberries",
@@ -2287,7 +2569,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "08f9c7c2-1219-45fb-b67b-a3a1f29f9cb2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Stachelbeeren" }
+    }
   },
   {
     "name": "Grapefruit",
@@ -2303,7 +2587,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6c065066-a3d0-44df-8509-ff0087aac29d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grapefruit", "countName": "Grapefruit" }
+    }
   },
   {
     "name": "Grapes",
@@ -2319,7 +2605,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5768350b-5f31-4e65-828f-4b5249fffeaf",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weintrauben", "countName": "Traube" }
+    }
   },
   {
     "name": "Guavas",
@@ -2335,7 +2623,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8b4abfc5-d493-43ad-88aa-5adbcf92d748",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Guaven", "countName": "Guave" }
+    }
   },
   {
     "name": "Honeydew",
@@ -2351,7 +2641,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "496e01e4-2cca-41ad-a5b6-cb5112ee4238",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Honigmelone", "countName": "Honigmelone" }
+    }
   },
   {
     "name": "Kiwi",
@@ -2367,7 +2659,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cffd3c1a-534b-4553-822e-d5368e7de06f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kiwi", "countName": "Kiwi" }
+    }
   },
   {
     "name": "Lemons",
@@ -2383,7 +2677,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1f88ebe2-1d5d-4466-b46e-edc4ecefb4c5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zitronen", "countName": "Zitrone" }
+    }
   },
   {
     "name": "Limes",
@@ -2399,7 +2695,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cbe56e1e-9b5a-488b-937b-8cc429583984",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Limetten", "countName": "Limette" }
+    }
   },
   {
     "name": "Lychee",
@@ -2415,7 +2713,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0b931e9b-e189-4a2b-93b7-10e818252c43",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Litschi", "countName": "Litschi" }
+    }
   },
   {
     "name": "Mangos",
@@ -2431,7 +2731,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f7b89a6a-53a2-4899-bad0-64f84c1499ee",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mangos", "countName": "Mango" }
+    }
   },
   {
     "name": "Nectarines",
@@ -2447,7 +2749,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "85ea8403-a570-4b0c-a218-62a30fbc3f89",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Nektarinen", "countName": "Nektarine" }
+    }
   },
   {
     "name": "Olives",
@@ -2463,7 +2767,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8b3fedc9-408a-46cd-81b0-c369fceb839f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Oliven", "countName": "Olive" }
+    }
   },
   {
     "name": "Oranges",
@@ -2479,7 +2785,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d8a1a9ec-ea22-4198-8993-c384fbd2e6de",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Orangen", "countName": "Orange" }
+    }
   },
   {
     "name": "Papaya",
@@ -2495,7 +2803,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a014f029-84ce-4daf-bfbf-495c031ec871",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Papaya", "countName": "Papaya" }
+    }
   },
   {
     "name": "Passion fruit",
@@ -2511,7 +2821,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6417dfa5-ee5c-433a-bf0e-d5863e138225",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Passionsfrucht", "countName": "Passionsfrucht" }
+    }
   },
   {
     "name": "Peaches",
@@ -2527,7 +2839,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2570353c-641a-4138-a043-5eda77d74860",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pfirsiche", "countName": "Pfirsich" }
+    }
   },
   {
     "name": "Pears",
@@ -2543,7 +2857,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2a310bc0-db60-4684-8769-84b78b07e987",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Birnen", "countName": "Birne" }
+    }
   },
   {
     "name": "Persimmon",
@@ -2559,7 +2875,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "39cf1d00-5150-4f94-8372-bdd9786fa6ed",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kaki", "countName": "Kaki" }
+    }
   },
   {
     "name": "Pineapple",
@@ -2575,7 +2893,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "da54abfd-7905-45de-9b5e-dd3f91f027d6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ananas", "countName": "Ananas" }
+    }
   },
   {
     "name": "Plums",
@@ -2591,7 +2911,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e2f0fc9e-5716-44e3-af72-d07116f125a6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pflaumen", "countName": "Pflaume" }
+    }
   },
   {
     "name": "Pluot",
@@ -2607,7 +2929,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ce90c6fc-13f9-4cc8-87ec-6d3758c186e0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pluot", "countName": "Pluot" }
+    }
   },
   {
     "name": "Pomegranate ",
@@ -2623,7 +2947,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d9e65eb5-b253-4ef5-a78c-fe7f4be12cbc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Granatapfel", "countName": "Granatapfel" }
+    }
   },
   {
     "name": "Rambutan",
@@ -2639,7 +2965,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ba76a0eb-2185-401e-80b3-16d5c5345658",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rambutan" }
+    }
   },
   {
     "name": "Raspberries",
@@ -2655,7 +2983,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0d04b269-ec6e-4382-84a6-1a7375daaad9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Himbeeren", "countName": "Himbeere" }
+    }
   },
   {
     "name": "Rhubarb",
@@ -2671,7 +3001,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c53d43bc-1cb8-451c-9ebc-2ae32a832d9f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rhabarber", "countName": "Stängel" }
+    }
   },
   {
     "name": "Star fruit",
@@ -2687,7 +3019,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0e618982-7bea-44b0-8da7-e571d22dfe73",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sternfrucht", "countName": "Sternfrucht" }
+    }
   },
   {
     "name": "Strawberries",
@@ -2703,7 +3037,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e0adeafe-48ac-44eb-8998-cf763f0341a8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erdbeeren", "countName": "Erdbeere" }
+    }
   },
   {
     "name": "Tangerine",
@@ -2719,7 +3055,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d97b20b7-397b-419b-a55f-543b6337c6b5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mandarine", "countName": "Mandarine" }
+    }
   },
   {
     "name": "Watermelon",
@@ -2735,7 +3073,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e1c1e157-a6b6-4a06-af87-cc5f85625e98",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wassermelone", "countName": "Wassermelone" }
+    }
   },
   {
     "name": "Bagel",
@@ -2751,7 +3091,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a7ffb613-7b40-4f0b-aeb2-f22980de1620",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bagel", "countName": "Bagel" }
+    }
   },
   {
     "name": "Croutons",
@@ -2767,7 +3109,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b7f0cd91-1e24-427d-834f-c244e532d9f4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Croutons" }
+    }
   },
   {
     "name": "French bread",
@@ -2783,7 +3127,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "59c70fd3-3499-4774-9700-e2e3d4a71aa0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Französisches Brot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Italian bread",
@@ -2799,7 +3145,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "075c9f2d-6c20-4247-ad6d-5f7db7834357",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Italienisches Brot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Multi-grain bread",
@@ -2815,7 +3163,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e3e002e6-62ad-412a-a3e1-97e6a3d774ec",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mehrkornbrot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Naan bread",
@@ -2831,7 +3181,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "61decd53-1392-44dc-a3bd-1d8af1a886d3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Naan-Brot" }
+    }
   },
   {
     "name": "Pita bread",
@@ -2847,7 +3199,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "85ea9a54-a1ea-4ca3-8193-2af1c6ba8d67",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pita-Brot", "countName": "Pita" }
+    }
   },
   {
     "name": "Rye bread",
@@ -2863,7 +3217,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "768ecfb7-b72b-4f26-91d1-d1ec5b701fef",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Roggenbrot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Sourdough bread",
@@ -2879,7 +3235,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b8893e65-74d3-4649-bbc1-9e3b4a6849e5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sauerteigbrot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "White bread",
@@ -2895,7 +3253,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "93a5bb76-d2a0-4542-b1a8-2f0dff8a120d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißbrot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Whole wheat bread",
@@ -2911,7 +3271,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8d56a8c0-7315-47aa-8aff-3fe6cab6cd9c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vollkornbrot", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Choux pastry",
@@ -2927,7 +3289,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7e301503-07ac-4f1e-b782-d715cf4e97a9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brandteig" }
+    }
   },
   {
     "name": "Filo pastry",
@@ -2943,7 +3307,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "97e8aa8e-9804-4f19-936d-6e88d8d38ff9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Filoteig", "countName": "Blatt" }
+    }
   },
   {
     "name": "Flaky pastry",
@@ -2959,7 +3325,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3a006096-1609-4472-9da3-14bf4ce01c82",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Blätterteig", "countName": "Blatt" }
+    }
   },
   {
     "name": "Pizza dough",
@@ -2975,7 +3343,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "608c0fa2-5aaa-4111-92db-45a1d1831352",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pizzateig" }
+    }
   },
   {
     "name": "Puff pastry",
@@ -2991,7 +3361,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0a60cadd-a23a-480c-aa96-adc5c0697585",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Plunderteig", "countName": "Blatt" }
+    }
   },
   {
     "name": "Shortcrust pastry",
@@ -3007,7 +3379,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "43b56267-bbf4-44dd-8c1d-64096181c65f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mürbeteig", "countName": "Blatt" }
+    }
   },
   {
     "name": "Almond flour",
@@ -3023,7 +3397,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "eb8b2291-9f06-4a36-b0fb-d6e47e9f2aa3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mandelmehl" }
+    }
   },
   {
     "name": "Arrowroot flour",
@@ -3039,7 +3415,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a4f392a4-08e1-44b3-b4db-06a77907c788",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pfeilwurzmehl" }
+    }
   },
   {
     "name": "Chickpea flour",
@@ -3055,7 +3433,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c017ab67-91d0-4b1b-b90c-81759f1ada35",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kichererbsenmehl" }
+    }
   },
   {
     "name": "Coconut flour",
@@ -3071,7 +3451,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "86d7db19-a063-4263-9eb1-b5227739f93f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kokosmehl" }
+    }
   },
   {
     "name": "Cornmeal",
@@ -3087,7 +3469,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b5ea900b-defc-47fc-9ece-c42eb3d68f4f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maismehl" }
+    }
   },
   {
     "name": "Hazelnut flour",
@@ -3103,7 +3487,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b1e99db4-6e16-400f-8785-2025568decb8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Haselnussmehl" }
+    }
   },
   {
     "name": "Oat flour",
@@ -3119,7 +3505,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "482aaab4-59ec-42a1-b89d-4f73e17daaf4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hafermehl" }
+    }
   },
   {
     "name": "Peanut flour",
@@ -3135,7 +3523,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "63aa536f-3fc9-4fd0-a37b-7e1407fff913",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erdnussmehl" }
+    }
   },
   {
     "name": "Semolina",
@@ -3151,7 +3541,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "16298f37-b519-47e2-9dd5-d8d8165a1ef5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hartweizengrieß" }
+    }
   },
   {
     "name": "White flour",
@@ -3167,7 +3559,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3d0aa111-5b11-45cb-91f9-a9d88c84f26e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißmehl" }
+    }
   },
   {
     "name": "Whole wheat flour",
@@ -3183,7 +3577,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5ea4f91a-9826-41b0-a6c9-a8c49900f849",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vollkornmehl" }
+    }
   },
   {
     "name": "English muffin",
@@ -3199,7 +3595,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "54d978c9-51b0-4880-9a27-615fd493337c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Englische Muffin" }
+    }
   },
   {
     "name": "Egg noodles (cooked)",
@@ -3215,7 +3613,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "34f27aa2-ca70-4c69-ba71-73b34a6bc88d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eiernudeln (gekocht)" }
+    }
   },
   {
     "name": "Egg noodles (dry)",
@@ -3231,7 +3631,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3f555436-be60-4f9f-aae1-38476f6c2437",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eiernudeln (trocken)" }
+    }
   },
   {
     "name": "Glass noodles (cooked)",
@@ -3247,7 +3649,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7ad60f0d-14ef-4444-89a9-181f77e682f5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Glasnudeln (gekocht)" }
+    }
   },
   {
     "name": "Glass noodles (dry)",
@@ -3263,7 +3667,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fe7edcb3-23c1-4aba-8283-bde72c66e800",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Glasnudeln (trocken)" }
+    }
   },
   {
     "name": "Rice noodles (cooked)",
@@ -3279,7 +3685,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ba8f7d6a-9890-4f10-89bb-f23ae69a3770",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Reisnudeln (gekocht)" }
+    }
   },
   {
     "name": "Rice noodles (dry)",
@@ -3295,7 +3703,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "26ec7d0e-ec6f-45f3-93f9-842f7a54ab19",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Reisnudeln (trocken)" }
+    }
   },
   {
     "name": "Soba noodles (cooked)",
@@ -3311,7 +3721,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "acc59165-6c68-4893-bc2d-578072ee5da8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Soba-Nudeln (gekocht)" }
+    }
   },
   {
     "name": "Soba noodles (dry)",
@@ -3327,7 +3739,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9dc4e706-47b3-458b-bae2-71246c554d9e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Soba-Nudeln (trocken)" }
+    }
   },
   {
     "name": "Somen noodles (cooked)",
@@ -3343,7 +3757,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a8683371-48eb-42de-adbf-bc1e685a347d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Somen-Nudeln (gekocht)" }
+    }
   },
   {
     "name": "Somen noodles (dry)",
@@ -3359,7 +3775,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "044fe0c2-6642-4d36-80bc-c8deee5002ca",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Somen-Nudeln (trocken)" }
+    }
   },
   {
     "name": "Udon noodles (cooked)",
@@ -3375,7 +3793,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "eef1d793-dd07-436d-8ab8-d5be0142fd6b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Udon-Nudeln (gekocht)" }
+    }
   },
   {
     "name": "Udon noodles (dry)",
@@ -3391,7 +3811,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1741be11-d63b-4769-9ffc-35e348faaca1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Udon-Nudeln (trocken)" }
+    }
   },
   {
     "name": "Potato Gnocchi ",
@@ -3407,7 +3829,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6e7294ca-a2dc-4275-8864-57e1224b886b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gnocchi" }
+    }
   },
   {
     "name": "White pasta (cooked)",
@@ -3423,7 +3847,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "225bf674-75bf-4b2e-8825-039d419e965f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißmehl Pasta (gekocht)" }
+    }
   },
   {
     "name": "White pasta (dry)",
@@ -3439,7 +3865,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fe1e5245-8f71-42eb-a08b-946a25efd480",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißmehl Pasta (trocken)", "countName": "Packung" }
+    }
   },
   {
     "name": "Whole wheat pasta (cooked)",
@@ -3455,7 +3883,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fd6095f2-c337-4c25-9451-1ae76de06638",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vollkornpasta (gekocht)" }
+    }
   },
   {
     "name": "Whole wheat pasta (dry)",
@@ -3471,7 +3901,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ed3337ac-e933-4fd7-b695-f212ff7d5280",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vollkornpasta (trocken)", "countName": "Packung" }
+    }
   },
   {
     "name": "Brown rice (cooked)",
@@ -3487,7 +3919,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "28b33f3b-1fab-4949-bb52-b922a2ce6469",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brauner Reis (gekocht)" }
+    }
   },
   {
     "name": "Brown rice (dry)",
@@ -3503,7 +3937,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "27a9e4a7-fdf5-4aec-b22f-b8facc05b7eb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brauner Reis (trocken)" }
+    }
   },
   {
     "name": "White rice (cooked)",
@@ -3519,7 +3955,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c9628d0a-77cf-449f-aa41-526886d7eb48",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißer Reis (gekocht)" }
+    }
   },
   {
     "name": "White rice (dry)",
@@ -3535,7 +3973,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "46c85c07-182e-465d-998e-8103b1a66a70",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißer Reis (trocken)" }
+    }
   },
   {
     "name": "Wild rice (cooked)",
@@ -3551,7 +3991,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "89d57fde-a378-4d44-aae3-116687f761b4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wildreis (gekocht)" }
+    }
   },
   {
     "name": "Wild rice (dry)",
@@ -3567,7 +4009,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "671b8412-0e13-44dc-8e7e-c26dec60cf38",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wildreis (trocken)" }
+    }
   },
   {
     "name": "Corn tortilla",
@@ -3583,7 +4027,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6970a798-d64b-4c13-8a68-cac73de3fcc8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maistortilla", "countName": "Tortilla" }
+    }
   },
   {
     "name": "Flour tortilla",
@@ -3599,7 +4045,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "55d3ff91-5dea-4182-92eb-0c3f99a2c0be",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weizentortilla", "countName": "Tortilla" }
+    }
   },
   {
     "name": "Amaranth (cooked)",
@@ -3615,7 +4063,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2f035aa6-de39-448d-9d24-cc95e78ef0ea",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Amaranth (gekocht)" }
+    }
   },
   {
     "name": "Amaranth (dry)",
@@ -3631,7 +4081,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "689272a6-31ba-41bb-a663-8aef2f55f333",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Amaranth (trocken)" }
+    }
   },
   {
     "name": "Barley (cooked)",
@@ -3647,7 +4099,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cec6a7a6-ee8b-4378-abcb-2337b8823bf5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gerste (gekocht)" }
+    }
   },
   {
     "name": "Barley (dry)",
@@ -3663,7 +4117,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a56df4b2-11e5-4087-a51e-f1e1adda1bed",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gerste (trocken)" }
+    }
   },
   {
     "name": "Buckwheat (cooked)",
@@ -3679,7 +4135,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8457cbfe-2f52-49a8-bfc7-35bb4073881b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Buchweizen (gekocht)" }
+    }
   },
   {
     "name": "Buckwheat (dry)",
@@ -3695,7 +4153,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bda309ec-5898-429b-8fcb-ddaa172b905b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Buchweizen (trocken)" }
+    }
   },
   {
     "name": "Bulgur (cooked)",
@@ -3711,7 +4171,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a829d959-a34d-420c-a283-71819b5fdfe0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bulgur (gekocht)" }
+    }
   },
   {
     "name": "Bulgur (dry)",
@@ -3727,7 +4189,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a3094361-b7cf-4f72-9d5b-4cb9513af348",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bulgur (trocken)" }
+    }
   },
   {
     "name": "Couscous (cooked)",
@@ -3743,7 +4207,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ed846340-48b2-4312-a90e-49f4bbdc0a8d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Couscous (gekocht)" }
+    }
   },
   {
     "name": "Couscous (dry)",
@@ -3759,7 +4225,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "db8836c7-fd8f-43e8-8714-561efc0e2614",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Couscous (trocken)" }
+    }
   },
   {
     "name": "Farro (cooked)",
@@ -3775,7 +4243,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5a278328-ad01-4799-9835-8f9fd05211ac",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Emmer (gekocht)" }
+    }
   },
   {
     "name": "Farro (dry)",
@@ -3791,7 +4261,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "10298e88-9026-42ce-8758-d7f50835c441",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Emmer (trocken)" }
+    }
   },
   {
     "name": "Freekeh (cooked)",
@@ -3807,7 +4279,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6a5a9f80-805f-4065-a1ae-9bdfe50349c7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Freekeh (gekocht)" }
+    }
   },
   {
     "name": "Freekeh (dry)",
@@ -3823,7 +4297,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "620beff1-e1dc-4c05-b594-2a1225228a62",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Freekeh (trocken)" }
+    }
   },
   {
     "name": "Hominy (cooked)",
@@ -3839,7 +4315,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4999b291-c02f-4881-9d72-3a46f18612a8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maismehl (gekocht)" }
+    }
   },
   {
     "name": "Hominy (dry)",
@@ -3855,7 +4333,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0de25f1c-3faf-48de-8925-ee83a8a1a305",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maismehl (trocken)" }
+    }
   },
   {
     "name": "Millet (cooked)",
@@ -3871,7 +4351,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "115f0f79-fb61-4513-b4f6-9a8935d4335d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hirse (gekocht)" }
+    }
   },
   {
     "name": "Millet (dry)",
@@ -3887,7 +4369,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e27c9f78-0df0-419e-8c09-57605959081f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hirse (trocken)" }
+    }
   },
   {
     "name": "Oats (cooked)",
@@ -3903,7 +4387,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8fd02ae2-fe34-4da5-aa6a-0d750c4f23f5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Haferflocken (gekocht)" }
+    }
   },
   {
     "name": "Oats (dry)",
@@ -3919,7 +4405,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "54e8bed6-5cec-4d39-bbc5-c3198ddec56e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Haferflocken (trocken)" }
+    }
   },
   {
     "name": "Polenta (cooked)",
@@ -3935,7 +4423,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7f3daa49-1e8e-4d27-b92e-b592f9aa7eda",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Polenta (gekocht)" }
+    }
   },
   {
     "name": "Polenta (dry)",
@@ -3951,7 +4441,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "76c4591f-8ca1-44a0-a4c9-56054cc2d3b6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Polenta (trocken)" }
+    }
   },
   {
     "name": "Quinoa (cooked)",
@@ -3967,7 +4459,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "16e3e880-f6b6-4ce3-a69e-7c55bbe4ba89",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Quinoa (gekocht)" }
+    }
   },
   {
     "name": "Quinoa (dry)",
@@ -3983,7 +4477,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "defe29d7-5130-4f7c-940d-6c4fe51d7714",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Quinoa (trocken)" }
+    }
   },
   {
     "name": "Rye berries (cooked)",
@@ -3999,7 +4495,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c8f82d26-3799-4424-a2f0-ad470fcc9d5f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Roggenkörner (gekocht)" }
+    }
   },
   {
     "name": "Rye berries (dry)",
@@ -4015,7 +4513,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dc6bc4b5-4fa8-44be-8014-3b42caa07c0c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Roggenkörner (trocken)" }
+    }
   },
   {
     "name": "Sorghum (cooked)",
@@ -4031,7 +4531,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c4aa7591-2633-452f-897c-c67cca1cf2ee",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sorghum (gekocht)" }
+    }
   },
   {
     "name": "Sorghum (dry)",
@@ -4047,7 +4549,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1402029c-4964-4e8a-9279-089b6288a264",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sorghum (trocken)" }
+    }
   },
   {
     "name": "Spelt (cooked)",
@@ -4063,7 +4567,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0dde7cb5-5e26-4dd5-a1ab-3fddf95e82bc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dinkel (gekocht)" }
+    }
   },
   {
     "name": "Spelt (dry)",
@@ -4079,7 +4585,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8e07547c-b315-4c6d-89c3-d5a1e9100051",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dinkel (trocken)" }
+    }
   },
   {
     "name": "Teff (cooked)",
@@ -4095,7 +4603,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f2774872-597f-48f9-a1cb-1e292847fe9d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zwerghirse  (gekocht)" }
+    }
   },
   {
     "name": "Teff (dry)",
@@ -4111,7 +4621,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5e32d10e-d5b2-43d4-9b15-d1e7228fa8e2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zwerghirse  (trocken)" }
+    }
   },
   {
     "name": "Wheat berries (cooked)",
@@ -4127,7 +4639,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bbb2bf91-2574-4d78-a23f-2ee6751ac7c2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weizenkörner (gekocht)" }
+    }
   },
   {
     "name": "Wheat berries (dry)",
@@ -4143,7 +4657,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "096ba846-4318-4a38-8d30-82fbfa522c42",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weizenkörner (trocken)" }
+    }
   },
   {
     "name": "Beer",
@@ -4159,7 +4675,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2217854d-3ca6-493f-95bc-0e04edbdc4ac",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bier", "countName": "Flasche" }
+    }
   },
   {
     "name": "Gin",
@@ -4175,7 +4693,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "539f25e1-8ea1-460e-a1f1-f205053ac581",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gin" }
+    }
   },
   {
     "name": "Light beer",
@@ -4191,7 +4711,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "89fb4373-5971-4726-a964-e8051e21e702",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Leichtbier", "countName": "Flasche" }
+    }
   },
   {
     "name": "Rum",
@@ -4207,7 +4729,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b6751e2d-eeb0-444d-a0cf-87802ee67ec4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rum" }
+    }
   },
   {
     "name": "Sake",
@@ -4223,7 +4747,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "28451c62-9519-43ec-b5cb-b7d5d07ede92",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sake" }
+    }
   },
   {
     "name": "Vodka",
@@ -4239,7 +4765,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "43f0df9b-2d53-4fdc-b04a-7c921994f855",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wodka" }
+    }
   },
   {
     "name": "Whiskey",
@@ -4255,7 +4783,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "296fc8ce-0c95-44f8-b2da-cd83d303a8bb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Whiskey" }
+    }
   },
   {
     "name": "Coffee",
@@ -4271,7 +4801,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "53d75943-18cf-45fc-8af8-eaa5f1a1ed38",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kaffee" }
+    }
   },
   {
     "name": "Juice",
@@ -4287,7 +4819,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c8e5eea4-64c7-4032-b945-24d56d3c5c07",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Saft" }
+    }
   },
   {
     "name": "Soda",
@@ -4303,7 +4837,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1bc2d8dd-7297-4029-85ea-c584dd8dd834",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Limonade", "countName": "Dose" }
+    }
   },
   {
     "name": "Tea",
@@ -4319,7 +4855,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ad8e375d-6262-4452-889f-ff580a6dd7f7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tee" }
+    }
   },
   {
     "name": "Water",
@@ -4335,7 +4873,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fc85e08d-f76a-4f4e-98ef-8a8d33e600fd",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wasser", "countName": "Flasche" }
+    }
   },
   {
     "name": "Blondies",
@@ -4351,7 +4891,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "386ce647-51ba-4fc3-9bef-6595ca75798a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Blondies", "countName": "Brownie" }
+    }
   },
   {
     "name": "Brownies",
@@ -4367,7 +4909,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c051acd3-4802-47a9-bd30-d4c6fae0dd1c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brownies", "countName": "Brownie" }
+    }
   },
   {
     "name": "Cake",
@@ -4383,7 +4927,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "56917cb9-167e-4cc7-8ade-d94a141a8b1e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kuchen", "countName": "Stück" }
+    }
   },
   {
     "name": "Candy",
@@ -4399,7 +4945,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e4f78ef3-df7e-4157-90ca-6b6b829f3efe",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Süßigkeiten", "countName": "Stück" }
+    }
   },
   {
     "name": "Caramel",
@@ -4415,7 +4963,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2fc76935-85e9-4d4c-9196-a2ec29af525d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Karamell", "countName": "Stück" }
+    }
   },
   {
     "name": "Chocolate",
@@ -4431,7 +4981,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "52e25bea-9cc7-4125-be64-f73994415b3d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schokolade", "countName": "Riegel" }
+    }
   },
   {
     "name": "Chocolate chips",
@@ -4447,7 +4999,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fa9da1c1-1bdb-485a-b47f-1e665871594c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schokoladenstückchen" }
+    }
   },
   {
     "name": "Churro",
@@ -4463,7 +5017,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c293ec63-374c-4ccc-8ce6-0eecb3a78f9e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Churro", "countName": "Churro" }
+    }
   },
   {
     "name": "Cinnamon roll",
@@ -4479,7 +5035,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8e51c5e-343f-4bca-902d-5545c1148a9c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zimtschnecke", "countName": "Brötchen" }
+    }
   },
   {
     "name": "Cobbler",
@@ -4495,7 +5053,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "360c3904-c85a-4a38-8a20-2d7638dbb216",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cobbler" }
+    }
   },
   {
     "name": "Cookies",
@@ -4511,7 +5071,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c5dc170a-5e49-40e0-8373-ffb14725f8ba",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kekse", "countName": "Keks" }
+    }
   },
   {
     "name": "Creme brulee",
@@ -4527,7 +5089,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a04d6b95-7bcc-4ddb-9c82-46702c10d266",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Crème brûlée", "countName": "Behälter" }
+    }
   },
   {
     "name": "Crepe",
@@ -4543,7 +5107,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e61d525c-b63f-436b-8e59-43cf28a12aef",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Crêpe", "countName": "Crêpe" }
+    }
   },
   {
     "name": "Croissant",
@@ -4559,7 +5125,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d65ce868-4ba0-4768-a537-3046b425f730",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Croissant", "countName": "Croissant" }
+    }
   },
   {
     "name": "Cupcake",
@@ -4575,7 +5143,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b4d9e682-c10c-442e-a8b3-54a28394f4ac",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cupcake", "countName": "Cupcake" }
+    }
   },
   {
     "name": "Doughnuts",
@@ -4591,7 +5161,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b221b327-501b-4139-8797-49a2a0f3dd10",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Donuts", "countName": "Donut" }
+    }
   },
   {
     "name": "Eclair",
@@ -4607,7 +5179,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1a7732c6-068c-4901-b8c4-923f4e61fd96",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eclair", "countName": "Eclair" }
+    }
   },
   {
     "name": "French fries",
@@ -4623,7 +5197,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "15f0b6a7-20d6-4672-a8db-1cffb872ba88",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pommes frites", "countName": "Behälter" }
+    }
   },
   {
     "name": "Frozen yogurt",
@@ -4639,7 +5215,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4b5e11fb-7564-4041-acc4-90dd5457f5ce",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gefrorener Joghurt" }
+    }
   },
   {
     "name": "Fudge",
@@ -4655,7 +5233,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0c5c4668-2688-4a40-84a7-60801ebe1ad9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fudge", "countName": "Stück" }
+    }
   },
   {
     "name": "Gelatin dessert",
@@ -4671,7 +5251,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "02e98a2d-6de8-4e3d-9103-2f7cb28ed837",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Götterspeise" }
+    }
   },
   {
     "name": "Gelato",
@@ -4687,7 +5269,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f3ecec7b-14ca-48a3-9efa-50fe2408792a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gelato" }
+    }
   },
   {
     "name": "Ice cream",
@@ -4703,7 +5287,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "378fa67e-acbe-4168-962e-f512e9739556",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eiscreme" }
+    }
   },
   {
     "name": "Pancakes ",
@@ -4719,7 +5305,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f1ab9d46-4004-4bec-a2ec-363cf3cf1d2a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pfannkuchen", "countName": "Pfannkuchen" }
+    }
   },
   {
     "name": "Pie",
@@ -4735,7 +5323,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "925529e3-0fb4-42c0-8b6a-a9ad3d34e307",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kuchen", "countName": "Stück" }
+    }
   },
   {
     "name": "Pizza",
@@ -4751,7 +5341,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "62f055e2-3914-4f5f-8066-4fde16365d3a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pizza", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Potato chips",
@@ -4767,7 +5359,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "40b9780f-6019-4d3e-86d8-b530b1b5c745",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kartoffelchips", "countName": "Tüte" }
+    }
   },
   {
     "name": "Pudding",
@@ -4783,7 +5377,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6989287c-286e-41dc-b1ee-c587745d30c9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pudding" }
+    }
   },
   {
     "name": "Sorbet",
@@ -4799,7 +5395,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "02eb459c-096d-466a-97d4-221fe859a98d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sorbet" }
+    }
   },
   {
     "name": "Strudel",
@@ -4815,7 +5413,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3d1d470a-a033-4198-ab76-808aba9d7193",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Strudel", "countName": "Stück" }
+    }
   },
   {
     "name": "Waffles",
@@ -4831,7 +5431,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e1e74b27-37d3-4164-9235-a5fbbf43e4b3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Waffeln", "countName": "Waffel" }
+    }
   },
   {
     "name": "Barbecue sauce",
@@ -4847,7 +5449,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7451f731-b69c-4977-9381-f87aae25972d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Barbecuesoße" }
+    }
   },
   {
     "name": "Bouillon cubes",
@@ -4863,7 +5467,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "050c3e26-8d8e-4b1f-b206-61042b564b54",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brühwürfel", "countName": "Würfel" }
+    }
   },
   {
     "name": "Chipotle peppers (Adobo)",
@@ -4879,7 +5485,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ec610c77-eaf0-4acb-b092-85f01c2eb515",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chipotle-Schoten (Adobo)" }
+    }
   },
   {
     "name": "Cocktail sauce",
@@ -4895,7 +5503,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3d735570-cf92-4b21-88f0-e2956e8cad07",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cocktailsoße" }
+    }
   },
   {
     "name": "Dijon mustard",
@@ -4911,7 +5521,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fb1553f0-5772-47b7-9bb7-a90c1aaa3f87",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dijon-Senf" }
+    }
   },
   {
     "name": "Fish sauce",
@@ -4927,7 +5539,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fb67a474-1914-4a4c-a35d-bb425d74e52c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fischsoße" }
+    }
   },
   {
     "name": "Guacamole",
@@ -4943,7 +5557,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "40ebd094-41ff-41fe-a822-8106e42cbf5a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Guacamole" }
+    }
   },
   {
     "name": "Hosin sauce",
@@ -4959,7 +5575,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ec74b0d7-e803-4c11-b75e-ca8605addfc2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hoisin-Sauce" }
+    }
   },
   {
     "name": "Hot sauce",
@@ -4975,7 +5593,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "37a18fdb-f4bf-4b5a-af55-6b459748a575",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Scharfe Sauce" }
+    }
   },
   {
     "name": "Hummus",
@@ -4991,7 +5611,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1f8b4a12-ec41-4b6d-93ba-a5b59b71e3d0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hummus" }
+    }
   },
   {
     "name": "Ketchup",
@@ -5007,7 +5629,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c6bd6af4-5be7-4f99-a978-668aa6641ff1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ketchup" }
+    }
   },
   {
     "name": "Mirin",
@@ -5023,7 +5647,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9bb9fe32-c1ae-4f9a-b864-67d95ff97b2c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mirin" }
+    }
   },
   {
     "name": "Miso",
@@ -5039,7 +5665,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "88555ef2-105c-4e03-8717-234bb6820ad0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Miso" }
+    }
   },
   {
     "name": "Oyster sauce",
@@ -5055,7 +5683,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0cb84863-9770-4c15-935a-cd5f16734303",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Austernsoße" }
+    }
   },
   {
     "name": "Pesto",
@@ -5071,7 +5701,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f6ac8560-e961-45d9-8084-c6df03caf800",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pesto" }
+    }
   },
   {
     "name": "Relish",
@@ -5087,7 +5719,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f8b57707-e0d8-4f6e-bce2-2be075b5f330",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Relish", "countName": "Paket" }
+    }
   },
   {
     "name": "Salsa",
@@ -5103,7 +5737,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e95a0f57-beca-43ef-9dfe-4668abaaecf8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Salsa" }
+    }
   },
   {
     "name": "Siracha",
@@ -5119,7 +5755,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d8149e24-1c4d-4195-97af-9acb3b5a2e5c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sriracha" }
+    }
   },
   {
     "name": "Soy sauce",
@@ -5135,7 +5773,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1b616430-6db9-43cb-9870-635db5355a2d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sojasoße" }
+    }
   },
   {
     "name": "Teriyaki sauce",
@@ -5151,7 +5791,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "242c5a2a-9a8d-4b0e-bc61-6ca2d7cfbd0a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Teriyaki-Sauce" }
+    }
   },
   {
     "name": "Worcestershire sauce ",
@@ -5167,7 +5809,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aa39bbdf-f04a-4c2e-adf4-0cb6884d3801",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Worcestersoße" }
+    }
   },
   {
     "name": "Yellow mustard",
@@ -5183,7 +5827,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b0cc0c64-2fcc-4fbb-ac17-5257d6fae57d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Senf" }
+    }
   },
   {
     "name": "Allspice",
@@ -5199,7 +5845,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "38925afa-b061-4114-a5b4-4ddc7a220e7e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Piment" }
+    }
   },
   {
     "name": "Anise",
@@ -5215,7 +5863,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "be2a9119-38b0-40d7-8f1d-0ce5a249af65",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Anis" }
+    }
   },
   {
     "name": "Baking powder",
@@ -5231,7 +5881,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "acde0f46-c660-4760-bd3c-b48eea18a405",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Backpulver" }
+    }
   },
   {
     "name": "Baking soda",
@@ -5247,7 +5899,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b756d7ee-5ba1-40d4-b719-cbb0d97fc95e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Natron" }
+    }
   },
   {
     "name": "Bay leaf",
@@ -5263,7 +5917,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1048ff33-9ede-430e-940b-7dd59c293bfc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lorbeerblatt" }
+    }
   },
   {
     "name": "Black pepper",
@@ -5279,7 +5935,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "80350c9b-2e22-4c70-9fb0-9e5daf38b8c7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schwarzer Pfeffer" }
+    }
   },
   {
     "name": "Cardamom",
@@ -5295,7 +5953,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c7a4e2e1-b5b5-47ae-aa1b-0a26011d9f6a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kardamom" }
+    }
   },
   {
     "name": "Cayenne pepper",
@@ -5311,7 +5971,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1dc871d3-0b16-403c-9010-5b19e44f1b85",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cayennepfeffer" }
+    }
   },
   {
     "name": "Chili powder",
@@ -5327,7 +5989,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4f181952-2a3e-46db-b5af-8943815ada13",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chilipulver" }
+    }
   },
   {
     "name": "Cinnamon",
@@ -5343,7 +6007,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "eee739aa-64c7-4d95-9df2-b458534704d5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zimt" }
+    }
   },
   {
     "name": "Cloves",
@@ -5359,7 +6025,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8797626-592b-4711-8313-a9daacc9e96c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Nelken" }
+    }
   },
   {
     "name": "Cocoa powder",
@@ -5375,7 +6043,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d0bc4303-58de-4d68-a60d-9e20c96d1312",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kakaopulver" }
+    }
   },
   {
     "name": "Coriander",
@@ -5391,7 +6061,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "64de023c-ca53-4002-87b8-386d0aecf58d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Koriander" }
+    }
   },
   {
     "name": "Cornstarch",
@@ -5407,7 +6079,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e355552b-e975-4c25-94bf-757b8228a06c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maisstärke" }
+    }
   },
   {
     "name": "Cream of tartar",
@@ -5423,7 +6097,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4bfc2bbd-9ce4-47db-a88b-cc699c011f7c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weinstein" }
+    }
   },
   {
     "name": "Cumin",
@@ -5439,7 +6115,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e2a5404c-31b3-43c7-85ea-f1be2b743603",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kreuzkümmel" }
+    }
   },
   {
     "name": "Curry powder",
@@ -5455,7 +6133,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6628c69e-dc4b-480a-b152-e612358eac2a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Currypulver" }
+    }
   },
   {
     "name": "Dried basil",
@@ -5471,7 +6151,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d48182fb-6890-42c3-b046-bf74e169a9e5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknetes Basilikum" }
+    }
   },
   {
     "name": "Dried oregano",
@@ -5487,7 +6169,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "95595137-8cc6-41fc-a18b-7d10308c147a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrockneter Oregano" }
+    }
   },
   {
     "name": "Dried parsley",
@@ -5503,7 +6187,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "152ec3e6-b54d-4bf5-8b76-f889a5baafda",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrocknete Petersilie" }
+    }
   },
   {
     "name": "Dried rosemary",
@@ -5519,7 +6205,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a90a4f01-ff4e-42f6-858a-e263516d2c0b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrockneter Rosmarin" }
+    }
   },
   {
     "name": "Dried tarragon",
@@ -5535,7 +6223,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "52cda9f6-62c9-478a-81b7-830a1a47d3ff",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Getrockneter Estragon" }
+    }
   },
   {
     "name": "Fennel seed",
@@ -5551,7 +6241,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "84776f63-09c1-4cb1-9a2f-c6598e2e8d92",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fenchelsamen" }
+    }
   },
   {
     "name": "Garam masala",
@@ -5567,7 +6259,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5962ea00-f056-4417-a7e4-228d653b450d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Garam Masala" }
+    }
   },
   {
     "name": "Garlic powder",
@@ -5583,7 +6277,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5349677e-8fa9-468d-b6aa-baff916dfbb1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Knoblauchpulver" }
+    }
   },
   {
     "name": "Ground ginger",
@@ -5599,7 +6295,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "035e44f0-9335-424d-957a-75d8de6733ca",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ingwerpulver" }
+    }
   },
   {
     "name": "Horseradish",
@@ -5615,7 +6313,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a7b00785-1e63-45bb-87a3-e406fc48257d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Meerrettich" }
+    }
   },
   {
     "name": "Mustard seed",
@@ -5631,7 +6331,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cbdbdddc-337e-4fca-aa72-d823750842e7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Senfsamen" }
+    }
   },
   {
     "name": "Nutmeg",
@@ -5647,7 +6349,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d810c705-8816-4493-b8fc-6c8fab1282d3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Muskatnuss" }
+    }
   },
   {
     "name": "Nutritional yeast",
@@ -5663,7 +6367,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b3b86827-d308-434f-892c-d197ff0e6f03",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Nährhefe" }
+    }
   },
   {
     "name": "Onion powder",
@@ -5679,7 +6385,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2a9bb83d-6aca-4aa1-82d5-1127758e992b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zwiebelpulver" }
+    }
   },
   {
     "name": "Paprika",
@@ -5695,7 +6403,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8f9f60eb-2ff3-46a4-bc83-28819e21df2b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Paprikapulver" }
+    }
   },
   {
     "name": "Saffron",
@@ -5711,7 +6421,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c682ec69-7f6e-42e4-b487-f700cf757d52",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Safran" }
+    }
   },
   {
     "name": "Sage",
@@ -5727,7 +6439,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2be3d6f2-7635-4784-be57-d49face92a82",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Salbei" }
+    }
   },
   {
     "name": "Salt",
@@ -5743,7 +6457,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1ca92318-3165-40e2-90c0-d951e01d693b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Salz" }
+    }
   },
   {
     "name": "Turmeric",
@@ -5759,7 +6475,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5ba88b83-f740-4a7c-8cde-bb688b4fb347",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kurkuma" }
+    }
   },
   {
     "name": "Vanilla extract",
@@ -5775,7 +6493,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b5294684-8b73-4f02-8204-8819341f02da",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Vanilleextrakt" }
+    }
   },
   {
     "name": "Xanthan gum",
@@ -5791,7 +6511,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ce179a68-dc57-4d0d-86ae-085c6409b089",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Xanthan" }
+    }
   },
   {
     "name": "Yeast",
@@ -5807,7 +6529,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "404d7a7d-2435-44b7-8689-445f655be75e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hefe" }
+    }
   },
   {
     "name": "Beef broth",
@@ -5823,7 +6547,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d6d45113-cec4-4c19-b450-645cda2ea6dd",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderbrühe" }
+    }
   },
   {
     "name": "Chicken broth",
@@ -5839,7 +6565,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cb6cfd8d-4fdc-4022-9f27-10ac91df35f0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hühnerbrühe" }
+    }
   },
   {
     "name": "Vegetable broth",
@@ -5855,7 +6583,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4504aefe-87dd-4125-b8cc-841aaaa57f8b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gemüsebrühe" }
+    }
   },
   {
     "name": "Sauerkraut",
@@ -5871,7 +6601,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "942915bb-a83d-4344-ae92-038e1a7f05a4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sauerkraut" }
+    }
   },
   {
     "name": "Apple cider vinegar",
@@ -5887,7 +6619,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "403e4501-36f8-401e-befe-65064ea843a2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Apfelessig" }
+    }
   },
   {
     "name": "Balsamic vinegar",
@@ -5903,7 +6637,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aa3a54a2-78d1-4395-b301-bd9a51832ca1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Balsamico-Essig" }
+    }
   },
   {
     "name": "Red wine vinegar",
@@ -5919,7 +6655,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d2ae531b-193c-4089-b255-08a3bbdb2b5c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rotweinessig" }
+    }
   },
   {
     "name": "Rice wine vinegar",
@@ -5935,7 +6673,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e69c7886-7f41-47e9-9cc2-88001d59aa2d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Reisessig" }
+    }
   },
   {
     "name": "Sherry wine vinegar",
@@ -5951,7 +6691,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e3877dd1-72ce-4601-9b4f-8986d6df7c31",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sherryessig" }
+    }
   },
   {
     "name": "White vinegar",
@@ -5967,7 +6709,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "69266398-eb2a-493b-9360-a3ee99ab8024",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißer Essig" }
+    }
   },
   {
     "name": "White wine vinegar",
@@ -5983,7 +6727,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7ccdad58-611e-4575-8776-15038dea7f99",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißweinessig" }
+    }
   },
   {
     "name": "Red wine",
@@ -5999,7 +6745,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "14054eb5-09b2-45ff-ad73-f2a3f49d1127",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rotwein", "countName": "Glas" }
+    }
   },
   {
     "name": "Shaoxing wine",
@@ -6015,7 +6763,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ccaa6c5b-ee61-4fc1-ab4c-dfcaad971522",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Shaoxing-Wein" }
+    }
   },
   {
     "name": "Sherry wine",
@@ -6031,7 +6781,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8f110931-5c9a-47eb-a0d7-91c0e9edd296",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sherry", "countName": "Glas" }
+    }
   },
   {
     "name": "White wine",
@@ -6047,7 +6799,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1fc80d6e-b5a3-4e0e-9053-e1cffcd8fe37",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißwein", "countName": "Glas" }
+    }
   },
   {
     "name": "Adzuki beans (cooked)",
@@ -6063,7 +6817,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5c74d192-c6b5-42af-93a5-3963fc18446c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Adzukibohnen (gekocht)" }
+    }
   },
   {
     "name": "Adzuki beans (dry)",
@@ -6079,7 +6835,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1af24b02-f4cd-4fc7-95b9-7b35629e6598",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Adzukibohnen (trocken)" }
+    }
   },
   {
     "name": "Black beans (cooked)",
@@ -6095,7 +6853,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "58efb149-d8cf-42e1-933c-1082268a3b1f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schwarze Bohnen (gekocht)" }
+    }
   },
   {
     "name": "Black beans (dry)",
@@ -6111,7 +6871,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "20a340d8-9fb1-4e03-83fe-f59c42636e69",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schwarze Bohnen (trocken)" }
+    }
   },
   {
     "name": "Black-eyed peas (cooked)",
@@ -6127,7 +6889,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "946297e6-3111-46ff-8f56-4cb37b7b5640",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schwarzaugenbohne (gekocht)" }
+    }
   },
   {
     "name": "Black-eyed peas (dry)",
@@ -6143,7 +6907,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "131a2fa1-7258-4d62-be1c-e702aab703df",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schwarzaugenbohne (trocken)" }
+    }
   },
   {
     "name": "Cannellini beans (cooked)",
@@ -6159,7 +6925,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "91ff5f2d-1e57-4524-9f40-dd23b31f936c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cannellini-Bohnen (gekocht)" }
+    }
   },
   {
     "name": "Cannellini beans (dry)",
@@ -6175,7 +6943,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cc966fcf-4ae9-49b3-a5ad-c8e8d3452792",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Cannellini-Bohnen (trocken)" }
+    }
   },
   {
     "name": "Fava beans (cooked)",
@@ -6191,7 +6961,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "eab9e7fe-f1e8-473d-b22c-744214e04417",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dicke Bohnen (gekocht)" }
+    }
   },
   {
     "name": "Fava beans (dry)",
@@ -6207,7 +6979,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fb1ea8af-f489-47af-8a36-bbef6dabc53c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dicke Bohnen (trocken)" }
+    }
   },
   {
     "name": "Great northern beans (cooked)",
@@ -6223,7 +6997,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c4599c26-f005-4998-bd0b-e168c7507bbe",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Große weiße Bohnen (gekocht)" }
+    }
   },
   {
     "name": "Great northern beans (dry)",
@@ -6239,7 +7015,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "58fe5f8c-ff1e-4a18-8059-599ec46d5e61",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Große weiße Bohnen (trocken)" }
+    }
   },
   {
     "name": "Kidney beans (cooked)",
@@ -6255,7 +7033,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "68feb793-8297-4e4e-81e3-4d8163f6c7c6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kidneybohnen (gekocht)" }
+    }
   },
   {
     "name": "Kidney beans (dry)",
@@ -6271,7 +7051,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aecd46d0-5052-4541-8f71-c364b906eca4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kidneybohnen (trocken)" }
+    }
   },
   {
     "name": "Lima beans (cooked)",
@@ -6287,7 +7069,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c1f525ba-066a-4dd7-b3aa-40bfc58a6b86",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Limabohnen (gekocht)" }
+    }
   },
   {
     "name": "Lima beans (dry)",
@@ -6303,7 +7087,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4bbe39a7-51e8-4eb9-a369-60e238344156",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Limabohnen (trocken)" }
+    }
   },
   {
     "name": "Mung beans (cooked)",
@@ -6319,7 +7105,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f017bf9c-317b-4687-abc4-6d7691a3528c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mungobohnen (gekocht)" }
+    }
   },
   {
     "name": "Mung beans (dry)",
@@ -6335,7 +7123,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aae10143-62fe-489f-900e-5dc760ff35be",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mungobohnen (trocken)" }
+    }
   },
   {
     "name": "Pinto beans (cooked)",
@@ -6351,7 +7141,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0db2bf94-c5fc-4885-83df-cd790b23f3f4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pintobohnen (gekocht)" }
+    }
   },
   {
     "name": "Pinto beans (dry)",
@@ -6367,7 +7159,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bbe4fd9b-2846-4f97-9e32-20b8e016230d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pintobohnen (trocken)" }
+    }
   },
   {
     "name": "Soy beans (cooked)",
@@ -6383,7 +7177,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "95f98bca-7450-4452-9262-1c4018b1ec38",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sojabohnen (gekocht)" }
+    }
   },
   {
     "name": "Soy beans (dry)",
@@ -6399,7 +7195,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "009c5050-39a2-4744-87f4-d29864555e99",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sojabohnen (trocken)" }
+    }
   },
   {
     "name": "White beans (cooked)",
@@ -6415,7 +7213,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3c04a42c-9b79-4f74-8872-4bdfefaa8e04",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weiße Bohnen (gekocht)" }
+    }
   },
   {
     "name": "White beans (dry)",
@@ -6431,7 +7231,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dc349874-9b04-454e-ab87-e12f033f0349",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weiße Bohnen (trocken)" }
+    }
   },
   {
     "name": "Bottom round (cooked)",
@@ -6447,7 +7249,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c53f42dd-864e-4ae2-b54c-a9b2de4064db",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rindersteak (gekocht)" }
+    }
   },
   {
     "name": "Bottom round (raw)",
@@ -6463,7 +7267,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9a25c768-08a9-4a51-b3b8-60a127d1b516",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rindersteak (roh)" }
+    }
   },
   {
     "name": "Eye of round (cooked)",
@@ -6479,7 +7285,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d1530939-301a-44c6-8d67-fdbe72d56c36",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüftsteak (gekocht)" }
+    }
   },
   {
     "name": "Eye of round (raw)",
@@ -6495,7 +7303,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "27fde005-a49e-4504-840a-1ad5be66632f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüftsteak (roh)" }
+    }
   },
   {
     "name": "Fatty beef (cooked)",
@@ -6511,7 +7321,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0ae5ea12-d139-4a4d-89a2-bc014b94919e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fettes Rindfleisch (gekocht)" }
+    }
   },
   {
     "name": "Fatty beef (raw)",
@@ -6527,7 +7339,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f08786d5-075f-420d-bf32-fef202cb445e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fettes Rindfleisch (roh)" }
+    }
   },
   {
     "name": "Lean beef (cooked)",
@@ -6543,7 +7357,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c73e8c96-07bd-48b8-b145-164774868ee8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mageres Rindfleisch (gekocht)" }
+    }
   },
   {
     "name": "Lean beef (raw)",
@@ -6559,7 +7375,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5e83deeb-a99a-45e6-b5a3-85e212959206",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mageres Rindfleisch (roh)" }
+    }
   },
   {
     "name": "Ribeye (cooked)",
@@ -6575,7 +7393,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "67fca096-a672-4fea-9697-4b9d14255957",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ribeye-Steak (gekocht)" }
+    }
   },
   {
     "name": "Ribeye (raw)",
@@ -6591,7 +7411,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "37c9417d-add3-45fb-806e-c50289525b35",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ribeye-Steak (roh)" }
+    }
   },
   {
     "name": "Sirloin tip (cooked)",
@@ -6607,7 +7429,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1d2b6a87-fbfb-4b86-8e03-f757140ec544",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüftspitze (gekocht)" }
+    }
   },
   {
     "name": "Sirloin tip (raw)",
@@ -6623,7 +7447,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "99ce8f72-7551-41c1-9649-07154af1f6fc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hüftspitze (roh)" }
+    }
   },
   {
     "name": "Skirt steak (cooked)",
@@ -6639,7 +7465,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "91dc60cb-d8d6-441e-ac61-ce95814d15af",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rumpsteak (gekocht)" }
+    }
   },
   {
     "name": "Skirt steak (raw)",
@@ -6655,7 +7483,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ddf79aaf-253c-4c9b-9888-17e8da48a7dc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rumpsteak (roh)" }
+    }
   },
   {
     "name": "Strip steak (cooked)",
@@ -6671,7 +7501,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "30f0d5e1-57b8-4f01-ad72-78609e7d4526",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Entrecôte (gekocht)" }
+    }
   },
   {
     "name": "Strip steak (raw)",
@@ -6687,7 +7519,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9e0f822c-9223-43c4-b03a-d51ca9d1208a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Entrecôte (roh)" }
+    }
   },
   {
     "name": "Top round (cooked)",
@@ -6703,7 +7537,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6ecad66d-991e-4b8f-a8e0-6256515ec94d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Oberschale (gekocht)" }
+    }
   },
   {
     "name": "Top round (raw)",
@@ -6719,7 +7555,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7c2914e5-6351-45e4-bbf4-f99064d8d722",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Oberschale (roh)" }
+    }
   },
   {
     "name": "Chicken breast with skin (cooked)",
@@ -6735,7 +7573,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "779084ef-d29a-400a-9b5a-5e4cda297988",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenbrust mit Haut (gekocht)" }
+    }
   },
   {
     "name": "Chicken breast with skin (raw)",
@@ -6751,7 +7591,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7f5d755d-0f1c-43f7-82a8-499700043629",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenbrust mit Haut (roh)" }
+    }
   },
   {
     "name": "Chicken breast without skin (cooked)",
@@ -6767,7 +7609,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "39d4dd12-22fc-4f66-b0fb-b378603d59ea",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenbrust ohne Haut (gekocht)" }
+    }
   },
   {
     "name": "Chicken breast without skin (raw)",
@@ -6783,7 +7627,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7d015686-63fa-4b17-aaa8-76a65f4e1a18",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenbrust ohne Haut (roh)" }
+    }
   },
   {
     "name": "Chicken drumstick with skin with bone (cooked)",
@@ -6799,7 +7645,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1cfba13f-a5e5-4ac9-852e-0661e92e7262",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel mit Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken drumstick with skin with bone (raw)",
@@ -6815,7 +7663,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d479f644-1513-4039-ad6e-7e9c91c26ee8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel mit Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken drumstick with skin without bone (cooked)",
@@ -6831,7 +7681,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5d572731-c0ca-4292-acd4-69765b8555c4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel mit Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken drumstick with skin without bone (raw)",
@@ -6847,7 +7699,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "16497831-8780-4af0-9549-df4658a62b07",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel mit Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken drumstick without skin with bone (cooked)",
@@ -6863,7 +7717,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "01006c23-b074-4d7e-918c-0f198dc19a77",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel ohne Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken drumstick without skin with bone (raw)",
@@ -6879,7 +7735,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2c288748-e50d-4db6-85af-64161209f1da",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel ohne Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken drumstick without skin without bone (cooked)",
@@ -6895,7 +7753,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "faedb3bc-9e62-47fc-9332-b64c9cb78872",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel ohne Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken drumstick without skin without bone (raw)",
@@ -6911,7 +7771,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6b25e6bc-6cfa-42f0-84ad-a6465274f1bb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenschenkel ohne Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken tenderloin (cooked)",
@@ -6927,7 +7789,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "abccf820-4940-414e-9c31-3301b0fb4065",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenfilet (gekocht)" }
+    }
   },
   {
     "name": "Chicken tenderloin (raw)",
@@ -6943,7 +7807,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d3e218e6-6452-491c-8cdc-7e9da3b2589c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenfilet (roh)" }
+    }
   },
   {
     "name": "Chicken thigh with skin with bone (cooked)",
@@ -6959,7 +7825,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fdebce79-c1b0-49b1-ae79-ed2b427add9b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule mit Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken thigh with skin with bone (raw)",
@@ -6975,7 +7843,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "92fec1a3-a4e1-4286-8fee-0ef51f9d965b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule mit Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken thigh with skin without bone (cooked)",
@@ -6991,7 +7861,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5680aa24-fc6a-44fb-bb4b-889c4137b6a0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule mit Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken thigh with skin without bone (raw)",
@@ -7007,7 +7879,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "82b3eb4a-3a47-48cf-9968-2bc1b146465c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule mit Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken thigh without skin with bone (cooked)",
@@ -7023,7 +7897,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ca5f9e85-0dc1-45c1-99ef-58011adfd6dc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule ohne Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken thigh without skin with bone (raw)",
@@ -7039,7 +7915,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4e0eebfe-1029-45c8-ade9-38e9d24c38e6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule ohne Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken thigh without skin without bone (cooked)",
@@ -7055,7 +7933,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ee059c11-68d3-467a-be0d-c0571a0e414a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule ohne Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken thigh without skin without bone (raw)",
@@ -7071,7 +7951,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "639315e1-8038-4f2c-aa96-4408a0267a0d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenkeule ohne Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken wing with skin with bone (cooked)",
@@ -7087,7 +7969,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e7816474-3103-4d90-861c-fe4beef24646",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel mit Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken wing with skin with bone (raw)",
@@ -7103,7 +7987,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3d2f56fb-d512-4251-8ff7-be071fd08535",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel mit Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken wing with skin without bone (cooked)",
@@ -7119,7 +8005,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a37ffc22-759e-4b8e-a4e7-3532378ec163",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel mit Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken wing with skin without bone (raw)",
@@ -7135,7 +8023,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1684d1c4-d3eb-4513-aa40-826886bfdb4a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel mit Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken wing without skin with bone (cooked)",
@@ -7151,7 +8041,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a1909f60-e325-45e9-b48a-12743638aa9a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel ohne Haut mit Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken wing without skin with bone (raw)",
@@ -7167,7 +8059,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8635336-cd4f-446c-b8e6-4709293a7272",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel ohne Haut mit Knochen (roh)" }
+    }
   },
   {
     "name": "Chicken wing without skin without bone (cooked)",
@@ -7183,7 +8077,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "406faa49-ca82-4b37-bd86-813013c0de22",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel ohne Haut ohne Knochen (gekocht)" }
+    }
   },
   {
     "name": "Chicken wing without skin without bone (raw)",
@@ -7199,7 +8095,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "35369bd9-ec9b-433e-ac70-4528c76a80b1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hähnchenflügel ohne Haut ohne Knochen (roh)" }
+    }
   },
   {
     "name": "Chickpeas (cooked)",
@@ -7215,7 +8113,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5ea0148d-e33d-4a34-b5a6-c908a30ce216",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kichererbsen (gekocht)" }
+    }
   },
   {
     "name": "Chickpeas (dry)",
@@ -7231,7 +8131,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "df1fdd26-9a75-45d3-ba49-5bf37dffc5c4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kichererbsen (trocken)" }
+    }
   },
   {
     "name": "Bologna",
@@ -7247,7 +8149,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ab6bdc73-71fc-4e0d-b5ea-1a16e75261cc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mortadella" }
+    }
   },
   {
     "name": "Corned beef",
@@ -7263,7 +8167,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "422ca706-d8f3-43e1-a382-a4ad754cb350",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Corned Beef" }
+    }
   },
   {
     "name": "Ham",
@@ -7279,7 +8185,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a3356056-79ca-4b31-b18c-d5a0bb58b29a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schinken", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Pastrami",
@@ -7295,7 +8203,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2d890bb9-d1fd-4635-be4c-b9e76179cf40",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pastrami", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Roast beef",
@@ -7311,7 +8221,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c5edc390-f205-4fb8-8de9-dd36c9cfce00",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderbraten", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Salami",
@@ -7327,7 +8239,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7292fdf7-a028-4244-9b8d-f99e5e2a4f4f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Salami" }
+    }
   },
   {
     "name": "Edamame",
@@ -7343,7 +8257,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0ca3bfea-156d-4e3b-8a10-46eef8ebacf6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Edamame" }
+    }
   },
   {
     "name": "Egg whites",
@@ -7359,7 +8275,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a9e251b5-65df-4c81-b3c3-1fb32c08ba6f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eiweiß", "countName": "Eiweiß" }
+    }
   },
   {
     "name": "Egg yolks",
@@ -7375,7 +8293,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9dddfdd5-c11f-41cd-86d5-b10527791380",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eigelb", "countName": "Eigelb" }
+    }
   },
   {
     "name": "Eggs",
@@ -7391,7 +8311,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a46d9f55-9f6e-4dcd-a12b-2519e95d9a25",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eier", "countName": "Ei" }
+    }
   },
   {
     "name": "Anchovies",
@@ -7407,7 +8329,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "36cc686d-712f-414c-84f3-897528b22f5e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sardellen" }
+    }
   },
   {
     "name": "Bass",
@@ -7423,7 +8347,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9a89bacc-d86f-45a6-9dfe-4c0c42264296",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Barsch" }
+    }
   },
   {
     "name": "Catfish",
@@ -7439,7 +8365,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "02c9d401-ddbb-47ca-b0d8-c7d5b570b80e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wels", "countName": "Filet" }
+    }
   },
   {
     "name": "Cod",
@@ -7455,7 +8383,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2d1c2eb6-8017-479c-bc45-409e74a16da7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kabeljau" }
+    }
   },
   {
     "name": "Eel",
@@ -7471,7 +8401,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a0e4e9c0-8a49-4bad-8550-6f0e6b5dcaf2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Aal", "countName": "Filet" }
+    }
   },
   {
     "name": "Haddock",
@@ -7487,7 +8419,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "820218e0-3378-45b2-88a5-5515ef642e5d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schellfisch", "countName": "Filet" }
+    }
   },
   {
     "name": "Halibut",
@@ -7503,7 +8437,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "615d2990-ce22-49b6-a0e4-e4ebbb15e2f7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Heilbutt", "countName": "Filet" }
+    }
   },
   {
     "name": "Herring",
@@ -7519,7 +8455,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "98bf0265-f0e1-4cbe-bb58-fa236a85ad10",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hering", "countName": "Filet" }
+    }
   },
   {
     "name": "Mackerel",
@@ -7535,7 +8473,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2d65c258-a359-4d1a-8c63-80a66dd49dc5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Makrele", "countName": "Filet" }
+    }
   },
   {
     "name": "Mahi Mahi",
@@ -7551,7 +8491,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "03e5acb7-4357-4135-ad10-b5cecd5bfe93",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Goldmakrele", "countName": "Filet" }
+    }
   },
   {
     "name": "Monkfish",
@@ -7567,7 +8509,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ff3a6e46-8df2-4d14-98ca-ad12d6f9193f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Seeteufel" }
+    }
   },
   {
     "name": "Mullet",
@@ -7583,7 +8527,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1212e8ec-90c2-4aaa-be11-1bb7d8c7096b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Meeräsche", "countName": "Filet" }
+    }
   },
   {
     "name": "Northern pike",
@@ -7599,7 +8545,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cece9fde-9640-48ea-926c-18c4a5192021",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hecht", "countName": "Filet" }
+    }
   },
   {
     "name": "Perch",
@@ -7615,7 +8563,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c20280e6-6464-4aff-bb24-446f2e19f9d2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Flussbarsch", "countName": "Filet" }
+    }
   },
   {
     "name": "Rockfish",
@@ -7631,7 +8581,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "59394a99-a9d8-4ea0-9ffc-0f446501162d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Felsenfisch", "countName": "Filet" }
+    }
   },
   {
     "name": "Roughy",
@@ -7647,7 +8599,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "44024513-e9e4-4cb7-8692-3bda63662d5f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rotbarsch" }
+    }
   },
   {
     "name": "Salmon",
@@ -7663,7 +8617,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "73bda645-a255-4c04-a885-94033e827e02",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lachs" }
+    }
   },
   {
     "name": "Sardines",
@@ -7679,7 +8635,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "293a0a9e-b3d1-44d7-9e29-987ea6f45d49",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sardinen" }
+    }
   },
   {
     "name": "Smoked salmon",
@@ -7695,7 +8653,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "878f5ed3-0314-4581-9fd4-d70d3d118546",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Räucherlachs" }
+    }
   },
   {
     "name": "Snapper",
@@ -7711,7 +8671,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a56fb080-cf77-4745-98f1-1df176d7456a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schnapper", "countName": "Filet" }
+    }
   },
   {
     "name": "Tilapia",
@@ -7727,7 +8689,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ba0be165-3e60-4f2d-8d2b-ab32b73cef73",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Buntbarsch" }
+    }
   },
   {
     "name": "Tuna",
@@ -7743,7 +8707,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "60fca630-4f0c-440c-b49e-1479bb2f5648",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Thunfisch" }
+    }
   },
   {
     "name": "Walleye",
@@ -7759,7 +8725,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "465df9c6-f366-46f5-9bf5-5c0a8e6350ef",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zander", "countName": "Filet" }
+    }
   },
   {
     "name": "Vital wheat gluten",
@@ -7775,7 +8743,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "907e44d0-fe67-4be7-a877-96190c91276a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weizengluten" }
+    }
   },
   {
     "name": "Goat",
@@ -7791,7 +8761,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "94f4e286-eb76-48f8-898e-aa64ec12f13b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ziege" }
+    }
   },
   {
     "name": "Ground beef (70/30) (cooked)",
@@ -7807,7 +8779,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6ecf6416-769f-4ac4-b2d7-5f91f0d5b38a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (70/30) (gekocht)" }
+    }
   },
   {
     "name": "Ground beef (70/30) (raw)",
@@ -7823,7 +8797,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f46a70f7-9d46-479c-8862-34236d143b57",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (70/30) (roh)" }
+    }
   },
   {
     "name": "Ground beef (80/20) (cooked)",
@@ -7839,7 +8815,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9bffaf42-27e9-4647-b24d-9ce1de0cf5e3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (80/20) (gekocht)" }
+    }
   },
   {
     "name": "Ground beef (80/20) (raw)",
@@ -7855,7 +8833,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a4b88ce7-f0a3-4820-8c1d-3f2e0bbd665c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (80/20) (roh)" }
+    }
   },
   {
     "name": "Ground beef (90/10) (cooked)",
@@ -7871,7 +8851,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cf553e32-f57d-48fb-a3da-e16b3db0f19d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (90/10) (gekocht)" }
+    }
   },
   {
     "name": "Ground beef (90/10) (raw)",
@@ -7887,7 +8869,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "514a994d-b7a3-425b-a14e-1488a0e1d268",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderhackfleisch (90/10) (roh)" }
+    }
   },
   {
     "name": "Ground lamb (cooked)",
@@ -7903,7 +8887,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7f1d292a-3cb6-40ec-8443-3703d98b0549",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammhackfleisch (gekocht)" }
+    }
   },
   {
     "name": "Ground lamb (raw)",
@@ -7919,7 +8905,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f0f15779-4e8a-41b0-849f-ef803503f500",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammhackfleisch (roh)" }
+    }
   },
   {
     "name": "Ground pork (84/16) (cooked)",
@@ -7935,7 +8923,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "edefd7e4-b9c6-4007-ae84-846397f69ed3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinehackfleisch (84/16) (gekocht)" }
+    }
   },
   {
     "name": "Ground pork (84/16) (raw)",
@@ -7951,7 +8941,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6f8a967c-c259-4a8d-9fa4-675742a4f266",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinehackfleisch (84/16) (roh)" }
+    }
   },
   {
     "name": "Ground pork (96/4) (cooked)",
@@ -7967,7 +8959,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "89621234-a545-4f7c-bcac-bacd1a94c53e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinehackfleisch (96/4) (gekocht)" }
+    }
   },
   {
     "name": "Ground pork (96/4) (raw)",
@@ -7983,7 +8977,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9a8816a3-d1cf-4f79-947c-559e6260c32c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinehackfleisch (96/4) (roh)" }
+    }
   },
   {
     "name": "Ground turkey (85/15) (cooked)",
@@ -7999,7 +8995,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d9640b11-032d-47bc-b839-c4818bd8944a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenhackfleisch (85/15) (gekocht)" }
+    }
   },
   {
     "name": "Ground turkey (85/15) (raw)",
@@ -8015,7 +9013,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2795768f-aee3-47a3-ae2e-477eace2cc93",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenhackfleisch (85/15) (roh)" }
+    }
   },
   {
     "name": "Ground turkey (93/7) (cooked)",
@@ -8031,7 +9031,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "89ee0b7b-9493-48a1-a393-c1052c40cd89",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenhackfleisch (93/7) (gekocht)" }
+    }
   },
   {
     "name": "Ground turkey (93/7) (raw)",
@@ -8047,7 +9049,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "28feb949-c8cc-4645-905a-be8c1c68e9bc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenhackfleisch (93/7) (roh)" }
+    }
   },
   {
     "name": "Beef jerky",
@@ -8063,7 +9067,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c2e8f1c8-c090-46c0-b20b-3faab1128ebb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Beef Jerky", "countName": "Stück" }
+    }
   },
   {
     "name": "Turkey jerky",
@@ -8079,7 +9085,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4ca0b0f7-6418-44b5-b049-6d2e317a4760",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Puten Jerky", "countName": "Stück" }
+    }
   },
   {
     "name": "Lamb leg (cooked)",
@@ -8095,7 +9103,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bf252749-4100-4c2f-b37b-06582c569100",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammkeule (gekocht)" }
+    }
   },
   {
     "name": "Lamb leg (raw)",
@@ -8111,7 +9121,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "54048a4e-2cd9-4496-8579-0a274075288c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammkeule (roh)" }
+    }
   },
   {
     "name": "Lamb loin (cooked)",
@@ -8127,7 +9139,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ab0f1703-20a7-4f84-933b-2bcdd393ae65",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammkarree (gekocht)" }
+    }
   },
   {
     "name": "Lamb loin (raw)",
@@ -8143,7 +9157,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c308f53f-b6c1-463c-a85d-bcb5583fd095",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammkarree (roh)" }
+    }
   },
   {
     "name": "Lamb shoulder (cooked)",
@@ -8159,7 +9175,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fda562ab-ade4-4317-9fbe-84eefecc57c4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammschulter (gekocht)" }
+    }
   },
   {
     "name": "Lamb shoulder (raw)",
@@ -8175,7 +9193,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a09c7901-3af3-4046-a762-844fbf1807de",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammschulter (roh)" }
+    }
   },
   {
     "name": "Lentils (cooked)",
@@ -8191,7 +9211,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a668ced5-09c5-4968-a51e-d1e114df34d1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Linsen (gekocht)" }
+    }
   },
   {
     "name": "Lentils (dry)",
@@ -8207,7 +9229,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "37e907a8-8a3b-4cfb-bfd4-fcebb80b112a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Linsen (trocken)" }
+    }
   },
   {
     "name": "Beef liver (cooked)",
@@ -8223,7 +9247,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "18986bee-0c5f-435c-9488-c0970fe19a9f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderleber (gekocht)" }
+    }
   },
   {
     "name": "Beef liver (raw)",
@@ -8239,7 +9265,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f3c63d1d-4d51-4cd5-a6d3-a679da233db1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rinderleber (roh)" }
+    }
   },
   {
     "name": "Chicken liver (cooked)",
@@ -8255,7 +9283,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2a578f8d-655f-4265-96a2-bf17d2e05d5c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hühnerleber (gekocht)" }
+    }
   },
   {
     "name": "Chicken liver (raw)",
@@ -8271,7 +9301,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c9de0e4f-5a93-4c94-9aee-ae98f649bd2c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hühnerleber (roh)" }
+    }
   },
   {
     "name": "Split peas",
@@ -8287,7 +9319,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6093cd76-09ea-469e-b5d3-872543a3ba47",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schälerbsen" }
+    }
   },
   {
     "name": "Bacon",
@@ -8303,7 +9337,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "61ee7896-2516-4351-99eb-1a2b808bca69",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Speck", "countName": "Streifen" }
+    }
   },
   {
     "name": "Chorizo",
@@ -8319,7 +9355,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a290ca0d-b5da-46c1-b09b-8a687c74a0a9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chorizo" }
+    }
   },
   {
     "name": "Pepperoni",
@@ -8335,7 +9373,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a80acfcc-e5ac-4df8-be86-76ab9248cfd3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pepperoni" }
+    }
   },
   {
     "name": "Pork belly (cooked)",
@@ -8351,7 +9391,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9911be44-454b-4681-960f-63891bff6070",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinebauch (gekocht)" }
+    }
   },
   {
     "name": "Pork belly (raw)",
@@ -8367,7 +9409,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4f8cf406-4277-491f-b48f-468d1056c006",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinebauch (roh)" }
+    }
   },
   {
     "name": "Pork chops (cooked)",
@@ -8383,7 +9427,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "861e0973-af51-4389-8a34-5dafbd4fb520",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinekoteletts (gekocht)" }
+    }
   },
   {
     "name": "Pork chops (raw)",
@@ -8399,7 +9445,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8481c14-f27b-46b9-bc76-d08770c8e762",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinekoteletts (roh)" }
+    }
   },
   {
     "name": "Pork leg (cooked)",
@@ -8415,7 +9463,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1bc9ef74-a5bd-4c30-a9c9-0376ddc06a81",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinekeule (gekocht)" }
+    }
   },
   {
     "name": "Pork leg (raw)",
@@ -8431,7 +9481,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7ebab166-c22f-46d4-b4df-a6f043758f89",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinekeule (roh)" }
+    }
   },
   {
     "name": "Pork loin (cooked)",
@@ -8447,7 +9499,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ab654ce1-8d34-4808-bb84-630e38fe9070",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinelende (gekocht)" }
+    }
   },
   {
     "name": "Pork loin (raw)",
@@ -8463,7 +9517,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4b0ba334-e350-461f-b679-0ad6386afb97",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinelende (roh)" }
+    }
   },
   {
     "name": "Pork shoulder (cooked)",
@@ -8479,7 +9535,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e08b0762-1f6f-434f-8959-7a9d6aee9192",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweineschulter (gekocht)" }
+    }
   },
   {
     "name": "Pork shoulder (raw)",
@@ -8495,7 +9553,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4ef78e7b-e03e-435c-996e-555a2f8d788b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweineschulter (roh)" }
+    }
   },
   {
     "name": "Prosciutto",
@@ -8511,7 +9571,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "23edd27c-1067-4df1-ae6d-bbcab57a80f2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Prosciutto", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Sausage",
@@ -8527,7 +9589,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d059b516-18a8-4282-9120-60cad4b47e89",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wurst" }
+    }
   },
   {
     "name": "Brown rice protein powder",
@@ -8543,7 +9607,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "82823ec1-41ed-4b56-9491-6888e5ff8998",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brauner-Reis-Proteinpulver", "countName": "Portion" }
+    }
   },
   {
     "name": "Casein protein powder",
@@ -8559,7 +9625,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "85e130a3-f151-44ed-9644-020bc95eb809",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kasein-Proteinpulver", "countName": "Portion" }
+    }
   },
   {
     "name": "Hemp protein powder",
@@ -8575,7 +9643,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "62195aaa-ea1e-4e3b-a0ad-52239643444d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hanf-Proteinpulver" }
+    }
   },
   {
     "name": "Pea protein powder",
@@ -8591,7 +9661,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f8fdbba5-48e1-4284-b5c9-05017c17f96c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Erbsen-Proteinpulver", "countName": "Portion" }
+    }
   },
   {
     "name": "Soy protein powder",
@@ -8607,7 +9679,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cedb5f78-440e-445d-b642-8da035da59f1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Soja-Proteinpulver", "countName": "Portion" }
+    }
   },
   {
     "name": "Whey protein powder",
@@ -8623,7 +9697,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fcc6c8de-230d-44d6-946a-283b3d4baf13",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Molken-Proteinpulver (whey)", "countName": "Portion" }
+    }
   },
   {
     "name": "Lamb ribs (cooked)",
@@ -8639,7 +9715,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "904cac09-9da3-4038-8f23-607743a414ab",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammrippchen (gekocht)" }
+    }
   },
   {
     "name": "Lamb ribs (raw)",
@@ -8655,7 +9733,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e1d7b0cd-4df4-4edf-a700-7061b9e7838e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lammrippchen (roh)" }
+    }
   },
   {
     "name": "Pork ribs (cooked)",
@@ -8671,7 +9751,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "de4ffacd-23f4-459e-b21d-2989f4ce5fc0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinerippchen (gekocht)" }
+    }
   },
   {
     "name": "Pork ribs (raw)",
@@ -8687,7 +9769,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a1100a3a-290b-4989-88e6-dd8f0c14534a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schweinerippchen (roh)" }
+    }
   },
   {
     "name": "Ribs (cooked)",
@@ -8703,7 +9787,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "be32122f-3368-46a8-b52a-6f371e236aeb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rippchen (gekocht)" }
+    }
   },
   {
     "name": "Ribs (raw)",
@@ -8719,7 +9805,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b29e6e0e-658d-404f-bbc0-561cb807e008",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rippchen (roh)" }
+    }
   },
   {
     "name": "Abalone",
@@ -8735,7 +9823,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "04c76d37-d4d0-4bd7-86c3-2d47e87be543",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Abalone" }
+    }
   },
   {
     "name": "Clams",
@@ -8751,7 +9841,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2133b0a7-1ebe-48c1-b70f-bf0d7aacf2f9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Muscheln", "countName": "Muschel" }
+    }
   },
   {
     "name": "Crab",
@@ -8767,7 +9859,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "919dca74-a5ce-4795-8b44-6795d0205ea9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Krabbe" }
+    }
   },
   {
     "name": "Crayfish",
@@ -8783,7 +9877,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1173dd61-fee2-447b-ac15-9ebe664058b7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Flusskrebs", "countName": "Flusskrebs" }
+    }
   },
   {
     "name": "Lobster",
@@ -8799,7 +9895,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8dfaa0c-9343-4e6b-a3cd-d508a5707bcb",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Hummer", "countName": "Hummer" }
+    }
   },
   {
     "name": "Mussels",
@@ -8815,7 +9913,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4f24ae65-3016-4948-8bfd-882389e28602",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Miesmuscheln", "countName": "Muschel" }
+    }
   },
   {
     "name": "Octopus",
@@ -8831,7 +9931,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2c2b04b8-2268-470c-9b9a-3db618f93132",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Oktopus" }
+    }
   },
   {
     "name": "Oysters",
@@ -8847,7 +9949,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6db9eac9-df40-4bc9-8c15-68d62e69896a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Austern", "countName": "Auster" }
+    }
   },
   {
     "name": "Prawns",
@@ -8863,7 +9967,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e6752a30-21d4-4d12-8d94-ab346f929610",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Garnelen" }
+    }
   },
   {
     "name": "Scallops",
@@ -8879,7 +9985,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "67b693a2-d95e-4c35-89b8-aee7c9662068",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Jakobsmuscheln", "countName": "Jakobsmuschel" }
+    }
   },
   {
     "name": "Shrimp",
@@ -8895,7 +10003,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "de2149ed-5a0d-41ca-aabf-d8b0109cceb3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Garnelen", "countName": "Garnele" }
+    }
   },
   {
     "name": "Squid",
@@ -8911,7 +10021,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "47ec3609-66ad-48ae-aea4-23a4843fc3bc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tintenfisch" }
+    }
   },
   {
     "name": "Natto",
@@ -8927,7 +10039,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "9d4af3b9-70c1-470f-a467-df0d0114dcf5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Natto" }
+    }
   },
   {
     "name": "Tempeh",
@@ -8943,7 +10057,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bc152fb1-3492-4c8b-a991-87a9a0c4f536",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tempeh" }
+    }
   },
   {
     "name": "Textured vegetable protein",
@@ -8959,7 +10075,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "85e67b1c-2d70-4b37-81bc-3efa2629077c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Texturiertes Pflanzenprotein" }
+    }
   },
   {
     "name": "Tofu",
@@ -8975,7 +10093,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4ebe99c5-3293-4abd-bee9-7ce7c7e59cf2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tofu" }
+    }
   },
   {
     "name": "Turkey breast with skin (cooked)",
@@ -8991,7 +10111,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "45fb957e-2039-4892-aaf4-09a76b833cd9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenbrust mit Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey breast with skin (raw)",
@@ -9007,7 +10129,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f70efeba-8d80-4455-bbda-a7a8350cc702",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenbrust mit Haut (roh)" }
+    }
   },
   {
     "name": "Turkey breast without skin (cooked)",
@@ -9023,7 +10147,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2598eecd-b847-408c-ae25-d0377e7dc363",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenbrust ohne Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey breast without skin (raw)",
@@ -9039,7 +10165,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e0fcb751-b6fe-447d-af38-e32cbf40ae9a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenbrust ohne Haut (roh)" }
+    }
   },
   {
     "name": "Turkey leg with skin (cooked)",
@@ -9055,7 +10183,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4c26eac7-4c2d-4e83-a767-69f5d093196a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenkeule mit Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey leg with skin (raw)",
@@ -9071,7 +10201,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4f47d867-e0e7-4a55-b177-cd987d07fcfc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenkeule mit Haut (roh)" }
+    }
   },
   {
     "name": "Turkey leg without skin (cooked)",
@@ -9087,7 +10219,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c94be5a7-bece-47a8-b5b5-f815bd4b7239",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenkeule ohne Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey leg without skin (raw)",
@@ -9103,7 +10237,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4e91714f-9240-4679-98b6-94070c411d26",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenkeule ohne Haut (roh)" }
+    }
   },
   {
     "name": "Turkey wing with skin (cooked)",
@@ -9119,7 +10255,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b32cda03-c03b-4dd3-a25a-219725c43689",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenflügel mit Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey wing with skin (raw)",
@@ -9135,7 +10273,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2414ce9d-01c5-47aa-828b-acd2010569d9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenflügel mit Haut (roh)" }
+    }
   },
   {
     "name": "Turkey wing without skin (cooked)",
@@ -9151,7 +10291,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "460aa08f-feb9-48f1-946a-542e4bf9c0d4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenflügel ohne Haut (gekocht)" }
+    }
   },
   {
     "name": "Turkey wing without skin (raw)",
@@ -9167,7 +10309,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "12064604-e7a6-499d-ac10-0aeec64d315b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Putenflügel ohne Haut (roh)" }
+    }
   },
   {
     "name": "Basil",
@@ -9183,7 +10327,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b6fb3ad2-dc77-4d76-a8f0-847448f51a4c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Basilikum" }
+    }
   },
   {
     "name": "Cilantro",
@@ -9199,7 +10345,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8b3815a8-1624-45fa-9129-14e8db327c34",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Koriander" }
+    }
   },
   {
     "name": "Dill",
@@ -9215,7 +10363,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "24bdfa6f-3ab3-46d4-9a57-f78a85128fa3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Dill" }
+    }
   },
   {
     "name": "Mint",
@@ -9231,7 +10381,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4c5ee22f-ad00-4d4f-94f7-5fe2bdd30903",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Minze", "countName": "Blatt" }
+    }
   },
   {
     "name": "Parsley",
@@ -9247,7 +10399,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b9cbfdbd-8ccd-455f-83cf-41d92a024d56",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Petersilie" }
+    }
   },
   {
     "name": "Peppermint",
@@ -9263,7 +10417,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2aac2f2a-782b-4fb9-ae4a-297a88456a68",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pfefferminze" }
+    }
   },
   {
     "name": "Rosemary",
@@ -9279,7 +10435,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3ce0129b-29b6-428f-b0b3-e8dec0172842",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rosmarin" }
+    }
   },
   {
     "name": "Thyme",
@@ -9295,7 +10453,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5d0f163b-d523-49fb-9b4f-f5c2b015c48c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Thymian" }
+    }
   },
   {
     "name": "Arugula",
@@ -9311,7 +10471,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4875432b-e38e-4c04-b80d-ac3d9eaa9b9b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rucola", "countName": "Blatt" }
+    }
   },
   {
     "name": "Beet greens",
@@ -9327,7 +10489,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "48d873ef-330e-4434-929e-083bc963556d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rote-Bete-Blätter", "countName": "Blatt" }
+    }
   },
   {
     "name": "Bok choy",
@@ -9343,7 +10507,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "86346322-330c-496a-aaa2-c402e454dac2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pak Choi" }
+    }
   },
   {
     "name": "Chives",
@@ -9359,7 +10525,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ad8b9d84-a04c-4fc4-be25-2bb5a1e6cb70",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schnittlauch" }
+    }
   },
   {
     "name": "Collard greens",
@@ -9375,7 +10543,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "237d07a6-48a4-4877-98b8-6490d8c5eb43",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kohlgemüse" }
+    }
   },
   {
     "name": "Kale",
@@ -9391,7 +10561,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ea7a6534-fd23-4e47-968c-50c28ddd6efd",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grünkohl" }
+    }
   },
   {
     "name": "Mustard greens",
@@ -9407,7 +10579,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1d85d756-214a-4961-b117-4b3ecf604ccd",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Senfgrün" }
+    }
   },
   {
     "name": "Seaweed",
@@ -9423,7 +10597,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "584e2aef-a888-4877-92e9-065c46c695bc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Algen" }
+    }
   },
   {
     "name": "Spinach",
@@ -9439,7 +10615,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d545a2a0-c827-4851-9d52-7f4994dfaf7a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Spinat", "countName": "Blatt" }
+    }
   },
   {
     "name": "Swiss chard",
@@ -9455,7 +10633,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ac80091f-075c-4aae-9ad8-129e0bd64e8f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mangold" }
+    }
   },
   {
     "name": "Turnip greens",
@@ -9471,7 +10651,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0467b0a2-47fc-4894-a7be-7b5843edfebc",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rübenblätter" }
+    }
   },
   {
     "name": "Watercress",
@@ -9487,7 +10669,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "109446c9-0222-4fd3-ad40-16e110e399d9",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brunnenkresse", "countName": "Zweig" }
+    }
   },
   {
     "name": "Boston lettuce",
@@ -9503,7 +10687,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cf022406-7fef-4dd5-835e-f71d84c0211f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kopfsalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Butter lettuce",
@@ -9519,7 +10705,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a802bf14-f07a-4214-a31c-0dea26efd1ea",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Buttersalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Green leaf lettuce",
@@ -9535,7 +10723,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b4b91c81-f845-48d9-8285-ee5218f4596c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grüner Blattsalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Iceberg lettuce",
@@ -9551,7 +10741,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bf50b366-b736-4426-8bb8-868acdccb2ec",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eisbergsalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Red leaf lettuce",
@@ -9567,7 +10759,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f2694dbe-0776-4ac7-8055-bab7e85aed00",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Roter Blattsalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Romaine lettuce",
@@ -9583,7 +10777,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "09adbe25-693e-4318-ab05-3c00ea8384d2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Romanasalat", "countName": "Kopf" }
+    }
   },
   {
     "name": "Green peas",
@@ -9599,7 +10795,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "47086e7a-dc56-4dfd-a207-a35124722249",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grüne Erbsen" }
+    }
   },
   {
     "name": "Snow pea",
@@ -9615,7 +10813,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1f90da76-a873-4299-9460-9a1edc9ad351",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zuckerschoten" }
+    }
   },
   {
     "name": "Sugar snap peas",
@@ -9631,7 +10831,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "62e547fc-d453-430c-9dd0-ffbff4b14ff3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zuckererbsen" }
+    }
   },
   {
     "name": "Chili peppers",
@@ -9647,7 +10849,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fdeb19dc-ad46-4152-aaf1-ee9fb1ed5b44",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chilischoten", "countName": "Chilischote" }
+    }
   },
   {
     "name": "Green bell pepper",
@@ -9663,7 +10867,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e0a8a542-90fa-4765-ba86-87020747f545",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grüne Paprika", "countName": "Paprika" }
+    }
   },
   {
     "name": "Jalapeno peppers",
@@ -9679,7 +10885,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f60aac19-29d7-473f-bfc9-47a52a8d9ef1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Jalapeños", "countName": "Jalapeño" }
+    }
   },
   {
     "name": "Poblano pepper",
@@ -9695,7 +10903,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "4d89e8c2-eef3-49e4-a5ac-d9008cb1f388",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Poblano-Paprika", "countName": "Paprika" }
+    }
   },
   {
     "name": "Red bell pepper",
@@ -9711,7 +10921,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "cb132b54-43bb-4612-84b3-7f285bad7c73",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rote Paprika", "countName": "Paprika" }
+    }
   },
   {
     "name": "Serrano pepper",
@@ -9727,7 +10939,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3024d005-20de-4f39-9fa0-f94c38402ae3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Serrano-Chili", "countName": "Paprika" }
+    }
   },
   {
     "name": "Acorn squash",
@@ -9743,7 +10957,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6c17712b-4759-402e-a7af-962d8c4d87e6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eichelkürbis", "countName": "Kürbis" }
+    }
   },
   {
     "name": "Alfalfa sprouts",
@@ -9759,7 +10975,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b3490622-8f19-419b-bbba-d2b4e5d05be6",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Alfalfasprossen" }
+    }
   },
   {
     "name": "Artichokes",
@@ -9775,7 +10993,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e6c6b3d1-0e90-4f20-8ae9-eba1b6d1e29b",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Artischocken", "countName": "Artischocke" }
+    }
   },
   {
     "name": "Asparagus",
@@ -9791,7 +11011,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c36644e0-1748-409a-b59d-787594908bea",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Spargel", "countName": "Stange" }
+    }
   },
   {
     "name": "Bean sprouts",
@@ -9807,7 +11029,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "316e73a3-d43e-44ca-95f4-6084fbf68c81",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Bohnensprossen" }
+    }
   },
   {
     "name": "Beets",
@@ -9823,7 +11047,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "49d55135-2f95-48e9-866e-1f42405d34a5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rote Bete", "countName": "Rote Bete" }
+    }
   },
   {
     "name": "Broccoli",
@@ -9839,7 +11065,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dbdef410-e89c-450c-a024-9fdcb4c7a0c4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Brokkoli", "countName": "Bund" }
+    }
   },
   {
     "name": "Broccoli rabe",
@@ -9855,7 +11083,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e289e32d-4f41-41db-85c0-91866c57912e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Stängelkohl", "countName": "Stängel" }
+    }
   },
   {
     "name": "Brussels sprouts",
@@ -9871,7 +11101,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "44c0e99a-3df3-4f78-b5e5-f928d0760c3f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rosenkohl", "countName": "Sprosse" }
+    }
   },
   {
     "name": "Butternut squash",
@@ -9887,7 +11119,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2e52a74a-c1be-4a76-b828-912489d6bd08",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Butternusskürbis", "countName": "Kürbis" }
+    }
   },
   {
     "name": "Capers",
@@ -9903,7 +11137,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0ef1c51d-3740-4172-b6d9-c4c0151913a1",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kapern" }
+    }
   },
   {
     "name": "Carrots",
@@ -9919,7 +11155,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "62bb7a40-c97a-4d51-9531-16cc16e56437",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Karotten", "countName": "Karotte" }
+    }
   },
   {
     "name": "Cassava",
@@ -9935,7 +11173,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "bc9200e0-ecb1-4862-98b6-744af4081915",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Maniok", "countName": "Wurzel" }
+    }
   },
   {
     "name": "Cauliflower",
@@ -9951,7 +11191,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "dc995900-85a0-4f2f-aa99-39799084df24",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Blumenkohl", "countName": "Kopf" }
+    }
   },
   {
     "name": "Celery",
@@ -9967,7 +11209,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e90442c7-250b-47cd-8ec5-627ed2997a7e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sellerie", "countName": "Stange" }
+    }
   },
   {
     "name": "Cherry tomatoes",
@@ -9983,7 +11227,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ae617350-4000-4a2c-aa9a-3f266164569e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kirschtomaten", "countName": "Tomate" }
+    }
   },
   {
     "name": "Chile peppers",
@@ -9999,7 +11245,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "7c7b0462-afca-4e31-b9f7-574b9cde1579",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chili-Schoten" }
+    }
   },
   {
     "name": "Corn",
@@ -10015,7 +11263,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "58916da1-e86f-47a4-8ea3-a73263f9f142",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Mais", "countName": "Kolben" }
+    }
   },
   {
     "name": "Cucumber",
@@ -10031,7 +11281,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "77cc2def-af96-4172-a3b8-5c5982d8b893",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gurke", "countName": "Gurke" }
+    }
   },
   {
     "name": "Eggplant",
@@ -10047,7 +11299,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "baa311d8-668c-4a1a-b7bd-f204b0182d1d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Aubergine", "countName": "Aubergine" }
+    }
   },
   {
     "name": "Endive",
@@ -10063,7 +11317,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "644e26ca-d120-4843-9745-c21b3cace78d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Endivie", "countName": "Kopf" }
+    }
   },
   {
     "name": "Escarole",
@@ -10079,7 +11335,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "971575c8-aa12-4d99-9d51-459f11c7be98",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Eskariol", "countName": "Kopf" }
+    }
   },
   {
     "name": "Fennel",
@@ -10095,7 +11353,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "012d0ad8-baef-434c-994e-1d1bfb3f455c",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Fenchel", "countName": "Knolle" }
+    }
   },
   {
     "name": "Garlic",
@@ -10111,7 +11371,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "72c25b32-590a-4eea-9517-7f6856c506ea",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Knoblauch", "countName": "Zehe" }
+    }
   },
   {
     "name": "Ginger",
@@ -10127,7 +11389,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8a5f0cd9-aa0e-409c-8858-0562914bf4f7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Ingwer" }
+    }
   },
   {
     "name": "Green beans",
@@ -10143,7 +11407,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "d70478f3-5323-4be1-94a2-a592a20ac602",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Grüne Bohnen", "countName": "Bohne" }
+    }
   },
   {
     "name": "Green cabbage",
@@ -10159,7 +11425,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "70d2eab2-660c-465a-9bda-f0dbae373df3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weißkohl", "countName": "Kohl" }
+    }
   },
   {
     "name": "Green onions",
@@ -10175,7 +11443,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ea8a85e7-0877-4b72-8156-3022b56fd89e",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Frühlingszwiebeln", "countName": "Zwiebel" }
+    }
   },
   {
     "name": "Heart of palm",
@@ -10191,7 +11461,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "f7ce5737-1a76-4a78-ae42-0acd6ab5fc10",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Palmherzen", "countName": "Stück" }
+    }
   },
   {
     "name": "Jicama",
@@ -10207,7 +11479,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c69f34cf-9960-4e74-934f-65bf9da356d0",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Yambohne", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Kohlrabi",
@@ -10223,7 +11497,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "500fdbc1-8d99-49bd-b77f-752a785e47e4",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kohlrabi", "countName": "Scheibe" }
+    }
   },
   {
     "name": "Leeks",
@@ -10239,7 +11515,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1eea56cc-1309-4b77-a92c-506b517c66de",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Lauch", "countName": "Lauch" }
+    }
   },
   {
     "name": "Napa cabbage",
@@ -10255,7 +11533,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0b13f015-5759-40e6-a0aa-aa8d7a2ab14a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Chinakohl", "countName": "Kohl" }
+    }
   },
   {
     "name": "Okra",
@@ -10271,7 +11551,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e73b457d-e166-4437-81f0-30ccf72e4906",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Okra", "countName": "Schote" }
+    }
   },
   {
     "name": "Onions",
@@ -10287,7 +11569,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "81e0cc24-c034-4e0d-93c6-e8c4b64b371d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zwiebeln", "countName": "Zwiebel" }
+    }
   },
   {
     "name": "Parsnips",
@@ -10303,7 +11587,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "a8957917-dafe-48b1-87b3-4818bf9bd315",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Pastinaken", "countName": "Pastinake" }
+    }
   },
   {
     "name": "Pickle",
@@ -10319,7 +11605,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c441d1de-01f3-493b-8a06-d5bedb582db8",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Gewürzgurke", "countName": "Stange" }
+    }
   },
   {
     "name": "Pimento",
@@ -10335,7 +11623,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "47328881-876b-4d38-9632-246e2a7671a5",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Piment", "countName": "Paprika" }
+    }
   },
   {
     "name": "Portabella mushrooms",
@@ -10351,7 +11641,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "57a2070d-17cc-4001-b167-ad085ce79e25",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Portobello-Pilze", "countName": "Pilz" }
+    }
   },
   {
     "name": "Pumpkin",
@@ -10367,7 +11659,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "e8342d0c-ec9a-4be1-bc05-5d10bb07ecff",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kürbis", "countName": "Kürbis" }
+    }
   },
   {
     "name": "Radicchio",
@@ -10383,7 +11677,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "0ee2e4f6-e854-416d-b2d8-0ca61cae2404",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Radicchio", "countName": "Radicchio" }
+    }
   },
   {
     "name": "Radishes",
@@ -10399,7 +11695,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3dc9b214-073a-431d-9d50-91c7575816f2",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Radieschen", "countName": "Radieschen" }
+    }
   },
   {
     "name": "Red cabbage",
@@ -10415,7 +11713,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "5ded7c71-0b59-42e8-b0d1-3b750c7fbd14",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rotkohl", "countName": "Kohl" }
+    }
   },
   {
     "name": "Red potato",
@@ -10431,7 +11731,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8d530707-8095-4b24-a42a-318556b0f641",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rote Kartoffel", "countName": "Kartoffel" }
+    }
   },
   {
     "name": "Russet potato",
@@ -10447,7 +11749,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "42066832-1491-4f32-84aa-b244da9db44d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Russet-Kartoffel", "countName": "Kartoffel" }
+    }
   },
   {
     "name": "Rutabaga",
@@ -10463,7 +11767,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "17985ede-0e3c-4d03-be8f-02fcca5209c3",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Steckrübe", "countName": "Steckrübe" }
+    }
   },
   {
     "name": "Shallots",
@@ -10479,7 +11785,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "fb2a9b7f-4719-4aca-bdff-f8cf5c121f33",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Schalotten", "countName": "Schalotte" }
+    }
   },
   {
     "name": "Shiitake mushrooms",
@@ -10495,7 +11803,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "3d4b2272-840f-49ca-8e19-46e49a55c51d",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Shiitake-Pilze", "countName": "Pilz" }
+    }
   },
   {
     "name": "Spaghetti squash",
@@ -10511,7 +11821,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b2a5e1cd-c350-4771-9faf-3c5a6413efca",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Spaghettikürbis" }
+    }
   },
   {
     "name": "Summer squash",
@@ -10527,7 +11839,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "6d920ced-2349-4ca6-a829-e9165c24d95f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Sommerkürbis", "countName": "Kürbis" }
+    }
   },
   {
     "name": "Sweet potato",
@@ -10543,7 +11857,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "79f53176-9a10-4116-b05f-ecefe04c435a",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Süßkartoffel", "countName": "Süßkartoffel" }
+    }
   },
   {
     "name": "Taro",
@@ -10559,7 +11875,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b8437dfc-b381-4841-901c-37462bf20052",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wasserbrotwurzel" }
+    }
   },
   {
     "name": "Tomatillo",
@@ -10575,7 +11893,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "23b2064b-8c22-4daf-a48a-af8ec628c39f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "grüne Tomate", "countName": "Tomatillo" }
+    }
   },
   {
     "name": "Tomatoes",
@@ -10591,7 +11911,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "1855d3f7-9f8a-4c28-ab96-204b01c5b501",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Tomaten", "countName": "Tomate" }
+    }
   },
   {
     "name": "Turnips",
@@ -10607,7 +11929,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "aa860e50-b946-41ea-8c60-dc1632dd7230",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Rüben", "countName": "Rübe" }
+    }
   },
   {
     "name": "Wasabi",
@@ -10623,7 +11947,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "c2a4bc44-f652-4b7c-ba08-c01b1e068abe",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Wasabi", "countName": "Wurzel" }
+    }
   },
   {
     "name": "White mushrooms",
@@ -10639,7 +11965,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "25da8662-44a8-4115-90f8-b354a38c5b5f",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Weiße Champignons", "countName": "Pilz" }
+    }
   },
   {
     "name": "White potato",
@@ -10655,7 +11983,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "b382915a-207a-4cdc-a479-2f475be707aa",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Kartoffel", "countName": "Kartoffel" }
+    }
   },
   {
     "name": "Yams",
@@ -10671,7 +12001,9 @@
     "foodToProfile": null,
     "type": "food",
     "id": "2262c8bf-b586-48fb-9630-455e2dadacf7",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Yamswurzel", "countName": "Yamswurzel" }
+    }
   },
   {
     "name": "Zucchini",
@@ -10687,6 +12019,8 @@
     "foodToProfile": null,
     "type": "food",
     "id": "8550c507-7ccf-4fe0-b095-26a34762e343",
-    "locale": {}
+    "locale": {
+      "de": { "name": "Zucchini", "countName": "Zucchini }
+    }
   }
 ]
