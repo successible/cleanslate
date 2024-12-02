@@ -4,7 +4,7 @@ import { compareVersions } from 'compare-versions'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import { debounce } from 'lodash-es'
-import UAParser from 'ua-parser-js'
+import { UAParser } from 'ua-parser-js';
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
 import { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
