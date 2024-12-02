@@ -50,7 +50,7 @@
     "sass": "1.81.0",
     "traverse": "0.6.10",
     "typescript": "5.7.2",
-    "ua-parser-js": "1.0.39",
+    "ua-parser-js": "2.0.0",
     "uuid": "11.0.3",
     "workbox-cli": "7.3.0"
   },
