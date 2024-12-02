@@ -37,7 +37,7 @@ jobs:
           --health-retries 5
 
       graphql-engine:
-        image: hasura/graphql-engine:v2.44.0
+        image: hasura/graphql-engine:v2.45.0
         ports:
           - "8080:8080"
         env:
