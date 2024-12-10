@@ -1,9 +1,8 @@
 import React from 'react'
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import { documentation } from '../settings/Settings'
 
 export const InformationModal: React.FC<{
-  Information: EmotionJSX.Element | string | null
+  Information: React.ReactNode | string | null
 }> = ({ Information }) => {
   return (
     <div css={documentation} className={`fc`}>

@@ -43,7 +43,8 @@ export const App = () => {
   } = useData()
 
   const user = useUser()
-  const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), {variables: createDateRange(profile) })
+  // @ts-ignore: Type instantiation is excessively deep and possibly infinite.
+  const { data, loading } = useSubscription<Data>(gql(stringifyQuery(SUBSCRIBE_TO_DATA)), { variables: createDateRange(profile) })
 
   useEffect(() => {
     if (!loading && data && isLoadedUser(user) && getLoginStatus()) {
