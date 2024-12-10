@@ -1,6 +1,5 @@
 import React from 'react'
 import { debounce } from 'lodash-es'
-import { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import { Type } from '../../../store/data/types'
 import { splitIntoPages } from '../../paginator/helpers/splitIntoPages'
 import { Paginator } from '../../paginator/Paginator'
@@ -19,7 +18,7 @@ type props = {
   deleteItem: null | ((id: string) => void)
   purpose: PaginatedListPurpose
   forcedNumberOfItems?: number
-  renderItem?: (item: Item) => EmotionJSX.Element
+  renderItem?: (item: Item) => React.ReactNode
 }
 
 export const List: React.FC<props> = ({

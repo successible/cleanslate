@@ -1,4 +1,3 @@
-import type { EmotionJSX } from '@emotion/react/types/jsx-namespace'
 import type { CommonItem } from '../../components/item/types'
 import type { User } from '../../helpers/getUser'
 import type { StoreonModule } from '../../storeon'
@@ -24,7 +23,7 @@ export type NavbarState = {
   foodModalVisibility: boolean
   foodToUpdate: string | null
   helpModalVisibility: boolean
-  Information: EmotionJSX.Element | string | null
+  Information: React.ReactNode | string | null
   informationModalVisibility: boolean
   itemModalVisibility: boolean
   itemToUpdate: CommonItem | undefined
@@ -78,7 +77,7 @@ export type NavbarEvents = {
   openFoodFormModal: string | null
   openFoodModal: undefined
   openHelpModal: undefined
-  openInformationModal: EmotionJSX.Element | string | null
+  openInformationModal: React.ReactNode | string | null
   openItemModal: CommonItem
   openMenu: undefined
   openModal: undefined
