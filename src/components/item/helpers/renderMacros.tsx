@@ -6,7 +6,7 @@ import { CommonItem } from '../types'
 export const renderMacros = (
   item: CommonItem,
   profile: Profile
-): JSX.Element => {
+): React.ReactNode => {
   if (item.type === 'log' || item.type === 'ingredient') {
     const log = new Log()
     log.logToFood = item.food

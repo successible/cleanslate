@@ -1,3 +1,4 @@
+import { JSX } from '@emotion/react/jsx-runtime'
 import { isMobile } from '../../helpers/isMobile'
 import { sidebarPresent } from '../modal/helpers/sidebarPresent'
 

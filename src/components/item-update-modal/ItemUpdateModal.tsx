@@ -41,7 +41,7 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
     amount ? String(round(amount, 2)) : ''
   )
   // Create the local refs
-  const amountRef = React.useRef<HTMLInputElement>(null)
+  const amountRef = React.useRef<HTMLInputElement | null>(null)
   const submitReady = Boolean(amount && unit)
 
   const [calories, setCalories] = useState(null as number | null)

@@ -8,7 +8,7 @@ type props = {
   placeholder?: string
   label?: string
   className?: string
-  inputRef?: React.RefObject<HTMLInputElement>
+  inputRef?: React.RefObject<HTMLInputElement | null>
 }
 export const FractionInput: React.FC<props> = ({
   className,

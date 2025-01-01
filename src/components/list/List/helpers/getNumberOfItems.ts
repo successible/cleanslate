@@ -1,7 +1,7 @@
 /** Adjust the number of items on each page by the height of the webpage */
 export const getNumberOfItems = (
-  containerRef: React.RefObject<HTMLDivElement>,
-  firstItem: React.RefObject<HTMLDivElement>
+  containerRef: React.RefObject<HTMLDivElement | null>,
+  firstItem: React.RefObject<HTMLDivElement | null>
 ) => {
   // Get the height of the list and divide it by the height of item, to get the maximum number
   // of items that can fit on a page. For example, an iPad Pro can take about 15 items,

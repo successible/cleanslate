@@ -3,7 +3,7 @@ import React from 'react'
 import { colors, Colors } from '../../theme'
 
 export const Explanation: React.FC<{
-  children: React.ReactChild
+  children: React.ReactNode
   color: Colors
   styles?: SerializedStyles
   className?: string
