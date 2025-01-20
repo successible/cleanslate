@@ -70,9 +70,11 @@ export const MacroDisplay: React.FC<props> = ({showTitles, calories, protein, de
                     . Then, read the third and fourth sections.
                     <br />
                     <br />
-                    If you would like to see a reference table of all basic
+                    If you would like to see a table of all basic
                     foods by caloric and protein density, navigate to{' '}
-                    <a href="/foods" target="_blank" rel="noreferrer">
+                    <a href="#" rel="noreferrer" onClick={() => {
+                        dispatch('openDensityModal')
+                    }}>
                       here
                     </a>
                     .
