@@ -33,7 +33,7 @@ jobs:
         run: echo "NEXT_PUBLIC_VERSION=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - name: Build the client and push it to the GitHub Container Registry
-        uses: docker/build-push-action@v6.12.0
+        uses: docker/build-push-action@v6.13.0
         with:
           context: .
           file: Dockerfile
@@ -43,7 +43,7 @@ jobs:
           build-args: NEXT_PUBLIC_VERSION=${{ steps.variables.outputs.NEXT_PUBLIC_VERSION }}
 
       - name: Build the authentication server and push it to the GitHub Container Registry
-        uses: docker/build-push-action@v6.12.0
+        uses: docker/build-push-action@v6.13.0
         with:
           context: .
           file: Dockerfile.server
