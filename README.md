@@ -46,7 +46,13 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate. Also, if you are using a port that differs `nginx` or `caddy` (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in. If desired, you can also change the `POSTGRES_PORT` from `5432` as well.
+2a.  Create a `.env` file in the `cleanslate` folder. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain. 
+
+2b. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate. 
+
+2c. If you are using a port that differs on your `nginx` or `caddy` configuration file (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in. 
+
+2d. If desired, you can also change the `POSTGRES_PORT` from `5432` as well.
 
 ```bash
 AUTHENTICATION_SERVER_PORT=3001
@@ -183,9 +189,7 @@ http {
 
 6.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy.
-
-> Note: There is a ten-minute lag between each new release and the images being available. That is for two reasons. One, it takes about that long for the [GitHub Action building the image](https://github.com/successible/cleanslate/actions/workflows/tag.yml) to finish, on average. Two, the trigger for that action is the tag itself.
+7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available.
 
 ## How can I make an API request to Clean Slate?
 
