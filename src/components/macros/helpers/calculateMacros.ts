@@ -26,7 +26,7 @@ export const calculateCaloriesPerTbsp = (food: Food) => {
   return null
 }
 
-export const calculatePerBarcode = (
+export const calculatePerMacroPerBarcode = (
   metric: Macro,
   amount: number,
   unit: Unit,
@@ -204,7 +204,12 @@ export const calculatePerMacroPerRecipe = (
     if (barcode) {
       return (
         acc +
-        calculatePerBarcode(metric, ingredient.amount, ingredient.unit, barcode)
+        calculatePerMacroPerBarcode(
+          metric,
+          ingredient.amount,
+          ingredient.unit,
+          barcode
+        )
       )
     }
     if (food) {
@@ -261,7 +266,7 @@ export const calculatePerMacroInLog = (metric: Macro, logs: Log[]) => {
     const recipe = log.logToRecipe
 
     if (barcode) {
-      return total + calculatePerBarcode(metric, amount, unit, barcode)
+      return total + calculatePerMacroPerBarcode(metric, amount, unit, barcode)
     }
     if (food) {
       return total + calculatePerMacroPerFood(amount, unit, food, metric)

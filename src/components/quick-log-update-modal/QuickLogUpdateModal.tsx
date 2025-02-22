@@ -47,7 +47,7 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
         )
       }}
     >
-      <label>Name</label>
+      <label htmlFor="name">Name</label>
       <input
         autoCapitalize={'off'}
         autoComplete={'off'}
@@ -61,7 +61,7 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
         type="string"
         value={name === 'Quick Add' ? '' : name}
       />
-      <label>Calories</label>
+      <label htmlFor="calories">Calories</label>
       <input
         autoCapitalize={'off'}
         autoComplete={'off'}
@@ -77,7 +77,7 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
         type="number"
         value={calories || ''}
       />
-      <label>Protein</label>
+      <label htmlFor="protein">Protein</label>
       <input
         autoCapitalize={'off'}
         autoComplete={'off'}

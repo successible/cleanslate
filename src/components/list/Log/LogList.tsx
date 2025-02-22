@@ -38,8 +38,10 @@ export const LogList: React.FC<props> = (props) => {
     const meal = m as Meal
     const status = groupedLogs[meal].reduce((acc, log) => {
       if (log.consumed) {
+        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = true
       } else {
+        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = false
       }
       return acc

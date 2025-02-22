@@ -87,8 +87,10 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
                   />
                 </div>
                 <div>
-                  <label className="opaque">Update</label>
-                  <button type="submit" className="purple bold">
+                  <label htmlFor="Update" className="opaque">
+                    Update
+                  </label>
+                  <button id="Update" type="submit" className="purple bold">
                     Update
                   </button>
                 </div>

@@ -67,6 +67,7 @@ export const Menu: React.FC = () => {
         <div>Create</div>
 
         <button
+          type="button"
           id="openFoodModal"
           ref={buttonToFocus}
           onClick={() => {
@@ -84,6 +85,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="openRecipeModal"
           onClick={() => {
             dispatch('openRecipeModal')
@@ -103,6 +105,7 @@ export const Menu: React.FC = () => {
       <div css={section} className={'w100'}>
         <div>Learn</div>
         <button
+          type="button"
           onClick={() => {
             window.open('https://cleanslate.sh/curriculum')
           }}
@@ -117,6 +120,7 @@ export const Menu: React.FC = () => {
           <div className="ml15">Skills</div>
         </button>
         <button
+          type="button"
           onClick={() => {
             dispatch('openDensityModal')
           }}
@@ -136,6 +140,7 @@ export const Menu: React.FC = () => {
         <div>Other</div>
 
         <button
+          type="button"
           id="openSettingsModal"
           onClick={() => {
             dispatch('openSettingsModal')
@@ -152,6 +157,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="openInformationModal"
           onClick={() => {
             dispatch(
@@ -184,6 +190,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="logout"
           onClick={() => {
             logout()

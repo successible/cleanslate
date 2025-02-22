@@ -10,6 +10,7 @@ export const DeleteAccount: React.FC<{ profile: Profile }> = ({ profile }) => (
       Danger zone
     </div>
     <button
+      type="button"
       onClick={async () => {
         await deleteProfile(profile)
       }}

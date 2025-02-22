@@ -51,7 +51,7 @@ export const Tabs: React.FC<props> = ({
               updateSelection(tabs[tab])
             }}
             type="button"
-            key={index}
+            key={tab}
             css={tabStyles}
             className={`tab ${
               tabs[tab].title === selection?.title && tab !== null

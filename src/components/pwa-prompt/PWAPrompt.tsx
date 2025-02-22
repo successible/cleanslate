@@ -66,6 +66,7 @@ export const PWAPrompt: React.FC<props> = ({ profile }) => {
       </div>
       <div>
         <button
+          type="button"
           className="purple bold mt10"
           onClick={() => {
             const variables = {

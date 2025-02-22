@@ -36,6 +36,7 @@ export const FirebaseLoginButtons = () => {
         <div className="frc wrap">
           {process.env.NEXT_PUBLIC_LOGIN_WITH_GOOGLE === 'true' && (
             <button
+              type="button"
               className="black m5 ml5 mr5"
               css={css`
                 background-color: #4285f4;
@@ -60,6 +61,7 @@ export const FirebaseLoginButtons = () => {
           )}
           {process.env.NEXT_PUBLIC_LOGIN_WITH_APPLE === 'true' && (
             <button
+              type="button"
               css={css`
                 width: 210px;
               `}
@@ -81,6 +83,7 @@ export const FirebaseLoginButtons = () => {
           )}
           {process.env.NEXT_PUBLIC_LOGIN_WITH_FACEBOOK === 'true' && (
             <button
+              type="button"
               css={css`
                 width: 210px;
               `}
@@ -100,6 +103,7 @@ export const FirebaseLoginButtons = () => {
           )}
           {process.env.NEXT_PUBLIC_LOGIN_WITH_GITHUB === 'true' && (
             <button
+              type="button"
               css={css`
                 width: 210px;
               `}

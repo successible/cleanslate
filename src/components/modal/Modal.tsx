@@ -155,6 +155,7 @@ export const Modal: React.FC<props> = (props) => {
       }`}
     >
       <div
+        // biome-ignore lint/a11y/useSemanticElements: We use role instead here.
         role="dialog"
         ref={modalRef}
         css={dialogStyles}
@@ -187,6 +188,9 @@ export const Modal: React.FC<props> = (props) => {
       {/* This works because clicks do not propagate to the element below */}
       {/* The height is dynamically set with JavaScript depending on the height of the modal */}
       <div
+        onKeyDown={() => {
+          close()
+        }}
         onClick={() => {
           close()
         }}

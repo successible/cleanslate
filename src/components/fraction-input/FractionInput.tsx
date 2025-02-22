@@ -25,7 +25,7 @@ export const FractionInput: React.FC<props> = ({
 
   return (
     <div className={`${className} fr w100`}>
-      {label && <label>{label}</label>}
+      {label && <label htmlFor="FractionInputInput">{label}</label>}
       <input
         id="FractionInputInput"
         onChange={(event) => {

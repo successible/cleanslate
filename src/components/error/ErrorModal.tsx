@@ -11,7 +11,7 @@ import { colors } from '../../theme'
 import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
 
-export const Error = () => {
+export const ErrorModal = () => {
   const {
     navbar,
   }: {
@@ -58,6 +58,7 @@ export const Error = () => {
           {/* Generic error buttons */}
           <div className="fr">
             <button
+              type="button"
               onClick={() => {
                 if (isBrowser()) {
                   clearCache()
@@ -70,6 +71,7 @@ export const Error = () => {
               Refresh the app
             </button>
             <button
+              type="button"
               onClick={() => {
                 if (isBrowser()) {
                   logout()

@@ -178,6 +178,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
               <div>
                 <strong>Tip:</strong> To log your food even faster, check out{' '}
                 <button
+                  type="button"
                   className="empty inline"
                   onClick={() => dispatch('openHelpModal')}
                 >
@@ -195,6 +196,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
             <div>
               <strong>Tip: </strong> With{' '}
               <button
+                type="button"
                 className="empty inline mr5"
                 onClick={() => dispatch('openQuickAddModal')}
               >

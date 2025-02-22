@@ -87,6 +87,9 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
             <div
               id="MetaItemName"
               onClick={() => isCustomLog && spawnItemEditModal(item, dispatch)}
+              onKeyDown={() =>
+                isCustomLog && spawnItemEditModal(item, dispatch)
+              }
               className={['food', 'recipe'].includes(type) ? 'fcs' : ''}
               css={[
                 nameStyling,

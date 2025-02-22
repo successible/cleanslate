@@ -42,6 +42,41 @@ export const MacroDisplay: React.FC<props> = ({
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
   const [caloricDensity, proteinDensity, combinedDensity] = densities
 
+  const openModal = () => {
+    dispatch(
+      'openInformationModal',
+      <div>
+        <strong>
+          {caloricDensity}/{proteinDensity}
+        </strong>{' '}
+        stands for caloric density ({caloricDensity}) and protein density (
+        {proteinDensity}). To learn more about them, first navigate to{' '}
+        <a
+          href="https://cleanslate.sh/weight-loss"
+          target="_blank"
+          rel="noreferrer"
+        >
+          here
+        </a>
+        . Then, read the third and fourth sections.
+        <br />
+        <br />
+        If you would like to see a table of all basic foods by caloric and
+        protein density, navigate to{' '}
+        <button
+          type="button"
+          rel="noreferrer"
+          onClick={() => {
+            dispatch('openDensityModal')
+          }}
+        >
+          here
+        </button>
+        .
+      </div>
+    )
+  }
+
   return (
     <div id="macros" css={macros}>
       <div className="fr">
@@ -61,43 +96,7 @@ export const MacroDisplay: React.FC<props> = ({
           <span>{round(protein, 0)}</span>
         </div>
         {densities && profile.showDensities && (
-          <div
-            onClick={() =>
-              dispatch(
-                'openInformationModal',
-                <div>
-                  <strong>
-                    {caloricDensity}/{proteinDensity}
-                  </strong>{' '}
-                  stands for caloric density ({caloricDensity}) and protein
-                  density ({proteinDensity}). To learn more about them, first
-                  navigate to{' '}
-                  <a
-                    href="https://cleanslate.sh/weight-loss"
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    here
-                  </a>
-                  . Then, read the third and fourth sections.
-                  <br />
-                  <br />
-                  If you would like to see a table of all basic foods by caloric
-                  and protein density, navigate to{' '}
-                  <a
-                    href="#"
-                    rel="noreferrer"
-                    onClick={() => {
-                      dispatch('openDensityModal')
-                    }}
-                  >
-                    here
-                  </a>
-                  .
-                </div>
-              )
-            }
-          >
+          <div onClick={() => openModal()} onKeyDown={() => openModal()}>
             <div id="MacrosDensity" className={`fr ${showTitles ? 'ml5' : ''}`}>
               <Image
                 css={css`

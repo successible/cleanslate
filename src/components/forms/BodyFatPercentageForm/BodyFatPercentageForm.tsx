@@ -42,7 +42,7 @@ export const BodyFatPercentageForm = () => {
             </Explanation>
           )}
           <div className="fc">
-            <label>
+            <label htmlFor="info">
               Sex
               <span className="tag info">Assigned at birth</span>
             </label>

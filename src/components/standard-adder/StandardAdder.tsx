@@ -144,7 +144,7 @@ export const StandardAdder: React.FC<props> = ({
                 setSearchResults([])
                 setSearchText('')
               }}
-              key={result.name + i}
+              key={JSON.stringify(result)}
             />
           )
         })}
@@ -170,6 +170,7 @@ export const StandardAdder: React.FC<props> = ({
           {options.map((option) => {
             return (
               <button
+                type="button"
                 className="fr w100"
                 css={css`
                   color: ${colors.text};

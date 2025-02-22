@@ -20,7 +20,7 @@ export const TokenLoginButtons = () => {
         width: 90%;
       `}
     >
-      <label>Token</label>
+      <label htmlFor="token">Token</label>
       <input
         id="token"
         value={token}

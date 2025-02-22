@@ -31,18 +31,19 @@ export const Select = <X extends string>(props: props<X>) => {
   `
 
   const active = css`
-    background-color: ${colors.blue} !important;
+    background-color: ${colors.darkblue} !important;
     &:hover,
     &:focus {
-      background-color: ${colors.darkblue} !important;
+      background-color: ${colors.verydarkblue} !important;
     }
   `
 
   return (
     <div css={buttons} ref={optionInput} className={'frc w100 wrap'}>
       {optionDictionary.map((optionSet, index) => {
+        console.log(optionSet)
         return (
-          <div key={index} className="w100 frc">
+          <div key={JSON.stringify(optionSet)} className="w100 frc">
             {(Object.keys(optionSet) as X[]).map((option) => (
               <button
                 type="button"

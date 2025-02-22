@@ -13,6 +13,7 @@ import type { CommonItem } from '../item/types'
 import { MacroDisplay } from '../macros/MacroDisplay'
 import { calculateFoodOrRecipeDensities } from '../macros/helpers/calculateDensities'
 import {
+  calculatePerMacroPerBarcode,
   calculatePerMacroPerFood,
   calculatePerMacroPerRecipe,
 } from '../macros/helpers/calculateMacros'
@@ -61,8 +62,23 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
   const amountAsNumber = prep(localAmount)
 
   useEffect(() => {
-    if (submitReady && amountAsNumber && localUnit && item?.food) {
-      console.log('FOO')
+    if (submitReady && amountAsNumber && localUnit && barcode) {
+      console.log('BAR')
+      const calories = calculatePerMacroPerBarcode(
+        'CALORIE',
+        amountAsNumber,
+        localUnit,
+        barcode
+      )
+      const protein = calculatePerMacroPerBarcode(
+        'PROTEIN',
+        amountAsNumber,
+        localUnit,
+        barcode
+      )
+      setCalories(calories)
+      setProtein(protein)
+    } else if (submitReady && amountAsNumber && localUnit && item?.food) {
       const calories = calculatePerMacroPerFood(
         amountAsNumber,
         localUnit,
