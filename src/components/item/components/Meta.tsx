@@ -113,6 +113,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
 
             {(type === 'ingredient' || type === 'log') && (
               <div
+                id="amount-and-unit"
                 className="fr"
                 css={css`
                   font-size: 11px !important;

@@ -6,6 +6,9 @@ import {
 import type { CommonItem } from '../types'
 
 export const getPrettyCount = (item: CommonItem) => {
+  if (item.barcode) {
+    return defaultCount
+  }
   if (item.food) {
     return item.food.countName || defaultCount
   }

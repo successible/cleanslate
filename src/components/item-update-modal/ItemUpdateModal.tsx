@@ -63,7 +63,6 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
 
   useEffect(() => {
     if (submitReady && amountAsNumber && localUnit && barcode) {
-      console.log('BAR')
       const calories = calculatePerMacroPerBarcode(
         'CALORIE',
         amountAsNumber,
@@ -76,8 +75,15 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
         localUnit,
         barcode
       )
+      const densities = calculateFoodOrRecipeDensities(
+        amountAsNumber,
+        barcode,
+        calories,
+        protein
+      )
       setCalories(calories)
       setProtein(protein)
+      setDensities(densities)
     } else if (submitReady && amountAsNumber && localUnit && item?.food) {
       const calories = calculatePerMacroPerFood(
         amountAsNumber,
