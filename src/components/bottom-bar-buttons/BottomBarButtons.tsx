@@ -1,16 +1,16 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 import Barcode from '../../assets/common/barcode.svg'
 import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
 import Hamburger from '../../assets/common/hamburger.svg'
 import Search from '../../assets/common/magnify.svg'
-import { Profile } from '../../models/profile'
-import { AllEvents } from '../../store/store'
-import { Dispatch } from '../../store/types'
+import type { Profile } from '../../models/profile'
+import type { AllEvents } from '../../store/store'
+import type { Dispatch } from '../../store/types'
+import { useStoreon } from '../../storeon'
 import { colors } from '../../theme'
 import { HiddenInput } from '../buttons/HiddenInput'
-import { useStoreon } from '../../storeon'
 
 type props = { profile: Profile }
 export const BottomBarButtons: React.FC<props> = ({ profile }) => {
@@ -36,7 +36,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
   `
 
   return (
-    <div id="footer" css={buttons} className={`frc w100`}>
+    <div id="footer" css={buttons} className={'frc w100'}>
       <button
         id="openMenu"
         type="button"

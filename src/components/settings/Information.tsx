@@ -1,15 +1,15 @@
 import { css } from '@emotion/react'
-import { useState } from 'react'
-import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
-import { useUser } from '../../hooks/useUser'
-import { Profile } from '../../models/profile'
-import { Explanation } from '../explanation/Explanation'
-import { subheader } from './Settings'
-import { toast } from 'react-toastify'
-import { debounce } from 'lodash-es'
 import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
+import { debounce } from 'lodash-es'
+import { useState } from 'react'
+import { toast } from 'react-toastify'
 import { getDomain } from '../../helpers/getDomain'
+import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
+import { useUser } from '../../hooks/useUser'
+import type { Profile } from '../../models/profile'
+import { Explanation } from '../explanation/Explanation'
+import { subheader } from './Settings'
 
 type props = { profile: Profile }
 
@@ -30,7 +30,7 @@ export const Information: React.FC<props> = ({ profile }) => {
 
   const info =
     userLoaded && 'token' in user
-      ? '&' + user.token
+      ? `&${user.token}`
       : userLoaded && (user.email || user.providerData[0]?.email)
 
   const itemLabelStyling = css`
@@ -39,7 +39,7 @@ export const Information: React.FC<props> = ({ profile }) => {
 
   return (
     <div className="w100 mt10">
-      <div css={subheader} className={`pbutton rounded blue nohover mt20 mb20`}>
+      <div css={subheader} className={'pbutton rounded blue nohover mt20 mb20'}>
         Profile
       </div>
       <div className="ml5">
@@ -66,7 +66,11 @@ export const Information: React.FC<props> = ({ profile }) => {
         </>
         <Explanation color="background">
           <div>
-            To learn how to make an API request, view the <a href="https://github.com/successible/cleanslate/blob/main/README.md#how-can-i-make-an-api-request-to-clean-slate">README</a> and the {' '}
+            To learn how to make an API request, view the{' '}
+            <a href="https://github.com/successible/cleanslate/blob/main/README.md#how-can-i-make-an-api-request-to-clean-slate">
+              README
+            </a>{' '}
+            and the{' '}
             <a href="https://studio.apollographql.com/graph/Clean-Slate/variant/current/home">
               GraphQL schema.
             </a>
@@ -76,12 +80,12 @@ export const Information: React.FC<props> = ({ profile }) => {
 
       <div
         css={subheader}
-        className={`pbutton rounded green nohover mt30 mb20`}
+        className={'pbutton rounded green nohover mt30 mb20'}
       >
         Preferences
       </div>
       <div className="fr ml5">
-        <label className="fr w100" htmlFor='startTime'>
+        <label className="fr w100" htmlFor="startTime">
           <input
             value={startTime}
             onChange={(e) => {
@@ -89,34 +93,43 @@ export const Information: React.FC<props> = ({ profile }) => {
             }}
             id="startTime"
             type="time"
-            className='w100'
+            className="w100"
           />
         </label>
-        <button onClick={() => {
-          const midnight = dayjs().startOf('day')
-          const [hour, minute] = startTime.split(':').map(Number)
-          const today = midnight
-            .set('hour', hour)
-            .set('minute', minute)
-           const useFrameChange =  (today.unix() <= dayjs().unix()) ? null : today.toISOString()
-           updateProfileOnCloud(
-            { id: profile.id, set: { startTime, timeToExecuteFrameChange: useFrameChange }},
-            () => {
-              if (!useFrameChange) {
-                Cookies.remove("last-refreshed")
+        <button
+          onClick={() => {
+            const midnight = dayjs().startOf('day')
+            const [hour, minute] = startTime.split(':').map(Number)
+            const today = midnight.set('hour', hour).set('minute', minute)
+            const useFrameChange =
+              today.unix() <= dayjs().unix() ? null : today.toISOString()
+            updateProfileOnCloud(
+              {
+                id: profile.id,
+                set: { startTime, timeToExecuteFrameChange: useFrameChange },
+              },
+              () => {
+                if (!useFrameChange) {
+                  Cookies.remove('last-refreshed')
+                }
+                toast.success('Settings updated!')
               }
-              toast.success("Settings updated!")
-            }
-          )
-        }} type='button' className="purple bold ml15">Save</button>
+            )
+          }}
+          type="button"
+          className="purple bold ml15"
+        >
+          Save
+        </button>
       </div>
-      <Explanation className='mt20 mb20' color='blue'>
+      <Explanation className="mt20 mb20" color="blue">
         <div>
-          <strong>Start Time:</strong> Control when day is restarted. Default is 12:00 AM to restart logs at midnight.
+          <strong>Start Time:</strong> Control when day is restarted. Default is
+          12:00 AM to restart logs at midnight.
         </div>
       </Explanation>
       <div className="fr ml5">
-        <label className="fr"  htmlFor="showCalories">
+        <label className="fr" htmlFor="showCalories">
           <span className="mr10" css={itemLabelStyling}>
             Show calories
           </span>
@@ -130,7 +143,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setShowCalories(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="showCalories"
             type="checkbox"
@@ -138,7 +151,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         </label>
       </div>
       <div className="fr ml5">
-        <label className="fr" htmlFor='countDown'>
+        <label className="fr" htmlFor="countDown">
           <span className="mr10" css={itemLabelStyling}>
             Calories {'&'} protein count down
           </span>
@@ -152,7 +165,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setCountDown(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="countDown"
             type="checkbox"
@@ -160,7 +173,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         </label>
       </div>
       <div className="fr ml5">
-        <label className="fr" htmlFor='enableMetricSystem'>
+        <label className="fr" htmlFor="enableMetricSystem">
           <span className="mr10" css={itemLabelStyling}>
             Use the metric system
           </span>
@@ -174,7 +187,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setEnableMetricSystem(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="enableMetricSystem"
             type="checkbox"
@@ -182,7 +195,7 @@ export const Information: React.FC<props> = ({ profile }) => {
         </label>
       </div>
       <div className="fr ml5">
-        <label className="fr" htmlFor='enablePlanning'>
+        <label className="fr" htmlFor="enablePlanning">
           <span className="mr10" css={itemLabelStyling}>
             Enable planning the day
           </span>
@@ -196,7 +209,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setEnablePlanning(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="enablePlanning"
             type="checkbox"
@@ -205,11 +218,11 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
 
       <div className="fr ml5">
-        <label className="fr" htmlFor='showDensities'>
+        <label className="fr" htmlFor="showDensities">
           <span className="mr10" css={itemLabelStyling}>
             Show density of each food
           </span>
-           <input
+          <input
             checked={showDensities}
             onChange={(e) => {
               const checked = e.target.checked
@@ -219,7 +232,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setShowDensities(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="showDensities"
             type="checkbox"
@@ -228,7 +241,7 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
 
       <div className="fr ml5">
-        <label className="fr" htmlFor='hidePWAPrompt'>
+        <label className="fr" htmlFor="hidePWAPrompt">
           <span className="mr10" css={itemLabelStyling}>
             Hide prompt to download app
           </span>
@@ -242,7 +255,7 @@ export const Information: React.FC<props> = ({ profile }) => {
                   setHidePWAPrompt(checked)
                 }
               )
-              toast.success("Settings updated!")
+              toast.success('Settings updated!')
             }}
             id="hidePWAPrompt"
             type="checkbox"

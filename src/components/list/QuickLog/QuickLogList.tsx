@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import React from 'react'
-import { QuickLog } from '../../../models/quickLog'
+import type React from 'react'
+import type { QuickLog } from '../../../models/quickLog'
 import { Divider } from '../../divider/Divider'
 import { sortByCreatedAt } from '../Log/helpers/sortByCreatedAt'
 import { QuickLogItem } from './QuickLogItem'

@@ -1,5 +1,5 @@
 import { Log } from '../../../models/log'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 export const convertItemToLog = (
   item: CommonItem,

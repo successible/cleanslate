@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
 import Pencil from '../../../assets/common/pencil.svg'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
 import { HiddenInput } from '../../buttons/HiddenInput'
 import { Image } from '../../image/Image'
 import { spawnInstanceEditModal } from '../helpers/spawnInstanceEditModal'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 type props = {
   item: CommonItem

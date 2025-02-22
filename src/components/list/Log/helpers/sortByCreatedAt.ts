@@ -1,7 +1,7 @@
-import { ExerciseLog } from '../../../../models/exerciseLog'
-import { Food } from '../../../../models/food'
-import { Log } from '../../../../models/log'
-import { QuickLog } from '../../../../models/quickLog'
+import type { ExerciseLog } from '../../../../models/exerciseLog'
+import type { Food } from '../../../../models/food'
+import type { Log } from '../../../../models/log'
+import type { QuickLog } from '../../../../models/quickLog'
 
 export const sortByCreatedAt = (
   items: Food[] | Log[] | QuickLog[] | ExerciseLog[]

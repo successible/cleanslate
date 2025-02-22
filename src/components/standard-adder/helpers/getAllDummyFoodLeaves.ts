@@ -1,4 +1,4 @@
-import { DummyFoods } from '../../../constants/dummyFoods/dummyFoods'
+import type { DummyFoods } from '../../../constants/dummyFoods/dummyFoods'
 
 /** Recursively go through all dummy foods, getting the foods to remove, like turkey breast with skin */
 export const getAllDummyFoodLeaves = (

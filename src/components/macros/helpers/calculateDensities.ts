@@ -1,7 +1,7 @@
 import { round } from '../../../helpers/round'
-import { Food } from '../../../models/food'
-import { Barcode } from '../../../models/log'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Barcode } from '../../../models/log'
+import type { Recipe } from '../../../models/recipe'
 import { calculatePerMacroPerRecipe } from './calculateMacros'
 import { convertToGrams } from './convertToGrams'
 
@@ -50,18 +50,19 @@ export const calculateFoodDensities = (
     return [CD, PD, calculateCombinedDensity(CD, PD)]
     // This accounts for the scenario where the protein content is 0 but calories exist
     // This is especially common for foods like oils and pure sugars
-  } else if (proteinPerGram === 0) {
+  }
+  if (proteinPerGram === 0) {
     const CD = getCaloricDensityFromPerGram(caloriesPerGram || 0)
     return [CD, 0, 0]
     // If the custom food was defined using counts AND the user also provided a count to gram
     // Then we can calculate a caloric density
-  } else if (countToGram && caloriesPerCount && proteinPerCount) {
+  }
+  if (countToGram && caloriesPerCount && proteinPerCount) {
     const CD = getCaloricDensityFromCount(countToGram, caloriesPerCount)
     const PD = getProteinDensityFromCount(caloriesPerCount, proteinPerCount)
     return [CD, PD, calculateCombinedDensity(CD, PD)]
-  } else {
-    return [-1, -1, -1]
   }
+  return [-1, -1, -1]
 }
 
 /** For a given recipe, calculate the weight of each ingredient in grams, then sum up the weight into one number */
@@ -109,9 +110,14 @@ export const calculateRecipeDensities = (
   // However, recipes math can get "weird" depending on what the user does
   // Hence, we always calculate the density from one container
   const grams = calculateGramsInRecipe(recipe, 1)
-  const caloriesPerGram = calculatePerMacroPerRecipe(recipe, "CALORIE", 1, "CONTAINER") / grams
-  const proteinPerGram = calculatePerMacroPerRecipe(recipe, "PROTEIN", 1, "CONTAINER") /grams 
-  const proteinDensity = getProteinDensityFromPerGram(caloriesPerGram, proteinPerGram)
+  const caloriesPerGram =
+    calculatePerMacroPerRecipe(recipe, 'CALORIE', 1, 'CONTAINER') / grams
+  const proteinPerGram =
+    calculatePerMacroPerRecipe(recipe, 'PROTEIN', 1, 'CONTAINER') / grams
+  const proteinDensity = getProteinDensityFromPerGram(
+    caloriesPerGram,
+    proteinPerGram
+  )
   const caloricDensity = getCaloricDensityFromPerGram(caloriesPerGram)
   return [
     caloricDensity,
@@ -140,13 +146,12 @@ export const calculateFoodOrRecipeDensities = (
       round(proteinDensity, 0),
       calculateCombinedDensity(caloricDensity, proteinDensity),
     ]
-  } else {
-    const output =
-      item.type === 'food'
-        ? calculateFoodDensities(item)
-        : item.type === 'recipe'
-          ? calculateRecipeDensities(item)
-          : null
-    return output
   }
+  const output =
+    item.type === 'food'
+      ? calculateFoodDensities(item)
+      : item.type === 'recipe'
+        ? calculateRecipeDensities(item)
+        : null
+  return output
 }

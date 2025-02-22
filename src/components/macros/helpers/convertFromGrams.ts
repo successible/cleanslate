@@ -1,5 +1,5 @@
 import { countUnits, volumeUnits, weightUnits } from '../../../constants/units'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { convertFromGramsToCount } from './convertFromGramsToCount'
 import { convertFromGramsToVolume } from './convertFromGramsToVolume'
 import { convertFromGramsToWeight } from './convertFromGramsToWeight'
@@ -17,9 +17,11 @@ export const convertFromGrams = (
 
   if (isVolume && tbspToGram) {
     return convertFromGramsToVolume(unit, grams, tbspToGram)
-  } else if (isWeight) {
+  }
+  if (isWeight) {
     return convertFromGramsToWeight(unit, grams)
-  } else if (isCount && countToGram) {
+  }
+  if (isCount && countToGram) {
     return convertFromGramsToCount(
       grams,
       unit,
@@ -27,7 +29,6 @@ export const convertFromGrams = (
       servingPerContainer
     )
     // The base case. Should never fire.
-  } else {
-    return grams
   }
+  return grams
 }

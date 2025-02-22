@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import { truncate } from 'lodash-es'
-import React from 'react'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type React from 'react'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { colors } from '../../../theme'
 import { HiddenInput } from '../../buttons/HiddenInput'
 import { TRUNCATE_LENGTH } from '../../item/helpers/getNameAndTags'
@@ -48,7 +48,7 @@ export const SearchResult: React.FC<props> = ({ index, onClick, result }) => {
       onClick={() => onClick()}
       type="button"
       key={result.id}
-      className={`normal w100`}
+      className={'normal w100'}
       id={`StandardAdderSearchResult-${index}`}
     >
       {!result.isDummy && <HiddenInput inputMode="decimal" />}
@@ -62,17 +62,17 @@ export const SearchResult: React.FC<props> = ({ index, onClick, result }) => {
           {truncate(result.name, { length: TRUNCATE_LENGTH })}
         </span>
         {result.isDummy && (
-          <div css={dummyFood} className={`pink`}>
+          <div css={dummyFood} className={'pink'}>
             Expand
           </div>
         )}
         {isCustomFood(result) && (
-          <div css={dummyFood} className={`blue`}>
+          <div css={dummyFood} className={'blue'}>
             Custom food
           </div>
         )}
         {isRecipe(result) && (
-          <div css={dummyFood} className={`green`}>
+          <div css={dummyFood} className={'green'}>
             Recipe
           </div>
         )}

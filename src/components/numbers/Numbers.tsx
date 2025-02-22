@@ -1,10 +1,10 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 import { round } from '../../helpers/round'
-import { ExerciseLog } from '../../models/exerciseLog'
-import { Log } from '../../models/log'
-import { defaultTargets, Profile } from '../../models/profile'
-import { QuickLog } from '../../models/quickLog'
+import type { ExerciseLog } from '../../models/exerciseLog'
+import type { Log } from '../../models/log'
+import { type Profile, defaultTargets } from '../../models/profile'
+import type { QuickLog } from '../../models/quickLog'
 import { colors } from '../../theme'
 import { calculateMacros } from '../macros/helpers/calculateMacros'
 
@@ -82,9 +82,9 @@ export const Numbers: React.FC<props> = (props) => {
   return (
     <div id="numbers" css={numbers}>
       <div className="fr">
-        <div id="TopBarCalories" css={number} className={`frc`}>
+        <div id="TopBarCalories" css={number} className={'frc'}>
           Calories
-          <div className={`green fcc`}>
+          <div className={'green fcc'}>
             {hideCalories ? (
               calorieFree
             ) : (
@@ -108,7 +108,7 @@ export const Numbers: React.FC<props> = (props) => {
             )}
           </div>
         </div>
-        <div id="TopBarProtein" css={number} className={`frc`}>
+        <div id="TopBarProtein" css={number} className={'frc'}>
           Protein
           <div
             className={`fcc ${

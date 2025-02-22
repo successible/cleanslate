@@ -12,6 +12,7 @@ pkill -9 -f "npm exec tsc --watch"
 pkill -9 -f "server.js"
 pkill -9 -f "tsc --watch"
 pkill -9 -f "caddy"
+pkill -9 -f "nginx"
 
 export NEXT_PUBLIC_VERSION="XXX"
 export NEXT_PUBLIC_HASURA_DOMAIN="localhost"

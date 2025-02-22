@@ -1,4 +1,4 @@
-import { WeightUnit } from '../../../../constants/units'
+import type { WeightUnit } from '../../../../constants/units'
 import { prep } from '../../../../helpers/prepareFractionalInputForSubmission'
 import { convertToImperialFromGrams } from '../../../macros/helpers/convertToImperialFromGrams'
 
@@ -9,10 +9,10 @@ export const getAdjustedWeightAmount = (
   const num = prep(countToGram)
   if (!num) {
     return countToGram
-  } else if (weightUnit === 'GRAM') {
-    return num
-  } else {
-    const imperial = convertToImperialFromGrams(weightUnit, num)
-    return imperial
   }
+  if (weightUnit === 'GRAM') {
+    return num
+  }
+  const imperial = convertToImperialFromGrams(weightUnit, num)
+  return imperial
 }

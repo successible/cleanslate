@@ -1,5 +1,5 @@
 import {
-  DummyFoods,
+  type DummyFoods,
   dummyFoods,
 } from '../../../constants/dummyFoods/dummyFoods'
 import { getAllDummyFoodLeaves } from './getAllDummyFoodLeaves'

@@ -22,7 +22,7 @@ export const LoginPanel = () => {
   `
 
   return (
-    <div css={panel} className={`w100 fcc center scroll`}>
+    <div css={panel} className={'w100 fcc center scroll'}>
       <div className="fcc">
         <h1 style={{ fontSize: '1.8rem' }} className="mt50 mb20 tcenter">
           Clean Slate ❤️

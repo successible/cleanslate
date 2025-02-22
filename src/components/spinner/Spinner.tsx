@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 
 type props = { color?: string; height?: number; width?: number }
 export const Spinner: React.FC<props> = ({ color, height, width }) => {
@@ -24,10 +24,10 @@ export const Spinner: React.FC<props> = ({ color, height, width }) => {
     }
   `
   return (
-    <div css={spinner} className={`frc w100 mt50`}>
-      <div css={style} className={`bounce1`}></div>
-      <div css={style} className={`bounce2`}></div>
-      <div css={style} className={`bounce3`}></div>
+    <div css={spinner} className={'frc w100 mt50'}>
+      <div css={style} className={'bounce1'} />
+      <div css={style} className={'bounce2'} />
+      <div css={style} className={'bounce3'} />
     </div>
   )
 }

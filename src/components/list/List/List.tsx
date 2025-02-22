@@ -1,13 +1,13 @@
-import React from 'react'
 import { debounce } from 'lodash-es'
-import { Type } from '../../../store/data/types'
-import { splitIntoPages } from '../../paginator/helpers/splitIntoPages'
+import React from 'react'
+import type { Type } from '../../../store/data/types'
 import { Paginator } from '../../paginator/Paginator'
+import { splitIntoPages } from '../../paginator/helpers/splitIntoPages'
 import { createSearcher } from '../../standard-adder/helpers/createSearcher'
 import { getSearchResults } from '../../standard-adder/helpers/getSearchResults'
 import { getItem } from './helpers/getItem'
 import { getNumberOfItems } from './helpers/getNumberOfItems'
-import { PaginatedListPurpose } from './types'
+import type { PaginatedListPurpose } from './types'
 
 export type Item = { id: string; type: Type }
 type props = {

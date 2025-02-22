@@ -1,10 +1,10 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
-import { Log, Meal } from '../../../models/log'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
-import { CommonItem, OnUpdateItem } from '../../item/types'
+import type { Log, Meal } from '../../../models/log'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import type { CommonItem, OnUpdateItem } from '../../item/types'
 import { logOrIngredientUpdateError } from '../../list/Log/LogItem'
 
 export const submitItem = (

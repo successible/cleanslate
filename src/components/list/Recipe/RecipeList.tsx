@@ -1,5 +1,5 @@
-import React from 'react'
-import { Recipe } from '../../../models/recipe'
+import type React from 'react'
+import type { Recipe } from '../../../models/recipe'
 import { List } from '../List/List'
 
 type props = {

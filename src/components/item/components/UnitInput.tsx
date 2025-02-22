@@ -1,7 +1,7 @@
 import pluralize from 'pluralize'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { makeUnitPretty } from '../helpers/makeUnitPretty'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 type props = {
   item: CommonItem

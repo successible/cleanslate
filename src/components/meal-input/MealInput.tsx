@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Meal } from '../../models/log'
+import type { Meal } from '../../models/log'
 import { colors } from '../../theme'
 import { Tabs } from '../tabs/Tabs'
 

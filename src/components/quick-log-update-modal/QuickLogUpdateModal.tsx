@@ -1,12 +1,12 @@
 import React from 'react'
 import { updateQuickLogOnCloud } from '../../helpers/quick-log/updateQuickLogOnCloud'
-import { Profile } from '../../models/profile'
-import { AllEvents } from '../../store/store'
-import { Dispatch } from '../../store/types'
-import { createDefaultItem } from '../item/helpers/createDefaultItem'
-import { CommonItem } from '../item/types'
-import { SubmitButton } from '../item-update-modal/components/SubmitButton'
+import type { Profile } from '../../models/profile'
+import type { AllEvents } from '../../store/store'
+import type { Dispatch } from '../../store/types'
 import { useStoreon } from '../../storeon'
+import { SubmitButton } from '../item-update-modal/components/SubmitButton'
+import { createDefaultItem } from '../item/helpers/createDefaultItem'
+import type { CommonItem } from '../item/types'
 
 type props = { profile: Profile; item: CommonItem | undefined }
 export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {

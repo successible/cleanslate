@@ -1,5 +1,5 @@
-import { Category } from '../../../constants/categories'
-import { Group } from '../../../constants/groups'
+import type { Category } from '../../../constants/categories'
+import type { Group } from '../../../constants/groups'
 import { capitalize } from '../../../helpers/capitalize'
 import { Food } from '../../../models/food'
 import { addCategoryToDummyFood } from './addCategoryToDummyFood'

@@ -39,7 +39,7 @@ export const Select = <X extends string>(props: props<X>) => {
   `
 
   return (
-    <div css={buttons} ref={optionInput} className={`frc w100 wrap`}>
+    <div css={buttons} ref={optionInput} className={'frc w100 wrap'}>
       {optionDictionary.map((optionSet, index) => {
         return (
           <div key={index} className="w100 frc">
@@ -51,7 +51,7 @@ export const Select = <X extends string>(props: props<X>) => {
                   onChange(option)
                 }}
                 css={currentOption === option ? active : ''}
-                className={`background bold`}
+                className={'background bold'}
                 key={option}
               >
                 {optionSet[option].toLowerCase()}

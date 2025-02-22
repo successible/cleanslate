@@ -1,9 +1,9 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 import Back from '../../../assets/common/back.svg'
-import { Key } from '../../../helpers/createShortcuts'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Key } from '../../../helpers/createShortcuts'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { Image } from '../../image/Image'
 import { Tags } from '../../item/components/Tags'
 import { getNameAndTags } from '../../item/helpers/getNameAndTags'
@@ -43,7 +43,7 @@ export const Meta: React.FC<props> = ({
   )
 
   return (
-    <div id="StandardAdderMeta" className={`w100 fr m20`}>
+    <div id="StandardAdderMeta" className={'w100 fr m20'}>
       {/* name and image */}
       <img
         id="StandardAdderMetaImage"
@@ -77,7 +77,7 @@ export const Meta: React.FC<props> = ({
             key === 'Enter' && onBack()
           }}
           css={backButton}
-          className={`background z1`}
+          className={'background z1'}
           type="button"
         >
           <Image alt="Back" height={18} width={18} src={Back} />

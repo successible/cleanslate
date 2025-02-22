@@ -1,7 +1,7 @@
 import deepmerge from 'deepmerge'
-import { RecipeFormData } from '../RecipeForm'
-import { RecipeMutationInput } from './formatDataForMutation'
-import { FormattedIngredient } from './formatIngredient'
+import type { RecipeFormData } from '../RecipeForm'
+import type { RecipeMutationInput } from './formatDataForMutation'
+import type { FormattedIngredient } from './formatIngredient'
 
 /** Add the formatted ingredients and tag in a way that can be accepted by Hasura
  *

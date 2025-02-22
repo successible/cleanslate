@@ -2,33 +2,33 @@ import { css } from '@emotion/react'
 import { curry } from 'lodash-es'
 import React, { useEffect } from 'react'
 import {
-  VolumeUnit,
+  type VolumeUnit,
+  type WeightUnit,
   volumeUnits,
-  WeightUnit,
   weightUnits,
 } from '../../../constants/units'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
-import { Food } from '../../../models/food'
-import { Ingredient } from '../../../models/ingredient'
-import { Profile } from '../../../models/profile'
-import { Recipe } from '../../../models/recipe'
-import { EditorState } from '../../../store/editor/types'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { Food } from '../../../models/food'
+import type { Ingredient } from '../../../models/ingredient'
+import type { Profile } from '../../../models/profile'
+import type { Recipe } from '../../../models/recipe'
+import type { EditorState } from '../../../store/editor/types'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import { useStoreon } from '../../../storeon'
 import { colors } from '../../../theme'
 import { Divider } from '../../divider/Divider'
 import { Explanation } from '../../explanation/Explanation'
 import { IngredientList } from '../../list/Ingredient/IngredientList'
+import { Macros } from '../../macros/Macros'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
-import { Macros } from '../../macros/Macros'
+import { UnitSelector } from '../CustomFoodForm/UnitSelector'
 import { getAdjustedVolumeAmount } from '../CustomFoodForm/helpers/getAdjustedVolumeAmount'
 import { getAdjustedWeightAmount } from '../CustomFoodForm/helpers/getAdjustedWeightAmount'
-import { UnitSelector } from '../CustomFoodForm/UnitSelector'
 import { upsertItem } from '../helpers/upsertItem'
 import { createRecipeLog } from './helpers/createRecipeLog'
 import { submitRecipe } from './helpers/submitRecipe'
-import { useStoreon } from '../../../storeon'
 
 type props = { recipe: Recipe | null; foods: Food[]; profile: Profile }
 
@@ -114,7 +114,6 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
       setCountToGram(getAdjustedWeightAmount(countToGram, weightUnit))
       updateConvertWeight(false)
     }
-
   }, [recipe])
 
   // Helpers
@@ -211,7 +210,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
             onClick={() => dispatch('openAddIngredientModal', recipe?.id)}
             type="button"
             css={addIngredientStyling}
-            className={`green mr20`}
+            className={'green mr20'}
           >
             By Search
           </button>
@@ -220,7 +219,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
             onClick={() => dispatch('openBarcodeModal')}
             type="button"
             css={addIngredientStyling}
-            className={`green`}
+            className={'green'}
           >
             By Barcode
           </button>
@@ -269,7 +268,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
             />
             <div className="fr w100 mt20">
               <input
-                id={`servings-per-container-input`}
+                id={'servings-per-container-input'}
                 value={servingPerContainer}
                 inputMode="decimal"
                 onChange={(e) => {

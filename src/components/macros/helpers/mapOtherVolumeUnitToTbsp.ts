@@ -1,4 +1,4 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
 
 /** Given the TBSP, TSP, or CUP unit, converts the amount to the same amount in TBSP */
@@ -8,13 +8,15 @@ export const mapOtherVolumeUnitToTbsp = (
 ): number => {
   if (unit === 'TBSP') {
     return amount
-  } else if (unit === 'TSP') {
-    return amount / 3
-  } else if (unit === 'CUP') {
-    return amount * 16
-  } else if (unit === 'mL') {
-    return amount * 0.067628
-  } else {
-    return handleError('The unit entered is not a volume unit!')
   }
+  if (unit === 'TSP') {
+    return amount / 3
+  }
+  if (unit === 'CUP') {
+    return amount * 16
+  }
+  if (unit === 'mL') {
+    return amount * 0.067628
+  }
+  return handleError('The unit entered is not a volume unit!')
 }

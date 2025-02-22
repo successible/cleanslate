@@ -1,7 +1,7 @@
 import { Log } from '../../../models/log'
-import { Profile } from '../../../models/profile'
+import type { Profile } from '../../../models/profile'
 import { Macros } from '../../macros/Macros'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 export const renderMacros = (
   item: CommonItem,
@@ -17,7 +17,6 @@ export const renderMacros = (
     log.barcode = item.barcode
 
     return <Macros log={log} profile={profile} showTitles={false} />
-  } else {
-    return <div>{''}</div>
   }
+  return <div>{''}</div>
 }

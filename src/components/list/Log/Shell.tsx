@@ -11,15 +11,15 @@ import Mortarboard from '../../../assets/common/mortarboard.svg'
 import CustomRecipe from '../../../assets/common/recipe.svg'
 import Sunrise from '../../../assets/common/sunrise.svg'
 import { isMobile } from '../../../helpers/isMobile'
-import { Profile } from '../../../models/profile'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { Profile } from '../../../models/profile'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import { useStoreon } from '../../../storeon'
 import { colors } from '../../../theme'
 import { md } from '../../../theme'
 import { HiddenInput } from '../../buttons/HiddenInput'
 import { Explanation } from '../../explanation/Explanation'
 import { Image } from '../../image/Image'
-import { useStoreon } from '../../../storeon'
 
 type props = {
   profile: Profile
@@ -27,9 +27,9 @@ type props = {
 export const Shell: React.FC<props> = ({ profile }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
 
-  const hour = +profile.startTime.split(":")[0] % 24;
-  const minute = profile.startTime.split(":")[1]
-  const time = (hour % 12 || 12) + ":" + minute + (hour < 12 ? " AM" : " PM")
+  const hour = +profile.startTime.split(':')[0] % 24
+  const minute = profile.startTime.split(':')[1]
+  const time = `${hour % 12 || 12}:${minute}${hour < 12 ? ' AM' : ' PM'}`
 
   const shell = css`
     margin-bottom: 50px;
@@ -72,7 +72,7 @@ export const Shell: React.FC<props> = ({ profile }) => {
   `
 
   return (
-    <div id="Shell" css={shell} className={`fcc`}>
+    <div id="Shell" css={shell} className={'fcc'}>
       <Image width={70} height={70} src={Sunrise} alt="sun" />
       <div
         css={css`
@@ -94,10 +94,9 @@ export const Shell: React.FC<props> = ({ profile }) => {
         Here are some things to do
       </div>
 
-
       {profile.showCalories && (
-        <div css={section} className={`fc`}>
-          <div css={sectionHeader} className={`fr`}>
+        <div css={section} className={'fc'}>
+          <div css={sectionHeader} className={'fr'}>
             <Image width={40} height={40} src={Calculator} alt="Calculator" />
             <div className="ml15">Set calorie {'&'} protein goals</div>
             <button
@@ -111,18 +110,18 @@ export const Shell: React.FC<props> = ({ profile }) => {
           <Explanation color="background">
             <div className="fr">
               <strong css={explanationHeader}>Remember: </strong> Logs reset
-              daily at {profile.startTime === "00:00:00" ? "midnight" : time}.
+              daily at {profile.startTime === '00:00:00' ? 'midnight' : time}.
             </div>
           </Explanation>
         </div>
       )}
 
-      <div css={section} className={`fc`}>
-        <div css={sectionHeader} className={`fr`}>
+      <div css={section} className={'fc'}>
+        <div css={sectionHeader} className={'fr'}>
           <Image width={40} height={40} src={Food} alt="Food" />
           <div className="ml15">Add a log</div>
         </div>
-        <div css={buttons} className={`fr wrap`}>
+        <div css={buttons} className={'fr wrap'}>
           <button
             type="button"
             onClick={() => {
@@ -206,12 +205,12 @@ export const Shell: React.FC<props> = ({ profile }) => {
           </Explanation>
         )}
       </div>
-      <div css={section} className={`fc`}>
-        <div css={sectionHeader} className={`fr`}>
+      <div css={section} className={'fc'}>
+        <div css={sectionHeader} className={'fr'}>
           <Image width={40} height={40} src={Edit} alt="Pencil" />
           <div className="ml15">Create a food or recipe</div>
         </div>
-        <div css={buttons} className={`fr wrap`}>
+        <div css={buttons} className={'fr wrap'}>
           <button
             type="button"
             onClick={() => {
@@ -233,8 +232,8 @@ export const Shell: React.FC<props> = ({ profile }) => {
         </div>
       </div>
 
-      <div css={section} className={`fc`}>
-        <div css={sectionHeader} className={`fr`}>
+      <div css={section} className={'fc'}>
+        <div css={sectionHeader} className={'fr'}>
           <Image width={40} height={40} src={Mortarboard} alt="Mortarboard" />
           <div className="ml15">Improve your skills</div>
           <a

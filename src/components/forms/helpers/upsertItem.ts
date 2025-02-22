@@ -11,7 +11,6 @@ export const upsertItem = <Item extends { id: string }>(
     return items.map((item) =>
       item.id === existingIngredient.id ? updatedItem : item
     )
-  } else {
-    return [...items, updatedItem]
   }
+  return [...items, updatedItem]
 }

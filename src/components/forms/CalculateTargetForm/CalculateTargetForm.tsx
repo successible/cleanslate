@@ -1,14 +1,14 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { updateProfileOnCloud } from '../../../helpers/profile/updateProfileOnCloud'
-import { Profile } from '../../../models/profile'
-import { Sex } from '../../../store/navbar/types'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { Profile } from '../../../models/profile'
+import type { Sex } from '../../../store/navbar/types'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import { useStoreon } from '../../../storeon'
 import { lg } from '../../../theme'
 import { Tabs } from '../../tabs/Tabs'
 import { calculateTargets } from './helpers/calculateTargets'
-import { useStoreon } from '../../../storeon'
 
 export type Goal = 'fat' | 'muscle' | 'maintain'
 export type MeasurementSystem = 'imperial' | 'metric'
@@ -246,7 +246,7 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
                   id="liftWeights"
                   type="checkbox"
                 />
-              </label>              
+              </label>
             </div>
           </div>
 

@@ -1,11 +1,11 @@
-import React from 'react'
+import type React from 'react'
 import { documentation } from '../settings/Settings'
 
 export const InformationModal: React.FC<{
   Information: React.ReactNode | string | null
 }> = ({ Information }) => {
   return (
-    <div css={documentation} className={`fc`}>
+    <div css={documentation} className={'fc'}>
       {Information ? (
         <div>{Information}</div>
       ) : (

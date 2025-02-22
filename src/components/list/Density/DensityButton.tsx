@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Density, Food } from '../../../models/food'
+import type { Density, Food } from '../../../models/food'
 import { blue, green, pink } from '../../../theme'
 import { calculateFoodDensities } from '../../macros/helpers/calculateDensities'
 

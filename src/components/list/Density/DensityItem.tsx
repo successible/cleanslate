@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import { Density, Food } from '../../../models/food'
+import type { Density, Food } from '../../../models/food'
 import { Image } from '../../image/Image'
 import { getImagePath, selectFoodImage } from '../helpers/selectFoodImage'
 import { DensityButton } from './DensityButton'
@@ -16,7 +16,7 @@ export const DensityItem: React.FC<{ food: Food; density: Density }> = ({
 }) => {
   const src = selectFoodImage(food, getImagePath, false)
   return (
-    <div key={food.name} className={`fr`} css={item}>
+    <div key={food.name} className={'fr'} css={item}>
       <Image
         width={50}
         height={50}

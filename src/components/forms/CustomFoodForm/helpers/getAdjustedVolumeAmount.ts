@@ -1,4 +1,4 @@
-import { VolumeUnit } from '../../../../constants/units'
+import type { VolumeUnit } from '../../../../constants/units'
 import { prep } from '../../../../helpers/prepareFractionalInputForSubmission'
 import { mapTbspToOtherVolumeUnit } from '../../../macros/helpers/mapTbspToOtherVolumeUnit'
 
@@ -9,9 +9,9 @@ export const getAdjustedVolumeAmount = (
   const num = prep(countToGram)
   if (!num) {
     return countToGram
-  } else if (volumeUnit === 'TBSP') {
-    return num
-  } else {
-    return mapTbspToOtherVolumeUnit(volumeUnit, num)
   }
+  if (volumeUnit === 'TBSP') {
+    return num
+  }
+  return mapTbspToOtherVolumeUnit(volumeUnit, num)
 }

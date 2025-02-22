@@ -1,16 +1,15 @@
-import React from 'react'
-import { Log } from '../../models/log'
-import { Profile } from '../../models/profile'
+import type React from 'react'
+import type { Log } from '../../models/log'
+import type { Profile } from '../../models/profile'
+import { MacroDisplay } from './MacroDisplay'
 import { calculateFoodOrRecipeDensities } from './helpers/calculateDensities'
 import { calculateMacros } from './helpers/calculateMacros'
-import { MacroDisplay } from './MacroDisplay'
 
 type props = {
   log: Log
   profile: Profile
   showTitles: boolean
 }
-
 
 export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
   const [
@@ -56,8 +55,19 @@ export const Macros: React.FC<props> = ({ log, profile, showTitles }) => {
   }
 
   if (caloriesConsumed >= 0) {
-    return  <MacroDisplay showTitles={showTitles} calories={caloriesConsumed} protein={proteinConsumed} densities={[caloricDensity || 0, proteinDensity || 0, combinedDensity || 0]} profile={profile} />
-  } else {
-    return <div />
+    return (
+      <MacroDisplay
+        showTitles={showTitles}
+        calories={caloriesConsumed}
+        protein={proteinConsumed}
+        densities={[
+          caloricDensity || 0,
+          proteinDensity || 0,
+          combinedDensity || 0,
+        ]}
+        profile={profile}
+      />
+    )
   }
+  return <div />
 }

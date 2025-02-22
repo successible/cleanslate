@@ -16,7 +16,7 @@ export const Tags: React.FC<props> = ({ tags }) => {
       {tags.length > 0 && (
         <div className="fr m5 wrap">
           {tags.map((t) => (
-            <span css={tag} className={`pink`} key={t}>
+            <span css={tag} className={'pink'} key={t}>
               {t}
             </span>
           ))}

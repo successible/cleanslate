@@ -1,12 +1,12 @@
+import type { ExerciseGroup } from '../ExerciseForm'
 import {
-  LiftingActivity,
+  type LiftingActivity,
+  type OtherActivity,
+  type SwimmingActivity,
   liftingMET,
-  OtherActivity,
   otherMet,
-  SwimmingActivity,
   swimmingMET,
 } from '../constants'
-import { ExerciseGroup } from '../ExerciseForm'
 import { getCyclingMET } from './getCyclingMET'
 import { getRowingMET } from './getRowingMET'
 import { getRunningMET } from './getRunningMET'
@@ -23,31 +23,37 @@ export const getMETsFromInput = (
 ): number => {
   if (exerciseGroup === 'Cycling') {
     return getCyclingMET(mph)
-  } else if (exerciseGroup === 'Running') {
-    return getRunningMET(mph)
-  } else if (exerciseGroup === 'Walking') {
-    return getWalkingMET(mph, incline)
-  } else if (exerciseGroup === 'Rowing') {
-    return getRowingMET(watts)
-  } else if (exerciseGroup === 'Other') {
-    return otherMet[otherActivity]
-  } else if (exerciseGroup === 'Swimming') {
-    return swimmingMET[swimmingActivity]
-  } else if (exerciseGroup === 'Lifting') {
-    return liftingMET[liftingActivity]
-  } else if (exerciseGroup === 'Custom') {
-    return 0 // Dummy value
-  } else {
-    throw Error(
-      `Error: getMETsFromInput: ${JSON.stringify({
-        exerciseGroup,
-        incline,
-        liftingActivity,
-        mph,
-        otherActivity,
-        swimmingActivity,
-        watts,
-      })}`
-    )
   }
+  if (exerciseGroup === 'Running') {
+    return getRunningMET(mph)
+  }
+  if (exerciseGroup === 'Walking') {
+    return getWalkingMET(mph, incline)
+  }
+  if (exerciseGroup === 'Rowing') {
+    return getRowingMET(watts)
+  }
+  if (exerciseGroup === 'Other') {
+    return otherMet[otherActivity]
+  }
+  if (exerciseGroup === 'Swimming') {
+    return swimmingMET[swimmingActivity]
+  }
+  if (exerciseGroup === 'Lifting') {
+    return liftingMET[liftingActivity]
+  }
+  if (exerciseGroup === 'Custom') {
+    return 0 // Dummy value
+  }
+  throw Error(
+    `Error: getMETsFromInput: ${JSON.stringify({
+      exerciseGroup,
+      incline,
+      liftingActivity,
+      mph,
+      otherActivity,
+      swimmingActivity,
+      watts,
+    })}`
+  )
 }

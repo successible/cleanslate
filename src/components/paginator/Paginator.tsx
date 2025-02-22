@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 import leftArrow from '../../assets/common/leftArrow.svg'
 import rightArrow from '../../assets/common/rightArrow.svg'
 import { colors } from '../../theme'
@@ -31,7 +31,7 @@ export const Paginator: React.FC<props> = ({
   `
 
   return (
-    <div css={paginator} className={`fec w100 h100 expand ai-fe`}>
+    <div css={paginator} className={'fec w100 h100 expand ai-fe'}>
       <div className="frc w100">
         <button
           onClick={(event) => {

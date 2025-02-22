@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import { profileIsLoaded } from '../../helpers/profileIsLoaded'
-import { Profile } from '../../models/profile'
+import type { Profile } from '../../models/profile'
 import { colors } from '../../theme'
 import { Spinner } from '../spinner/Spinner'
 
@@ -22,7 +22,7 @@ export const Body: React.FC<props> = ({
   `
 
   return (
-    <div css={body} className={`scroll`}>
+    <div css={body} className={'scroll'}>
       {!dataReady && (
         <div className="h100 w100 fcc">
           <Spinner color={colors.purple} />

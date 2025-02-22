@@ -1,6 +1,6 @@
 import React from 'react'
 import { round } from '../../../helpers/round'
-import { Sex } from '../../../store/navbar/types'
+import type { Sex } from '../../../store/navbar/types'
 import { Explanation } from '../../explanation/Explanation'
 import { calculateBFUsingNavyMethod } from './helpers/calculateBFUsingNavyMethod'
 

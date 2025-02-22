@@ -2,10 +2,10 @@ import 'firebase/compat/auth'
 import { css } from '@emotion/react'
 import {
   FacebookAuthProvider,
-  getAuth,
   GithubAuthProvider,
   GoogleAuthProvider,
   OAuthProvider,
+  getAuth,
   signInWithPopup,
 } from 'firebase/auth'
 import { FaApple, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'

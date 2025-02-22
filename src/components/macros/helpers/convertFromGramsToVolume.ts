@@ -1,4 +1,4 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { mapTbspToOtherVolumeUnit } from './mapTbspToOtherVolumeUnit'
 
 export const convertFromGramsToVolume = (

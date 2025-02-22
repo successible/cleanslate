@@ -1,7 +1,7 @@
-import { Ingredient } from '../../../../models/ingredient'
-import { RecipeFormData } from '../RecipeForm'
+import type { Ingredient } from '../../../../models/ingredient'
+import type { RecipeFormData } from '../RecipeForm'
 import { addIngredients } from './addIngredients'
-import { formatIngredient, FormattedIngredient } from './formatIngredient'
+import { type FormattedIngredient, formatIngredient } from './formatIngredient'
 
 export type RecipeMutationInput = {
   name: string | number

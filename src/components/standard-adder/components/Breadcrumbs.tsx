@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { colors } from '../../../theme'
 
 type props = { path: string[]; dummyFood: Food | Recipe }

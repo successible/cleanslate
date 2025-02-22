@@ -1,6 +1,6 @@
-import { css, SerializedStyles } from '@emotion/react'
-import React from 'react'
-import { colors, Colors } from '../../theme'
+import { type SerializedStyles, css } from '@emotion/react'
+import type React from 'react'
+import { type Colors, colors } from '../../theme'
 
 export const Explanation: React.FC<{
   children: React.ReactNode

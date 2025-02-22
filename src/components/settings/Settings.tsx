@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import React from 'react'
-import { Profile } from '../../models/profile'
+import type React from 'react'
+import type { Profile } from '../../models/profile'
 import { colors } from '../../theme'
 import { DeleteAccount } from './DeleteAccount'
 import { Information } from './Information'
@@ -45,7 +45,7 @@ export const button = css`
 type props = { profile: Profile }
 export const Settings: React.FC<props> = ({ profile }) => {
   return (
-    <div css={documentation} className={`fcc`}>
+    <div css={documentation} className={'fcc'}>
       <h1>Settings ⚙️</h1>
       <Information profile={profile} />
       <DeleteAccount profile={profile} />

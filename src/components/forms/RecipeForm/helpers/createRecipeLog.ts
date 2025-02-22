@@ -1,4 +1,4 @@
-import { Ingredient } from '../../../../models/ingredient'
+import type { Ingredient } from '../../../../models/ingredient'
 import { Log } from '../../../../models/log'
 import { Recipe } from '../../../../models/recipe'
 

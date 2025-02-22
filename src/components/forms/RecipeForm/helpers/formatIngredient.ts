@@ -1,7 +1,7 @@
 import merge from 'deepmerge'
-import { Unit } from '../../../../constants/units'
-import { Ingredient } from '../../../../models/ingredient'
-import { Barcode } from '../../../../models/log'
+import type { Unit } from '../../../../constants/units'
+import type { Ingredient } from '../../../../models/ingredient'
+import type { Barcode } from '../../../../models/log'
 
 export type FormattedIngredient = {
   amount: number

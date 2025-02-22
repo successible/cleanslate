@@ -1,8 +1,8 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { convertItemToIngredient } from '../../item/helpers/convertItemToIngredient'
 import { convertItemToLog } from '../../item/helpers/convertItemToLog'
-import { CommonItem } from '../../item/types'
+import type { CommonItem } from '../../item/types'
 import { getAmountFromNewUnit } from '../../macros/helpers/getAmountFromNewUnit'
 
 export const updateUnit = (
