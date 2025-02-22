@@ -1,5 +1,5 @@
-import { Sex } from '../../../../store/navbar/types'
-import { Goal } from '../CalculateTargetForm'
+import type { Sex } from '../../../../store/navbar/types'
+import type { Goal } from '../CalculateTargetForm'
 import { calculateBMRUsingKatchMcardle } from './calculateBMRUsingKatchMcardle'
 import { calculateBodyFatPercentageUsingCUN_BAE } from './calculateBodyFatPercentageUsingCUN_BAE'
 import { calculateIdealBodyWeightInKg } from './calculateIdealBodyWeightInKg'
@@ -59,11 +59,11 @@ export const calculateTargets = (
   const getCalorieTarget = (goal: Goal) => {
     if (goal === 'maintain') {
       return totalDailyEnergyExpenditure * MAINTAIN
-    } else if (goal === 'muscle') {
-      return totalDailyEnergyExpenditure * SURPLUS
-    } else {
-      return Math.round(totalDailyEnergyExpenditure * DEFICIT)
     }
+    if (goal === 'muscle') {
+      return totalDailyEnergyExpenditure * SURPLUS
+    }
+    return Math.round(totalDailyEnergyExpenditure * DEFICIT)
   }
 
   return {

@@ -1,12 +1,12 @@
-import { Unit } from '../../constants/units'
-import { ExerciseCategory } from '../../models/exerciseLog'
-import { Food } from '../../models/food'
-import { Barcode, Log, Meal } from '../../models/log'
-import { Profile } from '../../models/profile'
-import { QuickLog } from '../../models/quickLog'
-import { Recipe } from '../../models/recipe'
-import { Type } from '../../store/data/types'
-import { ExerciseGroup } from '../forms/ExerciseForm/ExerciseForm'
+import type { Unit } from '../../constants/units'
+import type { ExerciseCategory } from '../../models/exerciseLog'
+import type { Food } from '../../models/food'
+import type { Barcode, Log, Meal } from '../../models/log'
+import type { Profile } from '../../models/profile'
+import type { QuickLog } from '../../models/quickLog'
+import type { Recipe } from '../../models/recipe'
+import type { Type } from '../../store/data/types'
+import type { ExerciseGroup } from '../forms/ExerciseForm/ExerciseForm'
 
 // Essentially, FoodItem, RecipeItem, IngredientItem all have onUpdate methods that are purely synchronous
 // For example, on IngredientItem creates an item in the local state
@@ -17,7 +17,8 @@ import { ExerciseGroup } from '../forms/ExerciseForm/ExerciseForm'
 
 export type OnUpdateItem = (
   ...args: any[]
-) => void | Promise<string | Log> | Promise<string | QuickLog>
+  // biome-ignore lint/suspicious/noConfusingVoidType: Makes TypeScript happy
+) => undefined | void | Promise<string | Log> | Promise<string | QuickLog>
 
 export type OnDeleteItem = (id?: string) => void
 

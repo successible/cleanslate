@@ -1,6 +1,6 @@
-import { Unit } from '../../../constants/units'
-import { Ingredient } from '../../../models/ingredient'
-import { Log } from '../../../models/log'
+import type { Unit } from '../../../constants/units'
+import type { Ingredient } from '../../../models/ingredient'
+import type { Log } from '../../../models/log'
 import { convertFromUnitToNewUnit } from './convertFromUnitToNewUnit'
 
 /** Given an amount in grams, convert that amount to match the unit passed into the function.

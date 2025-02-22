@@ -1,8 +1,8 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { addLogToCloud } from '../../../helpers/log/addLogToCloud'
-import { Barcode, Meal } from '../../../models/log'
-import { Type } from '../../../store/data/types'
-import { Dispatch } from '../../../store/store'
+import type { Barcode, Meal } from '../../../models/log'
+import type { Type } from '../../../store/data/types'
+import type { Dispatch } from '../../../store/store'
 
 export type AddLog = {
   alias: string | null

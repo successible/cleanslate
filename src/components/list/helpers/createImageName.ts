@@ -1,5 +1,5 @@
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { formatAsImagePath } from './formatAsImagePath'
 
 /** Given the name of the food/recipe, returns the plural and singular form of the word as all lower case.
@@ -9,9 +9,8 @@ export const createImageName = (name: string, extension: boolean) => {
   const imageName = formatAsImagePath(name)
   if (extension) {
     return `${imageName}.svg`
-  } else {
-    return imageName
   }
+  return imageName
 }
 
 /** Given the name of the food, category, and the group it belongs to, return all possible names of the images.

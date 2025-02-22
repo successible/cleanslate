@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
-import { uniqBy, get } from 'lodash-es'
+import { get, uniqBy } from 'lodash-es'
 import React, { useState } from 'react'
 import { dummyFoods } from '../../constants/dummyFoods/dummyFoods'
 import { pastaNames } from '../../constants/dummyFoods/pasta'
-import { Food } from '../../models/food'
-import { Profile } from '../../models/profile'
-import { Recipe } from '../../models/recipe'
+import type { Food } from '../../models/food'
+import type { Profile } from '../../models/profile'
+import type { Recipe } from '../../models/recipe'
 import { colors } from '../../theme'
 import { Meta } from './components/Meta'
 import { SearchResult } from './components/SearchResults'
@@ -144,7 +144,7 @@ export const StandardAdder: React.FC<props> = ({
                 setSearchResults([])
                 setSearchText('')
               }}
-              key={result.name + i}
+              key={JSON.stringify(result)}
             />
           )
         })}
@@ -170,6 +170,7 @@ export const StandardAdder: React.FC<props> = ({
           {options.map((option) => {
             return (
               <button
+                type="button"
                 className="fr w100"
                 css={css`
                   color: ${colors.text};

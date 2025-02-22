@@ -1,5 +1,5 @@
 import { volumeUnits, weightUnits } from '../../../constants/units'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { convertFromVolumeToGrams } from './convertFromVolumeToGrams'
 import { convertFromWeightToGrams } from './convertFromWeightToGrams'
 
@@ -20,16 +20,19 @@ export const convertToGrams = (
 
   if (isVolume && tbspToGram) {
     return convertFromVolumeToGrams(unit, amount, tbspToGram)
-  } else if (isWeight) {
+  }
+  if (isWeight) {
     return convertFromWeightToGrams(unit, amount)
-  } else if (isContainer && countToGram && servingPerContainer) {
+  }
+  if (isContainer && countToGram && servingPerContainer) {
     return amount * servingPerContainer * countToGram
-  } else if (isCount && countToTbsp && tbspToGram) {
+  }
+  if (isCount && countToTbsp && tbspToGram) {
     const tbsp = amount * countToTbsp
     return tbsp * tbspToGram
-  } else if (isCount && countToGram) {
-    return amount * countToGram
-  } else {
-    return amount
   }
+  if (isCount && countToGram) {
+    return amount * countToGram
+  }
+  return amount
 }

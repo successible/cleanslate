@@ -1,6 +1,6 @@
-import React from 'react'
+import type React from 'react'
 import { deleteRecipeOnCloud } from '../../../helpers/recipes/deleteRecipeOnCloud'
-import { Recipe } from '../../../models/recipe'
+import type { Recipe } from '../../../models/recipe'
 import { Item } from '../../item/Item'
 
 export const RecipeItem: React.FC<{ recipe: Recipe }> = (props) => {

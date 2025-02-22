@@ -1,6 +1,6 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { defaultMeal } from '../../../models/log'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 const defaultOnDelete = (id?: string) => {}
 

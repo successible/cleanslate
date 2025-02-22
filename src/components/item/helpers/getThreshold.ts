@@ -14,7 +14,6 @@ export const getThreshold = (root: string) => {
     ].includes(root)
   ) {
     return 1
-  } else {
-    return 2
   }
+  return 2
 }

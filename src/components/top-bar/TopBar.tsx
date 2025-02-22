@@ -1,5 +1,5 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 
 type props = {
   children: React.ReactNode
@@ -15,7 +15,12 @@ export const TopBar: React.FC<props> = ({ children, height, onClick }) => {
     height: ${height}px;
   `
   return (
-    <div css={topBar} onClick={() => onClick()} className={`fcc z2`}>
+    <div
+      css={topBar}
+      onClick={() => onClick()}
+      onKeyDown={() => onClick()}
+      className={'fcc z2'}
+    >
       {children}
     </div>
   )

@@ -1,10 +1,10 @@
 const swAvailable = 'serviceWorker' in navigator
 const url = window.location.origin
-const swUrl = url + '/service-worker.js'
+const swUrl = `${url}/service-worker.js`
 
 const throttle = (func, timeFrame) => {
   let lastTime = 0
-  return function () {
+  return () => {
     const now = new Date()
     if (now - lastTime >= timeFrame) {
       func()
@@ -16,7 +16,7 @@ const throttle = (func, timeFrame) => {
 const register = () => {
   if (!swAvailable || origin.includes('http://localhost')) return
 
-  console.log('Registering the service worker at ' + swUrl)
+  console.log(`Registering the service worker at ${swUrl}`)
 
   navigator.serviceWorker
     .register(swUrl)

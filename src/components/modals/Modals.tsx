@@ -1,15 +1,16 @@
 import { css } from '@emotion/react'
-import React from 'react'
+import type React from 'react'
 import { modals } from '../../constants/modals'
 import { getDispatch } from '../../helpers/getDispatch'
-import { Food } from '../../models/food'
-import { Log } from '../../models/log'
-import { Profile } from '../../models/profile'
-import { Recipe } from '../../models/recipe'
-import { NavbarState } from '../../store/navbar/types'
+import type { Food } from '../../models/food'
+import type { Log } from '../../models/log'
+import type { Profile } from '../../models/profile'
+import type { Recipe } from '../../models/recipe'
+import type { NavbarState } from '../../store/navbar/types'
+import { useStoreon } from '../../storeon'
 import { BarcodeModal } from '../barcode-modal/BarcodeModal'
 import { DensityModal } from '../density-modal/DensityModal'
-import { Error } from '../error/Error'
+import { ErrorModal } from '../error/ErrorModal'
 import { BodyFatPercentageForm } from '../forms/BodyFatPercentageForm/BodyFatPercentageForm'
 import { CustomFoodForm } from '../forms/CustomFoodForm/CustomFoodForm'
 import { ExerciseForm } from '../forms/ExerciseForm/ExerciseForm'
@@ -30,7 +31,6 @@ import { Settings } from '../settings/Settings'
 import { StandardAdder } from '../standard-adder/StandardAdder'
 import { getOrderedModals } from './getOrderedModal'
 import { getErrorStyling, modalContainerStyling } from './styling'
-import { useStoreon } from '../../storeon'
 
 type props = {
   profile: Profile
@@ -91,6 +91,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
   const allModals = [
     <Modal
+      key="navbar.modalVisibility"
       styles={editorStyling}
       closeIcon={false}
       closeModal={() => {
@@ -110,6 +111,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
     </Modal>,
 
     <Modal
+      key="navbar.quickAddModalVisibility"
       styles={editorStyling}
       closeIcon={false}
       closeModal={() => {
@@ -125,6 +127,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // Sidebar
     <Modal
+      key="navbar.menuVisibility"
       closeModal={() => {
         dispatch('closeMenu')
       }}
@@ -136,6 +139,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // Exercise-form
     <Modal
+      key="navbar.exerciseModalVisibility"
       closeModal={() => {
         dispatch('closeExerciseModal')
       }}
@@ -147,6 +151,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // Barcode Modal
     <Modal
+      key="navbar.barcodeModalVisibility"
       styles={css`
         > div {
           max-width: 450px !important;
@@ -166,6 +171,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // target-form
     <Modal
+      key="navbar.targetModalVisibility"
       closeModal={() => {
         dispatch('closeTargetModal')
       }}
@@ -177,6 +183,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // Settings modal
     <Modal
+      key="navbar.settingsModalVisibility"
       closeModal={() => {
         dispatch('closeSettingsModal')
       }}
@@ -188,6 +195,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // body-composition-form
     <Modal
+      key="navbar.bodyFatPercentageModalVisibility"
       closeModal={() => {
         dispatch('closeBodyFatPercentageModal')
       }}
@@ -199,6 +207,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // food-form
     <Modal
+      key="navbar.foodModalVisibility"
       closeModal={() => {
         dispatch('closeFoodModal')
       }}
@@ -224,6 +233,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // recipe-form
     <Modal
+      key="navbar.recipeModalVisibility"
       closeModal={() => {
         dispatch('closeRecipeModal')
       }}
@@ -248,6 +258,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // custom-recipe-form
     <Modal
+      key="navbar.recipeFormModalVisibility"
       closeModal={() => {
         dispatch('closeRecipeFormModal')
       }}
@@ -267,6 +278,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
     </Modal>,
 
     <Modal // add ingredient modal
+      key="navbar.addIngredientModalVisibility"
       closeIcon={true}
       closeModal={() => {
         dispatch('closeAddIngredientModal')
@@ -279,6 +291,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
     // custom-food-form
     <Modal
+      key="navbar.foodFormModalVisibility"
       closeModal={() => {
         dispatch('closeFoodFormModal')
       }}
@@ -295,6 +308,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       />
     </Modal>,
     <Modal // item-modal
+      key="navbar.itemModalVisibility"
       id={'item-modal'}
       closeIcon={true}
       closeModal={() => {
@@ -306,6 +320,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       <ItemUpdateModal item={itemToUpdate} profile={profile} />
     </Modal>,
     <Modal // unit-modal
+      key="navbar.quickLogEditModalVisibility"
       id={'unit-modal'}
       closeIcon={true}
       closeModal={() => {
@@ -317,6 +332,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       <QuickLogUpdateModal profile={profile} item={itemToUpdate} />
     </Modal>,
     <Modal
+      key="navbar.helpModalVisibility"
       closeModal={() => {
         dispatch('closeHelpModal')
       }}
@@ -326,6 +342,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       <Help />
     </Modal>,
     <Modal
+      key="navbar.informationModalVisibility"
       closeModal={() => {
         dispatch('closeInformationModal')
       }}
@@ -344,7 +361,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       styles={getErrorStyling()}
       visible={errorVisibility}
     >
-      <Error />
+      <ErrorModal />
     </Modal>,
     <Modal
       key="navbar.pwaPromptVisibility"
@@ -358,6 +375,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
     </Modal>,
     // Density modal
     <Modal
+      key="navbar.densityModalVisibility"
       closeModal={() => {
         dispatch('closeDensityModal')
       }}

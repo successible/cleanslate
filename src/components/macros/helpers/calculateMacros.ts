@@ -1,11 +1,11 @@
 import { volumeUnits, weightUnits } from '../../../constants/units'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
-import { ExerciseLog } from '../../../models/exerciseLog'
-import { Food } from '../../../models/food'
-import { Log } from '../../../models/log'
-import { QuickLog } from '../../../models/quickLog'
-import { Recipe } from '../../../models/recipe'
+import type { ExerciseLog } from '../../../models/exerciseLog'
+import type { Food } from '../../../models/food'
+import type { Barcode, Log } from '../../../models/log'
+import type { QuickLog } from '../../../models/quickLog'
+import type { Recipe } from '../../../models/recipe'
 import { convertFromWeightToGrams } from './convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from './mapOtherVolumeUnitToTbsp'
 
@@ -15,17 +15,33 @@ type Macro = 'CALORIE' | 'PROTEIN'
 export const calculateProteinPerTbsp = (food: Food) => {
   if (food.tbspToGram && food.proteinPerGram) {
     return food.proteinPerGram * food.tbspToGram
-  } else {
-    return null
   }
+  return null
 }
 
 export const calculateCaloriesPerTbsp = (food: Food) => {
   if (food.tbspToGram && food.caloriesPerGram) {
     return food.caloriesPerGram * food.tbspToGram
-  } else {
-    return null
   }
+  return null
+}
+
+export const calculatePerMacroPerBarcode = (
+  metric: Macro,
+  amount: number,
+  unit: Unit,
+  barcode: Barcode
+) => {
+  if (unit === 'COUNT') {
+    if (metric === 'PROTEIN') {
+      return amount * barcode.protein_per_serving
+    }
+    return amount * barcode.calories_per_serving
+  }
+  if (metric === 'PROTEIN') {
+    return amount * barcode.protein_per_gram
+  }
+  return amount * barcode.calories_per_gram
 }
 
 /** This function calculates the calories/protein in a single food, given a log */
@@ -55,36 +71,33 @@ const calculatePerFood = (
   if (unit === 'GRAM') {
     if (countToGram && (perCount || perCount === 0)) {
       return (amount / countToGram) * perCount
-    } else {
-      return amount * (perGram || 0)
     }
-  } else if (volumeUnits.includes(unit)) {
+    return amount * (perGram || 0)
+  }
+  if (volumeUnits.includes(unit)) {
     const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
     if ((perCount || perCount === 0) && countToTbsp) {
       return (tbsp / countToTbsp) * perCount
-    } else {
-      return tbsp * (perTbsp as number)
     }
-  } else if (unit === 'OZ' || unit === 'LBS') {
+    return tbsp * (perTbsp as number)
+  }
+  if (unit === 'OZ' || unit === 'LBS') {
     const grams = convertFromWeightToGrams(unit, amount)
     if (countToGram && (perCount || perCount === 0)) {
       return (grams / countToGram) * perCount
-    } else {
-      return grams * (perGram || 0)
     }
-  } else {
-    const countToUse =
-      unit === 'CONTAINER' && servingPerContainer
-        ? amount * servingPerContainer
-        : amount
-    // The unit MUST be COUNT or CONTAINER
-    // The classic: slice of cheese is 30 grams (countToGram) * calories per gram of cheese * amount of slices
-    if ((countToGram || countToGram === 0) && (perGram || perGram === 0)) {
-      return countToUse * countToGram * perGram
-    } {
-      return countToUse * (perCount || 0)
-    }
+    return grams * (perGram || 0)
   }
+  const countToUse =
+    unit === 'CONTAINER' && servingPerContainer
+      ? amount * servingPerContainer
+      : amount
+  // The unit MUST be COUNT or CONTAINER
+  // The classic: slice of cheese is 30 grams (countToGram) * calories per gram of cheese * amount of slices
+  if ((countToGram || countToGram === 0) && (perGram || perGram === 0)) {
+    return countToUse * countToGram * perGram
+  }
+  return countToUse * (perCount || 0)
 }
 
 /** Given a food and a unit (protein/calorie) returns the perGram, perTbsp, and perCount amount */
@@ -189,20 +202,17 @@ export const calculatePerMacroPerRecipe = (
     const barcode = ingredient.barcode
 
     if (barcode) {
-      if (ingredient.unit === 'COUNT') {
-        if (metric === 'PROTEIN') {
-          return acc + ingredient.amount * barcode.protein_per_serving
-        } else {
-          return acc + ingredient.amount * barcode.calories_per_serving
-        }
-      } else {
-        if (metric === 'PROTEIN') {
-          return acc + ingredient.amount * barcode.protein_per_gram
-        } else {
-          return acc + ingredient.amount * barcode.calories_per_gram
-        }
-      }
-    } else if (food) {
+      return (
+        acc +
+        calculatePerMacroPerBarcode(
+          metric,
+          ingredient.amount,
+          ingredient.unit,
+          barcode
+        )
+      )
+    }
+    if (food) {
       const [
         perGram,
         perTbsp,
@@ -223,7 +233,8 @@ export const calculatePerMacroPerRecipe = (
         servingPerContainer
       )
       return acc + macro
-    } else if (childRecipe) {
+    }
+    if (childRecipe) {
       const macro = calculatePerMacroPerRecipe(
         childRecipe,
         metric,
@@ -231,15 +242,14 @@ export const calculatePerMacroPerRecipe = (
         ingredient.unit
       )
       return acc + macro
-    } else {
-      return handleError(
-        `Error: calculatePerMacroPerRecipe: ${JSON.stringify({
-          amount,
-          metric,
-          recipe,
-        })}`
-      )
     }
+    return handleError(
+      `Error: calculatePerMacroPerRecipe: ${JSON.stringify({
+        amount,
+        metric,
+        recipe,
+      })}`
+    )
   }, 0)
 
   return total * countAdjustedForContainer
@@ -254,28 +264,18 @@ export const calculatePerMacroInLog = (metric: Macro, logs: Log[]) => {
     }
     const food = log.logToFood
     const recipe = log.logToRecipe
+
     if (barcode) {
-      if (unit === 'COUNT') {
-        if (metric === 'PROTEIN') {
-          return total + amount * barcode.protein_per_serving
-        } else {
-          return total + amount * barcode.calories_per_serving
-        }
-      } else {
-        if (metric === 'PROTEIN') {
-          return total + amount * barcode.protein_per_gram
-        } else {
-          return total + amount * barcode.calories_per_gram
-        }
-      }
-    } else if (food) {
-      return total + calculatePerMacroPerFood(amount, unit, food, metric)
-    } else if (recipe) {
-      return total + calculatePerMacroPerRecipe(recipe, metric, amount, unit)
-    } else {
-      // If food is null and the metric does not exist, do nothing
-      return total
+      return total + calculatePerMacroPerBarcode(metric, amount, unit, barcode)
     }
+    if (food) {
+      return total + calculatePerMacroPerFood(amount, unit, food, metric)
+    }
+    if (recipe) {
+      return total + calculatePerMacroPerRecipe(recipe, metric, amount, unit)
+    }
+    // If food is null and the metric does not exist, do nothing
+    return total
   }, 0)
 }
 

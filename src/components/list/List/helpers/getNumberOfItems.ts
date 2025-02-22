@@ -13,7 +13,6 @@ export const getNumberOfItems = (
     // Always round and subtract by 1 to make sure we don't overflow the container!
     const numberOfItems = Math.ceil(containerHeight / itemHeight)
     return numberOfItems
-  } else {
-    return null
   }
+  return null
 }

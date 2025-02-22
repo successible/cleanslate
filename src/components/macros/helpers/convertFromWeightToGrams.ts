@@ -1,4 +1,4 @@
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 
 export const convertFromWeightToGrams = (
   unit: Unit,
@@ -6,9 +6,9 @@ export const convertFromWeightToGrams = (
 ): number => {
   if (unit === 'LBS') {
     return amount * 453
-  } else if (unit === 'OZ') {
-    return (amount / 16) * 453
-  } else {
-    return amount
   }
+  if (unit === 'OZ') {
+    return (amount / 16) * 453
+  }
+  return amount
 }

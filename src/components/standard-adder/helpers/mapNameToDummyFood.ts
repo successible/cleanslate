@@ -1,7 +1,7 @@
 import { dummyFoods } from '../../../constants/dummyFoods/dummyFoods'
 import { pastaNames } from '../../../constants/dummyFoods/pasta'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { createDummyFood } from './createDummyFood'
 import { getAllDummyFoodLeaves } from './getAllDummyFoodLeaves'
 
@@ -12,10 +12,10 @@ export const mapFoodToDummyFood = (item: Food | Recipe) => {
   if (dummyFoodName) {
     return createDummyFood(dummyFoodName)
     // Example: Penne -> Pasta
-  } else if (pastaNames.includes(item.name)) {
-    return createDummyFood('Pasta', 'Grain', 'Pasta')
-  } else {
-    // The food is not a dummy food, just return it
-    return item
   }
+  if (pastaNames.includes(item.name)) {
+    return createDummyFood('Pasta', 'Grain', 'Pasta')
+  }
+  // The food is not a dummy food, just return it
+  return item
 }

@@ -1,12 +1,12 @@
 import { css } from '@emotion/react'
 import axios from 'axios'
 import { compareVersions } from 'compare-versions'
-import { useEffect, useState } from 'react'
-import { toast } from 'react-toastify';
 import { debounce } from 'lodash-es'
-import { UAParser } from 'ua-parser-js';
+import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import { UAParser } from 'ua-parser-js'
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
-import { Unit } from '../../constants/units'
+import type { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
 import { getDispatch } from '../../helpers/getDispatch'
 import { isMobile } from '../../helpers/isMobile'
@@ -15,8 +15,8 @@ import { isNumeric } from '../../helpers/isNumeric'
 import { isProduction } from '../../helpers/isProduction'
 import { round } from '../../helpers/round'
 import { Food } from '../../models/food'
-import { Barcode, defaultMeal } from '../../models/log'
-import { Profile } from '../../models/profile'
+import { type Barcode, defaultMeal } from '../../models/log'
+import type { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
 import Scan from '../scanner/components/scan'
@@ -87,15 +87,15 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const oldSafari =
     isMobileSafari() &&
     // 'wasm-unsafe-eval' is only supported on Safari 16 and above
-    compareVersions('16.0.0', version) == 1
+    compareVersions('16.0.0', version) === 1
 
   // 'wasm-unsafe-eval' is only supported on Chrome 103 and above
   const oldChrome =
-    browser.name == 'Chrome' && compareVersions('103', version) == 1
+    browser.name === 'Chrome' && compareVersions('103', version) === 1
 
   // 'wasm-unsafe-eval' is only supported on Firefox 102 and above
   const oldFirefox =
-    browser.name == 'Firefox' && compareVersions('102', version) == 1
+    browser.name === 'Firefox' && compareVersions('102', version) === 1
 
   if (oldSafari || oldChrome || oldFirefox) {
     return (
@@ -153,7 +153,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
         />
       ) : (
         <div>
-          <div className={`w100 fr m20`}>
+          <div className={'w100 fr m20'}>
             <Image
               width={50}
               height={50}

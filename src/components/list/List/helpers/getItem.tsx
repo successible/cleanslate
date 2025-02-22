@@ -1,11 +1,11 @@
-import { Food } from '../../../../models/food'
-import { Ingredient } from '../../../../models/ingredient'
-import { Recipe } from '../../../../models/recipe'
+import type { Food } from '../../../../models/food'
+import type { Ingredient } from '../../../../models/ingredient'
+import type { Recipe } from '../../../../models/recipe'
 import { FoodItem } from '../../Food/FoodItem'
 import { IngredientItem } from '../../Ingredient/IngredientItem'
 import { RecipeItem } from '../../Recipe/RecipeItem'
-import { Item } from '../List'
-import { PaginatedListPurpose } from '../types'
+import type { Item } from '../List'
+import type { PaginatedListPurpose } from '../types'
 
 export const getItem = (
   item: Item,
@@ -15,9 +15,11 @@ export const getItem = (
 ) => {
   if (item.type === 'recipe') {
     return <RecipeItem recipe={item as Recipe} />
-  } else if (item.type === 'food' && purpose === 'food-list') {
+  }
+  if (item.type === 'food' && purpose === 'food-list') {
     return <FoodItem food={item as Food} />
-  } else if (item.type === 'ingredient' && deleteItem && updateItem) {
+  }
+  if (item.type === 'ingredient' && deleteItem && updateItem) {
     return (
       <IngredientItem
         deleteIngredient={deleteItem}
@@ -25,7 +27,6 @@ export const getItem = (
         ingredient={item as Ingredient}
       />
     )
-  } else {
-    throw Error(`Error: PaginatedList: ${JSON.stringify({ item })}`)
   }
+  throw Error(`Error: PaginatedList: ${JSON.stringify({ item })}`)
 }

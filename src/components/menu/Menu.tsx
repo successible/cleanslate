@@ -8,10 +8,10 @@ import CustomRecipe from '../../assets/common/recipe.svg'
 import Feedback from '../../assets/common/review.svg'
 import Settings from '../../assets/common/settings.svg'
 import { logout } from '../../helpers/logout'
-import { NavbarEvents, NavbarState } from '../../store/navbar/types'
-import { Dispatch } from '../../store/types'
-import { Image } from '../image/Image'
+import type { NavbarEvents, NavbarState } from '../../store/navbar/types'
+import type { Dispatch } from '../../store/types'
 import { useStoreon } from '../../storeon'
+import { Image } from '../image/Image'
 
 export const Menu: React.FC = () => {
   const {
@@ -62,11 +62,12 @@ export const Menu: React.FC = () => {
   `
 
   return (
-    <div id="Sidebar" css={sidebar} className={`fcs`}>
-      <div css={section} className={`w100`}>
+    <div id="Sidebar" css={sidebar} className={'fcs'}>
+      <div css={section} className={'w100'}>
         <div>Create</div>
 
         <button
+          type="button"
           id="openFoodModal"
           ref={buttonToFocus}
           onClick={() => {
@@ -84,6 +85,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="openRecipeModal"
           onClick={() => {
             dispatch('openRecipeModal')
@@ -100,9 +102,10 @@ export const Menu: React.FC = () => {
         </button>
       </div>
 
-      <div css={section} className={`w100`}>
+      <div css={section} className={'w100'}>
         <div>Learn</div>
         <button
+          type="button"
           onClick={() => {
             window.open('https://cleanslate.sh/curriculum')
           }}
@@ -117,6 +120,7 @@ export const Menu: React.FC = () => {
           <div className="ml15">Skills</div>
         </button>
         <button
+          type="button"
           onClick={() => {
             dispatch('openDensityModal')
           }}
@@ -132,10 +136,11 @@ export const Menu: React.FC = () => {
         </button>
       </div>
 
-      <div css={section} className={`w100`}>
+      <div css={section} className={'w100'}>
         <div>Other</div>
 
         <button
+          type="button"
           id="openSettingsModal"
           onClick={() => {
             dispatch('openSettingsModal')
@@ -152,6 +157,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="openInformationModal"
           onClick={() => {
             dispatch(
@@ -184,6 +190,7 @@ export const Menu: React.FC = () => {
         </button>
 
         <button
+          type="button"
           id="logout"
           onClick={() => {
             logout()

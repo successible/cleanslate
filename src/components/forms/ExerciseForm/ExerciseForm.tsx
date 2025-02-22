@@ -4,17 +4,17 @@ import { addExerciseLogToCloud } from '../../../helpers/exercise-log/addExercise
 import { updateExerciseLogOnCloud } from '../../../helpers/exercise-log/updateExerciseLogOnCloud'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
 import { round } from '../../../helpers/round'
-import { ExerciseLog } from '../../../models/exerciseLog'
-import { Profile } from '../../../models/profile'
+import type { ExerciseLog } from '../../../models/exerciseLog'
+import type { Profile } from '../../../models/profile'
 import { store } from '../../../store/store'
 import { md } from '../../../theme'
-import { CommonItem } from '../../item/types'
+import type { CommonItem } from '../../item/types'
 import {
-  LiftingActivity,
+  type LiftingActivity,
+  type OtherActivity,
+  type SwimmingActivity,
   liftingMET,
-  OtherActivity,
   otherMet,
-  SwimmingActivity,
   swimmingMET,
 } from './constants'
 import { calculateCaloriesFromMETs } from './helpers/calculateCaloriesFromMETs'

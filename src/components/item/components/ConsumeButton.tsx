@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
 import { updateLogOnCloud } from '../../../helpers/log/updateLogOnCloud'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
-import { CommonItem } from '../types'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import type { CommonItem } from '../types'
 import { nameStyling } from './Meta'
 
 type props = {

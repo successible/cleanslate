@@ -37,7 +37,6 @@ export const errorsToIgnore = [
 
 export const startSentry = () => {
   if (dsn && dsn !== 'no' && isBrowser()) {
-    console.log(dsn)
     Sentry.init({
       dsn,
       ignoreErrors: errorsToIgnore,

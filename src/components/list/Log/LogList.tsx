@@ -1,17 +1,17 @@
 import { css } from '@emotion/react'
 import { groupBy } from 'lodash-es'
-import React from 'react'
+import type React from 'react'
 import { profileIsLoaded } from '../../../helpers/profileIsLoaded'
-import { ExerciseLog } from '../../../models/exerciseLog'
-import { Food } from '../../../models/food'
-import { Log, Meal, MealEnum } from '../../../models/log'
-import { Profile } from '../../../models/profile'
-import { QuickLog } from '../../../models/quickLog'
+import type { ExerciseLog } from '../../../models/exerciseLog'
+import type { Food } from '../../../models/food'
+import { type Log, type Meal, MealEnum } from '../../../models/log'
+import type { Profile } from '../../../models/profile'
+import type { QuickLog } from '../../../models/quickLog'
 import { colors } from '../../../theme'
 import { Spinner } from '../../spinner/Spinner'
-import { sortByCreatedAt } from './helpers/sortByCreatedAt'
 import { LogItem } from './LogItem'
 import { Shell } from './Shell'
+import { sortByCreatedAt } from './helpers/sortByCreatedAt'
 
 type props = {
   logs: Log[]
@@ -38,8 +38,10 @@ export const LogList: React.FC<props> = (props) => {
     const meal = m as Meal
     const status = groupedLogs[meal].reduce((acc, log) => {
       if (log.consumed) {
+        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = true
       } else {
+        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = false
       }
       return acc
@@ -57,9 +59,8 @@ export const LogList: React.FC<props> = (props) => {
     }
     if (meal === 'Dinner') {
       return colors.blue
-    } else {
-      return colors.yellow
     }
+    return colors.yellow
   }
 
   return (
@@ -86,9 +87,9 @@ export const LogList: React.FC<props> = (props) => {
                     css={css`
                       margin-top: ${i === 0 ? 20 : 0}px;
                       background-color: ${mapMealToColor(meal)};
-                      text-decoration: ${consumptionByGroup[meal]
-                        ? 'line-through'
-                        : undefined};
+                      text-decoration: ${
+                        consumptionByGroup[meal] ? 'line-through' : undefined
+                      };
                       opacity: ${consumptionByGroup[meal] ? 0.5 : 1};
                       display: inline-block;
                       padding: 5px 7.5px;

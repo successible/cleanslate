@@ -1,8 +1,8 @@
 import React from 'react'
-import { Unit } from '../../../constants/units'
-import { Food } from '../../../models/food'
-import { Meal } from '../../../models/log'
-import { Recipe } from '../../../models/recipe'
+import type { Unit } from '../../../constants/units'
+import type { Food } from '../../../models/food'
+import type { Meal } from '../../../models/log'
+import type { Recipe } from '../../../models/recipe'
 import { FractionInput } from '../../fraction-input/FractionInput'
 import { getPrettyUnits } from '../../list/helpers/getPrettyUnits'
 import { MealInput } from '../../meal-input/MealInput'
@@ -39,7 +39,7 @@ export const InputFields: React.FC<props> = ({
   }, [selectedItem?.name])
 
   return (
-    <div className={`w100`}>
+    <div className={'w100'}>
       {/* amount */}
       <FractionInput
         inputRef={amountInput}

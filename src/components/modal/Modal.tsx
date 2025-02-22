@@ -1,8 +1,8 @@
 import { css } from '@emotion/react'
-import { SerializedStyles } from '@emotion/react'
+import type { SerializedStyles } from '@emotion/react'
 import React from 'react'
 import ReturnArrow from '../../assets/common/return-arrow.svg'
-import { Modals } from '../../constants/modals'
+import type { Modals } from '../../constants/modals'
 import { getAnimationDuration } from '../../helpers/getAnimationDuration'
 import { isMobile } from '../../helpers/isMobile'
 import { colors } from '../../theme'
@@ -155,6 +155,7 @@ export const Modal: React.FC<props> = (props) => {
       }`}
     >
       <div
+        // biome-ignore lint/a11y/useSemanticElements: We use role instead here.
         role="dialog"
         ref={modalRef}
         css={dialogStyles}
@@ -167,7 +168,7 @@ export const Modal: React.FC<props> = (props) => {
           <button
             aria-label="close"
             css={closeButtonStyling}
-            className={`fr ultra`}
+            className={'fr ultra'}
             ref={closeButton}
             onClick={() => {
               close()
@@ -187,11 +188,14 @@ export const Modal: React.FC<props> = (props) => {
       {/* This works because clicks do not propagate to the element below */}
       {/* The height is dynamically set with JavaScript depending on the height of the modal */}
       <div
+        onKeyDown={() => {
+          close()
+        }}
         onClick={() => {
           close()
         }}
         css={backgroundStyling}
-      ></div>
+      />
     </div>
   ) : (
     <div />

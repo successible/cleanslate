@@ -1,5 +1,5 @@
 import { volumeUnits } from '../../../constants/units'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { convertFromGrams } from './convertFromGrams'
 import { convertToGrams } from './convertToGrams'
 import { mapOtherVolumeUnitToTbsp } from './mapOtherVolumeUnitToTbsp'
@@ -31,43 +31,48 @@ export const convertFromUnitToNewUnit = (
   if (volumeToVolume) {
     const tbsp = mapOtherVolumeUnitToTbsp(oldUnit, oldAmount)
     return mapTbspToOtherVolumeUnit(newUnit, tbsp)
-  } else if (countToContainer && servingPerContainer) {
+  }
+  if (countToContainer && servingPerContainer) {
     return oldAmount / servingPerContainer
-  } else if (containerToCount && servingPerContainer) {
+  }
+  if (containerToCount && servingPerContainer) {
     return oldAmount * servingPerContainer
-  } else if (countToVolume && countToTbsp) {
+  }
+  if (countToVolume && countToTbsp) {
     const tbsp = oldAmount * countToTbsp
     return mapTbspToOtherVolumeUnit(newUnit, tbsp)
-  } else if (volumeToCount && countToTbsp) {
+  }
+  if (volumeToCount && countToTbsp) {
     const tbsp = mapOtherVolumeUnitToTbsp(oldUnit, oldAmount)
     return tbsp / countToTbsp
-  } else if (containerToVolume && countToTbsp && servingPerContainer) {
+  }
+  if (containerToVolume && countToTbsp && servingPerContainer) {
     const count = oldAmount * servingPerContainer
     const tbsp = count * countToTbsp
     return mapTbspToOtherVolumeUnit(newUnit, tbsp)
-  } else if (volumeToContainer && countToTbsp && servingPerContainer) {
+  }
+  if (volumeToContainer && countToTbsp && servingPerContainer) {
     const tbsp = mapOtherVolumeUnitToTbsp(oldUnit, oldAmount)
     const count = tbsp / countToTbsp
     return count / servingPerContainer
-  } else {
-    const grams = convertToGrams(
-      oldAmount,
-      oldUnit,
-      countToGram,
-      tbspToGram,
-      countToTbsp,
-      servingPerContainer
-    )
-
-    // The happy path
-    // In which we can convert from X to gram to X
-
-    return convertFromGrams(
-      grams,
-      newUnit,
-      countToGram,
-      tbspToGram,
-      servingPerContainer
-    )
   }
+  const grams = convertToGrams(
+    oldAmount,
+    oldUnit,
+    countToGram,
+    tbspToGram,
+    countToTbsp,
+    servingPerContainer
+  )
+
+  // The happy path
+  // In which we can convert from X to gram to X
+
+  return convertFromGrams(
+    grams,
+    newUnit,
+    countToGram,
+    tbspToGram,
+    servingPerContainer
+  )
 }

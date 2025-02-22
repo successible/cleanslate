@@ -1,23 +1,7 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": [
-      "*.DS_STORE",
-      "*.scss",
-      "*.sql",
-      "*.svg",
-      "*.tsbuildinfo",
-      "*.yaml",
-      "migrations",
-      "node_modules",
-      "src/.next",
-      "src/components",
-      "src/components/login/LegalDisclaimer.tsx",
-      "src/out",
-      "src/public",
-      "src/server.js",
-      "src/workbox-config.js"
-    ]
+    "ignore": ["*.js", "migrations", "node_modules", "src/.next", "src/out"]
   },
   "formatter": {
     "enabled": true,

@@ -1,5 +1,5 @@
-import { Food } from '../../../../models/food'
-import { Log } from '../../../../models/log'
+import type { Food } from '../../../../models/food'
+import type { Log } from '../../../../models/log'
 
 export const sortByUpdatedAt = (items: Food[] | Log[]) =>
   items.sort(

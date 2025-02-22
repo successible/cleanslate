@@ -1,4 +1,4 @@
-import { Sex } from '../../../../store/navbar/types'
+import type { Sex } from '../../../../store/navbar/types'
 import { calculateBMI } from './calculateBMI'
 
 export const calculateBodyFatPercentageUsingCUN_BAE = (

@@ -1,5 +1,5 @@
-import { Unit } from '../../../../constants/units'
-import { Ingredient } from '../../../../models/ingredient'
+import type { Unit } from '../../../../constants/units'
+import type { Ingredient } from '../../../../models/ingredient'
 import { condenseSimpleIngredient } from './condenseSimplifyIngredient'
 
 export type SimpleIngredient = {
@@ -14,18 +14,17 @@ export const simplifyIngredients = (
 ): SimpleIngredient[] => {
   if (!ingredients) {
     return [] as SimpleIngredient[]
-  } else {
-    return ingredients
-      .map((ingredient) => {
-        return {
-          amount: ingredient.amount,
-          childRecipe: ingredient.ingredientToChildRecipe?.id,
-          food: ingredient.ingredientToFood?.id,
-          unit: ingredient.unit,
-        }
-      })
-      .sort((a, b) =>
-        condenseSimpleIngredient(a).localeCompare(condenseSimpleIngredient(b))
-      )
   }
+  return ingredients
+    .map((ingredient) => {
+      return {
+        amount: ingredient.amount,
+        childRecipe: ingredient.ingredientToChildRecipe?.id,
+        food: ingredient.ingredientToFood?.id,
+        unit: ingredient.unit,
+      }
+    })
+    .sort((a, b) =>
+      condenseSimpleIngredient(a).localeCompare(condenseSimpleIngredient(b))
+    )
 }

@@ -1,12 +1,9 @@
-import { categories, Category } from '../../../constants/categories'
-import { Food } from '../../../models/food'
+import { type Category, categories } from '../../../constants/categories'
+import type { Food } from '../../../models/food'
 
 export const addCategoryToDummyFood = (food: Food): Category => {
   if (categories.includes(food.name as Category)) {
     return food.name as Category
-  } else {
-    throw Error(
-      `${food.name} is not a valid group, check addCategoryToDummyFood`
-    )
   }
+  throw Error(`${food.name} is not a valid group, check addCategoryToDummyFood`)
 }

@@ -1,7 +1,7 @@
-import React from 'react'
+import type React from 'react'
 import Lightning from '../../../assets/common/lightning.svg'
 import { deleteQuickLogOnCloud } from '../../../helpers/quick-log/deleteQuickLogOnCloud'
-import { QuickLog } from '../../../models/quickLog'
+import type { QuickLog } from '../../../models/quickLog'
 import { Item } from '../../item/Item'
 
 export const QuickLogItem: React.FC<{ quick_log: QuickLog }> = (props) => {

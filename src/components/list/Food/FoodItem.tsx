@@ -1,6 +1,6 @@
-import React from 'react'
+import type React from 'react'
 import { deleteFoodOnCloud } from '../../../helpers/Food/deleteFoodOnCloud'
-import { Food } from '../../../models/food'
+import type { Food } from '../../../models/food'
 import { Item } from '../../item/Item'
 
 export const FoodItem: React.FC<{ food: Food }> = (props) => {

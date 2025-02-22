@@ -1,8 +1,8 @@
 import { Component } from 'react'
-import { Error } from './Error'
+import { ErrorModal } from './ErrorModal'
 
 export class ErrorComponent extends Component {
   render() {
-    return <Error />
+    return <ErrorModal />
   }
 }

@@ -13,7 +13,7 @@ export const BottomBar: React.FC<props> = ({ children, height }) => {
   `
 
   return (
-    <div css={footer} id="footer" className={`frc w100 z2`}>
+    <div css={footer} id="footer" className={'frc w100 z2'}>
       {children}
     </div>
   )

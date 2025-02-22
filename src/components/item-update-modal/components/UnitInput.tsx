@@ -1,5 +1,5 @@
-import { Unit } from '../../../constants/units'
-import { CommonItem } from '../../item/types'
+import type { Unit } from '../../../constants/units'
+import type { CommonItem } from '../../item/types'
 import { renderUnitComponent } from '../../list/helpers/renderUnitComponent'
 import { updateUnit } from '../helpers/updateUnit'
 

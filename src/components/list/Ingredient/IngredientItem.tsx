@@ -1,9 +1,9 @@
-import React from 'react'
-import { toast } from 'react-toastify';
+import type React from 'react'
+import { toast } from 'react-toastify'
 import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
-import { Ingredient } from '../../../models/ingredient'
+import type { Ingredient } from '../../../models/ingredient'
 import { Item } from '../../item/Item'
-import { OnUpdateItem } from '../../item/types'
+import type { OnUpdateItem } from '../../item/types'
 import { getImagePath, selectFoodImage } from '../helpers/selectFoodImage'
 
 type props = {

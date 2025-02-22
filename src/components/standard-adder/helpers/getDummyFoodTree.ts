@@ -1,9 +1,9 @@
 import {
-  DummyFoods,
+  type DummyFoods,
   dummyFoods,
 } from '../../../constants/dummyFoods/dummyFoods'
 import { capitalize } from '../../../helpers/capitalize'
-import { Path } from './getDummyFoodPath'
+import type { Path } from './getDummyFoodPath'
 
 export const getDummyFoodTree = (
   path: Path

@@ -1,5 +1,5 @@
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { createAllPossibleImageNames } from './createImageName'
 
 // @ts-ignore
@@ -19,18 +19,17 @@ export const selectFoodImage = (
   const defaultPath = ''
   if (!model) {
     return defaultPath
-  } else {
-    for (const name of createAllPossibleImageNames(model)) {
-      try {
-        const imagePath = getImagePath(`./${name}`)
-        if (imagePath) {
-          // @ts-ignore
-          return extractSrc ? imagePath.default.src : imagePath.default
-        }
-      } catch (error) {
-        // Do nothing
-      }
-    }
-    return defaultPath
   }
+  for (const name of createAllPossibleImageNames(model)) {
+    try {
+      const imagePath = getImagePath(`./${name}`)
+      if (imagePath) {
+        // @ts-ignore
+        return extractSrc ? imagePath.default.src : imagePath.default
+      }
+    } catch (error) {
+      // Do nothing
+    }
+  }
+  return defaultPath
 }

@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 
 type props = {
   title?: string
@@ -33,7 +33,7 @@ export const UnitSelector: React.FC<props> = ({
   return (
     <div className="fr w100 mt20">
       <input
-        id={`unit-selector-input`}
+        id={'unit-selector-input'}
         value={newAmount}
         inputMode="decimal"
         onChange={(e) => {
@@ -59,7 +59,7 @@ export const UnitSelector: React.FC<props> = ({
         </span>
       ) : (
         <select
-          id={`unit-selector-select`}
+          id={'unit-selector-select'}
           value={selectedUnit}
           onChange={(e) => {
             const unit = e.target.value as Unit

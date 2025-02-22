@@ -1,11 +1,11 @@
 import { produce } from 'immer'
 import { addRecipeToCloud } from '../../../../helpers/recipes/addRecipeToCloud'
 import { updateRecipeOnCloud } from '../../../../helpers/recipes/updateRecipeOnCloud'
-import { Ingredient } from '../../../../models/ingredient'
-import { Recipe } from '../../../../models/recipe'
-import { AllEvents } from '../../../../store/store'
-import { Dispatch } from '../../../../store/types'
-import { RecipeFormData } from '../RecipeForm'
+import type { Ingredient } from '../../../../models/ingredient'
+import type { Recipe } from '../../../../models/recipe'
+import type { AllEvents } from '../../../../store/store'
+import type { Dispatch } from '../../../../store/types'
+import type { RecipeFormData } from '../RecipeForm'
 import { formatDataForMutation } from './formatDataForMutation'
 
 export const submitRecipe = (
@@ -30,7 +30,7 @@ export const submitRecipe = (
       pk_columns: { id: recipe.id },
       set: produce(data, (draft) => {
         // @ts-ignore
-        delete draft.ingredients
+        draft.ingredients = undefined
       }),
     }
 
@@ -49,20 +49,19 @@ export const submitRecipe = (
         dispatch('closeMenu')
       }
     })
-  } else {
-    const variables = formatDataForMutation(data, ingredientsToUse, recipe?.id)
-    return addRecipeToCloud(
-      {
-        ...variables.object,
-        countToGram: data.countToGram,
-        countToTbsp: data.countToTbsp,
-        servingPerContainer: data.servingPerContainer,
-      },
-      () => {
-        if (closeModal) {
-          dispatch('closeRecipeFormModal')
-        }
-      }
-    )
   }
+  const variables = formatDataForMutation(data, ingredientsToUse, recipe?.id)
+  return addRecipeToCloud(
+    {
+      ...variables.object,
+      countToGram: data.countToGram,
+      countToTbsp: data.countToTbsp,
+      servingPerContainer: data.servingPerContainer,
+    },
+    () => {
+      if (closeModal) {
+        dispatch('closeRecipeFormModal')
+      }
+    }
+  )
 }

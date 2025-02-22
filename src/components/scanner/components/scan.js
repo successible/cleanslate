@@ -29,10 +29,10 @@ let fps = 0
 
 const crossHairSvg =
   'M77.125 148.02567c0-3.5774 2.73862-6.27567 6.37076-6.27567H119V117H84.0192C66.50812 117 52 130.77595 52 148.02567V183h25.125v-34.97433zM237.37338 117H202v24.75h35.18494c3.63161 0 6.69006 2.69775 6.69006 6.27567V183H269v-34.97433C269 130.77595 254.88446 117 237.37338 117zM243.875 285.4587c0 3.5774-2.73863 6.27567-6.37076 6.27567H202V317h35.50424C255.01532 317 269 302.70842 269 285.4587V251h-25.125v34.4587zM83.49576 291.73438c-3.63213 0-6.37076-2.69776-6.37076-6.27568V251H52v34.4587C52 302.70842 66.50812 317 84.0192 317H119v-25.26563H83.49576z'
-const crossHairWidth = 217,
-  crossHairHeight = 200,
-  x0 = 53,
-  y0 = 117
+const crossHairWidth = 217
+const crossHairHeight = 200
+const x0 = 53
+const y0 = 117
 
 class Scan extends React.Component {
   constructor(props) {
@@ -65,7 +65,7 @@ class Scan extends React.Component {
   }
 
   initWorker = () => {
-    this.qrworker = new Worker(this.state.worker + 'Worker.js')
+    this.qrworker = new Worker(`${this.state.worker}Worker.js`)
 
     this.qrworker.onmessage = async (ev) => {
       if (ev.data != null) {
@@ -73,10 +73,10 @@ class Scan extends React.Component {
         const result = ev.data
         this.stopScan()
 
-        let res = result.data
+        const res = result.data
         const milliseconds = ev.data.ms
         const rawCode = res
-        let codeType = CODE_TYPE.RAW
+        const codeType = CODE_TYPE.RAW
 
         this.setState({
           barcode: res,
@@ -103,14 +103,17 @@ class Scan extends React.Component {
       scanning: true,
       transformToggle: true,
     })
-    navigator.mediaDevices.getUserMedia({ audio: false, video: { facingMode: 'environment' } })
-        .then((stream) => {
+    navigator.mediaDevices
+      .getUserMedia({ audio: false, video: { facingMode: 'environment' } })
+      .then((stream) => {
         this.video.srcObject = stream
         this.video.setAttribute('playsinline', 'true')
         this.video.play()
-            // turn on/off flash
-        stream.getVideoTracks()[0].applyConstraints({advanced: [{torch: this.state.flash}]})
-            .catch((err) => console.log(err))
+        // turn on/off flash
+        stream
+          .getVideoTracks()[0]
+          .applyConstraints({ advanced: [{ torch: this.state.flash }] })
+          .catch((err) => console.log(err))
         requestAnimationFrame(this.tick)
       })
       .catch((err) => {
@@ -124,7 +127,7 @@ class Scan extends React.Component {
     if (window.AudioContext) {
       window.audioContext = new window.AudioContext()
     }
-    const fixAudioContext = function () {
+    const fixAudioContext = () => {
       if (window.audioContext) {
         // Create empty buffer
         const buffer = window.audioContext.createBuffer(1, 1, 22050)
@@ -161,10 +164,10 @@ class Scan extends React.Component {
     this.video.pause()
     if (this.video.srcObject) {
       // also disable torch
-      this.video.srcObject.getVideoTracks().forEach((track => {
-        track.applyConstraints({advanced: [{torch: false}]})
+      this.video.srcObject.getVideoTracks().forEach((track) => {
+        track.applyConstraints({ advanced: [{ torch: false }] })
         track.stop()
-      }))
+      })
       this.video.srcObject = null
     }
   }
@@ -187,15 +190,15 @@ class Scan extends React.Component {
   }
 
   monochromize = () => {
-    let imgd = this.canvas.getImageData(
+    const imgd = this.canvas.getImageData(
       0,
       0,
       this.canvasElement.width,
       this.canvasElement.height
     )
-    let pix = imgd.data
+    const pix = imgd.data
     for (let i = 0; i < pix.length; i += 4) {
-      let gray = pix[i] * 0.3 + pix[i + 1] * 0.59 + pix[i + 2] * 0.11
+      const gray = pix[i] * 0.3 + pix[i + 1] * 0.59 + pix[i + 2] * 0.11
       pix[i] = gray
       pix[i + 1] = gray
       pix[i + 2] = gray
@@ -238,7 +241,7 @@ class Scan extends React.Component {
   drawFPS = (fps) => {
     this.canvas.font = 'normal 16pt Arial'
     this.canvas.fillStyle = '#f8ff4c'
-    this.canvas.fillText(Math.round(fps) + ' fps', 10, CANVAS_SIZE.HEIGHT - 16)
+    this.canvas.fillText(`${Math.round(fps)} fps`, 10, CANVAS_SIZE.HEIGHT - 16)
   }
 
   componentDidMount() {
@@ -255,8 +258,8 @@ class Scan extends React.Component {
   }
   onFlashClickHandler = (e) => {
     e.preventDefault()
-    if (this.state.flash) this.setState({flash: false})
-    else this.setState({flash: true})
+    if (this.state.flash) this.setState({ flash: false })
+    else this.setState({ flash: true })
     // "restart" camera to regain focus
     this.startScan()
   }
@@ -264,9 +267,8 @@ class Scan extends React.Component {
   startStyle = () => {
     const style = { textAlign: 'center', width: 64 }
     if (this.state.scanning) return { backgroundColor: 'red', ...style }
-    else return { backgroundColor: '', ...style }
+    return { backgroundColor: '', ...style }
   }
-
 
   render() {
     if (this.state.resultOpen) {
@@ -274,63 +276,63 @@ class Scan extends React.Component {
       this.props.onScan(result)
     }
     return (
-        <div
-            className="fcs"
-            css={css`
+      <div
+        className="fcs"
+        css={css`
               width: 90%;
               height: 100%;
               max-width: 400px;
             `}
-        >
-          {this.state.neverScanned && (
-              <Explanation color="blue">
-                <div>
-                  This barcode scanner uses the Open Food Facts database. Because
-                  this database is a free service, it may not have every food. Just
-                  a heads up!
-                </div>
-              </Explanation>
-          )}
-          <canvas
-              css={css`
+      >
+        {this.state.neverScanned && (
+          <Explanation color="blue">
+            <div>
+              This barcode scanner uses the Open Food Facts database. Because
+              this database is a free service, it may not have every food. Just
+              a heads up!
+            </div>
+          </Explanation>
+        )}
+        <canvas
+          css={css`
                 width: 100%;
                 max-width: 400px;
                 max-height: ${this.state.neverScanned ? '0px' : '400px'};
                 margin: 0px auto;
               `}
-              id="canvas"
-          />
-          <button
-              className="purple bold"
-              css={css`
+          id="canvas"
+        />
+        <button
+          className="purple bold"
+          css={css`
                 width: 100% !important;
                 margin: 20px auto !important;
-                margin-bottom: ${!this.state.neverScanned
+                margin-bottom: ${
+                  !this.state.neverScanned
                     ? '20px !important'
-                    : '0px !important'};
+                    : '0px !important'
+                };
               `}
-              onTouchStart={this.initializeAudio}
-              onClick={this.onBtnClickHandler}
-              style={this.startStyle()}
-          >
-            {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
-          </button>
-          <button
-              className={`${this.state.flash ? "background" : "yellow"} bold mt10`}
-              css={css`
-            display: ${!this.state.neverScanned 
-                ? 'unset' 
-                : 'none'};
+          onTouchStart={this.initializeAudio}
+          onClick={this.onBtnClickHandler}
+          style={this.startStyle()}
+        >
+          {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
+        </button>
+        <button
+          className={`${this.state.flash ? 'background' : 'yellow'} bold mt10`}
+          css={css`
+            display: ${!this.state.neverScanned ? 'unset' : 'none'};
             width: 100% !important;
-            margin-bottom: ${!this.state.neverScanned
-                  ? '20px !important'
-                  : '0px !important'};
+            margin-bottom: ${
+              !this.state.neverScanned ? '20px !important' : '0px !important'
+            };
           `}
-              onClick={this.onFlashClickHandler}
-          >
-            {this.state.flash ? 'Turn off flash' : 'Turn on flash'}
-          </button>
-        </div>
+          onClick={this.onFlashClickHandler}
+        >
+          {this.state.flash ? 'Turn off flash' : 'Turn on flash'}
+        </button>
+      </div>
     )
   }
 

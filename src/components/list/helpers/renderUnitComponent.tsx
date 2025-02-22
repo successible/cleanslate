@@ -1,7 +1,7 @@
 import { curry } from 'lodash-es'
-import { Unit } from '../../../constants/units'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Unit } from '../../../constants/units'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 import { Select } from '../../select/Select'
 import { getPrettyUnits } from './getPrettyUnits'
 
@@ -19,9 +19,8 @@ export const renderUnitComponent = (
         currentOption={unit}
         optionDictionary={prettyUnits}
         onChange={curry(updater)(id)}
-      ></Select>
+      />
     )
-  } else {
-    return <div />
   }
+  return <div />
 }

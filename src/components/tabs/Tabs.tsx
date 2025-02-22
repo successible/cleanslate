@@ -1,4 +1,4 @@
-import { css, SerializedStyles } from '@emotion/react'
+import { type SerializedStyles, css } from '@emotion/react'
 import React from 'react'
 import { colors } from '../../theme'
 
@@ -51,7 +51,7 @@ export const Tabs: React.FC<props> = ({
               updateSelection(tabs[tab])
             }}
             type="button"
-            key={index}
+            key={tab}
             css={tabStyles}
             className={`tab ${
               tabs[tab].title === selection?.title && tab !== null

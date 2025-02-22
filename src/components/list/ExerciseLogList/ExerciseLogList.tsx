@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import React from 'react'
-import { ExerciseLog } from '../../../models/exerciseLog'
+import type React from 'react'
+import type { ExerciseLog } from '../../../models/exerciseLog'
 import { Divider } from '../../divider/Divider'
 import { sortByCreatedAt } from '../Log/helpers/sortByCreatedAt'
 import { ExerciseLogItem } from './ExerciseLogItem'

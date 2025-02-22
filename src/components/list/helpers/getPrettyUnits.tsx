@@ -3,10 +3,10 @@ import {
   volumeUnits,
   weightUnits,
 } from '../../../constants/units'
-import { defaultCount, Unit } from '../../../constants/units'
+import { type Unit, defaultCount } from '../../../constants/units'
 import { zipObject } from '../../../helpers/zipObject'
-import { Food } from '../../../models/food'
-import { Recipe } from '../../../models/recipe'
+import type { Food } from '../../../models/food'
+import type { Recipe } from '../../../models/recipe'
 
 /**
  * Given the all possible units, it slims and prettifies those units for each food item or dictionary.

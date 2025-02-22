@@ -1,5 +1,5 @@
 import { Ingredient } from '../../../models/ingredient'
-import { CommonItem } from '../types'
+import type { CommonItem } from '../types'
 
 export const convertItemToIngredient = (
   item: CommonItem,

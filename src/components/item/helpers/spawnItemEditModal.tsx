@@ -1,6 +1,6 @@
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
-import { CommonItem } from '../types'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import type { CommonItem } from '../types'
 
 export const spawnItemEditModal = (
   item: CommonItem,

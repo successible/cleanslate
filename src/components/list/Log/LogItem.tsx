@@ -1,11 +1,11 @@
-import React from 'react'
-import { toast } from 'react-toastify';
+import type React from 'react'
+import { toast } from 'react-toastify'
 import BarcodeWithoutScanner from '../../../assets/common/barcode-without-scanner.svg'
-import { Unit } from '../../../constants/units'
+import type { Unit } from '../../../constants/units'
 import { deleteLogOnCloud } from '../../../helpers/log/deleteLogOnCloud'
 import { updateLogOnCloud } from '../../../helpers/log/updateLogOnCloud'
-import { Log, Meal } from '../../../models/log'
-import { Profile } from '../../../models/profile'
+import type { Log, Meal } from '../../../models/log'
+import type { Profile } from '../../../models/profile'
 import { Item } from '../../item/Item'
 import { getImagePath, selectFoodImage } from '../helpers/selectFoodImage'
 

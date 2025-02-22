@@ -11,7 +11,8 @@ import { LegalDisclaimer } from './LegalDisclaimer'
 
 export const TokenLoginButtons = () => {
   const [token, setToken] = useState('')
-  const noMatch = 'No matching profile found! Make sure to login with apiToken, not authId.'
+  const noMatch =
+    'No matching profile found! Make sure to login with apiToken, not authId.'
 
   return (
     <form
@@ -19,7 +20,7 @@ export const TokenLoginButtons = () => {
         width: 90%;
       `}
     >
-      <label>Token</label>
+      <label htmlFor="token">Token</label>
       <input
         id="token"
         value={token}
@@ -38,7 +39,7 @@ export const TokenLoginButtons = () => {
           if (token) {
             try {
               const response = await axios.post(
-                getConfig().authenticationServerUri + '/login',
+                `${getConfig().authenticationServerUri}/login`,
                 { token }
               )
               if (response.data) {

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react'
-import { Food } from '../../models/food'
-import { Profile } from '../../models/profile'
-import { Recipe } from '../../models/recipe'
+import type { Food } from '../../models/food'
+import type { Profile } from '../../models/profile'
+import type { Recipe } from '../../models/recipe'
 import { StandardAdder } from '../standard-adder/StandardAdder'
 
 type props = { profile: Profile; foods: Food[]; recipes: Recipe[] }

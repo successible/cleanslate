@@ -1,6 +1,6 @@
 import { css } from '@emotion/react'
-import React from 'react'
-import { KeyboardShortcutKeys } from '../../helpers/createShortcuts'
+import type React from 'react'
+import type { KeyboardShortcutKeys } from '../../helpers/createShortcuts'
 import { colors } from '../../theme'
 import { Divider } from '../divider/Divider'
 import { documentation } from '../settings/Settings'
@@ -36,7 +36,7 @@ export const Help: React.FC = () => {
   return (
     <div css={documentation}>
       <h1>Keyboard shortcuts</h1>
-      <h3 css={subheader} className={`fr`}>
+      <h3 css={subheader} className={'fr'}>
         Primary{' '}
         <span
           css={css`
@@ -53,14 +53,13 @@ export const Help: React.FC = () => {
           const [key, purpose] = shortcut
           if (keyShortcuts.includes(key)) {
             return (
-              <div key={key} css={shortcutContainer} className={`fr`}>
+              <div key={key} css={shortcutContainer} className={'fr'}>
                 <div>{key}</div>
                 <div>{purpose}</div>
               </div>
             )
-          } else {
-            return ''
           }
+          return ''
         }
       )}
 
@@ -70,14 +69,13 @@ export const Help: React.FC = () => {
         const [key, purpose] = shortcut
         if (!keyShortcuts.includes(key)) {
           return (
-            <div key={key} css={shortcutContainer} className={`fr`}>
+            <div key={key} css={shortcutContainer} className={'fr'}>
               <div>{key}</div>
               <div>{purpose}</div>
             </div>
           )
-        } else {
-          return ''
         }
+        return ''
       })}
     </div>
   )

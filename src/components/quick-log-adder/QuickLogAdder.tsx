@@ -1,11 +1,11 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
-import { NavbarState } from '../../store/navbar/types'
+import type { NavbarState } from '../../store/navbar/types'
+import { useStoreon } from '../../storeon'
 import { colors } from '../../theme'
 import { SubmitButton } from '../item-update-modal/components/SubmitButton'
-import { useStoreon } from '../../storeon';
 
 export const QuickLogAdder: React.FC = () => {
   const [calories, setCalories] = React.useState(null as number | string | null)
@@ -60,14 +60,14 @@ export const QuickLogAdder: React.FC = () => {
         }
       }}
       css={form}
-      className={`frc w100`}
+      className={'frc w100'}
     >
       <input
         autoCapitalize={'off'}
         autoComplete={'off'}
         autoCorrect={'off'}
         css={input}
-        className={`w33`}
+        className={'w33'}
         id="calories"
         inputMode="decimal"
         onChange={(event) => {
@@ -85,7 +85,7 @@ export const QuickLogAdder: React.FC = () => {
         autoComplete={'off'}
         autoCorrect={'off'}
         css={input}
-        className={`w33`}
+        className={'w33'}
         id="protein"
         inputMode="decimal"
         onChange={(event) => {
@@ -102,7 +102,7 @@ export const QuickLogAdder: React.FC = () => {
         autoComplete={'off'}
         autoCorrect={'off'}
         css={input}
-        className={`w33`}
+        className={'w33'}
         id="name"
         onChange={(event) => {
           setName(event.target.value)

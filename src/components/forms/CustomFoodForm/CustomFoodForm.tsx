@@ -1,30 +1,30 @@
 import { css } from '@emotion/react'
 import React from 'react'
-import { toast } from 'react-toastify';
-import { Category } from '../../../constants/categories'
-import { Group } from '../../../constants/groups'
+import { toast } from 'react-toastify'
+import type { Category } from '../../../constants/categories'
+import type { Group } from '../../../constants/groups'
 import {
-  VolumeUnit,
+  type VolumeUnit,
+  type WeightUnit,
   volumeUnits,
-  WeightUnit,
   weightUnits,
 } from '../../../constants/units'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
 import { isNumeric } from '../../../helpers/isNumeric'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
-import { Food } from '../../../models/food'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { Food } from '../../../models/food'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import { useStoreon } from '../../../storeon'
 import { colors } from '../../../theme'
 import { Divider } from '../../divider/Divider'
 import { Explanation } from '../../explanation/Explanation'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
+import { UnitSelector } from './UnitSelector'
 import { getAdjustedVolumeAmount } from './helpers/getAdjustedVolumeAmount'
 import { getAdjustedWeightAmount } from './helpers/getAdjustedWeightAmount'
-import { UnitSelector } from './UnitSelector'
-import { useStoreon } from '../../../storeon';
 
 export type FoodSubmission = {
   name: string
@@ -121,7 +121,7 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           preferredWeightUnit: weightUnit,
           proteinPerCount: prep(proteinPerCount),
           servingPerContainer: prep(servingPerContainer),
-          openFoodFactsCode: food?.openFoodFactsCode || null
+          openFoodFactsCode: food?.openFoodFactsCode || null,
         }
 
         const close = () => {
@@ -268,7 +268,7 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           />
           <div className="fr w100 mt20">
             <input
-              id={`servings-per-container-input`}
+              id={'servings-per-container-input'}
               value={servingPerContainer}
               inputMode="decimal"
               onChange={(e) => {
@@ -310,7 +310,14 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
       {food?.openFoodFactsCode && (
         <Explanation color="background">
           <div>
-            Barcode (Open Food Facts): <a target="_blank" rel="noopener noreferrer" href={`https://world.openfoodfacts.org/product/${food.openFoodFactsCode}`}>{food.openFoodFactsCode}</a>
+            Barcode (Open Food Facts):{' '}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://world.openfoodfacts.org/product/${food.openFoodFactsCode}`}
+            >
+              {food.openFoodFactsCode}
+            </a>
           </div>
         </Explanation>
       )}

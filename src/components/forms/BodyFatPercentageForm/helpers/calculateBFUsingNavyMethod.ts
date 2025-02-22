@@ -1,4 +1,4 @@
-import { Sex } from '../../../../store/navbar/types'
+import type { Sex } from '../../../../store/navbar/types'
 
 // Reference: https://fitties.com/fat-caliper-plus/body-fat-calculation-methods/us-navy/
 export const calculateBFUsingNavyMethod = (
@@ -12,7 +12,8 @@ export const calculateBFUsingNavyMethod = (
     return (
       86.01 * Math.log10(waist - neck) - 70.041 * Math.log10(height) + 36.76
     )
-  } else if (sex === 'female') {
+  }
+  if (sex === 'female') {
     return (
       163.205 * Math.log10(waist + hip - neck) -
       97.684 * Math.log10(height) -

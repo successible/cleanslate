@@ -1,4 +1,4 @@
-import { Sex } from '../../../../store/navbar/types'
+import type { Sex } from '../../../../store/navbar/types'
 
 /** Calculate ideal body weight, based on the Robinson formula.
  * The results are in kg but height is in inches.
@@ -9,9 +9,9 @@ export const calculateIdealBodyWeightInKg = (sex: Sex, height: number) => {
   const other = (male + female) / 2
   if (sex === 'male') {
     return male
-  } else if (sex === 'female') {
-    return female
-  } else {
-    return other
   }
+  if (sex === 'female') {
+    return female
+  }
+  return other
 }

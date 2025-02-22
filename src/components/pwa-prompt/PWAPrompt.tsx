@@ -5,7 +5,7 @@ import Logo from '../../assets/logo-circle.svg'
 import { getDispatch } from '../../helpers/getDispatch'
 import { isMobileSafari } from '../../helpers/isMobileSafari'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
-import { Profile } from '../../models/profile'
+import type { Profile } from '../../models/profile'
 import { Image } from '../image/Image'
 
 type props = { profile: Profile }
@@ -66,6 +66,7 @@ export const PWAPrompt: React.FC<props> = ({ profile }) => {
       </div>
       <div>
         <button
+          type="button"
           className="purple bold mt10"
           onClick={() => {
             const variables = {

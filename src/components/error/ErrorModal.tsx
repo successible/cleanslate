@@ -5,13 +5,13 @@ import { clearLoginState } from '../../helpers/clearLoginState'
 import { isBrowser } from '../../helpers/isBrowser'
 import { logout } from '../../helpers/logout'
 import { mapError } from '../../helpers/mapError'
-import { NavbarState } from '../../store/navbar/types'
+import type { NavbarState } from '../../store/navbar/types'
+import { useStoreon } from '../../storeon'
 import { colors } from '../../theme'
 import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
-import { useStoreon } from '../../storeon'
 
-export const Error = () => {
+export const ErrorModal = () => {
   const {
     navbar,
   }: {
@@ -32,7 +32,7 @@ export const Error = () => {
   `
 
   return (
-    <div css={errorStyling} className={`fcc w100 h100 z3 absolute`}>
+    <div css={errorStyling} className={'fcc w100 h100 z3 absolute'}>
       <div className="jumbo fcc">
         {/* The images */}
         <Image width={50} height={50} alt="Error" src={ErrorImage} />
@@ -58,6 +58,7 @@ export const Error = () => {
           {/* Generic error buttons */}
           <div className="fr">
             <button
+              type="button"
               onClick={() => {
                 if (isBrowser()) {
                   clearCache()
@@ -65,17 +66,18 @@ export const Error = () => {
                   window.location.reload()
                 }
               }}
-              className={` purple normal`}
+              className={' purple normal'}
             >
               Refresh the app
             </button>
             <button
+              type="button"
               onClick={() => {
                 if (isBrowser()) {
                   logout()
                 }
               }}
-              className={`background normal ml10`}
+              className={'background normal ml10'}
             >
               Logout
             </button>

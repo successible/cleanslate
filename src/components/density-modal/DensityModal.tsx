@@ -3,10 +3,10 @@ import React from 'react'
 import { createSearcher } from '../../components/standard-adder/helpers/createSearcher'
 import { getSearchResults } from '../../components/standard-adder/helpers/getSearchResults'
 import { Tabs } from '../../components/tabs/Tabs'
-import { Group, groups } from '../../constants/groups'
+import { type Group, groups } from '../../constants/groups'
 import { getBasicFoods } from '../../helpers/Food/getBasicFoods'
 import { sortByDensity } from '../../helpers/sortByDensity'
-import { Density, Food } from '../../models/food'
+import type { Density, Food } from '../../models/food'
 import { DensityItem } from '../list/Density/DensityItem'
 
 export const DensityModal = () => {

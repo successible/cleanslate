@@ -1,7 +1,7 @@
-import React from 'react'
+import type React from 'react'
 import Exercise from '../../../assets/common/fastexercise.svg'
 import { deleteExerciseLogOnCloud } from '../../../helpers/exercise-log/deleteExerciseLogOnCloud'
-import { ExerciseLog } from '../../../models/exerciseLog'
+import type { ExerciseLog } from '../../../models/exerciseLog'
 import { Item } from '../../item/Item'
 
 export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
@@ -17,7 +17,7 @@ export const ExerciseLogItem: React.FC<{ exercise_log: ExerciseLog }> = (
   }
 
   const src = Exercise.src
-  
+
   return (
     <Item
       item={{

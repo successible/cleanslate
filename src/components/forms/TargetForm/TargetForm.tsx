@@ -1,13 +1,13 @@
 import { css } from '@emotion/react'
 import React from 'react'
 import { updateProfileOnCloud } from '../../../helpers/profile/updateProfileOnCloud'
-import { Profile } from '../../../models/profile'
-import { AllEvents } from '../../../store/store'
-import { Dispatch } from '../../../store/types'
+import type { Profile } from '../../../models/profile'
+import type { AllEvents } from '../../../store/store'
+import type { Dispatch } from '../../../store/types'
+import { useStoreon } from '../../../storeon'
 import { Divider } from '../../divider/Divider'
 import { Explanation } from '../../explanation/Explanation'
 import { CalculateTargetForm } from '../CalculateTargetForm/CalculateTargetForm'
-import { useStoreon } from '../../../storeon'
 
 type props = { profile: Profile }
 
@@ -87,8 +87,10 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
                   />
                 </div>
                 <div>
-                  <label className="opaque">Update</label>
-                  <button type="submit" className="purple bold">
+                  <label htmlFor="Update" className="opaque">
+                    Update
+                  </label>
+                  <button id="Update" type="submit" className="purple bold">
                     Update
                   </button>
                 </div>
