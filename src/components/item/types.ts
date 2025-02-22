@@ -17,7 +17,8 @@ import type { ExerciseGroup } from '../forms/ExerciseForm/ExerciseForm'
 
 export type OnUpdateItem = (
   ...args: any[]
-) => undefined | Promise<string | Log> | Promise<string | QuickLog>
+  // biome-ignore lint/suspicious/noConfusingVoidType: Makes TypeScript happy
+) => undefined | void | Promise<string | Log> | Promise<string | QuickLog>
 
 export type OnDeleteItem = (id?: string) => void
 

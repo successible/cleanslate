@@ -85,7 +85,6 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
       setProtein(protein)
       setDensities(densities)
     } else if (submitReady && amountAsNumber && localUnit && item?.recipe) {
-      console.log('BAR')
       const calories = calculatePerMacroPerRecipe(
         item.recipe,
         'CALORIE',
@@ -108,7 +107,6 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
       setProtein(protein)
       setDensities(densities)
     } else {
-      console.log('BAZ')
       setCalories(null)
       setProtein(null)
       setDensities(densities)
