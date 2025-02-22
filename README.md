@@ -16,7 +16,7 @@ It can do stuff like:
 - Search and log food
 - Quick add calories and protein
 - Create custom foods and recipes
-- Scan barcodes
+- Scan barcodes using [Open Food Facts](https://world.openfoodfacts.org/).
 - Track exercise
 - Track meals.
 
@@ -46,13 +46,13 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2. Create a `.env` file in the `cleanslate` folder.
+2.  Create a `.env` file in the `cleanslate` folder.
 
-    1. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain. 
+    1. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain.
 
-    2. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate. 
+    2. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate.
 
-    3. If you are using a port that differs on your `nginx` or `caddy` configuration file (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in. 
+    3. If you are using a port that differs on your `nginx` or `caddy` configuration file (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
 
     4. If desired, you can also change the `POSTGRES_PORT` from `5432` as well.
 
