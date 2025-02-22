@@ -36,6 +36,6 @@ class Koder {
       this.api.deleteBuffer(resultAddress)
     }
     if (results.length > 0) return results[0]
-    return null
+    else return null
   }
 }
