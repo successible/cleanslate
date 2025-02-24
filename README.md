@@ -68,7 +68,7 @@ POSTGRES_PASSWORD=third-long-secret-value
 POSTGRES_PORT=5432
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. For example, you could use `Caddy` and the `Caddyfile` below, replacing `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another tool that can act as a reverse proxy. However, Clean Slate must be served over `https`. Otherwise, it will not work. We just recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. And keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy.
+3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. Clean Slate must be served over `https`. Otherwise, it will not work. You can use `Caddy` and the `Caddyfile` below to accomplish this. Replaxe `XXX` with your own domain. The same goes from `nginx` and the `nginx.conf` below. You could also use `apache` or another everse proxy. **Importantly, we have only tested Clean Slate with `Caddy` or `nginx`. For any other reverse proxy, you are on your own**. We recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. Finally, keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy.
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
