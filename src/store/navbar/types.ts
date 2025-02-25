@@ -8,10 +8,12 @@ export type NavbarSlice = {
 
 export type UserStatus = User | null | 'PENDING'
 export type Form = 'CustomFoodForm' | 'RecipeForm'
+type BarcodeModalMode = 'log' | 'ingredient'
 
 export type NavbarState = {
   activeModals: readonly any[]
   addIngredientModalVisibility: boolean
+  barcodeModalMode: BarcodeModalMode
   barcodeModalVisibility: boolean
   bodyFatPercentageModalVisibility: boolean
   caloricMaintenanceModalVisibility: boolean
@@ -69,7 +71,7 @@ export type NavbarEvents = {
   closeQuickLogEditModal: undefined
   isOffline: boolean
   openAddIngredientModal: string | null
-  openBarcodeModal: undefined
+  openBarcodeModal: BarcodeModalMode
   openBodyFatPercentageModal: undefined
   openDensityModal: undefined
   openError: string

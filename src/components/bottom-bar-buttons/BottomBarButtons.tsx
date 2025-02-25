@@ -82,7 +82,7 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
           id="openBarcodeModal"
           type="button"
           onClick={() => {
-            dispatch('openBarcodeModal')
+            dispatch('openBarcodeModal', 'log')
           }}
         >
           <img alt="Barcode" src={Barcode.src} />

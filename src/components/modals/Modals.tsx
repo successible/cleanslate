@@ -50,6 +50,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
 
   const {
     activeModals,
+    barcodeModalMode,
     addIngredientModalVisibility,
     barcodeModalVisibility,
     bodyFatPercentageModalVisibility,
@@ -163,10 +164,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       name="navbar.barcodeModalVisibility"
       visible={barcodeModalVisibility}
     >
-      <BarcodeModal
-        profile={profile}
-        type={recipeModalVisibility ? 'ingredient' : 'log'}
-      />
+      <BarcodeModal profile={profile} type={barcodeModalMode} />
     </Modal>,
 
     // target-form

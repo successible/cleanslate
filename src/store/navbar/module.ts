@@ -237,11 +237,17 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
   })
 
   store.on('closeBarcodeModal', (state) => {
-    return updateModal(state, 'navbar.barcodeModalVisibility', false)
+    const newState = updateModal(state, 'navbar.barcodeModalVisibility', false)
+    return produce(newState, (draft) => {
+      draft.navbar.barcodeModalMode = 'log'
+    })
   })
 
-  store.on('openBarcodeModal', (state) => {
-    return updateModal(state, 'navbar.barcodeModalVisibility', true)
+  store.on('openBarcodeModal', (state, event) => {
+    const newState = updateModal(state, 'navbar.barcodeModalVisibility', true)
+    return produce(newState, (draft) => {
+      draft.navbar.barcodeModalMode = event
+    })
   })
 
   store.on('closeDensityModal', (state) => {
