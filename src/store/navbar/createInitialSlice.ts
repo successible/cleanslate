@@ -6,6 +6,7 @@ export const createInitialSlice = (): NavbarSlice => {
     navbar: {
       activeModals: [],
       addIngredientModalVisibility: false,
+      barcodeModalMode: 'log',
       barcodeModalVisibility: false,
       bodyFatPercentageModalVisibility: false,
       caloricMaintenanceModalVisibility: false,

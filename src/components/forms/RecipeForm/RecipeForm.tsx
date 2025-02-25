@@ -216,7 +216,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
           </button>
 
           <button
-            onClick={() => dispatch('openBarcodeModal')}
+            onClick={() => dispatch('openBarcodeModal', 'ingredient')}
             type="button"
             css={addIngredientStyling}
             className={'green'}
