@@ -41,7 +41,7 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
         <form
           onSubmit={(event) => {
             event.preventDefault()
-            const { calorieTarget, proteinTarget } = calculateTargets(
+            const result = calculateTargets(
               metricSystem,
               age,
               sex,
@@ -51,6 +51,8 @@ export const CalculateTargetForm: React.FC<props> = ({ profile }) => {
               liftWeights,
               goal
             )
+            console.log(result)
+            const { calorieTarget, proteinTarget } = result
             const variables = {
               id: profile.id,
               set: {
