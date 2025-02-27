@@ -11,7 +11,7 @@ export const calculateBodyFatPercentageUsingCUN_BAE = (
   // CUN-BAE formula: https://pubmed.ncbi.nlm.nih.gov/33138089/
   // You can check the output here: https://www.onlinetrainer.es/CUN-BAE.php
   // You do not need to convert the weight and height to the metric system
-  // That is because
+  // That is because BMI expects the units in LBS
   const sex = sexString === 'female' ? 1 : sexString === 'other' ? 0.5 : 0
   const BF =
     -44.988 +
