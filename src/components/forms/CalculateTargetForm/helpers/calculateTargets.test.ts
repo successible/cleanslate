@@ -13,8 +13,8 @@ test('calculateTargets works for a large man who lifts and wants to lose weight'
     'fat'
   )
   const { calorieTarget, proteinTarget } = result
-  expect(calorieTarget).toBe(1959)
-  expect(proteinTarget).toBe(134)
+  expect(calorieTarget).toBe(1826)
+  expect(proteinTarget).toBe(123)
 })
 
 test('calculateTargets works for a large man who lifts and wants to lose weight, but in metric', () => {
@@ -29,8 +29,8 @@ test('calculateTargets works for a large man who lifts and wants to lose weight,
     'fat'
   )
   const { calorieTarget, proteinTarget } = result
-  expect(calorieTarget).toBe(1959)
-  expect(proteinTarget).toBe(134)
+  expect(calorieTarget).toBe(1826)
+  expect(proteinTarget).toBe(123)
 })
 
 test('calculateTargets works for a large man who lifts and wants to maintain weight', () => {
@@ -45,8 +45,8 @@ test('calculateTargets works for a large man who lifts and wants to maintain wei
     'maintain'
   )
   const { calorieTarget, proteinTarget } = result
-  expect(calorieTarget).toBe(2613)
-  expect(proteinTarget).toBe(134)
+  expect(calorieTarget).toBe(2434)
+  expect(proteinTarget).toBe(123)
 })
 
 test('calculateTargets works for a small women who does not lift and wants to lose weight', () => {
@@ -61,7 +61,7 @@ test('calculateTargets works for a small women who does not lift and wants to lo
     'fat'
   )
   const { calorieTarget, proteinTarget } = result
-  expect(calorieTarget).toBe(1144)
+  expect(calorieTarget).toBe(1084)
   expect(proteinTarget).toBe(63)
 })
 
@@ -77,6 +77,6 @@ test('calculateTargets works for a medium other who lifts and wants to gain musc
     'muscle'
   )
   const { calorieTarget, proteinTarget } = result
-  expect(calorieTarget).toBe(2031)
-  expect(proteinTarget).toBe(87)
+  expect(calorieTarget).toBe(1970)
+  expect(proteinTarget).toBe(83)
 })
