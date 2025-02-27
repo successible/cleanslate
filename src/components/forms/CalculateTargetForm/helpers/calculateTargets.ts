@@ -4,6 +4,10 @@ import { calculateBMRUsingKatchMcardle } from './calculateBMRUsingKatchMcardle'
 import { calculateBodyFatPercentageUsingCUN_BAE } from './calculateBodyFatPercentageUsingCUN_BAE'
 import { calculateIdealBodyWeightInKg } from './calculateIdealBodyWeightInKg'
 
+export const LBS_TO_KG = 2.2046226218
+export const CM_TO_IN = 0.3937
+export const IN_TO_FEET = 12
+
 export const calculateTargets = (
   metric: boolean,
   age: string,
@@ -17,26 +21,26 @@ export const calculateTargets = (
   // When metric is true, weight is kg, feet is actually cm, and inches is none
   // When metric is false, inches and feet are inches and feet, and weight is lbs
   const ageToUse = Number(age)
-  const weightToUse = metric ? Number(weight) * 2.2046226218 : Number(weight)
-  const heightToUse = metric
-    ? 0.3937 * Number(feet)
-    : Number(feet) * 12 + Number(inches)
+  const weightInLbs = metric ? Number(weight) * LBS_TO_KG : Number(weight)
+  const heightInInches = metric
+    ? CM_TO_IN * Number(feet)
+    : Number(feet) * IN_TO_FEET + Number(inches)
 
-  const idealBodyWeightInKg = calculateIdealBodyWeightInKg(sex, heightToUse)
+  const idealBodyWeightInKg = calculateIdealBodyWeightInKg(sex, heightInInches)
 
   const estimatedBodyFatPercentage =
     calculateBodyFatPercentageUsingCUN_BAE(
-      weightToUse,
-      heightToUse,
+      weightInLbs,
+      heightInInches,
       sex,
       ageToUse
     ) / 100
 
   const leanBodyMassInKg =
-    (weightToUse * (1 - estimatedBodyFatPercentage)) / 2.2
+    (weightInLbs * (1 - estimatedBodyFatPercentage)) / 2.2
 
   const basalMetabolicRate = calculateBMRUsingKatchMcardle(
-    weightToUse,
+    weightInLbs,
     estimatedBodyFatPercentage
   )
 
@@ -67,7 +71,16 @@ export const calculateTargets = (
   }
 
   return {
+    ageToUse,
+    weightToUse: weightInLbs,
+    heightToUse: heightInInches,
+    idealBodyWeightInKg,
+    estimatedBodyFatPercentage,
+    basalMetabolicRate,
+    thermicEffectOfFood,
+    physicalActivityModifier,
     calorieTarget: Math.round(getCalorieTarget(goal)),
+    totalDailyEnergyExpenditure,
     proteinTarget:
       liftWeights === true
         ? // Using the 1.6/2.2 g/kg rule
