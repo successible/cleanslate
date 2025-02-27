@@ -102,8 +102,8 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
             </Explanation>
             <Explanation styles={explanation} color="green">
               These numbers are merely estimates! Each app may calculate them
-              differently. It depends on the formulae and assumptions they use.
-              The formulae themselves are also not perfect! They can only give a
+              differently. It depends on the formulas and assumptions they use.
+              The formulas themselves are also not perfect! They can only give a
               rough estimate. If you want to check our numbers against other
               calculators, go{' '}
               <a href="https://www.calculator.net/bmr-calculator.html">here</a>.
