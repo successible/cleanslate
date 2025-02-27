@@ -98,7 +98,15 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
             </form>
             <Divider height={5} className="mt30 mb30 w90 center" />
             <Explanation styles={explanation} color="blue">
-              Personalize your numbers with this form
+              Personalize your numbers with this form.
+            </Explanation>
+            <Explanation styles={explanation} color="green">
+              These numbers are merely estimates! Each app may calculate them
+              differently. It depends on the formulas and assumptions they use.
+              The formulas themselves are also not perfect! They can only give a
+              rough estimate. If you want to check our numbers against other
+              calculators, go{' '}
+              <a href="https://www.calculator.net/bmr-calculator.html">here</a>.
             </Explanation>
             <CalculateTargetForm profile={profile} />
           </div>
