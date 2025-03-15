@@ -65,6 +65,9 @@ importers:
       deepmerge:
         specifier: 4.3.1
         version: 4.3.1
+      expr-eval:
+        specifier: 2.0.2
+        version: 2.0.2
       express:
         specifier: 5.0.1
         version: 5.0.1
@@ -2739,6 +2742,9 @@ packages:
 
   exponential-backoff@3.1.2:
     resolution: {integrity: sha512-8QxYTVXUkuy7fIIoitQkPwGonB8F3Zj8eEO8Sqg9Zv/bkI7RJAzowee4gr81Hak/dUTpA2Z7VfQgoijjPNlUZA==}
+
+  expr-eval@2.0.2:
+    resolution: {integrity: sha512-4EMSHGOPSwAfBiibw3ndnP0AvjDWLsMvGOvWEZ2F96IGk0bIVdjQisOHxReSkE13mHcfbuCiXw+G4y0zv6N8Eg==}
 
   express@4.21.2:
     resolution: {integrity: sha512-28HqgMZAmih1Czt9ny7qr6ek2qddF4FclbMzwhCREB6OFfH+rXAnuNCwo1/wFvrtbgsQDb4kSbX9de9lFbrXnA==}
@@ -8658,6 +8664,8 @@ snapshots:
 
   exponential-backoff@3.1.2:
     optional: true
+
+  expr-eval@2.0.2: {}
 
   express@4.21.2:
     dependencies:
