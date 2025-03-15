@@ -1,3 +1,5 @@
+import Parser from 'expr-eval'
+
 import { css } from '@emotion/react'
 import React from 'react'
 import { toast } from 'react-toastify'
@@ -8,8 +10,8 @@ import { colors } from '../../theme'
 import { SubmitButton } from '../item-update-modal/components/SubmitButton'
 
 export const QuickLogAdder: React.FC = () => {
-  const [calories, setCalories] = React.useState(null as number | string | null)
-  const [protein, setProtein] = React.useState(null as number | string | null)
+  const [calories, setCalories] = React.useState(null as string | null)
+  const [protein, setProtein] = React.useState(null as string | null)
   const [name, setName] = React.useState('')
 
   const inputToFocus = React.useRef<HTMLInputElement>(null)
@@ -56,7 +58,12 @@ export const QuickLogAdder: React.FC = () => {
         if (!calories && !protein) {
           toast.error('You must include a value!')
         } else {
-          addQuickLogToCloud(name, Number(calories), Number(protein))
+          const parser = new Parser.Parser()
+          addQuickLogToCloud(
+            name,
+            parser.parse(calories || '0').evaluate(),
+            parser.parse(protein || '0').evaluate()
+          )
         }
       }}
       css={form}
@@ -69,14 +76,13 @@ export const QuickLogAdder: React.FC = () => {
         css={input}
         className={'w33'}
         id="calories"
-        inputMode="decimal"
         onChange={(event) => {
           setCalories(event.target.value)
         }}
         placeholder="Calories"
         ref={inputToFocus}
         step="any"
-        type="number"
+        type="text"
         value={calories || ''}
       />
 
@@ -87,13 +93,12 @@ export const QuickLogAdder: React.FC = () => {
         css={input}
         className={'w33'}
         id="protein"
-        inputMode="decimal"
         onChange={(event) => {
           setProtein(event.target.value)
         }}
         placeholder="Protein"
         step="any"
-        type="number"
+        type="text"
         value={protein || ''}
       />
 

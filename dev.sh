@@ -97,4 +97,4 @@ fi
 
 (cd src && ((npx next dev) & (npx nodemon server.js))) & 
 
-sleep 5 && caddy start -c Caddyfile.dev --adapter caddyfile &
+sleep 5 && sudo caddy start -c Caddyfile.dev --adapter caddyfile &
