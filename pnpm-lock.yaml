@@ -145,8 +145,8 @@ importers:
         specifier: 29.7.0
         version: 29.7.0
       firebase-tools:
-        specifier: 13.35.1
-        version: 13.35.1(encoding@0.1.13)
+        specifier: 14.0.1
+        version: 14.0.1(encoding@0.1.13)
       jest:
         specifier: 29.7.0
         version: 29.7.0(@types/node@22.13.14)(babel-plugin-macros@3.1.0)
@@ -2806,9 +2806,9 @@ packages:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
 
-  firebase-tools@13.35.1:
-    resolution: {integrity: sha512-QmMy4hnd0Q+V+7GFhZUV80+kG0WC1+UOtuaaQWx+cstt+XepUcpju/KW4cBknnyql521BghfuAhveckQQ1g+HA==}
-    engines: {node: '>=18.0.0 || >=20.0.0 || >=22.0.0'}
+  firebase-tools@14.0.1:
+    resolution: {integrity: sha512-iSo0Af+pHT2iGDEJIcAzIv0tN4WDn9IjVECY9EoT/SgqLfUbF0kKQ4JdRJc8npswPH9EtU5+1gIJ/ZyzCodw+w==}
+    engines: {node: '>=20.0.0 || >=22.0.0'}
     hasBin: true
 
   firebase@11.5.0:
@@ -8794,7 +8794,7 @@ snapshots:
       locate-path: 5.0.0
       path-exists: 4.0.0
 
-  firebase-tools@13.35.1(encoding@0.1.13):
+  firebase-tools@14.0.1(encoding@0.1.13):
     dependencies:
       '@electric-sql/pglite': 0.2.17
       '@google-cloud/cloud-sql-connector': 1.7.0(encoding@0.1.13)
