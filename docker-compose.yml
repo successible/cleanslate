@@ -1,6 +1,7 @@
 services:
   database:
     image: postgres:15
+    pull_policy: always
     restart: always
     container_name: database
     ports:
@@ -17,6 +18,7 @@ services:
 
   graphql-server:
     image: hasura/graphql-engine:latest.cli-migrations-v3
+    pull_policy: always
     restart: always
     container_name: graphql-server
     ports:
