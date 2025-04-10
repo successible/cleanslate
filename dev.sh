@@ -95,6 +95,5 @@ fi
 
 # Start the server!
 
-(cd src && ((npx next dev) & (npx nodemon server.js))) & 
-
-sleep 5 && sudo caddy start -c Caddyfile.dev --adapter caddyfile &
+(cd src && ((npx next dev) & (npx nodemon server.js))) & sleep 5 
+sudo caddy start -c Caddyfile.dev --adapter caddyfile
