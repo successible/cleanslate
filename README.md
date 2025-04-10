@@ -50,7 +50,7 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
     1. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain.
 
-    2. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. The `second-long-secret-value` must be replaced with the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate.
+    2. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should have the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate.
 
     3. If you are using a port that differs on your `nginx` or `caddy` configuration file (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
 
@@ -62,13 +62,13 @@ CLIENT_PORT=3000
 HASURA_GRAPHQL_ADMIN_SECRET=first-long-secret-value
 HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"second-long-secret-value"}'
 HASURA_PORT=8080
-JWT_SIGNING_SECRET=second-long-secret-value
+JWT_SIGNING_SECRET=first-long-secret-value
 NEXT_PUBLIC_HASURA_DOMAIN=your-server-domain
-POSTGRES_PASSWORD=third-long-secret-value
+POSTGRES_PASSWORD=second-long-secret-value
 POSTGRES_PORT=5432
 ```
 
-3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. Clean Slate must be served over `https`. Otherwise, it will not work. You can use `Caddy` and the sample `Caddyfile` below to accomplish this. Replaxe `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another reverse proxy. **Importantly, we have only tested Clean Slate with `Caddy` or `nginx`. For any other reverse proxy, you are on your own**. Also, you may want to modify the sample `Caddyfile` or `nginx.conf` to meet your needs. We recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. Finally, keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy.
+3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. Clean Slate must be served over `https`. Otherwise, it will not work. You can use `Caddy` and the sample `Caddyfile` below to accomplish this. Replaxe `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another reverse proxy. **Importantly, we have only tested Clean Slate with `Caddy` or `nginx`. For any other reverse proxy, you are on your own**. Also, you may want to modify the sample `Caddyfile` or `nginx.conf` to meet your needs. We recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. Finally, keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy. **As for how you configure the DNS to make that reverse proxy accessible, you are on your own**.
 
 Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
 
