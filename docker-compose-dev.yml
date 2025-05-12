@@ -1,6 +1,6 @@
 services:
   database:
-    image: postgres:15.12
+    image: postgres:15.13
     restart: always
     ports:
       - '${DB_PORT}:5432'
