@@ -1,8 +1,8 @@
 import axios from 'axios'
 import express from 'express'
-import morgan from 'morgan'
 import helmet from 'helmet'
 import * as jose from 'jose'
+import logger from 'pino-http'
 
 type AnyResponse = any
 
@@ -21,7 +21,7 @@ if (!adminSecret && !useFirebase) {
 
 const app = express()
 app.use(express.json())
-app.use(morgan('combined'))
+app.use(logger())
 isProduction && app.use(helmet())
 
 const port = 3001
