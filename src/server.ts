@@ -2,6 +2,9 @@ import axios from 'axios'
 import express from 'express'
 import helmet from 'helmet'
 import * as jose from 'jose'
+import logger from 'pino-http'
+
+type AnyResponse = any
 
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET
 const domain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
@@ -18,6 +21,7 @@ if (!adminSecret && !useFirebase) {
 
 const app = express()
 app.use(express.json())
+app.use(logger())
 isProduction && app.use(helmet())
 
 const port = 3001
@@ -58,19 +62,19 @@ const getProfiles = async (token: string) => {
   return response.data.data.profiles as [{ authId: string; id: string }]
 }
 
-app.get('/auth', (req, res) => {
-  res.send('The server is healthy!')
+app.get('/auth', (req, res): AnyResponse => {
+  return res.send('The server is healthy!')
 })
 
-app.post('/auth/login', async (req, res) => {
+app.post('/auth/login', async (req, res): Promise<AnyResponse> => {
   if (useFirebase) {
     console.log('This endpoint is disabled because Firebase is enabled.')
-    res.sendStatus(403)
+    return res.sendStatus(403)
   }
   const token = req.body.token
   if (!req.body.token) {
     console.log('This endpoint requires you to pass a token.')
-    res.sendStatus(422)
+    return res.sendStatus(422)
   }
 
   const profiles = await getProfiles(token)
@@ -92,19 +96,19 @@ app.post('/auth/login', async (req, res) => {
       .setAudience(`urn:${domain}`)
       .setExpirationTime('30d')
       .sign(secret)
-    res.send(JWT)
+    return res.send(JWT)
   }
   console.log('No profile was found matching that token.')
-  res.sendStatus(403)
+  return res.sendStatus(403)
 })
 
-app.post('/auth/graphql', async (req, res) => {
+app.post('/auth/graphql', async (req, res): Promise<AnyResponse> => {
   const token = req.body.token
   if (!req.body.token) {
-    res.sendStatus(422)
+    return res.sendStatus(422)
   }
   if (!req.body.query) {
-    res.sendStatus(422)
+    return res.sendStatus(422)
   }
   const profiles = await getProfiles(token)
   if (profiles.length === 1) {
@@ -125,14 +129,13 @@ app.post('/auth/graphql', async (req, res) => {
         variables: req.body.variables ? req.body.variables : {},
       },
     })
-    res.send(result.data.data)
-  } else {
-    res.sendStatus(403)
+    return res.send(result.data.data)
   }
+  return res.sendStatus(403)
 })
 
-app.use((err: any, req: any, res: any, next: any) => {
-  res.status(500).send(String(err))
+app.use((err: any, req: any, res: any, next: any): AnyResponse => {
+  return res.status(500).send(String(err))
 })
 
 app.listen(port, () => {

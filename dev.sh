@@ -76,7 +76,6 @@ if [[ $CI != "true" ]]; then
   then
     brew bundle
   fi
-  pnpm install
 
   echo "=> Spin up PostgreSQL and Hasura..."
   docker compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
