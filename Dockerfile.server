@@ -1,4 +1,8 @@
-FROM node:lts
+FROM node:lts-slim
+
+# Update any dependencies bundled with the container
+
+RUN apt-get update -y; apt-get upgrade -y;
 
 WORKDIR /app
 
