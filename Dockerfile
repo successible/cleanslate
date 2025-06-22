@@ -3,6 +3,7 @@ FROM node:lts-slim AS builder
 # Update any dependencies bundled with the container
 
 RUN apt-get update -y; apt-get upgrade -y;
+RUN npm install -g npm@latest
 
 # Install the dependencies needed to build Clean Slate
 
@@ -32,7 +33,7 @@ COPY src/storeon.ts src/storeon.ts
 COPY src/theme.scss src/theme.scss
 COPY src/theme.ts src/theme.ts
 COPY src/tsconfig.json src/tsconfig.json
-COPY src/workbox-config.js src/workbox-config.js
+COPY src/create-service-worker.js src/create-service-worker.js
 
 # Build Clean Slate
 

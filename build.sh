@@ -3,7 +3,7 @@
 cd src
 npx next build
 
-npx workbox generateSW workbox-config.js
+node create-service-worker.js
 cp -r out ../out
 cd ..
 
