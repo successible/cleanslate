@@ -54,7 +54,7 @@
     "typescript": "5.8.3",
     "ua-parser-js": "2.0.3",
     "uuid": "11.1.0",
-    "workbox-cli": "7.3.0"
+    "workbox-build": "7.3.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
