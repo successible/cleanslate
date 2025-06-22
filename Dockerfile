@@ -3,6 +3,7 @@ FROM node:lts-slim AS builder
 # Update any dependencies bundled with the container
 
 RUN apt-get update -y; apt-get upgrade -y;
+RUN npm install -g npm@latest
 
 # Install the dependencies needed to build Clean Slate
 
