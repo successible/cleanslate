@@ -25,5 +25,9 @@
     "enabled": true,
     "automerge": true,
     "schedule": ["before 6:00am on Tuesday"]
-  }
+  },
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true
 }
