@@ -80,6 +80,7 @@ export const proteinCategories = [
   'Pork',
   'Protein powder',
   'Ribs',
+  'Salmon',
   'Shellfish',
   'Soy',
   'Turkey',

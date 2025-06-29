@@ -7170,7 +7170,7 @@
     "id": "44024513-e9e4-4cb7-8692-3bda63662d5f"
   },
   {
-    "name": "Salmon",
+    "name": "Salmon (Wild)",
     "basicFoodId": "73bda645-a255-4c04-a885-94033e827e02",
     "group": "Protein",
     "category": "Fish",
@@ -7183,6 +7183,21 @@
     "foodToProfile": null,
     "type": "food",
     "id": "73bda645-a255-4c04-a885-94033e827e02"
+  },
+  {
+    "name": "Salmon (Farmed)",
+    "basicFoodId": "0aea5572-76a1-421d-b0b4-5c2e11af7f2d",
+    "group": "Protein",
+    "category": "Fish",
+    "countName": null,
+    "countToGram": null,
+    "tbspToGram": null,
+    "alias": null,
+    "caloriesPerGram": 2.08,
+    "proteinPerGram": 0.204,
+    "foodToProfile": null,
+    "type": "food",
+    "id": "0aea5572-76a1-421d-b0b4-5c2e11af7f2d"
   },
   {
     "name": "Sardines",
@@ -7243,6 +7258,21 @@
     "foodToProfile": null,
     "type": "food",
     "id": "ba0be165-3e60-4f2d-8d2b-ab32b73cef73"
+  },
+  {
+    "name": "Trout",
+    "basicFoodId": "5949e538-7c25-49e0-a6af-a3610d227d19",
+    "group": "Protein",
+    "category": "Fish",
+    "countName": null,
+    "countToGram": null,
+    "tbspToGram": null,
+    "alias": null,
+    "caloriesPerGram": 1.48,
+    "proteinPerGram": 0.208,
+    "foodToProfile": null,
+    "type": "food",
+    "id": "5949e538-7c25-49e0-a6af-a3610d227d19"
   },
   {
     "name": "Tuna",
