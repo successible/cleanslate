@@ -26,6 +26,7 @@ import { pork } from './pork'
 import { proteinPowder } from './proteinPowder'
 import { ribs } from './ribs'
 import { rice } from './rice'
+import { salmon } from './salmon'
 import { tortilla } from './tortilla'
 import { turkey } from './turkey'
 import { vinegar } from './vinegar'
@@ -62,6 +63,7 @@ export const dummyFoods: DummyFoods = {
   ...proteinPowder,
   ...ribs,
   ...rice,
+  ...salmon,
   ...tortilla,
   ...turkey,
   ...vinegar,
