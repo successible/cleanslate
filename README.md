@@ -44,154 +44,17 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to install Docker from the official website [^1]. That is because the Docker bundled with your distribution is likely out of date.
 
-1.  Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
+1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
-2.  Create a `.env` file in the `cleanslate` folder.
+2. Run `bash configuration.sh` to generate a `.env` file and `Caddyfile` file. Edit the contents as desired. The `.env` file will have the values unique to your instance. Do not share this file, as some of these values are secret. The `Caddyfile` configures Caddy, which is a reverse proxy. Caddy will serve Clean Slate over `https`. You can use another reverse proxy, like `nginx` if desired.
 
-    1. Replace `NEXT_PUBLIC_HASURA_DOMAIN` with your own domain.
+3.  Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, such as running PostgreSQL in a container, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) and [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml). These are the files used to deploy Clean Slate.
 
-    2. Replace `HASURA_GRAPHQL_JWT_SECRET`, `JWT_SIGNING_SECRET`, `HASURA_GRAPHQL_ADMIN_SECRET`, and `POSTGRES_PASSWORD` with your own values. All four of these values are secret and should be kept safe. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` are used to create and verify JWTs. `HASURA_GRAPHQL_JWT_SECRET` and `JWT_SIGNING_SECRET` should have the same value. And it should be (at least) thirty characters long. As for `HASURA_GRAPHQL_ADMIN_SECRET` and `POSTGRES_PASSWORD`, they are both passwords. The former is to sign in to the Hasura console. The latter is to sign to PostgreSQL, the database used by Clean Slate.
+4.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access your account.
 
-    3. If you are using a port that differs on your `nginx` or `caddy` configuration file (Step #3), you must also change the following items. `HASURA_PORT`, `AUTHENTICATION_SERVER_PORT`, and `CLIENT_PORT`. You must change it from `8080`, `3001`, and `3000` to what you want to use. Otherwise, Clean Slate will not work, and you will get an error when you try to sign in.
+5.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-    4. If desired, you can also change the `POSTGRES_PORT` from `5432` as well.
-
-```bash
-AUTHENTICATION_SERVER_PORT=3001
-CLIENT_PORT=3000
-HASURA_GRAPHQL_ADMIN_SECRET=first-long-secret-value
-HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"second-long-secret-value"}'
-HASURA_PORT=8080
-JWT_SIGNING_SECRET=first-long-secret-value
-NEXT_PUBLIC_HASURA_DOMAIN=your-server-domain
-POSTGRES_PASSWORD=second-long-secret-value
-POSTGRES_PORT=5432
-```
-
-3.  Have your reverse proxy point to `http://localhost:3000`, `http://localhost:3001`, and `http://localhost:8080`. Clean Slate must be served over `https`. Otherwise, it will not work. You can use `Caddy` and the sample `Caddyfile` below to accomplish this. Replaxe `XXX` with your own domain. The same goes from `nginx` and the sample `nginx.conf` below. You could also use `apache` or another reverse proxy. **Importantly, we have only tested Clean Slate with `Caddy` or `nginx`. For any other reverse proxy, you are on your own**. Also, you may want to modify the sample `Caddyfile` or `nginx.conf` to meet your needs. We recommend Caddy [^2] because it handles `https` automatically and is easy to use [^3]. Finally, keep in mind that your server only needs to expose port `443` through the firewall for the app to work. The services run by Docker Compose should not be contacted except via your reverse proxy. **As for how you configure the DNS to make that reverse proxy accessible, you are on your own**.
-
-Here is an example `Caddyfile`. Replace `<XXX>` with your own domain.
-
-```bash
-<XXX> {
-    header /* {
-        Referrer-Policy "strict-origin"
-        Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-        X-Content-Type-Options "nosniff"
-        X-Frame-Options "DENY"
-        X-XSS-Protection "0"
-        # You can remove the Google, Firebase, and Sentry policies if you are not using them
-        Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self'; object-src 'none';"
-        Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
-    }
-    header /console* {
-        -Content-Security-Policy
-    }
-    route /v1* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
-    route /v2* {
-        # API (Hasura)
-        reverse_proxy localhost:8080
-    }
-    route /console* {
-        # Admin panel (Hasura)
-        reverse_proxy localhost:8080
-    }
-    route /healthz {
-        # Health check (Hasura)
-        reverse_proxy localhost:8080
-    }
-    route /auth* {
-        # Authentication server (Express.js)
-        reverse_proxy localhost:3001
-    }
-    route /* {
-        # Static files (Clean Slate)
-        reverse_proxy localhost:3000
-    }
-}
-```
-
-Here is an example `nginx.conf`. Replace `XXX` with your own content.
-
-> Note: With `nginx`, you will need to get your own SSL certificate.
-
-```bash
-error_log /dev/stdout crit;
-http {
-  server {
-      listen 443 http2 ssl;
-      listen [::]:443 http2 ssl;
-      server_name XXX;
-
-      ssl_certificate XXX
-      ssl_certificate_key XXX;
-
-      # HTTP Security Headers
-      add_header Referrer-Policy "strict-origin";
-      add_header Strict-Transport-Security "max-age=31536000; includeSubDomains;";
-      add_header X-Content-Type-Options "nosniff";
-      add_header X-Frame-Options "DENY";
-      add_header X-XSS-Protection "0";
-      # You can remove the Google, Firebase, and Sentry policies if you are not using them
-      add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self'; object-src 'none';"
-      add_header Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
-
-      location /v1 {
-        # API (Hasura)
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'Upgrade';
-        proxy_set_header Host $host;
-        proxy_pass http://localhost:8080;
-      }
-
-      location /v2 {
-          # API (Hasura)
-          proxy_pass http://localhost:8080;
-      }
-
-      location /console {
-          # Admin panel (Hasura)
-          proxy_pass http://localhost:8080;
-          add_header Content-Security-Policy "";
-      }
-
-      location /auth {
-          # Authentication server (Express.js)
-          proxy_pass http://localhost:3001;
-      }
-
-      location /healthz {
-          # Health check (Hasura)
-          proxy_pass http://localhost:8080;
-      }
-
-      location / {
-          # Static files (Clean Slate)
-          proxy_pass http://localhost:3000;
-      }
-  }
-}
-```
-
-4.  Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) locally. It is less than ten lines of bash. You can also modify the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) used to deploy Clean Slate.
-
-- The first server is the database, PostgreSQL, [on Docker Hub](https://hub.docker.com/_/postgres). Clean Slate uses the default `postgres` user and `postgres` database. It runs this database, Postgres 15, on port `5432` via Docker Compose.
-
-- The second server is the GraphQL server, Hasura, [on Docker Hub](https://hub.docker.com/r/hasura/graphql-engine).
-
-- The third server is the client (busybox). It is built by us and stored on our [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fclient).
-
-- The fourth server is the authentication server (Express.js). It is built by us and stored on our [GitHub Packages](https://github.com/successible/cleanslate/pkgs/container/cleanslate%2Fauthentication-server).
-
-5.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access your account.
-
-6.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
-
-7.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available.
+6.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available.
 
 ## How can I make an API request to Clean Slate?
 
@@ -350,19 +213,8 @@ Here is how to run Clean Slate locally:
 
 > Note: To run Clean Slate with Firebase, do all the `Local` and `Web` outlined above. Install [jq](https://jqlang.github.io/jq/download/) locally. Finally, tweak the development command. Run `export FIREBASE='true'; pnpm dev` instead.
 
-> Note: To test the deployment process, run `git pull origin main; bash deploy.sh`. Make sure to create the `.env` (below) and `Caddyfile` (above) first.
+> Note: To test the deployment process, run `git pull origin main; bash deploy.sh`. Make sure to create the `.env` (below) and `Caddyfile` with `bash configuration.sh`
 
 > Note: To test Clean Slate on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
-```bash
-# .env for testing the hosting process locally. Do not use in an actual production setting!
-HASURA_GRAPHQL_ADMIN_SECRET=XXX
-HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"}'
-JWT_SIGNING_SECRET=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-NEXT_PUBLIC_HASURA_DOMAIN=localhost
-POSTGRES_PASSWORD=XXX
-```
-
 [^1]: https://docs.docker.com/engine/install/
-[^2]: https://caddyserver.com/docs/getting-started
-[^3]: https://letsencrypt.org/
