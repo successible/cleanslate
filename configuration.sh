@@ -40,46 +40,61 @@ EOF
 
 cat <<EOF > Caddyfile
 $HASURA_DOMAIN {
-    header /* {
-        Referrer-Policy "strict-origin"
-        Strict-Transport-Security "max-age=31536000; includeSubDomains;"
-        X-Content-Type-Options "nosniff"
-        X-Frame-Options "DENY"
-        X-XSS-Protection "0"
-        Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' https://*.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' https://*.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self'; object-src 'none';"
-        Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
-    }
-    header /console* {
-        -Content-Security-Policy
-    }
-    route /v1* {
-    	# API (Hasura)
-        header_up -x-hasura-role
-        reverse_proxy localhost:8080
-    }
-    route /v2* {
-    	# API (Hasura)
-        header_up -x-hasura-role
-        reverse_proxy localhost:8080
-    }
-    route /console* {
-    	# Admin panel (Hasura).
-        header_up -x-hasura-role
-        reverse_proxy localhost:8080
-    }
-    route /healthz {
-    	# Healthcheck (Hasura).
-        header_up -x-hasura-role
-        reverse_proxy localhost:8080
-    }
-    route /auth* {
-    	# API (Express.js)
-        reverse_proxy localhost:3001
-    }
-    route /* {
-    	# Static files (Clean Slate)
-        reverse_proxy localhost:3000
-    }
+	header /* {
+		Referrer-Policy "strict-origin"
+		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		X-XSS-Protection "0"
+		Content-Security-Policy "default-src 'self'; script-src 'self' 'wasm-unsafe-eval' https://apis.google.com https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; connect-src 'self' *.ingest.sentry.io https://identitytoolkit.googleapis.com https://securetoken.googleapis.com https://apis.google.com https://world.openfoodfacts.org; frame-src 'self' *.firebaseapp.com https://www.google.com; img-src 'self' https://www.gstatic.com data:; font-src 'self' https://fonts.gstatic.com https://fonts.googleapis.com; worker-src 'self'; object-src 'none';"
+		Permissions-Policy "accelerometer=(self), autoplay=(self), camera=(self), cross-origin-isolated=(self), display-capture=(self), encrypted-media=(self), fullscreen=(self), geolocation=(self), gyroscope=(self), keyboard-map=(self), magnetometer=(self), microphone=(self), midi=(self), payment=(self), picture-in-picture=(self), publickey-credentials-get=(self), screen-wake-lock=(self), sync-xhr=(self), usb=(self), xr-spatial-tracking=(self)"
+	}
+
+	header /console* {
+		-Content-Security-Policy
+	}
+
+	route /v1* {
+		# API (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
+	}
+
+	route /v2* {
+		# API (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
+	}
+
+	route /console* {
+		# Admin panel (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
+	}
+
+	route /healthz {
+		# Health check (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
+	}
+
+	route /auth* {
+		# Authentication server (Express.js)
+		reverse_proxy localhost:3001 {
+			header_up -X-Hasura-Role
+		}
+	}
+
+	route /* {
+		# Static files (Clean Slate frontend)
+		reverse_proxy localhost:3000 {
+			header_up -X-Hasura-Role
+		}
+	}
 }
 EOF
 
