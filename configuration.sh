@@ -90,7 +90,7 @@ $HASURA_DOMAIN {
 	}
 
 	route /* {
-		# Static files (Clean Slate frontend)
+		# Static files (Client)
 		reverse_proxy localhost:3000 {
 			header_up -X-Hasura-Role
 		}
