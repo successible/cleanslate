@@ -54,18 +54,22 @@ $HASURA_DOMAIN {
     }
     route /v1* {
     	# API (Hasura)
+        header_up -x-hasura-role
         reverse_proxy localhost:8080
     }
     route /v2* {
     	# API (Hasura)
+        header_up -x-hasura-role
         reverse_proxy localhost:8080
     }
     route /console* {
     	# Admin panel (Hasura).
+        header_up -x-hasura-role
         reverse_proxy localhost:8080
     }
     route /healthz {
     	# Healthcheck (Hasura).
+        header_up -x-hasura-role
         reverse_proxy localhost:8080
     }
     route /auth* {
