@@ -61,8 +61,13 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
       <div className="ml5 mt5">
         <>
-          <strong className="mr5">API token:</strong>
+          <strong className="mr5">API Token (Value):</strong>
           {profile.apiToken}
+        </>
+        <br />
+        <>
+          <strong className="mr5">API Token (Last Regenerated):</strong>
+          {dayjs(profile.apiTokenLastRegenerated).format('MMM D, YYYY h:mm A')}
         </>
         <Explanation color="background">
           <div>

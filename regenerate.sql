@@ -1,2 +1,3 @@
 UPDATE profiles
-SET "apiToken" = gen_random_uuid();
+SET "apiToken" = gen_random_uuid(),
+    "apiTokenLastRegenerated" = now();

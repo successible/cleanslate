@@ -69,6 +69,7 @@ select_permissions:
     permission:
       columns:
         - apiToken
+        - apiTokenLastRegenerated
         - authId
         - calorieTarget
         - convertBetweenUnits

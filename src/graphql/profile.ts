@@ -3,6 +3,7 @@ import { gql } from '../helpers/gql'
 export const PROFILE_FRAGMENT = gql`
   fragment profile on profiles {
     apiToken
+    apiTokenLastRegenerated
     authId
     calorieTarget
     convertBetweenUnits
