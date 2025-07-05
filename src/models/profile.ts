@@ -14,6 +14,7 @@ export const defaultStartTime = '00:00:00'
 export class Profile {
   // Data
   apiToken = uuid()
+  apiTokenLastRegenerated: string // datetime
   calorieTarget: number // Default 2000
   convertBetweenUnits: boolean // Default to false
   countDown: boolean // Default to true
