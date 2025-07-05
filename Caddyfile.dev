@@ -1,26 +1,38 @@
-{$NEXT_PUBLIC_HASURA_DOMAIN:localhost} {
+localhost {
 	route /v1* {
 		# API (Hasura)
-		reverse_proxy localhost:8080
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
 	}
 	route /v2* {
 		# API (Hasura)
-		reverse_proxy localhost:8080
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
 	}
 	route /console* {
-		# Admin panel (Hasura).
-		reverse_proxy localhost:8080
+		# Admin panel (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
 	}
-	route /healthz* {
-		# Healthcheck (Hasura).
-		reverse_proxy localhost:8080
+	route /healthz {
+		# Health check (Hasura)
+		reverse_proxy localhost:8080 {
+			header_up -X-Hasura-Role
+		}
 	}
 	route /auth* {
-		# API (Hasura)
-		reverse_proxy localhost:3001
+		# Authentication server (Express.js)
+		reverse_proxy localhost:3001 {
+			header_up -X-Hasura-Role
+		}
 	}
 	route /* {
-		# Static files (Clean Slate)
-		reverse_proxy localhost:3000
+		# Static files (Client)
+		reverse_proxy localhost:3000 {
+			header_up -X-Hasura-Role
+		}
 	}
 }

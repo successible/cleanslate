@@ -14,7 +14,7 @@ read -p "Enter POSTGRES_PORT [5432]: " POSTGRES_PORT
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 
 # Prompt for HASURA domain without default, required input
-read -p "Enter NEXT_PUBLIC_HASURA_DOMAIN (required): " HASURA_DOMAIN
+read -p "Enter NEXT_PUBLIC_HASURA_DOMAIN. Do not include the https://: " HASURA_DOMAIN
 if [ -z "$HASURA_DOMAIN" ]; then
   echo "Error: NEXT_PUBLIC_HASURA_DOMAIN is required."
   exit 1
