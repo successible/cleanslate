@@ -1,6 +1,7 @@
 .DS_Store
 .env
 .firebaserc
+users.json
 Brewfile.lock.json
 build
 Caddyfile
