@@ -3,6 +3,7 @@
   "timezone": "America/New_York",
   "labels": ["enhancement"],
   "configMigration": true,
+  "minimumReleaseAge": "7 days",
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
