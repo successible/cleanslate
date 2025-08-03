@@ -76,7 +76,7 @@ As you explore the schema, you will see that you can query seven tables using Gr
 
 - `profiles`: Contains your profile information. See the [queries and mutations the app uses](https://github.com/successible/cleanslate/blob/main/src/graphql/profile.ts).
 
-Here is an example of the `body` for a `query` that returns the `id` of every log with the unit `COUNT`. Make the request (POST) with this payload to `https://app.cleanslate.sh/auth/graphql`. If your instance is self-hosted, replace `app.cleanslate.sh` with your own domain.
+Here is an example of the `body` for a `query` that returns the `id` of every log with the unit `COUNT`. Make the request (POST) with this payload to `https://app.cleanslate.sh/auth/graphql`. Make sure to include the header `Content-Type: application/json`. If your instance is self-hosted, replace `app.cleanslate.sh` with your own domain.
 
 ```json
 {
