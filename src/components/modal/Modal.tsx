@@ -138,7 +138,7 @@ export const Modal: React.FC<props> = (props) => {
 
   const modalComponent = shouldRender ? (
     <div
-      role="alert"
+      role="dialog"
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
           close()
@@ -186,7 +186,7 @@ export const Modal: React.FC<props> = (props) => {
       {/* This works because clicks do not propagate to the element below */}
       {/* The height is dynamically set with JavaScript depending on the height of the modal */}
       <div
-        role="alert"
+        role="none"
         onKeyDown={() => {
           close()
         }}
