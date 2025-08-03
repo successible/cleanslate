@@ -128,10 +128,10 @@ export const calculateRecipeDensities = (
 
 /** Calculate the food score OR recipe score when you are unsure which you have been given */
 export const calculateFoodOrRecipeDensities = (
-  amount: number | null,
+  _amount: number | null,
   item: Barcode | Food | Recipe | undefined | null,
-  caloriesConsumed: number,
-  proteinConsumed: number
+  _caloriesConsumed: number,
+  _proteinConsumed: number
 ): [number, number, number] | null => {
   if (!item) return null
   if ('code' in item) {

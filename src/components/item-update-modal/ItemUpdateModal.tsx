@@ -10,13 +10,13 @@ import { Explanation } from '../explanation/Explanation'
 import { FractionInput } from '../fraction-input/FractionInput'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import type { CommonItem } from '../item/types'
-import { MacroDisplay } from '../macros/MacroDisplay'
 import { calculateFoodOrRecipeDensities } from '../macros/helpers/calculateDensities'
 import {
   calculatePerMacroPerBarcode,
   calculatePerMacroPerFood,
   calculatePerMacroPerRecipe,
 } from '../macros/helpers/calculateMacros'
+import { MacroDisplay } from '../macros/MacroDisplay'
 import { MealInput } from '../meal-input/MealInput'
 import { Select } from '../select/Select'
 import { Meta } from './components/Meta'

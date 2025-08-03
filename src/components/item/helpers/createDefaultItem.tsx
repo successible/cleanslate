@@ -2,12 +2,12 @@ import type { Unit } from '../../../constants/units'
 import { defaultMeal } from '../../../models/log'
 import type { CommonItem } from '../types'
 
-const defaultOnDelete = (id?: string) => {}
+const defaultOnDelete = (_id?: string) => {}
 
 const defaultOnUpdate = (
-  id: string | null,
-  unit: Unit | null,
-  amount: number | null
+  _id: string | null,
+  _unit: Unit | null,
+  _amount: number | null
 ) => undefined
 
 export const createDefaultItem = (

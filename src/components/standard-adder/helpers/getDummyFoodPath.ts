@@ -9,7 +9,7 @@ export const removeParens = (s: string) => s.replace(')', '').replace('(', '')
 export const getDummyFoodPath = (name: string): Path | null => {
   const paths = [] as Path[]
   if (isDummyFood(name)) {
-    traverse(dummyFoods).reduce(function (acc, x) {
+    traverse(dummyFoods).reduce(function (_acc, x) {
       // Working through each leaf, if the leaf matches the name of the dummy food
       if (name && name === x) {
         // Should return ["Chicken", "Breast", "without skin"]

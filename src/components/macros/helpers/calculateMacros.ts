@@ -1,5 +1,5 @@
-import { volumeUnits, weightUnits } from '../../../constants/units'
 import type { Unit } from '../../../constants/units'
+import { volumeUnits, weightUnits } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
 import type { ExerciseLog } from '../../../models/exerciseLog'
 import type { Food } from '../../../models/food'
@@ -57,7 +57,7 @@ const calculatePerFood = (
   servingPerContainer: number | null
 ) => {
   // Purely for error logging purposes
-  const data = {
+  const _data = {
     amount,
     countToGram,
     countToTbsp,

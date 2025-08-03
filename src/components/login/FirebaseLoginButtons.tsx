@@ -4,8 +4,8 @@ import {
   FacebookAuthProvider,
   GithubAuthProvider,
   GoogleAuthProvider,
-  OAuthProvider,
   getAuth,
+  OAuthProvider,
   signInWithPopup,
 } from 'firebase/auth'
 import { FaApple, FaFacebook, FaGithub, FaGoogle } from 'react-icons/fa'

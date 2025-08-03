@@ -40,7 +40,7 @@ export const Select = <X extends string>(props: props<X>) => {
 
   return (
     <div css={buttons} ref={optionInput} className={'frc w100 wrap'}>
-      {optionDictionary.map((optionSet, index) => {
+      {optionDictionary.map((optionSet, _index) => {
         return (
           <div key={JSON.stringify(optionSet)} className="w100 frc">
             {(Object.keys(optionSet) as X[]).map((option) => (

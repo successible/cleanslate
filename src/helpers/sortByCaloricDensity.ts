@@ -2,7 +2,6 @@ import {
   calculateFoodDensities,
   calculateRecipeDensities,
 } from '../components/macros/helpers/calculateDensities'
-import { calculatePerMacroPerRecipe } from '../components/macros/helpers/calculateMacros'
 import type { Category } from '../constants/categories'
 import type { Food } from '../models/food'
 import type { Recipe } from '../models/recipe'

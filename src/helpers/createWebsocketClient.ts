@@ -8,7 +8,7 @@ import { handleError } from './handleError'
 export const createWebsocketClient = () => {
   const client = new GraphQLWsLink(
     createClient({
-      shouldRetry: (e) => {
+      shouldRetry: (_e) => {
         return true
       },
       retryAttempts: 5,

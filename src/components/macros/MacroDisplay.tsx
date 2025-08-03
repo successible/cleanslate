@@ -40,7 +40,7 @@ export const MacroDisplay: React.FC<props> = ({
   profile,
 }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
-  const [caloricDensity, proteinDensity, combinedDensity] = densities
+  const [caloricDensity, proteinDensity, _combinedDensity] = densities
 
   const openModal = () => {
     dispatch(
@@ -96,7 +96,11 @@ export const MacroDisplay: React.FC<props> = ({
           <span>{round(protein, 0)}</span>
         </div>
         {densities && profile.showDensities && (
-          <div onClick={() => openModal()} onKeyDown={() => openModal()}>
+          <div
+            role="note"
+            onClick={() => openModal()}
+            onKeyDown={() => openModal()}
+          >
             <div id="MacrosDensity" className={`fr ${showTitles ? 'ml5' : ''}`}>
               <Image
                 css={css`

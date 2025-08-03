@@ -5,7 +5,7 @@ import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'
 import { blue, green } from '../../../theme'
 import { QuickLogMacros } from '../../macros/QuickLogMacros'
-import { TRUNCATE_LENGTH, getNameAndTags } from '../helpers/getNameAndTags'
+import { getNameAndTags, TRUNCATE_LENGTH } from '../helpers/getNameAndTags'
 import { renderMacros } from '../helpers/renderMacros'
 import { spawnItemEditModal } from '../helpers/spawnItemEditModal'
 import type { CommonItem } from '../types'
@@ -85,6 +85,7 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
         <div className="fc">
           <div className="fr">
             <div
+              role="note"
               id="MetaItemName"
               onClick={() => isCustomLog && spawnItemEditModal(item, dispatch)}
               onKeyDown={() =>

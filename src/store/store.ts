@@ -1,7 +1,7 @@
 import {
+  createStoreon,
   type StoreonDispatch,
   type StoreonStore,
-  createStoreon,
 } from '../storeon'
 import { data } from './data/module'
 import type { DataEvents, DataSlice } from './data/types'

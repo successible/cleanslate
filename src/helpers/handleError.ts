@@ -40,7 +40,7 @@ export const handleError = (
   if (dsn && dsn !== 'no' && hideFromSentry !== true) {
     try {
       Sentry.setUser({ id: store.get().data.profiles[0].authId })
-    } catch (e) {
+    } catch (_e) {
       console.log('Storeon is not configured yet. Skipping...')
     }
     Sentry.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')

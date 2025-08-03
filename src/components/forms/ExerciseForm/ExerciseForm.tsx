@@ -11,10 +11,10 @@ import { md } from '../../../theme'
 import type { CommonItem } from '../../item/types'
 import {
   type LiftingActivity,
-  type OtherActivity,
-  type SwimmingActivity,
   liftingMET,
+  type OtherActivity,
   otherMet,
+  type SwimmingActivity,
   swimmingMET,
 } from './constants'
 import { calculateCaloriesFromMETs } from './helpers/calculateCaloriesFromMETs'

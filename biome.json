@@ -37,6 +37,9 @@
       },
       "complexity": {
         "noForEach": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
       }
     }
   }

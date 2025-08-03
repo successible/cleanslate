@@ -1,4 +1,4 @@
-import { type SerializedStyles, css } from '@emotion/react'
+import { css, type SerializedStyles } from '@emotion/react'
 import React from 'react'
 import { colors } from '../../theme'
 
@@ -43,7 +43,7 @@ export const Tabs: React.FC<props> = ({
 
   return (
     <div css={styles} className={`fr w100 wrap ${className}`}>
-      {Object.keys(tabs).map((tab, index) => {
+      {Object.keys(tabs).map((tab, _index) => {
         return (
           <button
             onClick={() => {

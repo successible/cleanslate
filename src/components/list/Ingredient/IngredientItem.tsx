@@ -18,7 +18,7 @@ export const IngredientItem: React.FC<props> = (props) => {
   const childRecipe = ingredient.ingredientToChildRecipe
 
   const onUpdate: OnUpdateItem = (
-    id,
+    _id,
     unit,
     amount,
     consumed,

@@ -1,12 +1,10 @@
-import { css } from '@emotion/react'
 import type { SerializedStyles } from '@emotion/react'
+import { css } from '@emotion/react'
 import React from 'react'
 import ReturnArrow from '../../assets/common/return-arrow.svg'
 import type { Modals } from '../../constants/modals'
 import { getAnimationDuration } from '../../helpers/getAnimationDuration'
-import { isMobile } from '../../helpers/isMobile'
-import { colors } from '../../theme'
-import { xlg } from '../../theme'
+import { colors, xlg } from '../../theme'
 import { Image } from '../image/Image'
 import { sidebarPresent } from './helpers/sidebarPresent'
 
@@ -140,6 +138,7 @@ export const Modal: React.FC<props> = (props) => {
 
   const modalComponent = shouldRender ? (
     <div
+      role="alert"
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
           close()
@@ -155,7 +154,6 @@ export const Modal: React.FC<props> = (props) => {
       }`}
     >
       <div
-        // biome-ignore lint/a11y/useSemanticElements: We use role instead here.
         role="dialog"
         ref={modalRef}
         css={dialogStyles}
@@ -188,6 +186,7 @@ export const Modal: React.FC<props> = (props) => {
       {/* This works because clicks do not propagate to the element below */}
       {/* The height is dynamically set with JavaScript depending on the height of the modal */}
       <div
+        role="alert"
         onKeyDown={() => {
           close()
         }}

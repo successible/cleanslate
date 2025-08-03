@@ -1,9 +1,10 @@
 import {
   defaultContainer,
+  defaultCount,
+  type Unit,
   volumeUnits,
   weightUnits,
 } from '../../../constants/units'
-import { type Unit, defaultCount } from '../../../constants/units'
 import { zipObject } from '../../../helpers/zipObject'
 import type { Food } from '../../../models/food'
 import type { Recipe } from '../../../models/recipe'

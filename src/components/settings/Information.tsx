@@ -1,10 +1,8 @@
 import { css } from '@emotion/react'
 import dayjs from 'dayjs'
 import Cookies from 'js-cookie'
-import { debounce } from 'lodash-es'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
-import { getDomain } from '../../helpers/getDomain'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import { useUser } from '../../hooks/useUser'
 import type { Profile } from '../../models/profile'
@@ -54,21 +52,18 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
 
       <div className="ml5 mt5">
-        <>
-          <strong className="mr5">Version:</strong>
-          {process.env.NEXT_PUBLIC_VERSION}
-        </>
+        <strong className="mr5">Version:</strong>
+        {process.env.NEXT_PUBLIC_VERSION}
       </div>
       <div className="ml5 mt5">
-        <>
-          <strong className="mr5">API Token (Value):</strong>
-          {profile.apiToken}
-        </>
+        <strong className="mr5">API Token (Value):</strong>
+        {profile.apiToken}
+
         <br />
-        <>
-          <strong className="mr5">API Token (Last Regenerated):</strong>
-          {dayjs(profile.apiTokenLastRegenerated).format('MMM D, YYYY h:mm A')}
-        </>
+
+        <strong className="mr5">API Token (Last Regenerated):</strong>
+        {dayjs(profile.apiTokenLastRegenerated).format('MMM D, YYYY h:mm A')}
+
         <Explanation color="background">
           <div>
             To learn how to make an API request, view the{' '}
