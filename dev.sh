@@ -3,16 +3,7 @@
 if [[ $CI != "true" ]]; then
 
 echo "=> Kill the local version of Clean Slate..."
-
-pkill -9 -f "hasura console"
-pkill -9 -f "next dev"
-pkill -9 -f "next-router-worker"
-pkill -9 -f "next-server"
-pkill -9 -f "npm exec tsc --watch"
-pkill -9 -f "server.js"
-pkill -9 -f "tsc --watch"
-pkill -9 -f "caddy"
-pkill -9 -f "nginx"
+bash kill.sh
 
 export NEXT_PUBLIC_VERSION="XXX"
 export NEXT_PUBLIC_HASURA_DOMAIN="localhost"

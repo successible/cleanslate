@@ -1,0 +1,10 @@
+pkill -9 -f "hasura console"
+pkill -9 -f "next dev"
+pkill -9 -f "next-router-worker"
+pkill -9 -f "next-server"
+pkill -9 -f "npm exec tsc --watch"
+pkill -9 -f "server.js"
+pkill -9 -f "tsc --watch"
+
+sudo pkill -9 -f "caddy"
+sudo pkill -9 -f "nginx"

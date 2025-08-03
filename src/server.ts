@@ -9,6 +9,8 @@ type AnyResponse = any
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET
 const domain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
 const isProduction = process.env.NODE_ENV === 'production'
+const isDevelopment = !isProduction
+
 const signingKey = process.env.JWT_SIGNING_SECRET
 const useFirebase = process.env.NEXT_PUBLIC_USE_FIREBASE === 'true'
 
@@ -21,27 +23,29 @@ if (!adminSecret && !useFirebase) {
 
 const app = express()
 app.use(express.json())
-app.use(logger())
+app.use(logger(isDevelopment ? { transport: { target: 'pino-pretty' } } : {}))
 isProduction && app.use(helmet())
 
 const port = 3001
 const graphqlUrl = isProduction
-  ? 'http://graphql-server:8080/v1/graphql'
-  : 'https://localhost/v1/graphql'
+  ? // We need Docker container to Docker container communication (over HTTP) here.
+    // In other words, the authentication server container to Hasura container.
+    // If you have the autentication server go through Caddy to the Hasura server, it will strip the X-Hasura-Role
+    // This is usually exactly what you want for security! However, for the /auth/graphql route
+    // It is a problem, as stripping out X-Hasura-Role will have Hasura default to the admin role
+    // Simply because you are also passing X-Hasura-Admin-Secret at the same time.
+    // In this scenario, you would have the request made with admin permissions, effectively.
+    'http://graphql-server:8080/v1/graphql'
+  : 'http://localhost:8080/v1/graphql'
 
 const getProfiles = async (token: string) => {
   const document = `
     query GET_PROFILES($token: uuid!) {
-      profiles(
-        where: {
-          _or: [{ apiToken: { _eq: $token } }]
-        }
-      ) {
+      profiles(where: {apiToken: {_eq: $token}}) {
         authId
         id
       }
-    }
-  `
+    }`
 
   const response = await axios({
     url: graphqlUrl,
@@ -59,7 +63,9 @@ const getProfiles = async (token: string) => {
     },
   })
 
-  return response.data.data.profiles as [{ authId: string; id: string }]
+  return (response?.data?.data?.profiles || []) as [
+    { authId: string; id: string },
+  ]
 }
 
 app.get('/auth', (_req, res): AnyResponse => {
@@ -71,8 +77,8 @@ app.post('/auth/login', async (req, res): Promise<AnyResponse> => {
     console.log('This endpoint is disabled because Firebase is enabled.')
     return res.sendStatus(403)
   }
-  const token = req.body.token
-  if (!req.body.token) {
+  const token = req?.body?.token
+  if (!token) {
     console.log('This endpoint requires you to pass a token.')
     return res.sendStatus(422)
   }
@@ -103,11 +109,12 @@ app.post('/auth/login', async (req, res): Promise<AnyResponse> => {
 })
 
 app.post('/auth/graphql', async (req, res): Promise<AnyResponse> => {
-  const token = req.body.token
-  if (!req.body.token) {
+  const token = req?.body?.token
+  const query = req?.body?.query
+  if (!token) {
     return res.sendStatus(422)
   }
-  if (!req.body.query) {
+  if (!query) {
     return res.sendStatus(422)
   }
   const profiles = await getProfiles(token)
@@ -131,6 +138,7 @@ app.post('/auth/graphql', async (req, res): Promise<AnyResponse> => {
     })
     return res.send(result.data.data)
   }
+  console.log('No profile was found matching that token.')
   return res.sendStatus(403)
 })
 
