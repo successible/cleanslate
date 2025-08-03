@@ -71,7 +71,7 @@ export const Information: React.FC<props> = ({ profile }) => {
               README
             </a>{' '}
             and the{' '}
-            <a href="https://studio.apollographql.com/graph/Clean-Slate/variant/current/home">
+            <a href="https://studio.apollographql.com/public/Clean-Slate/variant/current/home">
               GraphQL schema.
             </a>
           </div>

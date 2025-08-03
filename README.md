@@ -58,7 +58,7 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 ## How can I make an API request to Clean Slate?
 
-You can review a GraphQL representation of the documentation [here](https://studio.apollographql.com/graph/Clean-Slate/variant/current/home). The documentation is a "live" GraphQL schema in Apollo Studio. You will need to make a free Apollo Studio account to view them.
+First, review a GraphQL representation of the documentation [here](https://studio.apollographql.com/public/Clean-Slate/variant/current/home)
 
 As you explore the schema, you will see that you can query seven tables using GraphQL.
 
