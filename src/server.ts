@@ -28,8 +28,10 @@ isProduction && app.use(helmet())
 
 const port = 3001
 const graphqlUrl = isProduction
-  ? // We need Docker container to Docker container communication (over HTTP) here.
-    // In other words, the authentication server container to Hasura container.
+  ? // We need server to server communication (over HTTP) here.
+    // In other words, the authentication server container to Hasura container on production.
+    // And the authentication server to Hasura container on development.
+    // As the authentication server is not in a container on development.
     // If you have the autentication server go through Caddy to the Hasura server, it will strip the X-Hasura-Role
     // This is usually exactly what you want for security! However, for the /auth/graphql route
     // It is a problem, as stripping out X-Hasura-Role will have Hasura default to the admin role
