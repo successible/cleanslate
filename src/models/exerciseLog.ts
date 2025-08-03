@@ -1,9 +1,9 @@
-import type { ExerciseGroup } from '../components/forms/ExerciseForm/ExerciseForm'
 import type {
   LiftingActivity,
   OtherActivity,
   SwimmingActivity,
 } from '../components/forms/ExerciseForm/constants'
+import type { ExerciseGroup } from '../components/forms/ExerciseForm/ExerciseForm'
 import { uuid } from '../helpers/uuid'
 import type { Profile } from './profile'
 

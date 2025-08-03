@@ -3,8 +3,8 @@ import { curry } from 'lodash-es'
 import React, { useEffect } from 'react'
 import {
   type VolumeUnit,
-  type WeightUnit,
   volumeUnits,
+  type WeightUnit,
   weightUnits,
 } from '../../../constants/units'
 import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
@@ -20,12 +20,12 @@ import { colors } from '../../../theme'
 import { Divider } from '../../divider/Divider'
 import { Explanation } from '../../explanation/Explanation'
 import { IngredientList } from '../../list/Ingredient/IngredientList'
-import { Macros } from '../../macros/Macros'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
-import { UnitSelector } from '../CustomFoodForm/UnitSelector'
+import { Macros } from '../../macros/Macros'
 import { getAdjustedVolumeAmount } from '../CustomFoodForm/helpers/getAdjustedVolumeAmount'
 import { getAdjustedWeightAmount } from '../CustomFoodForm/helpers/getAdjustedWeightAmount'
+import { UnitSelector } from '../CustomFoodForm/UnitSelector'
 import { upsertItem } from '../helpers/upsertItem'
 import { createRecipeLog } from './helpers/createRecipeLog'
 import { submitRecipe } from './helpers/submitRecipe'

@@ -4,9 +4,9 @@ import type { Profile } from '../../models/profile'
 import type { AllEvents } from '../../store/store'
 import type { Dispatch } from '../../store/types'
 import { useStoreon } from '../../storeon'
-import { SubmitButton } from '../item-update-modal/components/SubmitButton'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import type { CommonItem } from '../item/types'
+import { SubmitButton } from '../item-update-modal/components/SubmitButton'
 
 type props = { profile: Profile; item: CommonItem | undefined }
 export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {

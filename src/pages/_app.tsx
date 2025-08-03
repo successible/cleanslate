@@ -40,7 +40,7 @@ function _App({ Component, pageProps }: AppProps) {
       beforeCapture={(scope) => {
         try {
           scope.setUser({ id: store.get().data.profiles[0].authId })
-        } catch (e) {
+        } catch (_e) {
           console.log('Storeon is not configured yet. Skipping.')
         }
         scope.setExtra('version', process.env.NEXT_PUBLIC_VERSION || 'Unknown')

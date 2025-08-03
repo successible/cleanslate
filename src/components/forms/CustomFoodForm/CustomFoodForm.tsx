@@ -5,8 +5,8 @@ import type { Category } from '../../../constants/categories'
 import type { Group } from '../../../constants/groups'
 import {
   type VolumeUnit,
-  type WeightUnit,
   volumeUnits,
+  type WeightUnit,
   weightUnits,
 } from '../../../constants/units'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
@@ -22,9 +22,9 @@ import { Divider } from '../../divider/Divider'
 import { Explanation } from '../../explanation/Explanation'
 import { convertFromWeightToGrams } from '../../macros/helpers/convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from '../../macros/helpers/mapOtherVolumeUnitToTbsp'
-import { UnitSelector } from './UnitSelector'
 import { getAdjustedVolumeAmount } from './helpers/getAdjustedVolumeAmount'
 import { getAdjustedWeightAmount } from './helpers/getAdjustedWeightAmount'
+import { UnitSelector } from './UnitSelector'
 
 export type FoodSubmission = {
   name: string

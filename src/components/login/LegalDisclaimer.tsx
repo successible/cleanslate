@@ -20,6 +20,6 @@ export const LegalDisclaimer = () => {
       </a>
     </p>
   ) : (
-    <></>
+    <div></div>
   )
 }

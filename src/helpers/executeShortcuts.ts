@@ -1,7 +1,7 @@
 import {
+  createKeyboardShortcutDirectory,
   type Key,
   type KeyboardShortcutKeys,
-  createKeyboardShortcutDirectory,
 } from './createShortcuts'
 import { modalsAreActive } from './modalsAreActive'
 

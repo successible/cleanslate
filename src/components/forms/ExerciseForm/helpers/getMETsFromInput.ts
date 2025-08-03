@@ -1,12 +1,12 @@
-import type { ExerciseGroup } from '../ExerciseForm'
 import {
   type LiftingActivity,
-  type OtherActivity,
-  type SwimmingActivity,
   liftingMET,
+  type OtherActivity,
   otherMet,
+  type SwimmingActivity,
   swimmingMET,
 } from '../constants'
+import type { ExerciseGroup } from '../ExerciseForm'
 import { getCyclingMET } from './getCyclingMET'
 import { getRowingMET } from './getRowingMET'
 import { getRunningMET } from './getRunningMET'

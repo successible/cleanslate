@@ -1,7 +1,7 @@
 import { Profile } from '../models/profile'
 import type { Data } from '../store/data/types'
-import { getBasicFoods } from './Food/getBasicFoods'
 import { profileKey } from './constants'
+import { getBasicFoods } from './Food/getBasicFoods'
 import { isBrowser } from './isBrowser'
 
 const { basicFoods } = getBasicFoods()

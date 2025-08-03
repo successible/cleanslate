@@ -1,7 +1,7 @@
 import React from 'react'
 import { isMobile } from '../helpers/isMobile'
-import { isPWA } from '../helpers/isPWA'
 import { isProduction } from '../helpers/isProduction'
+import { isPWA } from '../helpers/isPWA'
 import type { Profile } from '../models/profile'
 import type { AllEvents } from '../store/store'
 import type { Dispatch } from '../store/types'

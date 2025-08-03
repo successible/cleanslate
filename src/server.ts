@@ -62,7 +62,7 @@ const getProfiles = async (token: string) => {
   return response.data.data.profiles as [{ authId: string; id: string }]
 }
 
-app.get('/auth', (req, res): AnyResponse => {
+app.get('/auth', (_req, res): AnyResponse => {
   return res.send('The server is healthy!')
 })
 
@@ -134,7 +134,7 @@ app.post('/auth/graphql', async (req, res): Promise<AnyResponse> => {
   return res.sendStatus(403)
 })
 
-app.use((err: any, req: any, res: any, next: any): AnyResponse => {
+app.use((err: any, _req: any, res: any, _next: any): AnyResponse => {
   return res.status(500).send(String(err))
 })
 

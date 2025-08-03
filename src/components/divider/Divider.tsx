@@ -1,4 +1,4 @@
-import { type SerializedStyles, css } from '@emotion/react'
+import { css, type SerializedStyles } from '@emotion/react'
 import type React from 'react'
 import { colors } from '../../theme'
 

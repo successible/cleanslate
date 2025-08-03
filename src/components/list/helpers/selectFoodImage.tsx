@@ -27,7 +27,7 @@ export const selectFoodImage = (
         // @ts-ignore
         return extractSrc ? imagePath.default.src : imagePath.default
       }
-    } catch (error) {
+    } catch (_error) {
       // Do nothing
     }
   }

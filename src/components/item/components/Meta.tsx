@@ -5,7 +5,7 @@ import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'
 import { blue, green } from '../../../theme'
 import { QuickLogMacros } from '../../macros/QuickLogMacros'
-import { TRUNCATE_LENGTH, getNameAndTags } from '../helpers/getNameAndTags'
+import { getNameAndTags, TRUNCATE_LENGTH } from '../helpers/getNameAndTags'
 import { renderMacros } from '../helpers/renderMacros'
 import { spawnItemEditModal } from '../helpers/spawnItemEditModal'
 import type { CommonItem } from '../types'
@@ -84,12 +84,17 @@ export const Meta: React.FC<props> = ({ dispatch, item }) => {
         {src && <img css={imageStyling} alt="Item" src={src} />}
         <div className="fc">
           <div className="fr">
+            {/** biome-ignore lint/a11y/noStaticElementInteractions:  Only a button when isCustomLog */}
             <div
+              tabIndex={isCustomLog ? 0 : -1}
+              role={isCustomFood ? 'button' : 'none'}
               id="MetaItemName"
               onClick={() => isCustomLog && spawnItemEditModal(item, dispatch)}
-              onKeyDown={() =>
-                isCustomLog && spawnItemEditModal(item, dispatch)
-              }
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  isCustomLog && spawnItemEditModal(item, dispatch)
+                }
+              }}
               className={['food', 'recipe'].includes(type) ? 'fcs' : ''}
               css={[
                 nameStyling,

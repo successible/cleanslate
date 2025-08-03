@@ -1,9 +1,9 @@
 import type React from 'react'
 import type { Log } from '../../models/log'
 import type { Profile } from '../../models/profile'
-import { MacroDisplay } from './MacroDisplay'
 import { calculateFoodOrRecipeDensities } from './helpers/calculateDensities'
 import { calculateMacros } from './helpers/calculateMacros'
+import { MacroDisplay } from './MacroDisplay'
 
 type props = {
   log: Log

@@ -1,7 +1,14 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "ignore": ["*.js", "migrations", "node_modules", "src/.next", "src/out"]
+    "includes": [
+      "**",
+      "!**/*.js",
+      "!**/migrations",
+      "!**/node_modules",
+      "!**/src/.next",
+      "!**/src/out"
+    ]
   },
   "formatter": {
     "enabled": true,
@@ -17,9 +24,7 @@
       "trailingCommas": "es5"
     }
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
@@ -32,6 +37,9 @@
       },
       "complexity": {
         "noForEach": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
       }
     }
   }

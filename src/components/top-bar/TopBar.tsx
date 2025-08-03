@@ -16,6 +16,7 @@ export const TopBar: React.FC<props> = ({ children, height, onClick }) => {
   `
   return (
     <div
+      role="toolbar"
       css={topBar}
       onClick={() => onClick()}
       onKeyDown={() => onClick()}

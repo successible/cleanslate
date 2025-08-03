@@ -24,7 +24,7 @@ export const UnitInput: React.FC<props> = ({
     id,
     localUnit,
     food || recipe || childRecipe,
-    (id: string, unit: Unit) => {
+    (_id: string, unit: Unit) => {
       const { newAmount, newUnit } = updateUnit(
         item,
         localAmount,

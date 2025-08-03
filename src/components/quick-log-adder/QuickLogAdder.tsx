@@ -1,6 +1,5 @@
-import Parser from 'expr-eval'
-
 import { css } from '@emotion/react'
+import Parser from 'expr-eval'
 import React from 'react'
 import { toast } from 'react-toastify'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'

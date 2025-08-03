@@ -9,9 +9,9 @@ import type { Profile } from '../../../models/profile'
 import type { QuickLog } from '../../../models/quickLog'
 import { colors } from '../../../theme'
 import { Spinner } from '../../spinner/Spinner'
+import { sortByCreatedAt } from './helpers/sortByCreatedAt'
 import { LogItem } from './LogItem'
 import { Shell } from './Shell'
-import { sortByCreatedAt } from './helpers/sortByCreatedAt'
 
 type props = {
   logs: Log[]
@@ -38,10 +38,8 @@ export const LogList: React.FC<props> = (props) => {
     const meal = m as Meal
     const status = groupedLogs[meal].reduce((acc, log) => {
       if (log.consumed) {
-        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = true
       } else {
-        // biome-ignore lint/style/noParameterAssign: The mutation is the point!
         acc = false
       }
       return acc

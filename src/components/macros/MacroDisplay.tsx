@@ -40,7 +40,7 @@ export const MacroDisplay: React.FC<props> = ({
   profile,
 }) => {
   const { dispatch }: { dispatch: Dispatch<AllEvents> } = useStoreon()
-  const [caloricDensity, proteinDensity, combinedDensity] = densities
+  const [caloricDensity, proteinDensity, _combinedDensity] = densities
 
   const openModal = () => {
     dispatch(
@@ -52,27 +52,25 @@ export const MacroDisplay: React.FC<props> = ({
         stands for caloric density ({caloricDensity}) and protein density (
         {proteinDensity}). To learn more about them, first navigate to{' '}
         <a
+          className="mr5"
           href="https://cleanslate.sh/weight-loss"
           target="_blank"
           rel="noreferrer"
         >
           here
         </a>
-        . Then, read the third and fourth sections.
+        and read the third and fourth sections.
         <br />
-        <br />
-        If you would like to see a table of all basic foods by caloric and
-        protein density, navigate to{' '}
         <button
+          className="black m5 mt20 mr5 inline"
           type="button"
           rel="noreferrer"
           onClick={() => {
             dispatch('openDensityModal')
           }}
         >
-          here
+          Open: Table of basic foods by caloric and protein density
         </button>
-        .
       </div>
     )
   }
@@ -96,7 +94,17 @@ export const MacroDisplay: React.FC<props> = ({
           <span>{round(protein, 0)}</span>
         </div>
         {densities && profile.showDensities && (
-          <div onClick={() => openModal()} onKeyDown={() => openModal()}>
+          // biome-ignore lint/a11y/useSemanticElements: Button has attached styling
+          <div
+            role="button"
+            tabIndex={0}
+            onClick={() => openModal()}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                openModal()
+              }
+            }}
+          >
             <div id="MacrosDensity" className={`fr ${showTitles ? 'ml5' : ''}`}>
               <Image
                 css={css`
@@ -109,9 +117,13 @@ export const MacroDisplay: React.FC<props> = ({
                 src={Density}
               />
               {showTitles && <div className="mr5">Density:</div>}
-              <span>
-                {caloricDensity}/{proteinDensity}
-              </span>
+              {caloricDensity === -1 || proteinDensity === -1 ? (
+                <span>N/A</span>
+              ) : (
+                <span>
+                  {caloricDensity}/{proteinDensity}
+                </span>
+              )}
             </div>
           </div>
         )}
