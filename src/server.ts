@@ -41,16 +41,11 @@ const graphqlUrl = isProduction
 const getProfiles = async (token: string) => {
   const document = `
     query GET_PROFILES($token: uuid!) {
-      profiles(
-        where: {
-          _or: [{ apiToken: { _eq: $token } }]
-        }
-      ) {
+      profiles(where: {apiToken: {_eq: $token}}) {
         authId
         id
       }
-    }
-  `
+    }`
 
   const response = await axios({
     url: graphqlUrl,
