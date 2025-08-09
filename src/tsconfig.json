@@ -14,6 +14,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictPropertyInitialization": false,
     "target": "esnext"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
