@@ -3,20 +3,19 @@
     "allowJs": true,
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "incremental": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "CommonJS",
-    "moduleResolution": "node",
+    "moduleResolution": "node10",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "es5"
+    "target": "esnext"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
