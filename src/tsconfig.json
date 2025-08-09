@@ -9,7 +9,7 @@
     "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
     "module": "CommonJS",
-    "moduleResolution": "node16",
+    "moduleResolution": "node10",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
