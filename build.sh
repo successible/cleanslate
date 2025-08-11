@@ -1,7 +1,7 @@
 #!/bin/bash
 
 cd src
-npx next build
+npx next build --turbopack
 
 node create-service-worker.js
 cp -r out ../out
