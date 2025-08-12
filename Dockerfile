@@ -62,7 +62,6 @@ ENV NEXT_PUBLIC_VERSION=$NEXT_PUBLIC_VERSION
 # Build the static files of Clean Slate
 
 COPY build.sh .
-RUN ["npx", "next", "info"]
 RUN ["bash", "-e", "build.sh"]
 
 FROM busybox:latest AS runner
