@@ -1,5 +1,9 @@
 FROM node:lts-slim AS builder
 
+# Set the working directory
+
+WORKDIR /app
+
 # Update any dependencies bundled with the container
 
 RUN apt-get update -y; apt-get upgrade -y;
@@ -68,7 +72,7 @@ FROM busybox:latest AS runner
 
 # Copy over the built version of Clean Slate
 
-COPY --from=builder out out
+COPY --from=builder app/out out
 
 # Serve Clean Slate with busybox
 

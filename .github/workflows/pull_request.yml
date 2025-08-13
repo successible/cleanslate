@@ -60,8 +60,8 @@ jobs:
       - name: Install Hasura CLI
         run: curl -L https://github.com/hasura/graphql-engine/raw/stable/cli/get.sh | bash
 
-      - name: Lint the client
-        run: cd src && npx tsc && npx biome check
+      - name: Lint the client and build the Next.js application
+        run: cd src && npx tsc && npx biome check && npx next info && npx next build
 
       - name: Migrate Hasura metadata
         run: node migrate.js
