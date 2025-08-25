@@ -37,7 +37,6 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
   store.on('updateCurrentWebsocketClient', (state, client) => {
     if (client) {
       return produce(state, (draft) => {
-        // @ts-ignore
         draft.currentWebsocketClient = client
       })
     }

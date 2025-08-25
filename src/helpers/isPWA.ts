@@ -8,7 +8,7 @@ export const isPWA = () => {
     )
     return (
       displayMode ||
-      // @ts-ignore - window.navigator.standalone only exists on iOS
+      // @ts-expect-error - window.navigator.standalone only exists on iOS
       (window.navigator.standalone as boolean) ||
       document.referrer.includes('android-app://')
     )

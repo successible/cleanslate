@@ -265,14 +265,14 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     modals
       .map((modal) => modal.replace('navbar.', ''))
       .forEach((modal) => {
-        // @ts-ignore
+        // @ts-expect-error
         if (newNavbar[modal]) {
-          // @ts-ignore
+          // @ts-expect-error
           newNavbar[modal] = false
         }
       })
     return produce(state, (draft) => {
-      // @ts-ignore
+      // @ts-expect-error
       draft.navbar = newNavbar
     })
   })

@@ -17,7 +17,7 @@ export const HiddenInput: React.FC<props> = ({ inputMode, type }) => {
     <input
       type={type || 'text'}
       // Cannot get the React inputMode type to work
-      // @ts-ignore
+      // @ts-expect-error
       inputMode={inputMode || 'text'}
       tabIndex={-1}
       css={input}

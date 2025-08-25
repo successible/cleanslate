@@ -8,7 +8,7 @@ export const updateModal = (
   shouldOpen: boolean
 ) => {
   // If the model is already open, do not try to open it again!
-  // @ts-ignore
+  // @ts-expect-error
   if (state.navbar[modal.replace('navbar.', '')] && shouldOpen) return state
 
   const activeModals = state.navbar.activeModals as string[]
@@ -20,7 +20,7 @@ export const updateModal = (
 
   return produce(state, (draft) => {
     draft.navbar.activeModals = updatedActiveModals
-    // @ts-ignore
+    // @ts-expect-error
     draft.navbar[modal.replace('navbar.', '')] = shouldOpen
   })
 }
