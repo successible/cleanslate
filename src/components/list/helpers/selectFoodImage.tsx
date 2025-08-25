@@ -2,7 +2,7 @@ import type { Food } from '../../../models/food'
 import type { Recipe } from '../../../models/recipe'
 import { createAllPossibleImageNames } from './createImageName'
 
-// @ts-ignore
+// @ts-expect-error
 export const getImagePath = require.context('../../../assets/foods', true)
 
 /**
@@ -24,7 +24,7 @@ export const selectFoodImage = (
     try {
       const imagePath = getImagePath(`./${name}`)
       if (imagePath) {
-        // @ts-ignore
+        // @ts-expect-error
         return extractSrc ? imagePath.default.src : imagePath.default
       }
     } catch (_error) {

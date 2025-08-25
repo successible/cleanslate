@@ -132,7 +132,7 @@ export const createStoreon = <State, Events = any>(
   return store as StoreonStore<State, Events>
 }
 
-// @ts-ignore - The lack of default is required by the library
+// @ts-expect-error - The lack of default is required by the library
 export const StoreContext = createContext()
 
 const useIsomorphicLayoutEffect =

@@ -35,7 +35,6 @@ export const App = () => {
     useData()
 
   const user = useUser()
-  // @ts-ignore: Type instantiation is excessively deep and possibly infinite.
   const { data, loading } = useSubscription<Data>(
     gql(stringifyQuery(SUBSCRIBE_TO_DATA)),
     { variables: createDateRange(profile) }

@@ -29,7 +29,7 @@ export const submitRecipe = (
       ingredients_to_insert: ingredientsToInsert,
       pk_columns: { id: recipe.id },
       set: produce(data, (draft) => {
-        // @ts-ignore
+        // @ts-expect-error
         draft.ingredients = undefined
       }),
     }
