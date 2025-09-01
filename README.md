@@ -48,13 +48,13 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 
 2. Run `bash configuration.sh` to generate a `.env` file and `Caddyfile` file. You will need the `uuid-runtime` package for this to work. Edit the contents as desired. The `.env` file will have the values unique to your instance. Do not share this file, as some of these values are secret. The `Caddyfile` configures Caddy, which is a reverse proxy. Caddy will serve Clean Slate over `https`. Clean Slate requires `https` to work. For Caddy to work, you need a FQDN and have Port `80` open (temporarily). That way, Caddy will succeed in Let's Encrypt certificate generation. You can close Port `80` with your firewall, such as `ufw`, after that. You can use another reverse proxy, like `nginx` if desired. As for your firewall: Clean Slate only needs Port `443` open to work.
 
-3.  Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, such as running PostgreSQL in a container, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) and [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml). These are the files used to deploy Clean Slate.
+3. Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, such as running PostgreSQL in a container, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) and [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml). These are the files used to deploy Clean Slate.
 
-4.  Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access your account.
+4. Go to the `https://example.com/console`. Make sure to change `example.com` to value of your actual domain. Log in with your `HASURA_GRAPHQL_ADMIN_SECRET` defined in your `.env`. Click `Data`, then `public`, then `profiles`, then `Insert Row`. On this screen, click `Save`. This will create a new Profile. Click to `Browse Rows`. Take note of the `apiToken` of the row you just made. That is your (very long) password to log in. If you want to create another user, follow the same procedure. Do not share this token with anyone else. It will enable them to access your account.
 
-5.  You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
+5. You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-6.  To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available.
+6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
 
 ## How can I make an API request to Clean Slate?
 
@@ -183,7 +183,7 @@ NEXT_PUBLIC_USE_FIREBASE='true'
 HASURA_GRAPHQL_JWT_SECRET='{ "type": "RS256", "audience": "<XXX>", "issuer": "https://securetoken.google.com/<XXX>", "jwk_url": "https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com" }'
 ```
 
-- Production: You need to build the `client` and `authentication-server` images. You cannot use the ones that have already been built. That is because the `client` image has build arguments that are unique to each instance. If you use the `deploy.sh` and `docker-compose.yml` as written, you are set. The images will be built for you automatically. However, if you modify either of those files, you may need to built them yourself.
+- Production: You need to build the `client` and `authentication-server` images. You cannot use the ones that have already been built. That is because the `client` image has build arguments that are unique to each instance. If you use the `deploy.sh` and `docker-compose.yml` as written, you are set. The images will be built for you automatically. However, if you modify either of those files, you may need to build them yourself.
 
 ## How do I contribute to Clean Slate?
 
