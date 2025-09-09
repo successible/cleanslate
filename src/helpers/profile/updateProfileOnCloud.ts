@@ -16,7 +16,6 @@ type UpdateTargets = {
     showCalories?: boolean
     showDensities?: boolean
     startTime?: string
-    timeToExecuteFrameChange?: string | null
   }
 }
 

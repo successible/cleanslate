@@ -13,7 +13,6 @@ import { getDomain } from '../../helpers/getDomain'
 import { getLoginStatus } from '../../helpers/getLoginStatus'
 import { handleData } from '../../helpers/handleData'
 import { isLoadedUser } from '../../helpers/isLoadedUser'
-import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
 import { stringifyQuery } from '../../helpers/stringifyQuery'
 import { useData } from '../../hooks/useData'
 import { useLogoutOtherTab } from '../../hooks/useLogoutOtherTab'
@@ -53,21 +52,6 @@ export const App = () => {
 
   const navbarHeight = 65
   const footerHeight = 65
-
-  useEffect(() => {
-    if (!loading && profile.timeToExecuteFrameChange) {
-      if (dayjs(profile.timeToExecuteFrameChange).unix() < dayjs().unix())
-        [
-          updateProfileOnCloud(
-            { id: profile.id, set: { timeToExecuteFrameChange: null } },
-            () => {
-              Cookies.remove('last-refreshed')
-              window.location.reload()
-            }
-          ),
-        ]
-    }
-  }, [loading, profile])
 
   useEffect(() => {
     const handler = () => {
