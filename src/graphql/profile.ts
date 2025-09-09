@@ -17,7 +17,6 @@ export const PROFILE_FRAGMENT = gql`
     showCalories
     showDensities
     startTime
-    timeToExecuteFrameChange
     timezone
     type
     updatedAt

@@ -25,7 +25,6 @@ export class Profile {
   showCalories: boolean // Default to True
   showDensities: boolean // Default to false
   startTime: string
-  timeToExecuteFrameChange: string | null
   timezone: string
 
   // Relationships

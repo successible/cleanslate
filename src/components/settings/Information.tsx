@@ -1,6 +1,5 @@
 import { css } from '@emotion/react'
 import dayjs from 'dayjs'
-import Cookies from 'js-cookie'
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { updateProfileOnCloud } from '../../helpers/profile/updateProfileOnCloud'
@@ -98,20 +97,12 @@ export const Information: React.FC<props> = ({ profile }) => {
         </label>
         <button
           onClick={() => {
-            const midnight = dayjs().startOf('day')
-            const [hour, minute] = startTime.split(':').map(Number)
-            const today = midnight.set('hour', hour).set('minute', minute)
-            const useFrameChange =
-              today.unix() <= dayjs().unix() ? null : today.toISOString()
             updateProfileOnCloud(
               {
                 id: profile.id,
-                set: { startTime, timeToExecuteFrameChange: useFrameChange },
+                set: { startTime },
               },
               () => {
-                if (!useFrameChange) {
-                  Cookies.remove('last-refreshed')
-                }
                 toast.success('Settings updated!')
               }
             )
@@ -124,8 +115,18 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
       <Explanation className="mt20 mb20" color="blue">
         <div>
-          <strong>Start Time:</strong> Control when day is restarted. Default is
-          12:00 AM to restart logs at midnight.
+          <strong>Start Time:</strong> Control when the day starts. Default is
+          midnight (12:00 AM).
+        </div>
+      </Explanation>
+      <Explanation className="mt20 mb20" color="yellow">
+        <div>
+          <strong>Warning:</strong> If you change Start Time, logs can be hidden
+          or vanish on the first day of the change. Example: You open the app at
+          10:00 AM and you change the time to 6:00 PM. Logs will only be shown{' '}
+          <strong>starting</strong> at 6:00 PM of that day. Any logs added
+          between 10:00 PM and 6:00 PM will either be hidden or simply added and
+          later removed.
         </div>
       </Explanation>
       <div className="fr ml5">
