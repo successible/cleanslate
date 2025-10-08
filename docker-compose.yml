@@ -1,6 +1,6 @@
 services:
   database:
-    image: postgres:15
+    image: postgres:18
     pull_policy: always
     restart: always
     container_name: database
