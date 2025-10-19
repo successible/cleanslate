@@ -1,15 +1,14 @@
-// Reference https://community.plu.edu/~chasega/met.html
 export const otherMet = {
   Baseball: 5,
-  Basketball: 6.5,
-  Boxing: 7,
+  Basketball: 8,
+  Boxing: 6,
   Cricket: 5,
   Dance: 6,
   'Field hockey': 8,
   Football: 9,
   Golf: 4.5,
   Hiking: 6,
-  'Horseback riding': 4.5,
+  'Horseback riding': 4,
   'Ice hockey': 8,
   'Ice skating': 7,
   'Jumping rope': 10,
@@ -25,9 +24,9 @@ export const otherMet = {
   Squash: 7,
   'Tennis (doubles)': 6,
   'Tennis (singles)': 8,
-  Volleyball: 4,
+  Volleyball: 3,
   'Water polo': 10,
-  Wrestling: 5,
+  Wrestling: 6,
 } as const
 
 export type OtherMET = typeof otherMet
