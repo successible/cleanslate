@@ -132,7 +132,7 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
                     : null
 
             const dataToSubmit = {
-              amount: round(amount, 0),
+              amount: round(amount, 2),
               category,
               duration: prep(minutes),
               groupName: exerciseGroup,
