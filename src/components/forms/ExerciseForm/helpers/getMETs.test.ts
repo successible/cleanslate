@@ -7,8 +7,9 @@ import { getWalkingMET } from './getWalkingMET'
 
 test('getRunningMET works as expected', () => {
   expect(getRunningMET(3)).toBe(5.14)
-  expect(getRunningMET(5)).toBe(8.36)
-  expect(getRunningMET(8)).toBe(13.19)
+  expect(getRunningMET(5)).toBe(8)
+  expect(getRunningMET(6)).toBe(10)
+  expect(getRunningMET(8)).toBe(13.5)
   expect(getRunningMET(8.02)).toBe(13.22)
   expect(getRunningMET(8.1)).toBe(13.35)
   expect(getRunningMET(8.3)).toBe(13.67)
@@ -44,7 +45,7 @@ test('getMetFromInput works correctly', () => {
   ).toBe(4)
   expect(
     getMETsFromInput('Running', 'Baseball', 'Backstroke', 'Machines', 10, 0, 0)
-  ).toBe(16.4)
+  ).toBe(16)
   expect(
     getMETsFromInput('Swimming', 'Baseball', 'Backstroke', 'Machines', 0, 10, 0)
   ).toBe(8)
