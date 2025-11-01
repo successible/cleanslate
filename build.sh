@@ -2,7 +2,7 @@
 
 cd src
 npx next info
-npx next build
+npx next build --webpack
 
 node create-service-worker.js
 cp -r out ../out
