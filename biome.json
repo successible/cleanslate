@@ -7,7 +7,9 @@
       "!**/migrations",
       "!**/node_modules",
       "!**/src/.next",
-      "!**/src/out"
+      "!**/src/out",
+      "!**/src/next-env.d.ts",
+      "!**/src/tsconfig.json"
     ]
   },
   "formatter": {
