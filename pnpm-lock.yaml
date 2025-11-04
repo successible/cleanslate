@@ -196,12 +196,15 @@ packages:
       subscriptions-transport-ws:
         optional: true
 
-  '@apphosting/build@0.1.6':
-    resolution: {integrity: sha512-nXK1wsR1tehaq9uSRDCGQmN+Dp0xbyGohssYd7g4W8ZbzHfUiab+Pabv34pHVTS03VaSVkjdNcR1g9hezi6s8g==}
+  '@apphosting/build@0.1.7':
+    resolution: {integrity: sha512-zNgQGiAWDOj6c+4ylv5ej3nLGXzMAVmzCGMqlbSarHe4bvBmZ2C5GfBRdJksedP7C9pqlwTWpxU5+GSzhJ+nKA==}
     hasBin: true
 
   '@apphosting/common@0.0.8':
     resolution: {integrity: sha512-RJu5gXs2HYV7+anxpVPpp04oXeuHbV3qn402AdXVlnuYM/uWo7aceqmngpfp6Bi376UzRqGjfpdwFHxuwsEGXQ==}
+
+  '@apphosting/common@0.0.9':
+    resolution: {integrity: sha512-ZbPZDcVhEN+8m0sf90PmQN4xWaKmmySnBSKKPaIOD0JvcDsRr509WenFEFlojP++VSxwFZDGG/TYsHs1FMMqpw==}
 
   '@babel/code-frame@7.27.1':
     resolution: {integrity: sha512-cjQ7ZlQ0Mv3b47hABuTevyTuYN4i+loJKGeV9flcCgIK37cCXRh+L1bd3iBHlynerhQ7BhCkn2BPbQUL+rGqFg==}
@@ -854,22 +857,22 @@ packages:
   '@dabh/diagnostics@2.0.8':
     resolution: {integrity: sha512-R4MSXTVnuMzGD7bzHdW2ZhhdPC/igELENcq5IjEverBvq5hn1SXCWcsi6eSsdWP0/Ur+SItRRjAktmdoX/8R/Q==}
 
-  '@electric-sql/pglite-tools@0.2.16':
-    resolution: {integrity: sha512-4conVfHctoxZn4Qo+Tl4dcLB4K4lAy64ai4d58yaMo/rs1JdXQVnHYzTkJ95yoNhahoCqyKiORkefa2rCo5Fmg==}
+  '@electric-sql/pglite-tools@0.2.17':
+    resolution: {integrity: sha512-jNyB9DYkzgg9auydf41m+t+ZhTEBPcVDxiWpC3ka9XmeMS4OivYsQbZAOdNSNgwVcNpAgxZrQf8vfERH3yUxAg==}
     peerDependencies:
-      '@electric-sql/pglite': 0.3.11
+      '@electric-sql/pglite': 0.3.12
 
   '@electric-sql/pglite@0.2.17':
     resolution: {integrity: sha512-qEpKRT2oUaWDH6tjRxLHjdzMqRUGYDnGZlKrnL4dJ77JVMcP2Hpo3NYnOSPKdZdeec57B6QPprCUFg0picx5Pw==}
 
-  '@electric-sql/pglite@0.3.11':
-    resolution: {integrity: sha512-FJtjnEyez8XgmgyE5Ewmx89TGVN+75ZjykFoExApRIbJBMT4dsbsuZkF/YWLuymGDfGFHDACjvENPMEqg4FoWg==}
+  '@electric-sql/pglite@0.3.12':
+    resolution: {integrity: sha512-0xdRSYv96UW5DamTzJ7I0edfRw6VXbhQJrfBlVWaXRgs6k1YINUv+yB5bThsFQARhW7cQzFrsTl1vnud9eHYcQ==}
 
-  '@emnapi/core@1.6.0':
-    resolution: {integrity: sha512-zq/ay+9fNIJJtJiZxdTnXS20PllcYMX3OE23ESc4HK/bdYu3cOWYVhsOhVnXALfU/uqJIxn5NBPd9z4v+SfoSg==}
+  '@emnapi/core@1.7.0':
+    resolution: {integrity: sha512-pJdKGq/1iquWYtv1RRSljZklxHCOCAJFJrImO5ZLKPJVJlVUcs8yFwNQlqS0Lo8xT1VAXXTCZocF9n26FWEKsw==}
 
-  '@emnapi/runtime@1.6.0':
-    resolution: {integrity: sha512-obtUmAHTMjll499P+D9A3axeJFlhdjOWdKUNs/U6QIGT7V5RjcUW1xToAzjvmgTSQhDbYn/NwfTRoJcQ2rNBxA==}
+  '@emnapi/runtime@1.7.0':
+    resolution: {integrity: sha512-oAYoQnCYaQZKVS53Fq23ceWMRxq5EhQsE0x0RdQ55jT7wagMu5k+fS39v1fiSLrtrLQlXwVINenqhLMtTrV/1Q==}
 
   '@emnapi/wasi-threads@1.1.0':
     resolution: {integrity: sha512-WI0DdZ8xFSbgMjR1sFsKABJ/C5OnRrjT06JXbZKexJGrDuPTzZdDYfFlsgcCXCyf+suG5QU2e/y1Wo2V/OapLQ==}
@@ -1156,8 +1159,8 @@ packages:
     resolution: {integrity: sha512-xWxJAlyUGd6OPp97u8maMcI3xVXuHjxfwh6Dr7P/P+6NK9o446slJobsbgsmK0xKY4nTK8m5uuJrhEKapfZSmQ==}
     engines: {node: '>=14.0.0'}
 
-  '@google-cloud/storage@7.17.2':
-    resolution: {integrity: sha512-6xN0KNO8L/LIA5zu3CJwHkJiB6n65eykBLOb0E+RooiHYgX8CSao6lvQiKT9TBk2gL5g33LL3fmhDodZnt56rw==}
+  '@google-cloud/storage@7.17.3':
+    resolution: {integrity: sha512-gOnCAbFgAYKRozywLsxagdevTF7Gm+2Ncz5u5CQAuOv/2VCa0rdGJWvJFDOftPx1tc+q8TXiC2pEJfFKu+yeMQ==}
     engines: {node: '>=14'}
 
   '@googleapis/sqladmin@31.1.0':
@@ -1576,9 +1579,14 @@ packages:
   '@maslick/koder@1.3.2':
     resolution: {integrity: sha512-2OkpZ21M+YCqgapt9xaSS05+DL7uQGleYPWpbNqMEuqf8Rt+rIk9gwa/AWdw9mDFUbwhsJ2sbrzTFT9DrUyaig==}
 
-  '@modelcontextprotocol/sdk@1.20.2':
-    resolution: {integrity: sha512-6rqTdFt67AAAzln3NOKsXRmv5ZzPkgbfaebKBqUbts7vK1GZudqnrun5a8d3M/h955cam9RHZ6Jb4Y1XhnmFPg==}
+  '@modelcontextprotocol/sdk@1.21.0':
+    resolution: {integrity: sha512-YFBsXJMFCyI1zP98u7gezMFKX4lgu/XpoZJk7ufI6UlFKXLj2hAMUuRlQX/nrmIPOmhRrG6tw2OQ2ZA/ZlXYpQ==}
     engines: {node: '>=18'}
+    peerDependencies:
+      '@cfworker/json-schema': ^4.1.1
+    peerDependenciesMeta:
+      '@cfworker/json-schema':
+        optional: true
 
   '@napi-rs/wasm-runtime@0.2.12':
     resolution: {integrity: sha512-ZVWUcfwY4E/yPitQJl481FjFo3K22D6qF0DuFH6Y/nbnE11GY5uguDxZMGXPQ8WQ0128MXQD7TnfHyK4oWoIJQ==}
@@ -1990,8 +1998,8 @@ packages:
   '@types/ms@2.1.0':
     resolution: {integrity: sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==}
 
-  '@types/node@22.18.13':
-    resolution: {integrity: sha512-Bo45YKIjnmFtv6I1TuC8AaHBbqXtIo+Om5fE4QiU1Tj8QR/qt+8O3BAtOimG5IFmwaWiPmB3Mv3jtYzBA4Us2A==}
+  '@types/node@22.19.0':
+    resolution: {integrity: sha512-xpr/lmLPQEj+TUnHmR+Ab91/glhJvsqcjB+yY0Ix9GO70H6Lb4FHH5GeqdOE5btAx7eIMwuHkp4H2MSkLcqWbA==}
 
   '@types/node@24.9.2':
     resolution: {integrity: sha512-uWN8YqxXxqFMX2RqGOrumsKeti4LlmIMIyV0lgut4jx7KQBcBiW6vkDtIBvHnHIquwNfJhk8v2OtmO8zXWHfPA==}
@@ -2213,9 +2221,6 @@ packages:
       ajv:
         optional: true
 
-  ajv@6.12.6:
-    resolution: {integrity: sha512-j3fVLgvTo527anyYyJOGTYJbG+vnnQYvE0m5mmkc1TK+nxAppkCLMIL0aZ4dblVCNoGShhm+kzE4ZUykBoMg4g==}
-
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
@@ -2393,8 +2398,8 @@ packages:
   base64-js@1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
 
-  baseline-browser-mapping@2.8.22:
-    resolution: {integrity: sha512-/tk9kky/d8T8CTXIQYASLyhAxR5VwL3zct1oAoVTaOUHwrmsGnfbRwNdEq+vOl2BN8i3PcDdP0o4Q+jjKQoFbQ==}
+  baseline-browser-mapping@2.8.23:
+    resolution: {integrity: sha512-616V5YX4bepJFzNyOfce5Fa8fDJMfoxzOIzDCZwaGL8MKVpFrXqfNUoIpRn9YMI5pXf/VKgzjB4htFMsFKKdiQ==}
     hasBin: true
 
   basic-auth-connect@1.1.0:
@@ -2503,8 +2508,8 @@ packages:
     resolution: {integrity: sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==}
     engines: {node: '>=10'}
 
-  caniuse-lite@1.0.30001752:
-    resolution: {integrity: sha512-vKUk7beoukxE47P5gcVNKkDRzXdVofotshHwfR9vmpeFKxmI5PBpgOMC18LUJUA/DvJ70Y7RveasIBraqsyO/g==}
+  caniuse-lite@1.0.30001753:
+    resolution: {integrity: sha512-Bj5H35MD/ebaOV4iDLqPEtiliTN29qkGtEHCwawWn4cYm+bPJM2NsaP30vtZcnERClMzp52J4+aw2UNbK4o+zw==}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
@@ -4015,9 +4020,6 @@ packages:
 
   json-ptr@3.1.1:
     resolution: {integrity: sha512-SiSJQ805W1sDUCD1+/t1/1BIrveq2Fe9HJqENxZmMCILmrPI7WhS/pePpIOx85v6/H2z1Vy7AI08GV2TzfXocg==}
-
-  json-schema-traverse@0.4.1:
-    resolution: {integrity: sha512-xbbCH5dCYU5T8LcEhhuh7HJ88HXuW3qsI3Y0zOZFKfZEHcpWiHU/Jxzk629Brsab/mMiHQti9wMP+845RPe3Vg==}
 
   json-schema-traverse@1.0.0:
     resolution: {integrity: sha512-NM8/P9n3XjXhIZn1lLhkFaACTOURQXjWhV4BA/RnOv8xvgqtqpAX9IO4mRQxSx1Rlo4tqzeqb0sOlruaOy3dug==}
@@ -5664,9 +5666,6 @@ packages:
     resolution: {integrity: sha512-eZWTh8F+VCEoC4UIh0pKmh8h4izj65VvLhCpJpVefUxdYe0fU3GBrC4Sbh1AoWA/miNPAb6UVlp2fUQNsfp+3g==}
     engines: {node: '>=14'}
 
-  uri-js@4.4.1:
-    resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
-
   url-join@0.0.1:
     resolution: {integrity: sha512-H6dnQ/yPAAVzMQRvEvyz01hhfQL5qRWSEt7BX8t9DqnPw9BjMb64fjIRq76Uvf1hkHp+mTZvEVJ5guXOT0Xqaw==}
 
@@ -5977,9 +5976,9 @@ snapshots:
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
 
-  '@apphosting/build@0.1.6(@types/node@24.9.2)(typescript@5.9.3)':
+  '@apphosting/build@0.1.7(@types/node@24.9.2)(typescript@5.9.3)':
     dependencies:
-      '@apphosting/common': 0.0.8
+      '@apphosting/common': 0.0.9
       '@npmcli/promise-spawn': 3.0.0
       colorette: 2.0.20
       commander: 11.1.0
@@ -5992,6 +5991,8 @@ snapshots:
       - typescript
 
   '@apphosting/common@0.0.8': {}
+
+  '@apphosting/common@0.0.9': {}
 
   '@babel/code-frame@7.27.1':
     dependencies:
@@ -6779,21 +6780,21 @@ snapshots:
       enabled: 2.0.0
       kuler: 2.0.0
 
-  '@electric-sql/pglite-tools@0.2.16(@electric-sql/pglite@0.3.11)':
+  '@electric-sql/pglite-tools@0.2.17(@electric-sql/pglite@0.3.12)':
     dependencies:
-      '@electric-sql/pglite': 0.3.11
+      '@electric-sql/pglite': 0.3.12
 
   '@electric-sql/pglite@0.2.17': {}
 
-  '@electric-sql/pglite@0.3.11': {}
+  '@electric-sql/pglite@0.3.12': {}
 
-  '@emnapi/core@1.6.0':
+  '@emnapi/core@1.7.0':
     dependencies:
       '@emnapi/wasi-threads': 1.1.0
       tslib: 2.8.1
     optional: true
 
-  '@emnapi/runtime@1.6.0':
+  '@emnapi/runtime@1.7.0':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -7239,7 +7240,7 @@ snapshots:
       - encoding
       - supports-color
 
-  '@google-cloud/storage@7.17.2(encoding@0.1.13)':
+  '@google-cloud/storage@7.17.3(encoding@0.1.13)':
     dependencies:
       '@google-cloud/paginator': 5.0.2
       '@google-cloud/projectify': 4.0.0
@@ -7372,7 +7373,7 @@ snapshots:
 
   '@img/sharp-wasm32@0.34.4':
     dependencies:
-      '@emnapi/runtime': 1.6.0
+      '@emnapi/runtime': 1.7.0
     optional: true
 
   '@img/sharp-win32-arm64@0.34.4':
@@ -7747,9 +7748,10 @@ snapshots:
 
   '@maslick/koder@1.3.2': {}
 
-  '@modelcontextprotocol/sdk@1.20.2':
+  '@modelcontextprotocol/sdk@1.21.0':
     dependencies:
-      ajv: 6.12.6
+      ajv: 8.17.1
+      ajv-formats: 3.0.1(ajv@8.17.1)
       content-type: 1.0.5
       cors: 2.8.5
       cross-spawn: 7.0.6
@@ -7766,8 +7768,8 @@ snapshots:
 
   '@napi-rs/wasm-runtime@0.2.12':
     dependencies:
-      '@emnapi/core': 1.6.0
-      '@emnapi/runtime': 1.6.0
+      '@emnapi/core': 1.7.0
+      '@emnapi/runtime': 1.7.0
       '@tybys/wasm-util': 0.10.1
     optional: true
 
@@ -8155,7 +8157,7 @@ snapshots:
 
   '@types/ms@2.1.0': {}
 
-  '@types/node@22.18.13':
+  '@types/node@22.19.0':
     dependencies:
       undici-types: 6.21.0
 
@@ -8332,13 +8334,6 @@ snapshots:
   ajv-formats@3.0.1(ajv@8.17.1):
     optionalDependencies:
       ajv: 8.17.1
-
-  ajv@6.12.6:
-    dependencies:
-      fast-deep-equal: 3.1.3
-      fast-json-stable-stringify: 2.1.0
-      json-schema-traverse: 0.4.1
-      uri-js: 4.4.1
 
   ajv@8.17.1:
     dependencies:
@@ -8553,7 +8548,7 @@ snapshots:
 
   base64-js@1.5.1: {}
 
-  baseline-browser-mapping@2.8.22: {}
+  baseline-browser-mapping@2.8.23: {}
 
   basic-auth-connect@1.1.0:
     dependencies:
@@ -8632,8 +8627,8 @@ snapshots:
 
   browserslist@4.27.0:
     dependencies:
-      baseline-browser-mapping: 2.8.22
-      caniuse-lite: 1.0.30001752
+      baseline-browser-mapping: 2.8.23
+      caniuse-lite: 1.0.30001753
       electron-to-chromium: 1.5.244
       node-releases: 2.0.27
       update-browserslist-db: 1.1.4(browserslist@4.27.0)
@@ -8705,7 +8700,7 @@ snapshots:
 
   camelcase@6.3.0: {}
 
-  caniuse-lite@1.0.30001752: {}
+  caniuse-lite@1.0.30001753: {}
 
   chalk@4.1.2:
     dependencies:
@@ -9466,7 +9461,7 @@ snapshots:
       '@fastify/busboy': 3.2.0
       '@firebase/database-compat': 2.1.0
       '@firebase/database-types': 1.0.16
-      '@types/node': 22.18.13
+      '@types/node': 22.19.0
       farmhash-modern: 1.1.0
       fast-deep-equal: 3.1.3
       google-auth-library: 9.15.1(encoding@0.1.13)
@@ -9476,21 +9471,21 @@ snapshots:
       uuid: 11.1.0
     optionalDependencies:
       '@google-cloud/firestore': 7.11.6(encoding@0.1.13)
-      '@google-cloud/storage': 7.17.2(encoding@0.1.13)
+      '@google-cloud/storage': 7.17.3(encoding@0.1.13)
     transitivePeerDependencies:
       - encoding
       - supports-color
 
   firebase-tools@14.23.0(@types/node@24.9.2)(encoding@0.1.13)(typescript@5.9.3):
     dependencies:
-      '@apphosting/build': 0.1.6(@types/node@24.9.2)(typescript@5.9.3)
+      '@apphosting/build': 0.1.7(@types/node@24.9.2)(typescript@5.9.3)
       '@apphosting/common': 0.0.8
-      '@electric-sql/pglite': 0.3.11
-      '@electric-sql/pglite-tools': 0.2.16(@electric-sql/pglite@0.3.11)
+      '@electric-sql/pglite': 0.3.12
+      '@electric-sql/pglite-tools': 0.2.17(@electric-sql/pglite@0.3.12)
       '@google-cloud/cloud-sql-connector': 1.8.4
       '@google-cloud/pubsub': 4.11.0(encoding@0.1.13)
       '@inquirer/prompts': 7.9.0(@types/node@24.9.2)
-      '@modelcontextprotocol/sdk': 1.20.2
+      '@modelcontextprotocol/sdk': 1.21.0
       abort-controller: 3.0.0
       ajv: 8.17.1
       ajv-formats: 3.0.1(ajv@8.17.1)
@@ -9560,6 +9555,7 @@ snapshots:
       zod: 3.25.76
       zod-to-json-schema: 3.24.6(zod@3.25.76)
     transitivePeerDependencies:
+      - '@cfworker/json-schema'
       - '@swc/core'
       - '@swc/wasm'
       - '@types/node'
@@ -10649,8 +10645,6 @@ snapshots:
 
   json-ptr@3.1.1: {}
 
-  json-schema-traverse@0.4.1: {}
-
   json-schema-traverse@1.0.0: {}
 
   json-schema@0.4.0: {}
@@ -11028,7 +11022,7 @@ snapshots:
     dependencies:
       '@next/env': 16.0.1
       '@swc/helpers': 0.5.15
-      caniuse-lite: 1.0.30001752
+      caniuse-lite: 1.0.30001753
       postcss: 8.4.31
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
@@ -12544,10 +12538,6 @@ snapshots:
       xdg-basedir: 4.0.0
     transitivePeerDependencies:
       - encoding
-
-  uri-js@4.4.1:
-    dependencies:
-      punycode: 2.3.1
 
   url-join@0.0.1: {}
 
