@@ -1,5 +1,4 @@
 import { css } from '@emotion/react'
-import Parser from 'expr-eval'
 import React from 'react'
 import { toast } from 'react-toastify'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
@@ -57,12 +56,7 @@ export const QuickLogAdder: React.FC = () => {
         if (!calories && !protein) {
           toast.error('You must include a value!')
         } else {
-          const parser = new Parser.Parser()
-          addQuickLogToCloud(
-            name,
-            parser.parse(calories || '0').evaluate(),
-            parser.parse(protein || '0').evaluate()
-          )
+          addQuickLogToCloud(name, Number(calories), Number(protein))
         }
       }}
       css={form}
