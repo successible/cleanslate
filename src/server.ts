@@ -7,7 +7,7 @@ import logger from 'pino-http'
 type AnyResponse = any
 
 const adminSecret = process.env.HASURA_GRAPHQL_ADMIN_SECRET
-const domain = process.env.NEXT_PUBLIC_HASURA_DOMAIN
+const domain = process.env.DOMAIN
 const isProduction = process.env.NODE_ENV === 'production'
 const isDevelopment = !isProduction
 

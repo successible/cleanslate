@@ -6,7 +6,7 @@ echo "=> Kill the local version of Clean Slate..."
 bash kill.sh
 
 export NEXT_PUBLIC_VERSION="XXX"
-export NEXT_PUBLIC_HASURA_DOMAIN="localhost"
+export DOMAIN="localhost"
 export NODE_TLS_REJECT_UNAUTHORIZED=0
 
 if [ "$FIREBASE" != "true" ]; then
