@@ -14,7 +14,7 @@ read -p "Enter POSTGRES_PORT [5432]: " POSTGRES_PORT
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 
 # Prompt for the domain without default, required input
-read -p "Enter DOMAIN. Do not include the https://: " DOMAIN
+read -p "Enter the DOMAIN of your instance. Do not include the https://: " DOMAIN
 if [ -z "$DOMAIN" ]; then
   echo "Error: DOMAIN is required."
   exit 1
