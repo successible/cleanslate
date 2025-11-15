@@ -13,10 +13,10 @@ HASURA_PORT=${HASURA_PORT:-8080}
 read -p "Enter POSTGRES_PORT [5432]: " POSTGRES_PORT
 POSTGRES_PORT=${POSTGRES_PORT:-5432}
 
-# Prompt for HASURA domain without default, required input
-read -p "Enter NEXT_PUBLIC_HASURA_DOMAIN. Do not include the https://: " HASURA_DOMAIN
-if [ -z "$HASURA_DOMAIN" ]; then
-  echo "Error: NEXT_PUBLIC_HASURA_DOMAIN is required."
+# Prompt for the domain without default, required input
+read -p "Enter DOMAIN. Do not include the https://: " DOMAIN
+if [ -z "$DOMAIN" ]; then
+  echo "Error: DOMAIN is required."
   exit 1
 fi
 
@@ -31,7 +31,7 @@ AUTHENTICATION_SERVER_PORT=$AUTH_PORT
 CLIENT_PORT=$CLIENT_PORT
 HASURA_PORT=$HASURA_PORT
 POSTGRES_PORT=$POSTGRES_PORT
-NEXT_PUBLIC_HASURA_DOMAIN=$HASURA_DOMAIN
+DOMAIN=$DOMAIN
 HASURA_GRAPHQL_ADMIN_SECRET=$HASURA_ADMIN_SECRET
 HASURA_GRAPHQL_JWT_SECRET='{"type":"HS256","key":"$JWT_SECRET"}'
 JWT_SIGNING_SECRET=$JWT_SECRET
@@ -39,7 +39,7 @@ POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 EOF
 
 cat <<EOF > Caddyfile
-$HASURA_DOMAIN {
+$DOMAIN {
 	header /* {
 		Referrer-Policy "strict-origin"
 		Strict-Transport-Security "max-age=31536000; includeSubDomains;"
