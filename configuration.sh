@@ -56,42 +56,42 @@ $DOMAIN {
 
 	route /v1* {
 		# API (Hasura)
-		reverse_proxy localhost:8080 {
+		reverse_proxy localhost:$HASURA_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
 
 	route /v2* {
 		# API (Hasura)
-		reverse_proxy localhost:8080 {
+		reverse_proxy localhost:$HASURA_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
 
 	route /console* {
 		# Admin panel (Hasura)
-		reverse_proxy localhost:8080 {
+		reverse_proxy localhost:$HASURA_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
 
 	route /healthz {
 		# Health check (Hasura)
-		reverse_proxy localhost:8080 {
+		reverse_proxy localhost:$HASURA_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
 
 	route /auth* {
 		# Authentication server (Express.js)
-		reverse_proxy localhost:3001 {
+		reverse_proxy localhost:$AUTH_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
 
 	route /* {
 		# Static files (Client)
-		reverse_proxy localhost:3000 {
+		reverse_proxy localhost:$CLIENT_PORT {
 			header_up -X-Hasura-Role
 		}
 	}
