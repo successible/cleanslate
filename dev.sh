@@ -37,11 +37,12 @@ if [[ $CI != "true" ]]; then
   export HASURA_CONSOLE_PORT='9695'
   export HASURA_GRAPHQL_ADMIN_SECRET='secret'
   export HASURA_GRAPHQL_DATABASE_URL="postgres://postgres:password@database:5432/postgres"
-  export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
-  export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
-  export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
-  export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
+  export HASURA_PORT='8080'
   export NEXT_PUBLIC_LEGAL_LINK="XXX"
+  export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
+  export NEXT_PUBLIC_LOGIN_WITH_FACEBOOK="true"
+  export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
+  export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
   export NODE_ENV="development"
   
 
