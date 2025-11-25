@@ -42,7 +42,14 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to install Docker from the official website [^1]. That is because the Docker bundled with your distribution is likely out of date.
+You have two main hosting approaches: build and run from the Git repository (recommended for development or when you need custom builds, including the firebase integration), or run using prebuilt Docker images (recommended for simple/immutable deployments and platforms like Dokku, Dokploy, Coolify, etc.).
+
+### Option A: Host from the repository
+
+This is the existing and preferred workflow and hosting Clean Slate this way is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to install Docker from the official website [^1]. That is because the Docker bundled with your distribution is likely out of date.
+
+This method might not be suitable for hosting platforms that do not have an elegant way to use the repository as the source of truth. In that case, use Option B below.
+
 
 1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
 
@@ -55,6 +62,22 @@ Hosting Clean Slate is straightforward. You just need a Linux server with Git, D
 5. You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
 6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
+
+Note on Firebase: if you use Firebase authentication you must build the `client` and `authentication-server` with the appropriate build args (`NEXT_PUBLIC_FIREBASE_CONFIG`, etc.). Building from the repository ensures you can pass those build arguments.
+
+### Option B: Host using prebuilt Docker images (recommended for simple deployments)
+
+If you want an immutable, easy-to-deploy setup (useful for hosting platforms or simple docker stacks), you can run using the prebuilt images published on the registry and the included `Dockerfile.graphql` which bakes `./migrations` and `./metadata` into the `graphql-server` image.
+
+Use the provided `docker-compose-immutable.yml` as a starting point. It uses the prebuilt images for all services. You will need to adjust the compose file and your environment variables to suit your needs and infrastructure.
+
+After spinning up the services, follow step 4 and 5 from Option A to create a profile and log in.
+
+Notes and caveats:
+
+- If you rely on custom `NEXT_PUBLIC_FIREBASE_CONFIG` build args or you need to bake in custom client build-time values, you must build the `client` and `authentication-server` locally (Option A) or build custom images and push them to your registry. The prebuilt images include the upstream defaults and are suitable for most deployments that do not require custom build-time values.
+- For platforms like Dokku / Coolify / Dokploy, configure the services to use the images above (or point them at a custom image you build) and set the environment variables from the `.env` file.
+- Keep `HASURA_GRAPHQL_ADMIN_SECRET` and other secrets secret; store them in your host platform's secret manager or environment settings.
 
 ## How can I make an API request to Clean Slate?
 
