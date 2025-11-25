@@ -17,7 +17,7 @@ services:
       retries: 5
 
   graphql-server:
-    image: hasura/graphql-engine:latest.cli-migrations-v3
+    image: ghcr.io/successible/cleanslate/graphql-server:latest
     pull_policy: always
     restart: always
     container_name: graphql-server
@@ -31,20 +31,12 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: true
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
-    volumes:
-      - ./migrations:/hasura-migrations
-      - ./metadata:/hasura-metadata
     depends_on:
       database:
         condition: service_healthy
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
 
   authentication-server:
     image: ghcr.io/successible/cleanslate/authentication-server:latest
-    build:
-      context: .
-      dockerfile: Dockerfile.server
     pull_policy: ${PULL_POLICY:-always}
     restart: always
     container_name: authentication-server
@@ -57,24 +49,9 @@ services:
     depends_on:
       - database
       - graphql-server
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
 
   client:
     image: ghcr.io/successible/cleanslate/client:latest
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - NEXT_PUBLIC_FIREBASE_CONFIG=${NEXT_PUBLIC_FIREBASE_CONFIG:-{}}
-        - NEXT_PUBLIC_LEGAL_LINK=${NEXT_PUBLIC_LEGAL_LINK:-no}
-        - NEXT_PUBLIC_LOGIN_WITH_APPLE=${NEXT_PUBLIC_LOGIN_WITH_APPLE:-no}
-        - NEXT_PUBLIC_LOGIN_WITH_FACEBOOK=${NEXT_PUBLIC_LOGIN_WITH_FACEBOOK:-no}
-        - NEXT_PUBLIC_LOGIN_WITH_GITHUB=${NEXT_PUBLIC_LOGIN_WITH_GITHUB:-no}
-        - NEXT_PUBLIC_LOGIN_WITH_GOOGLE=${NEXT_PUBLIC_LOGIN_WITH_GOOGLE:-no}
-        - NEXT_PUBLIC_REACT_SENTRY_DSN=${NEXT_PUBLIC_REACT_SENTRY_DSN:-no}
-        - NEXT_PUBLIC_USE_FIREBASE=${NEXT_PUBLIC_USE_FIREBASE:-false}
-        - NEXT_PUBLIC_VERSION=${NEXT_PUBLIC_VERSION}
     pull_policy: ${PULL_POLICY:-always}
     restart: always
     container_name: client
@@ -83,8 +60,6 @@ services:
     depends_on:
       - database
       - graphql-server
-    extra_hosts:
-      - 'host.docker.internal:host-gateway'
 
 volumes:
   database:
