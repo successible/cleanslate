@@ -17,7 +17,7 @@ services:
       retries: 5
 
   graphql-server:
-    image: hasura/graphql-engine:latest.cli-migrations-v3
+    image: ghcr.io/successible/cleanslate/graphql-server:latest
     pull_policy: always
     restart: always
     container_name: graphql-server
@@ -31,9 +31,6 @@ services:
       HASURA_GRAPHQL_ENABLE_CONSOLE: true
       HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
       HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
-    volumes:
-      - ./migrations:/hasura-migrations
-      - ./metadata:/hasura-metadata
     depends_on:
       database:
         condition: service_healthy

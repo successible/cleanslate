@@ -51,3 +51,12 @@ jobs:
           push: true
           tags: ghcr.io/${{ github.repository }}/authentication-server:${{ github.ref_name }}, ghcr.io/${{ github.repository }}/authentication-server:latest
           build-args: NEXT_PUBLIC_VERSION=${{ steps.variables.outputs.NEXT_PUBLIC_VERSION }}
+
+      - name: Build the graphql server and push it to the GitHub Container Registry
+        uses: docker/build-push-action@v6.18.0
+        with:
+          context: .
+          file: Dockerfile.graphql
+          platforms: linux/amd64,linux/arm64
+          push: true
+          tags: ghcr.io/${{ github.repository }}/graphql-server:${{ github.ref_name }}, ghcr.io/${{ github.repository }}/graphql-server:latest
