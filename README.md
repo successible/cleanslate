@@ -68,7 +68,7 @@ If that all sounds very confusing, this method of deployment is not for you! Sti
 
 5. You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a ten-minute lag between each new release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
+6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a lag of twenty minutes between each release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
 
 ## How can I make an API request to Clean Slate?
 
