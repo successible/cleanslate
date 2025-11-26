@@ -49,10 +49,12 @@ For the vast majority of users, hosting Clean Slate is straightforward. You just
 
 This method of deployment is laid on in detail in the six steps below. (Using Firebase itself is laid out in a later section). However, if you are an advanced user, and you wish to run the images directly, you can! This is great for people who use Coolify, Kubernetes, and so on. Just refer to the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) and [configuration.sh](https://github.com/successible/cleanslate/blob/main/configuration.sh). These two files will outline stuff like:
 
-- The environmental variables you need to set.
+- The environmental variables you need.
 - The ports you need to open.
 - What your reverse proxy needs to do.
 - And so on.
+
+Pair this knowledge with steps #4 to #6 (below), and you will be good to go!
 
 If that all sounds very confusing, this method of deployment is not for you! Stick with a basic Linux server and the six steps below:
 
