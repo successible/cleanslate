@@ -42,9 +42,21 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-Hosting Clean Slate is straightforward. You just need a Linux server with Git, Docker, and Docker Compose installed. Make sure to install Docker from the official website [^1]. That is because the Docker bundled with your distribution is likely out of date.
+For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one exactly depends on the authentication system you choose.
 
-1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`.
+1. Local Authentication (Default & Easy). Pulls the images (and PostgreSQL). Starts Caddy.
+2. Firebase Authentication (Complex). Builds the images locally (except PostgreSQL). Starts Caddy.
+
+This method of deployment is laid on in detail in the six steps below. (Using Firebase itself is laid out in a later section). However, if you are an advanced user, and you wish to run the images directly, you can! This is great for people who use Coolify, Kubernetes, and so on. Just refer to the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) and [configuration.sh](https://github.com/successible/cleanslate/blob/main/configuration.sh). These two files will outline stuff like:
+
+- The environmental variables you need to set.
+- The ports you need to open.
+- What your reverse proxy needs to do.
+- And so on.
+
+If that all sounds very confusing, this method of deployment is not for you! Stick with a basic Linux server and the six steps below:
+
+1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`. Check that Docker and Docker Compose have been installed. Make sure to install both from the official website [^1]. That is because the copies bundled with your distribution is likely out of date.
 
 2. Run `bash configuration.sh` to generate a `.env` file and `Caddyfile` file. You will need the `uuid-runtime` package for this to work. Edit the contents as desired. The `.env` file will have the values unique to your instance. Do not share this file, as some of these values are secret. The `Caddyfile` configures Caddy, which is a reverse proxy. Caddy will serve Clean Slate over `https`. Clean Slate requires `https` to work. For Caddy to work, you need a FQDN and have Port `80` open (temporarily). That way, Caddy will succeed in Let's Encrypt certificate generation. You can close Port `80` with your firewall, such as `ufw`, after that. You can use another reverse proxy, like `nginx` if desired. As for your firewall: Clean Slate only needs Port `443` open to work.
 

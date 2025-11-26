@@ -9,3 +9,4 @@ self-hoster
 stringified
 GRAPHQL
 apiToken
+Coolify
