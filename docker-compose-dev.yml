@@ -1,6 +1,6 @@
 services:
   database:
-    image: postgres:15.14
+    image: postgres:15.15
     restart: always
     ports:
       - '${DOCKER_HOST_IP:-127.0.0.1}:${DB_PORT}:5432'
