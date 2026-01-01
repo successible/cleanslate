@@ -60,7 +60,7 @@
     "@biomejs/biome": "2.3.10",
     "@jest/globals": "30.2.0",
     "firebase-admin": "13.6.0",
-    "firebase-tools": "14.27.0",
+    "firebase-tools": "15.1.0",
     "jest": "30.2.0",
     "nodemon": "3.1.11",
     "ts-jest": "29.4.6"
