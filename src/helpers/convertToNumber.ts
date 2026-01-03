@@ -4,7 +4,7 @@ export const convertToNumber = (amount: string | number): number | null => {
   }
 
   let amountToUse = amount
-  // Handle locales in which comma is used instead of a period
+  // Handle locales in which a comma is used instead of a period
   if (typeof amountToUse === 'string') {
     amountToUse = amountToUse.replaceAll(',', '.')
   }
