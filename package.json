@@ -25,7 +25,7 @@
     "@types/react": "19.2.10",
     "@types/traverse": "0.6.37",
     "@types/ua-parser-js": "0.7.39",
-    "axios": "1.13.4",
+    "axios": "1.13.5",
     "compare-versions": "6.1.1",
     "dayjs": "1.11.19",
     "deepmerge": "4.3.1",
