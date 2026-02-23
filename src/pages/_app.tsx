@@ -27,6 +27,7 @@ const client = new ApolloClient({
 
 function _App({ Component, pageProps }: AppProps) {
   // Listen to unhandled errors and Promise rejections
+  // biome-ignore lint/correctness/useHookAtTopLevel: This is a component.
   useErrors()
 
   return (
