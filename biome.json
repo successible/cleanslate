@@ -4,6 +4,7 @@
     "includes": [
       "**",
       "!**/*.js",
+      "!**/*.scss",
       "!**/migrations",
       "!**/node_modules",
       "!**/src/.next",
