@@ -27,7 +27,7 @@
     "@types/ua-parser-js": "0.7.39",
     "axios": "1.13.6",
     "compare-versions": "6.1.1",
-    "dayjs": "1.11.19",
+    "dayjs": "1.11.20",
     "deepmerge": "4.3.1",
     "express": "5.2.1",
     "firebase": "12.10.0",
@@ -49,7 +49,7 @@
     "react-dom": "19.2.4",
     "react-icons": "5.6.0",
     "react-toastify": "11.0.5",
-    "sass": "1.97.3",
+    "sass": "1.98.0",
     "traverse": "0.6.11",
     "typescript": "5.9.3",
     "ua-parser-js": "2.0.9",
@@ -57,7 +57,7 @@
     "workbox-build": "7.4.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.4.6",
+    "@biomejs/biome": "2.4.7",
     "@jest/globals": "30.3.0",
     "firebase-admin": "13.7.0",
     "jest": "30.3.0",
