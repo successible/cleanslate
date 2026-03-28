@@ -11,8 +11,4 @@ pkill -f "node server.js" 2>/dev/null || true
 echo "=> Stopping e2e containers..."
 docker compose -f "$SCRIPT_DIR/docker-compose.yml" down -v --remove-orphans -t 0 2>/dev/null || true
 
-echo "=> Restoring file ownership..."
-sudo chown -R "$(whoami)" "$SCRIPT_DIR/authelia/" 2>/dev/null || true
-rm -f "$SCRIPT_DIR/authelia/db.sqlite3" "$SCRIPT_DIR/authelia/notification.txt"
-
 echo "=> E2E environment stopped."

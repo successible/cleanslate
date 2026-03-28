@@ -13,10 +13,6 @@ if ! getent hosts auth.localhost > /dev/null 2>&1; then
   echo "127.0.0.1 auth.localhost" | sudo tee -a /etc/hosts
 fi
 
-# Clean Authelia state from prior runs
-sudo chown -R "$(whoami)" "$SCRIPT_DIR/authelia/" 2>/dev/null || true
-rm -f "$SCRIPT_DIR/authelia/db.sqlite3" "$SCRIPT_DIR/authelia/notification.txt"
-
 echo "=> Starting e2e containers (Postgres, Hasura, Authelia)..."
 docker compose -f "$SCRIPT_DIR/docker-compose.yml" up -d
 

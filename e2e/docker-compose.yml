@@ -36,6 +36,9 @@ services:
     ports:
       - '127.0.0.1:9091:9091'
     volumes:
-      - ./authelia:/config
+      - ./authelia/configuration.yml:/config/configuration.yml:ro
+      - ./authelia/users_database.yml:/config/users_database.yml:ro
+      - ./authelia/server.crt:/config/server.crt:ro
+      - ./authelia/server.key:/config/server.key:ro
     environment:
       AUTHELIA_IDENTITY_PROVIDERS_OIDC_HMAC_SECRET: insecure_hmac_secret_for_testing_only_do_not_use_in_production

@@ -25,11 +25,11 @@ session:
 storage:
   encryption_key: insecure_encryption_key_for_testing_only_min_twenty_chars
   local:
-    path: /config/db.sqlite3
+    path: /tmp/db.sqlite3
 
 notifier:
   filesystem:
-    filename: /config/notification.txt
+    filename: /tmp/notification.txt
 
 access_control:
   default_policy: one_factor
