@@ -10,6 +10,7 @@ import {
 import { getLoginStatus } from '../helpers/getLoginStatus'
 import { isLoadedUser } from '../helpers/isLoadedUser'
 import { useAuthentication } from '../hooks/useAuthentication'
+import { useOidcCallback } from '../hooks/useOidcCallback'
 import { useOffline } from '../hooks/useOffline'
 import { useOfflineStatus } from '../hooks/useOfflineStatus'
 import { useUser } from '../hooks/useUser'
@@ -29,6 +30,7 @@ const Index = () => {
   }, [])
 
   useOffline()
+  useOidcCallback()
   useAuthentication(offline)
 
   return (

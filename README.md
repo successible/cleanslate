@@ -45,7 +45,8 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one exactly depends on the authentication system you choose.
 
 1. Local Authentication (Default & Easy). Pulls the images (and PostgreSQL). Starts Caddy.
-2. Firebase Authentication (Complex). Builds the images locally (except PostgreSQL). Starts Caddy.
+2. OIDC Authentication (Moderate). Pulls the images (and PostgreSQL). Starts Caddy. Requires an external OIDC provider (e.g. Authelia, Keycloak, Authentik).
+3. Firebase Authentication (Complex). Builds the images locally (except PostgreSQL). Starts Caddy.
 
 This method of deployment is laid on in detail in the six steps below. (Using Firebase itself is laid out in a later section). However, if you are an advanced user, and you wish to run the images directly, you can! This is great for people who use Coolify, Kubernetes, and so on. Just refer to the [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml) and [configuration.sh](https://github.com/successible/cleanslate/blob/main/configuration.sh). These two files will outline stuff like:
 
@@ -143,7 +144,53 @@ type Barcode = {
 
 Clean Slate was built around delegating authentication to Firebase. Firebase is a very secure authentication service maintained by Google. It is our default recommendation for any instance of Clean Slate with more than a few users. Consult the `Using Firebase` section (below) for how to set up Firebase with Clean Slate.
 
-However, Firebase is too complex for the most common hosting scenario. That is a privacy-focused user who wants to host Clean Slate for their personal use. Hence, our default authentication system, `apiToken`, is much simpler. There is no username or password and no need for your server to send email. Instead, we use very long tokens (uuid4) stored as plain text in the `apiToken` column in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `apiToken`, you can just use the Hasura Console. If you would rather not use the `apiToken` system, you will need to use Firebase instead.
+However, Firebase is too complex for the most common hosting scenario. That is a privacy-focused user who wants to host Clean Slate for their personal use. Hence, our default authentication system, `apiToken`, is much simpler. There is no username or password and no need for your server to send email. Instead, we use very long tokens (uuid4) stored as plain text in the `apiToken` column in the database. Because each token is very long and generated randomly, they are very secure. And if you ever need to change the value of the `apiToken`, you can just use the Hasura Console. If you would rather not use the `apiToken` system, you can use OIDC or Firebase instead.
+
+### Optional: Authentication via OIDC
+
+OIDC (OpenID Connect) authentication lets you use an external identity provider such as [Authelia](https://www.authelia.com/), [Keycloak](https://www.keycloak.org/), or [Authentik](https://goauthentik.io/). This is ideal for self-hosted users who already run an identity provider and want features like single sign-on, 2FA, or centralized user management — without relying on Firebase or Google.
+
+To set up OIDC:
+
+1. Register Clean Slate as a client in your OIDC provider. You will need:
+   - **Client ID**: e.g. `cleanslate`
+   - **Client Secret**: a randomly generated secret
+   - **Redirect URI**: `https://<your-domain>/auth/oidc/callback`
+   - **Allowed Scopes**: `openid profile email`
+   - **Grant Type**: `authorization_code`
+   - **Token Endpoint Auth Method**: `client_secret_post`
+
+2. Run `bash configuration.sh` and answer `yes` when asked to enable OIDC. It will prompt you for the issuer URL, client ID, client secret, and other settings. These are written to your `.env` file.
+
+3. Alternatively, add these values to your `.env` manually:
+
+```bash
+NEXT_PUBLIC_USE_OIDC=true
+NEXT_PUBLIC_OIDC_BUTTON_LABEL='Login with SSO'
+OIDC_ISSUER_URL='https://auth.example.com'
+OIDC_CLIENT_ID='cleanslate'
+OIDC_CLIENT_SECRET='<your-client-secret>'
+OIDC_REDIRECT_URI='https://example.com/auth/oidc/callback'
+OIDC_SCOPES='openid profile email'
+OIDC_ID_CLAIM='sub'
+```
+
+4. Deploy with `bash deploy.sh`. The login page will show a single SSO button. Clicking it redirects to your OIDC provider. After authentication, the user is redirected back and logged in automatically. Profiles are created on first login — no manual setup in the Hasura Console is needed.
+
+**Environment variable reference:**
+
+| Variable | Required | Default | Description |
+|---|---|---|---|
+| `NEXT_PUBLIC_USE_OIDC` | Yes | `false` | Set to `true` to enable OIDC |
+| `OIDC_ISSUER_URL` | Yes | — | Your provider's issuer URL (used for discovery) |
+| `OIDC_CLIENT_ID` | Yes | — | Client ID registered with your provider |
+| `OIDC_CLIENT_SECRET` | Yes | — | Client secret |
+| `OIDC_REDIRECT_URI` | No | `https://<DOMAIN>/auth/oidc/callback` | Callback URL |
+| `OIDC_SCOPES` | No | `openid profile email` | Requested scopes |
+| `OIDC_ID_CLAIM` | No | `sub` | ID token claim used as user identifier |
+| `NEXT_PUBLIC_OIDC_BUTTON_LABEL` | No | `Login with SSO` | Login button text |
+
+> Note: OIDC, Firebase, and apiToken authentication are mutually exclusive. Only enable one at a time.
 
 ### Optional: Authentication via Firebase
 

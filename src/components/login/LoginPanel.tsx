@@ -1,8 +1,10 @@
 import { css } from '@emotion/react'
 import { firebaseEnabled } from '../../helpers/getFirebaseConfig'
+import { oidcEnabled } from '../../helpers/getOidcConfig'
 import { isBrowser } from '../../helpers/isBrowser'
 import { colors } from '../../theme'
 import { FirebaseLoginButtons } from './FirebaseLoginButtons'
+import { OidcLoginButton } from './OidcLoginButton'
 import { TokenLoginButtons } from './TokenLoginButtons'
 
 export const LoginPanel = () => {
@@ -28,7 +30,8 @@ export const LoginPanel = () => {
           Clean Slate ❤️
         </h1>
         {isBrowser() && firebaseEnabled && <FirebaseLoginButtons />}
-        {isBrowser() && !firebaseEnabled && <TokenLoginButtons />}
+        {isBrowser() && oidcEnabled && <OidcLoginButton />}
+        {isBrowser() && !firebaseEnabled && !oidcEnabled && <TokenLoginButtons />}
       </div>
     </div>
   )

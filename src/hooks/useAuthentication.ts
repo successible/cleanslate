@@ -1,6 +1,7 @@
 import firebase from 'firebase/compat/app'
 import React from 'react'
 import { firebaseEnabled } from '../helpers/getFirebaseConfig'
+import { oidcEnabled } from '../helpers/getOidcConfig'
 import { getStore } from '../helpers/getStore'
 import { getToken } from '../helpers/getToken'
 import { validateToken } from '../helpers/validateToken'
@@ -14,6 +15,11 @@ export const useAuthentication = (offline: boolean) => {
           await validateToken(userAuth)
         }
       })
+    } else if (!offline && oidcEnabled) {
+      const jwt = localStorage.getItem('JWT')
+      if (jwt) {
+        getStore().dispatch('updateUser', { token: 'oidc' })
+      }
     } else {
       if (getToken()) {
         getStore().dispatch('updateUser', { token: getToken() })

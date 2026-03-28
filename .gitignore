@@ -15,3 +15,7 @@ src/build
 src/out
 src/tsconfig-server.tsbuildinfo
 src/tsconfig.tsbuildinfo
+e2e/authelia/db.sqlite3
+e2e/authelia/notification.txt
+e2e/.auth-server.pid
+test-results

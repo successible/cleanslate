@@ -23,6 +23,32 @@ if [ -z "$DOMAIN" ]; then
   exit 1
 fi
 
+# OIDC configuration (optional)
+read -p "Enable OIDC authentication? [no]: " USE_OIDC
+USE_OIDC=${USE_OIDC:-no}
+
+if [ "$USE_OIDC" = "yes" ]; then
+  read -p "Enter OIDC_ISSUER_URL: " OIDC_ISSUER_URL
+  if [ -z "$OIDC_ISSUER_URL" ]; then
+    echo "Error: OIDC_ISSUER_URL is required when OIDC is enabled."
+    exit 1
+  fi
+  read -p "Enter OIDC_CLIENT_ID: " OIDC_CLIENT_ID
+  if [ -z "$OIDC_CLIENT_ID" ]; then
+    echo "Error: OIDC_CLIENT_ID is required when OIDC is enabled."
+    exit 1
+  fi
+  read -p "Enter OIDC_CLIENT_SECRET: " OIDC_CLIENT_SECRET
+  read -p "Enter OIDC_REDIRECT_URI [https://$DOMAIN/auth/oidc/callback]: " OIDC_REDIRECT_URI
+  OIDC_REDIRECT_URI=${OIDC_REDIRECT_URI:-https://$DOMAIN/auth/oidc/callback}
+  read -p "Enter OIDC_SCOPES [openid profile email]: " OIDC_SCOPES
+  OIDC_SCOPES=${OIDC_SCOPES:-openid profile email}
+  read -p "Enter OIDC_ID_CLAIM [sub]: " OIDC_ID_CLAIM
+  OIDC_ID_CLAIM=${OIDC_ID_CLAIM:-sub}
+  read -p "Enter OIDC login button label [Login with SSO]: " OIDC_BUTTON_LABEL
+  OIDC_BUTTON_LABEL=${OIDC_BUTTON_LABEL:-Login with SSO}
+fi
+
 # Generate UUIDs
 JWT_SECRET=$(uuidgen)
 HASURA_ADMIN_SECRET=$(uuidgen)
@@ -41,6 +67,19 @@ JWT_SIGNING_SECRET=$JWT_SECRET
 POSTGRES_PASSWORD=$POSTGRES_PASSWORD
 POSTGRES_PORT=$POSTGRES_PORT
 EOF
+
+if [ "$USE_OIDC" = "yes" ]; then
+  cat <<EOF >> .env
+NEXT_PUBLIC_USE_OIDC=true
+NEXT_PUBLIC_OIDC_BUTTON_LABEL=$OIDC_BUTTON_LABEL
+OIDC_ISSUER_URL=$OIDC_ISSUER_URL
+OIDC_CLIENT_ID=$OIDC_CLIENT_ID
+OIDC_CLIENT_SECRET=$OIDC_CLIENT_SECRET
+OIDC_REDIRECT_URI=$OIDC_REDIRECT_URI
+OIDC_SCOPES=$OIDC_SCOPES
+OIDC_ID_CLAIM=$OIDC_ID_CLAIM
+EOF
+fi
 
 cat <<EOF > Caddyfile
 $DOMAIN {

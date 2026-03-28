@@ -1,0 +1,89 @@
+server:
+  address: 'tcp://:9091'
+  tls:
+    certificate: /config/server.crt
+    key: /config/server.key
+
+log:
+  level: debug
+
+authentication_backend:
+  file:
+    path: /config/users_database.yml
+
+identity_validation:
+  reset_password:
+    jwt_secret: insecure_jwt_secret_for_testing
+
+session:
+  secret: insecure_session_secret_for_testing_only
+  cookies:
+    - domain: 'auth.localhost'
+      authelia_url: 'https://auth.localhost:9091'
+      default_redirection_url: 'https://auth.localhost:9091/consent'
+
+storage:
+  encryption_key: insecure_encryption_key_for_testing_only_min_twenty_chars
+  local:
+    path: /config/db.sqlite3
+
+notifier:
+  filesystem:
+    filename: /config/notification.txt
+
+access_control:
+  default_policy: one_factor
+
+identity_providers:
+  oidc:
+    hmac_secret: insecure_hmac_secret_for_testing_only_do_not_use_in_production
+    jwks:
+      - key_id: 'test'
+        algorithm: 'RS256'
+        use: 'sig'
+        key: |
+          -----BEGIN PRIVATE KEY-----
+          MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDlccCR2cqLxrL5
+          13U0yQmJWjDSUU3jZmLyFUMm9xsnG4Ldy/549aUXGqwy5tAay3RDiOdeL/+qsGr6
+          0Ocp3xABTLIBCVekd9rMSE3g6ObGcJXaCGqDK80BRDHZzceefwQFlrzp6wjSGnE2
+          tKvlr/Fx42ZH+yvzTEwa5P09FqAHnj+/I7JXPoc/moqNG973ZUHCsM+n1HfZRau+
+          l8iLer936Islk6GCA0ht8rnLPTzdxm4iWZCAAuTVBMPxemS8MfMELXBJoUqTRtWu
+          YurNqOvbq+O0rrPXyB26kzdW6cxWNv7sy20V2tTcIYpQznJfMSzFMhaGA+keug2W
+          szqU3IVJAgMBAAECggEAEEjPZ3KfEeZVec7BUHCjywIyFJ1FY0o3I9IfQN7ZKCCH
+          XF1P928My2ve1KKF2t79hpULAcfzk/5fK2PEAlhk8wip2hG7DQ7eIjFQCLJS/brM
+          IexGvf5P96LqzFfy7uR6KTjiedIu/zV1+1FdoWjIQMJoVhvFKeiMfrypngoy67Nc
+          z7ikiUkPVVTtDwA34usfuCgMHliOhrtdExP6crCZ4Y98BvYENUDyqIxC0yRum3B3
+          1nFch53NxDYPdqHQTZCDR+nLyps5kcSGjIntsnGZkxXOk8xkvgXdBnwl40K2Pwaq
+          zN4+j8JX15hfdb9ql0L2dg0ICumA+P9ngi8ZFdCa4QKBgQD2qdOFlO2ou+KMCJbb
+          lq2+w4hGdwrnJ0riwxCYuwJ6MujN9WSKqLFEq/nA4u8cP2fszmhrzNzvXyBZSVjl
+          0tcWe3RrJu2Mn7ee4hyfv0UxMQYcHjTJbUze542AkOSffs+kY3lVlOcLpkyVEBTo
+          VQpKO1FVEqbcQ5DXXYXUWbEmIQKBgQDuIRK2GGVnyLNpV7JrH3EasvG7H1ErvZd7
+          CDKSc/E0ZgWhTQx33zw1/k/UFfcc+Pv3SPb8WENVrA8FEU5VkIAKeUtTcg0wWqc2
+          rzBCIib+icv1t5i9xzwC9XBQmDW0P4FJLxPOl7Vqgga8hCxSaFh5pm+Zrqnv4rqA
+          6UcWR7wqKQKBgQDEO7NFsIeqF19SHHs30xYCj7hYptgLsZzH7nvDpfOAmAPR5onI
+          LhBpG5AkPeYQSPk60bMNH/wci0dHAS0yGZx4DFs/68ZMe7wvMJ+pDxfS3LeJoxZH
+          sSbYpspSH/NiWBaFJ4Yd6cot4G1IoXSgqRb4m1xHHAGXdkFCtOqFV52xQQKBgC+b
+          MRByhCNhfmy6+ZJs8MGzsJwGQMYL2zLfiqy4vSoKk2mR68IzQOhSdUcjNQn3xPfF
+          AIumYZ/JDB+pPA3jG5X8ddCy5mwaU3+dOnqeNUmB5uKy17hpElhNFS0noOTuJTyq
+          Sr1smvo2EH6zteCrt7RqT7lbr+GjZEHNYUbVBIsxAoGAHDLiXz534AfsO3GZ2g50
+          XRTVLc37Y7V7AB5CVB2Vu3keSQg0N5sVNe6thM9qP3AOnnHZVSISMqTdwaoaRVmT
+          ePLFLh3cOeyKu+1KrWQ3giO6AEVJ/ETKYzuHX8pRQESc7Ns+S025N+NCc65phFcS
+          LtmWhWP+sgg9cG/nfebgXtc=
+          -----END PRIVATE KEY-----
+    clients:
+      - client_id: 'cleanslate'
+        client_name: 'Clean Slate'
+        client_secret: '$pbkdf2-sha512$310000$4PbdhNMBm5dDpKS9WTW0nQ$NC6Gy2A2ufY7CyJZPN.1LP/UMa346tfpG/NBiy.6AORrhtZRn9/iMyXyzRGhJFWEhU2rVxGPbJ9eGZSyM17wig'
+        public: false
+        authorization_policy: 'one_factor'
+        redirect_uris:
+          - 'http://localhost:3001/auth/oidc/callback'
+        scopes:
+          - 'openid'
+          - 'profile'
+          - 'email'
+        response_types:
+          - 'code'
+        grant_types:
+          - 'authorization_code'
+        token_endpoint_auth_method: 'client_secret_post'
