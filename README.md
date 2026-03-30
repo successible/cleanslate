@@ -208,16 +208,16 @@ Run Clean Slate locally, make changes, and then submit a pull request on GitHub!
 Here is how to run Clean Slate locally:
 
 - Install the following and make sure Docker Desktop is running:
-
   - [Git](https://git-scm.com/downloads)
   - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
   - [Caddy](https://caddyserver.com/docs/install).
   - [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/)
   - [Node.js (LTS)](https://nodejs.org/en/)
   - [pnpm](https://pnpm.io/installation)
+  - [Caddy](https://caddyserver.com/)
+  - [jq](https://jqlang.org/download/)
 
 - Run `pnpm dev` after cloning down the repository. This will spin up these servers:
-
   - Hasura (API): `http://localhost:8080`.
   - Hasura (Console): `http://localhost:9695`.
   - Next.js: `http://localhost:3000`.

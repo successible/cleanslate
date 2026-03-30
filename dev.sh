@@ -62,12 +62,6 @@ if [[ $CI != "true" ]]; then
 
   fi
 
- 
-  echo "=> Install the dependencies..."
-  if type brew >/dev/null 2>&1
-  then
-    brew bundle
-  fi
 
   echo "=> Spin up PostgreSQL and Hasura..."
   docker compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
