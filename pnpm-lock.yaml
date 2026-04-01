@@ -23,9 +23,6 @@ importers:
       '@types/express':
         specifier: 5.0.6
         version: 5.0.6
-      '@types/jest':
-        specifier: 30.0.0
-        version: 30.0.0
       '@types/js-cookie':
         specifier: 3.0.6
         version: 3.0.6
@@ -147,6 +144,9 @@ importers:
       '@jest/globals':
         specifier: 30.3.0
         version: 30.3.0
+      '@types/jest':
+        specifier: 30.0.0
+        version: 30.0.0
       firebase-admin:
         specifier: 13.7.0
         version: 13.7.0
