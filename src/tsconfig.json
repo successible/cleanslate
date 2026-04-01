@@ -12,7 +12,6 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "strictPropertyInitialization": false,
     "target": "es2022",
 
     "jsxImportSource": "@emotion/react"
