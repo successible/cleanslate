@@ -1,21 +1,21 @@
 {
   "compilerOptions": {
     "allowJs": true,
-    "downlevelIteration": true,
     "esModuleInterop": true,
     "incremental": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "@emotion/react",
     "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "CommonJS",
-    "moduleResolution": "node10",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
     "strictPropertyInitialization": false,
-    "target": "esnext"
+    "target": "es2022",
+
+    "jsxImportSource": "@emotion/react"
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

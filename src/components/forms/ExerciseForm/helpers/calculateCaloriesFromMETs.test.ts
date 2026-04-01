@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { calculateCaloriesFromMETs } from './calculateCaloriesFromMETs'
 
 test('calculateCaloriesFromMETs works as expected', () => {

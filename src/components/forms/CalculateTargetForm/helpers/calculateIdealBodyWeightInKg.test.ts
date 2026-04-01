@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { round } from '../../../../helpers/round'
 import { calculateIdealBodyWeightInKg } from './calculateIdealBodyWeightInKg'
 
