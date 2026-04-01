@@ -1,4 +1,4 @@
-import { expect } from '@jest/globals'
+import { expect, test } from '@jest/globals'
 import { splitIntoPages } from './splitIntoPages'
 
 const data = ['a', 'b', 'c', 'd', 'f', 'g', 'h', 'i']
