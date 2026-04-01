@@ -59,9 +59,10 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.8",
     "@jest/globals": "30.3.0",
+    "@swc/core": "1.15.21",
+    "@swc/jest": "0.2.39",
     "firebase-admin": "13.7.0",
     "jest": "30.3.0",
-    "nodemon": "3.1.14",
-    "ts-jest": "29.4.9"
+    "nodemon": "3.1.14"
   }
 }
