@@ -63,7 +63,7 @@ export const DELETE_PROFILE = gql`
 `
 
 export const SUBSCRIBE_TO_DATA = gql`
-  subscription SUBSCRIBE_TO_DATA($today: timestamptz, $tomorrow: timestamptz) {
+  subscription SUBSCRIBE_TO_DATA($start: timestamptz, $end: timestamptz) {
     profiles {
       ...profile
 
@@ -75,15 +75,15 @@ export const SUBSCRIBE_TO_DATA = gql`
         ...recipe
       }
 
-      logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+      logs(where: { createdAt: { _gte: $start, _lte: $end } }) {
         ...log
       }
 
-      quick_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+      quick_logs(where: { createdAt: { _gte: $start, _lte: $end } }) {
         ...quick_log
       }
 
-      exercise_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+      exercise_logs(where: { createdAt: { _gte: $start, _lte: $end } }) {
         ...exercise_log
       }
     }

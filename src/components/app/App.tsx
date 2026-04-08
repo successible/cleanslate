@@ -34,10 +34,12 @@ export const App = () => {
   const { dispatch, exercise_logs, foods, logs, profile, quick_logs, recipes } =
     useData()
 
+  const { mode, ranges } = createDateRange(profile)
+
   const user = useUser()
   const { data, loading } = useSubscription<Data>(
     gql(stringifyQuery(SUBSCRIBE_TO_DATA)),
-    { variables: createDateRange(profile) }
+    { variables: ranges[mode] }
   )
 
   useEffect(() => {
