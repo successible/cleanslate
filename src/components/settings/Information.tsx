@@ -115,7 +115,7 @@ export const Information: React.FC<props> = ({ profile }) => {
       </div>
       <Explanation className="mt20 mb20" color="blue">
         <div>
-          <strong>Start Time:</strong> Control when the day starts and ends.
+          <strong>Start Time:</strong> Control when day starts and ends.
           Default: Midnight (12:00 AM)
         </div>
       </Explanation>
