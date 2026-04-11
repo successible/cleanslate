@@ -2,17 +2,15 @@ import { css } from '@emotion/react'
 import axios from 'axios'
 import { compareVersions } from 'compare-versions'
 import { debounce } from 'lodash-es'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { toast } from 'react-toastify'
 import { UAParser } from 'ua-parser-js'
 import BarcodeWithoutScanner from '../../assets/common/barcode-without-scanner.svg'
 import type { Unit } from '../../constants/units'
 import { capitalize } from '../../helpers/capitalize'
 import { getDispatch } from '../../helpers/getDispatch'
-import { isMobile } from '../../helpers/isMobile'
 import { isMobileSafari } from '../../helpers/isMobileSafari'
 import { isNumeric } from '../../helpers/isNumeric'
-import { isProduction } from '../../helpers/isProduction'
 import { round } from '../../helpers/round'
 import { Food } from '../../models/food'
 import { type Barcode, defaultMeal } from '../../models/log'
@@ -37,6 +35,7 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const [unit, setUnit] = useState('GRAM' as Unit)
   const [ran, setRan] = useState(false)
 
+  // 3017620422003 is a good test value
   const fetchData = debounce((code: string) => {
     setRan(true)
     axios
@@ -68,14 +67,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
         })
       })
   }, 100)
-
-  useEffect(() => {
-    // On localhost on development on a desktop, we want to "mock" the barcode scanning operation
-    // That way, you do not need to proxy to your phone every time you want test the feature
-    if (!isProduction() && !isMobile()) {
-      fetchData('3017620422003') // Nutella
-    }
-  }, [])
 
   const parser = UAParser(window.navigator.userAgent)
   const browser = parser.browser
