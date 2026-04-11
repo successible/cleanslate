@@ -9,7 +9,7 @@ export const handleData = (data: Data) => {
   const newData = data as Data
   const store = getStore()
   if (
-    (!newData || !newData.profiles || newData.profiles.length === 0) &&
+    (!newData?.profiles || newData.profiles.length === 0) &&
     firebaseEnabled
   ) {
     createProfile().then(() => {

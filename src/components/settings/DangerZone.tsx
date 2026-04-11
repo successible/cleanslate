@@ -4,10 +4,10 @@ import type { Profile } from '../../models/profile'
 import { Image } from '../image/Image'
 import { button, subheader } from './Settings'
 
-export const DeleteAccount: React.FC<{ profile: Profile }> = ({ profile }) => (
+export const DangerZone: React.FC<{ profile: Profile }> = ({ profile }) => (
   <div className="w100">
     <div css={subheader} className={'pbutton rounded mt30 mb20 pink nohover'}>
-      Danger zone
+      Danger Zone
     </div>
     <button
       type="button"

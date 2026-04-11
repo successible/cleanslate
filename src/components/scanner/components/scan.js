@@ -287,9 +287,8 @@ class Scan extends React.Component {
         {this.state.neverScanned && (
           <Explanation color="blue">
             <div>
-              This barcode scanner uses the Open Food Facts database. Because
-              this database is a free service, it may not have every food. Just
-              a heads up!
+              Heads up! This barcode scanner uses the Open Food Facts database. Because
+              this database is a free service, it may not have every food.
             </div>
           </Explanation>
         )}
@@ -319,7 +318,18 @@ class Scan extends React.Component {
         >
           {this.state.scanning ? 'Stop scan' : 'Scan barcode'}
         </button>
-        <button
+        {!this.state.scanning && <button className="green bold" css={css`
+                width: 100% !important;
+                margin: 20px auto !important;
+                margin-bottom: 5px !important`}
+          onClick={() => {
+            const eanOrUPC = prompt("What is the EAN or UPC?")
+            eanOrUPC && this.props.onScan(eanOrUPC)
+          }}
+          >
+            Enter barcode
+        </button>}
+        {this.state.scanning && <button
           className={`${this.state.flash ? 'background' : 'yellow'} bold mt10`}
           css={css`
             display: ${!this.state.neverScanned ? 'unset' : 'none'};
@@ -331,7 +341,7 @@ class Scan extends React.Component {
           onClick={this.onFlashClickHandler}
         >
           {this.state.flash ? 'Turn off flash' : 'Turn on flash'}
-        </button>
+        </button>}
       </div>
     )
   }
