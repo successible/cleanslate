@@ -10,7 +10,7 @@ import { subheader } from './Settings'
 
 type props = { profile: Profile }
 
-export const Information: React.FC<props> = ({ profile }) => {
+export const InformationZone: React.FC<props> = ({ profile }) => {
   const user = useUser()
   const [showCalories, setShowCalories] = useState(() => {
     return profile.showCalories
@@ -33,6 +33,8 @@ export const Information: React.FC<props> = ({ profile }) => {
   const itemLabelStyling = css`
     width: 230px;
   `
+
+  console.log(profile)
 
   return (
     <div className="w100 mt10">

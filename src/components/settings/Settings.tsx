@@ -2,8 +2,9 @@ import { css } from '@emotion/react'
 import type React from 'react'
 import type { Profile } from '../../models/profile'
 import { colors } from '../../theme'
-import { DeleteAccount } from './DeleteAccount'
-import { Information } from './Information'
+import { DangerZone } from './DangerZone'
+import { DataZone } from './DataZone'
+import { InformationZone } from './InformationZone'
 
 export const documentation = css`
   margin: 20px auto;
@@ -47,8 +48,9 @@ export const Settings: React.FC<props> = ({ profile }) => {
   return (
     <div css={documentation} className={'fcc'}>
       <h1>Settings ⚙️</h1>
-      <Information profile={profile} />
-      <DeleteAccount profile={profile} />
+      <InformationZone profile={profile} />
+      <DataZone profile={profile} />
+      <DangerZone profile={profile} />
     </div>
   )
 }
