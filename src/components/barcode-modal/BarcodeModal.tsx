@@ -17,6 +17,7 @@ import { type Barcode, defaultMeal } from '../../models/log'
 import type { Profile } from '../../models/profile'
 import { Explanation } from '../explanation/Explanation'
 import { Image } from '../image/Image'
+import { mapOtherVolumeUnitToTbsp } from '../macros/helpers/mapOtherVolumeUnitToTbsp'
 import Scan from '../scanner/components/scan'
 import { ButtonPanel } from '../standard-adder/components/ButtonPanel'
 import { InputFields } from '../standard-adder/components/InputFields'
@@ -35,7 +36,8 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const [unit, setUnit] = useState('GRAM' as Unit)
   const [ran, setRan] = useState(false)
 
-  // 3017620422003 is a good test value
+  // 3017620422003 (Nutella) is a good test value for grams
+  // 0096619445387 (Olive Oil) is a good test value for liquids
   const fetchData = debounce((code: string) => {
     setRan(true)
     axios
@@ -47,23 +49,18 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
           return
         }
         const product = r.data.product
-        const { nutriments, product_name } = product
-        const {
-          proteins_100g,
-          proteins_serving,
-          serving_quantity,
-          serving_size,
-        } = nutriments
+        const { nutriments, product_name, nutrition_data_per } = product
+        const { proteins_100g, proteins_serving } = nutriments
+        console.log(nutrition_data_per)
 
         setBarcode({
-          calories_per_gram: nutriments['energy-kcal_100g'] / 100,
+          calories_per_gram: nutriments['energy-kcal_100g'] / 100, // or mL, OpenFoodFacts names it 100 gram as a legacy behaviour
           calories_per_serving: nutriments['energy-kcal_serving'],
           code: code,
           name: product_name,
-          protein_per_gram: proteins_100g / 100,
+          nutrition_data_per,
+          protein_per_gram: proteins_100g / 100, // or mL, OpenFoodFacts names it 100 gram as a legacy behaviour
           protein_per_serving: proteins_serving,
-          serving_quantity,
-          serving_size,
         })
       })
   }, 100)
@@ -109,31 +106,27 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
   const selectedItem = new Food()
   if (barcode) {
     selectedItem.name = barcode.name
-    if (
-      isNumeric(barcode?.calories_per_gram) &&
-      isNumeric(barcode?.protein_per_gram)
-    ) {
-      selectedItem.caloriesPerGram = barcode.calories_per_gram
-      selectedItem.proteinPerGram = barcode.protein_per_gram
-      if (
-        isNumeric(barcode?.calories_per_serving) &&
-        isNumeric(barcode?.protein_per_serving)
-      ) {
+    selectedItem.caloriesPerCount = barcode.calories_per_serving
+    selectedItem.proteinPerCount = barcode.protein_per_serving
+    if (barcode?.calories_per_gram && isNumeric(barcode?.calories_per_gram)) {
+      if (barcode?.nutrition_data_per === '100ml') {
+        // Weight: Easy. 120 calories per serving / 40 calories per gram = 3 grams per serving
+        // Volume: Harder. 120 calories per serving / 8 calories per mL = 15 mL per serving
+        // 15 mL per serving is 1 TBSP per serving
+        selectedItem.countToGram = mapOtherVolumeUnitToTbsp(
+          'mL',
+          round(barcode.calories_per_serving / barcode.calories_per_gram, 0)
+        )
+      } else {
         selectedItem.countToGram = round(
           barcode.calories_per_serving / barcode.calories_per_gram,
-          0
-        )
-        selectedItem.caloriesPerCount = round(
-          barcode.calories_per_gram * selectedItem.countToGram,
-          0
-        )
-        selectedItem.proteinPerCount = round(
-          barcode.protein_per_gram * selectedItem.countToGram,
           0
         )
       }
     }
   }
+
+  console.log(selectedItem)
 
   return (
     <>

@@ -15,14 +15,13 @@ export const MealEnum: Record<Meal, number> = {
 }
 
 export type Barcode = {
-  name: string
-  code: string
-  calories_per_gram: number
-  protein_per_gram: number
+  calories_per_gram: number // per_gram_or_per_ml
   calories_per_serving: number
+  code: string
+  name: string
+  nutrition_data_per: '100g' | '100ml'
+  protein_per_gram: number // per_gram_or_per_ml
   protein_per_serving: number
-  serving_size: number // "2 Tbsp (30 g)"
-  serving_quantity: string // 30
 }
 
 export class Log {

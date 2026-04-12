@@ -8,6 +8,7 @@ import type { QuickLog } from '../../../models/quickLog'
 import type { Recipe } from '../../../models/recipe'
 import { convertFromWeightToGrams } from './convertFromWeightToGrams'
 import { mapOtherVolumeUnitToTbsp } from './mapOtherVolumeUnitToTbsp'
+import { mapTbspToOtherVolumeUnit } from './mapTbspToOtherVolumeUnit'
 
 type Macro = 'CALORIE' | 'PROTEIN'
 
@@ -32,16 +33,33 @@ export const calculatePerMacroPerBarcode = (
   unit: Unit,
   barcode: Barcode
 ) => {
+  console.log(barcode)
+
   if (unit === 'COUNT') {
     if (metric === 'PROTEIN') {
       return amount * barcode.protein_per_serving
     }
     return amount * barcode.calories_per_serving
+
+    // Volume
+  } else if (
+    volumeUnits.includes(unit) &&
+    barcode.nutrition_data_per === '100ml'
+  ) {
+    const tbsp = mapOtherVolumeUnitToTbsp(unit, amount)
+    const mL = mapTbspToOtherVolumeUnit('mL', tbsp)
+    if (metric === 'PROTEIN') {
+      return mL * barcode.protein_per_gram
+    }
+    return mL * barcode.calories_per_gram
   }
+
+  // Grams
+  const grams = convertFromWeightToGrams(unit, amount)
   if (metric === 'PROTEIN') {
-    return amount * barcode.protein_per_gram
+    return grams * barcode.protein_per_gram
   }
-  return amount * barcode.calories_per_gram
+  return grams * barcode.calories_per_gram
 }
 
 /** This function calculates the calories/protein in a single food, given a log */
