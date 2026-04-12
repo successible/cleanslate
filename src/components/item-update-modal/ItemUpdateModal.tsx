@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import type { Unit } from '../../constants/units'
+import { type Unit, volumeUnits, weightUnits } from '../../constants/units'
 import { prep } from '../../helpers/prepareFractionalInputForSubmission'
 import { round } from '../../helpers/round'
+import { zipObject } from '../../helpers/zipObject'
 import type { Profile } from '../../models/profile'
 import type { AllEvents } from '../../store/store'
 import type { Dispatch } from '../../store/types'
@@ -179,7 +180,12 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
               focus={false}
               currentOption={localUnit}
               optionDictionary={[
-                { COUNT: 'SERVING', GRAM: 'GRAM' } as Record<Unit, string>,
+                {
+                  COUNT: 'SERVING',
+                  ...(barcode.nutrition_data_per === '100ml'
+                    ? zipObject(volumeUnits, volumeUnits)
+                    : zipObject(weightUnits, weightUnits)),
+                } as Record<Unit, string>,
               ]}
               onChange={(newUnit: Unit) => {
                 setLocalUnit(newUnit)
