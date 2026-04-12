@@ -33,8 +33,6 @@ export const calculatePerMacroPerBarcode = (
   unit: Unit,
   barcode: Barcode
 ) => {
-  console.log(barcode)
-
   if (unit === 'COUNT') {
     if (metric === 'PROTEIN') {
       return amount * barcode.protein_per_serving

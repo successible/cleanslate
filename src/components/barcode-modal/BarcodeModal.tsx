@@ -51,7 +51,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
         const product = r.data.product
         const { nutriments, product_name, nutrition_data_per } = product
         const { proteins_100g, proteins_serving } = nutriments
-        console.log(nutrition_data_per)
 
         setBarcode({
           calories_per_gram: nutriments['energy-kcal_100g'] / 100, // or mL, OpenFoodFacts names it 100 gram as a legacy behaviour
@@ -125,8 +124,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
       }
     }
   }
-
-  console.log(selectedItem)
 
   return (
     <>
