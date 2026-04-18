@@ -34,8 +34,6 @@ export const InformationZone: React.FC<props> = ({ profile }) => {
     width: 230px;
   `
 
-  console.log(profile)
-
   return (
     <div className="w100 mt10">
       <div css={subheader} className={'pbutton rounded blue nohover mt20 mb20'}>
