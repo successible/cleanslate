@@ -34,7 +34,7 @@ Here, we list all the changes that Clean Slate has gone through in each version.
 
 You do not!
 
-We maintain a free instance at [cleanslate.sh](https://cleanslate.sh). It offers free accounts with social login via Firebase. For example, "Login with Google". Currently, we support login with Apple, Facebook, GitHub, and Google.
+We maintain an instance at [cleanslate.sh](https://cleanslate.sh) with free accounts. We support Login with Apple, GitHub, and Google.
 
 ## How is Clean Slate licensed?
 
@@ -42,7 +42,7 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one exactly depends on the authentication system you choose.
+For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one it does depends on the authentication system you choose.
 
 1. Local Authentication (Default & Easy). Pulls the images (and PostgreSQL). Starts Caddy.
 2. Firebase Authentication (Complex). Builds the images locally (except PostgreSQL). Starts Caddy.
@@ -54,13 +54,13 @@ This method of deployment is laid on in detail in the six steps below. (Using Fi
 - What your reverse proxy needs to do.
 - And so on.
 
-Pair this knowledge with steps #4 to #6 (below), and you will be good to go!
+Pair this knowledge with steps #4 through #6 (below), and you will be good to go!
 
 If that all sounds very confusing, this method of deployment is not for you! Stick with a basic Linux server and the six steps below:
 
-1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`. Check that Docker and Docker Compose have been installed. Make sure to install both from the official website [^1]. That is because the copies bundled with your distribution is likely out of date.
+1. Run `git clone https://github.com/successible/cleanslate` on your server. `cd` inside the newly created folder called `cleanslate`. Check that Docker and Docker Compose have been installed. Make sure to install both from the official website [^1]. That is because the versions bundled with your distribution are likely out of date.
 
-2. Run `bash configuration.sh` to generate a `.env` file and `Caddyfile` file. You will need the `uuid-runtime` package for this to work. Edit the contents as desired. The `.env` file will have the values unique to your instance. Do not share this file, as some of these values are secret. The `Caddyfile` configures Caddy, which is a reverse proxy. Caddy will serve Clean Slate over `https`. Clean Slate requires `https` to work. For Caddy to work, you need a FQDN and have Port `80` open (temporarily). That way, Caddy will succeed in Let's Encrypt certificate generation. You can close Port `80` with your firewall, such as `ufw`, after that. You can use another reverse proxy, like `nginx` if desired. As for your firewall: Clean Slate only needs Port `443` open to work.
+2. Run `bash configuration.sh` to generate a `.env` file and `Caddyfile` file. You will need the `uuid-runtime` package for this to work. Edit the contents as desired. The `.env` file will have the values unique to your instance. Do not share this file, as some of these values are secret. The `Caddyfile` configures Caddy, which is a reverse proxy. Caddy will serve Clean Slate over `https`. Clean Slate requires `https` to work. For Caddy to work, you need a FQDN and have Port `80` open (temporarily). That way, Caddy will succeed in Let's Encrypt certificate generation. You can close Port `80` with your firewall, such as `ufw`, after that. You can also use another reverse proxy, like `nginx` if desired. As for your firewall: Clean Slate only needs Port `443` open to work.
 
 3. Run `git pull origin main; bash deploy.sh`. This script will pull down from the images and start four servers on `localhost` via Docker Compose. It will also start Caddy. If you do not like any of these behaviors, such as running PostgreSQL in a container, not a problem! Just modify [deploy.sh](https://github.com/successible/cleanslate/blob/main/deploy.sh) and [docker-compose.yml](https://github.com/successible/cleanslate/blob/main/docker-compose.yml). These are the files used to deploy Clean Slate.
 
@@ -68,7 +68,7 @@ If that all sounds very confusing, this method of deployment is not for you! Sti
 
 5. You can now log in to `https://example.com` with that token. Make sure to change `example` to value of your actual domain.
 
-6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a lag of twenty minutes between each release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
+6. To deploy the newest version of Clean Slate, run `git pull origin main; bash deploy.sh` again. Remember to check [GitHub Releases](https://github.com/successible/cleanslate/releases) before you deploy. There is a lag of about twenty minutes between each release and the images being built and available. If you are using Firebase (rare), the newest version with be the `HEAD` of `main` instead. That is because the image must be built locally on your own server.
 
 ## How can I make an API request to Clean Slate?
 
@@ -190,7 +190,6 @@ Here is how you do it:
 ```bash
 NEXT_PUBLIC_FIREBASE_CONFIG='{"apiKey":"<XXX>","appId":"<XXX>","authDomain":"<XXX>","messagingSenderId":"<XXX>","projectId":"<XXX>","storageBucket":"<XXX>"}'
 NEXT_PUBLIC_LOGIN_WITH_APPLE='true'
-NEXT_PUBLIC_LOGIN_WITH_FACEBOOK='true'
 NEXT_PUBLIC_LOGIN_WITH_GITHUB='true'
 NEXT_PUBLIC_LOGIN_WITH_GOOGLE='true'
 NEXT_PUBLIC_USE_FIREBASE='true'
@@ -229,6 +228,6 @@ Here is how to run Clean Slate locally:
 
 > Note: To test the deployment process, run `git pull origin main; bash deploy.sh`. Make sure to create the `.env` (below) and `Caddyfile` with `bash configuration.sh`
 
-> Note: To test Clean Slate on a mobile device, install `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
+> Note: To test Clean Slate on a mobile device, we recommend `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
 [^1]: https://docs.docker.com/engine/install/
