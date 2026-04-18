@@ -52,9 +52,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
         const { nutriments, product_name, nutrition_data_per } = product
         const { proteins_100g, proteins_serving } = nutriments
 
-        console.log(product)
-        console.log(nutrition_data_per)
-
         setBarcode({
           calories_per_gram: nutriments['energy-kcal_100g'] / 100, // or mL, OpenFoodFacts names it 100 gram as a legacy behaviour
           calories_per_serving: nutriments['energy-kcal_serving'],
@@ -111,7 +108,6 @@ export const BarcodeModal: React.FC<props> = ({ profile, type }) => {
     selectedItem.caloriesPerCount = barcode.calories_per_serving
     selectedItem.proteinPerCount = barcode.protein_per_serving
     if (barcode?.calories_per_gram && isNumeric(barcode?.calories_per_gram)) {
-      console.log('foo')
       if (barcode?.nutrition_data_per === '100ml') {
         // Weight: Easy. 120 calories per serving / 40 calories per gram = 3 grams per serving
         // Volume: Harder. 120 calories per serving / 8 calories per mL = 15 mL per serving
