@@ -8,7 +8,8 @@ export const convertToNumber = (amount: string | number): number | null => {
     return amount;
   }
   try {
-    const value = evaluate(amount);
+    const amountToUse = amountToUse.replaceAll(',', '.')
+    const value = evaluate(amountToUse);
 
     if (Number.isNaN(value) || value === Number.POSITIVE_INFINITY) {
       return null;
