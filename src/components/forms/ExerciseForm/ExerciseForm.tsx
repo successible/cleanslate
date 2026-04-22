@@ -2,7 +2,7 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { addExerciseLogToCloud } from '../../../helpers/exercise-log/addExerciseLogToCloud'
 import { updateExerciseLogOnCloud } from '../../../helpers/exercise-log/updateExerciseLogOnCloud'
-import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../helpers/convertToNumber'
 import { round } from '../../../helpers/round'
 import type { ExerciseLog } from '../../../models/exerciseLog'
 import type { Profile } from '../../../models/profile'
@@ -134,13 +134,13 @@ export const ExerciseForm: React.FC<props> = ({ item, profile }) => {
             const dataToSubmit = {
               amount: round(amount, 2),
               category,
-              duration: prep(minutes),
+              duration: convertToNumber(minutes),
               groupName: exerciseGroup,
-              incline: prep(incline),
+              incline: convertToNumber(incline),
               name: exerciseGroup === 'Custom' ? name : '',
-              pace: prep(mph),
-              power: prep(watt),
-              weight: prep(weight),
+              pace: convertToNumber(mph),
+              power: convertToNumber(watt),
+              weight: convertToNumber(weight),
             }
             if (exerciseLog?.id) {
               updateExerciseLogOnCloud(

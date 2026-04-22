@@ -7,7 +7,7 @@ import {
   type WeightUnit,
   weightUnits,
 } from '../../../constants/units'
-import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../helpers/convertToNumber'
 import type { Food } from '../../../models/food'
 import type { Ingredient } from '../../../models/ingredient'
 import type { Profile } from '../../../models/profile'
@@ -76,12 +76,12 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
 
   const convertedCountToGram = convertFromWeightToGrams(
     weightUnit,
-    prep(countToGram) || 0
+    convertToNumber(countToGram) || 0
   )
 
   const convertedCountToTbsp = mapOtherVolumeUnitToTbsp(
     volumeUnit,
-    prep(countToTbsp) || 0
+    convertToNumber(countToTbsp) || 0
   )
 
   const data = {
@@ -92,7 +92,7 @@ export const RecipeForm: React.FC<props> = ({ profile, recipe }) => {
     name,
     preferredVolumeUnit: volumeUnit,
     preferredWeightUnit: weightUnit,
-    servingPerContainer: prep(servingPerContainer),
+    servingPerContainer: convertToNumber(servingPerContainer),
   }
 
   // Make sure the form is filled with "late" data

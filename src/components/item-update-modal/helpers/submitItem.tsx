@@ -1,6 +1,6 @@
 import type { Unit } from '../../../constants/units'
 import { handleError } from '../../../helpers/handleError'
-import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../helpers/convertToNumber'
 import type { Log, Meal } from '../../../models/log'
 import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'
@@ -16,7 +16,7 @@ export const submitItem = (
   dispatch: Dispatch<AllEvents>,
   onUpdate: OnUpdateItem | null
 ) => {
-  const amount = prep(newAmount)
+  const amount = convertToNumber(newAmount)
   const { id, type } = item
   if (onUpdate) {
     if (type === 'log') {

@@ -1,5 +1,5 @@
 import type { Unit } from '../../../constants/units'
-import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../helpers/convertToNumber'
 import { convertItemToIngredient } from '../../item/helpers/convertItemToIngredient'
 import { convertItemToLog } from '../../item/helpers/convertItemToLog'
 import type { CommonItem } from '../../item/types'
@@ -23,11 +23,11 @@ export const updateUnit = (
   const newAmount = convertBetweenUnits
     ? getAmountFromNewUnit(
         element,
-        prep(localAmount) || element.amount,
+        convertToNumber(localAmount) || element.amount,
         localUnit,
         newUnit
       )
-    : prep(localAmount) || element.amount
+    : convertToNumber(localAmount) || element.amount
 
   return { newAmount: String(newAmount), newUnit: newUnit }
 }

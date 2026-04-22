@@ -1,12 +1,12 @@
 import type { VolumeUnit } from '../../../../constants/units'
-import { prep } from '../../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../../helpers/convertToNumber'
 import { mapTbspToOtherVolumeUnit } from '../../../macros/helpers/mapTbspToOtherVolumeUnit'
 
 export const getAdjustedVolumeAmount = (
   countToGram: string | number,
   volumeUnit: VolumeUnit
 ): string | number => {
-  const num = prep(countToGram)
+  const num = convertToNumber(countToGram)
   if (!num) {
     return countToGram
   }
