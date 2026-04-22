@@ -1,20 +1,21 @@
+import { evaluate } from 'mathjs'
+
 export const convertToNumber = (amount: string | number): number | null => {
   if (amount === '') {
-    return null
+    return null;
   }
+  if (typeof amount === 'number') {
+    return amount;
+  }
+  try {
+    const amountToUse = amountToUse.replaceAll(',', '.')
+    const value = evaluate(amountToUse);
 
-  let amountToUse = amount
-  // Handle locales in which a comma is used instead of a period
-  if (typeof amountToUse === 'string') {
-    amountToUse = amountToUse.replaceAll(',', '.')
+    if (Number.isNaN(value) || value === Number.POSITIVE_INFINITY) {
+      return null;
+    }
+    return value;
+  } catch {
+    return null;
   }
-
-  const value = Number(amountToUse)
-  if (Number.isNaN(value) || value === Number.POSITIVE_INFINITY) {
-    return null
-  }
-  if (value === 0) {
-    return 0
-  }
-  return value
 }

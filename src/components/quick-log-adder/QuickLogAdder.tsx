@@ -2,6 +2,7 @@ import { css } from '@emotion/react'
 import React from 'react'
 import { toast } from 'react-toastify'
 import { addQuickLogToCloud } from '../../helpers/quick-log/addQuickLogToCloud'
+import { convertToNumber } from '../../helpers/convertToNumber'
 import type { NavbarState } from '../../store/navbar/types'
 import { useStoreon } from '../../storeon'
 import { colors } from '../../theme'
@@ -56,7 +57,7 @@ export const QuickLogAdder: React.FC = () => {
         if (!calories && !protein) {
           toast.error('You must include a value!')
         } else {
-          addQuickLogToCloud(name, Number(calories), Number(protein))
+          addQuickLogToCloud(name, convertToNumber(calories ?? 0) ?? 0, convertToNumber(protein ?? 0) ?? 0)
         }
       }}
       css={form}
