@@ -53,7 +53,7 @@
     "traverse": "0.6.11",
     "typescript": "6.0.2",
     "ua-parser-js": "2.0.9",
-    "uuid": "13.0.0",
+    "uuid": "14.0.0",
     "workbox-build": "7.4.0"
   },
   "devDependencies": {
