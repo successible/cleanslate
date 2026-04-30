@@ -22,6 +22,7 @@ export const modals = [
   'navbar.targetModalVisibility',
   'navbar.therapyModalVisibility',
   'navbar.quickLogEditModalVisibility',
+  'navbar.waterAddModalVisibility',
   'navbar.voiceModalVisibility',
 ] as const
 

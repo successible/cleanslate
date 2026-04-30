@@ -67,6 +67,14 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
     )
   })
 
+  store.on('addWaterLogs', (state, water_logs) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        draft.data.profiles[0].water_logs.push(...water_logs)
+      })
+    )
+  })
+
   store.on('updateLog', (state, updatedLog) => {
     return updateAndCacheProfile(
       produce(state, (draft) => {
@@ -123,6 +131,30 @@ export const data: StoreonModule<CleanslateSlices, DataEvents> = (store) => {
           (quick_log) => !ids.includes(quick_log.id)
         )
         draft.data.profiles[0].quick_logs = newQuickLogs
+      })
+    )
+  })
+
+  store.on('updateWaterLog', (state, updatedWaterLog) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        const water_logs = state.data.profiles[0].water_logs
+        const newWaterLogs = water_logs.map((waterLog) =>
+          waterLog.id === updatedWaterLog.id ? updatedWaterLog : waterLog
+        )
+        draft.data.profiles[0].water_logs = newWaterLogs
+      })
+    )
+  })
+
+  store.on('removeWaterLogsById', (state, ids) => {
+    return updateAndCacheProfile(
+      produce(state, (draft) => {
+        const water_logs = state.data.profiles[0].water_logs
+        const newWaterLogs = water_logs.filter(
+          (water_log) => !ids.includes(water_log.id)
+        )
+        draft.data.profiles[0].water_logs = newWaterLogs
       })
     )
   })

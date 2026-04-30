@@ -5,3 +5,4 @@
 - "!include public_profiles.yaml"
 - "!include public_quick_logs.yaml"
 - "!include public_recipes.yaml"
+- "!include public_water_logs.yaml"

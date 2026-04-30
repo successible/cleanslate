@@ -163,6 +163,14 @@ export const navbar: StoreonModule<CleanslateSlices, NavbarEvents> = (
     return updateModal(state, 'navbar.modalVisibility', false)
   })
 
+  store.on('openWaterAddModal', (state) => {
+    return updateModal(state, 'navbar.waterAddModalVisibility', true)
+  })
+
+  store.on('closeWaterAddModal', (state) => {
+    return updateModal(state, 'navbar.waterAddModalVisibility', false)
+  })
+
   store.on('openQuickAddModal', (state) => {
     return updateModal(state, 'navbar.quickAddModalVisibility', true)
   })

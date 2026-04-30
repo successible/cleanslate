@@ -5,6 +5,7 @@ import type { Log } from '../../models/log'
 import type { Profile } from '../../models/profile'
 import type { QuickLog } from '../../models/quickLog'
 import type { Recipe } from '../../models/recipe'
+import type { WaterLog } from '../../models/waterLog'
 import type { StoreonModule } from '../../storeon'
 
 export type Data = { profiles: Profile[]; basicFoods: Food[] }
@@ -19,6 +20,7 @@ export type Type =
   | 'ingredient'
   | 'quick-log'
   | 'exercise-log'
+  | 'water-log'
 
 export type Collections =
   | 'foods'
@@ -26,6 +28,7 @@ export type Collections =
   | 'recipes'
   | 'quick-logs'
   | 'exercise-logs'
+  | 'water-logs'
 
 export type DataSlice = {
   data: Data
@@ -45,6 +48,9 @@ export type DataEvents = {
   updateLog: Log
   updateProfile: Profile[]
   updateQuickLog: QuickLog
+  addWaterLogs: WaterLog[]
+  removeWaterLogsById: string[]
+  updateWaterLog: WaterLog
 }
 
 export type DataEventsKeys = keyof DataEvents

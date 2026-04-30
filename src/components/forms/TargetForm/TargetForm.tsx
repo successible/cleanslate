@@ -18,6 +18,9 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
   const [proteinTarget, updateProteinTarget] = React.useState(
     profile?.proteinTarget || ''
   )
+  const [waterTarget, updateWaterTarget] = React.useState(
+    profile?.waterTarget || ''
+  )
 
   const {
     dispatch,
@@ -28,6 +31,7 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
   const data = {
     calorieTarget,
     proteinTarget,
+    waterTarget,
   }
 
   const explanation = css`
@@ -79,6 +83,24 @@ export const TargetForm: React.FC<props> = ({ profile }) => {
                       updateProteinTarget(event.target.value)
                     }}
                     value={data.proteinTarget}
+                    type="number"
+                    autoComplete={'off'}
+                    autoCorrect={'off'}
+                    autoCapitalize={'off'}
+                    step="any"
+                  />
+                </div>
+                <div className="expand">
+                  <label className="fr" htmlFor="waterTarget">
+                    Water (mL)
+                  </label>
+                  <input
+                    required
+                    id="waterTarget"
+                    onChange={(event) => {
+                      updateWaterTarget(event.target.value)
+                    }}
+                    value={data.waterTarget}
                     type="number"
                     autoComplete={'off'}
                     autoCorrect={'off'}

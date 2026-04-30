@@ -44,6 +44,13 @@ array_relationships:
         table:
           name: recipes
           schema: public
+  - name: water_logs
+    using:
+      foreign_key_constraint_on:
+        column: profile
+        table:
+          name: water_logs
+          schema: public
 insert_permissions:
   - role: user
     permission:
@@ -64,6 +71,7 @@ insert_permissions:
         - startTime
         - timeToExecuteFrameChange
         - timezone
+        - waterTarget
 select_permissions:
   - role: user
     permission:
@@ -87,6 +95,7 @@ select_permissions:
         - timezone
         - type
         - updatedAt
+        - waterTarget
       filter:
         authId:
           _eq: X-Hasura-User-Id
@@ -106,6 +115,7 @@ update_permissions:
         - showDensities
         - startTime
         - timeToExecuteFrameChange
+        - waterTarget
       filter:
         authId:
           _eq: X-Hasura-User-Id

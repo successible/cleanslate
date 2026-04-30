@@ -5,6 +5,7 @@ import type { ExerciseLog } from '../../models/exerciseLog'
 import type { Log } from '../../models/log'
 import { defaultTargets, type Profile } from '../../models/profile'
 import type { QuickLog } from '../../models/quickLog'
+import type { WaterLog } from '../../models/waterLog'
 import { colors } from '../../theme'
 import { calculateMacros } from '../macros/helpers/calculateMacros'
 
@@ -13,6 +14,7 @@ type props = {
   logs: Log[]
   quick_logs: QuickLog[]
   exercise_logs: ExerciseLog[]
+  water_logs: WaterLog[]
 }
 
 const numbers = css`
@@ -51,7 +53,7 @@ const check = css`
 `
 
 export const Numbers: React.FC<props> = (props) => {
-  const { exercise_logs, logs, profile, quick_logs } = props
+  const { exercise_logs, logs, profile, quick_logs, water_logs } = props
   const countDown = profile.countDown
 
   const [
@@ -76,6 +78,16 @@ export const Numbers: React.FC<props> = (props) => {
 
   const loading = proteinTarget === defaultTargets[1]
   const hideCalories = loading || profile.showCalories === false
+
+  const waterConsumed = Math.round(
+    (water_logs || []).reduce((sum, log) => {
+      // Convert oz to mL for consistent totalling
+      const amountInMl = log.unit === 'oz' ? log.amount * 29.5735 : log.amount
+      return sum + amountInMl
+    }, 0)
+  )
+  const waterTarget = profile.waterTarget
+  const waterDifference = waterTarget - waterConsumed
 
   const calorieFree = ''
 
@@ -138,6 +150,42 @@ export const Numbers: React.FC<props> = (props) => {
                       /
                     </span>
                     {proteinTarget}
+                  </>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+        <div id="TopBarWater" css={number} className={'frc'}>
+          Water
+          <div
+            className={`fcc ${
+              waterDifference <= 0 && countDown ? 'success' : 'blue'
+            }`}
+          >
+            {hideCalories ? (
+              calorieFree
+            ) : (
+              <div>
+                {countDown && waterDifference <= 0 && (
+                  <div css={check}>✓</div>
+                )}
+
+                {countDown &&
+                  waterDifference > 0 &&
+                  round(waterDifference, 0)}
+
+                {!countDown && (
+                  <>
+                    {waterConsumed}
+                    <span
+                      css={css`
+                        margin: 0px 2px;
+                      `}
+                    >
+                      /
+                    </span>
+                    {waterTarget}
                   </>
                 )}
               </div>

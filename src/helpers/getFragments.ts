@@ -4,6 +4,7 @@ import { INGREDIENT_FRAGMENT } from '../graphql/ingredient'
 import { LOG_FRAGMENT } from '../graphql/log'
 import { PROFILE_FRAGMENT } from '../graphql/profile'
 import { QUICK_LOG_FRAGMENT } from '../graphql/quickLog'
+import { WATER_LOG_FRAGMENT } from '../graphql/waterLog'
 import {
   INGREDIENT_BASE_FRAGMENT,
   RECIPE_BASE_FRAGMENT,
@@ -17,6 +18,7 @@ ${FOOD_FRAGMENT}
 ${LOG_FRAGMENT}
 ${QUICK_LOG_FRAGMENT}
 ${EXERCISE_LOG_FRAGMENT}
+${WATER_LOG_FRAGMENT}
 ${INGREDIENT_BASE_FRAGMENT}
 ${INGREDIENT_FRAGMENT}
 ${RECIPE_BASE_FRAGMENT}

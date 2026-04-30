@@ -4,6 +4,7 @@ import Barcode from '../../assets/common/barcode.svg'
 import Exercise from '../../assets/common/exercise.svg'
 import Rocket from '../../assets/common/fast.svg'
 import Hamburger from '../../assets/common/hamburger.svg'
+import Wave from '../../assets/common/wave.svg'
 import Search from '../../assets/common/magnify.svg'
 import type { Profile } from '../../models/profile'
 import type { AllEvents } from '../../store/store'
@@ -74,6 +75,18 @@ export const BottomBarButtons: React.FC<props> = ({ profile }) => {
             <HiddenInput type="text" inputMode="decimal" />
           )}
           <img alt="Rocket" src={Rocket.src} />
+        </button>
+      )}
+
+      {profile.showCalories && (
+        <button
+          type="button"
+          id="openWaterAddModal"
+          onClick={() => {
+            dispatch('openWaterAddModal')
+          }}
+        >
+          <img alt="Water drop" src={Wave.src} />
         </button>
       )}
 

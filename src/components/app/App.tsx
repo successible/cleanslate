@@ -26,12 +26,13 @@ import { BottomBarButtons } from '../bottom-bar-buttons/BottomBarButtons'
 import { ExerciseLogList } from '../list/ExerciseLogList/ExerciseLogList'
 import { LogList } from '../list/Log/LogList'
 import { QuickLogList } from '../list/QuickLog/QuickLogList'
+import { WaterLogList } from '../list/WaterLog/WaterLogList'
 import Modals from '../modals/Modals'
 import { Numbers } from '../numbers/Numbers'
 import { TopBar } from '../top-bar/TopBar'
 
 export const App = () => {
-  const { dispatch, exercise_logs, foods, logs, profile, quick_logs, recipes } =
+  const { dispatch, exercise_logs, foods, logs, profile, quick_logs, water_logs, recipes } =
     useData()
 
   const user = useUser()
@@ -104,12 +105,14 @@ export const App = () => {
           logs={logs}
           quick_logs={quick_logs}
           exercise_logs={exercise_logs}
+          water_logs={water_logs}
         />
       </TopBar>
 
       <Body navbar={navbarHeight} footer={footerHeight} profile={profile}>
         <ExerciseLogList exercise_logs={exercise_logs} />
         <QuickLogList quick_logs={quick_logs} />
+        <WaterLogList water_logs={water_logs} />
         <LogList
           profile={profile}
           logs={logs}

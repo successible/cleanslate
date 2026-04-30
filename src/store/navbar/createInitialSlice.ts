@@ -34,6 +34,7 @@ export const createInitialSlice = (): NavbarSlice => {
       recipeToUpdate: null,
       settingsModalVisibility: false,
       targetModalVisibility: false,
+      waterAddModalVisibility: false,
       user: 'PENDING',
     },
   }

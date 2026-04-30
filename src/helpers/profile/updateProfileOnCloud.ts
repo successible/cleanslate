@@ -16,6 +16,7 @@ type UpdateTargets = {
     showCalories?: boolean
     showDensities?: boolean
     startTime?: string
+    waterTarget?: string | number
   }
 }
 

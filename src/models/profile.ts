@@ -5,6 +5,7 @@ import type { Ingredient } from './ingredient'
 import type { Log } from './log'
 import type { QuickLog } from './quickLog'
 import type { Recipe } from './recipe'
+import type { WaterLog } from './waterLog'
 
 // The default targets are ludicrous by design
 // That is how progress bars will know to show the placeholder
@@ -26,6 +27,7 @@ export class Profile {
   showDensities: boolean // Default to false
   startTime: string
   timezone: string
+  waterTarget: number // Default 2000
 
   // Relationships
   foods: Food[]
@@ -34,6 +36,7 @@ export class Profile {
   ingredients: Ingredient[]
   quick_logs: QuickLog[]
   exercise_logs: ExerciseLog[]
+  water_logs: WaterLog[]
 
   // Foreign keys
   authId = uuid()
@@ -51,9 +54,11 @@ export class Profile {
     this.ingredients = [] as Ingredient[]
     this.quick_logs = [] as QuickLog[]
     this.exercise_logs = [] as ExerciseLog[]
+    this.water_logs = [] as WaterLog[]
     this.calorieTarget = defaultTargets[0]
     this.proteinTarget = defaultTargets[1]
     this.startTime = defaultStartTime
+    this.waterTarget = 2000
     // We do not want to accidentally show the PWAPrompt if fetching data fails
     this.hidePWAPrompt = true
   }

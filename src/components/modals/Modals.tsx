@@ -26,6 +26,7 @@ import { Menu } from '../menu/Menu'
 import { Modal } from '../modal/Modal'
 import { PWAPrompt } from '../pwa-prompt/PWAPrompt'
 import { QuickLogAdder } from '../quick-log-adder/QuickLogAdder'
+import { WaterLogAdder } from '../water-log-adder/WaterLogAdder'
 import { QuickLogUpdateModal } from '../quick-log-update-modal/QuickLogUpdateModal'
 import { Settings } from '../settings/Settings'
 import { StandardAdder } from '../standard-adder/StandardAdder'
@@ -70,6 +71,7 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
     pwaPromptVisibility,
     quickAddModalVisibility,
     quickLogEditModalVisibility,
+    waterAddModalVisibility,
     recipeFormModalVisibility,
     recipeModalVisibility,
     recipeToUpdate,
@@ -124,6 +126,21 @@ const Modals: React.FC<props> = ({ foods, profile, recipes }) => {
       visible={quickAddModalVisibility}
     >
       <QuickLogAdder />
+    </Modal>,
+
+    <Modal
+      key="navbar.waterAddModalVisibility"
+      styles={editorStyling}
+      closeIcon={false}
+      closeModal={() => {
+        dispatch('closeWaterAddModal')
+      }}
+      inTransition={'slideInDown'}
+      outTransition={'fadeOutHard'}
+      name="navbar.waterAddModalVisibility"
+      visible={waterAddModalVisibility}
+    >
+      <WaterLogAdder />
     </Modal>,
 
     // Sidebar

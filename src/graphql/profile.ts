@@ -20,6 +20,7 @@ export const PROFILE_FRAGMENT = gql`
     timezone
     type
     updatedAt
+    waterTarget
   }
 `
 
@@ -85,6 +86,10 @@ export const SUBSCRIBE_TO_DATA = gql`
 
       exercise_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
         ...exercise_log
+      }
+
+      water_logs(where: { createdAt: { _gte: $today, _lte: $tomorrow } }) {
+        ...water_log
       }
     }
   }
