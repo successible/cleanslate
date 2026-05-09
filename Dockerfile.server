@@ -9,6 +9,7 @@ WORKDIR /app
 
 COPY package.json .
 COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
 
 RUN ["npm", "install", "pnpm", "-g"]
 RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
