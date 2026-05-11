@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { type Unit, volumeUnits, weightUnits } from '../../constants/units'
-import { prep } from '../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../helpers/convertToNumber'
 import { round } from '../../helpers/round'
 import { zipObject } from '../../helpers/zipObject'
 import type { Profile } from '../../models/profile'
@@ -60,7 +60,7 @@ export const ItemUpdateModal: React.FC<props> = ({ item, profile }) => {
     amountRef.current?.focus()
   }, [amountRef])
 
-  const amountAsNumber = prep(localAmount)
+  const amountAsNumber = convertToNumber(localAmount)
 
   useEffect(() => {
     if (submitReady && amountAsNumber && localUnit && barcode) {

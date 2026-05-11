@@ -3,6 +3,7 @@ import { updateQuickLogOnCloud } from '../../helpers/quick-log/updateQuickLogOnC
 import type { Profile } from '../../models/profile'
 import type { AllEvents } from '../../store/store'
 import type { Dispatch } from '../../store/types'
+import { convertToNumber } from '../../helpers/convertToNumber'
 import { useStoreon } from '../../storeon'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import type { CommonItem } from '../item/types'
@@ -36,9 +37,9 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
               id: itemToUse.id,
             },
             set: {
-              calories: Number(calories),
+              calories: convertToNumber(calories ?? 0) ?? 0,
               name,
-              protein: Number(protein),
+              protein : convertToNumber(protein ?? 0) ?? 0,
             },
           },
           () => {
@@ -67,14 +68,13 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
         autoComplete={'off'}
         autoCorrect={'off'}
         id="calories"
-        inputMode="decimal"
         onChange={(event) => {
           setCalories(event.target.value)
         }}
         placeholder="Calories"
         ref={inputRef}
         step="any"
-        type="number"
+        type="string"
         value={calories || ''}
       />
       <label htmlFor="protein">Protein</label>
@@ -83,13 +83,12 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
         autoComplete={'off'}
         autoCorrect={'off'}
         id="protein"
-        inputMode="decimal"
         onChange={(event) => {
           setProtein(event.target.value)
         }}
         placeholder="Protein"
         step="any"
-        type="number"
+        type="string"
         value={protein || ''}
       />
       <SubmitButton submit={true} />

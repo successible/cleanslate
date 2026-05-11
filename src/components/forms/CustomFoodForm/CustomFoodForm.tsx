@@ -12,7 +12,7 @@ import {
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
 import { isNumeric } from '../../../helpers/isNumeric'
-import { prep } from '../../../helpers/prepareFractionalInputForSubmission'
+import { convertToNumber} from '../../../helpers/convertToNumber'
 import type { Food } from '../../../models/food'
 import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'
@@ -73,12 +73,12 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
 
   const convertedCountToGram = convertFromWeightToGrams(
     weightUnit,
-    prep(countToGram) || 0
+    convertToNumber(countToGram) || 0
   )
 
   const convertedCountToTbsp = mapOtherVolumeUnitToTbsp(
     volumeUnit,
-    prep(countToTbsp) || 0
+    convertToNumber(countToTbsp) || 0
   )
 
   // Make sure the form is filled with "late" data
@@ -109,7 +109,7 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
       onSubmit={(event) => {
         event.preventDefault()
         const data: FoodSubmission = {
-          caloriesPerCount: prep(caloriesPerCount),
+          caloriesPerCount: convertToNumber(caloriesPerCount),
           category: 'Food',
           containerName: food?.containerName || '',
           countName: food?.countName || '',
@@ -119,8 +119,8 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
           name,
           preferredVolumeUnit: volumeUnit,
           preferredWeightUnit: weightUnit,
-          proteinPerCount: prep(proteinPerCount),
-          servingPerContainer: prep(servingPerContainer),
+          proteinPerCount: convertToNumber(proteinPerCount),
+          servingPerContainer: convertToNumber(servingPerContainer),
           openFoodFactsCode: food?.openFoodFactsCode || null,
         }
 
