@@ -18,8 +18,8 @@ importers:
         specifier: 1.3.2
         version: 1.3.2
       '@sentry/react':
-        specifier: 10.52.0
-        version: 10.52.0(react@19.2.6)
+        specifier: 10.53.1
+        version: 10.53.1(react@19.2.6)
       '@types/express':
         specifier: 5.0.6
         version: 5.0.6
@@ -36,8 +36,8 @@ importers:
         specifier: 2.1.0
         version: 2.1.0
       '@types/node':
-        specifier: 24.12.3
-        version: 24.12.3
+        specifier: 24.12.4
+        version: 24.12.4
       '@types/pluralize':
         specifier: 0.0.33
         version: 0.0.33
@@ -51,8 +51,8 @@ importers:
         specifier: 0.7.39
         version: 0.7.39
       axios:
-        specifier: 1.16.0
-        version: 1.16.0
+        specifier: 1.16.1
+        version: 1.16.1
       compare-versions:
         specifier: 6.1.1
         version: 6.1.1
@@ -154,11 +154,11 @@ importers:
         specifier: 0.2.39
         version: 0.2.39(@swc/core@1.15.33)
       firebase-admin:
-        specifier: 13.9.0
-        version: 13.9.0
+        specifier: 13.10.0
+        version: 13.10.0
       jest:
         specifier: 30.4.2
-        version: 30.4.2(@types/node@24.12.3)(babel-plugin-macros@3.1.0)
+        version: 30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0)
       nodemon:
         specifier: 3.1.14
         version: 3.1.14
@@ -1803,32 +1803,32 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@sentry-internal/browser-utils@10.52.0':
-    resolution: {integrity: sha512-x/yEPZdpH6NGQeoeQnV9tj8reAH8twNttiltGZl2o8Rk7sQeUfe7E8yuYP2XbJ2RqyZK5qRS3COrNyMPzf6KFA==}
+  '@sentry-internal/browser-utils@10.53.1':
+    resolution: {integrity: sha512-X4d6y8sBMjmNhcDW4eMBU3ASsNIMz8dqaFkhyIMN/dkYr/yZKnbRZPaVuVUGvHKjnlficPpIH0/HK9KBjrYxPw==}
     engines: {node: '>=18'}
 
-  '@sentry-internal/feedback@10.52.0':
-    resolution: {integrity: sha512-5kAn1W8ZvCuHtEHXpq6iRkUMdNCilwww+YxaN2yofVrCivAbB3Ha5JJUMqmWOPW0pC27zGYmoJMIDvG+PczUxA==}
+  '@sentry-internal/feedback@10.53.1':
+    resolution: {integrity: sha512-vVpTI/aEYN5d9IgZeYJWMqVaN0+iFgidSrYNAsZTh1US5sJUzF/wrl+68KdpmCtFROrN3jiAn1oPSwL5CKvEJA==}
     engines: {node: '>=18'}
 
-  '@sentry-internal/replay-canvas@10.52.0':
-    resolution: {integrity: sha512-BI5ie4dxPuUJ344CXVSnAxY1xZCbghglPSCIlTOYODpR9so9yo5IZh+Mwspt0oWsUMaxWJiQSNYlbPWi7WDavg==}
+  '@sentry-internal/replay-canvas@10.53.1':
+    resolution: {integrity: sha512-aueLaf/2prExwA76BGU5/bOXCKWqtt6jQXWA6WJQNrmKpPEtZJB4ypnpsou0McXQCF8tur2Y8U0TEkwQP13yJQ==}
     engines: {node: '>=18'}
 
-  '@sentry-internal/replay@10.52.0':
-    resolution: {integrity: sha512-diywyuc/H7VTUR+W5ryVmLF+0X4UP1OskMqb6V8RSAvJHcj2JmIm7uP+Fc6ACTno+b6AUShwT/L4xVXzO6X9Cw==}
+  '@sentry-internal/replay@10.53.1':
+    resolution: {integrity: sha512-wZNzTBYkgGUPWMuUQv7L64+OJmoCnz7GQNiTrTFK6EVAjJXFBCSsPp/nhif0bLhbk8+0g4xz633uOhpXuQbFdw==}
     engines: {node: '>=18'}
 
-  '@sentry/browser@10.52.0':
-    resolution: {integrity: sha512-ijL9jN86oXwXQWbwhPlEb70ODJSEmjxQEQdnZkC4gDWbjswcwvRsVJPYk+1xl2ir2iZixRIHipVxDcLwian35g==}
+  '@sentry/browser@10.53.1':
+    resolution: {integrity: sha512-zXF373hzUOGzUOrqd8xb1U3LQi5uYC3mwv+z5OMKUUinQlu30tTWBs7ypy6YTchtix9QlYaHWlayUF8vBZ5UjA==}
     engines: {node: '>=18'}
 
-  '@sentry/core@10.52.0':
-    resolution: {integrity: sha512-VA/kAqLhkMnRWY2RXdBLyTemR9D4m7MVRy/gyapoq9yvllVPx9WXbvKgnMP2LQp7mFgT/oLFvw58aQKaYTGn3A==}
+  '@sentry/core@10.53.1':
+    resolution: {integrity: sha512-XG4ezlkyuAPjBC5+9kXC94rXXuqYTw9NRhfaDHssbTFaGnqBR8vQX2UUgZfY7ucbeelRDGfBu1sywoU+mB04uA==}
     engines: {node: '>=18'}
 
-  '@sentry/react@10.52.0':
-    resolution: {integrity: sha512-2m72QCsja2cJJHD0ALxRnVt0qMEC2FV4LSi6AAiEdEG4lTb6mgcxavx5pJrW90jE+6dMGPbUz4q8c9vi4jh1qQ==}
+  '@sentry/react@10.53.1':
+    resolution: {integrity: sha512-lrwNq5T/zW84l60894TpKHPcvFuc1I/Hnohecc0TfYVpIcYYuw2orCHoU4v4wgkFaJUpegVetbgdOphViyLVjA==}
     engines: {node: '>=18'}
     peerDependencies:
       react: ^16.14.0 || 17.x || 18.x || 19.x
@@ -2023,6 +2023,9 @@ packages:
 
   '@types/node@24.12.3':
     resolution: {integrity: sha512-8oljBDGun9cIsZRJR6fkihn0TSXJI0UDOOhncYaERq6M0JMDoPLxyscwruJcb4GKS6dvK/d8xebYBg27h/duaQ==}
+
+  '@types/node@24.12.4':
+    resolution: {integrity: sha512-GUUEShf+PBCGW2KaXwcIt3Yk+e3pkKwWKb9GSyM9WQVE+ep2jzmHdGsHzu4wgcZy5fN9FBdVzjpBQsYlpfpgLA==}
 
   '@types/parse-json@4.0.2':
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
@@ -2286,8 +2289,8 @@ packages:
     resolution: {integrity: sha512-wvUjBtSGN7+7SjNpq/9M2Tg350UZD3q62IFZLbRAR1bSMlCo1ZaeW+BJ+D090e4hIIZLBcTDWe4Mh4jvUDajzQ==}
     engines: {node: '>= 0.4'}
 
-  axios@1.16.0:
-    resolution: {integrity: sha512-6hp5CwvTPlN2A31g5dxnwAX0orzM7pmCRDLnZSX772mv8WDqICwFjowHuPs04Mc8deIld1+ejhtaMn5vp6b+1w==}
+  axios@1.16.1:
+    resolution: {integrity: sha512-caYkukvroVPO8KrzuJEb50Hm07KwfBZPEC3VeFHTsqWHvKTsy54hjJz9BS/cdaypROE2rH6xvm9mHX4fgWkr3A==}
 
   babel-jest@30.4.1:
     resolution: {integrity: sha512-fATAbM8piYxkiXQp3RBXmZHxZVNJZAVXXfyeyCN2Tida3+qJ8ea9UxhiJ2y4fLO90ZImKt6k9FlcH2+rLkJGhw==}
@@ -2781,8 +2784,8 @@ packages:
     resolution: {integrity: sha512-PpOwAdQ/YlXQ2vj8a3h8IipDuYRi3wceVQQGYWxNINccq40Anw7BlsEXCMbt1Zt+OLA6Fq9suIpIWD0OsnISlw==}
     engines: {node: '>=8'}
 
-  firebase-admin@13.9.0:
-    resolution: {integrity: sha512-qiCVBBFH+kfLiCXuuE9eAbBQSckPuA43fbQ/MNvQfd9nZcHFQExmQICD/N0sZrNZDNy8FSywhjFzJJGVQzG5UA==}
+  firebase-admin@13.10.0:
+    resolution: {integrity: sha512-rbuCrJvYRwqBqvbccMS8fj/x2zsaMisdf5RQbRzQzr14Rbq9r2UlpuBHqWAwrO6c9dIRF56xF/xoepXsD5yDuQ==}
     engines: {node: '>=18'}
 
   firebase@12.13.0:
@@ -3669,10 +3672,6 @@ packages:
     resolution: {integrity: sha512-dRB78srN/l6gqWulah9SrxeYnxeddIG30+GOqK/9OlLVyLg3HPnr6SqOWTWOXKRwC2eGYCkZ59NNuSgvSrpgOA==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  node-forge@1.4.0:
-    resolution: {integrity: sha512-LarFH0+6VfriEhqMMcLX2F7SwSXeWwnEAJEsYm5QKWchiVYVvJyV9v7UDvUv+w5HO23ZpQTXDv/GxdDdMyOuoQ==}
-    engines: {node: '>= 6.13.0'}
-
   node-int64@0.4.0:
     resolution: {integrity: sha512-O5lz91xSOeoXP6DulyHfllpq+Eg00MWitZIbtPfoSEvqIHdl5gfcY6hYzDWnj0qD5tz52PI08u9qUvSVeUBeHw==}
 
@@ -4453,10 +4452,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  uuid@11.1.1:
-    resolution: {integrity: sha512-vIYxrBCC/N/K+Js3qSN88go7kIfNPssr/hHCesKCQNAjmgvYS2oqr69kIufEG+O4+PfezOH4EbIeHCfFov8ZgQ==}
-    hasBin: true
 
   uuid@14.0.0:
     resolution: {integrity: sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==}
@@ -6484,38 +6479,38 @@ snapshots:
   '@rollup/rollup-win32-x64-msvc@4.60.4':
     optional: true
 
-  '@sentry-internal/browser-utils@10.52.0':
+  '@sentry-internal/browser-utils@10.53.1':
     dependencies:
-      '@sentry/core': 10.52.0
+      '@sentry/core': 10.53.1
 
-  '@sentry-internal/feedback@10.52.0':
+  '@sentry-internal/feedback@10.53.1':
     dependencies:
-      '@sentry/core': 10.52.0
+      '@sentry/core': 10.53.1
 
-  '@sentry-internal/replay-canvas@10.52.0':
+  '@sentry-internal/replay-canvas@10.53.1':
     dependencies:
-      '@sentry-internal/replay': 10.52.0
-      '@sentry/core': 10.52.0
+      '@sentry-internal/replay': 10.53.1
+      '@sentry/core': 10.53.1
 
-  '@sentry-internal/replay@10.52.0':
+  '@sentry-internal/replay@10.53.1':
     dependencies:
-      '@sentry-internal/browser-utils': 10.52.0
-      '@sentry/core': 10.52.0
+      '@sentry-internal/browser-utils': 10.53.1
+      '@sentry/core': 10.53.1
 
-  '@sentry/browser@10.52.0':
+  '@sentry/browser@10.53.1':
     dependencies:
-      '@sentry-internal/browser-utils': 10.52.0
-      '@sentry-internal/feedback': 10.52.0
-      '@sentry-internal/replay': 10.52.0
-      '@sentry-internal/replay-canvas': 10.52.0
-      '@sentry/core': 10.52.0
+      '@sentry-internal/browser-utils': 10.53.1
+      '@sentry-internal/feedback': 10.53.1
+      '@sentry-internal/replay': 10.53.1
+      '@sentry-internal/replay-canvas': 10.53.1
+      '@sentry/core': 10.53.1
 
-  '@sentry/core@10.52.0': {}
+  '@sentry/core@10.53.1': {}
 
-  '@sentry/react@10.52.0(react@19.2.6)':
+  '@sentry/react@10.53.1(react@19.2.6)':
     dependencies:
-      '@sentry/browser': 10.52.0
-      '@sentry/core': 10.52.0
+      '@sentry/browser': 10.53.1
+      '@sentry/core': 10.53.1
       react: 19.2.6
 
   '@sinclair/typebox@0.34.49': {}
@@ -6703,6 +6698,10 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
+  '@types/node@24.12.4':
+    dependencies:
+      undici-types: 7.16.0
+
   '@types/parse-json@4.0.2': {}
 
   '@types/pluralize@0.0.33': {}
@@ -6845,7 +6844,6 @@ snapshots:
       debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   agent-base@7.1.4: {}
 
@@ -6918,13 +6916,15 @@ snapshots:
     dependencies:
       possible-typed-array-names: 1.1.0
 
-  axios@1.16.0:
+  axios@1.16.1:
     dependencies:
       follow-redirects: 1.16.0
       form-data: 4.0.5
+      https-proxy-agent: 5.0.1
       proxy-from-env: 2.1.0
     transitivePeerDependencies:
       - debug
+      - supports-color
 
   babel-jest@30.4.1(@babel/core@7.29.0):
     dependencies:
@@ -7517,7 +7517,7 @@ snapshots:
       locate-path: 5.0.0
       path-exists: 4.0.0
 
-  firebase-admin@13.9.0:
+  firebase-admin@13.10.0:
     dependencies:
       '@fastify/busboy': 3.2.0
       '@firebase/database-compat': 2.1.4
@@ -7527,8 +7527,6 @@ snapshots:
       google-auth-library: 10.6.2
       jsonwebtoken: 9.0.3
       jwks-rsa: 3.2.2
-      node-forge: 1.4.0
-      uuid: 11.1.1
     optionalDependencies:
       '@google-cloud/firestore': 7.11.6
       '@google-cloud/storage': 7.19.0
@@ -7878,7 +7876,6 @@ snapshots:
       debug: 4.4.3(supports-color@5.5.0)
     transitivePeerDependencies:
       - supports-color
-    optional: true
 
   https-proxy-agent@7.0.6:
     dependencies:
@@ -8141,7 +8138,7 @@ snapshots:
       - babel-plugin-macros
       - supports-color
 
-  jest-cli@30.4.2(@types/node@24.12.3)(babel-plugin-macros@3.1.0):
+  jest-cli@30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0):
     dependencies:
       '@jest/core': 30.4.2(babel-plugin-macros@3.1.0)
       '@jest/test-result': 30.4.1
@@ -8149,7 +8146,7 @@ snapshots:
       chalk: 4.1.2
       exit-x: 0.2.2
       import-local: 3.2.0
-      jest-config: 30.4.2(@types/node@24.12.3)(babel-plugin-macros@3.1.0)
+      jest-config: 30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0)
       jest-util: 30.4.1
       jest-validate: 30.4.1
       yargs: 17.7.2
@@ -8187,6 +8184,37 @@ snapshots:
       strip-json-comments: 3.1.1
     optionalDependencies:
       '@types/node': 24.12.3
+    transitivePeerDependencies:
+      - babel-plugin-macros
+      - supports-color
+
+  jest-config@30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0):
+    dependencies:
+      '@babel/core': 7.29.0
+      '@jest/get-type': 30.1.0
+      '@jest/pattern': 30.4.0
+      '@jest/test-sequencer': 30.4.1
+      '@jest/types': 30.4.1
+      babel-jest: 30.4.1(@babel/core@7.29.0)
+      chalk: 4.1.2
+      ci-info: 4.4.0
+      deepmerge: 4.3.1
+      glob: 10.5.0
+      graceful-fs: 4.2.11
+      jest-circus: 30.4.2(babel-plugin-macros@3.1.0)
+      jest-docblock: 30.4.0
+      jest-environment-node: 30.4.1
+      jest-regex-util: 30.4.0
+      jest-resolve: 30.4.1
+      jest-runner: 30.4.2
+      jest-util: 30.4.1
+      jest-validate: 30.4.1
+      parse-json: 5.2.0
+      pretty-format: 30.4.1
+      slash: 3.0.0
+      strip-json-comments: 3.1.1
+    optionalDependencies:
+      '@types/node': 24.12.4
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -8407,12 +8435,12 @@ snapshots:
       merge-stream: 2.0.0
       supports-color: 8.1.1
 
-  jest@30.4.2(@types/node@24.12.3)(babel-plugin-macros@3.1.0):
+  jest@30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0):
     dependencies:
       '@jest/core': 30.4.2(babel-plugin-macros@3.1.0)
       '@jest/types': 30.4.1
       import-local: 3.2.0
-      jest-cli: 30.4.2(@types/node@24.12.3)(babel-plugin-macros@3.1.0)
+      jest-cli: 30.4.2(@types/node@24.12.4)(babel-plugin-macros@3.1.0)
     transitivePeerDependencies:
       - '@types/node'
       - babel-plugin-macros
@@ -8656,8 +8684,6 @@ snapshots:
       data-uri-to-buffer: 4.0.1
       fetch-blob: 3.2.0
       formdata-polyfill: 4.0.10
-
-  node-forge@1.4.0: {}
 
   node-int64@0.4.0: {}
 
@@ -9605,8 +9631,6 @@ snapshots:
 
   util-deprecate@1.0.2:
     optional: true
-
-  uuid@11.1.1: {}
 
   uuid@14.0.0: {}
 
