@@ -10,8 +10,7 @@
       "groupSlug": "all-minor-patch",
       "groupName": "all non-major dependencies",
       "schedule": ["before 6:00am on Monday"],
-      "automerge": true,
-      "matchPackageNames": ["*"]
+      "automerge": true
     },
     {
       "matchUpdateTypes": ["major"],
