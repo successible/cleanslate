@@ -8,6 +8,8 @@
       "!**/migrations",
       "!**/node_modules",
       "!**/src/.next",
+      "!**/src/assets",
+      "!**/src/public/favicon.svg",
       "!**/src/out",
       "!**/src/next-env.d.ts",
       "!**/src/tsconfig.json"
@@ -32,6 +34,9 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "a11y": {
+        "noAmbiguousAnchorText": "off"
+      },
       "correctness": {
         "useExhaustiveDependencies": "off",
         "useUniqueElementIds": "off"
