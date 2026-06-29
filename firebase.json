@@ -1,6 +1,6 @@
 {
   "functions": {
-    "runtime": "nodejs24",
+    "runtime": "nodejs22",
     "predeploy": ["cd functions && npm install"]
   }
 }
