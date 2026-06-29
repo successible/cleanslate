@@ -1,7 +1,7 @@
-const functions = require('firebase-functions')
+const functions = require('firebase-functions/v1')
 const admin = require('firebase-admin')
 
-admin.initializeApp(functions.config().firebase)
+admin.initializeApp()
 
 exports.processSignup = functions.auth.user().onCreate((user) => {
   const customClaims = {
