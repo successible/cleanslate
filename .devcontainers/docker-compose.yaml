@@ -1,0 +1,30 @@
+services:
+  database:
+    image: postgres:15.18
+    restart: always
+    ports:
+      - "${DOCKER_HOST_IP:-127.0.0.1}:${DB_PORT}:5432"
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - cleanslate:/var/lib/postgresql/data
+
+  graphql-engine:
+    image: hasura/graphql-engine:latest
+    restart: always
+    ports:
+      - "${DOCKER_HOST_IP:-127.0.0.1}:${HASURA_PORT}:8080"
+    depends_on:
+      - "database"
+    environment:
+      HASURA_GRAPHQL_ADMIN_SECRET: ${HASURA_GRAPHQL_ADMIN_SECRET}
+      HASURA_GRAPHQL_JWT_SECRET: ${HASURA_GRAPHQL_JWT_SECRET}
+      HASURA_GRAPHQL_DATABASE_URL: ${HASURA_GRAPHQL_DATABASE_URL}
+
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+volumes:
+  cleanslate:

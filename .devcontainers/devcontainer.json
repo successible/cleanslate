@@ -1,0 +1,4 @@
+{
+    "name": "cleanslate-dev",
+    "dockerComposeFile": "docker-compose.yml",
+}
