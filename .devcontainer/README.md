@@ -24,4 +24,4 @@ When in the container, use the specific devcontainer script `start-dev.sh`.
 
 This is a dev container specific implementation of `dev.sh`.
 
-After successful execution of `start-dev.sh`, you can access at [https://localhost:8443]
+After successful execution of `start-dev.sh`, you can access at the client at [https://localhost:8443].

@@ -7,8 +7,9 @@ pkill -9 -f "next/dist/bin/next" || true
 pkill -9 -f "next-server" || true
 pkill -9 -f "next-router-worker" || true
 pkill -9 -f "nodemon/bin/nodemon" || true
-pkill -9 -f "server.js" || true
+pkill -9 -f "src/server.js" || true
 pkill -9 -f "typescript/bin/tsc" || true
+caddy stop || true
 
 set -a # automatically export all variables
 source .devcontainer/.env
@@ -16,7 +17,7 @@ set +a
 
 export HASURA_ENDPOINT="http://graphql-engine:8080"
 
-echo "Stopping previous Clean Slate stack..."
+echo "Stopping previous Clean Slate Dev stack..."
 docker compose -f docker-compose-dev.yml \
     -f .devcontainer/docker-compose.override.yml \
     down --remove-orphans || true
@@ -50,16 +51,6 @@ export NODE_OPTIONS="--max-old-space-size=4096"
 
 (cd src && ((npx next dev --webpack) & (npx nodemon server.js))) & sleep 5
 
-
-echo "Waiting for Next..."
-
-until curl -sf http://127.0.0.1:3000 >/dev/null; do
-    sleep 1
-done
-
 echo "Starting Caddy..."
-
-echo "=> Starting Caddy..."
-
 # using run instead of start lets us kill caddy when we kill start-dev.sh
 caddy run -c .devcontainer/Caddyfile.container --adapter caddyfile
