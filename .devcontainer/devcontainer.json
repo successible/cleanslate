@@ -1,0 +1,69 @@
+{
+  "name": "Clean Slate Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "node",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/cleanslate,type=bind",
+  "workspaceFolder": "/workspaces/cleanslate",
+  "runArgs": [
+    "--init"
+  ],
+  "mounts": [
+    {
+      "source": "cleanslate-node-modules",
+      "target": "/workspaces/cleanslate/node_modules",
+      "type": "volume",
+      "consistency": "delegated"
+    },
+    {
+      "source": "cleanslate-pnpm-store",
+      "target": "/home/node/.local/share/pnpm/store",
+      "type": "volume",
+      "consistency": "delegated"
+    },
+      {
+        "source": "/var/run/docker.sock",
+        "target": "/var/run/docker.sock",
+        "type": "bind"
+      }
+  ],
+  "forwardPorts": [
+    3000
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js"
+    },
+    "8080": {
+      "label": "Hasura API"
+    },
+    "9695": {
+      "label": "Hasura Console"
+    },
+    "1270": {
+      "label": "PostgreSQL"
+    }
+  },
+  "initializeCommand": ".devcontainer/detect-runtime.sh",
+  "postCreateCommand": "sudo chown -R node:node /home/node/.local/share/pnpm /workspaces/cleanslate/node_modules && pnpm install",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "biomejs.biome",
+        "bradlc.vscode-tailwindcss",
+        "ms-azuretools.vscode-docker",
+        "GraphQL.vscode-graphql"
+      ],
+
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome"
+      }
+    }
+  },
+  "containerEnv": {
+    "NODE_ENV": "development"
+  }
+}
