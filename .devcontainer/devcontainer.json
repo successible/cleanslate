@@ -7,46 +7,40 @@
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/cleanslate,type=bind",
   "workspaceFolder": "/workspaces/cleanslate",
   "runArgs": [
-    "--init"
+    "--init",
+    "--network=cleanslate",
+    "--memory=4g",
+    "--memory-swap=10g"
   ],
+  "initializeCommand": ".devcontainer/create-network.sh",
+  "postCreateCommand": "pnpm install",
   "mounts": [
-    {
-      "source": "cleanslate-node-modules",
-      "target": "/workspaces/cleanslate/node_modules",
-      "type": "volume",
-      "consistency": "delegated"
-    },
     {
       "source": "cleanslate-pnpm-store",
       "target": "/home/node/.local/share/pnpm/store",
       "type": "volume",
       "consistency": "delegated"
     },
-      {
-        "source": "/var/run/docker.sock",
-        "target": "/var/run/docker.sock",
-        "type": "bind"
-      }
+    {
+      "source": "/var/run/docker.sock",
+      "target": "/var/run/docker.sock",
+      "type": "bind"
+    }
   ],
   "forwardPorts": [
-    3000
+    3000,
+    3001,
+    8443
   ],
   "portsAttributes": {
     "3000": {
-      "label": "Next.js"
+      "label": "Next.js",
+      "onAutoForward": "openBrowser"
     },
-    "8080": {
-      "label": "Hasura API"
-    },
-    "9695": {
-      "label": "Hasura Console"
-    },
-    "1270": {
-      "label": "PostgreSQL"
+    "3001": {
+      "label": "Auth server"
     }
   },
-  "initializeCommand": ".devcontainer/detect-runtime.sh",
-  "postCreateCommand": "sudo chown -R node:node /home/node/.local/share/pnpm /workspaces/cleanslate/node_modules && pnpm install",
   "customizations": {
     "vscode": {
       "extensions": [

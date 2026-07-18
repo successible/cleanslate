@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/typescript-node:22-bookworm
+FROM mcr.microsoft.com/devcontainers/typescript-node:24-trixie
 
 ARG USERNAME=node
 
@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y \
     curl \
     unzip \
     ca-certificates \
-    gnupg \
+    gnupg2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Docker CLI
@@ -32,6 +32,11 @@ RUN curl -fsSL https://dl.cloudsmith.io/public/caddy/stable/gpg.key \
     && apt-get update \
     && apt-get install -y caddy \
     && rm -rf /var/lib/apt/lists/*
+
+# Let caddy run as the node user
+RUN mkdir -p /home/node/.config/caddy \
+    /home/node/.local/share/caddy \
+    && chown -R node:node /home/node/.config /home/node/.local
 
 # Install pnpm
 RUN corepack enable && corepack prepare pnpm@latest --activate
