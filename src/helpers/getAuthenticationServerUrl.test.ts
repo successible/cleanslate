@@ -2,10 +2,10 @@
 Object.defineProperty(global, 'window', {
   value: {
     location: { hostname: 'localhost:3000' },
-    localStorage: {}
+    localStorage: {},
   },
   writable: true,
-  configurable: true
+  configurable: true,
 })
 
 describe('getAuthenticationUrl', () => {
@@ -17,14 +17,14 @@ describe('getAuthenticationUrl', () => {
     const customHost = 'example.com'
     process.env.NEXT_PUBLIC_AUTH_HOST = customHost
 
-    expect(require('./getAuthenticationServerUrl').getAuthenticationUrl()).toEqual(
-        `https://${customHost}/auth`
-    )
+    expect(
+      require('./getAuthenticationServerUrl').getAuthenticationUrl()
+    ).toEqual(`https://${customHost}/auth`)
   })
 
   it('should use window.location.hostname when AUTH_HOST is not set', () => {
-    expect(require('./getAuthenticationServerUrl').getAuthenticationUrl()).toEqual(
-      `https://localhost:3000/auth`
-    )
+    expect(
+      require('./getAuthenticationServerUrl').getAuthenticationUrl()
+    ).toEqual(`https://localhost:3000/auth`)
   })
 })

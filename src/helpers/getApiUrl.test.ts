@@ -2,10 +2,10 @@
 Object.defineProperty(global, 'window', {
   value: {
     location: { hostname: 'localhost:3000' },
-    localStorage: {}
+    localStorage: {},
   },
   writable: true,
-  configurable: true
+  configurable: true,
 })
 
 import { getApiUrl } from './getApiUrl'
@@ -21,7 +21,7 @@ describe('getApiUrl', () => {
 
     expect(getApiUrl()).toEqual([
       `https://${customHost}/v1/graphql`,
-      `wss://${customHost}/v1/graphql`
+      `wss://${customHost}/v1/graphql`,
     ])
   })
 
@@ -30,7 +30,7 @@ describe('getApiUrl', () => {
 
     expect(result).toEqual([
       `https://localhost:3000/v1/graphql`,
-      `wss://localhost:3000/v1/graphql`
+      `wss://localhost:3000/v1/graphql`,
     ])
   })
 
