@@ -1,4 +1,4 @@
-import { evaluate } from 'mathjs'
+import { evaluate } from './math'
 
 export const convertToNumber = (amount: string | number): number | null => {
   if (amount === '') {
