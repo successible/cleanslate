@@ -13,6 +13,7 @@ RUN npm install -g npm@latest
 
 COPY package.json .
 COPY pnpm-lock.yaml .
+COPY pnpm-workspace.yaml .
 RUN ["npm", "install", "pnpm", "-g"]
 RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
 
