@@ -9,27 +9,27 @@ const limitedEvaluate = math.evaluate
 math.import(
   {
     // most important (hardly any functional impact)
-    import: function () {
+    import: () => {
       throw new Error('Function import is disabled')
     },
-    createUnit: function () {
+    createUnit: () => {
       throw new Error('Function createUnit is disabled')
     },
-    reviver: function () {
+    reviver: () => {
       throw new Error('Function reviver is disabled')
     },
 
     // extra (has functional impact) - evaluate left enabled per request
-    parse: function () {
+    parse: () => {
       throw new Error('Function parse is disabled')
     },
-    simplify: function () {
+    simplify: () => {
       throw new Error('Function simplify is disabled')
     },
-    derivative: function () {
+    derivative: () => {
       throw new Error('Function derivative is disabled')
     },
-    resolve: function () {
+    resolve: () => {
       throw new Error('Function resolve is disabled')
     },
   },

@@ -9,10 +9,10 @@ import {
   type WeightUnit,
   weightUnits,
 } from '../../../constants/units'
+import { convertToNumber } from '../../../helpers/convertToNumber'
 import { addFoodToCloud } from '../../../helpers/Food/addFoodToCloud'
 import { updateFoodOnCloud } from '../../../helpers/Food/updateFoodOnCloud'
 import { isNumeric } from '../../../helpers/isNumeric'
-import { convertToNumber} from '../../../helpers/convertToNumber'
 import type { Food } from '../../../models/food'
 import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'

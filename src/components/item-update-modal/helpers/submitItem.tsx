@@ -1,6 +1,6 @@
 import type { Unit } from '../../../constants/units'
+import { convertToNumber } from '../../../helpers/convertToNumber'
 import { handleError } from '../../../helpers/handleError'
-import { convertToNumber} from '../../../helpers/convertToNumber'
 import type { Log, Meal } from '../../../models/log'
 import type { AllEvents } from '../../../store/store'
 import type { Dispatch } from '../../../store/types'

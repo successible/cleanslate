@@ -1,5 +1,5 @@
 import type { VolumeUnit } from '../../../../constants/units'
-import { convertToNumber} from '../../../../helpers/convertToNumber'
+import { convertToNumber } from '../../../../helpers/convertToNumber'
 import { mapTbspToOtherVolumeUnit } from '../../../macros/helpers/mapTbspToOtherVolumeUnit'
 
 export const getAdjustedVolumeAmount = (

@@ -1,9 +1,9 @@
 import React from 'react'
+import { convertToNumber } from '../../helpers/convertToNumber'
 import { updateQuickLogOnCloud } from '../../helpers/quick-log/updateQuickLogOnCloud'
 import type { Profile } from '../../models/profile'
 import type { AllEvents } from '../../store/store'
 import type { Dispatch } from '../../store/types'
-import { convertToNumber } from '../../helpers/convertToNumber'
 import { useStoreon } from '../../storeon'
 import { createDefaultItem } from '../item/helpers/createDefaultItem'
 import type { CommonItem } from '../item/types'
@@ -39,7 +39,7 @@ export const QuickLogUpdateModal: React.FC<props> = ({ item, profile }) => {
             set: {
               calories: convertToNumber(calories ?? 0) ?? 0,
               name,
-              protein : convertToNumber(protein ?? 0) ?? 0,
+              protein: convertToNumber(protein ?? 0) ?? 0,
             },
           },
           () => {

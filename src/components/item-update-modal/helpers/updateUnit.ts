@@ -1,5 +1,5 @@
 import type { Unit } from '../../../constants/units'
-import { convertToNumber} from '../../../helpers/convertToNumber'
+import { convertToNumber } from '../../../helpers/convertToNumber'
 import { convertItemToIngredient } from '../../item/helpers/convertItemToIngredient'
 import { convertItemToLog } from '../../item/helpers/convertItemToLog'
 import type { CommonItem } from '../../item/types'

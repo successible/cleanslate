@@ -2,20 +2,20 @@ import { evaluate } from './math'
 
 export const convertToNumber = (amount: string | number): number | null => {
   if (amount === '') {
-    return null;
+    return null
   }
   if (typeof amount === 'number') {
-    return amount;
+    return amount
   }
   try {
     const amountToUse = amount.replaceAll(',', '.')
-    const value = evaluate(amountToUse);
+    const value = evaluate(amountToUse)
 
     if (Number.isNaN(value) || value === Number.POSITIVE_INFINITY) {
-      return null;
+      return null
     }
-    return value;
+    return value
   } catch {
-    return null;
+    return null
   }
 }

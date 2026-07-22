@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { type Unit, volumeUnits, weightUnits } from '../../constants/units'
-import { convertToNumber} from '../../helpers/convertToNumber'
+import { convertToNumber } from '../../helpers/convertToNumber'
 import { round } from '../../helpers/round'
 import { zipObject } from '../../helpers/zipObject'
 import type { Profile } from '../../models/profile'

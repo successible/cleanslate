@@ -7,7 +7,7 @@ import {
   type WeightUnit,
   weightUnits,
 } from '../../../constants/units'
-import { convertToNumber} from '../../../helpers/convertToNumber'
+import { convertToNumber } from '../../../helpers/convertToNumber'
 import type { Food } from '../../../models/food'
 import type { Ingredient } from '../../../models/ingredient'
 import type { Profile } from '../../../models/profile'
