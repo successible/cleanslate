@@ -1,0 +1,13 @@
+services:
+  database:
+    networks:
+      - cleanslate
+
+  graphql-engine:
+    networks:
+      - cleanslate
+
+networks:
+  cleanslate:
+    name: cleanslate
+    external: true
