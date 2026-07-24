@@ -3,6 +3,7 @@ import express from 'express'
 import helmet from 'helmet'
 import * as jose from 'jose'
 import logger from 'pino-http'
+import { getGraphqlUrl } from './helpers/getGraphqlUrl'
 
 type AnyResponse = any
 
@@ -38,7 +39,7 @@ const port = 3001
  * Simply because you are also passing X-Hasura-Admin-Secret at the same time.
  * In this scenario, you would have the request made with admin permissions, effectively.
  */
-const graphqlUrl = `${process.env.HASURA_ENDPOINT}/v1/graphql`
+const graphqlUrl = getGraphqlUrl(isProduction)
 
 const getProfiles = async (token: string) => {
   const document = `

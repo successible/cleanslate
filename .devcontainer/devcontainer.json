@@ -45,7 +45,6 @@
       "extensions": [
         "dbaeumer.vscode-eslint",
         "biomejs.biome",
-        "bradlc.vscode-tailwindcss",
         "ms-azuretools.vscode-docker",
         "GraphQL.vscode-graphql"
       ],
