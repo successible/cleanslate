@@ -28,7 +28,6 @@ isProduction && app.use(helmet())
 
 const port = 3001
 
-
 /*
  * We need server to server communication (over HTTP) here.
  * In other words, the authentication server container to Hasura container on production.
