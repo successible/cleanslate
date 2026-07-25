@@ -250,12 +250,8 @@ The initialization process will create the `cleanslate` network for the containe
 
 ### Use
 
-When in the container, use the specific devcontainer script `start-dev.sh`.
+When in the container, use the specific devcontainer script to launch the locally within the devcontainer: `pnpm dev-container`.
 
-```shell
-./.devcontainer/start-dev.sh`
-```
+This is a dev container specific implementation of `pnpm dev`.
 
-This is a dev container specific implementation of `dev.sh`.
-
-After successful execution of `start-dev.sh`, you can access at the client at [https://localhost:8443].
+After successful execution of `pnpm dev-container`, you can access at the client at [https://localhost:8443].

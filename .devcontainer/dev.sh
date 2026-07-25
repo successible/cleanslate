@@ -9,7 +9,6 @@ pkill -9 -f "next-router-worker" || true
 pkill -9 -f "nodemon/bin/nodemon" || true
 pkill -9 -f "src/server.js" || true
 pkill -9 -f "typescript/bin/tsc" || true
-caddy stop || true
 
 set -a # automatically export all variables
 source .devcontainer/.env

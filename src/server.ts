@@ -3,7 +3,6 @@ import express from 'express'
 import helmet from 'helmet'
 import * as jose from 'jose'
 import logger from 'pino-http'
-import { getGraphqlUrl } from './helpers/getGraphqlUrl'
 
 type AnyResponse = any
 
@@ -29,6 +28,7 @@ isProduction && app.use(helmet())
 
 const port = 3001
 
+
 /*
  * We need server to server communication (over HTTP) here.
  * In other words, the authentication server container to Hasura container on production.
@@ -39,7 +39,13 @@ const port = 3001
  * Simply because you are also passing X-Hasura-Admin-Secret at the same time.
  * In this scenario, you would have the request made with admin permissions, effectively.
  */
-const graphqlUrl = getGraphqlUrl(isProduction)
+var host = 'localhost:8080'
+if (process.env.HASURA_HOST) {
+  host = process.env.HASURA_HOST
+} else if (isProduction) {
+  host = 'graphql-engine:8080'
+}
+const graphqlUrl = `http://${host}/v1/graphql`
 
 const getProfiles = async (token: string) => {
   const document = `
