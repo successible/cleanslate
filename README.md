@@ -42,7 +42,7 @@ Clean Slate is licensed under Apache 2.0 and is open source!
 
 ## How do I host Clean Slate?
 
-For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one it does depends on the authentication system you choose.
+For the vast majority of users, hosting Clean Slate is straightforward. You just need a Linux server with Bash, Git, Docker, and Docker Compose. On it, you will run two bash scripts: `configuration.sh` and `deploy.sh`. The first collects environmental variables and makes a `Caddyfile` and `.env`. The second clones down the repository and does one of two things. Which one depends on the authentication system you choose.
 
 1. Local Authentication (Default & Easy). Pulls the images (and PostgreSQL). Starts Caddy.
 2. Firebase Authentication (Complex). Builds the images locally (except PostgreSQL). Starts Caddy.
@@ -147,11 +147,11 @@ However, Firebase is too complex for the most common hosting scenario. That is a
 
 ### Optional: Authentication via Firebase
 
-Firebase needs to be configured in three places:
+Firebase is configured in three places:
 
-- Your local machine (Local)
-- Your production server (Production)
-- The Firebase console (Web)
+1. Your local machine (Local)
+2. Your production server (Production)
+3. The Firebase console (Web)
 
 Here is how you do it:
 
@@ -204,25 +204,27 @@ Run Clean Slate locally, make changes, and then submit a pull request on GitHub!
 
 > Note: Clean Slate is written in [React](https://reactjs.org) and [TypeScript](https://www.typescriptlang.org), with [Next.js](https://github.com/vercel/next.js) as the framework. It uses [Hasura](https://hasura.io) as the backend and [PostgreSQL](https://www.postgresql.org) as the database.
 
-Here is how to run Clean Slate locally:
+Broadly speaking, there are two ways to run Clean Slate locally.
 
-- Install the following and make sure Docker Desktop is running:
-  - [Git](https://git-scm.com/downloads)
-  - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
-  - [Caddy](https://caddyserver.com/docs/install).
-  - [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/)
-  - [Node.js (LTS)](https://nodejs.org/en/)
-  - [pnpm](https://pnpm.io/installation)
-  - [Caddy](https://caddyserver.com/)
-  - [jq](https://jqlang.org/download/)
+The first is by installing everything on your local machine directly.
 
-- Run `pnpm dev` after cloning down the repository. This will spin up these servers:
-  - Hasura (API): `http://localhost:8080`.
-  - Hasura (Console): `http://localhost:9695`.
-  - Next.js: `http://localhost:3000`.
-  - PostgreSQL: `http://localhost:1270`
+- [Git](https://git-scm.com/downloads)
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Caddy](https://caddyserver.com/docs/install).
+- [Hasura CLI](https://hasura.io/docs/latest/hasura-cli/commands/hasura_console/)
+- [Node.js (LTS)](https://nodejs.org/en/)
+- [pnpm](https://pnpm.io/installation)
+- [Caddy](https://caddyserver.com/)
+- [jq](https://jqlang.org/download/)
 
-- Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
+Run `pnpm dev` after cloning down the repository and starting Docker Desktop. This will spin up these servers:
+
+- Hasura (API): `http://localhost:8080`.
+- Hasura (Console): `http://localhost:9695`.
+- Next.js: `http://localhost:3000`.
+- PostgreSQL: `http://localhost:1270`
+
+Navigate to `https://localhost` and login with token `22140ebd-0d06-46cd-8d44-aff5cb7e7101`.
 
 > Note: To run Clean Slate with Firebase, do all the `Local` and `Web` outlined above. Install [jq](https://jqlang.github.io/jq/download/) locally. Finally, tweak the development command. Run `export FIREBASE='true'; pnpm dev` instead.
 
@@ -230,28 +232,14 @@ Here is how to run Clean Slate locally:
 
 > Note: To test Clean Slate on a mobile device, we recommend `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
+You can also run Clean Slate locally using Dev Containers. The configuration for these is located in the `.devcontainer` folder. When opening your IDE, it should auto-detect that you can open it in a dev container. At this point, it will start creation of the container. The initialization will then create the `cleanslate` network for the containers.
+
+Finally, when inside the container:
+
+- Use the devcontainer script (`pnpm dev-container`) to launch it locally. (This is a dev container specific implementation of `pnpm dev`).
+
+- After running `pnpm dev-container`, you can access it at [https://localhost:8443].
+
+> Note: If you're using Podman, heads up! Make sure you have configured [docker compatibility](https://podman-desktop.io/docs/migrating-from-docker/managing-docker-compatibility). Also, make sure that your Podman machine has at least eight gigabytes of memory.
+
 [^1]: https://docs.docker.com/engine/install/
-
-### Using the Dev Container
-
-#### Setup
-
-##### Podman
-
-If you're using podman, make sure you have configured [docker compatibility](https://podman-desktop.io/docs/migrating-from-docker/managing-docker-compatibility).
-
-Additionally, make sure that your podman machine has at least 8 Gb of memory
-
-#### IDE
-
-When opening your IDE, it should auto detect that you can open it in a dev container, in which point it will start creation of the container.
-
-The initialization process will create the `cleanslate` network for the containers.
-
-### Use
-
-When in the container, use the specific devcontainer script to launch the locally within the devcontainer: `pnpm dev-container`.
-
-This is a dev container specific implementation of `pnpm dev`.
-
-After successful execution of `pnpm dev-container`, you can access at the client at [https://localhost:8443].
