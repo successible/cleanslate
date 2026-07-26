@@ -1,0 +1,61 @@
+{
+  "name": "Clean Slate Development",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "remoteUser": "node",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/cleanslate,type=bind",
+  "workspaceFolder": "/workspaces/cleanslate",
+  "runArgs": [
+    "--init",
+    "--network=cleanslate",
+    "--memory=4g",
+    "--memory-swap=10g"
+  ],
+  "initializeCommand": ".devcontainer/create-network.sh",
+  "postCreateCommand": "pnpm install",
+  "mounts": [
+    {
+      "source": "cleanslate-dev-user",
+      "target": "/home/node",
+      "type": "volume"
+    },
+    {
+      "source": "/var/run/docker.sock",
+      "target": "/var/run/docker.sock",
+      "type": "bind"
+    }
+  ],
+  "forwardPorts": [
+    3000,
+    3001,
+    8443
+  ],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js",
+      "onAutoForward": "openBrowser"
+    },
+    "3001": {
+      "label": "Auth server"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "biomejs.biome",
+        "ms-azuretools.vscode-docker",
+        "GraphQL.vscode-graphql"
+      ],
+
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "biomejs.biome"
+      }
+    }
+  },
+  "containerEnv": {
+    "NODE_ENV": "development"
+  }
+}

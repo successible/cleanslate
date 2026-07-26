@@ -27,18 +27,24 @@ app.use(logger(isDevelopment ? { transport: { target: 'pino-pretty' } } : {}))
 isProduction && app.use(helmet())
 
 const port = 3001
-const graphqlUrl = isProduction
-  ? // We need server to server communication (over HTTP) here.
-    // In other words, the authentication server container to Hasura container on production.
-    // And the authentication server to Hasura container on development.
-    // As the authentication server is not in a container on development.
-    // If you have the authentication server go through Caddy to the Hasura server, it will strip the X-Hasura-Role
-    // This is usually exactly what you want for security! However, for the /auth/graphql route
-    // It is a problem, as stripping out X-Hasura-Role will have Hasura default to the admin role
-    // Simply because you are also passing X-Hasura-Admin-Secret at the same time.
-    // In this scenario, you would have the request made with admin permissions, effectively.
-    'http://graphql-server:8080/v1/graphql'
-  : 'http://localhost:8080/v1/graphql'
+
+/*
+ * We need server to server communication (over HTTP) here.
+ * In other words, the authentication server container to Hasura container on production.
+ * And the authentication server container to Hasura container on development.
+ * If you have the authentication server go through Caddy to the Hasura server, it will strip the X-Hasura-Role
+ * This is usually exactly what you want for security! However, for the /auth/graphql route
+ * It is a problem, as stripping out X-Hasura-Role will have Hasura default to the admin role
+ * Simply because you are also passing X-Hasura-Admin-Secret at the same time.
+ * In this scenario, you would have the request made with admin permissions, effectively.
+ */
+var host = 'localhost:8080'
+if (process.env.HASURA_HOST) {
+  host = process.env.HASURA_HOST
+} else if (isProduction) {
+  host = 'graphql-engine:8080'
+}
+const graphqlUrl = `http://${host}/v1/graphql`
 
 const getProfiles = async (token: string) => {
   const document = `

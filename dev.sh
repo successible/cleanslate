@@ -37,6 +37,8 @@ if [[ $CI != "true" ]]; then
   export HASURA_CONSOLE_PORT='9695'
   export HASURA_GRAPHQL_ADMIN_SECRET='secret'
   export HASURA_GRAPHQL_DATABASE_URL="postgres://postgres:password@database:5432/postgres"
+  export HASURA_GRAPHQL_ENABLE_CONSOLE="false"
+  export HASURA_GRAPHQL_ENABLE_TELEMETRY="false"
   export HASURA_PORT='8080'
   export NEXT_PUBLIC_LEGAL_LINK="XXX"
   export NEXT_PUBLIC_LOGIN_WITH_APPLE="true"
@@ -44,11 +46,10 @@ if [[ $CI != "true" ]]; then
   export NEXT_PUBLIC_LOGIN_WITH_GITHUB="true"
   export NEXT_PUBLIC_LOGIN_WITH_GOOGLE="true"
   export NODE_ENV="development"
-  
 
   if [[ $FIREBASE == "true" ]]; then
 
-    abspath() {                                               
+    abspath() {
       cd "$(dirname "$1")"
       printf "%s/%s\n" "$(pwd)" "$(basename "$1")"
       cd "$OLDPWD"
@@ -61,7 +62,6 @@ if [[ $CI != "true" ]]; then
     export HASURA_GRAPHQL_JWT_SECRET=$(printf "$HASURA_GRAPHQL_JWT_SECRET" $FIREBASE_PROJECT_ID https://securetoken.google.com/$FIREBASE_PROJECT_ID)
 
   fi
-
 
   echo "=> Spin up PostgreSQL and Hasura..."
   docker compose -f docker-compose-dev.yml down -v --remove-orphans -t 0
@@ -79,6 +79,5 @@ if [[ $CI != "true" ]]; then
 fi
 
 # Start the server!
-
-(cd src && ((npx next dev --webpack) & (npx nodemon server.js))) & sleep 5 
+(cd src && ((npx next dev --webpack) & (npx nodemon server.js))) & sleep 5
 sudo caddy start -c Caddyfile.dev --adapter caddyfile

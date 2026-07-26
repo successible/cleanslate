@@ -231,3 +231,27 @@ Here is how to run Clean Slate locally:
 > Note: To test Clean Slate on a mobile device, we recommend `ngrok`. Run `ngrok http --host-header localhost https://localhost:443` in another terminal.
 
 [^1]: https://docs.docker.com/engine/install/
+
+### Using the Dev Container
+
+#### Setup
+
+##### Podman
+
+If you're using podman, make sure you have configured [docker compatibility](https://podman-desktop.io/docs/migrating-from-docker/managing-docker-compatibility).
+
+Additionally, make sure that your podman machine has at least 8 Gb of memory
+
+#### IDE
+
+When opening your IDE, it should auto detect that you can open it in a dev container, in which point it will start creation of the container.
+
+The initialization process will create the `cleanslate` network for the containers.
+
+### Use
+
+When in the container, use the specific devcontainer script to launch the locally within the devcontainer: `pnpm dev-container`.
+
+This is a dev container specific implementation of `pnpm dev`.
+
+After successful execution of `pnpm dev-container`, you can access at the client at [https://localhost:8443].

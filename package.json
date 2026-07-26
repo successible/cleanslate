@@ -6,6 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "pnpm install && bash dev.sh",
+    "dev-container": "pnpm install && bash ./.devcontainer/dev.sh",
     "lint": "cd src && npx tsc && npx biome check --fix --unsafe",
     "proxy": "bash proxy.sh",
     "test": "jest"
