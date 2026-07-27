@@ -12,10 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@apollo/client": "4.2.6",
+    "@apollo/client": "4.2.7",
     "@emotion/react": "11.14.0",
     "@maslick/koder": "1.3.2",
-    "@sentry/react": "10.65.0",
+    "@sentry/react": "10.67.0",
     "@types/express": "5.0.6",
     "@types/jest": "30.0.0",
     "@types/js-cookie": "3.0.6",
@@ -35,7 +35,7 @@
     "graphql": "16.14.2",
     "graphql-ws": "6.1.0",
     "helmet": "8.3.0",
-    "immer": "11.1.11",
+    "immer": "11.1.15",
     "jose": "6.2.3",
     "js-cookie": "3.0.8",
     "lodash-es": "4.18.1",
@@ -59,9 +59,9 @@
     "workbox-build": "7.4.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.3",
+    "@biomejs/biome": "2.5.4",
     "@jest/globals": "30.4.1",
-    "@swc/core": "1.15.43",
+    "@swc/core": "1.15.46",
     "@swc/jest": "0.2.39",
     "firebase-admin": "13.10.0",
     "jest": "30.4.2",
