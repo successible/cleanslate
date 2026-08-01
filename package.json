@@ -32,7 +32,7 @@
     "deepmerge": "4.3.1",
     "express": "5.2.1",
     "firebase": "12.16.0",
-    "graphql": "16.14.2",
+    "graphql": "17.0.2",
     "graphql-ws": "6.1.0",
     "helmet": "8.3.0",
     "immer": "11.1.15",
@@ -53,7 +53,7 @@
     "react-toastify": "11.1.0",
     "sass": "1.101.0",
     "traverse": "0.6.11",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "ua-parser-js": "2.0.10",
     "uuid": "14.0.1",
     "workbox-build": "7.4.1"
@@ -63,7 +63,7 @@
     "@jest/globals": "30.4.1",
     "@swc/core": "1.15.46",
     "@swc/jest": "0.2.39",
-    "firebase-admin": "13.10.0",
+    "firebase-admin": "14.2.0",
     "jest": "30.4.2",
     "nodemon": "3.1.14"
   }
