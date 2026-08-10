@@ -3,7 +3,7 @@ services:
     networks:
       - cleanslate
 
-  graphql-engine:
+  graphql-server:
     networks:
       - cleanslate
 

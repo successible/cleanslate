@@ -42,7 +42,7 @@ var host = 'localhost:8080'
 if (process.env.HASURA_HOST) {
   host = process.env.HASURA_HOST
 } else if (isProduction) {
-  host = 'graphql-engine:8080'
+  host = 'graphql-server:8080'
 }
 const graphqlUrl = `http://${host}/v1/graphql`
 

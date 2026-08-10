@@ -36,7 +36,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
-      graphql-engine:
+      graphql-server:
         image: hasura/graphql-engine:latest
         ports:
           - "8080:8080"

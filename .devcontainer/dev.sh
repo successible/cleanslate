@@ -14,13 +14,13 @@ set -a # automatically export all variables
 source .devcontainer/.env
 set +a
 
-export HASURA_ENDPOINT="http://graphql-engine:8080"
+export HASURA_ENDPOINT="http://graphql-server:8080"
 
 echo "Stopping previous Clean Slate Dev stack..."
 docker compose -f docker-compose-dev.yml \
     -f .devcontainer/docker-compose.override.yml \
     down --remove-orphans || true
-docker rm -f cleanslate-graphql-engine-1 2>/dev/null || true
+docker rm -f cleanslate-graphql-server-1 2>/dev/null || true
 
 echo "Waiting for ports to release..."
 sleep 2
