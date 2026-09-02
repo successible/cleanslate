@@ -53,7 +53,7 @@
     "react-toastify": "11.1.0",
     "sass": "1.103.1",
     "traverse": "0.6.11",
-    "typescript": "6.0.3",
+    "typescript": "7.0.2",
     "ua-parser-js": "2.0.10",
     "uuid": "14.0.2",
     "workbox-build": "7.4.1"
