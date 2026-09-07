@@ -14,7 +14,7 @@ RUN npm install -g npm@latest
 COPY package.json .
 COPY pnpm-lock.yaml .
 COPY pnpm-workspace.yaml .
-RUN ["npm", "install", "pnpm", "-g"]
+RUN ["npm", "install", "pnpm", "-g", "--allow-scripts=pnpm"]
 RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
 
 # Copy over the folders and files from /src needed to build Clean Slate
