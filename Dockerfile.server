@@ -11,7 +11,7 @@ COPY package.json .
 COPY pnpm-lock.yaml .
 COPY pnpm-workspace.yaml .
 
-RUN ["npm", "install", "pnpm", "-g"]
+RUN ["npm", "install", "pnpm", "-g", "--allow-scripts=pnpm"]
 RUN ["pnpm", "install", "--frozen-lockfile", "--prod"]
 
 COPY src/tsconfig.json tsconfig.json
