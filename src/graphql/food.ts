@@ -12,6 +12,7 @@ export const FOOD_FRAGMENT = gql`
     countToGram
     countToTbsp
     createdAt
+    customBarcode
     group
     id
     name

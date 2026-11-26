@@ -28,6 +28,7 @@ export class Food {
   preferredVolumeUnit: VolumeUnit | null
   preferredWeightUnit: WeightUnit | null
   openFoodFactsCode: string | null
+  customBarcode?: string | null
 
   // Foreign keys
   profile: string | null

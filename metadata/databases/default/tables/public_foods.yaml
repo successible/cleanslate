@@ -69,6 +69,7 @@ select_permissions:
         - countToGram
         - countToTbsp
         - createdAt
+        - customBarcode
         - groupName
         - id
         - name
@@ -101,6 +102,7 @@ update_permissions:
         - countName
         - countToGram
         - countToTbsp
+        - customBarcode
         - groupName
         - name
         - openFoodFactsCode

@@ -320,6 +320,12 @@ export const CustomFoodForm: React.FC<props> = ({ food }) => {
             </a>
           </div>
         </Explanation>
+          )}
+
+      {!food?.customBarcode && (
+        <button color="background">
+          Generate Barcode
+        </button>
       )}
 
       <button

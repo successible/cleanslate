@@ -14,7 +14,7 @@ CREATE TRIGGER "set_public_profiles_updatedAt"
 BEFORE UPDATE ON "public"."profiles"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_profiles_updatedAt" ON "public"."profiles" 
+COMMENT ON TRIGGER "set_public_profiles_updatedAt" ON "public"."profiles"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -63,7 +63,7 @@ CREATE TRIGGER "set_public_foods_updatedAt"
 BEFORE UPDATE ON "public"."foods"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_foods_updatedAt" ON "public"."foods" 
+COMMENT ON TRIGGER "set_public_foods_updatedAt" ON "public"."foods"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -91,7 +91,7 @@ CREATE TRIGGER "set_public_recipes_updatedAt"
 BEFORE UPDATE ON "public"."recipes"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_recipes_updatedAt" ON "public"."recipes" 
+COMMENT ON TRIGGER "set_public_recipes_updatedAt" ON "public"."recipes"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -110,7 +110,7 @@ CREATE TRIGGER "set_public_ingredients_updatedAt"
 BEFORE UPDATE ON "public"."ingredients"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_ingredients_updatedAt" ON "public"."ingredients" 
+COMMENT ON TRIGGER "set_public_ingredients_updatedAt" ON "public"."ingredients"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -144,7 +144,7 @@ CREATE TRIGGER "set_public_logs_updatedAt"
 BEFORE UPDATE ON "public"."logs"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_logs_updatedAt" ON "public"."logs" 
+COMMENT ON TRIGGER "set_public_logs_updatedAt" ON "public"."logs"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
@@ -163,7 +163,7 @@ CREATE TRIGGER "set_public_feedback_updatedAt"
 BEFORE UPDATE ON "public"."feedback"
 FOR EACH ROW
 EXECUTE PROCEDURE "public"."set_current_timestamp_updatedAt"();
-COMMENT ON TRIGGER "set_public_feedback_updatedAt" ON "public"."feedback" 
+COMMENT ON TRIGGER "set_public_feedback_updatedAt" ON "public"."feedback"
 IS 'trigger to set value of column "updatedAt" to current timestamp on row update';
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 

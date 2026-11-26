@@ -154,6 +154,7 @@ app.use((err: any, _req: any, res: any, _next: any): AnyResponse => {
   return res.status(500).send(String(err))
 })
 
-app.listen(port, () => {
+app.listen(port, (error) => {
+  if (error) throw error
   console.log(`Authentication server listening on http://localhost:${port}`)
 })
