@@ -1,8 +1,17 @@
 #!/bin/sh
-set -e
+# Make sure that the "cleanslate" network exists.
+# The initializeCommand in devcontainer.json runs this script on the host.
+set -eu
 
 if command -v docker >/dev/null 2>&1; then
-    docker network create cleanslate 2>/dev/null || true
+    engine=docker
 elif command -v podman >/dev/null 2>&1; then
-    podman network create cleanslate 2>/dev/null || true
+    engine=podman
+else
+    echo "Docker or Podman is necessary." >&2
+    exit 1
 fi
+
+# Create the network only if the engine cannot find it.
+"$engine" network inspect cleanslate >/dev/null 2>&1 ||
+    "$engine" network create cleanslate
