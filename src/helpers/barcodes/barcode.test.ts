@@ -16,40 +16,11 @@ jest.mock('../stringifyQuery', () => ({ stringifyQuery: (q: string) => q }))
 
 // Use require so that these modules load after jest.mock runs.
 const JsBarcode = require('jsbarcode').default
-const { getHasuraClient } = require('../getHasuraClient')
-const { assignBarcode } = require('./barcode') as typeof import('./barcode')
 const {
-  createCleanSlateBarcode,
   isCleanSlateBarcode,
   renderBarcode,
   resolveBarcode,
 } = require('./barcode') as typeof import('./barcode')
-
-describe('createCleanSlateBarcode', () => {
-  afterEach(() => {
-    jest.restoreAllMocks()
-  })
-
-  test.each([
-    [0, 'CS00000000'], // all zeros
-    [42, 'CS00000042'], // adds leading zeros
-    [99_999_999, 'CS99999999'], // largest eight-digit value
-    [100_000_000, 'CS00000000'], // returns to zero
-    [123_456_789, 'CS23456789'], // keeps the last eight digits
-    [4_294_967_295, 'CS94967295'], // largest Uint32 value
-  ])('converts random number %i to %s', (random, expected) => {
-    // mock the random number generation so we can get deterministic tests
-    const spy = jest
-      .spyOn(globalThis.crypto, 'getRandomValues')
-      .mockImplementation((array) => {
-        ;(array as Uint32Array)[0] = random
-        return array
-      })
-
-    expect(createCleanSlateBarcode()).toBe(expected)
-    expect(spy).toHaveBeenCalledTimes(1)
-  })
-})
 
 describe('isCleanSlateBarcode', () => {
   test.each([
@@ -127,65 +98,5 @@ describe('resolveBarcode', () => {
       kind: 'external',
       code: '3017620422003',
     })
-  })
-})
-
-describe('assignBarcode', () => {
-  const success = { update_foods_by_pk: { id: 'food-id' } }
-  const collision =
-    'duplicate key value violates unique constraint "foods_customBarcode_key"'
-
-  const request =
-    jest.fn<(query: string, variables: unknown) => Promise<unknown>>()
-
-  beforeEach(() => {
-    request.mockReset()
-    getHasuraClient.mockResolvedValue({ request })
-  })
-
-  afterEach(() => {
-    jest.restoreAllMocks()
-  })
-
-  test('saves and returns the same code', async () => {
-    request.mockResolvedValue(success)
-
-    const code = await assignBarcode('food-id')
-
-    expect(code).toMatch(/^CS\d{8}$/)
-    expect(request).toHaveBeenCalledWith(expect.any(String), {
-      pk_columns: { id: 'food-id' },
-      set: { customBarcode: code },
-    })
-  })
-
-  test('tries again after a collision', async () => {
-    request.mockRejectedValueOnce(collision).mockResolvedValueOnce(success)
-
-    await expect(assignBarcode('food-id')).resolves.toMatch(/^CS\d{8}$/)
-    expect(request).toHaveBeenCalledTimes(2)
-  })
-
-  test('stops after three collisions', async () => {
-    request.mockRejectedValue(collision)
-
-    await expect(assignBarcode('food-id')).rejects.toBe(collision)
-    expect(request).toHaveBeenCalledTimes(3)
-  })
-
-  test('does not try again after a different error', async () => {
-    request.mockRejectedValue('Network error')
-
-    await expect(assignBarcode('food-id')).rejects.toBe('Network error')
-    expect(request).toHaveBeenCalledTimes(1)
-  })
-
-  test('fails if no food was updated', async () => {
-    request.mockResolvedValue({ update_foods_by_pk: null })
-
-    await expect(assignBarcode('food-id')).rejects.toThrow(
-      'food was not updated'
-    )
-    expect(request).toHaveBeenCalledTimes(1)
   })
 })

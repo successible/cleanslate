@@ -1,23 +1,8 @@
 import JsBarcode from 'jsbarcode'
-import { UPDATE_FOOD } from '../../graphql/food'
 import type { Food } from '../../models/food'
-import { getHasuraClient } from '../getHasuraClient'
-import { stringifyQuery } from '../stringifyQuery'
 
-const PREFIX = 'CS'
 const CUSTOM_BARCODE = /^CS\d{8}$/
 
-/**
- * Creates a barcode for Clean Slate in
- * the format of CS23456789
- *
- * @returns Clean Slate custom barcode
- */
-export const createCleanSlateBarcode = (): string => {
-  const [random] = crypto.getRandomValues(new Uint32Array(1))
-  const digits = String(random % 100_000_000).padStart(8, '0')
-  return `${PREFIX}${digits}`
-}
 
 /**
  * Check if a barcode is custom to Clean Slate.
@@ -52,35 +37,6 @@ export const renderBarcode = (
     lineColor: '#000000',
     ...size,
   })
-}
-
-/**
- * Sets the Barcode for the food item.
- *
- * @param foodId
- * @returns
- */
-export const assignBarcode = async (foodId: string): Promise<string> => {
-  const client = await getHasuraClient()
-
-  for (let attempt = 1; ; attempt++) {
-    const code = createCleanSlateBarcode()
-    try {
-      const result = (await client.request(stringifyQuery(UPDATE_FOOD), {
-        pk_columns: { id: foodId },
-        set: { customBarcode: code },
-      })) as { update_foods_by_pk: { id: string } | null }
-
-      if (!result.update_foods_by_pk) {
-        throw new Error('The food was not updated')
-      }
-      return code
-    } catch (error) {
-      // Try again only if another food has this code.
-      const isCollision = String(error).includes('foods_customBarcode_key')
-      if (!isCollision || attempt === 3) throw error
-    }
-  }
 }
 
 /**
