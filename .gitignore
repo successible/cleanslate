@@ -16,3 +16,14 @@ src/out
 src/tsconfig-server.tsbuildinfo
 src/tsconfig.tsbuildinfo
 .pnpm-store
+.Trash-*
+
+# IDE
+.zed
+.vscode
+
+# Playwright output
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/

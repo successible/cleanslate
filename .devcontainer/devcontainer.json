@@ -9,8 +9,8 @@
   "runArgs": [
     "--init",
     "--network=cleanslate",
-    "--memory=4g",
-    "--memory-swap=10g"
+    "--memory=6g",
+    "--memory-swap=8g"
   ],
   "initializeCommand": ".devcontainer/create-network.sh",
   "postCreateCommand": "pnpm install",
@@ -32,23 +32,22 @@
     8443
   ],
   "portsAttributes": {
-    "3000": {
-      "label": "Next.js",
-      "onAutoForward": "openBrowser"
-    },
     "3001": {
       "label": "Auth server"
-    }
+    },
+    "8443": {
+      "label": "Next.js",
+      "protocol": "https",
+      "onAutoForward": "openBrowser"
+    },
   },
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
         "biomejs.biome",
         "ms-azuretools.vscode-docker",
         "GraphQL.vscode-graphql"
       ],
-
       "settings": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "biomejs.biome"
